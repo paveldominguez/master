@@ -1,0 +1,162 @@
+@import "compass/reset";
+
+/* sprite init */
+$ui-layout:smart;
+@import "ui/*.png";
+@include all-ui-sprites;
+
+/* REMOVE FROM FOUNDATION LIB -- NOTES */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+textarea:focus {
+    background: none;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    outline: none;
+}
+
+/* global colors */
+$vzw-red: #B70100;
+$nav-border: #B3B3B3;
+$nav-links: #4D4D4D;
+$nav-links-light: #808080;
+
+@mixin off-screen {
+    text-indent: -9999px;
+}
+
+html, body {
+    font-family: arial, helvetica, sans-serif;
+}
+.contain-to-grid {
+    background: none;
+}
+/* Override Foundation Base Styling */
+.top-bar {
+    margin: 0;
+    ul {
+        > li:not(.name):hover, 
+        > li:not(.name).active, 
+        > li:not(.name):focus {
+            background: none; 
+            border-bottom: inherit;
+            a { 
+                color: $nav-links;
+            }
+        }
+        > li.has-dropdown a:after {
+            border-color: $nav-links-light transparent transparent transparent;
+        }
+    }
+}
+.header { 
+    .vzw-top { 
+        display: table;
+        background-color: $vzw-red;
+        height: 25px;
+        width: 100%;
+        a {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0 10px;
+            color: white;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+    }
+    .top-bar {
+        background-color: white;
+        border-bottom: 1px solid $nav-border;
+        height: 60px;
+        line-height: 60px;
+        > ul {
+            height: 30px;
+            line-height: 30px;
+            > li {
+                min-width: 60px;
+                min-height: 60px;
+                line-height: 30px;
+                border-right: 1px solid $nav-border;
+                padding: 15px;
+                text-transform: uppercase;
+                a {
+                    display: block;
+                    color: $nav-links;
+                    font-weight: bold;
+                }
+                a:not(.button) {
+                    height: 30px;
+                    line-height: 30px;
+                }
+                &.logo {
+                    text-indent: -9999px;
+                    h1 {
+                        width: 30px;
+                        a { 
+                            height: 28px;
+                        }
+                    }
+                }
+                &.has-dropdown a {
+                    padding-right: 15px;
+                }
+                &.account-links a { 
+                    display: inline;
+                    color: $nav-links-light;
+                    font: {
+                        size: 12px;
+                    }
+                    text-decoration: none;
+                    padding: 0 10px;
+                    margin: 0;
+                    &:first-child {
+                        border-right: 1px solid $nav-links-light;
+                    }
+                }
+                &.site-search {
+                    border-right: none;
+                    input[type="text"] {
+                        display: block;
+                        text-transform: uppercase;
+                        border: none;
+                        box-shadow: none;
+                        margin: 0;
+                        &:hover {
+                            border: none;
+                        }
+                    }
+                }
+                &.location a:not(.button),
+                &.help a:not(.button),
+                &.shopping-bag a:not(.button) { padding: 0; margin: 0 auto; }
+                &.location {
+                    border-left: 1px solid $nav-border;
+                    a { width: 15px; height: 21px; }
+                }
+                &.help a { width: 12px; height: 21px; }
+                &.shopping-bag {
+                    border-right: none;
+                    a { width:18px; height: 20px; }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 990px) and (min-width: 768px) {
+
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+
+}
+@media only screen and (max-width: 479px) and (min-width: 320px) {
+
+} 

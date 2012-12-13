@@ -1,0 +1,122 @@
+/* line 17, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
+
+/* line 22, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html { line-height: 1; }
+
+/* line 24, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul { list-style: none; }
+
+/* line 26, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* line 28, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+
+/* line 30, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote { quotes: none; }
+/* line 103, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after { content: ""; content: none; }
+
+/* line 32, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img { border: none; }
+
+/* line 116, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { display: block; }
+
+/* sprite init */
+/* line 106, ui/*.png */
+.ui-sprite, .ui-hdr-help, .ui-hdr-logo, .ui-ico-info, .ui-ico-tdn, .ui-ico-tup, .ui-nav-dropdown-ico, .ui-nav-help, .ui-nav-location, .ui-nav-shopping-bag { background: url('/img/ui-s4d619dbe93.png') no-repeat; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-hdr-help { background-position: 0 -140px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-hdr-logo { background-position: 0 -112px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-ico-info { background-position: -8px -41px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-ico-tdn { background-position: 0 -60px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-ico-tup { background-position: 0 -86px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-nav-dropdown-ico { background-position: 0 -41px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-nav-help { background-position: 0 -20px; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-nav-location { background-position: 0 0; }
+
+/* line 60, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.ui-nav-shopping-bag { background-position: -15px 0; }
+
+/* REMOVE FROM FOUNDATION LIB -- NOTES */
+/* line 19, ../sass/screen.scss */
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus { background: none; border: none; box-shadow: none; transition: none; outline: none; }
+
+/* global colors */
+/* line 37, ../sass/screen.scss */
+html, body { font-family: arial, helvetica, sans-serif; }
+
+/* line 40, ../sass/screen.scss */
+.contain-to-grid { background: none; }
+
+/* Override Foundation Base Styling */
+/* line 44, ../sass/screen.scss */
+.top-bar { margin: 0; }
+/* line 49, ../sass/screen.scss */
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus { background: none; border-bottom: inherit; }
+/* line 52, ../sass/screen.scss */
+.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a, .top-bar ul > li:not(.name):focus a { color: #4d4d4d; }
+/* line 56, ../sass/screen.scss */
+.top-bar ul > li.has-dropdown a:after { border-color: gray transparent transparent transparent; }
+
+/* line 62, ../sass/screen.scss */
+.header .vzw-top { display: table; background-color: #b70100; height: 25px; width: 100%; }
+/* line 67, ../sass/screen.scss */
+.header .vzw-top a { display: table-cell; vertical-align: middle; padding: 0 10px; color: white; font-size: 10px; text-transform: uppercase; }
+/* line 76, ../sass/screen.scss */
+.header .top-bar { background-color: white; border-bottom: 1px solid #b3b3b3; height: 60px; line-height: 60px; }
+/* line 81, ../sass/screen.scss */
+.header .top-bar > ul { height: 30px; line-height: 30px; }
+/* line 84, ../sass/screen.scss */
+.header .top-bar > ul > li { min-width: 60px; min-height: 60px; line-height: 30px; border-right: 1px solid #b3b3b3; padding: 15px; text-transform: uppercase; }
+/* line 91, ../sass/screen.scss */
+.header .top-bar > ul > li a { display: block; color: #4d4d4d; font-weight: bold; }
+/* line 96, ../sass/screen.scss */
+.header .top-bar > ul > li a:not(.button) { height: 30px; line-height: 30px; }
+/* line 100, ../sass/screen.scss */
+.header .top-bar > ul > li.logo { text-indent: -9999px; }
+/* line 102, ../sass/screen.scss */
+.header .top-bar > ul > li.logo h1 { width: 30px; }
+/* line 104, ../sass/screen.scss */
+.header .top-bar > ul > li.logo h1 a { height: 28px; }
+/* line 109, ../sass/screen.scss */
+.header .top-bar > ul > li.has-dropdown a { padding-right: 15px; }
+/* line 112, ../sass/screen.scss */
+.header .top-bar > ul > li.account-links a { display: inline; color: gray; font-size: 12px; text-decoration: none; padding: 0 10px; margin: 0; }
+/* line 121, ../sass/screen.scss */
+.header .top-bar > ul > li.account-links a:first-child { border-right: 1px solid gray; }
+/* line 125, ../sass/screen.scss */
+.header .top-bar > ul > li.site-search { border-right: none; }
+/* line 127, ../sass/screen.scss */
+.header .top-bar > ul > li.site-search input[type="text"] { display: block; text-transform: uppercase; border: none; box-shadow: none; margin: 0; }
+/* line 133, ../sass/screen.scss */
+.header .top-bar > ul > li.site-search input[type="text"]:hover { border: none; }
+/* line 140, ../sass/screen.scss */
+.header .top-bar > ul > li.location a:not(.button), .header .top-bar > ul > li.help a:not(.button), .header .top-bar > ul > li.shopping-bag a:not(.button) { padding: 0; margin: 0 auto; }
+/* line 141, ../sass/screen.scss */
+.header .top-bar > ul > li.location { border-left: 1px solid #b3b3b3; }
+/* line 143, ../sass/screen.scss */
+.header .top-bar > ul > li.location a { width: 15px; height: 21px; }
+/* line 145, ../sass/screen.scss */
+.header .top-bar > ul > li.help a { width: 12px; height: 21px; }
+/* line 146, ../sass/screen.scss */
+.header .top-bar > ul > li.shopping-bag { border-right: none; }
+/* line 148, ../sass/screen.scss */
+.header .top-bar > ul > li.shopping-bag a { width: 18px; height: 20px; }
