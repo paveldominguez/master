@@ -23,80 +23,371 @@
   <link rel="stylesheet" href="css/screen.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body class="product-detail">
-<header id="site-header" class="header">
-  <div class="vzw-top">
-    <a href="http://www.verizon.com/" title="Back to Verizon.com">&lt; verizon.com</a>
-  </div>
-  <nav class="top-bar">
-      <ul class="left">
-        <li class="logo name">
-          <h1 class="ui-hdr-logo">
-            <a href="/" title="VZW: MLS">VZW: MLS</a>
-          </h1>
-        </li>
-        <li class="has-dropdown"><a href="#" title="Lifestyles">Lifestyles</a></li>
-        <li class="has-dropdown"><a href="#" title="Products">Products</a></li>
-        <li class="has-dropdown"><a href="#" title="You">You</a></li>
-        <li class="account-links">
-          <a href="#" title="login">login</a>
-          <a href="#" title="sign up">sign up</a>
-        </li>
-        <li class="site-search">
-          <input type="text" placeholder="search" />
-        </li>
-      </ul>
-      <ul class="right">
-        <li class="location"><a href="#" class="ui-nav-location" title="map"></a></li>
-        <li class="help"><a href="#" class="ui-nav-help" title="help"></a></li>
-        <li class="shopping-bag"><a href="#" class="ui-nav-shopping-bag" title="shopping bag"></a></li>
-      </ul>
-    </section>
-  </nav>
-
-
-  <!-- <nav class="vzw-nav">
-    <ul>
-      <li class="logo"><h1 class="ui-hdr-logo"><a href="/" title="VZW: MLS">VZW: MLS</a></h1></li>
-      <li class="has-dropdown"><a href="#" title="Lifestyles">Lifestyles</a></li>
-      <li class="has-dropdown"><a href="#" title="Products">Products</a></li>
-      <li class="has-dropdown"><a href="#" title="You">You</a></li>
-      <li class="account-links">
-        <a href="#" title="login">login</a>
-        <a href="#" title="sign up">sign up</a>
-      </li>
-      <li class="search">
-        <form role="search" method="post" id="site-search" class="search-form ui-icon-search " action="#">
-            <div><label for="s">Search</label>
-                <input type="text" placeholder="search" value="" name="s" id="s" class="s">
-                <input type="submit" id="searchsubmit" class="search-submit" value="Search">
-            </div>
-        </form>
-      </li>
-      <li class="location">
-        <a href="#" class="ui-nav-location"></a>
-      </li>
-      <li class="help">
-        <a href="#" class="ui-nav-help"></a>
-      </li>
-      <li class="shopping-bag">
-        <a href="#" class="ui-nav-shopping-bag"></a>
-      </li>
-    </ul>
-  </nav> -->
-</header>
+<body class="product-category-listing">
+  <header id="site-header" class="header">
+    <div class="vzw-top">
+      <a href="http://www.verizon.com/" title="Back to Verizon.com">&lt; verizon.com</a>
+    </div>
+    <nav class="top-bar">
+        <ul class="left">
+          <li class="logo name">
+            <h1 class="ui-hdr-logo">
+              <a href="/" title="VZW: MLS">VZW: MLS</a>
+            </h1>
+          </li>
+          <li class="has-dropdown"><a href="#" title="Lifestyles">Lifestyles</a></li>
+          <li class="has-dropdown"><a href="#" title="Products">Products</a></li>
+          <li class="has-dropdown"><a href="#" title="You">You</a></li>
+          <li class="account-links">
+            <a href="#" title="login">login</a>
+            <a href="#" title="sign up">sign up</a>
+          </li>
+          <li class="site-search">
+            <input type="text" placeholder="search" />
+          </li>
+        </ul>
+        <ul class="right">
+          <li class="location"><a href="#" class="ui-nav-location" title="map"></a></li>
+          <li class="help"><a href="#" class="ui-nav-help" title="help"></a></li>
+          <li class="shopping-bag"><a href="#" class="ui-nav-shopping-bag" title="shopping bag"></a></li>
+        </ul>
+      </section>
+    </nav>
+  </header>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
   <div class="row">
-    <aside class="three columns">
-      three
+    <aside class="two columns">
+      <div id="product-filter" class="product-filter">
+        <h3 class="filter-header"><strong>Shop</strong>Music+Audio</h3>
+        <div class="filter category">
+          <ul>
+            <li><a href="#">headphones</a></li>
+          </ul>
+        </div>
+        <div class="fit">
+          <h4>fit</h4>
+          <ul>
+            <li><a href="#">Over-Ear</a></li>
+            <li><a href="#">In-Ear</a></li>
+            <li><a href="#">On-Ear</a></li>
+          </ul>
+        </div>
+        <div class="brand">
+          <h4>brand</h4>
+          <ul>
+            <li><a href="#">Beats by Dre</a></li>
+            <li><a href="#">Sony</a></li>
+            <li><a href="#">Shure</a></li>
+            <li><a href="#">Klipsche</a></li>
+            <li><a href="#">Sennheizer</a></li>
+            <li><a href="#">Skull Candy</a></li>
+          </ul>
+        </div>
+        <div class="color">
+          <ul>
+            <li><a href="#"><img src="img/ph-a.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-c.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-b.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-c.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-a.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-b.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-c.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-b.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-c.png" width="25" height="25"/></a></li>
+            <li><a href="#"><img src="img/ph-a.png" width="25" height="25"/></a></li>
+          </ul>
+        </div>
+        <div class="features">
+          <h4>features</h4>
+          <ul>
+            <li><a href="#">Noise Cancelling</a></li>
+            <li><a href="#">Bluetooth</a></li>
+            <li><a href="#">Wireless</a></li>
+          </ul>
+        </div>
+        <div class="compatibility">
+          <h4>compatible with</h4>
+          <ul>
+            <li><a href="#">[iphone 5 image] Apple iPhone 5</a></li>
+          </ul>
+        </div>
+        <div class="breakdown">
+          <h4>break it down by</h4>
+          <ul>
+            <li><a href="#">[sound quality]</a></li>
+            <li><a href="#">[comfort]</a></li>
+            <li><a href="#">[value]</a></li>
+            <li><a href="#">[durability]</a></li>
+          </ul>
+        </div>
+        <div class="audience">
+          <h4>great for</h4>
+          <ul>
+            <li><a href="#">audiphile</a></li>
+            <li><a href="#">gym rat</a></li>
+            <li><a href="#">Home-Body</a></li>
+            <li><a href="#">Techie</a></li>
+          </ul>
+        </div>
+      </div>
     </aside>
-    <div class="nine columns">
-      nine
-    </div>
+    <div class="ten columns">
+      <section>
+        <h1>Heapdhones</h1>
+        <div class="products products-atf row">
+          <div id="sort-options" class="sort-options">
+            <ul class="inline-list">
+              <li>sorting</li>
+            </ul>
+          </div>
+          <div id="featured-product" class="featured">
+            <ul class="pricing-table">
+              <li class="image"><img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" /></li>
+              <li class="title">Beats by Dre</li>
+              <li class="description">Dre Beats</li>
+              <li class="price">$199.99</li>
+              <li class="info">
+                [i] recommended...
+              </li>
+            </ul>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="expert-opinions" class="expert-opinions">
+          expert opinions
+        </div>
+        <div class="products products-btf">
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product panel">
+            <figure>
+              <img src="img/sample-product.jpg"/>
+            </figure>
+            <div class="product-detail">
+              <ul class="left">
+                <li class="title">MotoATIV</li>
+                <li class="description">Lorem Ipsum</li>
+              </ul>
+              <ul class="right">
+                <li class="price">$49.99</li>
+                <li class="rating">* * * * *</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div> <!-- End ten columns -->
 
   </div>
 
@@ -127,45 +418,45 @@
 
   <!-- Included JS Files (Uncompressed) -->
 
-  
-  <script src="js/foundation/jquery.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.forms.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.reveal.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.orbit.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.navigation.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.buttons.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.tabs.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.accordion.js"></script>
-  
-  <script src="js/foundation/jquery.placeholder.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.alerts.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.joyride.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.clearing.js"></script>
-  
-  <script src="js/foundation/jquery.foundation.magellan.js"></script>
-  
 
-  
+  <script src="js/foundation/jquery.js"></script>
+
+  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+
+  <script src="js/foundation/jquery.foundation.forms.js"></script>
+
+  <script src="js/foundation/jquery.foundation.reveal.js"></script>
+
+  <script src="js/foundation/jquery.foundation.orbit.js"></script>
+
+  <script src="js/foundation/jquery.foundation.navigation.js"></script>
+
+  <script src="js/foundation/jquery.foundation.buttons.js"></script>
+
+  <script src="js/foundation/jquery.foundation.tabs.js"></script>
+
+  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
+
+  <script src="js/foundation/jquery.foundation.accordion.js"></script>
+
+  <script src="js/foundation/jquery.placeholder.js"></script>
+
+  <script src="js/foundation/jquery.foundation.alerts.js"></script>
+
+  <script src="js/foundation/jquery.foundation.topbar.js"></script>
+
+  <script src="js/foundation/jquery.foundation.joyride.js"></script>
+
+  <script src="js/foundation/jquery.foundation.clearing.js"></script>
+
+  <script src="js/foundation/jquery.foundation.magellan.js"></script>
+
+
+
   <!-- Included JS Files (Compressed) -->
   <script src="js/foundation/jquery.js"></script>
   <script src="js/foundation/foundation.min.js"></script>
-  
+
   <!-- Initialize JS Plugins -->
   <script src="js/foundation/app.js"></script>
 </body>

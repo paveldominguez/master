@@ -29,6 +29,8 @@ $vzw-red: #B70100;
 $nav-border: #B3B3B3;
 $nav-links: #4D4D4D;
 $nav-links-light: #808080;
+$featured-bg: #F6F6F6;
+$product-panel-border: #E5E5E5;
 
 @mixin off-screen {
     text-indent: -9999px;
@@ -41,6 +43,7 @@ html, body {
     background: none;
 }
 /* Override Foundation Base Styling */
+.columns { padding: 0; }
 .top-bar {
     margin: 0;
     ul {
@@ -147,6 +150,96 @@ html, body {
                     border-right: none;
                     a { width:18px; height: 20px; }
                 }
+            }
+        }
+    }
+}
+
+.featured { 
+    background-color: $featured-bg;
+    width: 440px; 
+    padding: 10px 20px;
+    float: left; 
+    .pricing-table {
+        border: none;
+        margin: 0;
+        .image img {
+            display: block; 
+            margin: 0 auto;
+            text-align: center;
+        }
+        .title,
+        .description,
+        .price {
+            background: none;
+            color: #222;
+            font-size: 14px;
+            padding: 0;
+            line-height: 20px;
+        }
+        .title {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .description {
+            font-style: italic;
+            font-weight: normal;
+        }  
+    }
+}
+.panel { 
+    position: relative;
+    float: left; 
+    width: 265px; 
+    min-height: 300px; 
+    margin-left: 15px; 
+    padding: 0;
+
+    background: none; 
+    border: none;
+    border: {
+        top: 1px solid $product-panel-border;
+        bottom: 1px solid $product-panel-border;
+    }
+    figure {
+        display: table-cell;
+        width: inherit;
+        height: 225px;
+        vertical-align: middle;
+        img { 
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+    .product-detail {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 15px 0;
+        width: inherit;
+
+        border-top: 1px solid $product-panel-border;
+        .left,
+        .right {
+            li {
+                color: #414042;
+                line-height: 15px;
+            }
+        }
+        .left {
+            .title,
+            .description {
+                font-size: 12px;
+            }
+            .title { 
+                font-weight: bold; 
+            }
+        }
+        .right {
+            .price,
+            .rating {
+                font-size: 12px;
             }
         }
     }
