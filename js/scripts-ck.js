@@ -1,0 +1,1 @@
+var debounce=function(){var e=0;return function(t,n){clearTimeout(e);e=setTimeout(t,n)}}();jQuery(document).ready(function(){var e=jQuery(this);jQuery(window).on("resize",function(){debounce(function(){console.log("Document width: %dpx",e.width())},100)})});

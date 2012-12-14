@@ -1,11 +1,18 @@
+// Library Imports
 @import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+@import "bourbon/bourbon";
+
+// Local Imports
+//@import "fonts";
 
 /* sprite init */
 $ui-layout:smart;
 @import "ui/*.png";
 @include all-ui-sprites;
 
-/* REMOVE FROM FOUNDATION LIB -- NOTES */
+/* FOUNDATION OVERRIDES */
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
@@ -24,26 +31,35 @@ textarea:focus {
     outline: none;
 }
 
-/* global colors */
+//@include font-face("Verizon Apex Book", font-files("../fonts/VerizonApex-Book.otf"));
+@font-face {
+  font-family: "Verizon Apex Book";
+  src: url('/fonts/VerizonApex-Book.otf') format('opentype');
+}
+
+/* color variables */
+$vzw-font: "Verizon Apex Book";
 $vzw-red: #B70100;
 $nav-border: #B3B3B3;
 $nav-links: #4D4D4D;
 $nav-links-light: #808080;
 $featured-bg: #F6F6F6;
 $product-panel-border: #E5E5E5;
+$content-filter-bg: #E9EAEB;
+$content-filter-border: #bdbebf;
+$content-filter-item-bg: #3a3a3c;
+$content-filter-item-link: #3a3a3c;
 
-@mixin off-screen {
+/* mixins */
+@mixin ir {
     text-indent: -9999px;
 }
 
 html, body {
-    font-family: arial, helvetica, sans-serif;
+    font-family: $vzw-font;
 }
-.contain-to-grid {
-    background: none;
-}
+
 /* Override Foundation Base Styling */
-.columns { padding: 0; }
 .top-bar {
     margin: 0;
     ul {
@@ -86,11 +102,23 @@ html, body {
             line-height: 30px;
             > li {
                 min-width: 60px;
-                min-height: 60px;
                 line-height: 30px;
                 border-right: 1px solid $nav-border;
                 padding: 15px;
                 text-transform: uppercase;
+                .inline-list { 
+                    height: inherit;
+                    line-height: inherit;
+                    margin: 0;
+                    > li {
+                        height: 30px;
+                        line-height: 30px;
+                        margin: 0;
+                        &:last-child a:first-child {
+                            border-right: none;
+                        }
+                    }
+                }
                 a {
                     display: block;
                     color: $nav-links;
@@ -99,30 +127,35 @@ html, body {
                 a:not(.button) {
                     height: 30px;
                     line-height: 30px;
+                    padding: 0;
                 }
                 &.logo {
-                    text-indent: -9999px;
+                    @include ir;
                     h1 {
                         width: 30px;
                         a { 
                             height: 28px;
+                            margin: 1px 0;
                         }
                     }
                 }
                 &.has-dropdown a {
                     padding-right: 15px;
                 }
-                &.account-links a { 
-                    display: inline;
-                    color: $nav-links-light;
-                    font: {
-                        size: 12px;
-                    }
-                    text-decoration: none;
-                    padding: 0 10px;
-                    margin: 0;
-                    &:first-child {
-                        border-right: 1px solid $nav-links-light;
+                &.account-links {
+                    //padding: 14px 15px;
+                    a { 
+                        display: inline;
+                        color: $nav-links-light;
+                        font: {
+                            size: 11px;
+                        }
+                        text-decoration: none;
+                        padding: 0 10px;
+                        margin: 0;
+                        &:first-child {
+                            border-right: 1px solid $nav-links-light;
+                        }
                     }
                 }
                 &.site-search {
@@ -140,106 +173,182 @@ html, body {
                 }
                 &.location a:not(.button),
                 &.help a:not(.button),
-                &.shopping-bag a:not(.button) { padding: 0; margin: 0 auto; }
+                &.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
                 &.location {
                     border-left: 1px solid $nav-border;
-                    a { width: 15px; height: 21px; }
+                    a:not(.button) { width: 15px; height: 20px; margin: 5px auto; }
                 }
-                &.help a { width: 12px; height: 21px; }
+                &.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
                 &.shopping-bag {
                     border-right: none;
-                    a { width:18px; height: 20px; }
+                    a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
                 }
             }
         }
     }
 }
-
-.featured { 
-    background-color: $featured-bg;
-    width: 440px; 
-    padding: 10px 20px;
-    float: left; 
-    .pricing-table {
-        border: none;
-        margin: 0;
-        .image img {
-            display: block; 
-            margin: 0 auto;
-            text-align: center;
-        }
-        .title,
-        .description,
-        .price {
-            background: none;
-            color: #222;
-            font-size: 14px;
-            padding: 0;
-            line-height: 20px;
-        }
-        .title {
+.content-filter {
+    background-color: $content-filter-bg;
+    width: 230px;
+    @include border-radius(2px);
+    font-size: 12px;
+    h3{
+        padding: 10px 10px 5px;
+    }
+    .filter {
+        border-bottom: 1px solid $content-filter-border;
+        &:last-child { border-bottom: none; }
+        h3 {
             font-weight: bold;
             text-transform: uppercase;
         }
-        .description {
-            font-style: italic;
-            font-weight: normal;
-        }  
+        &:not(.category) ul {
+            margin: 0 10px 10px;
+            padding: 0 10px;
+            li {
+                line-height: 25px;
+                a {
+                    color: $content-filter-item-link;
+                    font-weight: bold;
+                }
+            }
+        }
+        &.category ul li {   
+            a {
+                display: block;
+                margin: 5px 15px;
+                padding: 6px;
+                background: $content-filter-item-bg url(../img/remove-filter.png) 98% center no-repeat;
+                @include border-radius(2px);
+                color: white;
+                font-weight: bold;
+                letter-spacing: .08em;
+                text-transform: capitalize;
+
+                // span { // only needed if right-aligned background doesn't continue to work for these filters...
+                //     display: block;
+                //     float: right;
+                //     width: 13px;
+                //     height: 12px;
+                //     background: transparent url(../img/remove-filter.png) top left no-repeat;
+                // }
+            }
+        }
+        &.color {
+            ul {
+                @include clearfix;
+                li {
+                    float: left; 
+                    margin-right: 15px;
+                    &.end { margin-right: 0;}
+                }
+            }
+        }
     }
 }
-.panel { 
-    position: relative;
-    float: left; 
-    width: 265px; 
-    min-height: 300px; 
-    margin-left: 15px; 
-    padding: 0;
 
-    background: none; 
-    border: none;
-    border: {
-        top: 1px solid $product-panel-border;
-        bottom: 1px solid $product-panel-border;
-    }
-    figure {
-        display: table-cell;
-        width: inherit;
-        height: 225px;
-        vertical-align: middle;
-        img { 
-            display: block;
+.products-content { 
+    margin-top: 20px;
+    .products {
+        h1 { 
+            margin: 0 auto;
+            text-align: center;
+            font: {
+                size: 42px;
+                weight: bold;
+            }
+        }
+        .sort-options {
             margin: 0 auto;
             text-align: center;
         }
-    }
-    .product-detail {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding: 15px 0;
-        width: inherit;
+        .featured { 
+            background-color: $featured-bg;
+            max-width: 440px; 
+            padding: 10px 20px;
+            float: left; 
+            .pricing-table {
+                border: none;
+                margin: 0;
+                .image img {
+                    display: block; 
+                    margin: 0 auto;
+                    text-align: center;
+                }
+                .title,
+                .description,
+                .price {
+                    background: none;
+                    color: #222;
+                    font-size: 14px;
+                    padding: 0;
+                    line-height: 20px;
+                }
+                .title {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                .description {
+                    font-style: italic;
+                    font-weight: normal;
+                }  
+            }
+        }
+        .panel { 
+            position: relative;
+            float: left; 
+            max-width: 265px; 
+            min-height: 300px; 
+            margin-left: 15px; 
+            padding: 0;
 
-        border-top: 1px solid $product-panel-border;
-        .left,
-        .right {
-            li {
-                color: #414042;
-                line-height: 15px;
+            background: none; 
+            border: none;
+            border: {
+                top: 1px solid $product-panel-border;
+                bottom: 1px solid $product-panel-border;
             }
-        }
-        .left {
-            .title,
-            .description {
-                font-size: 12px;
+            figure {
+                display: table-cell;
+                width: inherit;
+                height: 225px;
+                vertical-align: middle;
+                img { 
+                    display: block;
+                    margin: 0 auto;
+                    text-align: center;
+                }
             }
-            .title { 
-                font-weight: bold; 
-            }
-        }
-        .right {
-            .price,
-            .rating {
-                font-size: 12px;
+            .product-detail {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 15px 0;
+                width: inherit;
+
+                border-top: 1px solid $product-panel-border;
+                .left,
+                .right {
+                    li {
+                        color: #414042;
+                        line-height: 15px;
+                    }
+                }
+                .left {
+                    .title,
+                    .description {
+                        font-size: 12px;
+                    }
+                    .title { 
+                        font-weight: bold; 
+                    }
+                }
+                .right {
+                    .price,
+                    .rating {
+                        font-size: 12px;
+                    }
+                }
             }
         }
     }
