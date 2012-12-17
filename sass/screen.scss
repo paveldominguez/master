@@ -37,8 +37,14 @@ textarea:focus {
   src: url('/fonts/VerizonApex-Book.otf') format('opentype');
 }
 
+@font-face {
+  font-family: "Verizon Apex Bold";
+  src: url('/fonts/VerizonApex-Bold.otf') format('opentype');
+}
+
 /* color variables */
 $vzw-font: "Verizon Apex Book";
+$vzw-nav-font: "Verizon Apex Bold";
 $vzw-red: #B70100;
 $nav-border: #B3B3B3;
 $nav-links: #4D4D4D;
@@ -61,6 +67,10 @@ html, body {
 
 /* Override Foundation Base Styling */
 .top-bar {
+    font: {
+        family: $vzw-nav-font;
+        size: 16px;
+    }
     margin: 0;
     ul {
         > li:not(.name):hover, 
@@ -148,7 +158,7 @@ html, body {
                         display: inline;
                         color: $nav-links-light;
                         font: {
-                            size: 11px;
+                            size: 12px;
                         }
                         text-decoration: none;
                         padding: 0 10px;
@@ -159,6 +169,7 @@ html, body {
                     }
                 }
                 &.site-search {
+                    font-family: $vzw-font;
                     border-right: none;
                     input[type="text"] {
                         display: block;
@@ -297,10 +308,10 @@ html, body {
         .panel { 
             position: relative;
             float: left; 
-            max-width: 265px; 
+            min-width: 185px; 
+            max-width: 225px;
             min-height: 300px; 
             margin-left: 15px; 
-            padding: 0;
 
             background: none; 
             border: none;
