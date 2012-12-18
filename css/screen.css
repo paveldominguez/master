@@ -130,65 +130,65 @@ html, body { font-family: "Verizon Apex Book"; }
 .header .top-bar > ul > li.shopping-bag a:not(.button) { width: 18px; height: 20px; margin: 5px auto; }
 
 /* line 201, ../sass/screen.scss */
-.content-filter { background-color: #e9eaeb; width: 230px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; font-size: 12px; }
-/* line 206, ../sass/screen.scss */
+.content-filter { background-color: #e9eaeb; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; font-size: 12px; }
+/* line 205, ../sass/screen.scss */
 .content-filter h3 { padding: 10px 10px 5px; }
-/* line 209, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 .content-filter .filter { border-bottom: 1px solid #bdbebf; }
-/* line 211, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 .content-filter .filter:last-child { border-bottom: none; }
-/* line 212, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 .content-filter .filter h3 { font-weight: bold; text-transform: uppercase; }
-/* line 216, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 .content-filter .filter:not(.category) ul { margin: 0 10px 10px; padding: 0 10px; }
-/* line 219, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 .content-filter .filter:not(.category) ul li { line-height: 25px; }
-/* line 221, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .content-filter .filter:not(.category) ul li a { color: #3a3a3c; font-weight: bold; }
-/* line 228, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 .content-filter .filter.category ul li a { display: block; margin: 5px 15px; padding: 6px; background: #3a3a3c url(../img/remove-filter.png) 98% center no-repeat; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; color: white; font-weight: bold; letter-spacing: .08em; text-transform: capitalize; }
-/* line 249, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 .content-filter .filter.color ul { *zoom: 1; }
 /* line 18, ../sass/bourbon/addons/_clearfix.scss */
 .content-filter .filter.color ul:before, .content-filter .filter.color ul:after { content: " "; display: table; }
 /* line 23, ../sass/bourbon/addons/_clearfix.scss */
 .content-filter .filter.color ul:after { clear: both; }
-/* line 251, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 .content-filter .filter.color ul li { float: left; margin-right: 15px; }
-/* line 254, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 .content-filter .filter.color ul li.end { margin-right: 0; }
 
-/* line 261, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 .products-content { margin-top: 20px; }
-/* line 264, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 .products-content .products h1 { margin: 0 auto; text-align: center; font-size: 42px; font-weight: bold; }
-/* line 272, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 .products-content .products .sort-options { margin: 0 auto; text-align: center; }
-/* line 276, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 .products-content .products .featured { background-color: #f6f6f6; max-width: 440px; padding: 10px 20px; float: left; }
-/* line 281, ../sass/screen.scss */
+/* line 280, ../sass/screen.scss */
 .products-content .products .featured .pricing-table { border: none; margin: 0; }
-/* line 284, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 .products-content .products .featured .pricing-table .image img { display: block; margin: 0 auto; text-align: center; }
-/* line 291, ../sass/screen.scss */
+/* line 290, ../sass/screen.scss */
 .products-content .products .featured .pricing-table .title, .products-content .products .featured .pricing-table .description, .products-content .products .featured .pricing-table .price { background: none; color: #222; font-size: 14px; padding: 0; line-height: 20px; }
-/* line 298, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 .products-content .products .featured .pricing-table .title { font-weight: bold; text-transform: uppercase; }
-/* line 302, ../sass/screen.scss */
+/* line 301, ../sass/screen.scss */
 .products-content .products .featured .pricing-table .description { font-style: italic; font-weight: normal; }
-/* line 308, ../sass/screen.scss */
-.products-content .products .panel { position: relative; float: left; min-width: 185px; max-width: 225px; min-height: 300px; margin-left: 15px; background: none; border: none; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
-/* line 322, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
+.products-content .products .panel { position: relative; float: left; min-height: 300px; margin-left: 15px; background: none; border: none; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+/* line 319, ../sass/screen.scss */
 .products-content .products .panel figure { display: table-cell; width: inherit; height: 225px; vertical-align: middle; }
-/* line 327, ../sass/screen.scss */
+/* line 324, ../sass/screen.scss */
 .products-content .products .panel figure img { display: block; margin: 0 auto; text-align: center; }
-/* line 333, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 .products-content .products .panel .product-detail { position: absolute; bottom: 0; left: 0; padding: 15px 0; width: inherit; border-top: 1px solid #e5e5e5; }
-/* line 343, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .products-content .products .panel .product-detail .left li, .products-content .products .panel .product-detail .right li { color: #414042; line-height: 15px; }
-/* line 350, ../sass/screen.scss */
+/* line 347, ../sass/screen.scss */
 .products-content .products .panel .product-detail .left .title, .products-content .products .panel .product-detail .left .description { font-size: 12px; }
-/* line 353, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 .products-content .products .panel .product-detail .left .title { font-weight: bold; }
-/* line 359, ../sass/screen.scss */
+/* line 356, ../sass/screen.scss */
 .products-content .products .panel .product-detail .right .price, .products-content .products .panel .product-detail .right .rating { font-size: 12px; }
