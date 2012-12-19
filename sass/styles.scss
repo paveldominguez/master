@@ -1,14 +1,8 @@
-// Library Imports
-@import "compass/reset";
-@import "compass/css3";
-@import "compass/utilities";
-@import "bourbon/bourbon";
-
 // Local Imports
-//@import "fonts";
+@import "app"; // Compass, Bourbon, Foundation...
 
-/* sprite init */
-$ui-layout:smart;
+/* sprites */
+$ui-layout: smart;
 @import "ui/*.png";
 @include all-ui-sprites;
 
@@ -42,9 +36,15 @@ textarea:focus {
   src: url('/fonts/VerizonApex-Bold.otf') format('opentype');
 }
 
+@font-face {
+  font-family: "Verizon Apex Light";
+  src: url('/fonts/VerizonApex-Light.otf') format('opentype');
+}
+
 /* color variables */
-$vzw-font: "Verizon Apex Book";
-$vzw-nav-font: "Verizon Apex Bold";
+$vzw-font-book: "Verizon Apex Book";
+$vzw-font-bold: "Verizon Apex Bold";
+$vzw-font-light: "Verizon Apex Light";
 $vzw-red: #B70100;
 $nav-border: #B3B3B3;
 $nav-links: #4D4D4D;
@@ -62,14 +62,14 @@ $content-filter-item-link: #3a3a3c;
 }
 
 html, body {
-    font-family: $vzw-font;
+    font-family: $vzw-font-book;
 }
 
 /* Override Foundation Base Styling */
 .top-bar {
     font: {
-        family: $vzw-nav-font;
-        size: 16px;
+        family: $vzw-font-bold;
+        size: 12px;
     }
     margin: 0;
     ul {
@@ -139,6 +139,10 @@ html, body {
                     line-height: 30px;
                     padding: 0;
                 }
+                &.drawer {
+                    border-left: none;
+                    a:not(.button) { width:20px; height: 18px; margin: 6px auto;}
+                }
                 &.logo {
                     @include ir;
                     h1 {
@@ -150,7 +154,7 @@ html, body {
                     }
                 }
                 &.has-dropdown a {
-                    padding-right: 15px;
+                    padding-right: 25px;
                 }
                 &.account-links {
                     //padding: 14px 15px;
@@ -169,7 +173,7 @@ html, body {
                     }
                 }
                 &.site-search {
-                    font-family: $vzw-font;
+                    font-family: $vzw-font-book;
                     border-right: none;
                     input[type="text"] {
                         display: block;
@@ -177,6 +181,9 @@ html, body {
                         border: none;
                         box-shadow: none;
                         margin: 0;
+                        background: transparent url(../img/ui/nav-search.png) 5px center no-repeat;
+                        padding-left: 35px;
+                        width: 400px;
                         &:hover {
                             border: none;
                         }
@@ -198,6 +205,8 @@ html, body {
         }
     }
 }
+.left-column { @include column(3); }
+.main { @include column(9); }
 .content-filter {
     background-color: $content-filter-bg;
     @include border-radius(2px);
@@ -234,14 +243,6 @@ html, body {
                 font-weight: bold;
                 letter-spacing: .08em;
                 text-transform: capitalize;
-
-                // span { // only needed if right-aligned background doesn't continue to work for these filters...
-                //     display: block;
-                //     float: right;
-                //     width: 13px;
-                //     height: 12px;
-                //     background: transparent url(../img/remove-filter.png) top left no-repeat;
-                // }
             }
         }
         &.color {
@@ -260,113 +261,216 @@ html, body {
 .products-content { 
     margin-top: 20px;
     .products {
+        @include innerRow();
         h1 { 
             margin: 0 auto;
             text-align: center;
             font: {
-                size: 42px;
-                weight: bold;
+                family: $vzw-font-light;
+                size: 60px;
+                weight: normal;
             }
         }
         .sort-options {
-            margin: 0 auto;
-            text-align: center;
+            @include clearfix();
+            display: table;
+            margin: 0 auto; 
+            text-align: center;  
+            text-transform: uppercase;
+            ul {    
+                margin: 15px 0;
+                li:first-child {
+                    margin-left: 0;
+                }
+                a {
+                    color: $vzw-red;
+                    font: {
+                        family: $vzw-font-book;
+                        size: 13px;
+                    }
+                }
+            }
         }
-        .featured { 
-            background-color: $featured-bg;
-            max-width: 440px; 
-            padding: 10px 20px;
-            float: left; 
-            .pricing-table {
-                border: none;
+        .product {
+            @include column(2);
+            padding: 0 10px;
+            &.panel { 
+                position: relative;
+                float: left;  
                 margin: 0;
-                .image img {
-                    display: block; 
-                    margin: 0 auto;
-                    text-align: center;
-                }
-                .title,
-                .description,
-                .price {
-                    background: none;
-                    color: #222;
-                    font-size: 14px;
-                    padding: 0;
-                    line-height: 20px;
-                }
-                .title {
-                    font-weight: bold;
-                    text-transform: uppercase;
-                }
-                .description {
-                    font-style: italic;
-                    font-weight: normal;
-                }  
-            }
-        }
-        .panel { 
-            position: relative;
-            float: left; 
-            min-height: 300px; 
-            margin-left: 15px; 
 
-            background: none; 
-            border: none;
-            border: {
-                top: 1px solid $product-panel-border;
-                bottom: 1px solid $product-panel-border;
-            }
-            figure {
-                display: table-cell;
-                width: inherit;
-                height: 225px;
-                vertical-align: middle;
-                img { 
+                background: none; 
+                border: none;
+                figure {
+                    @include clearfix();
                     display: block;
-                    margin: 0 auto;
-                    text-align: center;
-                }
-            }
-            .product-detail {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 15px 0;
-                width: inherit;
-
-                border-top: 1px solid $product-panel-border;
-                .left,
-                .right {
-                    li {
-                        color: #414042;
-                        line-height: 15px;
+                    width: 100%;
+                    img { 
+                        display: block;
+                        margin: 0 auto;
+                        text-align: center;
                     }
                 }
-                .left {
-                    .title,
-                    .description {
-                        font-size: 12px;
+                &.featured { 
+                    @include column(5);
+                    background-color: none;
+                    float: left; 
+                    padding: 0 10px;
+                    figure {
+                        min-height: 510px;
                     }
-                    .title { 
-                        font-weight: bold; 
+                    .product-detail {
+                        .name,
+                        .price { 
+                            float: left;
+                        }
+                        .name {
+                            margin: 0;
+                            font-size: 19px;
+                        }
+                        .price {
+                            line-height: 23px;
+                            margin: 0 0 0 8px;
+                        }
+                        .rating {
+                            float: none;
+                            clear: both;
+                        }
                     }
                 }
-                .right {
-                    .price,
-                    .rating {
-                        font-size: 12px;
+                .product-detail {
+                    display: table;
+                    margin: 0;
+                    padding: 4px 0;
+                    width: 100%;
+                    border-top: 1px solid $product-panel-border;
+                    .brand {
+                        font: {
+                            //family: $vzw-font-book;
+                            size: 10px;
+                        }
+                        text-transform: uppercase;
+                    }
+                    .name,
+                    .price {
+                        font-size: 13px;
+                        margin-top: 4px;
+                    }
+                    .name {
+                        font-family: $vzw-font-bold;
+                    }
+                    .rating { 
+                        float: right;
                     }
                 }
             }
         }
     }
 }
-@media only screen and (max-width: 990px) and (min-width: 768px) {
-
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
+    .header .top-bar > ul > li {
+        padding: 15px 10px;
+        &.site-search input[type="text"] {
+            width: 200px;
+        }
+    }
+    .products-content { 
+        .products { 
+            .product {
+                @include column(3);
+                &.panel {
+                    &.featured { 
+                        @include column(5);
+                    }
+                }
+            }
+        }
+    }
 }
-@media only screen and (max-width: 767px) and (min-width: 480px) {
-
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+    .header .top-bar > ul > li {
+        min-width: 50px;
+        padding: 15px 8px;
+        &.site-search input[type="text"] {
+            width: 105px;
+        }
+    }
+    .products-content { 
+        .products { 
+            .product {
+                @include column(4);
+                &.panel {
+                    &.featured { 
+                        @include column(4);
+                        .product-detail {
+                            .name {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-@media only screen and (max-width: 479px) and (min-width: 320px) {
-
-} 
+@media only screen and (max-width: $screenSmall - 1){
+    .header .top-bar {
+        .left { width: 73.33333%; }
+        .right { width: auto }
+        > ul > li {
+            min-width: 45px;
+            &.logo {
+                border-right: none;
+                padding: 15px;
+                width: auto;
+            }
+            &.site-search {
+                padding: 15px 15px 13px;
+                border-left: 1px solid $nav-border;
+                input[type="text"] {
+                    width: 25px;
+                    padding:0;
+                }
+            }
+            &.shopping-bag {
+                border-left: 1px solid $nav-border;
+                a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
+            }
+        }
+    }
+    .left-column {
+        display: none;
+    }
+    .main {
+        @include column(12);
+    }
+    .row .row {
+        margin: 0;
+    }
+    .column, .columns {
+        width: 50%;
+    }
+    .products-content { 
+        margin: 0;
+        .products { 
+            .product {
+                float: left;
+                width: 50%;
+                &.panel {
+                    &.featured { 
+                        float: left;
+                        width: 50%;
+                        img {
+                            max-height: 174px;
+                        }
+                        .product-detail {
+                            .name {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

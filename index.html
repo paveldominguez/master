@@ -18,9 +18,8 @@
   -->
   
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="css/foundation/foundation.min.css">
-  <link rel="stylesheet" href="css/foundation/app.css">
-  <link rel="stylesheet" href="css/screen.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
 <body class="product-category-listing">
@@ -30,27 +29,31 @@
     </div>
     <nav class="top-bar">
         <ul class="left">
+          <li class="drawer show-for-small"><a href="#" class="ui-nav-drawer" title="map"></a></li>
           <li class="logo name">
             <h1 class="ui-hdr-logo">
               <a href="/" title="VZW: MLS">VZW: MLS</a>
             </h1>
           </li>
-          <li class="has-dropdown"><a href="#" title="Lifestyles">Lifestyles</a></li>
-          <li class="has-dropdown"><a href="#" title="Products">Products</a></li>
-          <li class="has-dropdown"><a href="#" title="You">You</a></li>
-          <li class="account-links">
+          <li class="has-dropdown hide-for-small"><a href="#" title="Lifestyles">Lifestyles</a></li>
+          <li class="has-dropdown hide-for-small"><a href="#" title="Products">Products</a></li>
+          <li class="has-dropdown hide-for-small"><a href="#" title="You">You</a></li>
+          <li class="account-links hide-for-small">
            <ul class="inline-list">
               <li><a href="#" title="login">login</a></li>
               <li><a href="#" title="sign up">sign up</a></li>
            </ul>
           </li>
-          <li class="site-search">
+          <li class="site-search hide-for-small">
             <input type="text" placeholder="search" />
           </li>
         </ul>
         <ul class="right">
-          <li class="location"><a href="#" class="ui-nav-location" title="map"></a></li>
-          <li class="help"><a href="#" class="ui-nav-help" title="help"></a></li>
+          <li class="site-search show-for-small">
+            <input type="text" class="show-for-small" />
+          </li>
+          <li class="location hide-for-small"><a href="#" class="ui-nav-location" title="map"></a></li>
+          <li class="help hide-for-small"><a href="#" class="ui-nav-help" title="help"></a></li>
           <li class="shopping-bag"><a href="#" class="ui-nav-shopping-bag" title="shopping bag"></a></li>
         </ul>
       </section>
@@ -62,8 +65,8 @@
   <!-- Main Grid Section -->
 
   <div class="products-content row">
-    <aside class="three columns">
-      <div id="content-filter" class="content-filter">
+    <aside class="left-column">
+      <!-- <div id="content-filter" class="content-filter">
         <div class="collapsible">
           <h3 class="header"><strong>Shop</strong>Music+Audio</h3>
           <div class="filter category collapsible">
@@ -137,259 +140,206 @@
               <li><a href="#">[img - Techie]</a></li>
             </ul>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div>-->
+      <img src="img/tmpLeftBar.png" />
     </aside>
-    <div class="nine columns main">
+    <div class="main">
       <div class="products">
         <section>
-          <h1>Heapdhones</h1>
+          <h1>Headphones</h1>
           <div id="sort-options" class="sort-options">
-            sorting
+            <ul class="inline-list">
+              <li><a href="#">All</a></li>
+              <li><a href="#">Newest</a></li>
+              <li><a href="#">Highest Rated</a></li>
+              <li><a href="#">$-$$</a></li>
+              <li><a href="#">$$-$</a></li>
+            </ul>
           </div>
-          <div class="products-atf row">
-            <div id="featured-product" class="featured six columns">
-              <ul class="pricing-table">
-                <li class="image"><img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" /></li>
-                <li class="title">Beats by Dre</li>
-                <li class="description">Dre Beats</li>
-                <li class="price">$199.99</li>
-                <li class="info">
-                  [i] recommended...
-                </li>
+          <ul class="products-atf row">
+            <li class="featured product panel show-for-large-up">
+              <figure>
+                <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
+              </figure>
+              <ul class="product-detail">
+                <li class="brand">Beats by Dre</li>
+                <li class="name">Pro Headphones</li>
+                <li class="price">$299.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
               </ul>
-            </div>
-            <div class="product two columns panel">
+            </li>
+            <li class="product panel show-for-medium-down">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Beats by Dre</li>
+                <li class="name">Pro Headphones</li>
+                <li class="price">$299.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
+              <figure>
+                <img src="img/headphones-beats-by-dre.jpg"/>
+              </figure>
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+          </ul>
           <div id="expert-opinions" class="expert-opinions">
             expert opinions
           </div>
-          <div class="products-btf">
-            <div class="product two columns panel">
+          <ul class="products-btf">
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+            <li class="product panel">
               <figure>
-                <img src="img/sample-product.jpg"/>
+                <img src="img/headphones-beats-by-dre.jpg"/>
               </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-            <div class="product two columns panel">
-              <figure>
-                <img src="img/sample-product.jpg"/>
-              </figure>
-              <div class="product-detail">
-                <ul class="left">
-                  <li class="title">MotoATIV</li>
-                  <li class="description">Lorem Ipsum</li>
-                </ul>
-                <ul class="right">
-                  <li class="price">$49.99</li>
-                  <li class="rating">* * * * *</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+              <ul class="product-detail">
+                <li class="brand">Klipsch</li>
+                <li class="name">X7i White In-Ear Headphones</li>
+                <li class="price">$189.00</li>
+                <li class="rating"><img src="img/stars.png" /></li>
+              </ul>
+            </li>
+          </ul>
         </section>
       </div>
     </div> <!-- End ten columns -->
