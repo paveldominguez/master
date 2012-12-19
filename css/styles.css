@@ -28,11 +28,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .left-column, .main, .products-content .products .product, .products-content .products .product.panel.featured { float: left; }
 
 /* line 55, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_semantic-grid.scss */
-.products-content .products { *zoom: 1; }
+.header, .products-content .products { *zoom: 1; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
-.products-content .products:before, .products-content .products:after { content: " "; display: table; }
+.header:before, .products-content .products:before, .header:after, .products-content .products:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
-.products-content .products:after { clear: both; }
+.header:after, .products-content .products:after { clear: both; }
 
 /* line 59, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_semantic-grid.scss */
 .products-content .products { width: auto; max-width: none; min-width: 0; }
@@ -433,7 +433,7 @@ that IE7/8 do not support :nth-child.
   /* line 34, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .show-for-small, .show-for-medium, .show-for-medium-down, .show-for-large, .hide-for-large-up, .hide-for-xlarge { display: none !important; } }
 /* Medium display targeting */
-@media only screen and (max-width: 960px) and (min-width: 790px) { /* line 44, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
+@media only screen and (max-width: 990px) and (min-width: 790px) { /* line 44, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .hide-for-small, .show-for-medium, .show-for-medium-down, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: inherit !important; }
   /* line 51, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .show-for-small, .hide-for-medium, .hide-for-medium-down, .show-for-large, .show-for-large-up, .show-for-xlarge { display: none !important; } }
@@ -474,7 +474,7 @@ that IE7/8 do not support :nth-child.
 /* line 102, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
 table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-for-medium { display: table !important; }
 
-@media only screen and (max-width: 960px) and (min-width: 790px) { /* line 108, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
+@media only screen and (max-width: 990px) and (min-width: 790px) { /* line 108, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
 @media only screen and (max-width: 789px) { /* line 115, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   table.hide-for-xlarge, table.hide-for-large, table.hide-for-medium, table.show-for-small { display: table !important; } }
@@ -487,7 +487,7 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
 @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) { /* line 130, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .flex-video { padding-top: 0; } }
 /* Between Medium and Small */
-@media only screen and (max-width: 960px) and (min-width: 790px) { /* NavBar --- */
+@media only screen and (max-width: 990px) and (min-width: 790px) { /* NavBar --- */
   /*            */
   /* line 139, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .touch .nav-bar li a { font-size: ms(0)-1; }
@@ -935,217 +935,219 @@ html, body { font-family: "Verizon Apex Book"; }
 /* line 85, ../sass/styles.scss */
 .top-bar ul > li.has-dropdown a:after { border-color: gray transparent transparent transparent; }
 
-/* line 91, ../sass/styles.scss */
+/* line 90, ../sass/styles.scss */
+.header { width: 1400px; max-width: 100%; min-width: 790px; margin: 0 auto; }
+@media only screen and (max-width: 789px) { /* line 90, ../sass/styles.scss */
+  .header { width: auto; min-width: 0; margin-left: 0; margin-right: 0; } }
+/* line 92, ../sass/styles.scss */
 .header .vzw-top { display: table; background-color: #b70100; height: 25px; width: 100%; }
-/* line 96, ../sass/styles.scss */
+/* line 97, ../sass/styles.scss */
 .header .vzw-top a { display: table-cell; vertical-align: middle; padding: 0 10px; color: white; font-size: 10px; text-transform: uppercase; }
-/* line 105, ../sass/styles.scss */
+/* line 106, ../sass/styles.scss */
 .header .top-bar { background-color: white; border-bottom: 1px solid #b3b3b3; height: 60px; line-height: 60px; }
-/* line 110, ../sass/styles.scss */
+/* line 111, ../sass/styles.scss */
 .header .top-bar > ul { height: 30px; line-height: 30px; }
-/* line 113, ../sass/styles.scss */
+/* line 114, ../sass/styles.scss */
 .header .top-bar > ul > li { min-width: 60px; line-height: 30px; border-right: 1px solid #b3b3b3; padding: 15px; text-transform: uppercase; }
-/* line 119, ../sass/styles.scss */
+/* line 120, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list { height: inherit; line-height: inherit; margin: 0; }
-/* line 123, ../sass/styles.scss */
+/* line 124, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list > li { height: 30px; line-height: 30px; margin: 0; }
-/* line 127, ../sass/styles.scss */
+/* line 128, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list > li:last-child a:first-child { border-right: none; }
-/* line 132, ../sass/styles.scss */
+/* line 133, ../sass/styles.scss */
 .header .top-bar > ul > li a { display: block; color: #4d4d4d; font-weight: bold; }
-/* line 137, ../sass/styles.scss */
+/* line 138, ../sass/styles.scss */
 .header .top-bar > ul > li a:not(.button) { height: 30px; line-height: 30px; padding: 0; }
-/* line 142, ../sass/styles.scss */
+/* line 143, ../sass/styles.scss */
 .header .top-bar > ul > li.drawer { border-left: none; }
-/* line 144, ../sass/styles.scss */
+/* line 145, ../sass/styles.scss */
 .header .top-bar > ul > li.drawer a:not(.button) { width: 20px; height: 18px; margin: 6px auto; }
-/* line 146, ../sass/styles.scss */
+/* line 147, ../sass/styles.scss */
 .header .top-bar > ul > li.logo { text-indent: -9999px; }
-/* line 148, ../sass/styles.scss */
+/* line 149, ../sass/styles.scss */
 .header .top-bar > ul > li.logo h1 { width: 30px; }
-/* line 150, ../sass/styles.scss */
+/* line 151, ../sass/styles.scss */
 .header .top-bar > ul > li.logo h1 a { height: 28px; margin: 1px 0; }
-/* line 156, ../sass/styles.scss */
+/* line 157, ../sass/styles.scss */
 .header .top-bar > ul > li.has-dropdown a { padding-right: 25px; }
-/* line 161, ../sass/styles.scss */
+/* line 162, ../sass/styles.scss */
 .header .top-bar > ul > li.account-links a { display: inline; color: gray; font-size: 12px; text-decoration: none; padding: 0 10px; margin: 0; }
-/* line 170, ../sass/styles.scss */
+/* line 171, ../sass/styles.scss */
 .header .top-bar > ul > li.account-links a:first-child { border-right: 1px solid gray; }
-/* line 175, ../sass/styles.scss */
+/* line 176, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search { font-family: "Verizon Apex Book"; border-right: none; }
-/* line 178, ../sass/styles.scss */
+/* line 179, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search input[type="text"] { display: block; text-transform: uppercase; border: none; box-shadow: none; margin: 0; background: transparent url(../img/ui/nav-search.png) 5px center no-repeat; padding-left: 35px; width: 400px; }
-/* line 187, ../sass/styles.scss */
+/* line 188, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search input[type="text"]:hover { border: none; }
-/* line 194, ../sass/styles.scss */
-.header .top-bar > ul > li.location a:not(.button), .header .top-bar > ul > li.help a:not(.button), .header .top-bar > ul > li.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
 /* line 195, ../sass/styles.scss */
+.header .top-bar > ul > li.location a:not(.button), .header .top-bar > ul > li.help a:not(.button), .header .top-bar > ul > li.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
+/* line 196, ../sass/styles.scss */
 .header .top-bar > ul > li.location { border-left: 1px solid #b3b3b3; }
-/* line 197, ../sass/styles.scss */
+/* line 198, ../sass/styles.scss */
 .header .top-bar > ul > li.location a:not(.button) { width: 15px; height: 20px; margin: 5px auto; }
-/* line 199, ../sass/styles.scss */
-.header .top-bar > ul > li.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
 /* line 200, ../sass/styles.scss */
+.header .top-bar > ul > li.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
+/* line 201, ../sass/styles.scss */
 .header .top-bar > ul > li.shopping-bag { border-right: none; }
-/* line 202, ../sass/styles.scss */
+/* line 203, ../sass/styles.scss */
 .header .top-bar > ul > li.shopping-bag a:not(.button) { width: 18px; height: 20px; margin: 5px auto; }
 
-/* line 208, ../sass/styles.scss */
+/* line 209, ../sass/styles.scss */
 .left-column { width: 25%; }
-@media only screen and (max-width: 789px) { /* line 208, ../sass/styles.scss */
+@media only screen and (max-width: 789px) { /* line 209, ../sass/styles.scss */
   .left-column { float: left; width: 100%; } }
 
-/* line 209, ../sass/styles.scss */
+/* line 210, ../sass/styles.scss */
 .main { width: 75%; }
-@media only screen and (max-width: 789px) { /* line 209, ../sass/styles.scss */
+@media only screen and (max-width: 789px) { /* line 210, ../sass/styles.scss */
   .main { float: left; width: 100%; } }
 
-/* line 210, ../sass/styles.scss */
+/* line 211, ../sass/styles.scss */
 .content-filter { background-color: #e9eaeb; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; font-size: 12px; }
-/* line 214, ../sass/styles.scss */
+/* line 215, ../sass/styles.scss */
 .content-filter h3 { padding: 10px 10px 5px; }
-/* line 217, ../sass/styles.scss */
+/* line 218, ../sass/styles.scss */
 .content-filter .filter { border-bottom: 1px solid #bdbebf; }
-/* line 219, ../sass/styles.scss */
-.content-filter .filter:last-child { border-bottom: none; }
 /* line 220, ../sass/styles.scss */
+.content-filter .filter:last-child { border-bottom: none; }
+/* line 221, ../sass/styles.scss */
 .content-filter .filter h3 { font-weight: bold; text-transform: uppercase; }
-/* line 224, ../sass/styles.scss */
+/* line 225, ../sass/styles.scss */
 .content-filter .filter:not(.category) ul { margin: 0 10px 10px; padding: 0 10px; }
-/* line 227, ../sass/styles.scss */
+/* line 228, ../sass/styles.scss */
 .content-filter .filter:not(.category) ul li { line-height: 25px; }
-/* line 229, ../sass/styles.scss */
+/* line 230, ../sass/styles.scss */
 .content-filter .filter:not(.category) ul li a { color: #3a3a3c; font-weight: bold; }
-/* line 236, ../sass/styles.scss */
+/* line 237, ../sass/styles.scss */
 .content-filter .filter.category ul li a { display: block; margin: 5px 15px; padding: 6px; background: #3a3a3c url(../img/remove-filter.png) 98% center no-repeat; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; color: white; font-weight: bold; letter-spacing: .08em; text-transform: capitalize; }
-/* line 249, ../sass/styles.scss */
+/* line 250, ../sass/styles.scss */
 .content-filter .filter.color ul { *zoom: 1; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .content-filter .filter.color ul:before, .content-filter .filter.color ul:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .content-filter .filter.color ul:after { clear: both; }
-/* line 251, ../sass/styles.scss */
+/* line 252, ../sass/styles.scss */
 .content-filter .filter.color ul li { float: left; margin-right: 15px; }
-/* line 254, ../sass/styles.scss */
+/* line 255, ../sass/styles.scss */
 .content-filter .filter.color ul li.end { margin-right: 0; }
 
-/* line 261, ../sass/styles.scss */
+/* line 262, ../sass/styles.scss */
 .products-content { margin-top: 20px; }
-/* line 263, ../sass/styles.scss */
+/* line 264, ../sass/styles.scss */
 .products-content .products { margin: 0 -17px; }
-/* line 265, ../sass/styles.scss */
+/* line 266, ../sass/styles.scss */
 .products-content .products h1 { margin: 0 auto; text-align: center; font-family: "Verizon Apex Light"; font-size: 60px; font-weight: normal; }
-/* line 274, ../sass/styles.scss */
+/* line 275, ../sass/styles.scss */
 .products-content .products .sort-options { *zoom: 1; display: table; margin: 0 auto; text-align: center; text-transform: uppercase; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .sort-options:before, .products-content .products .sort-options:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .sort-options:after { clear: both; }
-/* line 280, ../sass/styles.scss */
+/* line 281, ../sass/styles.scss */
 .products-content .products .sort-options ul { margin: 15px 0; }
-/* line 282, ../sass/styles.scss */
+/* line 283, ../sass/styles.scss */
 .products-content .products .sort-options ul li:first-child { margin-left: 0; }
-/* line 285, ../sass/styles.scss */
+/* line 286, ../sass/styles.scss */
 .products-content .products .sort-options ul a { color: #b70100; font-family: "Verizon Apex Book"; font-size: 13px; }
-/* line 294, ../sass/styles.scss */
+/* line 295, ../sass/styles.scss */
 .products-content .products .product { width: 16.66667%; padding: 0 10px; }
-@media only screen and (max-width: 789px) { /* line 294, ../sass/styles.scss */
+@media only screen and (max-width: 789px) { /* line 295, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 100%; } }
-/* line 297, ../sass/styles.scss */
+/* line 298, ../sass/styles.scss */
 .products-content .products .product.panel { position: relative; float: left; margin: 0; background: none; border: none; }
-/* line 304, ../sass/styles.scss */
+/* line 305, ../sass/styles.scss */
 .products-content .products .product.panel figure { *zoom: 1; display: block; width: 100%; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:before, .products-content .products .product.panel figure:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:after { clear: both; }
-/* line 308, ../sass/styles.scss */
+/* line 309, ../sass/styles.scss */
 .products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; }
-/* line 314, ../sass/styles.scss */
+/* line 315, ../sass/styles.scss */
 .products-content .products .product.panel.featured { width: 41.66667%; background-color: none; float: left; padding: 0 10px; }
-@media only screen and (max-width: 789px) { /* line 314, ../sass/styles.scss */
+@media only screen and (max-width: 789px) { /* line 315, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
-/* line 319, ../sass/styles.scss */
-.products-content .products .product.panel.featured figure { min-height: 510px; }
-/* line 324, ../sass/styles.scss */
+/* line 322, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .name, .products-content .products .product.panel.featured .product-detail .price { float: left; }
-/* line 327, ../sass/styles.scss */
+/* line 325, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .name { margin: 0; font-size: 19px; }
-/* line 331, ../sass/styles.scss */
+/* line 329, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .price { line-height: 23px; margin: 0 0 0 8px; }
-/* line 335, ../sass/styles.scss */
+/* line 333, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .rating { float: none; clear: both; }
-/* line 341, ../sass/styles.scss */
+/* line 339, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail { display: table; margin: 0; padding: 4px 0; width: 100%; border-top: 1px solid #e5e5e5; }
-/* line 347, ../sass/styles.scss */
+/* line 345, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .brand { font-size: 10px; text-transform: uppercase; }
-/* line 355, ../sass/styles.scss */
+/* line 353, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .name, .products-content .products .product.panel .product-detail .price { font-size: 13px; margin-top: 4px; }
-/* line 359, ../sass/styles.scss */
+/* line 357, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .name { font-family: "Verizon Apex Bold"; }
-/* line 362, ../sass/styles.scss */
+/* line 360, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .rating { float: right; }
 
-@media only screen and (max-width: 1200px) and (min-width: 960px) { /* line 371, ../sass/styles.scss */
+@media only screen and (max-width: 1200px) and (min-width: 990px) { /* line 369, ../sass/styles.scss */
   .header .top-bar > ul > li { padding: 15px 10px; }
-  /* line 373, ../sass/styles.scss */
+  /* line 371, ../sass/styles.scss */
   .header .top-bar > ul > li.site-search input[type="text"] { width: 200px; }
-  /* line 379, ../sass/styles.scss */
+  /* line 377, ../sass/styles.scss */
   .products-content .products .product { width: 25%; }
-  /* line 382, ../sass/styles.scss */
+  /* line 380, ../sass/styles.scss */
   .products-content .products .product.panel.featured { width: 41.66667%; } }
-@media only screen and (max-width: 1200px) and (min-width: 960px) and (max-width: 789px) { /* line 379, ../sass/styles.scss */
+@media only screen and (max-width: 1200px) and (min-width: 990px) and (max-width: 789px) { /* line 377, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 100%; } }
-@media only screen and (max-width: 1200px) and (min-width: 960px) and (max-width: 789px) { /* line 382, ../sass/styles.scss */
+@media only screen and (max-width: 1200px) and (min-width: 990px) and (max-width: 789px) { /* line 380, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
 
-@media only screen and (max-width: 959px) and (min-width: 790px) { /* line 391, ../sass/styles.scss */
+@media only screen and (max-width: 989px) and (min-width: 790px) { /* line 389, ../sass/styles.scss */
   .header .top-bar > ul > li { min-width: 50px; padding: 15px 8px; }
-  /* line 394, ../sass/styles.scss */
+  /* line 392, ../sass/styles.scss */
   .header .top-bar > ul > li.site-search input[type="text"] { width: 105px; }
-  /* line 400, ../sass/styles.scss */
+  /* line 398, ../sass/styles.scss */
   .products-content .products .product { width: 33.33333%; }
-  /* line 403, ../sass/styles.scss */
+  /* line 401, ../sass/styles.scss */
   .products-content .products .product.panel.featured { width: 33.33333%; }
-  /* line 406, ../sass/styles.scss */
+  /* line 404, ../sass/styles.scss */
   .products-content .products .product.panel.featured .product-detail .name { font-size: 13px; } }
-@media only screen and (max-width: 959px) and (min-width: 790px) and (max-width: 789px) { /* line 400, ../sass/styles.scss */
+@media only screen and (max-width: 989px) and (min-width: 790px) and (max-width: 789px) { /* line 398, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 100%; } }
-@media only screen and (max-width: 959px) and (min-width: 790px) and (max-width: 789px) { /* line 403, ../sass/styles.scss */
+@media only screen and (max-width: 989px) and (min-width: 790px) and (max-width: 789px) { /* line 401, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
-@media only screen and (max-width: 789px) { /* line 418, ../sass/styles.scss */
+@media only screen and (max-width: 789px) { /* line 416, ../sass/styles.scss */
   .header .top-bar .left { width: 73.33333%; }
-  /* line 419, ../sass/styles.scss */
+  /* line 417, ../sass/styles.scss */
   .header .top-bar .right { width: auto; }
-  /* line 420, ../sass/styles.scss */
+  /* line 418, ../sass/styles.scss */
   .header .top-bar > ul > li { min-width: 45px; }
-  /* line 422, ../sass/styles.scss */
+  /* line 420, ../sass/styles.scss */
   .header .top-bar > ul > li.logo { border-right: none; padding: 15px; width: auto; }
-  /* line 427, ../sass/styles.scss */
+  /* line 425, ../sass/styles.scss */
   .header .top-bar > ul > li.site-search { padding: 15px 15px 13px; border-left: 1px solid #b3b3b3; }
-  /* line 430, ../sass/styles.scss */
+  /* line 428, ../sass/styles.scss */
   .header .top-bar > ul > li.site-search input[type="text"] { width: 25px; padding: 0; }
-  /* line 435, ../sass/styles.scss */
+  /* line 433, ../sass/styles.scss */
   .header .top-bar > ul > li.shopping-bag { border-left: 1px solid #b3b3b3; }
-  /* line 437, ../sass/styles.scss */
+  /* line 435, ../sass/styles.scss */
   .header .top-bar > ul > li.shopping-bag a:not(.button) { width: 18px; height: 20px; margin: 5px auto; }
-  /* line 441, ../sass/styles.scss */
+  /* line 439, ../sass/styles.scss */
   .left-column { display: none; }
-  /* line 444, ../sass/styles.scss */
+  /* line 442, ../sass/styles.scss */
   .main { width: 100%; }
-  /* line 447, ../sass/styles.scss */
+  /* line 445, ../sass/styles.scss */
   .row .row { margin: 0; }
-  /* line 450, ../sass/styles.scss */
+  /* line 448, ../sass/styles.scss */
   .column, .columns { width: 50%; }
-  /* line 453, ../sass/styles.scss */
+  /* line 451, ../sass/styles.scss */
   .products-content { margin: 0; }
-  /* line 456, ../sass/styles.scss */
+  /* line 454, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 50%; }
-  /* line 460, ../sass/styles.scss */
+  /* line 458, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 50%; }
-  /* line 463, ../sass/styles.scss */
+  /* line 461, ../sass/styles.scss */
   .products-content .products .product.panel.featured img { max-height: 174px; }
-  /* line 467, ../sass/styles.scss */
+  /* line 465, ../sass/styles.scss */
   .products-content .products .product.panel.featured .product-detail .name { font-size: 13px; } }
-@media only screen and (max-width: 789px) and (max-width: 789px) { /* line 444, ../sass/styles.scss */
+@media only screen and (max-width: 789px) and (max-width: 789px) { /* line 442, ../sass/styles.scss */
   .main { float: left; width: 100%; } }

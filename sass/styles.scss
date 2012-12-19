@@ -88,6 +88,7 @@ html, body {
     }
 }
 .header { 
+    @include outerRow();
     .vzw-top { 
         display: table;
         background-color: $vzw-red;
@@ -316,9 +317,6 @@ html, body {
                     background-color: none;
                     float: left; 
                     padding: 0 10px;
-                    figure {
-                        min-height: 510px;
-                    }
                     .product-detail {
                         .name,
                         .price { 
