@@ -4,7 +4,7 @@
 
 // Grid Settings
 
-$rowWidth: 1400px;
+$rowWidth: 100%;
 $columnGutter: 34px;
 $totalColumns: 12;
 $mobileTotalColumns: 4;
@@ -14,7 +14,7 @@ $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 
 $screenXlarge: 1400px;
 $screenLarge: 1200px;
 $screenMedium: 990px;
-$screenSmall: 790px;
+$screenSmall: 768px;
 
 // Media Query Settings (with gutter subtracted)
 // $screenXlarge: 1400px - ($columnGutter / 2);

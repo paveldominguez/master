@@ -1,1 +1,5 @@
-AddType font/opentype .otf
+AddType font/woff .woff
+AddType font/ttf .ttf
+AddType font/svg .svg
+AddType font/otf .otf
+AddType font/eot .eot

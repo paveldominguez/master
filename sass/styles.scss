@@ -1,12 +1,12 @@
 // Local Imports
-@import "app"; // Compass, Bourbon, Foundation...
+@import "app"; // Compass, Foundation...
 
 /* sprites */
 $ui-layout: smart;
 @import "ui/*.png";
 @include all-ui-sprites;
 
-/* FOUNDATION OVERRIDES */
+// Foundation Overrides
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
@@ -24,22 +24,10 @@ textarea:focus {
     transition: none;
     outline: none;
 }
+// End Foundation Overrides
 
-//@include font-face("Verizon Apex Book", font-files("../fonts/VerizonApex-Book.otf"));
-@font-face {
-  font-family: "Verizon Apex Book";
-  src: url('/fonts/VerizonApex-Book.otf') format('opentype');
-}
-
-@font-face {
-  font-family: "Verizon Apex Bold";
-  src: url('/fonts/VerizonApex-Bold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: "Verizon Apex Light";
-  src: url('/fonts/VerizonApex-Light.otf') format('opentype');
-}
+// Verizon Font-Face Imports
+@import "fonts"; 
 
 /* color variables */
 $vzw-font-book: "Verizon Apex Book";
@@ -88,7 +76,6 @@ html, body {
     }
 }
 .header { 
-    @include outerRow();
     .vzw-top { 
         display: table;
         background-color: $vzw-red;
@@ -262,7 +249,7 @@ html, body {
 .products-content { 
     margin-top: 20px;
     .products {
-        @include innerRow();
+        @include innerRow(collapse);
         h1 { 
             margin: 0 auto;
             text-align: center;
@@ -292,8 +279,12 @@ html, body {
                 }
             }
         }
+        .products-atf,
+        .products-btf {
+            @include clearfix();
+        }
         .product {
-            @include column(2);
+            @include column(2, center collapse);
             padding: 0 10px;
             &.panel { 
                 position: relative;
@@ -313,7 +304,7 @@ html, body {
                     }
                 }
                 &.featured { 
-                    @include column(5);
+                    @include column(6, center collapse);
                     background-color: none;
                     float: left; 
                     padding: 0 10px;
@@ -369,7 +360,7 @@ html, body {
     .header .top-bar > ul > li {
         padding: 15px 10px;
         &.site-search input[type="text"] {
-            width: 200px;
+            width: 150px;
         }
     }
     .products-content { 
@@ -390,22 +381,16 @@ html, body {
         min-width: 50px;
         padding: 15px 8px;
         &.site-search input[type="text"] {
-            width: 105px;
+            width: 50px;
         }
-    }
-    .left-column {
-        @include column(2);
-    }
-    .main {
-        @include column(10);
     }
     .products-content { 
         .products { 
             .product {
-                @include column(4);
+                @include column(4, center collapse);
                 &.panel {
                     &.featured { 
-                        @include column(4);
+                        @include column(4, center collapse);
                         .product-detail {
                             .name {
                                 font-size: 13px;
@@ -419,8 +404,6 @@ html, body {
 }
 @media only screen and (max-width: $screenSmall - 1){
     .header .top-bar {
-        .left { width: 73.33333%; }
-        .right { width: auto }
         > ul > li {
             min-width: 45px;
             &.logo {
@@ -446,24 +429,24 @@ html, body {
         display: none;
     }
     .main {
-        @include column(12);
+        @include mobileColumn(4);
     }
     .row .row {
         margin: 0;
     }
     .column, .columns {
-        width: 50%;
+        @include mobileColumn(2);
     }
     .products-content { 
         margin: 0;
         .products { 
             .product {
                 float: left;
-                width: 50%;
+                @include mobileColumn(2);
                 &.panel {
                     &.featured { 
                         float: left;
-                        width: 50%;
+                        @include mobileColumn(2);
                         img {
                             max-height: 174px;
                         }
