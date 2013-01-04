@@ -15,12 +15,9 @@ $screenXlarge: 1400px;
 $screenLarge: 1200px;
 $screenMedium: 990px;
 $screenSmall: 768px;
-
-// Media Query Settings (with gutter subtracted)
-// $screenXlarge: 1400px - ($columnGutter / 2);
-// $screenLarge: 1200px - ($columnGutter / 2);
-// $screenMedium: 960px - ($columnGutter / 2);
-// $screenSmall: 790px - ($columnGutter / 2);
+$screenMobileLandscape: 640px;
+$screenMobilePortrait: 480px;
+$screenMobileSmall: 320px;
 
 // Colors Settings
 
