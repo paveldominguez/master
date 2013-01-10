@@ -30,7 +30,6 @@
   <!-- Main Grid Section -->
 
   <div class="products-content">
-    <section>
     <header>
       <h1>Headphones</h1>
       <div id="sort-options" class="sort-options">
@@ -367,8 +366,6 @@
         </section>
       </div>
     </div> <!-- End main -->
-
-    </section>
   </div>
 
   <!-- End Grid Section -->
@@ -377,24 +374,7 @@
 
   <!-- Footer -->
 
-  <footer class="footer">
-   <!--  <div class="twelve columns">
-      <hr />
-      <div class="row">
-        <div class="six columns">
-          <p>&copy; Copyright no one at all. Go to town.</p>
-        </div>
-        <div class="six columns">
-          <ul class="link-list right">
-            <li><a href="#">Section 1</a></li>
-            <li><a href="#">Section 2</a></li>
-            <li><a href="#">Section 3</a></li>
-            <li><a href="#">Section 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
-  </footer>
+  <?php include('inc/footer.html');?>
 
   <!-- Included JS Files (Uncompressed) -->
 

@@ -447,7 +447,7 @@ $left-col-width: 250px; // move to top..
         }
     }
     .left-column {
-        display: none;
+        display: none !important;
         @include clearfix();
         @include column(12, center collapse);
         float: none;
@@ -508,8 +508,8 @@ $left-col-width: 250px; // move to top..
         }
     }
     .left-column {
-        display: none;
-        @include mobileColumn(4);
+        display: none !important;
+        //@include mobileColumn(4);
     }
     .main {
         @include mobileColumn(4);
@@ -572,6 +572,7 @@ $left-col-width: 250px; // move to top..
             }
         }
     }
+    .left-column { display: none !important; }
     .main {
         @include mobileColumn(4);
         margin-left: 0;
@@ -634,7 +635,7 @@ $left-col-width: 250px; // move to top..
         }
     }
     .left-column {
-        display: none;
+        display: none !important;
     }
     .main { margin-left: 0; }
     .column, .columns {
@@ -692,7 +693,7 @@ $left-col-width: 250px; // move to top..
         }
     }
     .left-column {
-        display: none;
+        display: none !important;
     }
     .main { margin-left: 0; }
     .column, .columns {
