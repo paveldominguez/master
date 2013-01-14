@@ -1,0 +1,23 @@
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
+    .header .top-bar > ul > li {
+        padding: 15px 10px;
+        &.site-search input[type="text"] {
+            width: 230px;
+        }
+    }
+    .products-content { 
+        .products { 
+            .product {
+                @include column(3);
+                &.panel {
+                    &.featured { 
+                        @include column(6);
+                        figure {
+                            margin: 10px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

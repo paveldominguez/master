@@ -2,7 +2,6 @@
 
 @include font-face(
     'Verizon Apex Bold',
-    //local('☺'),
     font-files(
         '../fonts/VerizonApex-Bold.woff', woff,
         '../fonts/VerizonApex-Bold.ttf', ttf,
@@ -25,7 +24,6 @@
 );
 @include font-face(
     'Verizon Apex Book',
-    //local('☺'),
     font-files(
         '../fonts/VerizonApex-Book.woff', woff,
         '../fonts/VerizonApex-Book.ttf', ttf,
