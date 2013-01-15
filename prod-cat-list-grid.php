@@ -48,7 +48,7 @@
     <div class="main">
       <div class="products with-grid">
         <section>
-          <ul class="products-atf">
+          <ul class="products-atf" id="product-grid">
             <li class="featured product panel show-for-large-up">
               <figure>
                 <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
@@ -381,36 +381,9 @@
 
   <script src="js/foundation/jquery.js"></script>
 
-  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-
-  <script src="js/foundation/jquery.foundation.forms.js"></script>
-
-  <script src="js/foundation/jquery.foundation.reveal.js"></script>
-
-  <script src="js/foundation/jquery.foundation.orbit.js"></script>
-
   <script src="js/foundation/jquery.foundation.navigation.js"></script>
 
-  <script src="js/foundation/jquery.foundation.buttons.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tabs.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
-
-  <script src="js/foundation/jquery.foundation.accordion.js"></script>
-
-  <script src="js/foundation/jquery.placeholder.js"></script>
-
-  <script src="js/foundation/jquery.foundation.alerts.js"></script>
-
   <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-  <script src="js/foundation/jquery.foundation.joyride.js"></script>
-
-  <script src="js/foundation/jquery.foundation.clearing.js"></script>
-
-  <script src="js/foundation/jquery.foundation.magellan.js"></script>
-
 
 
   <!-- Included JS Files (Compressed) -->
@@ -419,6 +392,7 @@
 
   <!-- Initialize JS Plugins -->
   <script src="js/foundation/app.js"></script>
+  <script src="js/lib/tiles.min.js"></script>
 
   <!-- Site Specific JS -->
   <script src="js/scripts.js"></script>

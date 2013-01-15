@@ -1824,7 +1824,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 .left-column .content-filter h3.header { color: #626262; font-family: "Verizon Apex Book"; font-size: 17px; text-transform: capitalize; }
 
 /* line 215, ../sass/styles.scss */
-.main { float: none; width: auto; margin-left: 250px; }
+.main { float: none; width: auto; margin-left: 284px; padding-right: 34px; }
 
 /* line 268, ../sass/styles.scss */
 .products-content header { *zoom: 1; background-color: #F6F6F6; border-bottom: 1px solid #DBDBDB; height: 70px; padding: 0 34px; }
@@ -1859,7 +1859,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 /* line 324, ../sass/styles.scss */
 .products-content .products.with-grid .product.panel { border: 1px solid #CCC; margin-bottom: 0; border-top: none; }
 /* line 331, ../sass/styles.scss */
-.products-content .products .product { padding: 0; width: 16.66667%; padding: 0 10px; }
+.products-content .products .product { padding: 0; width: 16.66667%; padding: 15px; }
 @media only screen and (max-width: 767px) { /* line 331, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 100%; } }
 /* line 334, ../sass/styles.scss */
@@ -1871,15 +1871,15 @@ h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:after { clear: both; }
 /* line 344, ../sass/styles.scss */
-.products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; max-width: 150px; }
+.products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; max-width: 50%; }
 /* line 351, ../sass/styles.scss */
-.products-content .products .product.panel.featured { width: 50%; background-color: none; float: left; padding: 0 10px; margin-bottom: 0; }
+.products-content .products .product.panel.featured { width: 50%; background-color: none; float: left; margin-bottom: 0; padding: 15px; }
 @media only screen and (max-width: 767px) { /* line 351, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
 /* line 357, ../sass/styles.scss */
 .products-content .products .product.panel.featured figure { margin: 20px 0; }
 /* line 359, ../sass/styles.scss */
-.products-content .products .product.panel.featured figure img { max-width: 375px; }
+.products-content .products .product.panel.featured figure img { max-width: 100%; }
 /* line 365, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .name, .products-content .products .product.panel.featured .product-detail .price { float: left; }
 /* line 368, ../sass/styles.scss */
@@ -1889,16 +1889,16 @@ h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 /* line 377, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .rating { float: none; clear: both; }
 /* line 383, ../sass/styles.scss */
-.products-content .products .product.panel .product-detail { margin: 0; padding: 0; width: 100%; border-top: 1px solid #e5e5e5; }
-/* line 388, ../sass/styles.scss */
+.products-content .products .product.panel .product-detail { margin: 0; padding: 0; width: 100%; }
+/* line 387, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .brand { font-size: 10px; text-transform: uppercase; }
-/* line 395, ../sass/styles.scss */
+/* line 394, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .name, .products-content .products .product.panel .product-detail .price { font-size: 13px; margin-top: 4px; }
-/* line 399, ../sass/styles.scss */
+/* line 398, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .name { font-family: "Verizon Apex Bold"; }
-/* line 402, ../sass/styles.scss */
+/* line 401, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .price { clear: left; float: left; }
-/* line 406, ../sass/styles.scss */
+/* line 405, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .rating { float: right; }
 
 @media only screen and (max-width: 1200px) and (min-width: 1000px) { /* line 2, ../sass/mq/large-medium.scss */
