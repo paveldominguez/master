@@ -316,12 +316,11 @@ h1,h2,h3,h4,h5,h6 {
     }
     .products {
         @include innerRow(collapse);
-        .products-atf,
-        .products-btf {
-            @include clearfix();
-        }
+        border: 1px solid #CCC;
+        .product-grid { @include clearfix(); }
         .product {
-            @include column(2, collapse);
+            @include column(3, collapse);
+            //max-width: 235px;
             padding: 15px;
             &.panel { 
                 position: relative;
@@ -329,8 +328,10 @@ h1,h2,h3,h4,h5,h6 {
                 margin: 0 0 30px 0;
                 background: none; 
                 border: 1px solid #CCC;
+                border-collapse: collapse;
                 margin-bottom: 0;
                 border-top: none;
+                border-left: none;
                 figure {
                     @include clearfix();
                     display: block;
@@ -339,7 +340,6 @@ h1,h2,h3,h4,h5,h6 {
                         display: block;
                         margin: 0 auto;
                         text-align: center;
-                        max-width: 50%;
                     }
                 }
                 &.featured { 
@@ -348,29 +348,7 @@ h1,h2,h3,h4,h5,h6 {
                     float: left; 
                     margin-bottom: 0;
                     padding: 15px;
-                    figure {  
-                        margin: 20px 0;
-                        img { 
-                            max-width: 100%;
-                        }
-                    }
-                    .product-detail {
-                        .name,
-                        .price { 
-                            float: left;
-                        }
-                        .name {
-                            margin: 0;
-                        }
-                        .price {
-                            clear: none;
-                            margin: 0 0 0 8px;
-                        }
-                        .rating {
-                            float: none;
-                            clear: both;
-                        }
-                    }
+                    //max-width: 470px;
                 }
                 .product-detail {
                     margin: 0;
@@ -384,7 +362,6 @@ h1,h2,h3,h4,h5,h6 {
                     }
                     .name {
                         height: 30px;
-                        line-height: 15px;
                     }
                     .price {
                         clear: left;

@@ -8,10 +8,10 @@
     .products-content { 
         .products { 
             .product {
-                @include column(3);
+                @include column(4);
                 &.panel {
                     &.featured { 
-                        @include column(6);
+                        @include column(8);
                         figure {
                             margin: 10px 0;
                         }
