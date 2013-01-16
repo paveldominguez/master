@@ -8,6 +8,7 @@
 @import "_foundation-resets";
 
 // Font Variables
+$arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
 $vzw-font-book: "Verizon Apex Book";
 $vzw-font-bold: "Verizon Apex Bold";
 $vzw-font-light: "Verizon Apex Light";
@@ -319,15 +320,6 @@ h1,h2,h3,h4,h5,h6 {
         .products-btf {
             @include clearfix();
         }
-        &.with-grid {
-            .product {
-                &.panel {
-                    border: 1px solid #CCC;
-                    margin-bottom: 0;
-                    border-top: none;
-                }
-            }
-        }
         .product {
             @include column(2, collapse);
             padding: 15px;
@@ -336,7 +328,9 @@ h1,h2,h3,h4,h5,h6 {
                 float: left;  
                 margin: 0 0 30px 0;
                 background: none; 
-                border: none;
+                border: 1px solid #CCC;
+                margin-bottom: 0;
+                border-top: none;
                 figure {
                     @include clearfix();
                     display: block;
@@ -367,11 +361,9 @@ h1,h2,h3,h4,h5,h6 {
                         }
                         .name {
                             margin: 0;
-                            font-size: 19px;
                         }
                         .price {
                             clear: none;
-                            line-height: 23px;
                             margin: 0 0 0 8px;
                         }
                         .rating {
@@ -384,19 +376,15 @@ h1,h2,h3,h4,h5,h6 {
                     margin: 0;
                     padding: 0;
                     width: 100%;
-                    .brand {
-                        font: {
-                            size: 10px;
-                        }
-                        text-transform: uppercase;
-                    }
+                    li { font-family: $arial; }
                     .name,
                     .price {
-                        font-size: 13px;
-                        margin-top: 4px;
+                        font-size: 12px;
+                        line-height: 15px;
                     }
                     .name {
-                        font-family: $vzw-font-bold;
+                        height: 30px;
+                        line-height: 15px;
                     }
                     .price {
                         clear: left;

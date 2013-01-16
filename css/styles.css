@@ -1746,159 +1746,157 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
 /* line 60, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .ui-product-filter-open { background-position: -28px -21px; }
 
-/* line 35, ../sass/styles.scss */
+/* line 36, ../sass/styles.scss */
 html, body { font-family: "Verizon Apex Book"; width: 100%; height: 100%; margin: 0; padding: 0; }
 
-/* line 43, ../sass/styles.scss */
+/* line 44, ../sass/styles.scss */
 h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 
-/* line 47, ../sass/styles.scss */
+/* line 48, ../sass/styles.scss */
 .top-bar { font-family: "Verizon Apex Bold"; font-size: 12px; margin: 0; }
-/* line 56, ../sass/styles.scss */
+/* line 57, ../sass/styles.scss */
 .top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus { background: none; border-bottom: inherit; }
-/* line 59, ../sass/styles.scss */
+/* line 60, ../sass/styles.scss */
 .top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a, .top-bar ul > li:not(.name):focus a { color: #4d4d4d; }
-/* line 63, ../sass/styles.scss */
+/* line 64, ../sass/styles.scss */
 .top-bar ul > li.has-dropdown a:after { border-color: gray transparent transparent transparent; }
 
-/* line 69, ../sass/styles.scss */
+/* line 70, ../sass/styles.scss */
 .header .top-band { display: table; background-color: #b70100; height: 25px; width: 100%; }
-/* line 74, ../sass/styles.scss */
+/* line 75, ../sass/styles.scss */
 .header .top-band a { display: table-cell; vertical-align: middle; padding: 0 10px; color: white; font-size: 10px; text-transform: uppercase; }
-/* line 83, ../sass/styles.scss */
+/* line 84, ../sass/styles.scss */
 .header .top-bar { background-color: white; border-bottom: 1px solid #b3b3b3; height: 60px; line-height: 60px; }
-/* line 88, ../sass/styles.scss */
+/* line 89, ../sass/styles.scss */
 .header .top-bar > ul { height: 30px; line-height: 30px; }
-/* line 91, ../sass/styles.scss */
+/* line 92, ../sass/styles.scss */
 .header .top-bar > ul > li { min-width: 60px; line-height: 30px; border-right: 1px solid #b3b3b3; padding: 15px; text-transform: uppercase; }
-/* line 97, ../sass/styles.scss */
+/* line 98, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list { height: inherit; line-height: inherit; margin: 0; }
-/* line 101, ../sass/styles.scss */
+/* line 102, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list > li { height: 30px; line-height: 30px; margin: 0; }
-/* line 105, ../sass/styles.scss */
+/* line 106, ../sass/styles.scss */
 .header .top-bar > ul > li .inline-list > li:last-child a:first-child { border-right: none; }
-/* line 110, ../sass/styles.scss */
+/* line 111, ../sass/styles.scss */
 .header .top-bar > ul > li a { display: block; color: #4d4d4d; font-weight: bold; }
-/* line 115, ../sass/styles.scss */
+/* line 116, ../sass/styles.scss */
 .header .top-bar > ul > li a:not(.button) { height: 30px; line-height: 30px; padding: 0; }
-/* line 120, ../sass/styles.scss */
+/* line 121, ../sass/styles.scss */
 .header .top-bar > ul > li.drawer { border-left: none; }
-/* line 122, ../sass/styles.scss */
+/* line 123, ../sass/styles.scss */
 .header .top-bar > ul > li.drawer a:not(.button) { width: 20px; height: 18px; margin: 6px auto; }
-/* line 124, ../sass/styles.scss */
+/* line 125, ../sass/styles.scss */
 .header .top-bar > ul > li.logo { text-indent: -9999px; }
-/* line 126, ../sass/styles.scss */
+/* line 127, ../sass/styles.scss */
 .header .top-bar > ul > li.logo h1 { width: 30px; }
-/* line 128, ../sass/styles.scss */
+/* line 129, ../sass/styles.scss */
 .header .top-bar > ul > li.logo h1 a { height: 28px; margin: 1px 0; }
-/* line 134, ../sass/styles.scss */
+/* line 135, ../sass/styles.scss */
 .header .top-bar > ul > li.has-dropdown a { padding-right: 25px; }
-/* line 139, ../sass/styles.scss */
+/* line 140, ../sass/styles.scss */
 .header .top-bar > ul > li.account-links a { display: inline; color: gray; font-size: 12px; text-decoration: none; padding: 0 10px; margin: 0; }
-/* line 148, ../sass/styles.scss */
+/* line 149, ../sass/styles.scss */
 .header .top-bar > ul > li.account-links a:first-child { border-right: 1px solid gray; }
-/* line 153, ../sass/styles.scss */
+/* line 154, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search { font-family: "Verizon Apex Book"; border-right: none; }
-/* line 156, ../sass/styles.scss */
+/* line 157, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search input[type="text"] { display: block; text-transform: uppercase; border: none; box-shadow: none; margin: 0; background: transparent url(../img/ui/nav-search.png) 5px center no-repeat; padding-left: 35px; width: 400px; }
-/* line 165, ../sass/styles.scss */
+/* line 166, ../sass/styles.scss */
 .header .top-bar > ul > li.site-search input[type="text"]:hover { border: none; }
-/* line 172, ../sass/styles.scss */
-.header .top-bar > ul > li.location a:not(.button), .header .top-bar > ul > li.help a:not(.button), .header .top-bar > ul > li.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
 /* line 173, ../sass/styles.scss */
+.header .top-bar > ul > li.location a:not(.button), .header .top-bar > ul > li.help a:not(.button), .header .top-bar > ul > li.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
+/* line 174, ../sass/styles.scss */
 .header .top-bar > ul > li.location { border-left: 1px solid #b3b3b3; }
-/* line 175, ../sass/styles.scss */
+/* line 176, ../sass/styles.scss */
 .header .top-bar > ul > li.location a:not(.button) { width: 15px; height: 20px; margin: 5px auto; }
-/* line 177, ../sass/styles.scss */
-.header .top-bar > ul > li.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
 /* line 178, ../sass/styles.scss */
+.header .top-bar > ul > li.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
+/* line 179, ../sass/styles.scss */
 .header .top-bar > ul > li.shopping-bag { border-right: none; }
-/* line 180, ../sass/styles.scss */
+/* line 181, ../sass/styles.scss */
 .header .top-bar > ul > li.shopping-bag a:not(.button) { width: 18px; height: 20px; margin: 5px auto; }
 
-/* line 187, ../sass/styles.scss */
+/* line 188, ../sass/styles.scss */
 .left-column { float: left; max-width: 250px; width: 250px; padding-left: 34px; }
-/* line 193, ../sass/styles.scss */
+/* line 194, ../sass/styles.scss */
 .left-column .content-filter h3 { color: #666; border-bottom: 1px solid #E0E0E0; font-family: "Verizon Apex Bold"; font-size: 13px; font-weight: normal; margin: 0; padding: 15px 0; text-transform: uppercase; }
-/* line 204, ../sass/styles.scss */
+/* line 205, ../sass/styles.scss */
 .left-column .content-filter h3.header { color: #626262; font-family: "Verizon Apex Book"; font-size: 17px; text-transform: capitalize; }
 
-/* line 215, ../sass/styles.scss */
+/* line 216, ../sass/styles.scss */
 .main { float: none; width: auto; margin-left: 284px; padding-right: 34px; }
 
-/* line 268, ../sass/styles.scss */
+/* line 269, ../sass/styles.scss */
 .products-content header { *zoom: 1; background-color: #F6F6F6; border-bottom: 1px solid #DBDBDB; height: 70px; padding: 0 34px; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content header:before, .products-content header:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content header:after { clear: both; }
-/* line 275, ../sass/styles.scss */
+/* line 276, ../sass/styles.scss */
 .products-content header h1, .products-content header .sort-options { height: 70px; line-height: 70px; }
-/* line 278, ../sass/styles.scss */
+/* line 279, ../sass/styles.scss */
 .products-content header h1 ul li, .products-content header .sort-options ul li { line-height: 70px; }
-/* line 282, ../sass/styles.scss */
+/* line 283, ../sass/styles.scss */
 .products-content header h1 { float: left; margin: 0; font-size: 34px; font-weight: normal; }
-/* line 290, ../sass/styles.scss */
+/* line 291, ../sass/styles.scss */
 .products-content header .sort-options { float: right; margin: 0 auto; text-align: center; text-transform: uppercase; }
-/* line 295, ../sass/styles.scss */
+/* line 296, ../sass/styles.scss */
 .products-content header .sort-options ul { margin: 0; }
-/* line 297, ../sass/styles.scss */
+/* line 298, ../sass/styles.scss */
 .products-content header .sort-options ul li:first-child { margin-left: 0; }
-/* line 301, ../sass/styles.scss */
+/* line 302, ../sass/styles.scss */
 .products-content header .sort-options ul li.active a { color: #626262; text-decoration: underline; }
-/* line 306, ../sass/styles.scss */
+/* line 307, ../sass/styles.scss */
 .products-content header .sort-options ul a { color: #b70100; font-family: "Verizon Apex Book"; font-size: 13px; }
-/* line 316, ../sass/styles.scss */
+/* line 317, ../sass/styles.scss */
 .products-content .products { margin: 0; }
-/* line 319, ../sass/styles.scss */
+/* line 320, ../sass/styles.scss */
 .products-content .products .products-atf, .products-content .products .products-btf { *zoom: 1; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .products-atf:before, .products-content .products .products-atf:after, .products-content .products .products-btf:before, .products-content .products .products-btf:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .products-atf:after, .products-content .products .products-btf:after { clear: both; }
-/* line 324, ../sass/styles.scss */
-.products-content .products.with-grid .product.panel { border: 1px solid #CCC; margin-bottom: 0; border-top: none; }
-/* line 331, ../sass/styles.scss */
+/* line 323, ../sass/styles.scss */
 .products-content .products .product { padding: 0; width: 16.66667%; padding: 15px; }
-@media only screen and (max-width: 767px) { /* line 331, ../sass/styles.scss */
+@media only screen and (max-width: 767px) { /* line 323, ../sass/styles.scss */
   .products-content .products .product { float: left; width: 100%; } }
+/* line 326, ../sass/styles.scss */
+.products-content .products .product.panel { position: relative; float: left; margin: 0 0 30px 0; background: none; border: 1px solid #CCC; margin-bottom: 0; border-top: none; }
 /* line 334, ../sass/styles.scss */
-.products-content .products .product.panel { position: relative; float: left; margin: 0 0 30px 0; background: none; border: none; }
-/* line 340, ../sass/styles.scss */
 .products-content .products .product.panel figure { *zoom: 1; display: block; margin: 0; }
 /* line 4, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:before, .products-content .products .product.panel figure:after { content: " "; display: table; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:after { clear: both; }
-/* line 344, ../sass/styles.scss */
+/* line 338, ../sass/styles.scss */
 .products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; max-width: 50%; }
-/* line 351, ../sass/styles.scss */
+/* line 345, ../sass/styles.scss */
 .products-content .products .product.panel.featured { width: 50%; background-color: none; float: left; margin-bottom: 0; padding: 15px; }
-@media only screen and (max-width: 767px) { /* line 351, ../sass/styles.scss */
+@media only screen and (max-width: 767px) { /* line 345, ../sass/styles.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
-/* line 357, ../sass/styles.scss */
+/* line 351, ../sass/styles.scss */
 .products-content .products .product.panel.featured figure { margin: 20px 0; }
-/* line 359, ../sass/styles.scss */
+/* line 353, ../sass/styles.scss */
 .products-content .products .product.panel.featured figure img { max-width: 100%; }
-/* line 365, ../sass/styles.scss */
+/* line 359, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .name, .products-content .products .product.panel.featured .product-detail .price { float: left; }
-/* line 368, ../sass/styles.scss */
-.products-content .products .product.panel.featured .product-detail .name { margin: 0; font-size: 19px; }
-/* line 372, ../sass/styles.scss */
-.products-content .products .product.panel.featured .product-detail .price { clear: none; line-height: 23px; margin: 0 0 0 8px; }
-/* line 377, ../sass/styles.scss */
+/* line 362, ../sass/styles.scss */
+.products-content .products .product.panel.featured .product-detail .name { margin: 0; }
+/* line 365, ../sass/styles.scss */
+.products-content .products .product.panel.featured .product-detail .price { clear: none; margin: 0 0 0 8px; }
+/* line 369, ../sass/styles.scss */
 .products-content .products .product.panel.featured .product-detail .rating { float: none; clear: both; }
-/* line 383, ../sass/styles.scss */
+/* line 375, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail { margin: 0; padding: 0; width: 100%; }
-/* line 387, ../sass/styles.scss */
-.products-content .products .product.panel .product-detail .brand { font-size: 10px; text-transform: uppercase; }
-/* line 394, ../sass/styles.scss */
-.products-content .products .product.panel .product-detail .name, .products-content .products .product.panel .product-detail .price { font-size: 13px; margin-top: 4px; }
-/* line 398, ../sass/styles.scss */
-.products-content .products .product.panel .product-detail .name { font-family: "Verizon Apex Bold"; }
-/* line 401, ../sass/styles.scss */
+/* line 379, ../sass/styles.scss */
+.products-content .products .product.panel .product-detail li { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; }
+/* line 381, ../sass/styles.scss */
+.products-content .products .product.panel .product-detail .name, .products-content .products .product.panel .product-detail .price { font-size: 12px; line-height: 15px; }
+/* line 385, ../sass/styles.scss */
+.products-content .products .product.panel .product-detail .name { height: 30px; line-height: 15px; }
+/* line 389, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .price { clear: left; float: left; }
-/* line 405, ../sass/styles.scss */
+/* line 393, ../sass/styles.scss */
 .products-content .products .product.panel .product-detail .rating { float: right; }
 
 @media only screen and (max-width: 1200px) and (min-width: 1000px) { /* line 2, ../sass/mq/large-medium.scss */
