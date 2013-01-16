@@ -30,342 +30,241 @@
   <!-- Main Grid Section -->
 
   <div class="products-content">
-    <header>
-      <h1>Headphones</h1>
-      <div id="sort-options" class="sort-options">
-        <ul class="inline-list">
-          <li class="active"><a href="#">All</a></li>
-          <li><a href="#">Newest</a></li>
-          <li><a href="#">Highest Rated</a></li>
-          <li><a href="#">$-$$</a></li>
-          <li><a href="#">$$-$</a></li>
-        </ul>
-      </div>
-    </header>
-    <aside class="left-column">
-      <?php include('inc/product-filter.html'); ?>
-    </aside>
-    <div class="main">
-      <div class="products">
-        <section>
-          <ul class="products-atf">
-            <li class="featured product panel show-for-large-up">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Beats by Dre</li>
-                <li class="name">Pro Headphones</li>
-                <li class="price">$299.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel show-for-medium-down">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Beats by Dre</li>
-                <li class="name">Pro Headphones</li>
-                <li class="price">$299.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
+    <section>
+      <header class="section-header">
+        <h1>Headphones</h1>
+        <div id="sort-options" class="sort-options">
+          <ul class="inline-list">
+            <li class="active"><a href="#">All</a></li>
+            <li><a href="#">Newest</a></li>
+            <li><a href="#">Highest Rated</a></li>
+            <li><a href="#">$-$$</a></li>
+            <li><a href="#">$$-$</a></li>
           </ul>
-          <div id="expert-opinions" class="expert-opinions">
-            expert opinions
-          </div>
-          <ul class="products-btf">
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-            <li class="product panel">
-              <figure>
-                <img src="img/headphones-beats-by-dre.jpg"/>
-              </figure>
-              <ul class="product-detail">
-                <li class="brand">Klipsch</li>
-                <li class="name">X7i White In-Ear Headphones</li>
-                <li class="price">$189.00</li>
-                <li class="rating"><img src="img/stars.png" /></li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </div> <!-- End main -->
+        </div>
+      </header>
+      <aside class="left-column">
+        <?php include('inc/product-filter.html'); ?>
+      </aside>
+      <div class="main">
+        <div class="products">
+          <section>
+            <ul id="product-grid" class="product-grid">
+              <li class="featured product panel show-for-large-up">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
+                  <li class="price">$299.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel show-for-medium-down">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
+                  <li class="price">$299.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/headphones-beats-by-dre.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </div> <!-- End products -->
+      </div> <!-- End main -->
+    </section>
   </div>
 
   <!-- End Grid Section -->
@@ -381,36 +280,9 @@
 
   <script src="js/foundation/jquery.js"></script>
 
-  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-
-  <script src="js/foundation/jquery.foundation.forms.js"></script>
-
-  <script src="js/foundation/jquery.foundation.reveal.js"></script>
-
-  <script src="js/foundation/jquery.foundation.orbit.js"></script>
-
   <script src="js/foundation/jquery.foundation.navigation.js"></script>
 
-  <script src="js/foundation/jquery.foundation.buttons.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tabs.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
-
-  <script src="js/foundation/jquery.foundation.accordion.js"></script>
-
-  <script src="js/foundation/jquery.placeholder.js"></script>
-
-  <script src="js/foundation/jquery.foundation.alerts.js"></script>
-
   <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-  <script src="js/foundation/jquery.foundation.joyride.js"></script>
-
-  <script src="js/foundation/jquery.foundation.clearing.js"></script>
-
-  <script src="js/foundation/jquery.foundation.magellan.js"></script>
-
 
 
   <!-- Included JS Files (Compressed) -->
@@ -419,6 +291,7 @@
 
   <!-- Initialize JS Plugins -->
   <script src="js/foundation/app.js"></script>
+  <script src="js/lib/tiles.min.js"></script>
 
   <!-- Site Specific JS -->
   <script src="js/scripts.js"></script>
