@@ -1,11 +1,11 @@
-// Local Imports
+// Foundation and Compass Imports
 @import "app"; // Compass, Foundation...
+
+// Foundation Overrides
+@import "_foundation-overrides";
 
 // Verizon Font-Face Imports
 @import "fonts"; 
-
-// Foundation Overrides
-@import "_foundation-resets";
 
 // Font Variables
 $arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -25,13 +25,12 @@ $content-filter-border: #bdbebf;
 $content-filter-item-bg: #3a3a3c;
 $content-filter-item-link: #3a3a3c;
 
-// Size Variables
-$left-col-width: 250px;
-
-/* sprites */ // need to re-think what will be included in the sprite and what will come from CMS
+// sprites  // need to re-think what will be included in the sprite and what will come from CMS
 $ui-layout: smart;
 @import "ui/*.png";
 @include all-ui-sprites;
+
+// Global Styles
 
 html, body {
     font-family: $vzw-font-book;

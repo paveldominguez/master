@@ -1,0 +1,17 @@
+// Two Column (left)
+// Layout Variables
+// Note: $columnGutter comes from _settings.scss (compass might throw error for $columnGutter when compiling this file directly)
+$left-col-width: 250px; 
+
+.left-column { 
+    float: left; 
+    max-width: $left-col-width; 
+    width: $left-col-width; 
+    padding-left: $columnGutter; 
+}
+.main { 
+    float: none; 
+    width: auto; 
+    margin-left: $left-col-width + $columnGutter; 
+    padding-right: $columnGutter;
+}

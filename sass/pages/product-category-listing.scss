@@ -1,32 +1,27 @@
-.left-column { 
-    float: left; 
-    max-width: $left-col-width; 
-    width: $left-col-width; 
-    padding-left: $columnGutter; 
-    .content-filter {
-        h3 {
-            color: #666;
-            border-bottom: 1px solid #E0E0E0;
+@import "layouts/two-col-left";
+
+.left-column .content-filter {
+    h3 {
+        color: #666;
+        border-bottom: 1px solid #E0E0E0;
+        font: {
+            family: $vzw-font-bold;
+            size: 13px;
+            weight: normal;
+        }
+        margin: 0;
+        padding: 15px 0;
+        text-transform: uppercase;
+        &.header {
+            color: #626262;
             font: {
-                family: $vzw-font-bold;
-                size: 13px;
-                weight: normal;
+                family: $vzw-font-book;
+                size: 17px;
             }
-            margin: 0;
-            padding: 15px 0;
-            text-transform: uppercase;
-            &.header {
-                color: #626262;
-                font: {
-                    family: $vzw-font-book;
-                    size: 17px;
-                }
-                text-transform: capitalize;
-            }
+            text-transform: capitalize;
         }
     }
 }
-.main { float: none; width: auto; margin-left: $left-col-width + $columnGutter; padding-right: $columnGutter;}
 
 // .content-filter {
 //     background-color: $content-filter-bg;
