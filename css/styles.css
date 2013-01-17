@@ -1859,15 +1859,13 @@ h1, h2, h3, h4, h5, h6 { font-family: "Verizon Apex Light"; }
 /* line 5, ../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/mixins/_clearfix.scss */
 .products-content .products .product.panel figure:after { clear: both; }
 /* line 146, ../sass/pages/_product-category-listing.scss */
-.products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; max-width: 91%; }
+.products-content .products .product.panel figure img { display: block; margin: 0 auto; text-align: center; }
 /* line 153, ../sass/pages/_product-category-listing.scss */
 .products-content .products .product.panel.featured { width: 50%; background-color: none; float: left; margin-bottom: 0; padding: 15px 0; }
 @media only screen and (max-width: 767px) { /* line 153, ../sass/pages/_product-category-listing.scss */
   .products-content .products .product.panel.featured { float: left; width: 100%; } }
 /* line 159, ../sass/pages/_product-category-listing.scss */
 .products-content .products .product.panel.featured .product-detail { padding: 0 15px; }
-/* line 162, ../sass/pages/_product-category-listing.scss */
-.products-content .products .product.panel.featured figure img { max-width: 100%; }
 /* line 166, ../sass/pages/_product-category-listing.scss */
 .products-content .products .product.panel .product-detail { margin: 0; padding: 0; width: 100%; }
 /* line 170, ../sass/pages/_product-category-listing.scss */
