@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body class="product-detail">
+<body class="container product-detail">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->

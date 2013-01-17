@@ -7,11 +7,9 @@ $left-col-width: 250px;
     float: left; 
     max-width: $left-col-width; 
     width: $left-col-width; 
-    padding-left: $columnGutter; 
 }
 .main { 
     float: none; 
     width: auto; 
-    margin-left: $left-col-width + $columnGutter; 
-    padding-right: $columnGutter;
+    margin-left: $left-col-width + $columnGutter;
 }

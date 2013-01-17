@@ -184,6 +184,12 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
+.container {
+    margin: 0 auto;
+    max-width: $screenXlarge;
+    padding: 0 $columnGutter;
+}
+
 // Page Includes
 @import "pages/product-category-listing.scss";
 @import "pages/product-detail.scss";

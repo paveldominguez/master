@@ -74,12 +74,11 @@
 //     }
 // }
 .products-content { 
-    header {
+    .section-header {
         @include clearfix();
         background-color: #F6F6F6;
         border-bottom: 1px solid #DBDBDB;
         height: 70px;
-        padding: 0 $columnGutter;
         h1,
         .sort-options {
             height: 70px;
