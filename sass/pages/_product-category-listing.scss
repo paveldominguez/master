@@ -123,12 +123,11 @@
         }
     }
     .products {
-        @include innerRow(collapse);
+        // @include innerRow(collapse);
         border: 1px solid #CCC;
         .product-grid { @include clearfix(); }
         .product {
             @include column(3, collapse);
-            //max-width: 235px;
             padding: 15px;
             &.panel { 
                 position: relative;
@@ -148,6 +147,7 @@
                         display: block;
                         margin: 0 auto;
                         text-align: center;
+                        max-width: 91%;
                     }
                 }
                 &.featured { 
@@ -158,6 +158,9 @@
                     padding: 15px 0;
                     .product-detail {
                         padding: 0 15px;
+                    }
+                    figure img {
+                        max-width: 100%;
                     }
                 }
                 .product-detail {
