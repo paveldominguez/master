@@ -22,254 +22,255 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body class="product-category-listing">
+<body class="product-category-list">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <div class="products-content">
-    <section>
-      <div class="section-header">
-        <div class="header-container">
-          <h1>Headphones</h1>
-          <div id="sort-options" class="sort-options">
-            <ul class="inline-list">
-              <li class="active"><a href="#">All</a></li>
-              <li><a href="#">Newest</a></li>
-              <li><a href="#">Highest Rated</a></li>
-              <li><a href="#">$-$$</a></li>
-              <li><a href="#">$$-$</a></li>
-            </ul>
-          </div>
+  <section class="product-list">
+    <header class="product-list-header">
+      <div class="wrapper">
+        <div class="product-list-heading">
+          <h1 class="product-list-category">Headphones</h1>
+          <h3 id="product-filter-count" class="product-filter-count"><strong>142</strong> items</h3>
+        </div>
+        <div id="sort-options" class="sort-options">
+          <ul class="inline-list">
+            <li class="active"><a href="#">All</a></li>
+            <li><a href="#">Newest</a></li>
+            <li><a href="#">Highest Rated</a></li>
+            <li><a href="#">$-$$</a></li>
+            <li><a href="#">$$-$</a></li>
+          </ul>
         </div>
       </div>
-      <div class="container">
-        <aside class="left-column">
-          <?php include('inc/product-filter.html'); ?>
-        </aside>
-        <div class="main">
-          <div class="products">
-            <section>
-              <ul id="product-grid" class="product-grid">
-                <li class="featured product panel show-for-large-up">
-                  <figure>
-                    <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
-                    <li class="price">$299.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel show-for-medium-down">
-                  <figure>
-                    <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
-                    <li class="price">$299.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jabra-soulmate.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-denon.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-isound.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-skullcandy.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jawbone.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-nixon.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-brookstone.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jawbone.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-isound.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jabra-soulmate.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-beats.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-denon.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-skullcandy.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-nixon.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jawbone.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-jabra-soulmate.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-denon.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-beats.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-                <li class="product panel">
-                  <figure>
-                    <img src="img/pcl-isound.jpg"/>
-                  </figure>
-                  <ul class="product-detail">
-                    <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
-                    <li class="price">$189.00</li>
-                    <li class="rating"><img src="img/stars.png" /></li>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-          </div> <!-- End products -->
-        </div> <!-- End main -->
-      </div>
-    </section>
-  </div>
+    </header>
+    <div class="wrapper">
+      <aside class="left-column">
+        <?php include('inc/product-filter.html'); ?>
+      </aside>
+      <div class="main">
+        <div class="products">
+          <section>
+            <ul id="product-grid" class="product-grid">
+              <li class="featured product panel show-for-large-up">
+                <figure>
+                  <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
+                  <li class="price">$299.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel show-for-medium-down">
+                <figure>
+                  <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
+                  <li class="price">$299.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jabra-soulmate.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-denon.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-isound.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-skullcandy.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jawbone.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-nixon.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-brookstone.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jawbone.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-isound.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jabra-soulmate.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-beats.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-denon.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-skullcandy.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-nixon.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jawbone.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-jabra-soulmate.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-denon.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-beats.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+              <li class="product panel">
+                <figure>
+                  <img src="img/pcl-isound.jpg"/>
+                </figure>
+                <ul class="product-detail">
+                  <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
+                  <li class="price">$189.00</li>
+                  <li class="rating"><img src="img/stars.png" /></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </div> <!-- End products -->
+      </div> <!-- End main -->
+    </div>
+</section>
 
   <!-- End Grid Section -->
 
