@@ -1,0 +1,196 @@
+/* PDP styles */
+
+/* var & mixins ---------------- */
+.hide { display:none !important; }
+
+$cartGrey: #727272; 
+
+@mixin boxBrdrB { border-bottom: 1px solid #dadbdb; }
+@mixin boxBrdrL { border-left: 1px solid #dadbdb; }
+@mixin cartBox { 
+	padding:15px 0 15px 50px;
+	font-size:12px;
+	color: $cartGrey; }
+@mixin hrzList {
+	display: inline-block;
+	float: left;
+	margin-right:7px; }
+
+
+/* top section ------------------- */
+
+#pdp-hero {
+	@include clearfix();
+	
+	background-color: #f1f3f3;
+	width: 100%;
+	max-height:493px;
+	
+	.temp-blah { background:url(/../pdp-temp-blah.png) no-repeat; 
+		position:absolute; width:400px; top:293px; z-index:50; 
+		}
+
+
+	#carousel-block {
+		@include column(7, collapse);
+		padding-top: 36px;
+		float:left;
+		
+		#the-carousel {
+			width:70%;
+			margin:-50px auto 0 auto;
+		
+		
+			.thumbs { width:40%;
+				margin:-50px auto 0 auto;
+				
+				li { @include hrzList;
+				
+					img { width:36px; height:auto; }
+					
+					}
+				}
+		
+		}/* end the-carousel  */
+	
+	}/* end carousel-block */
+	
+	
+	
+	#cart-block {
+		@include column(5, collapse);
+		position:relative; 
+		
+		
+		img.tempAdd { background:url(/../img/temp-add.png) no-repeat;
+			position:absolute; right:110px; bottom:20px; z-index:100;
+		
+			}
+		
+		
+		
+		float:right;
+		
+		.header { @include boxBrdrB;
+			@include boxBrdrL;
+			position: relative;
+			height: 295px;
+			background: #e1e5e5;
+			padding: 20px 0 0 20px;
+			
+			.sku {
+				font-size: 10px;
+				color: #727272;
+			} /* end sku */
+			
+			hgroup {
+				 
+				h1 { font-size: 36px; }
+				h3 { font-size: 20px; }
+					
+			} /* end hgroup */
+			
+			
+			.review-block {
+				@include clearfix();
+				
+				.ratings { @include hrzList;
+					
+		
+				} /* end ratings */
+				
+				a.review-link { @include hrzList;
+					font-size: 12px; 
+					color: $colorVzwRed;
+					margin-top:5px; }
+				 
+			} /* end review-block */
+		
+			.price-block {
+				position:absolute;
+				bottom: 20px; left: 20px;
+				
+					.actual-price { 
+						color: #3c4045;
+						font-size:32px;
+					
+					} /* end actual-price */
+				
+					.original-price { 
+						color: #cartGrey;
+						font-size:12px;
+						padding:6px;
+					
+					} /* end original-price */
+			
+			} /* end price-block  */
+	
+		} /* end header */
+		
+		
+		.stock-ship { @include clearfix();
+			
+			@include boxBrdrB;
+			background: url(/../img/pdp-ship-icon.png) 0 20px no-repeat;
+			
+			.slctd-ship { @include hrzList;
+				padding: 20px 0 0 50px;
+				color: $cartGrey;
+			}
+			
+			.product-status { @include boxBrdrL;
+				color: $cartGrey;
+				padding: 15px 0 15px 50px;
+				display:block; float:right;
+				width:50%;
+				list-style-type:disc;
+				margin-bottom:0px; 
+				
+				.stock-lvl,
+				.ship-from,
+				.rcv-by { font-size:12px; color: $cartGrey; }
+				
+			} /* end product-status */
+			
+		} /* end stock-ship */
+		
+		.compat-block { @include cartBox;
+			@include boxBrdrB;
+			background: url(/../img/pdp-compat-bg.png) no-repeat;
+		}
+		
+		.color-block { @include cartBox;
+			@include boxBrdrB;
+			background: url(/../img/pdp-temp-instock.png) no-repeat;
+		}
+		
+		.add-cart { @include cartBox;
+			background: url(/../img/pdp-temp-addtocart.png) no-repeat;
+		}
+		
+		
+		.social-block { position:absolute; bottom:0; left:0;
+			background: url(/../img/pdp-temp-social.png) no-repeat;
+		}
+		
+	}/* end cart-block */
+	
+
+
+
+} /* end pdp-hero */
+		
+		
+	
+	
+	
+	
+	
+/* bottom section --------------------- */	
+		
+#pdp-details { padding-top:45px;
+	background:#fff url(/../img/pdp-temp-bottom.png) 0 200px no-repeat;
+	width:1200px; height:2400px; 
+
+
+		} /* end pdp-details */

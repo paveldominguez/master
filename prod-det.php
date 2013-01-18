@@ -26,87 +26,98 @@
 
   <!-- Main Grid Section -->
 
-  <section class="carouselCart">
+  <section id="pdp-hero">
   
-    <div class="carouselBlock">
+    <div id="carousel-block">
+      
+      <div id="the-carousel">
+      
+      		<div class="zoom">
+        		<img src="img/pdp-temp-prod.png"/>
+      		</div><!-- end hero -->
     
-      <div class="hero">
-        <img src="img/prod-det-fpo.png"/>
-      </div><!-- end hero -->
-    
-        <div class="thumbs">
+        	<div class="thumbs">
         
-          <ul>
-              <li class="one"><img src="img/prod-det-fpo.png"/></li>
-              <li class="two"><img src="img/prod-det-fpo.png"/></li>
-              <li class="three"><img src="img/prod-det-fpo.png"/></li>
-              <li class="four"><img src="img/prod-det-fpo.png"/></li>
-            </ul>
+          		<ul>
+              		<li class="view-1"><img src="img/pdp-temp-prod.png"/></li>
+              		<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
+              		<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
+              		<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
+            	</ul>
           
-        </div><!-- end thumbs -->
+        	</div><!-- end thumbs -->
+        	
+        </div><!-- end the-carousel -->
         
     </div><!-- end carouselBlock  -->
       
     
-    <div class="cartBlock">
+    <div id="cart-block">
+      
+      <div class="temp-blah"><img src="img/pdp-temp-blah.png"  ></div>
+      <img class="tempAdd" src="img/pdp-temp-add.png" >
+      
       
       <header class="header">
       
           <div class="sku">SKU#36843168</div>
       
-          <hgroup>
-              <h1 class="product-detail-header">Beats by Dre</h1>
-              <h3 class="product-detail-sub-header">Pill Portable Compact Stereo Speaker</h3>
-        </hgroup>
+          	<hgroup>
+              	<h1>PowerUp Wireless <br>Speaker</h1>
+        	</hgroup>
       
       
-        <div class="reviewBlock">
+        <div class="review-block">
       
-          <div class="ratings">s t a r s</div>
-          <div class="reviewLink">(47)</div>
+          <div class="ratings">
+          	<img src="img/pdp-stars.png"  >
+          </div><!-- end ratings -->
+          
+          <a class="review-link">(47)</a>
         
         </div><!-- end reviewBlock -->
       
       
-        <div class="priceBlock">
+        <div class="price-block">
 
-        <div class="actualPrice">$249.99</div>
-        <div class="originalPrice">$299.99</div>
-      
+			<div class="original-price">Reg. $299.99</div>
+        	<div class="actual-price">$249.99</div>
+        	
         </div><!-- end priceBlock -->
       
         </header>
       
       
-        <div class="stockShip">
+        <div class="stock-ship hide">
         
-            <ul>
-              <li class="stockLvl">Low Stock</li>
-              <li class="shipCost">Free Shipping</li>
-              <li class="shipFrom">Online Only</li>
-              <li class="arriveOn">Receive by Tuesday 1/23</li>
+        	<div class="slctd-ship">Free Shipping</div>
+        
+            <ul class="product-status">
+              <li class="stock-lvl">Low Stock</li>
+              <li class="ship-from">Online Only</li>
+              <li class="rcv-by">Receive by Tuesday 1/23</li>
             </ul>
               
-        </div><!-- end stockShip -->
+        </div><!-- end stock-ship -->
         
         
-        <div class="compatBlock">
+        <div class="compat-block hide">
         
-          <div class="myDevices">
+          <div class="my-devices">
           
-            <div class="image"><img src="img/prod-det-fpo.png"/></div>
+            <div class="image"></div>
             <div class="desc">Samsung Galaxy III Compatible</div> 
           
           </div><!-- end myDevices -->
           
-          <a href="#" class="allDevices">See All</a>
+          <a href="#" class="all-devices">See All</a>
           
         </div><!-- end compatBlock -->
         
         
-        <form id="pdp-cart">
+        <form id="pdp-cart" class="hide">
         
-          <div class="colorBlock">
+          <div class="color-block">
         
             <ul class="colors">
               <li class="one"></li>
@@ -118,32 +129,34 @@
           </div> <!-- end color block -->
         
         
-          <div class="addToCart">
+          <div class="add-cart" style="min-height:90px; >
           
-            <div class="qty">Quantity</div>
+            <div class="qty hide">Quantity</div>
             
-            <select class="qtySelect" name="quantity">
+            <select class="qty-select hide" name="quantity">
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
             </select>
             
-            <input name="Submit" type="submit" value="Add to Cart" />
+            <input class="add-cart-button hide" name="Submit" type="submit" value="Add to Cart" />
         
           </div><!-- end addToCart -->
+          
+          </div>
           
         </form><!-- end pdp-cart -->
 
 
-        <div class="socialBlock">
+        <div class="social-block hide">
         
           <ul>
             <li class="want"></li>
             <li class="email"></li>
             <li class="facebook"></li>
             <li class="twitter"></li>
-            <li class="gPlus"></li>
+            <li class="gplus"></li>
             <li class="pinterest"></li>       
           </ul>
         
@@ -157,7 +170,7 @@
   
   
   
-  <section class="details">
+  <section id="pdp-details">
   
     <div class="tabs">
     
