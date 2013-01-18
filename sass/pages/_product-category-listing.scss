@@ -1,11 +1,12 @@
 @import "layouts/two-col-left";
 
-$product-name-color: #999;
-$featured-price-color: #CC0000;
-$product-price-color: #333;
+$colorProductName: #999;
+$colorFeaturedPrice: #C00;
+$colorProductPrice: #333;
 
 .container,
 .header-container {
+    @include clearfix();
     margin: 0 auto;
     padding: 0 $columnGutter;
     max-width: $screenXlarge - $columnGutter;
@@ -16,7 +17,7 @@ $product-price-color: #333;
         color: #666;
         border-bottom: 1px solid #E0E0E0;
         font: {
-            family: $vzw-font-bold;
+            family: $fontVzwBold;
             size: 13px;
             weight: normal;
         }
@@ -24,9 +25,9 @@ $product-price-color: #333;
         padding: 15px 0;
         text-transform: uppercase;
         &.header {
-            color: $vzw-red;
+            color: $colorVzwRed;
             font: {
-                family: $vzw-font-book;
+                family: $fontVzwBook;
                 size: 14px;
             }
             text-transform: capitalize;
@@ -89,22 +90,23 @@ $product-price-color: #333;
         @include clearfix();
         background-color: #F6F6F6;
         border-bottom: 1px solid #DBDBDB;
-        height: 70px;
-        h1,
-        .sort-options {
-            height: 70px;
-            line-height: 70px;
-            ul li {
-                line-height: 70px;
-            }
-        }
+        // h1,
+        // .sort-options {
+        //     height: 70px;
+        //     line-height: 70px;
+        //     ul li {
+        //         line-height: 70px;
+        //     }
+        // }
         h1 {
             float: left;
             margin: 0;
             font: {;
-                size: 34px;
+                family: $fontVzwLight;
+                size: 80px;
                 weight: normal;
             }
+            color: #3d4146;
         }
         .sort-options {
             float: right;
@@ -123,9 +125,9 @@ $product-price-color: #333;
                     }
                 }
                 a {
-                    color: $vzw-red;
+                    color: $colorVzwRed;
                     font: {
-                        family: $vzw-font-book;
+                        family: $fontVzwBook;
                         size: 13px;
                     }
                 }
@@ -178,7 +180,7 @@ $product-price-color: #333;
                     .product-detail {
                         padding: 0 15px;
                         .price {
-                            color: $featured-price-color;
+                            color: $colorFeaturedPrice;
                         }
                     }
                     figure img {
@@ -190,7 +192,7 @@ $product-price-color: #333;
                     margin: 0;
                     padding: 0;
                     width: 100%;
-                    li { font-family: $arial; }
+                    li { font-family: $fontArial; }
                     .name,
                     .price {
                         font-size: 12px;
@@ -198,13 +200,13 @@ $product-price-color: #333;
                     }
                     .name {
                         height: 30px;
-                        color: $product-name-color;
+                        color: $colorProductName;
                     }
                     .price {
                         clear: left;
                         float: left;
                         font-weight: bold;
-                        color: $product-price-color;
+                        color: $colorProductPrice;
                     }
                     .rating { 
                         float: right;
@@ -298,14 +300,12 @@ $product-price-color: #333;
             }
             &.site-search {
                 padding: 15px 15px 13px;
-                border-left: 1px solid $nav-border;
                 input[type="text"] {
                     width: 25px;
                     padding:0;
                 }
             }
             &.shopping-bag {
-                border-left: 1px solid $nav-border;
                 a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
             }
         }
@@ -360,14 +360,12 @@ $product-price-color: #333;
             }
             &.site-search {
                 padding: 15px 15px 13px;
-                border-left: 1px solid $nav-border;
                 input[type="text"] {
                     width: 25px;
                     padding:0;
                 }
             }
             &.shopping-bag {
-                border-left: 1px solid $nav-border;
                 a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
             }
         }
@@ -419,14 +417,12 @@ $product-price-color: #333;
             }
             &.site-search {
                 padding: 15px 15px 13px;
-                border-left: 1px solid $nav-border;
                 input[type="text"] {
                     width: 25px;
                     padding:0;
                 }
             }
             &.shopping-bag {
-                border-left: 1px solid $nav-border;
                 a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
             }
         }

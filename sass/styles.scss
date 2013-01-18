@@ -8,24 +8,21 @@
 @import "fonts"; 
 
 // Font Variables
-$arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
-$vzw-font-book: "Verizon Apex Book";
-$vzw-font-bold: "Verizon Apex Bold";
-$vzw-font-light: "Verizon Apex Light";
+$fontArial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$fontVzwBook: "Verizon Apex Book";
+$fontVzwBold: "Verizon Apex Bold";
+$fontVzwLight: "Verizon Apex Light";
+$fontVzwMedium: "Verizon Apex Medium";
 
 // Color Variables
-$vzw-red: #CC0000;
-$nav-border: #B3B3B3;
-$nav-links: #4D4D4D;
-$nav-links-light: #808080;
-$featured-bg: #F6F6F6;
-$product-panel-border: #E5E5E5;
-$content-filter-bg: #E9EAEB;
-$content-filter-border: #bdbebf;
-$content-filter-item-bg: #3a3a3c;
-$content-filter-item-link: #3a3a3c;
+$colorVzwRed: #C00;
+$colorVzwLogoBg: #B30000;
+$colorVzwNavBorder: #F6F6F6;
+$colorNavLinks: #666;
+$colorNavAccountLinks: #999;
+$colorProductPanelBorder: #E5E5E5;
 
-// sprites  // need to re-think what will be included in the sprite and what will come from CMS
+// sprites 
 $ui-layout: smart;
 @import "ui/*.png";
 @include all-ui-sprites;
@@ -33,7 +30,7 @@ $ui-layout: smart;
 // Global Styles
 
 html, body {
-    font-family: $vzw-font-book;
+    font-family: $fontVzwBook;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -41,12 +38,12 @@ html, body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: $vzw-font-light;
+    font-family: $fontVzwLight;
 }
 
 .top-bar {
     font: {
-        family: $vzw-font-bold;
+        family: $fontVzwMedium;
         size: 12px;
     }
     margin: 0;
@@ -57,41 +54,28 @@ h1,h2,h3,h4,h5,h6 {
             background: none; 
             border-bottom: inherit;
             a { 
-                color: $nav-links;
+                color: $colorNavLinks;
             }
         }
         > li.has-dropdown a:after {
-            border-color: $nav-links-light transparent transparent transparent;
+            border-color: $colorNavLinks transparent transparent transparent;
         }
     }
 }
 .header { 
-    // .top-band { 
-    //     display: table;
-    //     background-color: $vzw-red;
-    //     height: 25px;
-    //     width: 100%;
-    //     a {
-    //         display: table-cell;
-    //         vertical-align: middle;
-    //         padding: 0 10px;
-    //         color: white;
-    //         font-size: 10px;
-    //         text-transform: uppercase;
-    //     }
-    // }
     .top-bar {
         background-color: white;
-        border-bottom: 1px solid $nav-border;
+        border-bottom: 1px solid $colorVzwNavBorder;
         height: 60px;
         line-height: 60px;
         > ul {
-            height: 30px;
-            line-height: 30px;
+            height: 60px;
+            line-height: 60px;
+            &.right li { border: none; }
             > li {
                 min-width: 60px;
                 line-height: 30px;
-                border-right: 1px solid $nav-border;
+                border-right: 1px solid $colorVzwNavBorder;
                 padding: 15px;
                 text-transform: uppercase;
                 .inline-list { 
@@ -109,13 +93,14 @@ h1,h2,h3,h4,h5,h6 {
                 }
                 a {
                     display: block;
-                    color: $nav-links;
-                    font-weight: bold;
                 }
                 a:not(.button) {
+                    display: block;
                     height: 30px;
                     line-height: 30px;
                     padding: 0;
+                    font-weight: normal;
+                    color: $colorNavLinks;
                 }
                 &.drawer {
                     border-left: none;
@@ -123,11 +108,12 @@ h1,h2,h3,h4,h5,h6 {
                 }
                 &.logo {
                     text-indent: -9999px;
+                    background: $colorVzwLogoBg;
+                    padding: 0;
                     h1 {
-                        width: 30px;
+                        width: 85px;
                         a { 
-                            height: 28px;
-                            margin: 1px 0;
+                            height: 60px;
                         }
                     }
                 }
@@ -138,7 +124,7 @@ h1,h2,h3,h4,h5,h6 {
                     //padding: 14px 15px;
                     a { 
                         display: inline;
-                        color: $nav-links-light;
+                        color: $colorNavAccountLinks;
                         font: {
                             size: 12px;
                         }
@@ -146,12 +132,12 @@ h1,h2,h3,h4,h5,h6 {
                         padding: 0 10px;
                         margin: 0;
                         &:first-child {
-                            border-right: 1px solid $nav-links-light;
+                            border-right: 1px solid $colorNavAccountLinks;
                         }
                     }
                 }
                 &.site-search {
-                    font-family: $vzw-font-book;
+                    font-family: $fontVzwBook;
                     border-right: none;
                     input[type="text"] {
                         display: block;
@@ -171,7 +157,6 @@ h1,h2,h3,h4,h5,h6 {
                 &.help a:not(.button),
                 &.shopping-bag a:not(.button) { display: block; padding: 0; margin: 0 auto; }
                 &.location {
-                    border-left: 1px solid $nav-border;
                     a:not(.button) { width: 15px; height: 20px; margin: 5px auto; }
                 }
                 &.help a:not(.button) { width: 12px; height: 21px; margin: 4.5px auto; }
