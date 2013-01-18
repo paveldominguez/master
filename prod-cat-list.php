@@ -32,7 +32,7 @@
   <div class="products-content">
     <section>
       <div class="section-header">
-        <div class="container">
+        <div class="header-container">
           <h1>Headphones</h1>
           <div id="sort-options" class="sort-options">
             <ul class="inline-list">
@@ -55,7 +55,7 @@
               <ul id="product-grid" class="product-grid">
                 <li class="featured product panel show-for-large-up">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
+                    <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
@@ -65,7 +65,7 @@
                 </li>
                 <li class="product panel show-for-medium-down">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg" alt="Beats by Dre" />
+                    <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
@@ -75,7 +75,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -85,7 +85,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-denon.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -95,7 +95,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-isound.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -105,7 +105,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-skullcandy.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -115,7 +115,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jawbone.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -125,7 +125,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-nixon.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -135,7 +135,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-brookstone.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -145,7 +145,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jawbone.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -155,7 +155,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-isound.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -165,7 +165,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -175,7 +175,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-beats.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -185,7 +185,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-denon.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -195,7 +195,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-skullcandy.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -205,7 +205,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-nixon.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -215,7 +215,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jawbone.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -225,7 +225,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -235,7 +235,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-denon.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -245,7 +245,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-beats.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>
@@ -255,7 +255,7 @@
                 </li>
                 <li class="product panel">
                   <figure>
-                    <img src="img/headphones-beats-by-dre.jpg"/>
+                    <img src="img/pcl-isound.jpg"/>
                   </figure>
                   <ul class="product-detail">
                     <li class="name"><span class="brand">Klipsch</span> X7i White In-Ear Headphones</li>

@@ -26,20 +26,177 @@
 
   <!-- Main Grid Section -->
 
-  <div class="main product-detail">
-    <section>
+  <section class="carouselCart">
+  
+    <div class="carouselBlock">
+    
+      <div class="hero">
+        <img src="img/prod-det-fpo.png"/>
+      </div><!-- end hero -->
+    
+        <div class="thumbs">
+        
+          <ul>
+              <li class="one"><img src="img/prod-det-fpo.png"/></li>
+              <li class="two"><img src="img/prod-det-fpo.png"/></li>
+              <li class="three"><img src="img/prod-det-fpo.png"/></li>
+              <li class="four"><img src="img/prod-det-fpo.png"/></li>
+            </ul>
+          
+        </div><!-- end thumbs -->
+        
+    </div><!-- end carouselBlock  -->
+      
+    
+    <div class="cartBlock">
+      
       <header class="header">
-        <hgroup>
-          <h1 class="product-detail-header">Beats by Dre</h1>
-          <h3 class="product-detail-sub-header">Pill Portable Compact Stereo Speaker</h3>
-      </header>
-      <div class="product-carousel">
-        <ul class="carousel">
-          <li class="item"><img src="img/prod-det-fpo.png"/></li>
-        </ul>
-      </div>
-    </section>
-  </div> <!-- End main -->
+      
+          <div class="sku">SKU#36843168</div>
+      
+          <hgroup>
+              <h1 class="product-detail-header">Beats by Dre</h1>
+              <h3 class="product-detail-sub-header">Pill Portable Compact Stereo Speaker</h3>
+        </hgroup>
+      
+      
+        <div class="reviewBlock">
+      
+          <div class="ratings">s t a r s</div>
+          <div class="reviewLink">(47)</div>
+        
+        </div><!-- end reviewBlock -->
+      
+      
+        <div class="priceBlock">
+
+        <div class="actualPrice">$249.99</div>
+        <div class="originalPrice">$299.99</div>
+      
+        </div><!-- end priceBlock -->
+      
+        </header>
+      
+      
+        <div class="stockShip">
+        
+            <ul>
+              <li class="stockLvl">Low Stock</li>
+              <li class="shipCost">Free Shipping</li>
+              <li class="shipFrom">Online Only</li>
+              <li class="arriveOn">Receive by Tuesday 1/23</li>
+            </ul>
+              
+        </div><!-- end stockShip -->
+        
+        
+        <div class="compatBlock">
+        
+          <div class="myDevices">
+          
+            <div class="image"><img src="img/prod-det-fpo.png"/></div>
+            <div class="desc">Samsung Galaxy III Compatible</div> 
+          
+          </div><!-- end myDevices -->
+          
+          <a href="#" class="allDevices">See All</a>
+          
+        </div><!-- end compatBlock -->
+        
+        
+        <form id="pdp-cart">
+        
+          <div class="colorBlock">
+        
+            <ul class="colors">
+              <li class="one"></li>
+              <li class="two"></li>
+              <li class="three"></li>
+              <li class="four"></li>
+            </ul>
+          
+          </div> <!-- end color block -->
+        
+        
+          <div class="addToCart">
+          
+            <div class="qty">Quantity</div>
+            
+            <select class="qtySelect" name="quantity">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            
+            <input name="Submit" type="submit" value="Add to Cart" />
+        
+          </div><!-- end addToCart -->
+          
+        </form><!-- end pdp-cart -->
+
+
+        <div class="socialBlock">
+        
+          <ul>
+            <li class="want"></li>
+            <li class="email"></li>
+            <li class="facebook"></li>
+            <li class="twitter"></li>
+            <li class="gPlus"></li>
+            <li class="pinterest"></li>       
+          </ul>
+        
+        </div>
+        
+        
+    </div> <!-- end cartBlock -->
+    
+    
+  </section> <!-- end carouselCart -->
+  
+  
+  
+  <section class="details">
+  
+    <div class="tabs">
+    
+      <ul>
+        <li class="overview"></li>
+        <li class="features"></li>
+        <li class="specs"></li>
+        <li class="compat"></li>
+      </ul>
+      
+    </div><!-- end tabs -->
+    
+    
+    <div class="icons">
+      
+      <ul>
+        <li class="apps"></li>
+        <li class="smart"></li>
+        <li class="wifi"></li>
+        <li class="dataplan"></li>
+      </ul>
+      
+    </div><!-- end icons -->
+    
+    
+    <div class="similar">
+    
+      <ul class="products">
+        <li class="one"></li>
+        <li class="two"></li>
+        <li class="three"></li>
+        <li class="four"></li>
+      </ul>
+    
+    </div>  
+  
+  </section><!-- end product details -->
+  
+  
 
   <!-- End Grid Section -->
 
@@ -54,35 +211,9 @@
 
   <script src="js/foundation/jquery.js"></script>
 
-  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-
-  <script src="js/foundation/jquery.foundation.forms.js"></script>
-
-  <script src="js/foundation/jquery.foundation.reveal.js"></script>
-
-  <script src="js/foundation/jquery.foundation.orbit.js"></script>
-
   <script src="js/foundation/jquery.foundation.navigation.js"></script>
 
-  <script src="js/foundation/jquery.foundation.buttons.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tabs.js"></script>
-
-  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
-
-  <script src="js/foundation/jquery.foundation.accordion.js"></script>
-
-  <script src="js/foundation/jquery.placeholder.js"></script>
-
-  <script src="js/foundation/jquery.foundation.alerts.js"></script>
-
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-  <script src="js/foundation/jquery.foundation.joyride.js"></script>
-
-  <script src="js/foundation/jquery.foundation.clearing.js"></script>
-
-  <script src="js/foundation/jquery.foundation.magellan.js"></script>
+  <script src="js/foundation/jquery.foundation.topbar.js"></script>\
 
 
 

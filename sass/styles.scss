@@ -14,7 +14,7 @@ $vzw-font-bold: "Verizon Apex Bold";
 $vzw-font-light: "Verizon Apex Light";
 
 // Color Variables
-$vzw-red: #B70100;
+$vzw-red: #CC0000;
 $nav-border: #B3B3B3;
 $nav-links: #4D4D4D;
 $nav-links-light: #808080;
@@ -66,20 +66,20 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 .header { 
-    .top-band { 
-        display: table;
-        background-color: $vzw-red;
-        height: 25px;
-        width: 100%;
-        a {
-            display: table-cell;
-            vertical-align: middle;
-            padding: 0 10px;
-            color: white;
-            font-size: 10px;
-            text-transform: uppercase;
-        }
-    }
+    // .top-band { 
+    //     display: table;
+    //     background-color: $vzw-red;
+    //     height: 25px;
+    //     width: 100%;
+    //     a {
+    //         display: table-cell;
+    //         vertical-align: middle;
+    //         padding: 0 10px;
+    //         color: white;
+    //         font-size: 10px;
+    //         text-transform: uppercase;
+    //     }
+    // }
     .top-bar {
         background-color: white;
         border-bottom: 1px solid $nav-border;
@@ -182,12 +182,6 @@ h1,h2,h3,h4,h5,h6 {
             }
         }
     }
-}
-
-.container {
-    margin: 0 auto;
-    max-width: $screenXlarge;
-    padding: 0 $columnGutter;
 }
 
 // Page Includes

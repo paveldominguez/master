@@ -1,5 +1,16 @@
 @import "layouts/two-col-left";
 
+$product-name-color: #999;
+$featured-price-color: #CC0000;
+$product-price-color: #333;
+
+.container,
+.header-container {
+    margin: 0 auto;
+    padding: 0 $columnGutter;
+    max-width: $screenXlarge - $columnGutter;
+}
+ 
 .left-column .content-filter {
     h3 {
         color: #666;
@@ -13,10 +24,10 @@
         padding: 15px 0;
         text-transform: uppercase;
         &.header {
-            color: #626262;
+            color: $vzw-red;
             font: {
                 family: $vzw-font-book;
-                size: 17px;
+                size: 14px;
             }
             text-transform: capitalize;
         }
@@ -123,8 +134,16 @@
     }
     .products {
         // @include innerRow(collapse);
-        border: 1px solid #CCC;
-        .product-grid { @include clearfix(); }
+        border: {
+            top: none;
+            right: none;
+            bottom: none;
+            left: 1px solid #CCC;
+        } 
+        .product-grid { 
+            @include clearfix();
+            margin-bottom: 0;
+        }
         .product {
             @include column(3, collapse);
             padding: 15px;
@@ -146,7 +165,8 @@
                         display: block;
                         margin: 0 auto;
                         text-align: center;
-                        //max-width: 91%;
+                        width: 100%;
+                        max-width: 170px;
                     }
                 }
                 &.featured { 
@@ -157,9 +177,13 @@
                     padding: 15px 0;
                     .product-detail {
                         padding: 0 15px;
+                        .price {
+                            color: $featured-price-color;
+                        }
                     }
                     figure img {
-                        //max-width: 100%;
+                        width: 100%;
+                        max-width: 423px;
                     }
                 }
                 .product-detail {
@@ -174,10 +198,13 @@
                     }
                     .name {
                         height: 30px;
+                        color: $product-name-color;
                     }
                     .price {
                         clear: left;
                         float: left;
+                        font-weight: bold;
+                        color: $product-price-color;
                     }
                     .rating { 
                         float: right;
@@ -204,6 +231,7 @@
                         @include column(8); 
                         figure {
                             margin: 10px 0;
+                            img { max-width: 403px; }
                         }
                     }
                 }
