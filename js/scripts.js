@@ -30,6 +30,21 @@ jQuery(document).ready(function() {
         }, 200);
     });
 
+    jQuery('#product-grid .product').each(function() {
+        var context = this;
+        jQuery(context).hover(
+            function() { // hover in
+                jQuery(context).addClass('over');
+                jQuery(context).find('.product-hover').fadeIn('fast');
+                jQuery(context).find('.rating img').attr('src','img/stars.png');
+            },
+            function() { // hover out
+                jQuery(context).removeClass('over');
+                jQuery(context).find('.product-hover').fadeOut('fast');
+                jQuery(context).find('.rating img').attr('src','img/stars-gray.png');
+            }
+        );
+    });
 
     // var simpleTemplate = ['AA...','AA...','.....'];
 
