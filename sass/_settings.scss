@@ -4,20 +4,20 @@
 
 // Grid Settings
 
-$rowWidth: 1200px;
-$columnGutter: 34px;
+$rowWidth: 1440px;
+$columnGutter: 0;
 $totalColumns: 12;
 $mobileTotalColumns: 4;
 $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
 // Media Query Settings
-$screenXlarge: 1400px;
-$screenLarge: 1200px;
-$screenMedium: 1000px;
+$screenXlarge: 1440px;
+$screenLarge: 1280px;
+$screenMedium: 1024px;
 $screenSmall: 768px;
 $screenMobileLandscape: 640px;
 $screenMobilePortrait: 480px;
-$screenMobileSmall: 320px;
+$screenMobileSmall: 320px; 
 
 // Colors Settings
 
