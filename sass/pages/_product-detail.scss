@@ -1,92 +1,186 @@
 /* PDP styles */
 
-/* var & mixins ---------------- */
-.hide { display:none !important; }
+/* dev classes, var & mixins ---------------- */
 
-$cartGrey: #727272; 
-
-@mixin boxBrdrB { border-bottom: 1px solid #dadbdb; }
-@mixin boxBrdrL { border-left: 1px solid #dadbdb; }
-@mixin cartBox { 
-	padding:15px 0 15px 50px;
-	font-size:12px;
-	color: $cartGrey; }
-@mixin hrzList {
-	display: inline-block;
-	float: left;
-	margin-right:7px; }
+	/* dev classes */
+		.hide { display:none !important; }
 
 
-/* top section ------------------- */
+	/* var */
+ 		$cartGreyLt: #727272; 
+ 		$cartGreyMd: #666666;
+ 		$cartGreyDk: #3d4146;
+ 
+ 		$brandColorNokia: #9ac6b8;
+ 
+ 		$availColorBlk: #2e2e2e;
+ 		$availColorWht: #ffffff;
+ 		$availColorGrey: #b1b0b0;
+ 		$availColorBlue: #51b0d8;
+ 		
+ 
+	/* mixins */
+
+		@mixin boxBrdrT { border-top: 1px solid #dadbdb; }
+		@mixin boxBrdrR { border-right: 1px solid #dadbdb; }
+		@mixin boxBrdrB { border-bottom: 1px solid #dadbdb; }
+		@mixin boxBrdrL { border-left: 1px solid #dadbdb; }
+		@mixin cartRounded { -webkit-border-radius: 3px;
+							-moz-border-radius: 3px;
+							border-radius: 3px; }
+							
+		@mixin cartShadow { -moz-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.5);
+							-webkit-box-shadow:0px 3px 8px -6px rgba(119, 119, 119, 0.5);
+							box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.5); }
+
+
+		@mixin cartBox { 
+			@include clearfix();
+	
+			background: url(../img/pdp-cart-bg.png) repeat;
+			width:100%;
+			padding:20px;
+			font-size:12px;
+			color: $cartGreyLt; }
+	
+		@mixin cartBoxHalf {
+			display:inline-block;
+			width:49.6%; }
+	
+	
+		@mixin hrzList {
+			display: inline-block;
+			float: left;
+			margin-right:7px; }
+
+/* set breakponts */
+
+
+#pdp-body { width:100%; max-width:1440px;
+	margin:0 auto 0 auto;  }
+
+
+
+
+
+/* top hero section ------------------- BEGIN HERO ---------------------- */
 
 #pdp-hero {
 	@include clearfix();
 	
-	background-color: #f1f3f3;
+	background: url(../img/pdp-hero-bg.png) repeat;
 	width: 100%;
 	max-height:493px;
 	
-	.temp-blah { background:url(/../pdp-temp-blah.png) no-repeat; 
-		position:absolute; width:400px; top:293px; z-index:50; 
-		}
-
-
+	/* --------------------------------  BEGIN CAROUSEL --------------- */
 	#carousel-block {
-		@include column(7, collapse);
-		padding-top: 36px;
+		@include column(8, collapse);
+		
 		float:left;
 		
 		#the-carousel {
-			width:70%;
-			margin:-50px auto 0 auto;
+			width:75%;
+			margin:0 auto 0 auto;
 		
-		
-			.thumbs { width:40%;
-				margin:-50px auto 0 auto;
+			.focus {
+				width:100%;
 				
-				li { @include hrzList;
+					.current-focus { 
+						min-width:100%;
+						}
 				
-					img { width:36px; height:auto; }
+				}/* end focus */
 					
-					}
+			.thumb-block { 
+				width:220px;
+				margin:0 auto 0 auto;
+				
+				ul.thumbs {
+					@include clearfix();
+					
+					li { 
+						@include hrzList;
+				
+							img { width:36px; height:auto; }
+					
+						}/* end li */
+					
+					}/* thumbs */
+					
+				}/* end thumb-block */
+		
+			}/* end the-carousel  */
+			
+			
+			.carousel-nav {
+				width:30px; height:30px;
+				position:absolute; top:50%;
+				margin-top:-15px;
+				cursor:pointer;
+			
 				}
-		
-		}/* end the-carousel  */
+			
+			.carousel-nav.left { 
+				left:4.5%;
+				background: url(../img/pdp-carousel-left.png) no-repeat;
+			
+				}
+					
+			.carousel-nav.right {
+				right:4.5%;
+				background: url(../img/pdp-carousel-right.png) no-repeat;
+			
+				}
+			
+			
 	
-	}/* end carousel-block */
+		}/* end carousel-block -------------- END CAROUSEL ---------------- */
 	
 	
 	
+	/* ----------------------------------  BEGIN CART ------------------ */
 	#cart-block {
-		@include column(5, collapse);
+		@include column(4, collapse);
+		@mixin boxBrdrL { border-left: 1px solid #dadbdb; }
+		
+		max-width:427px; 
 		position:relative; 
-		
-		
-		img.tempAdd { background:url(/../img/temp-add.png) no-repeat;
-			position:absolute; right:110px; bottom:20px; z-index:100;
-		
-			}
-		
-		
-		
 		float:right;
 		
-		.header { @include boxBrdrB;
+		
+		.header { 
 			@include boxBrdrL;
+			
 			position: relative;
 			height: 295px;
-			background: #e1e5e5;
-			padding: 20px 0 0 20px;
+			padding-left:20px;
 			
-			.sku {
-				font-size: 10px;
-				color: #727272;
-			} /* end sku */
+			.brand {
+				@include clearfix();
+				
+				padding-top:10px;
+				font-size: 13px;
+				font-weight: bold;
+				color: $cartGreyLt;
+				
+					.brand-color {
+						display: inline-block;
+						float:left;
+						width:11px; height:11px; 
+						background-color: $brandColorNokia;
+						margin: 2px 5px 0 0; 
+					}/* end brand-color */
+					
+			} /* end brand */
 			
 			hgroup {
 				 
-				h1 { font-size: 36px; }
-				h3 { font-size: 20px; }
+				h1 { max-width:92%; 
+					font-size: 30px; 
+					letter-spacing:-2px;
+					line-height:39px;
+					margin-bottom:5px;
+					color: #cartGreyDk; }
 					
 			} /* end hgroup */
 			
@@ -94,91 +188,241 @@ $cartGrey: #727272;
 			.review-block {
 				@include clearfix();
 				
-				.ratings { @include hrzList;
-					
-		
-				} /* end ratings */
+				.ratings { @include hrzList; } /* end ratings */
 				
-				a.review-link { @include hrzList;
+				a.review-link { 
+					@include hrzList;
+					
+					font-family: $fontArial;
 					font-size: 12px; 
 					color: $colorVzwRed;
 					margin-top:5px; }
 				 
 			} /* end review-block */
 		
+		
 			.price-block {
 				position:absolute;
 				bottom: 20px; left: 20px;
 				
 					.actual-price { 
-						color: #3c4045;
-						font-size:32px;
+						color: $cartGreyDk;
+						font-size: 32px;
+						letter-spacing: -2px;
+						
+						span {
+						 font-size: 15px; 
+						 display: inline-block;
+						 padding: 0 0 0px 5px;
+						 letter-spacing: 0px;
+						 position:relative;
+						 top:-12px;  
+						}
 					
 					} /* end actual-price */
 				
+				
 					.original-price { 
-						color: #cartGrey;
-						font-size:12px;
-						padding:6px;
+						font-family: $fontArial;
+						color: $cartGreyMd;
+						font-size: 12px;
+						letter-spacing: -1px;
+						padding: 6px 0px 6px 6px;
 					
+							span { text-decoration: line-through;
+								display: inline-block; 
+								padding-left:3px;
+							}
+							
 					} /* end original-price */
 			
 			} /* end price-block  */
-	
+			
+			
+			.add-cart-box { 
+				@include cartRounded;
+				@include cartShadow;
+				
+				
+				width:45%; height: 75px;
+				position: absolute; right: 20px; bottom: 20px;
+				overflow: hidden;
+				border-top: 1px solid #cb5656;
+				border-left: 1px solid #a60e0e;
+				border-right: 1px solid #a60e0e;
+				border-bottom: 1px solid #a60e0e;
+				
+				.cart-raw {	
+					border-top:1px solid #f35959;
+				 	width:100%; height: 75px;
+					position:relative;
+					
+					
+					/* cross browser gradient code */
+					
+						background: #f10a0a; /* Old browsers */
+						
+					/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+						background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YxMGEwYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjNTA0MDQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+						
+						background: -moz-linear-gradient(top,  #f10a0a 0%, #c50404 100%); /* FF3.6+ */
+						background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f10a0a), color-stop(100%,#c50404)); /* Chrome,Safari4+ */
+						background: -webkit-linear-gradient(top,  #f10a0a 0%,#c50404 100%); /* Chrome10+,Safari5.1+ */
+						background: -o-linear-gradient(top,  #f10a0a 0%,#c50404 100%); /* Opera 11.10+ */
+						background: -ms-linear-gradient(top,  #f10a0a 0%,#c50404 100%); /* IE10+ */
+						background: linear-gradient(to bottom,  #f10a0a 0%,#c50404 100%); /* W3C */
+						
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f10a0a', endColorstr='#c50404',GradientType=0 ); /* IE6-8 */
+				
+					/* end gradient code */
+					
+					/* button text */
+					
+						.text { 
+							position:absolute; bottom:10px; left:13px;
+							color:#fff; font-size:18px; 
+							font-family: $fontVzwBold;
+							letter-spacing: -1px;
+							text-shadow: -1px -1px .3px rgba(0, 0, 0, 0.2);
+					
+							} /* end text */
+					
+				
+					}/* end cart raw */
+		
+				} /* end add-cart-box */
+			
 		} /* end header */
 		
-		
-		.stock-ship { @include clearfix();
+		.cart-details {
 			
-			@include boxBrdrB;
-			background: url(/../img/pdp-ship-icon.png) 0 20px no-repeat;
 			
-			.slctd-ship { @include hrzList;
-				padding: 20px 0 0 50px;
-				color: $cartGrey;
-			}
-			
-			.product-status { @include boxBrdrL;
-				color: $cartGrey;
-				padding: 15px 0 15px 50px;
-				display:block; float:right;
-				width:50%;
-				list-style-type:disc;
-				margin-bottom:0px; 
+			.color-stock-block { 
+				@include cartBox;
+				@include boxBrdrL;
 				
-				.stock-lvl,
-				.ship-from,
-				.rcv-by { font-size:12px; color: $cartGrey; }
+				span {
+					font-family: $fontArial;
+					color: $cartGreyMd;
+					display: block;
+					padding-bottom: 10px;
+					} /* end label span */					
+
+
+
+				ul.avail-colors { 
+					@include cartRounded;
+					
+					height: 36px;
+					width: 100%;
+					margin-bottom: 0px; 
+					overflow:hidden;
+					
+						
 				
-			} /* end product-status */
+					.colorOption {
+						@include hrzList;
+						
+						margin-right:0px; 
+						width: 16.6667%;
+						height:45px; 
+
+							
+						.info { display:none; 
+						
+							padding:8px 0 0 10px;
+							font-family: $fontVzwBold;
+							color:#ffffff;
+							font-size:14px;
+							
+							.stock { display:inline-block;
+								color:#ffffff;
+								font-family: $fontVzwBook;
+								
+								} /* in stock span styles */  
+							
+							
+							} /* define & hide color info initially */
+
+					
+						} /* end color li styles */
+				
+				
+												
+					li.selected {
+						@include cartBoxHalf;
+							
+						display:inline-block;
+							
+							.info { display: inline-block; } /* show info on selection */
+							
+						} /* end selected */
+							
+							
+					/* temporary color assignments for demo */
+							
+						li.color1 { background: $availColorBlk; }
+						li.color2 { background: $availColorWht; }
+						li.color3 { background: $availColorGrey; }
+						li.color4 { background: $availColorBlue; }
+									
+					/* end temporary color assignments for demo */	
+				
+				} /* end avail-colors ul */
+
+			} /* end color-stock-block */
+
+			.compat-ship-block { 
+				@include boxBrdrT;
+				@include boxBrdrL;
+				
+				background: url(../img/pdp-cart-bg.png) repeat;
+				
+				
+				.compat {
+					@include cartBox;
+					@include cartBoxHalf;
+					}
+					
+				.pdp-ship {
+					@include cartBox;
+					@include cartBoxHalf;
+					@include boxBrdrL;
+					
+					}
+				
+				} /* end compat-ship-block */
+		
+		
+			.social-block { 
+				@include boxBrdrT;
+				@include boxBrdrL;
+				
+				background: url(../img/pdp-cart-bg.png) repeat;
+				
 			
-		} /* end stock-ship */
+				.pdp-social-left {
+					@include cartBox;
+					@include cartBoxHalf;
+					}
+					
+				.pdp-social-right {
+					@include cartBox;
+					@include cartBoxHalf;
+					@include boxBrdrL;
+					}
+				  
+  
+				} /* end social-block */
+			
+		} /* end cart-details */
 		
-		.compat-block { @include cartBox;
-			@include boxBrdrB;
-			background: url(/../img/pdp-compat-bg.png) no-repeat;
-		}
-		
-		.color-block { @include cartBox;
-			@include boxBrdrB;
-			background: url(/../img/pdp-temp-instock.png) no-repeat;
-		}
-		
-		.add-cart { @include cartBox;
-			background: url(/../img/pdp-temp-addtocart.png) no-repeat;
-		}
-		
-		
-		.social-block { position:absolute; bottom:0; left:0;
-			background: url(/../img/pdp-temp-social.png) no-repeat;
-		}
-		
-	}/* end cart-block */
+	}/* end cart-block ----------------------------- END CART ------------- */
 	
 
 
 
-} /* end pdp-hero */
+} /* end pdp-hero ---------------------------------- END HERO ---------------*/
 		
 		
 	
@@ -186,7 +430,7 @@ $cartGrey: #727272;
 	
 	
 	
-/* bottom section --------------------- */	
+/* bottom details section -------------------------- BEGIN DETAILS ---------- */	
 		
 #pdp-details { padding-top:45px;
 	background:#fff url(/../img/pdp-temp-bottom.png) 0 200px no-repeat;

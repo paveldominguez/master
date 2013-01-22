@@ -20,6 +20,7 @@
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
 <body class="product-detail">
+ <div id="pdp-body">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
@@ -30,138 +31,133 @@
   
     <div id="carousel-block">
       
-      <div id="the-carousel">
-      
-      		<div class="zoom">
-        		<img src="img/pdp-temp-prod.png"/>
-      		</div><!-- end hero -->
-    
-        	<div class="thumbs">
-        
-          		<ul>
-              		<li class="view-1"><img src="img/pdp-temp-prod.png"/></li>
-              		<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
-              		<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
-              		<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
-            	</ul>
-          
-        	</div><!-- end thumbs -->
-        	
-        </div><!-- end the-carousel -->
-        
+      		<div id="the-carousel">
+      		
+      			<div class="focus">
+        			<img class="current-focus" src="img/pdp-temp-prod.png"/>
+        		</div><!-- end focus -->
+        		
+        		
+        		<div class="thumb-block">
+        			
+          			<ul class="thumbs">
+              			<li class="view-1"><img src="img/pdp-temp-prod.png"/></li>
+              			<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
+              			<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
+              			<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
+              			<li class="zoom-button"><img src="img/pdp-temp-prod.png"/></li>
+            		</ul><!-- end thumbs -->
+            		
+        		</div><!-- end thumb-block -->
+        		
+      		</div><!-- end the-carousel -->
+      		
+      		
+      		<!-- left/right arrows -->
+      		
+      		<div class="carousel-nav left"></div>
+      		<div class="carousel-nav right"></div>
+      		
+      		<!-- end left/right arrows -->
+      		
+      		
+      		
+      	
     </div><!-- end carouselBlock  -->
       
     
-    <div id="cart-block">
+    <div id="cart-block">							
       
-      <div class="temp-blah"><img src="img/pdp-temp-blah.png"  ></div>
-      <img class="tempAdd" src="img/pdp-temp-add.png" >
+      	<header class="header">
       
-      
-      <header class="header">
-      
-          <div class="sku">SKU#36843168</div>
+          	<div class="brand">
+          		<div class="brand-color"></div>
+          		NOKIA
+          	</div>
       
           	<hgroup>
-              	<h1>PowerUp Wireless <br>Speaker</h1>
+              	<h1>PowerUp Wireless Speaker</h1>
         	</hgroup>
       
       
-        <div class="review-block">
+        	<div class="review-block">
       
-          <div class="ratings">
-          	<img src="img/pdp-stars.png"  >
-          </div><!-- end ratings -->
+          		<div class="ratings">
+          			<img src="img/pdp-temp-stars.png"  >
+          		</div><!-- end ratings -->
           
-          <a class="review-link">(47)</a>
+          		<a class="review-link">(47)</a>
         
-        </div><!-- end reviewBlock -->
+        	</div><!-- end reviewBlock -->
       
       
-        <div class="price-block">
+        	<div class="price-block"> 
 
-			<div class="original-price">Reg. $299.99</div>
-        	<div class="actual-price">$249.99</div>
+				<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
+        		<div class="actual-price">$249<span>99</span></div>
         	
-        </div><!-- end priceBlock -->
+        	</div><!-- end priceBlock -->
+      
+      
+      		<div class="add-cart-box">
+      		
+      			<div class="cart-raw">
+      				<div class="text">Add to Cart</div>
+      			</div>
+      		
+      		</div><!-- end add-cart -->
       
         </header>
-      
-      
-        <div class="stock-ship hide">
-        
-        	<div class="slctd-ship">Free Shipping</div>
-        
-            <ul class="product-status">
-              <li class="stock-lvl">Low Stock</li>
-              <li class="ship-from">Online Only</li>
-              <li class="rcv-by">Receive by Tuesday 1/23</li>
-            </ul>
-              
-        </div><!-- end stock-ship -->
         
         
-        <div class="compat-block hide">
+        <div class="cart-details">
         
-          <div class="my-devices">
-          
-            <div class="image"></div>
-            <div class="desc">Samsung Galaxy III Compatible</div> 
-          
-          </div><!-- end myDevices -->
-          
-          <a href="#" class="all-devices">See All</a>
-          
-        </div><!-- end compatBlock -->
-        
-        
-        <form id="pdp-cart" class="hide">
-        
-          <div class="color-block">
-        
-            <ul class="colors">
-              <li class="one"></li>
-              <li class="two"></li>
-              <li class="three"></li>
-              <li class="four"></li>
-            </ul>
-          
-          </div> <!-- end color block -->
-        
-        
-          <div class="add-cart" style="min-height:90px; >
-          
-            <div class="qty hide">Quantity</div>
-            
-            <select class="qty-select hide" name="quantity">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            
-            <input class="add-cart-button hide" name="Submit" type="submit" value="Add to Cart" />
-        
-          </div><!-- end addToCart -->
-          
-          </div>
-          
-        </form><!-- end pdp-cart -->
-
-
-        <div class="social-block hide">
-        
-          <ul>
-            <li class="want"></li>
-            <li class="email"></li>
-            <li class="facebook"></li>
-            <li class="twitter"></li>
-            <li class="gplus"></li>
-            <li class="pinterest"></li>       
-          </ul>
+        	<div class="color-stock-block">
+        	<span>Available in these colors</span>
+        		<ul class="avail-colors">
+        		
+        			<li class="colorOption color1 selected">
+        				<div class="info">
+        					Black <span class="stock">11 in stock</span>
+        				</div>
+        			</li>
+        			
+        			<li class="colorOption color2">
+        				<div class="info">
+        					White <span class="stock">17 in stock</span>
+        				</div>
+        			</li>
+        			
+        			<li class="colorOption color3">
+        				<div class="info">
+        					Grey <span class="stock">3 in stock</span>
+        				</div>
+        			</li>
+        			
+        			<li class="colorOption color4">
+        				<div class="info">
+        					Blue <span class="stock">31 in stock</span>
+        				</div>
+        			</li>
+        		</ul>
+        	
+        	</div> <!-- end color-stock-block -->
+		
+			<div class="compat-ship-block">
+			
+				<div class="compat">some copy</div>
+				<div class="pdp-ship">some copy</div>
+				
+			</div>  <!--  end compat-ship-block -->
+		
+			<div class="social-block">
+			
+				<div class="pdp-social-left">some copy</div>
+				<div class="pdp-social-right">some copy</div>
+			
+			</div> <!--  end social-block -->
         
         </div>
-        
         
     </div> <!-- end cartBlock -->
     
@@ -239,5 +235,6 @@
 
   <!-- Site Specific JS -->
   <script src="js/scripts.js"></script>
+  </div><!-- end pdp-body -->
 </body>
 </html>
