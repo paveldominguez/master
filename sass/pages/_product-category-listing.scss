@@ -233,30 +233,30 @@ $leftColWidth: 255px;
                         width: 100%;
                         max-width: 150px;
                     }
-                    .product-hover {
-                        display: none;
+                }
+                .product-hover {
+                    display: none;
+                    z-index: 9999;
+                    .color-picker,
+                    .quick-view {
+                        position: absolute;
+                        top: 0;
+                        padding: 5px 15px;
                         z-index: 9999;
-                        .color-picker,
-                        .quick-view {
-                            position: absolute;
-                            top: 0;
-                            padding: 5px 15px;
-                            z-index: 9999;
+                    }
+                    .color-picker{
+                        left: 0;
+                        img {
+                            display: block;
                         }
-                        .color-picker{
-                            left: 0;
-                            img {
-                                display: block;
-                            }
-                        }
-                        .quick-view {
-                            right: 0;
-                            a {
-                                color: $colorLightGray;
-                                font-family: $fontVzwMedium;
-                                font-size: 12px;
-                                text-transform: uppercase;
-                            }
+                    }
+                    .quick-view {
+                        right: 0;
+                        a {
+                            color: $colorLightGray;
+                            font-family: $fontVzwMedium;
+                            font-size: 12px;
+                            text-transform: uppercase;
                         }
                     }
                 }
@@ -334,7 +334,7 @@ $leftColWidth: 255px;
                         margin: 20px 0 10px;
                     }
                     &.featured { 
-                        @include column(8); 
+                        @include column(8);
                         figure {
                             margin: 20px 0;
                             img { max-width: 403px; }
@@ -354,47 +354,36 @@ $leftColWidth: 255px;
             width: 150px;
         }
     }
-    .left-column {
-        display: none !important;
-        @include clearfix();
-        @include column(12, center collapse);
-        float: none;
-        max-width: 100%;
-        .filter {
-            @include column(2);
-            margin: 0 $columnGutter;
-            float: left;
-        }
-    }
-    .main{
-        @include innerRow();
-        @include column(12, center);
-        margin: 0;
-    }
     .product-list { 
         .products { 
             .product {
-                @include column(4, center);
+                @include column(6, collapse);
                 padding: 15px;
                 &.panel {
                     figure img {
-                        max-width: 100%;
+                        max-width: 70%;
                     }
-                    &.featured { 
-                        @include column(4, center);
-                        .product-detail {
-                            .name {
-                                font-size: 13px;
+                    &.featured {
+                        @include column(6, collapse);
+                        padding: 15px;
+                        figure {
+                            margin: 20px 0 10px;
+                            img {
+                                max-width: 70%;
                             }
+                        }
+                        .product-detail {
+                            padding: 0;
                         }
                     }
                 }
+
             }
         }
     }
 }
 
-@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLandscape) {
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
     .header .top-bar {
         > ul > li {
             min-width: 45px;
@@ -415,36 +404,34 @@ $leftColWidth: 255px;
         }
     }
     .left-column {
-        display: none !important;
-        //@include mobileColumn(4);
+        display: none;
     }
-    .main {
+    .main { 
+        margin: 0; 
         @include mobileColumn(4);
-        margin-left: 0;
     }
-    .row .row {
-        margin: 0;
-    }
-    .product-list { 
-        margin: 0;
+    .product-list {
+        .product-list-header .wrapper {
+            padding: 20px 15px;
+        }
         .products { 
             .product {
-                @include mobileColumn(2);
-                padding: 15px;
+                width: 33.334%;
                 &.panel {
                     figure img {
-                        max-width: 100%;
+                        max-width: 65%;
                     }
-                    &.featured { 
-                        float: left;
-                        @include mobileColumn(1.33);
-                        img {
-                            max-width: 100%;
+                    &.featured {
+                        width: 33.334%;
+                        padding: 15px;
+                        figure {
+                            margin: 20px 0 10px;
+                            img {
+                                max-width: 65%;
+                            }
                         }
                         .product-detail {
-                            .name {
-                                font-size: 13px;
-                            }
+                            padding: 0;
                         }
                     }
                 }
@@ -453,68 +440,7 @@ $leftColWidth: 255px;
     }
 }
 
-@media only screen and (max-width: $screenMobileLandscape - 1) and (min-width: $screenMobilePortrait) {
-    .header .top-bar {
-        > ul > li {
-            min-width: 45px;
-            &.logo {
-                border-right: none;
-                width: auto;
-            }
-            &.site-search {
-                padding: 15px 15px 13px;
-                input[type="text"] {
-                    width: 25px;
-                    padding:0;
-                }
-            }
-            &.shopping-bag {
-                a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
-            }
-        }
-    }
-    .left-column { display: none !important; }
-    .main {
-        @include mobileColumn(4);
-        margin-left: 0;
-    }
-    .row .row {
-        margin: 0;
-    }
-    .product-list { 
-        margin: 0;
-        .product-list-header .sort-options {
-            position: relative;
-            float: left;
-            margin: 10px 0 10px $columnGutter;
-        }
-        .products { 
-            .product {
-                @include mobileColumn(2);
-                padding: 15px;
-                &.panel {
-                    figure img {
-                        max-width: 100%;
-                    }
-                    &.featured { 
-                        float: left;
-                        @include mobileColumn(2);
-                        img {
-                            max-height: 174px;
-                        }
-                        .product-detail {
-                            .name {
-                                font-size: 13px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: $screenMobilePortrait - 1) and (min-width: $screenMobileSmall) {
+@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall) {
     .header .top-bar {
         > ul > li {
             min-width: 45px;
@@ -538,35 +464,43 @@ $leftColWidth: 255px;
         display: none !important;
     }
     .main { margin-left: 0; }
-    .column, .columns {
-        @include mobileColumn(4);
-    }
     .product-list { 
         margin: 0;
-        .product-list-header .sort-options {
+        .product-list-header {
+            .wrapper { padding: 20px 15px; }
+            .sort-options {
             position: relative;
             float: left;
             margin: 10px 0 10px $columnGutter;
             width: 354px;
+            }
         }
         .products { 
             .product {
-                @include mobileColumn(4);
+                width: 50%;
                 padding: 15px;
                 &.panel {
                     figure img {
                         max-width: 100%;
                     }
-                    &.featured { 
-                        float: left;
-                        @include mobileColumn(4);
-                        img {
-                            max-height: 174px;
+                    &.featured {
+                        width: 50%;
+                        padding: 15px;
+                        figure {
+                            margin: 20px 0 10px;
+                            img {
+                                max-width: 100%;
+                            }
                         }
                         .product-detail {
-                            .name {
-                                font-size: 13px;
-                            }
+                            padding: 0;
+                        }
+                    }
+                    .product-detail {
+                        .price,
+                        .rating {
+                            float: none;
+                            clear: none;
                         }
                     }
                 }
