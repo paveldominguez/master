@@ -1,11 +1,8 @@
 // Foundation and Compass Imports
-@import "app"; // Compass, Foundation...
-
-// Foundation Overrides
+@import "app";
+@import "fonts";
 @import "foundation-overrides";
-
-// Verizon Font-Face Imports
-@import "fonts"; 
+@import "sprites";
 
 // Font Variables
 $fontArial: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -22,12 +19,8 @@ $colorNavLinks: #666;
 $colorNavAccountLinks: #999;
 $colorProductPanelBorder: #E5E5E5;
 
-// sprites 
-$ui-layout: smart;
-@import "ui/*.png";
-@include all-ui-sprites;
-
 // Global Styles
+$globalGutter: 30px;
 
 html, body {
     font-family: $fontVzwBook;
@@ -177,5 +170,5 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 // Page Includes
-@import "pages/product-category-listing.scss";
-@import "pages/product-detail.scss";
+@import "pages/product-category-listing";
+@import "pages/product-detail";

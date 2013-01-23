@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body class="product-category-list">
+<body id="product-category-list" class="product-category-list">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
@@ -34,7 +34,7 @@
       <div class="wrapper">
         <div class="product-list-heading">
           <h1 class="product-list-category">Headphones</h1>
-          <h3 id="product-filter-count" class="product-filter-count"><strong>142</strong> items</h3>
+          <h3 id="product-filter-count" class="product-filter-count"><strong>298</strong> Products</h3>
         </div>
         <div id="sort-options" class="sort-options">
           <ul class="inline-list">
@@ -59,7 +59,8 @@
                 <figure>
                   <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -72,7 +73,8 @@
                 <figure>
                   <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -85,7 +87,8 @@
                 <figure>
                   <img src="img/pcl-jabra-soulmate.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -98,7 +101,8 @@
                 <figure>
                   <img src="img/pcl-denon.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -111,7 +115,8 @@
                 <figure>
                   <img src="img/pcl-isound.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -124,7 +129,8 @@
                 <figure>
                   <img src="img/pcl-skullcandy.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -137,7 +143,8 @@
                 <figure>
                   <img src="img/pcl-jawbone.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -150,7 +157,8 @@
                 <figure>
                   <img src="img/pcl-nixon.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -163,7 +171,8 @@
                 <figure>
                   <img src="img/pcl-brookstone.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -176,7 +185,8 @@
                 <figure>
                   <img src="img/pcl-jawbone.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -189,7 +199,8 @@
                 <figure>
                   <img src="img/pcl-isound.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -202,7 +213,8 @@
                 <figure>
                   <img src="img/pcl-jabra-soulmate.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -215,7 +227,8 @@
                 <figure>
                   <img src="img/pcl-beats.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -228,7 +241,8 @@
                 <figure>
                   <img src="img/pcl-denon.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -241,7 +255,8 @@
                 <figure>
                   <img src="img/pcl-skullcandy.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -254,7 +269,8 @@
                 <figure>
                   <img src="img/pcl-nixon.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -267,7 +283,8 @@
                 <figure>
                   <img src="img/pcl-jawbone.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -280,7 +297,8 @@
                 <figure>
                   <img src="img/pcl-jabra-soulmate.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -293,7 +311,8 @@
                 <figure>
                   <img src="img/pcl-denon.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -306,7 +325,8 @@
                 <figure>
                   <img src="img/pcl-beats.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
@@ -319,7 +339,8 @@
                 <figure>
                   <img src="img/pcl-isound.jpg"/>
                   <div class="product-hover">
-                    <div class="center-button"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+                    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a>
                   </div>
                 </figure>
                 <ul class="product-detail">
