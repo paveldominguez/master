@@ -78,7 +78,7 @@
 	
 	background: url(../img/pdp-hero-bg.png) repeat;
 	width: 100%;
-	max-height:493px;
+	
 	
 	/* --------------------------------  BEGIN CAROUSEL --------------- */
 	#carousel-block {
@@ -113,10 +113,10 @@
 					
 						}/* end li */
 						
-					.zoom-button img {
+					.zoom-button {
+						@include pdp-sprite(carousel-zoom);
+						
 						width:26px; height:28px; 
-						display:block;
-						margin:auto;
 						}/* end zoom */
 					
 					}/* thumbs */
@@ -135,14 +135,20 @@
 				}
 			
 			.carousel-nav.left { 
-				left:4.5%;
-				background: url(../img/pdp-carousel-left.png) no-repeat;
+				@include pdp-sprite(carousel-left);
+			
+				width:30px; height:30px;
+				left:4.25%;
+				
 			
 				}
 					
 			.carousel-nav.right {
-				right:4.5%;
-				background: url(../img/pdp-carousel-right.png) no-repeat;
+				@include pdp-sprite(carousel-right);
+				
+				width:30px; height:30px;
+				right:4.25%;
+				
 			
 				}
 			
@@ -202,7 +208,14 @@
 			.review-block {
 				@include clearfix();
 				
-				.ratings { @include hrzList; } /* end ratings */
+				.ratings { 
+					@include hrzList;
+					@include pdp-sprite(stars-temp); 
+					
+					width:75px; height:13px; 
+					margin-top:5px;
+					
+					} 
 				
 				a.review-link { 
 					@include hrzList;
@@ -210,7 +223,8 @@
 					font-family: $fontArial;
 					font-size: 12px; 
 					color: $colorVzwRed;
-					margin-top:5px; }
+					margin-top:6px;
+					 }
 				 
 			} /* end review-block */
 		
@@ -257,7 +271,7 @@
 				@include cartRounded;
 				@include cartShadow;
 				
-				
+				cursor:pointer;
 				width:45%; height: 75px;
 				position: absolute; right: 20px; bottom: 20px;
 				overflow: hidden;
@@ -336,6 +350,7 @@
 					.color-option {
 						@include hrzList;
 						
+						cursor:pointer;
 						margin-right:0px; 
 						width: 17%;
 						height:45px; 
@@ -394,7 +409,7 @@
 					
 					
 						.devices {
-							background: url(../img/pdp-compat-icon.png) no-repeat;
+							@include pdp-sprite(compat-icon);
 							padding: 0 0 15px 30px;
 							font-size: 12px;
 						
@@ -418,8 +433,9 @@
 					@include boxBrdrL;
 					
 						ul.ship-details {
-							margin-bottom:0px;
-							 
+							margin: 0 0 0 10px;
+							list-style-image: url(../img/pdp-cart-bullet.png);
+							
 							li.cost,
 							li.avail,
 							li.rcv-by {
@@ -446,10 +462,35 @@
 		
 			.social-block { 
 				@include boxBrdrT;
-				@include boxBrdrL;
 				
 				background: url(../img/pdp-cart-bg.png) repeat;
 				
+				.inline-list { margin:0px;
+					li { margin:0px; }
+					 } /* reset sitewide */
+					
+				
+				.social { 
+					@include boxBrdrL;
+					@include cartBoxThird;
+					
+					padding:5px; 
+					position:relative;
+					
+					.count { position:absolute;
+						top:5px; right:5px;
+						font-size:9px; 
+						}
+					
+					a { height:40px;
+						 }
+					
+					} /* generic social li settings */
+					
+					
+				.social.fb {
+					@include cartBoxTwoThirds;
+				}
 			
 				.pdp-social-left {
 					@include cartBox;
@@ -457,20 +498,11 @@
 					
 					padding:0px;
 					
-					.facebook {
-						@include cartBoxTwoThirds;
-						
-						padding: 5px;
-						
-						} /* end facebook */
-						
-					.email {
-						@include cartBoxThird;
-						@include boxBrdrL;
-						
-						padding: 5px;
-						
-						} /* end email */
+						.facebook { @include pdp-sprite(facebook-btn);
+							}
+								
+						.email { @include pdp-sprite(email-btn);
+							 } 
 					
 					} /* end social left */
 					
@@ -478,51 +510,13 @@
 				.pdp-social-right {
 					@include cartBox;
 					@include cartBoxHalf;
-					@include boxBrdrL;
 					
 					padding:0px;
-					
-						.social {
-							padding:5px;
-							position:relative; 
-							
-							} /* end generic social li settings */
-					
-						.facebook {
-							@include cartBoxTwoThirds;
+								
+						.twitter { @include pdp-sprite(twitter-btn); }
+						.gplus { @include pdp-sprite(gplus-btn); }
+						.pinterest { @include pdp-sprite(pinterest-btn); }
 						
-						} /* end facebook */
-					
-					
-						.twitter {
-						 @include cartBoxThird;
-						 
-						 	img.social-button {
-						 		position:relative;
-						 		top:-4px;
-						 		} /* end temp img adjustment */	
-						
-						} /* end twitter */
-						
-						.gplus {
-							@include cartBoxThird;
-							@include boxBrdrL;
-						
-						} /* end gplus */
-						
-						.pinterest {
-							@include cartBoxThird;
-							@include boxBrdrL;
-							
-							img.social-button {
-								position:relative;
-						 		top:-2px;
-						 		
-								}
-						
-						} /* end pinterest */
-					
-					
 					} /* end social right */
 				  
   

@@ -45,7 +45,7 @@
               			<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="zoom-button"><img src="img/pdp-carousel-zoom-icon.png"/></li>
+              			<li class="zoom-button"></li>
             		</ul><!-- end thumbs -->
             		
         		</div><!-- end thumb-block -->
@@ -82,9 +82,7 @@
       
         	<div class="review-block">
       
-          		<div class="ratings">
-          			<img src="img/pdp-temp-stars.png"  >
-          		</div><!-- end ratings -->
+          		<div class="ratings"></div>
           
           		<a class="review-link">(47)</a>
         
@@ -173,29 +171,36 @@
 			
 				<div class="pdp-social-left">
 				
-					<div class="facebook">
-						<img src="img/pdp-facebook-button.png" class="social-button">
-					</div>
-					
-					<div class="email">
-						<img src="img/pdp-email-button.png " class="social-button">
-					</div>
+					<ul class="inline-list">
+						<li class="social fb">
+							<div class="count">11396</div>
+							<a href="#" class="click facebook"></a>
+						</li>
+							
+						<li class="social"><a href="#" class="click email"></a></li>
+					</ul>
 				
 				</div><!-- end social-left -->
 				
 				<div class="pdp-social-right">
 				
-					<div class="twitter">
-						<img src="img/pdp-twitter-button.png " class="social-button">
-					</div>
-					
-					<div class="gplus">
-						<img src="img/pdp-gplus-button.png " class="social-button">
-					</div>
-					
-					<div class="pinterest">
-						<img src="img/pdp-pinterest-button.png " class="social-button">
-					</div>
+					<ul class="inline-list">
+						<li class="social">
+							<div class="count">9360</div>
+							<a href="#" class="click twitter"></a>
+						</li>
+						
+						<li class="social">
+							<div class="count">126</div>
+							<a href="#" class="click gplus"></a>
+						</li>
+							
+						<li class="social">
+							<div class="count">792</div>
+							<a href="#" class="click pinterest"></a>
+						</li>
+						
+					</ul>
 				
 				</div><!-- end social-right -->
 			

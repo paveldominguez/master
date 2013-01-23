@@ -1,3 +1,7 @@
 $ui-spacing: 15px;
 @import "ui/*.png";
 @include all-ui-sprites;
+
+$pdp-spacing: 15px;
+@import "pdp/*.png";
+@include all-pdp-sprites; 
