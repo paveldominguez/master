@@ -1,6 +1,5 @@
 var $jQ = jQuery.noConflict(), // Prevent any future library conflicts
 VZ = {}, // Container for firing common and page-specic JavaScript
-COMMON = {}, // NEED TO COME UP WITH BETTER NAME FOR THIS NAMESPACE
 UTIL = {}; // Container for stuff..
 
 VZ = {
@@ -25,12 +24,12 @@ VZ = {
     },
     'product-category-list' : {
         init : function() {
-            COMMON.productHover();
+            productDetail.productHover();
         }
     }
 };
 
-COMMON = {
+var productDetail = {
     productHover : function() {
         $jQ('#product-grid .product').on({
             mouseenter : function() {
