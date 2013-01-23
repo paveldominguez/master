@@ -36,17 +36,25 @@
 
 		@mixin cartBox { 
 			@include clearfix();
-	
+			
 			background: url(../img/pdp-cart-bg.png) repeat;
 			width:100%;
-			padding:20px;
+			padding:20px 4.5% 20px 4.5%;
 			font-size:12px;
-			color: $cartGreyLt; }
+			color: $cartGreyLt;
+			font-family: $fontArial; }
 	
 		@mixin cartBoxHalf {
 			display:inline-block;
-			width:49.6%; }
+			width:49%; }
+			
+		@mixin cartBoxThird {
+			display:inline-block;
+			width:31.5%; }	
 	
+		@mixin cartBoxTwoThirds {
+			display:inline-block;
+			width:64.5%; }
 	
 		@mixin hrzList {
 			display: inline-block;
@@ -104,6 +112,12 @@
 							img { width:36px; height:auto; }
 					
 						}/* end li */
+						
+					.zoom-button img {
+						width:26px; height:28px; 
+						display:block;
+						margin:auto;
+						}/* end zoom */
 					
 					}/* thumbs */
 					
@@ -302,8 +316,7 @@
 				@include boxBrdrL;
 				
 				span {
-					font-family: $fontArial;
-					color: $cartGreyMd;
+					color: $cartGreyLt;
 					display: block;
 					padding-bottom: 10px;
 					} /* end label span */					
@@ -320,14 +333,13 @@
 					
 						
 				
-					.colorOption {
+					.color-option {
 						@include hrzList;
 						
 						margin-right:0px; 
-						width: 16.6667%;
+						width: 16.75%;
 						height:45px; 
 
-							
 						.info { display:none; 
 						
 							padding:8px 0 0 10px;
@@ -341,13 +353,11 @@
 								
 								} /* in stock span styles */  
 							
-							
 							} /* define & hide color info initially */
 
-					
-						} /* end color li styles */
+						} /* end color-option li styles */
 				
-				
+					.color-option:last-child { float:right; }
 												
 					li.selected {
 						@include cartBoxHalf;
@@ -378,18 +388,58 @@
 				
 				background: url(../img/pdp-cart-bg.png) repeat;
 				
-				
 				.compat {
 					@include cartBox;
 					@include cartBoxHalf;
-					}
 					
+					
+						.devices {
+							background: url(../img/pdp-compat-icon.png) no-repeat;
+							padding: 0 0 15px 30px;
+							font-size: 12px;
+						
+							}/* end device */
+					
+						.check {
+							font-size:12px; 
+							
+							.link {
+								color: $colorVzwRed;
+								}
+								
+							}/* end check */
+					
+					}/* end compat */
+				
+						
 				.pdp-ship {
 					@include cartBox;
 					@include cartBoxHalf;
 					@include boxBrdrL;
 					
-					}
+						ul.ship-details {
+							margin-bottom:0px;
+							 
+							li.cost,
+							li.avail,
+							li.rcv-by {
+								font-size: 12px;
+								height: 22px;
+								}
+								
+							li.rcv-by {
+								line-height:19px;
+								}	
+								
+							/* end li ship-details */ 
+							
+						}/* end ul ship-details */
+					
+					
+					
+					
+					
+					}/* end pdp-ship */
 				
 				} /* end compat-ship-block */
 		
@@ -404,13 +454,76 @@
 				.pdp-social-left {
 					@include cartBox;
 					@include cartBoxHalf;
-					}
+					
+					padding:0px;
+					
+					.facebook {
+						@include cartBoxTwoThirds;
+						
+						padding: 5px;
+						
+						} /* end facebook */
+						
+					.email {
+						@include cartBoxThird;
+						@include boxBrdrL;
+						
+						padding: 5px;
+						
+						} /* end email */
+					
+					} /* end social left */
+					
 					
 				.pdp-social-right {
 					@include cartBox;
 					@include cartBoxHalf;
 					@include boxBrdrL;
-					}
+					
+					padding:0px;
+					
+						.social {
+							padding:5px;
+							position:relative; 
+							
+							} /* end generic social li settings */
+					
+						.facebook {
+							@include cartBoxTwoThirds;
+						
+						} /* end facebook */
+					
+					
+						.twitter {
+						 @include cartBoxThird;
+						 
+						 	img.social-button {
+						 		position:relative;
+						 		top:-4px;
+						 		} /* end temp img adjustment */	
+						
+						} /* end twitter */
+						
+						.gplus {
+							@include cartBoxThird;
+							@include boxBrdrL;
+						
+						} /* end gplus */
+						
+						.pinterest {
+							@include cartBoxThird;
+							@include boxBrdrL;
+							
+							img.social-button {
+								position:relative;
+						 		top:-2px;
+						 		
+								}
+						
+						} /* end pinterest */
+					
+					
+					} /* end social right */
 				  
   
 				} /* end social-block */

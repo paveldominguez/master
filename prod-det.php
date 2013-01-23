@@ -45,7 +45,7 @@
               			<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="zoom-button"><img src="img/pdp-temp-prod.png"/></li>
+              			<li class="zoom-button"><img src="img/pdp-carousel-zoom-icon.png"/></li>
             		</ul><!-- end thumbs -->
             		
         		</div><!-- end thumb-block -->
@@ -116,25 +116,25 @@
         	<span>Available in these colors</span>
         		<ul class="avail-colors">
         		
-        			<li class="colorOption color1 selected">
+        			<li class="color-option color1 selected">
         				<div class="info">
         					Black <span class="stock">11 in stock</span>
         				</div>
         			</li>
         			
-        			<li class="colorOption color2">
+        			<li class="color-option color2">
         				<div class="info">
         					White <span class="stock">17 in stock</span>
         				</div>
         			</li>
         			
-        			<li class="colorOption color3">
+        			<li class="color-option color3">
         				<div class="info">
         					Grey <span class="stock">3 in stock</span>
         				</div>
         			</li>
         			
-        			<li class="colorOption color4">
+        			<li class="color-option color4">
         				<div class="info">
         					Blue <span class="stock">31 in stock</span>
         				</div>
@@ -145,15 +145,59 @@
 		
 			<div class="compat-ship-block">
 			
-				<div class="compat">some copy</div>
-				<div class="pdp-ship">some copy</div>
+				<div class="compat">
+				
+					<div class="devices">
+						Compatible with iPhone 4, 4s & 5
+					</div>
+					
+					<div class="check">
+						<a href="#" class="link" >Check compatibility</a>
+					</div>
+					
+				</div><!-- end compat -->
+				
+				<div class="pdp-ship">
+				
+					<ul class="ship-details">
+						<li class="cost">Free Shipping</li>
+						<li class="avail">Online Only</li>
+						<li class="rcv-by">Receive by Thurs 1/31</li>
+					</ul>
+				
+				</div><!-- end pdp-ship -->
 				
 			</div>  <!--  end compat-ship-block -->
 		
 			<div class="social-block">
 			
-				<div class="pdp-social-left">some copy</div>
-				<div class="pdp-social-right">some copy</div>
+				<div class="pdp-social-left">
+				
+					<div class="facebook">
+						<img src="img/pdp-facebook-button.png" class="social-button">
+					</div>
+					
+					<div class="email">
+						<img src="img/pdp-email-button.png " class="social-button">
+					</div>
+				
+				</div><!-- end social-left -->
+				
+				<div class="pdp-social-right">
+				
+					<div class="twitter">
+						<img src="img/pdp-twitter-button.png " class="social-button">
+					</div>
+					
+					<div class="gplus">
+						<img src="img/pdp-gplus-button.png " class="social-button">
+					</div>
+					
+					<div class="pinterest">
+						<img src="img/pdp-pinterest-button.png " class="social-button">
+					</div>
+				
+				</div><!-- end social-right -->
 			
 			</div> <!--  end social-block -->
         
