@@ -1,8 +1,22 @@
-@import "layouts/two-col-left";
-
 $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
 $colorDarkGray: #333;
+
+$sizeHeaderFont: 80px;
+$sizeHeaderFilterFont: 18px;
+
+$leftColWidth: 255px; 
+
+.left-column { 
+    float: left; 
+    max-width: $leftColWidth; 
+    width: $leftColWidth; 
+}
+.main { 
+    float: none; 
+    width: auto; 
+    margin-left: $leftColWidth + $columnGutter;
+}
  
 .product-category-list .product-list-header .wrapper {
     position: relative;
@@ -10,6 +24,7 @@ $colorDarkGray: #333;
 
 .left-column .content-filter {
     font-family: $fontArial;
+    padding: 15px 30px;
     .dimension h3 a,
     .selected-facets .facet a {
         display: block;
@@ -118,27 +133,33 @@ $colorDarkGray: #333;
         @include clearfix();
         background-color: #F6F6F6;
         border-bottom: 1px solid #DBDBDB;
+        .wrapper {
+            padding: 40px 30px 35px;
+        }
         .product-list-heading {
             @include clearfix();
             float: left;
             h1.product-list-category {
                 font: {;
                     family: $fontVzwLight;
-                    size: 80px;
+                    size: $sizeHeaderFont;
                     weight: normal;
                 }
-                color: #3d4146;
+                color: $colorLightGray;
+                letter-spacing: -7.5px;
+                line-height: $sizeHeaderFont;
+                margin: 0;
             }
             h3.product-filter-count {
-                color: $colorLightGray;
+                color: $colorDarkGray;
                 font: {
                     family: $fontVzwBook;
                     weight: normal;
-                    size: 22px;
+                    size: $sizeHeaderFilterFont;
                 }
                 text-transform: capitalize;
+                margin: 25px 0 0 0;
                 strong {
-                    color: $colorDarkGray;
                     font: {
                         family: $fontVzwBold;
                     }
@@ -204,27 +225,37 @@ $colorDarkGray: #333;
                 figure {
                     @include clearfix();
                     display: block;
-                    margin: 0;
+                    margin: 15px 0;
                     img { 
                         display: block;
                         margin: 0 auto;
                         text-align: center;
                         width: 100%;
-                        max-width: 170px;
+                        max-width: 150px;
                     }
                     .product-hover {
                         display: none;
-                        position: absolute;
-                        top: 3px; right: 0;
                         z-index: 9999;
-                        .center-button {
+                        .color-picker,
+                        .quick-view {
+                            position: absolute;
+                            top: 0;
+                            padding: 5px 15px;
                             z-index: 9999;
+                        }
+                        .color-picker{
+                            left: 0;
+                            img {
+                                display: block;
+                            }
+                        }
+                        .quick-view {
+                            right: 0;
                             a {
-                                color: $colorVzwRed;
+                                color: $colorLightGray;
                                 font-family: $fontVzwMedium;
                                 font-size: 12px;
                                 text-transform: uppercase;
-                                padding: 5px 15px;
                             }
                         }
                     }
@@ -244,10 +275,7 @@ $colorDarkGray: #333;
                     figure {
                         img {
                             width: 100%;
-                            max-width: 423px;
-                        }
-                        .product-hover {
-                            height: 423px;
+                            max-width: 413px;
                         }
                     }
                 }
@@ -300,11 +328,15 @@ $colorDarkGray: #333;
         .products { 
             .product {
                 @include column(4); 
+                padding: 15px;
                 &.panel {
+                    figure {
+                        margin: 20px 0 10px;
+                    }
                     &.featured { 
                         @include column(8); 
                         figure {
-                            margin: 10px 0;
+                            margin: 20px 0;
                             img { max-width: 403px; }
                         }
                     }
@@ -343,6 +375,7 @@ $colorDarkGray: #333;
         .products { 
             .product {
                 @include column(4, center);
+                padding: 15px;
                 &.panel {
                     figure img {
                         max-width: 100%;
@@ -396,8 +429,8 @@ $colorDarkGray: #333;
         margin: 0;
         .products { 
             .product {
-                float: left;
-                @include mobileColumn(1.33);
+                @include mobileColumn(2);
+                padding: 15px;
                 &.panel {
                     figure img {
                         max-width: 100%;
@@ -457,8 +490,8 @@ $colorDarkGray: #333;
         }
         .products { 
             .product {
-                float: left;
                 @include mobileColumn(2);
+                padding: 15px;
                 &.panel {
                     figure img {
                         max-width: 100%;
@@ -518,8 +551,8 @@ $colorDarkGray: #333;
         }
         .products { 
             .product {
-                float: left;
                 @include mobileColumn(4);
+                padding: 15px;
                 &.panel {
                     figure img {
                         max-width: 100%;
