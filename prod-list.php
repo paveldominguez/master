@@ -30,7 +30,7 @@
   <!-- Main Grid Section -->
 
   <section class="product-list-section">
-    <header class="product-list-header">
+    <header id="product-list-header" class="product-list-header">
       <div class="wrapper">
         <div class="product-list-heading">
           <h1 class="product-list-category">Headphones</h1>
@@ -50,10 +50,10 @@
       </div>
     </header>
     <div class="wrapper">
-      <aside class="left-column">
+      <aside id="left-column" class="left-column">
         <?php include('inc/product-filter.html'); ?>
       </aside>
-      <div class="main">
+      <div id="main" class="main">
         <div class="products">
           <section>
             <ul id="product-grid" class="product-grid">
