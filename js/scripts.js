@@ -87,30 +87,30 @@ VZ = {
 
 /*------------------- HERO section  --------------------- */
 
-var pageWidth = $(document).width();
+var pageWidth = $jQ(document).width();
 
 /* hero image override onload using cart height to max out */
 
 var cartHt = $jQ('#pdp-hero #cart-block').height();
 
-// 768 & up: tie main image size to cart height on load 
-	if ( pageWidth > 767) { 
+// 768 & up: tie main image size to cart height on load
+	if ( pageWidth > 767) {
 			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
 			$jQ('#the-carousel').css( 'width', cartHt + 'px');
 		}
 			
-// tablet portrait: crop image by shoving to left		
+// tablet portrait: crop image by shoving to left
 			if ((pageWidth < 1024) && (pageWidth > 767)) {
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
 			}
-/* end hero image onload */		
+/* end hero image onload */
 
 
 /* 768 & up: tie main image size to cart height on window resize */
 
-	$(window).resize(function(){
+	$jQ(window).resize(function(){
 	
-		var resizePage = $(document).width();
+		var resizePage = $jQ(document).width();
 		var resizeCart = $jQ('#pdp-hero #cart-block').height();
 		
 	if (pageWidth > 767) {
@@ -118,14 +118,14 @@ var cartHt = $jQ('#pdp-hero #cart-block').height();
 			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
 		}
 		
-		// tablet portrait: crop image by shoving to left	
+		// tablet portrait: crop image by shoving to left
 			if ( (resizePage < 1024) && (resizePage > 767)){
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
 			} else {
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');
 			}
 			
-	}); 
+	});
 /*  end hero image changes on window resize */
 
 	

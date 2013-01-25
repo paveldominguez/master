@@ -38,11 +38,13 @@
         </div>
         <div id="sort-options" class="sort-options">
           <ul class="inline-list">
-            <li class="active"><a href="#">All</a><a href="#" class="hover"></a></li>
-            <li><a href="#">Newest</a><a href="#" class="hover"></a></li>
-            <li><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
-            <li><a href="#">$-$$</a><a href="#" class="hover"></a></li>
-            <li><a href="#">$$-$</a><a href="#" class="hover"></a></li>
+            <li class="active hide-for-touch"><a href="#">All</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">Newest</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">$-$$</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">$$-$</a><a href="#" class="hover"></a></li>
+            <li id="drawer-filter" class=""><a href="#">filter</a></li>
+            <li id="drawer-sort" class=""><a href="#">sort</a></li>
           </ul>
         </div>
       </div>
