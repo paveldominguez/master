@@ -68,6 +68,58 @@ var debounce = (function() {
     };
 })();
 
+
+
+/* ================== PDP functions ==============================*/
+
+/*------------------- HERO section  --------------------- */
+
+var pageWidth = $(document).width();
+var cartHt = $jQ('#pdp-hero #cart-block').height();
+
+// tie main image size to cart height on load & shove it over on phablet
+			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
+			$jQ('#the-carousel').css( 'width', cartHt + 'px');
+			
+			if ( (pageWidth < 1024) && (pageWidth > 767)){
+				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
+			}
+		
+
+// tie main image size to cart height on window resize & shove it over on phablet
+	$(window).resize(function(){
+		var resizePage = $(document).width();
+		var resizeCart = $jQ('#pdp-hero #cart-block').height();
+			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', resizeCart + 'px');
+			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
+			
+			if ( (resizePage < 1024) && (resizePage > 767)){
+				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
+			} else {
+				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');
+			}
+			
+		});
+
+	
+	
+	
+	
+
+		
+
+		
+
+
+
+
+
+
+/* ================== END PDP ====================================*/
+
+
+
+
 /*
  *
  * Markup-based DOM-Ready Execution
