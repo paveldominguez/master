@@ -43,8 +43,8 @@
             <li class="hide-for-touch"><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
             <li class="hide-for-touch"><a href="#">$-$$</a><a href="#" class="hover"></a></li>
             <li class="hide-for-touch"><a href="#">$$-$</a><a href="#" class="hover"></a></li>
-            <li id="drawer-filter" class=""><a href="#">filter</a></li>
-            <li id="drawer-sort" class=""><a href="#">sort</a></li>
+            <li id="drawer-filter" class="show-for-touch"><a href="#">filter</a></li>
+            <li id="drawer-sort" class="show-for-touch"><a href="#">sort</a></li>
           </ul>
         </div>
       </div>
