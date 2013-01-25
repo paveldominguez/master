@@ -19,16 +19,19 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
+
 <body class="product-detail">
- <div id="pdp-body">
+
+
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section id="pdp-hero">
-  
+<section id="pdp-hero"><!-------------------------BEGIN PDP HERO--------------------->
+	<div class="section-wrap">
+
     <div id="carousel-block">
       
       		<div id="the-carousel">
@@ -71,25 +74,21 @@
       	<header class="header">
       
           	<div class="brand">
-          		<div class="brand-color"></div>
+          		<!-- <div class="brand-color"></div> little square with brand color -->
           		NOKIA
           	</div>
       
           	<hgroup>
               	<h1>PowerUp Wireless Speaker</h1>
-        	</hgroup>
+        	
+        		<div class="review-block">
+          			<div class="ratings"></div>
+          			<a href="#" class="review-link">(47)</a>
+        		</div><!-- end reviewBlock -->
+        		
+      		</hgroup>
       
-      
-        	<div class="review-block">
-      
-          		<div class="ratings"></div>
-          
-          		<a class="review-link">(47)</a>
-        
-        	</div><!-- end reviewBlock -->
-      
-      
-        	<div class="price-block"> 
+        	<div id="price-block"> 
 
 				<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
         		<div class="actual-price">$249<span>99</span></div>
@@ -97,18 +96,18 @@
         	</div><!-- end priceBlock -->
       
       
-      		<div class="add-cart-box">
-      		
+      		<div id="add-cart-box">
+      		<a href="#">
       			<div class="cart-raw">
-      				<div class="text">Add to Cart</div>
+      				<div class="text">add to cart</div>
       			</div>
-      		
+      		</a>
       		</div><!-- end add-cart -->
       
         </header>
         
         
-        <div class="cart-details">
+        <div id="cart-details">
         
         	<div class="color-stock-block">
         	<span>Available in these colors</span>
@@ -208,54 +207,146 @@
         
         </div>
         
-    </div> <!-- end cartBlock -->
-    
-    
-  </section> <!-- end carouselCart -->
-  
-  
-  
-  <section id="pdp-details">
-  
-    <div class="tabs">
-    
-      <ul>
-        <li class="overview"></li>
-        <li class="features"></li>
-        <li class="specs"></li>
-        <li class="compat"></li>
-      </ul>
-      
-    </div><!-- end tabs -->
-    
-    
-    <div class="icons">
-      
-      <ul>
-        <li class="apps"></li>
-        <li class="smart"></li>
-        <li class="wifi"></li>
-        <li class="dataplan"></li>
-      </ul>
-      
-    </div><!-- end icons -->
-    
-    
-    <div class="similar">
-    
-      <ul class="products">
-        <li class="one"></li>
-        <li class="two"></li>
-        <li class="three"></li>
-        <li class="four"></li>
-      </ul>
-    
-    </div>  
-  
-  </section><!-- end product details -->
-  
+	</div> <!-- end cartBlock -->
+	
+	</div><!-- end section-wrap --> 
+</section> <!----------------------------------- END PDP HERO ----------------------->
   
 
+<section id="product-details"><!----------------- BEGIN PRODUCT DETAILS ------------->
+  	<div class="section-wrap">
+ 	
+  	<div class="tab-block">
+    
+      	<dl class="tabs">
+        	<dd><a href="#overview">Overview</a></dd>
+        	<dd><a href="#features">Features</a></dd>
+        	<dd><a href="#specs">Tech Specs</a></dd>
+        	<dd><a href="#compat">Compatibility</a></dd>
+        </dl>
+      		
+      	<ul class="tabs-content">
+        	<li id="overviewTab">
+        			<div class="tab-wrapper">
+        				<div class="left">
+        				
+        					<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone … 
+        					</p>
+        				
+        				</div><!-- end overview left -->
+        				
+        				<div class="right">
+        				
+        					<div class="icon-stack">
+      							<ul class="icons">
+        							<li class="icon apps">icon image</li>
+        							<li class="icon smart">icon image</li>
+        							<li class="icon wifi">icon image</li>
+        							<li class="icon data">icon image</li>
+      							</ul><!-- end icons -->
+      						</div><!-- end icon-stack -->
+      		
+      						<div class="content-stack">
+      							<ul class="icon-content">
+        							<li class="content apps">
+        								<h2 class="title">icon title</h2>
+        								<p class="text">icon copy</p>
+        							</li>
+        		
+        							<li class="content smart">
+        								<h2 class="title">icon title</h2>
+        								<p class="text">icon copy</p>
+        							</li>
+        		
+        							<li class="content wifi">
+        								<h2 class="title">icon title</h2>
+        								<p class="text">icon copy</p>
+        							</li>
+        		
+        							<li class="content data">
+        								<h2 class="title">icon title</h2>
+        								<p class="text">icon copy</p>
+        							</li>	
+      							</ul><!-- end icon-content -->
+      						</div> <!-- end content-stack -->
+        			
+        				</div><!-- end overview right -->
+        			</div><!-- end overview tab-wrapper -->
+        		</li><!-- end overview tab-content -->
+        		
+        	<li id="featuresTab">
+        		<div class="tab-wrapper">
+        			<div class="left">
+        				features left
+        			</div><!-- end features left -->
+        				
+        			<div class="right">
+        				features right
+        			</div><!-- end features right -->
+        		</div><!-- end tab wrapper -->
+        	</li><!-- end features tab-content -->
+        		
+        	<li id="specsTab">
+        		<div class="tab-wrapper">
+        			<div class="left">
+        				specs left
+        			</div><!-- end features left -->
+        				
+        			<div class="right">
+        				specs right
+        			</div><!-- end specs right -->
+        		</div><!-- end tab wrapper -->
+        	</li><!-- end specs tab-content -->
+        		
+        	<li id="compatTab">
+        		<div class="tab-wrapper">
+        			<div class="left">
+        				compat left
+        			</div><!-- end features left -->
+        				
+        			<div class="right">
+        				compat right
+        			</div><!-- end features right -->
+        		</div><!-- end compat wrapper -->
+        	</li><!-- end content tab-content -->
+      	</ul><!-- end tab-content -->
+      		
+    </div><!-- end tab-block -->
+    
+	</div><!-- end section-wrap -->
+</section><!-------------------------------------- END PRODUCT DETAILS -------------->
+    
+
+<section id="similar-plain"><!------------- BEGIN SIMILAR PRODUCTS - PLAIN ----->
+	<div class="section-wrap">
+		Similar Products - Plain Carousel
+	</div><!-- end section-wrap -->
+</section><!------------------------------- END SIMILAR PRODUCTS - PLAIN -----------> 
+
+
+
+<section id="product-reviews"><!------------- BEGIN PRODUCT REVIEWS ---------------->
+	<div class="section-wrap">
+		Product Reviews
+	</div><!-- end section-wrap -->
+</section><!--------------------------------- END PRODUCT REVIEWS  ----------------->  
+
+
+
+<section id="splash-banner"><!------------- BEGIN SPLASH BANNER ---------------->
+	<div class="section-wrap">
+		Splashy Banner
+	</div><!-- end section-wrap -->
+</section><!--------------------------------- END SPLASH BANNER  -----------------> 
+
+ 
+ 
+<section id="similar-fancy"><!------------- BEGIN SIMILAR PRODUCTS - FANCY ----->
+	<div class="section-wrap">
+		Similar Products - Fancy Carousel
+	</div><!-- end section-wrap -->
+</section><!------------------------------- END SIMILAR PRODUCTS - FANCY -----------> 
+ 
   <!-- End Grid Section -->
 
 
@@ -271,7 +362,7 @@
 
   <script src="js/foundation/jquery.foundation.navigation.js"></script>
 
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>\
+  <script src="js/foundation/jquery.foundation.topbar.js"></script>
 
 
 
@@ -284,6 +375,6 @@
 
   <!-- Site Specific JS -->
   <script src="js/scripts.js"></script>
-  </div><!-- end pdp-body -->
+  
 </body>
 </html>
