@@ -104,11 +104,11 @@
 				}/* end focus */
 					
 			.thumb-block { 
-				width:220px;
+				width:261px;
 				position:absolute;
 				bottom:0;
 				left:50%;
-				margin-left:-110px;
+				margin-left:-130px;
 				
 				ul.thumbs {
 					@include clearfix();
@@ -118,16 +118,34 @@
 					li { 
 						@include hrzList;
 						
-						width:36px; height:36px;
+						margin-right:10px;
+						width:40px; height:56px;
+						position:relative;
 				
-							img { width:100%; }
-					
+							img { width:100%; 
+								position:absolute;
+								top:50%; 
+								margin-top:-18px; 
+								}/* end images */
 						}/* end li */
 						
-					.zoom-button {
-						@include pdp-sprite(carousel-zoom);
+					li.zoom {
+						@include boxBrdrL;
 						
-						width:26px; height:28px; 
+						width:48px;
+						margin-right:0px;
+						
+						
+							.zoom-icon {
+								@include pdp-sprite(carousel-zoom);
+							
+								width:26px; height:28px;
+								position:absolute;
+								top:50%; left:50%;
+								margin-top:-12px; 
+								margin-left:-13px;
+							}/* end zoom icon */
+						
 						}/* end zoom */
 					}/* end thumbs */
 				}/* end thumb-block */
@@ -144,14 +162,14 @@
 				@include pdp-sprite(carousel-left);
 			
 				width:30px; height:30px;
-				left:4.25%;
+				left:20px;
 				}
 					
 			.carousel-nav.right {
 				@include pdp-sprite(carousel-right);
 				
 				width:30px; height:30px;
-				right:4.25%;
+				right:20px;
 				}
 			
 		}/* end carousel-block -------------- END CAROUSEL ---------------- */
@@ -538,7 +556,7 @@ $screenMobileSmall: 320px;
 
 @media only screen and ( min-width: $screenXlarge ) {
 	/* set content limit */
-	.section-wrap {	width: 1440px; }	
+	/* .section-wrap {	width: 1440px; }	*/
 	
 	/* set cart header height, drives all hero positioning thru js */	
 	#cart-block .header { height:420px; }		
@@ -555,7 +573,7 @@ $screenMobileSmall: 320px;
 @media only screen and ( min-width: $screenLarge - 1) 
 	and (max-width: $screenXlarge - 1 ) {
 	/* set content limit */
-	.section-wrap {	width: 1280px; }	
+	/* .section-wrap {	width: 1280px; }	*/
 	
 	/* set cart header height, drives all hero positioning thru js */	
 	#cart-block .header { height:387px; }		
@@ -564,12 +582,12 @@ $screenMobileSmall: 320px;
 	
 
 
-/* 1024 - 1279 ---------------------*/
+/* 769 - 1279 ---------------------*/
 
-@media only screen and (min-width: $screenMedium )
+@media only screen and (min-width: $screenSmall + 1 )
 	and (max-width: $screenLarge - 1) {
 	/* set content limit */
-	.section-wrap {	width: 1024px; }	
+	/* .section-wrap {	width: 1024px; } */
 					
 	/* cart header height uses general min-height */	
 						
@@ -581,7 +599,7 @@ $screenMobileSmall: 320px;
 /* 768 - 1023 ---------------------*/
 
 @media only screen and (min-width: $screenSmall )
-and ( max-width: $screenMedium - 1 ) {
+and ( max-width: $screenSmall ) {
 	/* set content limit */
 	.section-wrap {	width: 768px;  }				
 					

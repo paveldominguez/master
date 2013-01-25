@@ -48,7 +48,9 @@
               			<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
               			<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="zoom-button"></li>
+              			<li class="zoom">
+              				<div class="zoom-icon"></div>
+              			</li>
             		</ul><!-- end thumbs -->
             		
         		</div><!-- end thumb-block -->

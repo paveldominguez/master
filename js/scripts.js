@@ -94,7 +94,7 @@ var pageWidth = $(document).width();
 var cartHt = $jQ('#pdp-hero #cart-block').height();
 
 // 768 & up: tie main image size to cart height on load 
-	if ( pageWidth > 767) { 
+	if ( pageWidth > 767) { alert ('working');
 			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
 			$jQ('#the-carousel').css( 'width', cartHt + 'px');
 		}
