@@ -10,7 +10,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Verizon Wireless | Category Listing</title>
+  <title>Verizon Wireless | Product Listing</title>
 
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -22,14 +22,14 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="product-category-list" class="product-category-list">
+<body id="product-list" class="product-list">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section class="product-list">
+  <section class="product-list-section">
     <header class="product-list-header">
       <div class="wrapper">
         <div class="product-list-heading">
@@ -38,11 +38,11 @@
         </div>
         <div id="sort-options" class="sort-options">
           <ul class="inline-list">
-            <li class="active"><a href="#">All</a></li>
-            <li><a href="#">Newest</a></li>
-            <li><a href="#">Highest Rated</a></li>
-            <li><a href="#">$-$$</a></li>
-            <li><a href="#">$$-$</a></li>
+            <li class="active"><a href="#">All</a><a href="#" class="hover"></a></li>
+            <li><a href="#">Newest</a><a href="#" class="hover"></a></li>
+            <li><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
+            <li><a href="#">$-$$</a><a href="#" class="hover"></a></li>
+            <li><a href="#">$$-$</a><a href="#" class="hover"></a></li>
           </ul>
         </div>
       </div>
@@ -55,296 +55,322 @@
         <div class="products">
           <section>
             <ul id="product-grid" class="product-grid">
-              <li class="featured product panel">
-                <figure>
-                  <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
-                </figure>
+              <li class="featured product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></a></li>
                   <li class="price">$299.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <!-- <li class="product panel show-for-medium-down">
-                <figure>
-                  <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span class="brand">Beats by Dre</span> Pro Headphones</li>
-                  <li class="price">$299.00</li>
-                  <li class="rating"><img src="img/stars-gray.png" /></li>
-                </ul>
-              </li> -->
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jabra-soulmate.jpg"/>
-                </figure>
-                <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
-                  <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
-                </div>
-                <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-denon.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-denon.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-isound.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-isound.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-skullcandy.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-skullcandy.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jawbone.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jawbone.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-nixon.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-nixon.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-brookstone.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-brookstone.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jawbone.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jawbone.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-isound.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-isound.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jabra-soulmate.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-beats.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-beats.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-denon.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-denon.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-skullcandy.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-skullcandy.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-nixon.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-nixon.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jawbone.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jawbone.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-jabra-soulmate.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-jabra-soulmate.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-denon.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-denon.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-beats.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-beats.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
               </li>
-              <li class="product panel">
-                <figure>
-                  <img src="img/pcl-isound.jpg"/>
-                </figure>
+              <li class="product">
+                <a href="#">
+                  <figure>
+                    <img src="img/pcl-isound.jpg"/>
+                  </figure>
+                </a>
                 <div class="product-hover">
-                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                   <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                  <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
                 </div>
                 <ul class="product-detail">
-                  <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
+                  <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
                   <li class="price">$189.00</li>
                   <li class="rating"><img src="img/stars-gray.png" /></li>
                 </ul>
