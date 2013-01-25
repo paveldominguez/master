@@ -94,7 +94,10 @@ var pageWidth = $jQ(document).width();
 var cartHt = $jQ('#pdp-hero #cart-block').height();
 
 // 768 & up: tie main image size to cart height on load 
-	if ( pageWidth > 767) { 
+	if (pageWidth == 768){ 
+			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
+			$jQ('#the-carousel').css( 'width', cartHt + 'px');
+		} else if (pageWidth > 999) {
 			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
 			$jQ('#the-carousel').css( 'width', cartHt + 'px');
 		}
@@ -116,9 +119,16 @@ var cartHt = $jQ('#pdp-hero #cart-block').height();
 		var resizePage = $jQ(document).width();
 		var resizeCart = $jQ('#pdp-hero #cart-block').height();
 		
-	if (pageWidth > 767) {
+	if (resizePage == 768) {
 			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', resizeCart + 'px');
 			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
+		} else if (resizePage > 999) {
+			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', resizeCart + 'px');
+			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
+		} else if ((resizePage >768) && ( resizePage < 999)){
+			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', '100%');
+			$jQ('#the-carousel').css( 'width', '75%');
+		
 		}
 		
 		// tablet portrait: crop image by shoving to left	

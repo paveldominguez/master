@@ -503,47 +503,75 @@
 	
 /* bottom details & cross sell section ------- BEGIN DETAILS & CROSS SELL ------- */	
 		
-section#product-details { 
+#product-details { display:none; 
 	@include clearfix();
 	
 	margin-top:50px;
 	padding-top:20px;	
 
-	.tab-block {
-		@include column(10, collapse);
+	.tabbed-wrapper {
+		@include clearfix();
 		
-		margin:0 auto 0 auto;
+			width:100%;
+			
+			.tab-block {
+				@include column(10, collapse);
+		
+				float:none;
+				margin:0 auto 0 auto;
+				
+				dl.tabs {
+					
+					dd { 
+						display:inline-block;
+						font-family: $fontVzwMedium;
+						text-transform:uppercase;
+						margin-right:20px;
+						
+						a { color: $cartGreyDk; }
+				
+					}
+					
+					dd.active {
+						
+						a { color: $colorVzwRed;}
+					}
+				
+				}
+				
+				
+				
+				
+				
+				
+				
+				}/* end tab-block */
+				
 		
 		
-		
-		
-		}/* end tab-block */
+		}/* end tabbed wrapper */
 	
-	.need-block {
-		@include column(5, collapse);
-		
-		float:right;
-		}/* end need-block */
+	
 		
 	} /* end pdp-details */
 
 
-section#similar-plain { 	
+section#similar-plain { 	display:none; 
 
 	} /* end similar-plain carousel */
 
 
-section#product-reviews { 	
+section#product-reviews { 	display:none; 
 
 	} /* end product-reviews */
 
 
-section#splash-banner { 	
+section#splash-banner { 	display:none; 
 
 	} /* splashy-banner */
 
 
-section#similar-fancy { 	
+section#similar-fancy { 	display:none; 
 
 	} /* end similar-fancy carousel */
 
