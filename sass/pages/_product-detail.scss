@@ -543,7 +543,7 @@ $screenMobileSmall: 320px;
 	#cart-block .header { height:420px; }		
 	
 	
-
+}/* end 1440 and up */
 
 
 
@@ -579,10 +579,10 @@ $screenMobileSmall: 320px;
 
 /* 768 - 1023 ---------------------*/
 
-@media only screen and (min-width: 720px )
+@media only screen and (min-width: $screenSmall )
 and ( max-width: $screenMedium - 1 ) {
 	/* set content limit */
-	.section-wrap {	width: 768px; }				
+	.section-wrap {	width: 768px;  }				
 					
 	/* cart header height uses general min-height */	
 	
@@ -614,18 +614,58 @@ and ( max-width: $screenMedium - 1 ) {
 			
 	}/*---------------------------  END HERO ------------------------- */
 
-}/* end 720 - 1023 */
+}/* end 768 - 1023 */
 	
 
 
+/* 720 -767 ---------------------*/
+
+@media only screen and (min-width: 720px )
+and ( max-width: 767px ) {
+	/* set content limit */
+	.section-wrap {	width: 720px;  }				
+					
+	/* cart header height uses general min-height */	
+	
+	/* -----------------------------  HERO ADJUSTMENTS --------------- */
+	
+	#pdp-hero {
+	#carousel-block {
+		@include column(7, collapse);
+		
+		float:left;
+		overflow-x: hidden;
+		
+		#the-carousel {
+			overflow-x:hidden;
+		
+			}/* end the-carousel */
+			
+			
+			.carousel-nav { display:none; }
+			
+			
+		}/* end carousel-block  */
+
+		#cart-block {
+			@include column(5, collapse);
+							
+			}/* end cart-block */
+			
+			
+	}/*---------------------------  END HERO ------------------------- */
+
+}/* end 768 - 1023 */
 
 
-/* 480 - 719 ---------------------*/
 
-@media only screen and (min-width: $screenMobilePortrait ) /* 480 */
+
+/* 568 - 719 -----------------------*/
+
+@media only screen and (min-width: $screenMobileLarge ) 
 	and (max-width: 719px ) {
 	/* set content limit */
-	.section-wrap {	width:100%; min-width:480px; max-width: 568px; }				
+	.section-wrap {	width: 568px; }				
 					
 	/* cart header height uses general min-height */	
 	
@@ -642,8 +682,8 @@ and ( max-width: $screenMedium - 1 ) {
 
 /* 320 - 479 ---------------------*/
 
-@media only screen and (min-width: $screenMobileSmall ) /* 320 */
-	and (max-width: $screenMobilePortrait - 1 ) /* 767 */ {
+@media only screen and (min-width: $screenMobileSmall )
+	and (max-width: $screenMobileLarge - 1 ) /* 767 */ {
 	/* set content limit */
 	.section-wrap {	width: 320px; }				
 					
