@@ -370,7 +370,11 @@
 							
 						display:inline-block;
 							
-							.info { display: inline-block; } /* show info on selection */
+							.info { display: inline-block; 
+							
+								.stock { display:none; } /* remove this line altogether to show stock info on selection */
+							
+							}/* end info */ 
 						} /* end selected */
 								
 					/* temporary color assignments for demo */	
