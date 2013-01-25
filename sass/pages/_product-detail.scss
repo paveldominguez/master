@@ -481,8 +481,21 @@
 	
 /* bottom details & cross sell section ------- BEGIN DETAILS & CROSS SELL ------- */	
 		
-section#product-details { 	
+section#product-details { 
+	@include clearfix();	
 
+	.tab-block {
+		@include column(7, collapse);
+		
+		float:left;
+		}/* end tab-block */
+	
+	.need-block {
+		@include column(5, collapse);
+		
+		float:right;
+		}/* end need-block */
+		
 	} /* end pdp-details */
 
 
@@ -510,26 +523,14 @@ section#similar-fancy {
 
 
 /*
-// Media Query Settings
-$screenXlarge: 1440px;
-$screenLarge: 1280px;
-$screenMedium: 1024px;
-$screenSmall: 768px;
-$screenMobileLandscape: 640px;
-$screenMobilePortrait: 480px;
-$screenMobileSmall: 320px;
-
 $screenXlarge: 1440px;
 $screenLarge: 1280px;
 $screenMedium: 1024px;
 $screenSmall: 768px;
 $screenMobileLarge: 568px;
 $screenMobileSmall: 320px;
-
-
-
-
 */
+
 
 /*================================= BEGIN BREAKPOINTS ========================= */
 
@@ -618,49 +619,7 @@ and ( max-width: $screenMedium - 1 ) {
 	
 
 
-/* 720 -767 ---------------------*/
-
-@media only screen and (min-width: 720px )
-and ( max-width: 767px ) {
-	/* set content limit */
-	.section-wrap {	width: 720px;  }				
-					
-	/* cart header height uses general min-height */	
-	
-	/* -----------------------------  HERO ADJUSTMENTS --------------- */
-	
-	#pdp-hero {
-	#carousel-block {
-		@include column(7, collapse);
-		
-		float:left;
-		overflow-x: hidden;
-		
-		#the-carousel {
-			overflow-x:hidden;
-		
-			}/* end the-carousel */
-			
-			
-			.carousel-nav { display:none; }
-			
-			
-		}/* end carousel-block  */
-
-		#cart-block {
-			@include column(5, collapse);
-							
-			}/* end cart-block */
-			
-			
-	}/*---------------------------  END HERO ------------------------- */
-
-}/* end 768 - 1023 */
-
-
-
-
-/* 568 - 719 -----------------------*/
+/* 568 - 767 -----------------------*/
 
 @media only screen and (min-width: $screenMobileLarge ) 
 	and (max-width: 719px ) {
