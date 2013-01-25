@@ -119,12 +119,12 @@ h1,h2,h3,h4,h5,h6 {
                 }
                 &.logo {
                     text-indent: -9999px;
-                    background: $colorVzwLogoBg;
-                    padding: 0;
                     h1 {
-                        width: 85px;
+                        background: #CCC;
+                        width: 100px;
+                        border-left: 25px solid $colorVzwLogoBg;
                         a { 
-                            height: 60px;
+                            display: block;
                         }
                     }
                 }
