@@ -37,18 +37,20 @@
       		<div id="the-carousel">
       		
       			<div class="focus">
-        			<img class="current-focus" src="img/pdp-temp-prod.png"/>
+        			<img class="current-focus" src="img/pdp-present-prod.png"/>
         		</div><!-- end focus -->
         		
         		
         		<div class="thumb-block">
         			
           			<ul class="thumbs">
-              			<li class="view-1"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="view-2"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="view-3"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="view-4"><img src="img/pdp-temp-prod.png"/></li>
-              			<li class="zoom-button"></li>
+              			<li class="view-1"><img src="img/pdp-present-prod.png"/></li>
+              			<li class="view-2"><img src="img/pdp-present-prod.png"/></li>
+              			<li class="view-3"><img src="img/pdp-present-prod.png"/></li>
+              			<li class="view-4"><img src="img/pdp-present-prod.png"/></li>
+              			<li class="zoom">
+              				<div class="zoom-icon"></div>
+              			</li>
             		</ul><!-- end thumbs -->
             		
         		</div><!-- end thumb-block -->
@@ -216,6 +218,7 @@
 <section id="product-details"><!----------------- BEGIN PRODUCT DETAILS ------------->
   	<div class="section-wrap">
  	
+  	<div class="tabbed-wrapper">
   	<div class="tab-block">
     
       	<dl class="tabs">
@@ -237,7 +240,33 @@
         				
         				<div class="right">
         				
-        					<div class="icon-stack">
+        					    <div class="need-block">
+    								<h3>You'll Need</h3>
+    								<ul class="need-items">
+    									<li class="item">
+    										<div class="info">
+    											description & price
+    										</div>
+    			
+    										<div class="image">
+    											product image
+    										</div>
+    									</li>
+    								</ul>
+    							</div><!-- end you'll need -->			
+        				</div><!-- end overview right -->
+        			</div><!-- end overview tab-wrapper -->
+        		</li><!-- end overview tab-content -->
+        		
+        	<li id="featuresTab">
+        		<div class="tab-wrapper">
+        			<div class="left">
+        				features left
+        			</div><!-- end features left -->
+        				
+        			<div class="right">
+        				
+        				<div class="icon-stack">
       							<ul class="icons">
         							<li class="icon apps">icon image</li>
         							<li class="icon smart">icon image</li>
@@ -269,19 +298,7 @@
         							</li>	
       							</ul><!-- end icon-content -->
       						</div> <!-- end content-stack -->
-        			
-        				</div><!-- end overview right -->
-        			</div><!-- end overview tab-wrapper -->
-        		</li><!-- end overview tab-content -->
-        		
-        	<li id="featuresTab">
-        		<div class="tab-wrapper">
-        			<div class="left">
-        				features left
-        			</div><!-- end features left -->
-        				
-        			<div class="right">
-        				features right
+      						
         			</div><!-- end features right -->
         		</div><!-- end tab wrapper -->
         	</li><!-- end features tab-content -->
@@ -313,20 +330,7 @@
       		
     </div><!-- end tab-block -->
     
-    <div class="need-block">
-    	<h3>You'll Need</h3>
-    	<ul class="need-items">
-    		<li class="item">
-    			<div class="info">
-    				description & price
-    			</div>
-    			
-    			<div class="image">
-    				product image
-    			</div>
-    		</li>
-    	</ul>
-    </div><!-- end you'll need -->
+
     
     
     
