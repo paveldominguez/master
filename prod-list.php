@@ -389,26 +389,5 @@
   <!-- Footer -->
 
   <?php include('inc/footer.html');?>
-
-  <!-- Included JS Files (Uncompressed) -->
-
-
-  <script src="js/foundation/jquery.js"></script>
-
-  <script src="js/foundation/jquery.foundation.navigation.js"></script>
-
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-
-  <!-- Included JS Files (Compressed) -->
-  <script src="js/foundation/jquery.js"></script>
-  <script src="js/foundation/foundation.min.js"></script>
-
-  <!-- Initialize JS Plugins -->
-  <script src="js/foundation/app.js"></script>
-  <script src="js/lib/tiles.min.js"></script>
-
-  <!-- Site Specific JS -->
-  <script src="js/scripts.js"></script>
 </body>
 </html>

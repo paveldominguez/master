@@ -152,6 +152,7 @@ h1,h2,h3,h4,h5,h6 {
                     input[type="text"] {
                         background: transparent url(../img/ui/nav-ico-mag.png) 65px center no-repeat;
                         border: 1px solid #E1E1E1;
+                        @include border-radius(2px);
                         box-shadow: none;
                         display: block;
                         color: $colorNavLinks;
