@@ -17,6 +17,8 @@ $leftColWidth: 255px;
     float: left; 
     max-width: $leftColWidth; 
     width: $leftColWidth; 
+    background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
+    height: 1000px; // TEMP
 }
 .main { 
     float: none; 
@@ -29,6 +31,7 @@ $leftColWidth: 255px;
 }
 
 .left-column .content-filter {
+    display: none; // TEMPORARY
     font-family: $fontArial;
     padding: 15px 30px;
     .dimension h3 a,
@@ -178,13 +181,13 @@ $leftColWidth: 255px;
             right: 30px;
             text-align: center;  
             text-transform: uppercase;
-            ul {    
+            ul.inline-list {    
                 margin: 0;
-                li:first-child {
-                    margin-left: 0;
-                }
-                li {
+                li.hide-for-touch {
                     position: relative;
+                    &:first-child {
+                        margin-left: 0;
+                    }
                     a:not(.hover) {
                         color: $colorLightGray;
                         font: {
@@ -209,6 +212,20 @@ $leftColWidth: 255px;
                     &:hover .hover,
                     &.active .hover {
                         width: 100%;
+                    }
+                }
+                li.show-for-touch {
+                    background-color: #F5F7F7;
+                    border: 1px solid #D9D9D9;
+                    @include border-radius(2px);
+                    margin-left: 10px;
+                    padding: 10px;
+                    a {
+                        background: transparent url(../img/ui/prd-fltr-btn-arw.png) right 10px no-repeat;
+                        padding-right: 20px;
+                        color: #333;
+                        font-family: $fontVzwBook;
+                        text-transform: lowercase;
                     }
                 }
             }
@@ -380,6 +397,12 @@ $leftColWidth: 255px;
                 }
             }
         }
+        .product-list-header {
+            // .sort-options {
+            //     right: 15px;
+            //     bottom: 15px;
+            // }
+        }
     }
 }
 
@@ -387,8 +410,22 @@ $leftColWidth: 255px;
     .left-column { display: none; }
     .main { margin: 0; }
     .product-list {
-        .product-list-header .wrapper {
-            padding: $wrapperPaddingSmall;
+        .product-list-header {
+            .wrapper {
+                padding: $wrapperPaddingSmall;
+            }
+            .sort-options {
+                right: 15px;
+                bottom: 10px;
+                ul { 
+                    li.hide-for-touch {
+                        display: none !important;
+                    }
+                    .show-for-touch {
+                        display: block !important;
+                    }
+                }
+            }
         }
         .products { 
             .product {
@@ -450,10 +487,16 @@ $leftColWidth: 255px;
                 }
             }
             .sort-options {
-                position: relative;
-                float: left;
-                margin: 10px 0 10px $columnGutter;
-                width: 354px;
+                right: 15px;
+                bottom: 10px;
+                ul { 
+                    li.hide-for-touch {
+                        display: none !important;
+                    }
+                    .show-for-touch {
+                        display: block !important;
+                    }
+                }
             }
         }
         .products { 
@@ -520,11 +563,13 @@ $leftColWidth: 255px;
             .sort-options {
                 right: 15px;
                 bottom: 10px;
-                ul li a:not(.hover) {
-                    background-color: #F5F7F7;
-                    padding: 10px;
-                    border: 1px solid #D9D9D9;
-                    @include border-radius(2px);
+                ul { 
+                    li.hide-for-touch {
+                        display: none !important;
+                    }
+                    .show-for-touch {
+                        display: block !important;
+                    }
                 }
             }
         }
