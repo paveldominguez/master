@@ -222,14 +222,14 @@
   	<div class="tab-block">
     
       	<dl class="tabs">
-        	<dd><a href="#overview">Overview</a></dd>
+        	<dd class="active"><a href="#overview">Overview</a></dd>
         	<dd><a href="#features">Features</a></dd>
         	<dd><a href="#specs">Tech Specs</a></dd>
         	<dd><a href="#compat">Compatibility</a></dd>
         </dl>
       		
       	<ul class="tabs-content">
-        	<li id="overviewTab">
+        	<li id="overviewTab" class="active">
         			<div class="tab-wrapper">
         				<div class="left">
         				
