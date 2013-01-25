@@ -313,6 +313,24 @@
       		
     </div><!-- end tab-block -->
     
+    <div class="need-block">
+    	<h3>You'll Need</h3>
+    	<ul class="need-items">
+    		<li class="item">
+    			<div class="info">
+    				description & price
+    			</div>
+    			
+    			<div class="image">
+    				product image
+    			</div>
+    		</li>
+    	</ul>
+    </div><!-- end you'll need -->
+    
+    
+    
+    
 	</div><!-- end section-wrap -->
 </section><!-------------------------------------- END PRODUCT DETAILS -------------->
     
@@ -355,26 +373,7 @@
 
   <?php include('inc/footer.html');?>
 
-  <!-- Included JS Files (Uncompressed) -->
 
-
-  <script src="js/foundation/jquery.js"></script>
-
-  <script src="js/foundation/jquery.foundation.navigation.js"></script>
-
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-
-
-  <!-- Included JS Files (Compressed) -->
-  <script src="js/foundation/jquery.js"></script>
-  <script src="js/foundation/foundation.min.js"></script>
-
-  <!-- Initialize JS Plugins -->
-  <script src="js/foundation/app.js"></script>
-
-  <!-- Site Specific JS -->
-  <script src="js/scripts.js"></script>
   
 </body>
 </html>
