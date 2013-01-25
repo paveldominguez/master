@@ -518,6 +518,17 @@ $screenSmall: 768px;
 $screenMobileLandscape: 640px;
 $screenMobilePortrait: 480px;
 $screenMobileSmall: 320px;
+
+$screenXlarge: 1440px;
+$screenLarge: 1280px;
+$screenMedium: 1024px;
+$screenSmall: 768px;
+$screenMobileLarge: 568px;
+$screenMobileSmall: 320px;
+
+
+
+
 */
 
 /*================================= BEGIN BREAKPOINTS ========================= */
@@ -586,11 +597,6 @@ and ( max-width: $screenMedium - 1 ) {
 		
 		#the-carousel {
 			overflow-x:hidden;
-		
-			div.focus {
-				margin-left:-250px;
-			}/* end focus image */
-		
 		
 			}/* end the-carousel */
 			
