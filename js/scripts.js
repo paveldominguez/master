@@ -100,8 +100,11 @@ var cartHt = $jQ('#pdp-hero #cart-block').height();
 		}
 			
 // tablet portrait: crop image by shoving to left		
-			if ( pageWidth = 768 ) {
+			if ( pageWidth == 768 ) {
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
+			}
+			else {
+				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');
 			}
 /* end hero image onload */		
 
@@ -119,7 +122,7 @@ var cartHt = $jQ('#pdp-hero #cart-block').height();
 		}
 		
 		// tablet portrait: crop image by shoving to left	
-			if ( resizePage = 768) {
+			if ( resizePage == 768) {
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
 			} else {
 				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');

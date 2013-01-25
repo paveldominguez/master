@@ -504,12 +504,19 @@
 /* bottom details & cross sell section ------- BEGIN DETAILS & CROSS SELL ------- */	
 		
 section#product-details { 
-	@include clearfix();	
+	@include clearfix();
+	
+	margin-top:50px;
+	padding-top:20px;	
 
 	.tab-block {
-		@include column(7, collapse);
+		@include column(10, collapse);
 		
-		float:left;
+		margin:0 auto 0 auto;
+		
+		
+		
+		
 		}/* end tab-block */
 	
 	.need-block {
