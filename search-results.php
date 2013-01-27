@@ -10,7 +10,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Verizon Wireless | Category Listing</title>
+  <title>Verizon Wireless | Product Listing</title>
 
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -22,15 +22,15 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="product-category-list" class="product-category-list">
+<body id="product-list" class="product-list">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section class="product-list">
-    <header class="product-list-header">
+  <section class="product-list-section">
+    <header id="product-list-header" class="product-list-header">
       <div class="wrapper">
         <div class="product-list-heading">
           <h1 class="product-list-category">Headphones</h1>
@@ -38,16 +38,18 @@
         </div>
         <div id="sort-options" class="sort-options">
           <ul class="inline-list">
-            <li class="active"><a href="#">All</a></li>
-            <li><a href="#">Newest</a></li>
-            <li><a href="#">Highest Rated</a></li>
-            <li><a href="#">$-$$</a></li>
-            <li><a href="#">$$-$</a></li>
+            <li class="active hide-for-touch"><a href="#">All</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">Newest</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">$-$$</a><a href="#" class="hover"></a></li>
+            <li class="hide-for-touch"><a href="#">$$-$</a><a href="#" class="hover"></a></li>
+            <li id="drawer-filter" class="show-for-touch"><a href="#">filter</a></li>
+            <li id="drawer-sort" class="show-for-touch"><a href="#">sort</a></li>
           </ul>
         </div>
       </div>
     </header>
-    
+
     <div class="wrapper">
 
       <!-- Being Left Column -->
@@ -62,8 +64,28 @@
         <!-- Begin Product Listing -->
         <section class="products">
           <ul id="product-grid" class="product-grid">
-            <?php include('inc/fragments/product.featured.item.php');?>
-            <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
+            <li class="featured product">
+              <a href="#">
+                <figure>
+                  <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+                </figure>
+              </a>
+              <div class="product-hover">
+                <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
+                <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+              </div>
+              <ul class="product-detail">
+                <li class="name"><a href="#"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></a></li>
+                <li class="price">$299.00</li>
+                <li class="rating"><img src="img/stars-gray.png" /></li>
+              </ul>
+            </li>
+
+            <?php
+              $productCount = 20;
+              include('inc/fragments/product.list.item.php');
+            ?>
+
           </ul>
         </section>
         <!-- End Product Listing -->
@@ -72,7 +94,6 @@
       <!-- End Main Content Container -->
 
     </div>
-
 </section>
 
   <!-- End Grid Section -->
@@ -82,26 +103,5 @@
   <!-- Footer -->
 
   <?php include('inc/footer.html');?>
-
-  <!-- Included JS Files (Uncompressed) -->
-
-
-  <script src="js/foundation/jquery.js"></script>
-
-  <script src="js/foundation/jquery.foundation.navigation.js"></script>
-
-  <script src="js/foundation/jquery.foundation.topbar.js"></script>
-
-
-  <!-- Included JS Files (Compressed) -->
-  <script src="js/foundation/jquery.js"></script>
-  <script src="js/foundation/foundation.min.js"></script>
-
-  <!-- Initialize JS Plugins -->
-  <script src="js/foundation/app.js"></script>
-  <script src="js/lib/tiles.min.js"></script>
-
-  <!-- Site Specific JS -->
-  <script src="js/scripts.js"></script>
 </body>
 </html>

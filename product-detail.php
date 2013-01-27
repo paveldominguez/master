@@ -29,7 +29,8 @@
 
   <!-- Main Grid Section -->
 
-<section id="pdp-hero"><!-------------------------BEGIN PDP HERO--------------------->
+<section id="pdp-hero">
+<!-------------------------BEGIN PDP HERO--------------------->
 	<div class="section-wrap">
 
     <div id="carousel-block">
