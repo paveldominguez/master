@@ -1,8 +1,8 @@
 
 <li class="featured product">
   <a href="#">
-    <figure>
-      <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+    <figure class="product-fig">
+      <img class="product-img" src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
     </figure>
   </a>
   <div class="product-hover">

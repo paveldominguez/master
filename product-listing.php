@@ -44,7 +44,7 @@
       <!-- End Left Column -->
 
       <!-- Begin Main Content Container -->      
-      <div id="main" class="main">
+      <div id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
         <section class="products">
