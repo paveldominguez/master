@@ -67,7 +67,7 @@
             <li class="featured product">
               <a href="#">
                 <figure>
-                  <img src="img/pcl-beats.jpg" alt="Beats by Dre" />
+                  <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
                 </figure>
               </a>
               <div class="product-hover">
