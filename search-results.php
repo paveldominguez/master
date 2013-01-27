@@ -32,7 +32,7 @@
   <section class="product-list-section">
 
     <!-- Begin Product List Header -->
-    <?php include('inc/fragments/product.list.header.php');?>
+    <?php include('inc/fragments/search.results.header.php');?>
     <!-- End Product List Header -->
 
     <div class="wrapper">
@@ -45,6 +45,20 @@
 
       <!-- Begin Main Content Container -->      
       <div id="main" class="main">
+
+        <!-- Begin Search Sorting -->
+        <section class="search-sorting">
+          <ul>
+            <li><a href="" title="">Featured</a></li>
+            <li><a href="" title="">Newest</a></li>
+            <li><a href="" title="">$UP</a></li>
+            <li><a href="" title="">$DOWN</a></li>
+            <li><a href="" title="">Highest Rated</a></li>
+            <li><a href="" title="">Bestselling</a></li>
+            <li><a href="" title="">Relevancy</a></li>
+          </ul>
+
+        </section>
 
         <!-- Begin Product Listing -->
         <section class="products">
