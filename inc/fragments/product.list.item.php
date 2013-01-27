@@ -15,9 +15,9 @@
 
 
 <li class="product">
-  <a href="#">
-    <figure>
-      <img alt="<?php random_product();?>" src="<?php random_product();?>"/>
+  <a href="#" title="product name">
+    <figure class="product-fig">
+      <img class="product-img" alt="<?php random_product();?>" src="<?php random_product();?>"/>
     </figure>
   </a>
   <div class="product-hover">
@@ -25,7 +25,7 @@
     <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
   </div>
   <ul class="product-detail">
-    <li class="name"><a href="#"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
+    <li class="name"><a href="#" title="product-name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></a></li>
     <li class="price">$189.00</li>
     <li class="rating"><img src="img/stars-gray.png" /></li>
   </ul>

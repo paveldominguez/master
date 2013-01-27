@@ -38,7 +38,7 @@
     <div class="wrapper">
 
       <!-- Being Left Column -->
-      <aside id="left-column" class="left-column">
+      <aside id="secondary-column" class="secondary-column">
         <?php include('inc/product-filter.html'); ?>
       </aside>
       <!-- End Left Column -->
@@ -59,7 +59,7 @@
       <!-- End Main Content Container -->
 
     </div>
-</section>
+  </section>
 
   <!-- End Grid Section -->
 

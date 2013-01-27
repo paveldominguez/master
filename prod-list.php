@@ -44,8 +44,8 @@
         <?php include('inc/product-filter.html'); ?>
       </aside>
       <div id="main-column" class="main-column">
-        <div class="products">
-          <section>
+        <section>
+          <div class="products">
             <ul id="product-grid" class="product-grid">
               <li class="featured product">
                 <a href="#" title="Beats by Dre">
@@ -368,8 +368,8 @@
                 </ul>
               </li>
             </ul> <!-- End product-grid -->
-          </section>
-        </div> <!-- End products -->
+          </div>  <!-- End products -->
+        </section>
       </div> <!-- End Main -->
     </div> <!-- End Wrapper -->
   </article>
