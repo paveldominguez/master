@@ -30,7 +30,7 @@
   <!-- Main Grid Section -->
 
 <section id="pdp-hero">
-<!-------------------------BEGIN PDP HERO--------------------->
+<!-------------------------BEGIN PDP HERO-------------------- -->
 	<div class="section-wrap">
 
     <div id="carousel-block">
@@ -38,17 +38,17 @@
       		<div id="the-carousel">
       		
       			<div class="focus">
-        			<img class="current-focus" src="img/pdp-present-prod.png"/>
+        			<img class="current-focus" src="img/product-detail-page/pdp-present-prod.png"/>
         		</div><!-- end focus -->
         		
         		
         		<div class="thumb-block">
         			
           			<ul class="thumbs">
-              			<li class="view-1"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-2"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-3"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-4"><img src="img/pdp-present-prod.png"/></li>
+              			<li class="view-1"><img src="img/product-detail-page/pdp-present-prod.png"/></li>
+              			<li class="view-2"><img src="img/product-detail-page/pdp-present-prod.png"/></li>
+              			<li class="view-3"><img src="img/product-detail-page/pdp-present-prod.png"/></li>
+              			<li class="view-4"><img src="img/product-detail-page/pdp-present-prod.png"/></li>
               			<li class="zoom">
               				<div class="zoom-icon"></div>
               			</li>

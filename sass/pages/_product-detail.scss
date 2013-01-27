@@ -37,7 +37,7 @@
 		@mixin cartBox { 
 			@include clearfix();
 			
-			background: url(../img/pdp-cart-bg.png) repeat;
+			background: url(../img/product-detail-page/pdp-cart-bg.png) repeat;
 			width:100%;
 			padding:20px 4.5% 20px 4.5%;
 			font-size:12px;
@@ -77,7 +77,7 @@
 #pdp-hero {
 	@include clearfix();
 	
-	background: url(../img/pdp-hero-bg.png) repeat;
+	background: url(../img/product-detail-page/pdp-hero-bg.png) repeat;
 	width: 100%; 
 	
 	
@@ -391,7 +391,7 @@
 				@include boxBrdrT;
 				@include boxBrdrL;
 				
-				background: url(../img/pdp-cart-bg.png) repeat;
+				background: url(../img/product-detail-page/pdp-cart-bg.png) repeat;
 				
 				.compat {
 					@include cartBox;
@@ -417,7 +417,7 @@
 					
 						ul.ship-details {
 							margin: 0 0 0 10px;
-							list-style-image: url(../img/pdp-cart-bullet.png);
+							list-style-image: url(../img/product-detail-page/pdp-cart-bullet.png);
 							
 							li.cost,
 							li.avail,
@@ -438,7 +438,7 @@
 			.social-block { 
 				@include boxBrdrT;
 				
-				background: url(../img/pdp-cart-bg.png) repeat;
+				background: url(../img/product-detail-page/pdp-cart-bg.png) repeat;
 				
 				.inline-list { margin:0px;
 					li { margin:0px; }
