@@ -1,4 +1,7 @@
 <?php
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1);
+
   $docRoot = $_SERVER['DOCUMENT_ROOT'];
   if(!function_exists('glob_recursive')){
     function glob_recursive($pattern, $flags = 0){

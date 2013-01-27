@@ -38,7 +38,7 @@
         $url = str_replace(" ","", $url);
         $name = str_replace("-"," ", $name);
         $name = str_replace(".php"," ", $name);
-        echo('<li><a href="' . $url .'">'. $name .'<br/>');
+        echo('<li><a href="' . $url .'">'. $name);
       }
     ?>
   </ul>
