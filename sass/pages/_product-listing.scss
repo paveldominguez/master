@@ -29,118 +29,43 @@ $leftColWidth: 255px;
 }
 
 .content-filter {
-    //font-family: $fontArial;
     padding: 15px 30px;
-    .dimension .dimension-header,
-    .facet {
+    .facet,
+    .dimension-header {
+        position: relative;
         line-height: 50px;
     }
     .dimension {
         .dimension-header {
-            border-bottom: 1px solid $colorLightGrayBorder;
             font: {
                 family: $fontVzwBook;
                 size: 18px;
                 weight: normal;
             }
+            margin: 0;
             text-transform: capitalize;
-            a { 
-                color: $colorDarkGray; 
+        }
+        .facet-list {
+            margin: 0;
+            border-top: 1px solid $colorLightGrayBorder;
+            border-bottom: 1px solid $colorLightGrayBorder;
+            &.selected-facets {
+                border: none;
             }
         }
     }
-    // }
-    // h3 a,
-    // .selected-facets .facet a {
-    //     display: block;
-    //     position: relative;
-    //     .icon {
-    //         position: absolute;
-    //         right: 0;
-    //     }
-    // }
-    // .selected-facets {
-    //     margin: 0;
-    //     padding: 0;
-    //     .facet {
-    //         padding: 15px 0;
-    //         border-bottom: 1px solid #E0E0E0;
-    //         &.header {
-    //             font: {
-    //                 family: $fontVzwBook;
-    //                 size: 14px;
-    //             }
-    //             text-transform: capitalize;
-    //         }
-    //         &.removable a {
-    //             color: $colorVzwRed;
-    //             .icon {
-    //                 @include ui-sprite(prd-fltr-remove);
-    //                 width: 8px;
-    //                 height: 10px;
-    //                 top: 5px;
-    //             }
-    //         }
-    //     }
-    // }
-    // .dimension {
-    //     border-bottom: 1px solid #E0E0E0;
-    //     &.collapsible {
-    //         a {
-    //             color: #666; 
-    //             .icon { 
-    //                 @include ui-sprite(prd-fltr-cat-open);
-    //                 width: 8px;
-    //                 height: 7px;
-    //                 top: 4px;
-    //             }
-    //         }
-    //         &.open {
-    //             a .icon {
-    //                 @include ui-sprite(prd-fltr-cat-close);
-    //                 width: 8px;
-    //                 height: 10px;
-    //                 top: 5px;
-    //             }
-    //         }
-    //     }
-    //     &.brand {
-    //         .sub-dimension {
-    //             .sub-dimension-filter,
-    //             .sub-dimension-filter:focus {
-    //                 border: 1px solid #CECECE;
-    //             }
-    //             .sub-dimension-filter,
-    //             .facet-list {
-    //                 width: 90%;
-    //             }
-    //             .sub-dimension-filter {
-    //                 background: #FCFCFC url(../img/ui/prd-fltr-ico-mag.png) 10px center no-repeat;
-    //                 color: #B2B2B2;
-    //                 font: {
-    //                     size: 12px;
-    //                     weight: normal;
-    //                 }
-    //                 padding: 5px 0 5px 20px;
-    //                 height: auto;
-    //             }
-    //             .facet-list {
-    //                 margin: 0;
-    //                 padding: 0;
-    //                 .facet {
-    //                     padding: 5px 0 5px 30px;
-    //                     border-bottom: 1px solid #CECECE;
-    //                     a {
-    //                         font-size: 12px;
-    //                     }
-    //                     &:last-child {
-    //                         border: none;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    //}
+    .facet {
+        padding: 0 15px;
+        text-transform: uppercase;
+    }
+    .selected-facets {
+        color: #000;
+        .dimension-header { border: none; }
+        .removable {
+            background-color: #DDE1E1;
+            margin-bottom: 1px; 
+        }
+    }
 }
 
 #product-list { 
