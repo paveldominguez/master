@@ -6,11 +6,12 @@
     </div>
     <div id="sort-options" class="sort-options">
       <ul class="inline-list">
-        <li class="active hide-for-touch"><a href="#">All</a><a href="#" class="hover"></a></li>
-        <li class="hide-for-touch"><a href="#">Newest</a><a href="#" class="hover"></a></li>
-        <li class="hide-for-touch"><a href="#">Highest Rated</a><a href="#" class="hover"></a></li>
-        <li class="hide-for-touch"><a href="#">$-$$</a><a href="#" class="hover"></a></li>
-        <li class="hide-for-touch"><a href="#">$$-$</a><a href="#" class="hover"></a></li>
+        <li class="fltr-featured active hide-for-touch"><a href="#">featured</a><a href="#" class="hover"></a></li>
+        <li class="fltr-newest hide-for-touch"><a href="#">newest</a><a href="#" class="hover"></a></li>
+        <li class="fltr-price-asc hide-for-touch"><a href="#">price</a><a href="#" class="hover"></a></li>
+        <li class="fltr-price-desc hide-for-touch"><a href="#">price</a><a href="#" class="hover"></a></li>
+        <li class="fltr-high-rated hide-for-touch"><a href="#">highest rated</a><a href="#" class="hover"></a></li>
+        <li class="fltr-best-selling hide-for-touch"><a href="#">best selling</a><a href="#" class="hover"></a></li>
         <li id="drawer-filter" class="show-for-touch"><a href="#">filter</a></li>
         <li id="drawer-sort" class="show-for-touch"><a href="#">sort</a></li>
       </ul>

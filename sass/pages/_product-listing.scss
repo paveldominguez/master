@@ -1,6 +1,8 @@
 $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
 $colorDarkGray: #333;
+$colorProductListHeaderBg: #3D4146;
+$colorLightGrayBorder: #DCDEDE;
 
 $sizeHeaderFont: 80px;
 $sizeHeaderFontMed: 60px;
@@ -17,8 +19,8 @@ $leftColWidth: 255px;
     float: left; 
     max-width: $leftColWidth; 
     width: $leftColWidth; 
-    background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
-    height: 1000px; // TEMP
+    //background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
+    //height: 1000px; // TEMP
 }
 #main-column { 
     float: none; 
@@ -26,118 +28,126 @@ $leftColWidth: 255px;
     margin-left: $leftColWidth + $columnGutter;
 }
 
-#secondary-column .content-filter {
-    display: none; // TEMPORARY
-    font-family: $fontArial;
+.content-filter {
+    //font-family: $fontArial;
     padding: 15px 30px;
-    .dimension h3 a, // bad selector, fix
-    .selected-facets .facet a { // bad selector, fix
-        display: block;
-        position: relative;
-        .icon {
-            position: absolute;
-            right: 0;
-        }
-    }
-    .selected-facets {
-        margin: 0;
-        padding: 0;
-        .facet {
-            padding: 15px 0;
-            border-bottom: 1px solid #E0E0E0;
-            &.header {
-                font: {
-                    family: $fontVzwBook;
-                    size: 14px;
-                }
-                text-transform: capitalize;
-            }
-            &.removable a { // bad selector, fix
-                color: $colorVzwRed;
-                .icon {
-                    @include ui-sprite(prd-fltr-remove);
-                    width: 8px;
-                    height: 10px;
-                    top: 5px;
-                }
-            }
-        }
+    .dimension .dimension-header,
+    .facet {
+        line-height: 50px;
     }
     .dimension {
-        border-bottom: 1px solid #E0E0E0;
-        h3 { // bad selector, fix
+        .dimension-header {
+            border-bottom: 1px solid $colorLightGrayBorder;
             font: {
-                family: $fontVzwBold;
-                size: 12px;
+                family: $fontVzwBook;
+                size: 18px;
                 weight: normal;
             }
-            margin: 0;
-            padding: 15px 0;
-            text-transform: uppercase;
-        }
-        &.collapsible {
-            a { // bad selector, fix
-                color: #666; 
-                .icon { 
-                    @include ui-sprite(prd-fltr-cat-open);
-                    width: 8px;
-                    height: 7px;
-                    top: 4px;
-                }
-            }
-            &.open {
-                a .icon {
-                    @include ui-sprite(prd-fltr-cat-close);
-                    width: 8px;
-                    height: 10px;
-                    top: 5px;
-                }
-            }
-        }
-        &.brand {
-            .sub-dimension {
-                .sub-dimension-filter,
-                .sub-dimension-filter:focus {
-                    border: 1px solid #CECECE;
-                }
-                .sub-dimension-filter,
-                .facet-list {
-                    width: 90%;
-                }
-                .sub-dimension-filter {
-                    background: #FCFCFC url(../img/ui/prd-fltr-ico-mag.png) 10px center no-repeat;
-                    color: #B2B2B2;
-                    font: {
-                        size: 12px;
-                        weight: normal;
-                    }
-                    padding: 5px 0 5px 20px;
-                    height: auto;
-                }
-                .facet-list {
-                    margin: 0;
-                    padding: 0;
-                    .facet {
-                        padding: 5px 0 5px 30px;
-                        border-bottom: 1px solid #CECECE;
-                        a { // bad selector, fix
-                            font-size: 12px;
-                        }
-                        &:last-child {
-                            border: none;
-                        }
-                    }
-                }
+            text-transform: capitalize;
+            a { 
+                color: $colorDarkGray; 
             }
         }
     }
+    // }
+    // h3 a,
+    // .selected-facets .facet a {
+    //     display: block;
+    //     position: relative;
+    //     .icon {
+    //         position: absolute;
+    //         right: 0;
+    //     }
+    // }
+    // .selected-facets {
+    //     margin: 0;
+    //     padding: 0;
+    //     .facet {
+    //         padding: 15px 0;
+    //         border-bottom: 1px solid #E0E0E0;
+    //         &.header {
+    //             font: {
+    //                 family: $fontVzwBook;
+    //                 size: 14px;
+    //             }
+    //             text-transform: capitalize;
+    //         }
+    //         &.removable a {
+    //             color: $colorVzwRed;
+    //             .icon {
+    //                 @include ui-sprite(prd-fltr-remove);
+    //                 width: 8px;
+    //                 height: 10px;
+    //                 top: 5px;
+    //             }
+    //         }
+    //     }
+    // }
+    // .dimension {
+    //     border-bottom: 1px solid #E0E0E0;
+    //     &.collapsible {
+    //         a {
+    //             color: #666; 
+    //             .icon { 
+    //                 @include ui-sprite(prd-fltr-cat-open);
+    //                 width: 8px;
+    //                 height: 7px;
+    //                 top: 4px;
+    //             }
+    //         }
+    //         &.open {
+    //             a .icon {
+    //                 @include ui-sprite(prd-fltr-cat-close);
+    //                 width: 8px;
+    //                 height: 10px;
+    //                 top: 5px;
+    //             }
+    //         }
+    //     }
+    //     &.brand {
+    //         .sub-dimension {
+    //             .sub-dimension-filter,
+    //             .sub-dimension-filter:focus {
+    //                 border: 1px solid #CECECE;
+    //             }
+    //             .sub-dimension-filter,
+    //             .facet-list {
+    //                 width: 90%;
+    //             }
+    //             .sub-dimension-filter {
+    //                 background: #FCFCFC url(../img/ui/prd-fltr-ico-mag.png) 10px center no-repeat;
+    //                 color: #B2B2B2;
+    //                 font: {
+    //                     size: 12px;
+    //                     weight: normal;
+    //                 }
+    //                 padding: 5px 0 5px 20px;
+    //                 height: auto;
+    //             }
+    //             .facet-list {
+    //                 margin: 0;
+    //                 padding: 0;
+    //                 .facet {
+    //                     padding: 5px 0 5px 30px;
+    //                     border-bottom: 1px solid #CECECE;
+    //                     a {
+    //                         font-size: 12px;
+    //                     }
+    //                     &:last-child {
+    //                         border: none;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //}
 }
 
 #product-list { 
     .product-list-header {
         @include clearfix();
-        background-color: #F6F6F6;
-        border-bottom: 1px solid #DBDBDB;
+        background-color: $colorProductListHeaderBg;
+        border-bottom: 1px solid $colorLightGrayBorder;
         .wrapper {
             padding: $wrapperPaddingLarge;
         }
@@ -156,7 +166,7 @@ $leftColWidth: 255px;
                 margin: 0;
             }
             .product-filter-count {
-                color: $colorDarkGray;
+                color: #FFF;
                 font: {
                     family: $fontVzwBook;
                     weight: normal;
@@ -181,10 +191,14 @@ $leftColWidth: 255px;
                 margin: 0;
                 .hide-for-touch {
                     position: relative;
+                    margin-left: 25px;
                     &:first-child {
                         margin-left: 0;
                     }
-                    a:not(.hover) { // bad selector, fix
+                    &.active > a:not(.hover) {
+                        color: #FFF;
+                    }
+                    a:not(.hover) {
                         color: $colorLightGray;
                         font: {
                             family: $fontVzwMedium;
@@ -192,8 +206,17 @@ $leftColWidth: 255px;
                         }
                         padding: 0 0 5px;
                     }
-                    &.active > a:not(.hover) { // bad selector, fix
-                        color: $colorVzwRed;
+                    &.fltr-price-asc,
+                    &.fltr-price-desc {
+                        a:not(.hover) {
+                            padding-right: 12px;
+                        }
+                    }
+                    &.fltr-price-asc a:not(.hover) {
+                        background: transparent url(../img/ui/prd-sort-arw-up.png) right 6px no-repeat;
+                    }
+                    &.fltr-price-desc a:not(.hover) {
+                        background: transparent url(../img/ui/prd-sort-arw-dn.png) right 6px no-repeat;
                     }
                     .hover {
                         display: block;
@@ -202,11 +225,11 @@ $leftColWidth: 255px;
                         right: 0;
                         width: 0;
                         height: 2px;
-                        background-color: $colorVzwRed;
-                        @include transition(width .4s cubic-bezier(0, .50, .51, 1.00));
+                        background-color: #FFF;
+                        @include transition(width .35s cubic-bezier(0, .50, .51, 1.00));
                     }
-                    &:hover .hover, // bad selector, fix
-                    &.active .hover { // bad selector, fix
+                    &:hover .hover,
+                    &.active .hover {
                         width: 100%;
                     }
                 }
@@ -250,11 +273,15 @@ $leftColWidth: 255px;
             margin-bottom: 0;
             border-top: none;
             border-left: none;
+            .product-link { 
+                display: block; 
+                overflow: hidden;
+            }
             .product-fig {
                 @include clearfix();
                 display: block;
                 margin: 15px 0 0;
-                .product-img {
+                img {
                     display: block;
                     margin: 0 auto;
                     text-align: center;
@@ -276,7 +303,7 @@ $leftColWidth: 255px;
                 }
                 .product-fig {
                     margin: 15px 0 0;
-                    .product-img {
+                    img {
                         width: 100%;
                         max-width: 398px;
                     }
@@ -295,14 +322,14 @@ $leftColWidth: 255px;
                 .color-picker{
                     top: 5px;
                     left: 0;
-                    img { // bad selector, fix
+                    img {
                         display: block;
                     }
                 }
                 .quick-view {
                     top: 0;
                     right: 0;
-                    a { // bad selector, fix
+                    a {
                         color: $colorLightGray;
                         font-family: $fontVzwMedium;
                         font-size: 12px;
@@ -317,13 +344,13 @@ $leftColWidth: 255px;
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                li { font-family: $fontArial; } // bad selector, fix
+                li { font-family: $fontArial; }
                 .name,
                 .price {
                     font-size: 12px;
                     line-height: 15px;
                 }
-                .name a { // bad selector, fix
+                .name {
                     display: table;
                     height: 30px;
                     color: $colorLightGray;
@@ -361,7 +388,7 @@ $leftColWidth: 255px;
                     @include column(8);
                     .product-fig {
                         margin: 20px 0;
-                        .product-img { max-width: 403px; }
+                        img { max-width: 403px; }
                     }
                 }
             }
@@ -375,7 +402,7 @@ $leftColWidth: 255px;
             .product {
                 @include column(6);
                 padding: 15px;
-                .product-fig .product-img {
+                .product-fig img {
                     max-width: 70%;
                 }
                 &.featured {
@@ -383,7 +410,7 @@ $leftColWidth: 255px;
                     padding: 15px;
                     .product-fig {
                         margin: 15px 0 0;
-                        .product-img {
+                        img {
                             max-width: 70%;
                         }
                     }
@@ -427,7 +454,7 @@ $leftColWidth: 255px;
 //             .product {
 //                 // width: 33.334%; // 3 columns
 //                 @include mobileColumn(2);
-//                 .product-fig .product-img {
+//                 .product-fig img {
 //                     max-width: 65%;
 //                 }
 //                 &.featured {
@@ -436,7 +463,7 @@ $leftColWidth: 255px;
 //                     padding: 15px;
 //                     .product-fig {
 //                         margin: 15px 0 0;
-//                         .product-img {
+//                         img {
 //                             max-width: 65%;
 //                         }
 //                     }
@@ -501,7 +528,7 @@ $leftColWidth: 255px;
             .product {
                 width: 50%;
                 padding: 15px;
-                .product-fig .product-img {
+                .product-fig img {
                     max-width: 70%;
                 }
                 &.featured {
@@ -509,7 +536,7 @@ $leftColWidth: 255px;
                     padding: 15px;
                     .product-fig {
                         margin: 15px 0 0;
-                        .product-img {
+                        img {
                             max-width: 70%;
                         }
                     }
@@ -550,7 +577,7 @@ $leftColWidth: 255px;
                 }
                 text-transform: capitalize;
                 margin: 25px 0 0 0;
-                strong { // bad selector, fix
+                strong {
                     font: {
                         family: $fontVzwBold;
                     }
@@ -579,14 +606,14 @@ $leftColWidth: 255px;
                     float: left;
                     margin: 0;
                     width: 50%;
-                    .product-img {
+                    img {
                         max-width: 90%;
                     }   
                 }
                 &.featured {
                     width: 100%;
                     .product-fig {
-                        .product-img {
+                        img {
                             max-width: 90%;
                         }
                     }
