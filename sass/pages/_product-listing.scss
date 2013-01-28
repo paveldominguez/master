@@ -1,7 +1,8 @@
+$colorDarkGray: #333;
+$colorMediumGray: #656;
 $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
-$colorDarkGray: #333;
-$colorProductListHeaderBg: #3D4146;
+$colorProductListHeaderBg: #EBEEEE;
 $colorLightGrayBorder: #DCDEDE;
 
 $sizeHeaderFont: 80px;
@@ -35,6 +36,19 @@ $leftColWidth: 255px;
         position: relative;
         line-height: 50px;
     }
+    .facet,
+    .facet .facet-header,
+    .dimension-header .action {
+        display: block;
+        color: $colorMediumGray;
+        font: {
+            family: $fontVzwMedium;
+            size: 12px;
+            weight: normal;
+        }
+        text-transform: uppercase;
+    }
+    .action { float: right; }
     .dimension {
         .dimension-header {
             font: {
@@ -44,19 +58,59 @@ $leftColWidth: 255px;
             }
             margin: 0;
             text-transform: capitalize;
+            a {
+                color: $colorDarkGray;
+                &:hover {
+                    color: $colorVzwRed;
+                }
+            }
         }
         .facet-list {
             margin: 0;
             border-top: 1px solid $colorLightGrayBorder;
             border-bottom: 1px solid $colorLightGrayBorder;
+            .facet {
+                padding: 0 15px;
+            }
             &.selected-facets {
                 border: none;
+                .removable {
+                    padding-right: 0;
+                    .action {
+                        //background: transparent url(../img/ui/prd-fltr-remove.png) center center no-repeat;
+                        @include ui-sprite(prd-fltr-remove, false, 20px, 20px);
+                        padding: 25px;
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+            &.multi-select {
+                .facet {
+                    padding: 0;
+                    a {
+                        padding-left: 40px;
+                        @include ui-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                    }
+                    &.selected {
+                        a {
+                            @include ui-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                        }
+                    }
+                }
             }
         }
     }
     .facet {
-        padding: 0 15px;
         text-transform: uppercase;
+        a {
+            display: block;
+            width: 100%;
+            color: $colorLightGray;
+            &:hover {
+                color: $colorDarkGray;
+            }
+        }
     }
     .selected-facets {
         color: #000;
@@ -65,6 +119,17 @@ $leftColWidth: 255px;
             background-color: #DDE1E1;
             margin-bottom: 1px; 
         }
+    }
+    .section-header h3 {
+        border-bottom: 2px solid $colorLightGrayBorder;
+        font: {
+            family: $fontVzwBold;
+            size: 18px;
+            weight: normal;
+        }
+        line-height: 20px;
+        margin: 20px 0 10px;
+        padding-bottom: 5px;
     }
 }
 
@@ -91,7 +156,7 @@ $leftColWidth: 255px;
                 margin: 0;
             }
             .product-filter-count {
-                color: #FFF;
+                color: $colorDarkGray;
                 font: {
                     family: $fontVzwBook;
                     weight: normal;
@@ -121,10 +186,10 @@ $leftColWidth: 255px;
                         margin-left: 0;
                     }
                     &.active > a:not(.hover) {
-                        color: #FFF;
+                        color: $colorVzwRed;
                     }
                     a:not(.hover) {
-                        color: $colorLightGray;
+                        color: $colorDarkGray;
                         font: {
                             family: $fontVzwMedium;
                             size: 12px;
@@ -138,10 +203,12 @@ $leftColWidth: 255px;
                         }
                     }
                     &.fltr-price-asc a:not(.hover) {
-                        background: transparent url(../img/ui/prd-sort-arw-up.png) right 6px no-repeat;
+                        //background: transparent url(../img/ui/prd-sort-arw-up.png) right 6px no-repeat;
+                        @include ui-sprite(prd-sort-arw-up, false, 36px, 6px);
                     }
                     &.fltr-price-desc a:not(.hover) {
-                        background: transparent url(../img/ui/prd-sort-arw-dn.png) right 6px no-repeat;
+                        //background: transparent url(../img/ui/prd-sort-arw-dn.png) right 6px no-repeat;
+                        @include ui-sprite(prd-sort-arw-dn, false, 36px, 6px);
                     }
                     .hover {
                         display: block;
@@ -150,8 +217,8 @@ $leftColWidth: 255px;
                         right: 0;
                         width: 0;
                         height: 2px;
-                        background-color: #FFF;
-                        @include transition(width .35s cubic-bezier(0, .50, .51, 1.00));
+                        background-color: $colorVzwRed;
+                        @include transition(width .25s cubic-bezier(0, .50, .51, 1.00));
                     }
                     &:hover .hover,
                     &.active .hover {
