@@ -54,12 +54,15 @@ var contentFilter = (function() {
     var _contentFilter = {
         init : function() {
             var cf = $jQ('#content-filter'),
+            fs = $jQ('#filter-selections'),
             collapsible = cf.find('.collapsible .dimension-header'),
-            multi = cf.find('.multi-select .facet');
+            multi = cf.find('.multi-select .facet'),
+            removable = fs.find('.removable');
 
             collapsible.not(':first').next().toggle('slow'); // collpase all but first dimension
             collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
             multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
+            removable.on('click', _contentFilter.removableHandler);
         },
         toggleDimension : function(e) {
             e.preventDefault();
@@ -68,6 +71,18 @@ var contentFilter = (function() {
         multiFacetHandler : function(e) {
             e.preventDefault();
             $jQ(this).toggleClass('selected');
+        },
+        removableHandler : function(e) {
+            e.preventDefault();
+            $jQ(this).animate(
+                {
+                width : '-=0'
+                },
+                'fast',
+                function() {
+                    $jQ(this).remove();
+                }
+            );
         }
     };
     return _contentFilter;
@@ -83,14 +98,6 @@ VZ = {
     common : {
         init : function() {
             // initialize things that are used on every page
-            // REMOVE THIS CODE LATER ***
-            var doc = $jQ(window);
-            $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
-                debounce(function() {
-                    if(typeof console !== undefined) console.log('Document width: %dpx', doc.width());
-                }, 200);
-            });
-            // END REMOVE THIS CODE LATER ***
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions
