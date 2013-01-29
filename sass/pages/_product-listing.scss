@@ -78,7 +78,9 @@ $leftColWidth: 255px;
             margin: 0;
             //border-top: 1px solid $colorLightGrayBorder;
             border-bottom: 1px solid $colorLightGrayBorder;
+            overflow: hidden;
             .facet {
+                border: none;
                 padding: 0 15px;
             }
             &.selected-facets {
@@ -90,6 +92,31 @@ $leftColWidth: 255px;
                         padding: 25px;
                         width: 10px;
                         height: 10px;
+                    }
+                }
+            }
+            &.colors {
+                padding: 25px 0;
+                .facet {
+                    width: 48px;
+                    height: 48px;
+                    float: left;
+                    border: {
+                        right: 1px solid #FFF;
+                        bottom: 1px solid #FFF;
+                    };
+                    text-indent: -9999px;
+                    padding: 0;
+                    &.black { background-color: #000; }
+                    &.gray { background-color: #b1b0b0; }
+                    &.white { background-color: #FFF; }
+                    &.yellow { background-color: #fabb00; }
+                    &.red { background-color: #d01900; }
+                    &.purple { background-color: #6a48b8; }
+                    &.blue { background-color: #51b0d8; }
+                    &.green { background-color: #18a24f; }
+                    a {
+                        display: block;
                     }
                 }
             }
@@ -108,10 +135,46 @@ $leftColWidth: 255px;
                     }
                 }
             }
+            .icon {
+                padding: 0;
+                a {
+                    @include product-filter-sprite(prd-fltr-icon, false, 10px, 15px);
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .icon {
+        padding: 0;
+        a {
+            padding-left: 45px;
+            margin-bottom: 20px;
+            background: transparent url(../img/sprites/product-filter/prd-fltr-icon.png) 10px 0 no-repeat;
+            //@include product-filter-sprite(prd-fltr-icon, false, 10px, 4px);
+            &:hover {
+                background-image: url(../img/sprites/product-filter/prd-fltr-icon-red.png);
+                .facet-header {
+                    color: $colorVzwRed;
+                }
+            }
+            .facet-header {
+                margin: 15px 0 5px;
+                padding-top: 10px;
+            }
+            .facet-desc {
+                font: {
+                    family: $fontArial;
+                    size: 12px;
+                    style: normal;
+                }
+                margin-bottom:0;
+                text-transform: none;
+            }
         }
     }
     .facet {
         text-transform: uppercase;
+        border-bottom: 1px solid $colorLightGrayBorder;
         a {
             display: block;
             width: 100%;
