@@ -35,34 +35,40 @@ var productGrid = {
             mouseenter : function() {
                 $jQ(this).addClass('over');
                 $jQ(this).find('.product-hover').fadeIn('fast');
-                $jQ(this).find('.rating img').attr('src','img/stars.png'); // temporary..
             },
             mouseleave : function() {
                 $jQ(this).removeClass('over');
                 $jQ(this).find('.product-hover').fadeOut('fast');
-                $jQ(this).find('.rating img').attr('src','img/stars-gray.png'); // temporary..
-            },
-            click : function(e) {
-                if(typeof console !== undefined) console.log(e.target);
             }
         });
     }
 };
 
 var contentFilter = (function() {
-    // any private functions would go here..
+    var $cf = $jQ('#content-filter');
     var _contentFilter = {
         init : function() {
-            var cf = $jQ('#content-filter'),
-            fs = $jQ('#filter-selections'),
-            collapsible = cf.find('.collapsible .dimension-header'),
-            multi = cf.find('.multi-select .facet'),
-            removable = fs.find('.removable');
+            var $fs = $jQ('#filter-selections'),
+            $collapsible = $cf.find('.collapsible .dimension-header'),
+            $multi = $cf.find('.multi-select .facet'),
+            $removable = $fs.find('.removable');
 
-            collapsible.not(':first').next().toggle('slow'); // collpase all but first dimension
-            collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
-            multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
-            removable.on('click', _contentFilter.removableHandler);
+            $cf.find('.facet, .dimension-header').on('click', _contentFilter.clickBridge);
+
+            $jQ('#clear-selections').on('click', function(e) {
+                e.preventDefault();
+                $removable.each(function() {
+                    $jQ(this).fadeOut('medium', function() { $jQ(this).remove(); });
+                });
+            });
+            $collapsible.not(':first').next().toggle('slow'); // collpase all but first dimension
+            $collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
+            $multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
+            $removable.on('click', _contentFilter.removableHandler);
+        },
+        clickBridge : function(e) {
+            e.preventDefault();
+            
         },
         toggleDimension : function(e) {
             e.preventDefault();
@@ -76,9 +82,10 @@ var contentFilter = (function() {
             e.preventDefault();
             $jQ(this).animate(
                 {
-                width : '-=0'
+                    left : -($cf.width()),
+                    opacity : 0
                 },
-                'fast',
+                'slow',
                 function() {
                     $jQ(this).remove();
                 }
