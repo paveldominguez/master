@@ -13,8 +13,7 @@
   <title>Verizon Wireless | Product Listing</title>
 
   <!-- Included CSS Files (Uncompressed) -->
-  <!--
-  <link rel="stylesheet" href="stylesheets/foundation.css">
+  <!--  <link rel="stylesheet" href="stylesheets/foundation.css">
   -->
   
   <!-- Included CSS Files (Compressed) -->
@@ -32,59 +31,25 @@
   <section class="product-list-section">
 
     <!-- Begin Product List Header -->
-    <?php include('inc/fragments/search.results.header.php');?>
+    <?php include('inc/fragments/search.input.field.php');?>
     <!-- End Product List Header -->
 
     <div class="wrapper">
 
       <!-- Being Left Column -->
-      <aside id="left-column" class="left-column">
+      <aside id="secondary-column" class="secondary-column">
         <?php include('inc/product-filter.html'); ?>
       </aside>
       <!-- End Left Column -->
 
       <!-- Begin Main Content Container -->      
-      <div id="main" class="main">
-
-        <!-- Begin Search Sorting -->
-        <section class="search-sorting">
-          <ul>
-            <li><a href="" title="">Featured</a></li>
-            <li><a href="" title="">Newest</a></li>
-            <li><a href="" title="">$UP</a></li>
-            <li><a href="" title="">$DOWN</a></li>
-            <li><a href="" title="">Highest Rated</a></li>
-            <li><a href="" title="">Bestselling</a></li>
-            <li><a href="" title="">Relevancy</a></li>
-          </ul>
-
-        </section>
+      <div id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
         <section class="products">
           <ul id="product-grid" class="product-grid">
-            <li class="featured product">
-              <a href="#">
-                <figure>
-                  <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
-                </figure>
-              </a>
-              <div class="product-hover">
-                <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
-                <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
-              </div>
-              <ul class="product-detail">
-                <li class="name"><a href="#"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></a></li>
-                <li class="price">$299.00</li>
-                <li class="rating"><img src="img/stars-gray.png" /></li>
-              </ul>
-            </li>
-
-            <?php
-              $productCount = 20;
-              include('inc/fragments/product.list.item.php');
-            ?>
-
+            <?php include('inc/fragments/product.featured.item.php');?>
+            <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
           </ul>
         </section>
         <!-- End Product Listing -->
@@ -93,11 +58,9 @@
       <!-- End Main Content Container -->
 
     </div>
-</section>
+  </section>
 
   <!-- End Grid Section -->
-
-
 
   <!-- Footer -->
 
