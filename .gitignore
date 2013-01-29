@@ -2,3 +2,5 @@
 .sass-cache
 /js/scripts-min.js
 /css/styles.css
+/compass_app_log.txt
+/.htpasswd

@@ -1,6 +1,9 @@
+$colorDarkGray: #333;
+$colorMediumGray: #656;
 $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
-$colorDarkGray: #333;
+$colorProductListHeaderBg: #EBEEEE;
+$colorLightGrayBorder: #DCDEDE;
 
 $sizeHeaderFont: 80px;
 $sizeHeaderFontMed: 60px;
@@ -13,142 +16,135 @@ $wrapperPaddingSmall: 20px 15px;
 
 $leftColWidth: 255px; 
 
-.left-column { 
+#secondary-column { 
     float: left; 
     max-width: $leftColWidth; 
     width: $leftColWidth; 
-    background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
-    height: 1000px; // TEMP
+    //background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
+    //height: 1000px; // TEMP
 }
-.main { 
+#main-column { 
     float: none; 
     width: auto; 
     margin-left: $leftColWidth + $columnGutter;
 }
- 
-.product-list .product-list-header .wrapper {
-    position: relative;
-}
 
-.left-column .content-filter {
-    display: none; // TEMPORARY
-    font-family: $fontArial;
+.content-filter {
     padding: 15px 30px;
-    .dimension h3 a,
-    .selected-facets .facet a {
-        display: block;
+    .facet,
+    .dimension-header {
         position: relative;
-        .icon {
-            position: absolute;
-            right: 0;
-        }
+        line-height: 50px;
     }
-    .selected-facets {
-        margin: 0;
-        padding: 0;
-        .facet {
-            padding: 15px 0;
-            border-bottom: 1px solid #E0E0E0;
-            &.header {
-                font: {
-                    family: $fontVzwBook;
-                    size: 14px;
-                }
-                text-transform: capitalize;
-            }
-            &.removable a {
-                color: $colorVzwRed;
-                .icon {
-                    @include ui-sprite(prd-fltr-remove);
-                    width: 8px;
-                    height: 10px;
-                    top: 5px;
-                }
-            }
+    .facet,
+    .facet .facet-header,
+    .dimension-header .action {
+        display: block;
+        color: $colorMediumGray;
+        font: {
+            family: $fontVzwMedium;
+            size: 12px;
+            weight: normal;
         }
+        text-transform: uppercase;
     }
+    .action { float: right; }
     .dimension {
-        border-bottom: 1px solid #E0E0E0;
-        h3 {
+        .dimension-header {
             font: {
-                family: $fontVzwBold;
-                size: 12px;
+                family: $fontVzwBook;
+                size: 18px;
                 weight: normal;
             }
             margin: 0;
-            padding: 15px 0;
-            text-transform: uppercase;
-        }
-        &.collapsible {
-            a { 
-                color: #666; 
-                .icon { 
-                    @include ui-sprite(prd-fltr-cat-open);
-                    width: 8px;
-                    height: 7px;
-                    top: 4px;
-                }
-            }
-            &.open {
-                a .icon {
-                    @include ui-sprite(prd-fltr-cat-close);
-                    width: 8px;
-                    height: 10px;
-                    top: 5px;
+            text-transform: capitalize;
+            a {
+                color: $colorDarkGray;
+                &:hover {
+                    color: $colorVzwRed;
                 }
             }
         }
-        &.brand {
-            .sub-dimension {
-                .sub-dimension-filter,
-                .sub-dimension-filter:focus {
-                    border: 1px solid #CECECE;
-                }
-                .sub-dimension-filter,
-                .facet-list {
-                    width: 90%;
-                }
-                .sub-dimension-filter {
-                    background: #FCFCFC url(../img/ui/prd-fltr-ico-mag.png) 10px center no-repeat;
-                    color: #B2B2B2;
-                    font: {
-                        size: 12px;
-                        weight: normal;
+        .facet-list {
+            margin: 0;
+            border-top: 1px solid $colorLightGrayBorder;
+            border-bottom: 1px solid $colorLightGrayBorder;
+            .facet {
+                padding: 0 15px;
+            }
+            &.selected-facets {
+                border: none;
+                .removable {
+                    padding-right: 0;
+                    .action {
+                        //background: transparent url(../img/ui/prd-fltr-remove.png) center center no-repeat;
+                        @include ui-sprite(prd-fltr-remove, false, 20px, 20px);
+                        padding: 25px;
+                        width: 10px;
+                        height: 10px;
                     }
-                    padding: 5px 0 5px 20px;
-                    height: auto;
                 }
-                .facet-list {
-                    margin: 0;
+            }
+            &.multi-select {
+                .facet {
                     padding: 0;
-                    .facet {
-                        padding: 5px 0 5px 30px;
-                        border-bottom: 1px solid #CECECE;
+                    a {
+                        padding-left: 40px;
+                        @include ui-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                    }
+                    &.selected {
                         a {
-                            font-size: 12px;
-                        }
-                        &:last-child {
-                            border: none;
+                            @include ui-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
                         }
                     }
                 }
             }
         }
     }
+    .facet {
+        text-transform: uppercase;
+        a {
+            display: block;
+            width: 100%;
+            color: $colorLightGray;
+            &:hover {
+                color: $colorDarkGray;
+            }
+        }
+    }
+    .selected-facets {
+        color: #000;
+        .dimension-header { border: none; }
+        .removable {
+            background-color: #DDE1E1;
+            margin-bottom: 1px; 
+        }
+    }
+    .section-header h3 {
+        border-bottom: 2px solid $colorLightGrayBorder;
+        font: {
+            family: $fontVzwBold;
+            size: 18px;
+            weight: normal;
+        }
+        line-height: 20px;
+        margin: 20px 0 10px;
+        padding-bottom: 5px;
+    }
 }
 
-.product-list { 
+#product-list { 
     .product-list-header {
         @include clearfix();
-        background-color: #F6F6F6;
-        border-bottom: 1px solid #DBDBDB;
+        background-color: $colorProductListHeaderBg;
+        border-bottom: 1px solid $colorLightGrayBorder;
         .wrapper {
             padding: $wrapperPaddingLarge;
         }
         .product-list-heading {
             @include clearfix();
             float: left;
-            h1.product-list-category {
+            .product-list-category {
                 font: {;
                     family: $fontVzwLight;
                     size: $sizeHeaderFont;
@@ -159,7 +155,7 @@ $leftColWidth: 255px;
                 line-height: $sizeHeaderFont;
                 margin: 0;
             }
-            h3.product-filter-count {
+            .product-filter-count {
                 color: $colorDarkGray;
                 font: {
                     family: $fontVzwBook;
@@ -181,23 +177,38 @@ $leftColWidth: 255px;
             right: 30px;
             text-align: center;  
             text-transform: uppercase;
-            ul.inline-list {    
+            .inline-list {    
                 margin: 0;
-                li.hide-for-touch {
+                .hide-for-touch {
                     position: relative;
+                    margin-left: 25px;
                     &:first-child {
                         margin-left: 0;
                     }
+                    &.active > a:not(.hover) {
+                        color: $colorVzwRed;
+                    }
                     a:not(.hover) {
-                        color: $colorLightGray;
+                        color: $colorDarkGray;
                         font: {
                             family: $fontVzwMedium;
                             size: 12px;
                         }
                         padding: 0 0 5px;
                     }
-                    &.active > a:not(.hover) {
-                        color: $colorVzwRed;
+                    &.fltr-price-asc,
+                    &.fltr-price-desc {
+                        a:not(.hover) {
+                            padding-right: 12px;
+                        }
+                    }
+                    &.fltr-price-asc a:not(.hover) {
+                        //background: transparent url(../img/ui/prd-sort-arw-up.png) right 6px no-repeat;
+                        @include ui-sprite(prd-sort-arw-up, false, 36px, 6px);
+                    }
+                    &.fltr-price-desc a:not(.hover) {
+                        //background: transparent url(../img/ui/prd-sort-arw-dn.png) right 6px no-repeat;
+                        @include ui-sprite(prd-sort-arw-dn, false, 36px, 6px);
                     }
                     .hover {
                         display: block;
@@ -205,9 +216,9 @@ $leftColWidth: 255px;
                         bottom: 0;
                         right: 0;
                         width: 0;
-                        height: 3px;
+                        height: 2px;
                         background-color: $colorVzwRed;
-                        @include transition(width .4s cubic-bezier(0, .50, .51, 1.00));
+                        @include transition(width .25s cubic-bezier(0, .50, .51, 1.00));
                     }
                     &:hover .hover,
                     &.active .hover {
@@ -248,17 +259,21 @@ $leftColWidth: 255px;
             position: relative;
             float: left;  
             margin: 0 0 30px 0;
-            background: none; 
+            background: none;
             border: 1px solid #CCC;
             border-collapse: collapse;
             margin-bottom: 0;
             border-top: none;
             border-left: none;
-            figure {
+            .product-link { 
+                display: block; 
+                overflow: hidden;
+            }
+            .product-fig {
                 @include clearfix();
                 display: block;
                 margin: 15px 0 0;
-                img { 
+                img {
                     display: block;
                     margin: 0 auto;
                     text-align: center;
@@ -278,7 +293,7 @@ $leftColWidth: 255px;
                         color: $colorFeaturedPrice;
                     }
                 }
-                figure {
+                .product-fig {
                     margin: 15px 0 0;
                     img {
                         width: 100%;
@@ -327,7 +342,7 @@ $leftColWidth: 255px;
                     font-size: 12px;
                     line-height: 15px;
                 }
-                .name a {
+                .name {
                     display: table;
                     height: 30px;
                     color: $colorLightGray;
@@ -353,17 +368,17 @@ $leftColWidth: 255px;
 }
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
-    .product-list { 
+    #product-list { 
         .products { 
             .product {
                 @include column(4); 
                 padding: 15px;
-                figure {
+                .product-fig {
                     margin: 20px 0 10px;
                 }
                 &.featured { 
                     @include column(8);
-                    figure {
+                    .product-fig {
                         margin: 20px 0;
                         img { max-width: 403px; }
                     }
@@ -374,18 +389,18 @@ $leftColWidth: 255px;
 }
 
 @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
-    .product-list { 
+    #product-list { 
         .products { 
             .product {
                 @include column(6);
                 padding: 15px;
-                figure img {
+                .product-fig img {
                     max-width: 70%;
                 }
                 &.featured {
                     @include column(6);
                     padding: 15px;
-                    figure {
+                    .product-fig {
                         margin: 15px 0 0;
                         img {
                             max-width: 70%;
@@ -406,62 +421,64 @@ $leftColWidth: 255px;
     }
 }
 
-@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
-    .left-column { display: none; }
-    .main { margin: 0; }
-    .product-list {
-        .product-list-header {
-            .wrapper {
-                padding: $wrapperPaddingSmall;
-            }
-            .sort-options {
-                right: 15px;
-                bottom: 10px;
-                ul { 
-                    li.hide-for-touch {
-                        display: none !important;
-                    }
-                    .show-for-touch {
-                        display: block !important;
-                    }
-                }
-            }
-        }
-        .products { 
-            .product {
-                width: 33.334%;
-                figure img {
-                    max-width: 65%;
-                }
-                &.featured {
-                    width: 33.334%;
-                    padding: 15px;
-                    figure {
-                        margin: 15px 0 0;
-                        img {
-                            max-width: 65%;
-                        }
-                    }
-                    .product-detail {
-                        padding: 0;
-                    }
-                }
-            }
-        }
-    }
-}
+// @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
+//     #secondary-column { display: none; }
+//     #main-column { margin: 0; }
+//     .product-list {
+//         .product-list-header {
+//             .wrapper {
+//                 padding: $wrapperPaddingSmall;
+//             }
+//             .sort-options {
+//                 right: 15px;
+//                 bottom: 10px;
+//                 ul { 
+//                     li.hide-for-touch {
+//                         display: none !important;
+//                     }
+//                     .show-for-touch {
+//                         display: block !important;
+//                     }
+//                 }
+//             }
+//         }
+//         .products { 
+//             .product {
+//                 // width: 33.334%; // 3 columns
+//                 @include mobileColumn(2);
+//                 .product-fig img {
+//                     max-width: 65%;
+//                 }
+//                 &.featured {
+//                     // width: 33.334%; // 3 columns
+//                     @include mobileColumn(2);
+//                     padding: 15px;
+//                     .product-fig {
+//                         margin: 15px 0 0;
+//                         img {
+//                             max-width: 65%;
+//                         }
+//                     }
+//                     .product-detail {
+//                         padding: 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    .left-column {
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileSmall + 1) {
+    #secondary-column {
         display: none;
     }
-    .main { margin-left: 0; }
-    .product-list { 
+    #main-column { margin-left: 0; }
+    #product-list { 
         margin: 0;
         .product-list-header {
             .wrapper { padding: $wrapperPaddingSmall; }
-            .product-list-heading h1.product-list-category {
-                font: {;
+            .product-list-heading .product-list-category {
+                font: {
                     family: $fontVzwLight;
                     size: $sizeHeaderFontMed;
                     weight: normal;
@@ -471,7 +488,7 @@ $leftColWidth: 255px;
                 line-height: $sizeHeaderFont;
                 margin: 0;
             }
-            h3.product-filter-count {
+            .product-filter-count {
                 color: $colorDarkGray;
                 font: {
                     family: $fontVzwBook;
@@ -489,7 +506,7 @@ $leftColWidth: 255px;
             .sort-options {
                 right: 15px;
                 bottom: 10px;
-                ul { 
+                ul { // potential for bad selector if styles are applied here...
                     li.hide-for-touch {
                         display: none !important;
                     }
@@ -503,13 +520,13 @@ $leftColWidth: 255px;
             .product {
                 width: 50%;
                 padding: 15px;
-                figure img {
+                .product-fig img {
                     max-width: 70%;
                 }
                 &.featured {
                     width: 50%;
                     padding: 15px;
-                    figure {
+                    .product-fig {
                         margin: 15px 0 0;
                         img {
                             max-width: 70%;
@@ -519,22 +536,20 @@ $leftColWidth: 255px;
                         padding: 0;
                     }
                 }
-                .product-detail {
-                    
-                }
+                // .product-detail {}
             }
         }
     }
 }
-@media only screen and (max-width: $screenMobileSmall) {
-    .left-column {
-        display: none !important;
+@media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+    #secondary-column {
+        display: none;
     }
-    .main { margin-left: 0; }
-    .product-list {
+    #main-column { margin-left: 0; }
+    #product-list {
         .product-list-header {
             .wrapper { padding: $wrapperPaddingSmall; }
-            .product-list-heading h1.product-list-category {
+            .product-list-heading .product-list-category {
                 font: {;
                     family: $fontVzwLight;
                     size: $sizeHeaderFontSmall;
@@ -545,7 +560,7 @@ $leftColWidth: 255px;
                 line-height: $sizeHeaderFontSmall;
                 margin: 0;
             }
-            h3.product-filter-count {
+            .product-filter-count {
                 color: $colorDarkGray;
                 font: {
                     family: $fontVzwBook;
@@ -563,7 +578,7 @@ $leftColWidth: 255px;
             .sort-options {
                 right: 15px;
                 bottom: 10px;
-                ul { 
+                ul { // potential for bad selector if styles are applied
                     li.hide-for-touch {
                         display: none !important;
                     }
@@ -576,8 +591,9 @@ $leftColWidth: 255px;
         .products {
             .product {
                 @include clearfix();
+                width: 100%;
                 padding: 15px;
-                figure {
+                .product-fig {
                     clear: none;
                     float: left;
                     margin: 0;
@@ -587,7 +603,8 @@ $leftColWidth: 255px;
                     }   
                 }
                 &.featured {
-                    figure {
+                    width: 100%;
+                    .product-fig {
                         img {
                             max-width: 90%;
                         }

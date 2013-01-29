@@ -12,7 +12,7 @@ $fontVzwLight: "Verizon Apex Light";
 $fontVzwMedium: "Verizon Apex Medium";
 
 // Color Variables
-$colorVzwRed: #C00;
+$colorVzwRed: #D00505;
 $colorVzwLogoBg: #B30000;
 $colorVzwNavBorder: #F6F6F6;
 $colorNavLinks: #666;
@@ -36,17 +36,12 @@ h1,h2,h3,h4,h5,h6 {
 
 .wrapper {
     @include clearfix();
+    position: relative;
     margin: 0 auto;
     padding: 0 $columnGutter;
     max-width: $screenXlarge - $columnGutter;
 }
-
 .top-bar {
-    font: {
-        family: $fontVzwMedium;
-        size: 12px;
-    }
-    margin: 0;
     ul {
         > li:not(.name):hover, 
         > li:not(.name).active, 
@@ -62,12 +57,17 @@ h1,h2,h3,h4,h5,h6 {
         }
     }
 }
-.header { 
+#site-header { 
     .top-bar {
         background-color: white;
         border-bottom: 1px solid $colorVzwNavBorder;
         height: 60px;
         line-height: 60px;
+        font: {
+            family: $fontVzwMedium;
+            size: 12px;
+        }
+        margin: 0;
         > ul {
             height: 60px;
             line-height: 60px;
@@ -82,6 +82,18 @@ h1,h2,h3,h4,h5,h6 {
                         right: 10px;
                     }
                 }
+            }
+            > li:not(.name):hover, 
+            > li:not(.name).active, 
+            > li:not(.name):focus {
+                background: none; 
+                border-bottom: inherit;
+                a { 
+                    color: $colorNavLinks;
+                }
+            }
+            > li.has-dropdown a:after {
+                border-color: $colorNavLinks transparent transparent transparent;
             }
             > li {
                 min-width: 60px;
@@ -186,7 +198,7 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    .header .top-bar {
+    #site-header .top-bar {
         > ul > li {
             min-width: 45px;
             &.logo {
@@ -207,7 +219,7 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 @media only screen and (max-width: $screenMobileSmall) {
-    .header .top-bar {
+    #site-header .top-bar {
         > ul > li {
             &:not(.logo) {
                 padding: {
