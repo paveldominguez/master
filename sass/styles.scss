@@ -162,7 +162,7 @@ h1,h2,h3,h4,h5,h6 {
                 &.site-search {
                     font-family: $fontVzwMedium;
                     input[type="text"] {
-                        background: transparent url(../img/ui/nav-ico-mag.png) 65px center no-repeat;
+                        background: transparent url(../img/sprites/nav/nav-ico-mag.png) 65px center no-repeat;
                         border: 1px solid #E1E1E1;
                         @include border-radius(2px);
                         box-shadow: none;
@@ -185,13 +185,13 @@ h1,h2,h3,h4,h5,h6 {
                     }
                 }
                 &.location a {
-                    background: transparent url(../img/ui/nav-ico-location.png) center center no-repeat;
+                    background: transparent url(../img/sprites/nav/nav-ico-location.png) center center no-repeat;
                 }
                 &.help a {
-                    background: transparent url(../img/ui/nav-ico-help.png) center center no-repeat;
+                    background: transparent url(../img/sprites/nav/nav-ico-help.png) center center no-repeat;
                 }
                 &.shopping-bag a {
-                    background: transparent url(../img/ui/nav-ico-shopping-bag.png) center center no-repeat;
+                    background: transparent url(../img/sprites/nav/nav-ico-shopping-bag.png) center center no-repeat;
                 }
             }
         }

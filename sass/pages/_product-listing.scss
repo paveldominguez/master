@@ -19,9 +19,7 @@ $leftColWidth: 255px;
 #secondary-column { 
     float: left; 
     max-width: $leftColWidth; 
-    width: $leftColWidth; 
-    //background: transparent url(../img/temp-filter.jpg) top left no-repeat; // TEMP
-    //height: 1000px; // TEMP
+    width: $leftColWidth;
 }
 #main-column { 
     float: none; 
@@ -51,6 +49,7 @@ $leftColWidth: 255px;
     .action { float: right; }
     .dimension {
         .dimension-header {
+            border-bottom: 1px solid $colorLightGrayBorder;
             font: {
                 family: $fontVzwBook;
                 size: 18px;
@@ -59,15 +58,25 @@ $leftColWidth: 255px;
             margin: 0;
             text-transform: capitalize;
             a {
+                display: block;
                 color: $colorDarkGray;
+                .action {
+                    @include product-filter-sprite(prd-fltr-accordion-arrow, false, 20px, 25px);
+                    padding: 25px;
+                    width: 10px;
+                    height: 5px;
+                }
                 &:hover {
                     color: $colorVzwRed;
+                    .action {
+                    @include product-filter-sprite(prd-fltr-accordion-arrow-over, false, 20px, 25px);
+                    }
                 }
             }
         }
         .facet-list {
             margin: 0;
-            border-top: 1px solid $colorLightGrayBorder;
+            //border-top: 1px solid $colorLightGrayBorder;
             border-bottom: 1px solid $colorLightGrayBorder;
             .facet {
                 padding: 0 15px;
@@ -77,8 +86,7 @@ $leftColWidth: 255px;
                 .removable {
                     padding-right: 0;
                     .action {
-                        //background: transparent url(../img/ui/prd-fltr-remove.png) center center no-repeat;
-                        @include ui-sprite(prd-fltr-remove, false, 20px, 20px);
+                        @include product-filter-sprite(prd-fltr-remove, false, 20px, 20px);
                         padding: 25px;
                         width: 10px;
                         height: 10px;
@@ -90,11 +98,12 @@ $leftColWidth: 255px;
                     padding: 0;
                     a {
                         padding-left: 40px;
-                        @include ui-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                        @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
                     }
                     &.selected {
                         a {
-                            @include ui-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                            @include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                            color: #000;
                         }
                     }
                 }
@@ -204,11 +213,11 @@ $leftColWidth: 255px;
                     }
                     &.fltr-price-asc a:not(.hover) {
                         //background: transparent url(../img/ui/prd-sort-arw-up.png) right 6px no-repeat;
-                        @include ui-sprite(prd-sort-arw-up, false, 36px, 6px);
+                        @include product-listing-sprite(prd-sort-arw-up, false, 36px, 6px);
                     }
                     &.fltr-price-desc a:not(.hover) {
                         //background: transparent url(../img/ui/prd-sort-arw-dn.png) right 6px no-repeat;
-                        @include ui-sprite(prd-sort-arw-dn, false, 36px, 6px);
+                        @include product-listing-sprite(prd-sort-arw-dn, false, 36px, 6px);
                     }
                     .hover {
                         display: block;
@@ -232,7 +241,7 @@ $leftColWidth: 255px;
                     margin-left: 10px;
                     padding: 10px;
                     a {
-                        background: transparent url(../img/ui/prd-fltr-btn-arw.png) right 10px no-repeat;
+                        background: transparent url(../img/sprites/product-filter/prd-fltr-btn-arw.png) right 10px no-repeat;
                         padding-right: 20px;
                         color: #333;
                         font-family: $fontVzwBook;

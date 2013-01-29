@@ -1,6 +1,18 @@
-$ui-spacing: 25px;
-@import "ui/*.png";
-@include all-ui-sprites;
+// $ui-spacing: 25px;
+// @import "ui/*.png";
+// @include all-ui-sprites;
+
+$nav-spacing: 15px;
+@import "sprites/nav/*.png";
+@include all-nav-sprites;
+
+$product-filter-spacing: 25px;
+@import "sprites/product-filter/*.png";
+@include all-product-filter-sprites;
+
+$product-listing-spacing: 25px;
+@import "sprites/product-listing/*.png";
+@include all-product-listing-sprites;
 
 $pdp-spacing: 15px;
 @import "pdp/*.png";

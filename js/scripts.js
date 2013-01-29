@@ -29,7 +29,7 @@ var debounce = (function() {
 /*
  * Page Specific Functionality
  */
-var productDetail = {
+var productGrid = {
     productHover : function() {
         $jQ('#product-grid .product').on({
             mouseenter : function() {
@@ -49,6 +49,29 @@ var productDetail = {
     }
 };
 
+var contentFilter = (function() {
+    // any private functions would go here..
+    var _contentFilter = {
+        init : function() {
+            var cf = $jQ('#content-filter'),
+            collapsible = cf.find('.collapsible .dimension-header'),
+            multi = cf.find('.multi-select .facet');
+
+            collapsible.not(':first').next().toggle('slow'); // collpase all but first dimension
+            collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
+            multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
+        },
+        toggleDimension : function(e) {
+            e.preventDefault();
+            $jQ(this).next().toggle('fast');
+        },
+        multiFacetHandler : function(e) {
+            e.preventDefault();
+            $jQ(this).toggleClass('selected');
+        }
+    };
+    return _contentFilter;
+})();
 /*
  * Enable and Fire Page Specific Functionality
  */
@@ -59,6 +82,7 @@ VZ = {
     },
     common : {
         init : function() {
+            // initialize things that are used on every page
             // REMOVE THIS CODE LATER ***
             var doc = $jQ(window);
             $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
@@ -75,8 +99,9 @@ VZ = {
     'product-list' : {
         init : function() {
             if(!isTouch) {
-                productDetail.productHover();
+                productGrid.productHover();
             }
+            contentFilter.init();
         }
     }
 };
