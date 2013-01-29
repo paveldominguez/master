@@ -4,6 +4,9 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+
+
 <head>
   <meta charset="utf-8" />
 
@@ -13,14 +16,22 @@
   <title>Verizon Wireless | Product Detail</title>
 
   <!-- Included CSS Files (Uncompressed) -->
+  <link rel="stylesheet" href="css/flexslider.css" type="text/css">
+  
   <!-- Included CSS Files (Compressed) -->
   <!-- <link rel="stylesheet" href="css/app.css"> -->
 
   <link rel="stylesheet" href="css/styles.css">
+  
   <script src="js/foundation/modernizr.foundation.js"></script>
+  
+   
+  
+  
+  
 </head>
 
-<body class="product-detail">
+<body id="pdp" class="product-detail">
 
 
   <?php include('inc/header.html'); ?>
@@ -30,113 +41,128 @@
   <!-- Main Grid Section -->
 
 <section id="pdp-hero"><!-------------------------BEGIN PDP HERO--------------------->
-	<div class="section-wrap">
 
     <div id="carousel-block">
       
-      		<div id="the-carousel">
+      	<div id="carousel">
       		
-      			<div class="focus">
-        			<img class="current-focus" src="img/pdp-present-prod.png"/>
-        		</div><!-- end focus -->
-        		
-        		
-        		<div class="thumb-block">
-        			
-          			<ul class="thumbs">
-              			<li class="view-1"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-2"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-3"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="view-4"><img src="img/pdp-present-prod.png"/></li>
-              			<li class="zoom">
-              				<div class="zoom-icon"></div>
-              			</li>
-            		</ul><!-- end thumbs -->
-            		
-        		</div><!-- end thumb-block -->
-        		
-      		</div><!-- end the-carousel -->
-      		
-      		
-      		<!-- left/right arrows -->
-      		
-      		<div class="carousel-nav left"></div>
-      		<div class="carousel-nav right"></div>
-      		
-      		<!-- end left/right arrows -->
-      		
-      		
-      		
-      	
-    </div><!-- end carouselBlock  -->
+      			<div id="focus" class="flexslider"><!-- focus images -->
+      				<ul class="slides">
+      					<li>
+      						<img src="img/pdp-present-prod1.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod2.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod3.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod4.png">
+      					</li>
+      				</ul>	
+      			</div><!-- end flexslider/focus images-->
+      			
+      			<div class="thumb-wrap">
+      			<div id="thumbs" class="flexslider"><!-- thumbnail image nav -->
+      				<ul class="slides">
+      					<li>
+      						<img src="img/pdp-present-prod1.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod2.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod3.png">
+      					</li>
+      					<li>
+      						<img src="img/pdp-present-prod4.png">
+      					</li>
+      				</ul>
+      					<div class="zoom">
+      					</div>	
+      			</div><!-- end flexslider/thumbnail images-->
+        		</div><!-- end thumb-wrap -->
+      	</div><!-- end carousel -->
+      
+    </div><!-- end carousel-block  -->
       
     
-    <div id="cart-block">							
+    <div id="cart-block">
+    
+    	<div class="shipping-offers">
+      			<p class="offer-text">Free 3-5 Ground Shipping on All Orders</p>
+      	</div>
+    							
       
       	<header class="header">
-      
+      	
           	<div class="brand">
           		<!-- <div class="brand-color"></div> little square with brand color -->
           		NOKIA
           	</div>
       
-          	<hgroup>
-              	<h1>PowerUp Wireless Speaker</h1>
+          	
+            <h1 class="product-title">PowerUp Wireless Speaker</h1>
         	
-        		<div class="review-block">
+        	<ul id="review-block" class="inline-list">
+        		<li>
           			<div class="ratings"></div>
+          		</li>
+          		<li class="reviews">
           			<a href="#" class="review-link">(47)</a>
-        		</div><!-- end reviewBlock -->
+          		</li>
+        	</ul><!-- end reviewBlock -->
         		
-      		</hgroup>
+      		
       
-        	<div id="price-block"> 
-
-				<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
-        		<div class="actual-price">$249<span>99</span></div>
         	
-        	</div><!-- end priceBlock -->
-      
-      
-      		<div id="add-cart-box">
-      		<a href="#">
-      			<div class="cart-raw">
-      				<div class="text">add to cart</div>
-      			</div>
-      		</a>
-      		</div><!-- end add-cart -->
       
         </header>
         
         
         <div id="cart-details">
         
+        	<div class="price-add">
+        		<div id="price-block"> 
+
+					<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
+        			<div class="actual-price">$249<span>99</span></div>
+        	
+        		</div><!-- end priceBlock -->
+      
+      
+      			<div id="add-cart-box">
+      				<a href="#">
+      					<div class="cart-raw">
+      						<div class="text">add to cart</div>
+      					</div>
+      				</a>
+      			</div><!-- end add-cart -->
+       	</div><!-- end price-add -->
+        
+        
+        
+        
+        
         	<div class="color-stock-block">
-        	<span>Available in these colors</span>
-        		<ul class="avail-colors">
+        	<span class="color-label">Selected color:</span><span class="color-option">White</span>
+        		<ul id="avail-colors" class="inline-list">
         		
-        			<li class="color-option color1 selected">
-        				<div class="info">
-        					Black <span class="stock">11 in stock</span>
-        				</div>
+        			<li class="color-option black ">
+        				<div class="select-area"></div>
         			</li>
         			
-        			<li class="color-option color2">
-        				<div class="info">
-        					White <span class="stock">17 in stock</span>
-        				</div>
+        			<li class="color-option grey ">
+        				<div class="select-area"></div>
         			</li>
         			
-        			<li class="color-option color3">
-        				<div class="info">
-        					Grey <span class="stock">3 in stock</span>
-        				</div>
+        			<li class="color-option white selected">
+        				<div class="select-area"></div>
         			</li>
         			
-        			<li class="color-option color4">
-        				<div class="info">
-        					Blue <span class="stock">31 in stock</span>
-        				</div>
+        			<li class="color-option blue">
+        				<div class="select-area"></div>
         			</li>
         		</ul>
         	
@@ -144,10 +170,20 @@
 		
 			<div class="compat-ship-block">
 			
+				<div class="pdp-ship">
+				
+					<ul class="ship-details">
+						<li class="cost">Free Shipping</li>
+						<li class="avail">Online Only</li>
+						<li class="rcv-by">Receive by 1/31</li>
+					</ul>
+				
+				</div><!-- end pdp-ship -->
+				
 				<div class="compat">
 				
 					<div class="devices">
-						Compatible with iPhone 4, 4s & 5
+						
 					</div>
 					
 					<div class="check">
@@ -156,15 +192,7 @@
 					
 				</div><!-- end compat -->
 				
-				<div class="pdp-ship">
 				
-					<ul class="ship-details">
-						<li class="cost">Free Shipping</li>
-						<li class="avail">Online Only</li>
-						<li class="rcv-by">Receive by Thurs 1/31</li>
-					</ul>
-				
-				</div><!-- end pdp-ship -->
 				
 			</div>  <!--  end compat-ship-block -->
 		
@@ -173,12 +201,24 @@
 				<div class="pdp-social-left">
 				
 					<ul class="inline-list">
-						<li class="social fb">
-							<div class="count">11396</div>
-							<a href="#" class="click facebook"></a>
+						<li class="social want">
+							<div class="icon"></div>
+							<div class="count">9824</div>
+							<a href="#" class="click" title="Want this!"></a>
 						</li>
 							
-						<li class="social"><a href="#" class="click email"></a></li>
+						<li class="social email">
+							<div class="icon"></div>
+							<div class="count">206</div>
+							<a href="#" class="click" title="Email this!"></a></li>
+						
+						<li class="social facebook">
+							<div class="icon"></div>
+							<div class="count">11396</div>
+							<a href="#" class="click" title="Like this!"></a>
+						</li>
+						
+						
 					</ul>
 				
 				</div><!-- end social-left -->
@@ -186,19 +226,22 @@
 				<div class="pdp-social-right">
 				
 					<ul class="inline-list">
-						<li class="social">
+						<li class="social twitter">
+							<div class="icon"></div>
 							<div class="count">9360</div>
-							<a href="#" class="click twitter"></a>
+							<a href="#" class="click" title="Tweet this!"" ></a>
 						</li>
 						
-						<li class="social">
+						<li class="social gplus">
+							<div class="icon"></div>
 							<div class="count">126</div>
-							<a href="#" class="click gplus"></a>
+							<a href="#" class="click" title="Share this!"></a>
 						</li>
 							
-						<li class="social">
+						<li class="social  pinterest">
+							<div class="icon"></div>
 							<div class="count">792</div>
-							<a href="#" class="click pinterest"></a>
+							<a href="#" class="click" title="Pin this!"></a>
 						</li>
 						
 					</ul>
@@ -210,8 +253,7 @@
         </div>
         
 	</div> <!-- end cartBlock -->
-	
-	</div><!-- end section-wrap --> 
+	 
 </section> <!----------------------------------- END PDP HERO ----------------------->
   
 

@@ -1,0 +1,15 @@
+2013-01-29 11:26:17     error sass/styles.scss (Line 7 of sass/_sprites.scss: Invalid CSS after "...-sprites; ccccc": expected "{", was "")
+2013-01-29 11:26:17 overwrite css/styles.css 
+2013-01-29 11:26:23 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-sa6d6602b55.png
+2013-01-29 11:26:24    remove ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sc3f06ad49a.png
+2013-01-29 11:26:25    create ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sd8721bf2cf.png
+2013-01-29 11:26:29 overwrite css/styles.css 
+2013-01-29 11:28:19 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-sa6d6602b55.png
+2013-01-29 11:28:20 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sd8721bf2cf.png
+2013-01-29 11:28:24 overwrite css/styles.css 
+2013-01-29 11:28:59 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-sa6d6602b55.png
+2013-01-29 11:28:59 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sd8721bf2cf.png
+2013-01-29 11:29:03 overwrite css/styles.css 
+2013-01-29 11:29:30 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-sa6d6602b55.png
+2013-01-29 11:29:30 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sd8721bf2cf.png
+2013-01-29 11:29:34 overwrite css/styles.css 

@@ -78,85 +78,54 @@ VZ = {
                 productDetail.productHover();
             }
         }
-    }
+    },
+    'product-detail' : {
+    	init : function() {
+    	//  flexslider set-up
+			$jQ('#thumbs').flexslider({
+				animation: "slide",
+    			controlNav: false,
+    			animationLoop: false,
+    			slideshow: false,
+    			itemWidth: 45,
+    			itemMargin: 10,
+    			asNavFor: '#focus'
+			}); 
+			
+			$jQ('#focus').flexslider({
+    			animation: "slide",
+    			controlNav: false,
+    			animationLoop: true,
+    			slideshow: false,
+    			sync: "#thumbs"
+  			});
+		
+		// ONLOAD: force cart layout
+			var pgWidth = $jQ(document).width();
+			
+			setTimeout(function() {
+			// cart-block height
+				var heroHt = $jQ('#pdp-hero').height();
+				$jQ('#cart-block').css('height', heroHt + 'px' );
+			}, 200);
+		
+		//RESIZE: force cart layout
+			$(window).resize(function(){
+				var resizePg = $jQ(document).width();
+				var resizeHt = $jQ('#carousel').height();
+			// force cart-block	on resize 768 and above
+				if (resizePg > 767) {
+					$jQ('#cart-block').css('height', resizeHt + 'px' );
+				}
+			});//end resizing				
+    	}
+    } 
 };
 
 
 
-/* ================== PDP functions ==============================*/
 
-/*------------------- HERO section  --------------------- */
-
-var pageWidth = $jQ(document).width();
-
-/* hero image override onload using cart height to max out */
-
-var cartHt = $jQ('#pdp-hero #cart-block').height();
-
-// 768 & up: tie main image size to cart height on load 
-	if (pageWidth == 768){ 
-			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
-			$jQ('#the-carousel').css( 'width', cartHt + 'px');
-		} else if (pageWidth > 999) {
-			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', cartHt + 'px');
-			$jQ('#the-carousel').css( 'width', cartHt + 'px');
-		}
-			
-// tablet portrait: crop image by shoving to left		
-			if ( pageWidth == 768 ) {
-				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
-			}
-			else {
-				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');
-			}
-/* end hero image onload */		
-
-
-/* 768 & up: tie main image size to cart height on window resize */
-
-	$(window).resize(function(){
-	
-		var resizePage = $jQ(document).width();
-		var resizeCart = $jQ('#pdp-hero #cart-block').height();
-		
-	if (resizePage == 768) {
-			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', resizeCart + 'px');
-			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
-		} else if (resizePage > 999) {
-			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', resizeCart + 'px');
-			$jQ('#the-carousel').css( 'width', resizeCart + 'px');
-		} else if ((resizePage >768) && ( resizePage < 999)){
-			$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'width', '100%');
-			$jQ('#the-carousel').css( 'width', '75%');
-		
-		}
-		
-		// tablet portrait: crop image by shoving to left	
-			if ( resizePage == 768) {
-				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '-30%');
-			} else {
-				$jQ('#pdp-hero #carousel-block #the-carousel .focus').css( 'margin-left', '0px');
-			}
-			
-	}); 
-/*  end hero image changes on window resize */
-
-	
-	
-	
-	
-
-		
-
-		
-
-
-
-
-
-
-/* ================== END PDP ====================================*/
-
+/**** end PDP functions ***/
 
 
 
