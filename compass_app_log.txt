@@ -13,3 +13,6 @@
 2013-01-29 11:29:30 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-sa6d6602b55.png
 2013-01-29 11:29:30 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/pdp-sd8721bf2cf.png
 2013-01-29 11:29:34 overwrite css/styles.css 
+2013-01-29 13:07:33 unchanged ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/ui-s5c2c59181b.png
+2013-01-29 13:07:33    create ../sapient/verizon/mlsStore/sapient-vzw-mobile-lifestyle-store/img/sprites/pdp-sef9ed0c478.png
+2013-01-29 13:07:36 overwrite css/styles.css 

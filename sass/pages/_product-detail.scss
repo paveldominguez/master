@@ -21,7 +21,7 @@
  
 	/* mixins */
 		@mixin heroBG { background: #eceeee; }
-		@mixin cartBG { background: url(../img/cartBG.png) repeat; }
+		@mixin cartBG { background: url(../img/product-detail-page/pdp-backgrounds/cart-bg.png) repeat; }
 		@mixin heroInset { box-shadow: inset 0 0px 0 0px #eceeee, inset 0px -2px 6px #ccc;
 			-webkit-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
 			-moz-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
@@ -34,7 +34,7 @@
 		
 		@mixin cartRounded { -webkit-border-radius: 3px;
 							-moz-border-radius: 3px;
-							border-radius: 3px; }				
+							border-radius: 3px; }
 		@mixin cartDrop { -moz-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.5);
 							-webkit-box-shadow:0px 3px 8px -6px rgba(119, 119, 119, 0.5);
 							box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.5); }
@@ -55,7 +55,7 @@
 			display:inline-block;
 			width:33.333%; }	
 			
-		@mixin cartSocialBG { background:url(../img/cartSocialBG.png) repeat-x; }
+		@mixin cartSocialBG { background:url(../img/product-detail-page/pdp-backgrounds/cart-social-bg.png) repeat-x; }
 
 /* top hero section ------------------- BEGIN HERO ---------------------- */
 
@@ -137,7 +137,7 @@
 
 			/* FlexSlider - thumbnail nav */
 			.thumb-wrap {
-				background: url(../img/pdpThumbNavBG.png) repeat-x; 
+				background: url(../img/product-detail-page/pdp-backgrounds/thumb-nav-bg.png) repeat-x; 
 				width:100%; 
 				position:absolute;
 				bottom:0px;
@@ -176,7 +176,7 @@
 					.zoom {
 						@include boxBrdrL;
 								
-						background: url(../img/pdp/carousel-zoom.png) 10px 7px no-repeat;
+						background: url(../img/sprites/pdp/carousel-zoom.png) 10px 7px no-repeat;
 						width:45px; height:45px;	
 						margin:0px;
 						position:absolute;
@@ -212,7 +212,7 @@
 			float:right;
 			
 			.shipping-offers { 
-					background: #9a9a9a url(../img/pdp/shipping-boxes-icon.png) 10px 10px no-repeat; 
+					background: #9a9a9a url(../img/sprites/pdp/shipping-boxes-icon.png) 10px 10px no-repeat; 
 					
 					width:100%;
 					padding:10px 0px 10px 54px;
@@ -478,7 +478,7 @@
 					
 						ul.ship-details {
 							margin: 0 0 0 10px;
-							list-style-image: url(../img/pdp-cart-bullet.png);
+							list-style-image: url(../img/product-detail-page/pdp-backgrounds/cart-bullet.png);
 							
 							li.cost,
 							li.avail,
@@ -544,7 +544,8 @@
 					
 						.want .icon { @include pdp-sprite(pdp-want-icon); }
 						.email .icon { @include pdp-sprite(pdp-email-icon); } 
-						.facebook .icon { @include pdp-sprite(pdp-facebook-icon); }		
+						.facebook .icon { @include pdp-sprite(pdp-facebook-icon); }	
+							
 					} /* end social left */
 					
 					

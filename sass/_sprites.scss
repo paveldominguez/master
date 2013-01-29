@@ -15,5 +15,5 @@ $product-listing-spacing: 25px;
 @include all-product-listing-sprites;
 
 $pdp-spacing: 15px;
-@import "pdp/*.png";
+@import "sprites/pdp/*.png";
 @include all-pdp-sprites;
