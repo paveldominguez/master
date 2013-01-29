@@ -135,23 +135,29 @@ VZ = {
 		// ONLOAD: force cart layout
 
 			setTimeout(function() {
-			// cart-block height
-				var heroHt = $jQ('#pdp-hero').height();
-				$jQ('#cart-block').css('height', heroHt + 'px' );
+				var pgWidth = $jQ(document).width();
+			// force cart-block height: tablet & above
+				if (pgWidth > 767) {
+					var heroHt = $jQ('#pdp-hero').height();
+					$jQ('#cart-block').css('height', heroHt + 'px' );
+					}
+
+
 			}, 200);
 
 		//RESIZE: force cart layout
 
-			$(window).resize(
-				debounce(function(){
+			$(window).resize(function(){
 					var resizePg = $jQ(document).width();
 					var resizeHt = $jQ('#carousel').height();
-				// force cart-block	on resize 768 and above
+				// force cart-block	on resize: tablet & above
 					if (resizePg > 767) {
 						$jQ('#cart-block').css('height', resizeHt + 'px' );
+					} else {
+						$jQ('#cart-block').css('height', 'auto' );
 					}
-				}, 500)
-			);//end resizing
+
+			});//end resizing
 		}
     }
 };
