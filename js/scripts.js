@@ -80,52 +80,49 @@ VZ = {
         }
     },
     'product-detail' : {
-    	init : function() {
-    	//  flexslider set-up
+         init : function() {
+         //  flexslider set-up
 			$jQ('#thumbs').flexslider({
 				animation: "slide",
-    			controlNav: false,
-    			animationLoop: false,
-    			slideshow: false,
-    			itemWidth: 45,
-    			itemMargin: 10,
-    			asNavFor: '#focus'
-			}); 
-			
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: 45,
+                itemMargin: 10,
+                asNavFor: '#focus'
+			});
+
 			$jQ('#focus').flexslider({
-    			animation: "slide",
-    			controlNav: false,
-    			animationLoop: true,
-    			slideshow: false,
-    			sync: "#thumbs"
-  			});
-		
+                animation: "slide",
+                controlNav: false,
+                animationLoop: true,
+                slideshow: false,
+                sync: "#thumbs"
+                });
+
 		// ONLOAD: force cart layout
-			var pgWidth = $jQ(document).width();
-			
+
 			setTimeout(function() {
 			// cart-block height
 				var heroHt = $jQ('#pdp-hero').height();
 				$jQ('#cart-block').css('height', heroHt + 'px' );
 			}, 200);
-		
+
 		//RESIZE: force cart layout
-			$(window).resize(function(){
-				var resizePg = $jQ(document).width();
-				var resizeHt = $jQ('#carousel').height();
-			// force cart-block	on resize 768 and above
-				if (resizePg > 767) {
-					$jQ('#cart-block').css('height', resizeHt + 'px' );
-				}
-			});//end resizing				
-    	}
-    } 
+
+			$(window).resize(
+				debounce(function(){
+					var resizePg = $jQ(document).width();
+					var resizeHt = $jQ('#carousel').height();
+				// force cart-block	on resize 768 and above
+					if (resizePg > 767) {
+						$jQ('#cart-block').css('height', resizeHt + 'px' );
+					}
+				}, 500)
+			);//end resizing
+		}
+    }
 };
-
-
-
-
-/**** end PDP functions ***/
 
 
 
