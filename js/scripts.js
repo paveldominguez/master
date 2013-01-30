@@ -45,6 +45,9 @@ var productGrid = {
 };
 
 var contentFilter = (function() {
+    function remove(o) {
+        $jQ(o).remove();
+    }
     var $cf = $jQ('#content-filter');
     var _contentFilter = {
         init : function() {
@@ -58,10 +61,14 @@ var contentFilter = (function() {
             $jQ('#clear-selections').on('click', function(e) {
                 e.preventDefault();
                 $removable.each(function() {
-                    $jQ(this).fadeOut('medium', function() { $jQ(this).remove(); });
+                    $jQ(this).slideToggle('fast',
+                        function() {
+                            $jQ(this).remove();
+                        }
+                    );
                 });
             });
-            $collapsible.not(':first').next().toggle('slow'); // collpase all but first dimension
+            $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
             $collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
             $multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
             $removable.on('click', _contentFilter.removableHandler);
@@ -72,7 +79,7 @@ var contentFilter = (function() {
         },
         toggleDimension : function(e) {
             e.preventDefault();
-            $jQ(this).next().toggle('fast');
+            $jQ(this).next().slideToggle('fast');
         },
         multiFacetHandler : function(e) {
             e.preventDefault();
@@ -85,9 +92,9 @@ var contentFilter = (function() {
                     left : -($cf.width()),
                     opacity : 0
                 },
-                'slow',
+                450,
                 function() {
-                    $jQ(this).remove();
+                    remove(this);
                 }
             );
         }
@@ -121,17 +128,17 @@ VZ = {
     'product-detail' : {
          init : function() {
          //  flexslider set-up
-			$jQ('#thumbs').flexslider({
-				animation: "slide",
+            $jQ('#thumbs').flexslider({
+                animation: "slide",
                 controlNav: false,
                 animationLoop: false,
                 slideshow: false,
                 itemWidth: 45,
                 itemMargin: 10,
                 asNavFor: '#focus'
-			});
+            });
 
-			$jQ('#focus').flexslider({
+            $jQ('#focus').flexslider({
                 animation: "slide",
                 controlNav: false,
                 animationLoop: true,
@@ -139,27 +146,27 @@ VZ = {
                 sync: "#thumbs"
                 });
 
-		// ONLOAD: force cart layout
+        // ONLOAD: force cart layout
 
-			setTimeout(function() {
-			// cart-block height
-				var heroHt = $jQ('#pdp-hero').height();
-				$jQ('#cart-block').css('height', heroHt + 'px' );
-			}, 200);
+            setTimeout(function() {
+            // cart-block height
+                var heroHt = $jQ('#pdp-hero').height();
+                $jQ('#cart-block').css('height', heroHt + 'px' );
+            }, 200);
 
-		//RESIZE: force cart layout
+        //RESIZE: force cart layout
 
-			$(window).resize(
-				debounce(function(){
-					var resizePg = $jQ(document).width();
-					var resizeHt = $jQ('#carousel').height();
-				// force cart-block	on resize 768 and above
-					if (resizePg > 767) {
-						$jQ('#cart-block').css('height', resizeHt + 'px' );
-					}
-				}, 500)
-			);//end resizing
-		}
+            $(window).resize(
+                debounce(function(){
+                    var resizePg = $jQ(document).width();
+                    var resizeHt = $jQ('#carousel').height();
+                // force cart-block on resize 768 and above
+                    if (resizePg > 767) {
+                        $jQ('#cart-block').css('height', resizeHt + 'px' );
+                    }
+                }, 500)
+            );//end resizing
+        }
     }
 };
 
