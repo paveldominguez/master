@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="product-list" class="product-list">
+<body id="product-grid" class="product-list product-grid">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->

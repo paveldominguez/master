@@ -50,7 +50,7 @@ var searchResults = {
     styleDropDown : function () {
         $jQ("#sort-by").uniform();
     }
-}
+};
 
 /* end Search Results Page */
 
@@ -82,10 +82,6 @@ var contentFilter = (function() {
             $collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
             $multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
             $removable.on('click', _contentFilter.removableHandler);
-        },
-        clickBridge : function(e) {
-            e.preventDefault();
-            
         },
         toggleDimension : function(e) {
             e.preventDefault();
@@ -127,13 +123,12 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
-    'product-list' : {
+    'product-grid' : {
         init : function() {
             if(!isTouch) {
                 productGrid.productHover();
             }
             contentFilter.init();
-            searchResults.styleDropDown();
         }
     },
     'product-detail' : {
@@ -167,7 +162,7 @@ VZ = {
 
         //RESIZE: force cart layout
 
-            $(window).resize(
+            $jQ(window).resize(
                 debounce(function(){
                     var resizePg = $jQ(document).width();
                     var resizeHt = $jQ('#carousel').height();
@@ -177,6 +172,11 @@ VZ = {
                     }
                 }, 500)
             );//end resizing
+        }
+    },
+    'search-results' : {
+        init : function() {
+            searchResults.styleDropDown();
         }
     }
 };
