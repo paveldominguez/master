@@ -18,6 +18,7 @@ $colorVzwNavBorder: #F6F6F6;
 $colorNavLinks: #666;
 $colorNavAccountLinks: #999;
 $colorProductPanelBorder: #E5E5E5;
+$tabsBGcolor: #DFE3E4;
 
 // Global Styles
 $globalGutter: 30px;
@@ -242,3 +243,4 @@ h1,h2,h3,h4,h5,h6 {
 // Page Includes
 @import "pages/product-listing";
 @import "pages/product-detail";
+@import "pages/search-results";

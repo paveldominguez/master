@@ -15,7 +15,7 @@ $sortBG: #F1F3F2;
     }
     #uniform-sort-by{
         @include border-radius(3px);
-        @include ui-sprite(drop-down, false, 0, 0);
+        @include ui-sprite(drop-down, false, 100%, 0);
         background-color: $searchBG;
         padding:10px;
         border:1px solid #ccc;

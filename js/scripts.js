@@ -44,6 +44,16 @@ var productGrid = {
     }
 };
 
+/* begin Search Results Page */
+
+var searchResults = {
+    styleDropDown : function () {
+        $jQ("#sort-by").uniform();
+    }
+}
+
+/* end Search Results Page */
+
 var contentFilter = (function() {
     function remove(o) {
         $jQ(o).remove();
@@ -123,6 +133,7 @@ VZ = {
                 productGrid.productHover();
             }
             contentFilter.init();
+            searchResults.styleDropDown();
         }
     },
     'product-detail' : {

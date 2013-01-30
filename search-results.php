@@ -30,9 +30,17 @@
 
   <section class="product-list-section">
 
-    <!-- Begin Product List Header -->
+    <!-- Begin Search Input Field -->
     <?php include('inc/fragments/search.input.field.php');?>
-    <!-- End Product List Header -->
+    <!-- End Search Input Field -->
+
+    <!-- Begin Search Category Tabs -->
+    <?php include('inc/fragments/search.category.tabs.php');?>
+    <!-- End Search Category Tabs -->
+
+    <!-- Begin Search Results Header -->
+    <?php include('inc/fragments/search.results.header.php');?>
+    <!-- End Search Results Header -->
 
     <div class="wrapper">
 
