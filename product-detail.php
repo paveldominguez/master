@@ -69,20 +69,24 @@
       				<ul class="slides">
       					<li>
       						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+      						<div class="vzn-active"></div>
       					</li>
       					<li>
       						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
+      						<div class="vzn-active"></div>
       					</li>
       					<li>
       						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
+      						<div class="vzn-active"></div>
       					</li>
       					<li>
       						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
+      						<div class="vzn-active"></div>
       					</li>
       				</ul>
       					<div class="zoom">
       					</div>
-      			</div><!-- end flexslider/thumbnail images-->
+      			</div><!-- end #thumbs nav images-->
         		</div><!-- end thumb-wrap -->
       	</div><!-- end carousel -->
 
@@ -260,92 +264,64 @@
 
 
 <section id="product-details"><!----------------- BEGIN PRODUCT DETAILS ------------->
-  	<div class="section-wrap">
+<div class="section-wrap">
 
   	<div class="tabbed-wrapper">
-  	<div class="tab-block">
+  		<div class="tab-block">
+			<div id="tab-scroll">
+      			<dl id="detail-tabs" class="tabs">
+      				<dd class="details active" ><a href="#details">Details</a></dd>
+        			<dd class="overview" ><a href="#overview">Overview</a></dd>
+        			<dd class="features" ><a href="#features">Features</a></dd>
+        			<dd class="specs" ><a href="#specs">Tech Specs</a></dd>
+        			<dd class="compat" ><a href="#compat">Compatibility</a></dd>
+        		</dl>
+			</div><!-- end tab scroll -->
 
-      	<dl class="tabs">
-        	<dd class="active"><a href="#overview">Overview</a></dd>
-        	<dd><a href="#features">Features</a></dd>
-        	<dd><a href="#specs">Tech Specs</a></dd>
-        	<dd><a href="#compat">Compatibility</a></dd>
-        </dl>
 
-      	<ul class="tabs-content">
-        	<li id="overviewTab" class="active">
+
+
+
+
+
+      		<ul class="tabs-content">
+        		<li id="detailsTab" class="active">
         			<div class="tab-wrapper">
-        				<div class="left">
+        				<div class="third left">
 
         					<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone …
         					</p>
 
-        				</div><!-- end overview left -->
+        				</div><!-- end details left -->
 
-        				<div class="right">
+        				<div class="third center">
 
-        					    <div class="need-block">
-    								<h3>You'll Need</h3>
-    								<ul class="need-items">
-    									<li class="item">
-    										<div class="info">
-    											description & price
-    										</div>
+							<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone …
+        					</p>
 
-    										<div class="image">
-    											product image
-    										</div>
-    									</li>
-    								</ul>
-    							</div><!-- end you'll need -->
-        				</div><!-- end overview right -->
-        			</div><!-- end overview tab-wrapper -->
-        		</li><!-- end overview tab-content -->
+        				</div><!-- end details center -->
 
-        	<li id="featuresTab">
-        		<div class="tab-wrapper">
-        			<div class="left">
-        				features left
-        			</div><!-- end features left -->
+        				<div class="third right">
 
-        			<div class="right">
+							<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone …
+        					</p>
 
-        				<div class="icon-stack">
-      							<ul class="icons">
-        							<li class="icon apps">icon image</li>
-        							<li class="icon smart">icon image</li>
-        							<li class="icon wifi">icon image</li>
-        							<li class="icon data">icon image</li>
-      							</ul><!-- end icons -->
-      						</div><!-- end icon-stack -->
+        				</div><!-- end details right -->
 
-      						<div class="content-stack">
-      							<ul class="icon-content">
-        							<li class="content apps">
-        								<h2 class="title">icon title</h2>
-        								<p class="text">icon copy</p>
-        							</li>
+        			</div><!-- end details tab-wrapper -->
+        		</li><!-- end details tab content -->
 
-        							<li class="content smart">
-        								<h2 class="title">icon title</h2>
-        								<p class="text">icon copy</p>
-        							</li>
+				<li id="overviewTab" class="active">
+					<div class="tab-wrapper">
+					</div><!-- end overview tab-wrapper -->
+				</li><!-- end overview tab content -->
 
-        							<li class="content wifi">
-        								<h2 class="title">icon title</h2>
-        								<p class="text">icon copy</p>
-        							</li>
+        		<li id="featuresTab" class="active">
+					<div class="tab-wrapper">
+					</div><!-- end features tab-wrapper -->
+				</li><!-- end overview tab content -->
 
-        							<li class="content data">
-        								<h2 class="title">icon title</h2>
-        								<p class="text">icon copy</p>
-        							</li>
-      							</ul><!-- end icon-content -->
-      						</div> <!-- end content-stack -->
 
-        			</div><!-- end features right -->
-        		</div><!-- end tab wrapper -->
-        	</li><!-- end features tab-content -->
 
         	<li id="specsTab">
         		<div class="tab-wrapper">
@@ -379,7 +355,7 @@
 
 
 
-	</div><!-- end section-wrap -->
+</div><!-- end section-wrap -->
 </section><!-------------------------------------- END PRODUCT DETAILS -------------->
 
 

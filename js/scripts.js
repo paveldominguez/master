@@ -16,13 +16,13 @@ var debounce = (function() {
         var context = this, args = arguments,
         later = function() {
             timeout = null;
-            if (!immediate) func.apply(context, args);
+            if (!immediate) { func.apply(context, args); }
         },
         callNow;
         callNow = immediate && !timeout;
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
+        if (callNow) { func.apply(context, args); }
     };
 })();
 
@@ -68,7 +68,7 @@ var contentFilter = (function() {
         },
         clickBridge : function(e) {
             e.preventDefault();
-            
+
         },
         toggleDimension : function(e) {
             e.preventDefault();
@@ -120,7 +120,11 @@ VZ = {
     },
     'product-detail' : {
          init : function() {
-         //  flexslider set-up
+         // general use
+             var pgWidth = $jQ(document).width();
+
+
+         // HERO flexslider set-up
 			$jQ('#thumbs').flexslider({
 				animation: "slide",
                 controlNav: false,
@@ -139,21 +143,20 @@ VZ = {
                 sync: "#thumbs"
                 });
 
-		// ONLOAD: force cart layout
 
+		// HERO onload: force cart layout
 			setTimeout(function() {
-				var pgWidth = $jQ(document).width();
+
 			// force cart-block height: tablet & above
 				if (pgWidth > 767) {
 					var heroHt = $jQ('#pdp-hero').height();
 					$jQ('#cart-block').css('height', heroHt + 'px' );
 					}
 
+			}, 200);// end onload layout
 
-			}, 200);
 
-		//RESIZE: force cart layout
-
+		// HERO resize: force cart layout
 			$(window).resize(function(){
 					var resizePg = $jQ(document).width();
 					var resizeHt = $jQ('#carousel').height();
@@ -164,7 +167,48 @@ VZ = {
 						$jQ('#cart-block').css('height', 'auto' );
 					}
 
-			});//end resizing
+			});//end resize layout
+
+
+		// HERO flexslider: active thumb animation
+
+			//onload: apply vzn-active
+			$('#thumbs .flex-active-slide').find('.vzn-active').css('width', '45px');
+
+			//onclick: fadeIn current, fadeOut last
+			$jQ('#thumbs li').click(function () {
+				$(this).siblings().find('.vzn-active').stop().animate({
+					'width':'0px'
+				}, 250 );
+				$(this).find('.vzn-active').stop().animate({
+					'width':'45px'
+				}, 500 );
+			}); /* end onclick */
+
+
+		// DETAILS : switch active to overview below 768
+
+			//onload
+			if (pgWidth < 769) {
+					$jQ('#detail-tabs .details').removeClass('active');
+					$jQ('#detail-tabs .overview').addClass('active');
+				} else {
+					$jQ('#detail-tabs .details').addClass('active');
+				}/* end onload */
+
+			//resize
+			$(window).resize(function(){
+				var resizePg = $jQ(document).width();
+				if (resizePg < 769) {
+						$jQ('#detail-tabs .details').removeClass('active');
+						$jQ('#detail-tabs .overview').addClass('active');
+					} else {
+						$jQ('#detail-tabs .details').addClass('active');
+					}
+			});/* end resize */
+
+
+
 		}
     }
 };

@@ -59,6 +59,11 @@
 
 		@mixin cartSocialBG { background:url(../img/product-detail-page/pdp-backgrounds/cart-social-bg.png) repeat-x; }
 
+		@mixin vznActive {
+			border-bottom: 2px solid $colorVzwRed; }
+
+
+
 /* top hero section ------------------- BEGIN HERO ---------------------- */
 
 #pdp-hero {
@@ -145,7 +150,7 @@
 				bottom:0px;
 				margin:0 auto 0 auto;
 				z-index:10;
-				height:45px;
+				height:54px;
 
 				#thumbs { zoom: 1;
 					width: 266px;
@@ -161,6 +166,7 @@
 							-webkit-transition: all 1s ease;
 							-moz-transition: all 1s ease;
 							transition: all 1s ease;
+							top: -6px;
 
 							.slides {
 								zoom: 1;
@@ -169,7 +175,23 @@
 								li { margin-right:10px;
 									z-index:10;
 									cursor:pointer;
+									position:relative;
+
+
+
 									}/* end li */
+
+								 .vzn-active {
+								 	display:block;
+								 	width:0px; height:1px;
+									border-bottom: 2px solid red;
+									position:absolute;
+									bottom:3px;
+									} /* end active div */
+
+
+
+
 								}/* end slides */
 							}/* end viewport */
 
@@ -178,11 +200,11 @@
 					.zoom {
 						@include boxBrdrL;
 
-						background: url(../img/sprites/pdp/carousel-zoom.png) 10px 7px no-repeat;
-						width:45px; height:45px;
+						background: url(../img/sprites/pdp/carousel-zoom.png) 10px 11px no-repeat;
+						width:45px; height:54px;
 						margin:0px;
 						position:absolute;
-						top:0; right:0;
+						bottom:0; right:0;
 						cursor:pointer;
 
 						}/* end zoom */
@@ -336,7 +358,7 @@
 					@include cartRounded;
 					@include cartDrop;
 
-					float:right; margin-right:5px;
+					float:right;
 					background: #f35959;
 					cursor:pointer;
 					width:45%; height: 78px;
@@ -577,13 +599,12 @@
 
 
 
-/* bottom details & cross sell section ------- BEGIN DETAILS & CROSS SELL ------- */
+/* bottom details & cross sell section ------- BEGIN BELOW-THE-FOLD ------- */
 
-#product-details {
+#product-details { /*--------------------- details, overview, etc tabs -----*/
 	@include clearfix();
 
 	margin-top:50px;
-	padding-top:20px;
 
 	.tabbed-wrapper {
 		@include clearfix();
@@ -596,19 +617,31 @@
 				float:none;
 				margin:0 auto 0 auto;
 
-				dl.tabs {
+				#detail-tabs {
+
+					/* small device tabs to start */
+					.overview,
+					.features,
+					.specs { display: none; }
 
 					dd {
 						display:inline-block;
 						font-family: $fontVzwMedium;
 						text-transform:uppercase;
 						margin-right:20px;
+						letter-spacing:1px;
+						font-size:13px;
+						padding-bottom:3px;
 
 							a { color: $cartGreyDk;
 								}
+
+							a:hover { color: $colorVzwRed; }
 						}/* end dd */
 
-					dd.active {
+					.active {
+						border-bottom: 2px solid red;
+
 						a { color: $colorVzwRed;}
 						}/* end active tab */
 
@@ -629,7 +662,7 @@
 
 		}/* end tabbed wrapper */
 
-	} /* end pdp-details */
+	} /*-------------------------- end product details, overview, etc tabs --- */
 
 
 section#similar-plain { 	display:none;
@@ -777,11 +810,37 @@ and ( max-width: 900px ) {
 
 	}/*---------------------------  END 768 HERO ------------------------- */
 
+
+	/*---------------------------- BEGIN 768 BELOW-THE-FOLD ------------------ */
+
+	#product-details { /*----- begin 768 product details, overview etc tabs ----*/
+
+		.tabbed-wrapper {
+
+			.tab-block {
+
+				#detail-tabs {
+
+					/* switch visible tabs*/
+					.details { display:none; }
+					.overview,
+					.features,
+					.specs { display: inline-block }
+					} /* end tabs */
+				}/* end tab-block */
+			}/* end tabbed wrapper */
+		}/*------------------------end 768 product details, overview etc tabs ---*/
+
+
+	/*------------------------------ END 768 BELOW-THE-FOLD ----------------------*/
+
+
+
 }/* end 768  */
 
 
 
-/*  767 -   -----------------------*/
+/*------  767 -   ------------------*/
 
 @media only screen and (max-width: 767px ) {
 
@@ -836,6 +895,48 @@ and ( max-width: 900px ) {
 	}/*---------------------------  END 767 - HERO ------------------------- */
 
 
+	/*---------------------------- BEGIN 767- BELOW-THE-FOLD ------------------ */
+
+	#product-details { /*----- begin 767- product details, overview etc tabs ----*/
+
+		.section-wrap {
+			width:85%;
+			margin: 0 auto 0 auto;
+			}
+
+		.tabbed-wrapper {
+
+			.tab-block {
+
+
+				#tab-scroll {
+					width:100%; overflow:auto;
+
+					@include clearfix();
+
+					#detail-tabs {
+						float:left;
+						margin-right: -999em;
+						white-space:nowrap;
+
+						dd { float:left; }
+
+
+
+						/* switch visible tabs*/
+						.details { display:none; }
+						.overview,
+						.features,
+						.specs { display: inline-block }
+
+						} /* end #detail-tabs  */
+					}/* end tab-scroll */
+				}/* end tab-block */
+			}/* end tabbed wrapper */
+		}/*------------------------end 767- product details, overview etc tabs ---*/
+
+
+	/*------------------------------ END 767- BELOW-THE-FOLD ----------------------*/
 
 
 } /*---------------- END 767 -   ------------------- */
@@ -852,7 +953,7 @@ and ( max-width: 900px ) {
 @media only screen and (min-width: $screenMobileLarge )
 	and (max-width: 719px ) {
 
-	/* -----------------------------  HERO ADJUSTMENTS --------------- */
+	/* -----------------------------  568 - 767 HERO ADJUSTMENTS --------------- */
 
 	#pdp-hero {
 	#carousel-block {
@@ -862,23 +963,47 @@ and ( max-width: 900px ) {
 		}/* end carousel-block  */
 
 		#cart-block {
-			max-width:100%;
 			}/* end cart-block */
 
 
-	}/*---------------------------  END HERO ------------------------- */
+	}/*---------------------------  END 568 - 767 HERO ------------------------- */
 
 
 
 
-}/* end 480 - 767 */
+}/* end 568 - 767 */
 
 
 
-/* 320 - 479 ---------------------*/
+/* 320 - 567 ---------------------*/
 
 @media only screen and (min-width: $screenMobileSmall )
-	and (max-width: $screenMobileLarge - 1 ) /* 767 */ {
+	and (max-width: $screenMobileLarge - 1 )  {
+
+
+		/*---------------------------- BEGIN 320-567 BELOW-THE-FOLD ------------------ */
+
+	#product-details { /*----- begin 320-567 product details, overview etc tabs ----*/
+
+		.tabbed-wrapper {
+
+			.tab-block {
+				width:100%;
+				overflow:auto;
+
+				#detail-tabs {
+
+					} /* end tabs */
+				}/* end tab-block */
+			}/* end tabbed wrapper */
+		}/*------------------------end 320-567 product details, overview etc tabs ---*/
+
+
+	/*------------------------------ END 320-567 BELOW-THE-FOLD ----------------------*/
+
+
+
+
 
 
 }/* end 320 - 479 */
