@@ -12,6 +12,7 @@ $sortBG: #F1F3F2;
         float:left;
         margin:10px 0 20px;
         strong:first-child{font-weight:400;}
+        strong.keyword{font-weight: 700;}
     }
     #uniform-sort-by{
         @include border-radius(3px);
@@ -20,6 +21,7 @@ $sortBG: #F1F3F2;
         padding:10px;
         border:1px solid #ccc;
         margin-left: 10px;
+        position: relative;
         float:right;
         >span{
             font-size:12px;
@@ -29,9 +31,10 @@ $sortBG: #F1F3F2;
     .sort-by{
         position:absolute;
         right:10px;
-        margin: 10px 0 0;
-        text-transform:uppercase;
+        top:2px;
+        text-transform:lowercase;
         color:#333;
+        font-weight: 700;
         select{
             left:0;
             top:0;
@@ -48,6 +51,7 @@ $sortBG: #F1F3F2;
             display:block;
             font-size: 12px;
             margin: 12px 0 0;
+            font-weight: 700;
         }
     }
 }
@@ -101,6 +105,7 @@ $sortBG: #F1F3F2;
 }
 
 .category-tabs{
+    .show-for-mobile{display: none;position: absolute;top: 0;}
     background-color: $tabsBGcolor;
     padding: 0 15px;
     display: block;
@@ -134,8 +139,59 @@ $sortBG: #F1F3F2;
     }
 }
 
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {}
+
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+    .search-results-header{
+        h2{font-size: 26px;}
+    }
+}
 
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+    .product-list-section{padding-top:20px;}
+    .category-tabs{
+        position: absolute;
+        top: 0;
+        width:100%;
+        background-color: $searchBG;
+        .show-for-mobile{
+            display: block;
+            font-size: 18px;
+        }
+        .inline-list{
+            margin: 0 0 0 108px;
+            li {
+                display: none;
+                a{
+                    color:#000;
+                    font-size: 18px;
+                    background-colorlor: transparent;
+                    border:0;
+                    padding: 0;
+                    text-transform: capitalize;
+                    border:0;
+                }
+                &.active{
+                    background-color: transparent;
+                    display: block;
+                    a{
+                        border-top: 0;
+                        padding-right: 12px;
+                        border-bottom: 2px solid #333;
+                    }
+                }
+            }
+        }
+    }
+    .search-results-header{
+        background-color: $searchBG;
+        .sort-by{
+            label{
+                display: none;
+            }
+        }
+    }
+    .header{display: none;}
     .search-bar {
         #search-keyword{min-height:40px;font-size: 22px;}
         .options{
@@ -143,17 +199,29 @@ $sortBG: #F1F3F2;
             height:28px;
             overflow: hidden;
             top: 6px;
-            .close{
-                display: none;
-            }
-            button{
-                @include ui-sprite(search-small, false);
-            }
+            .close{display: none;}
+            button{@include ui-sprite(search-small, false);}
         }   
     }
 }
 
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileSmall + 1) {
+    .search-results-header{
+        .sort-by{
+            top:7px;
+        }
+        h2{
+            font-size: 16px;
+            strong.results-count{
+                display: block;
+                font-weight: 700;
+            }
+            .copy{
+                display: none;
+            }
+        }
+
+    }
     .search-bar {
         #search-keyword{min-height:40px;font-size: 22px;}
         .options{
@@ -161,12 +229,8 @@ $sortBG: #F1F3F2;
             height:28px;
             overflow: hidden;
             top: 6px;
-            .close{
-                display: none;
-            }
-            button{
-                @include ui-sprite(search-small, false);
-            }
-        }   
+            .close{display: none;}
+            button{@include ui-sprite(search-small, false);}
+        }
     }
 }
