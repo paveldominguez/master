@@ -24,7 +24,7 @@
 
 </head>
 <body class="vzw-mls-pages">
-  <h1>Verizon <img src="img/ui/hdr-logo.png" alt="Verizon MLS Logo" /></h1>
+  <h1>Verizon <img src="logo.png" alt="Verizon MLS Logo" /></h1>
   <h2>Template Lising</h2>
   <ul>
     <?php

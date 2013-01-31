@@ -3,7 +3,7 @@
     
     <h2>
       <strong class="results-count">200</strong>
-      <span class="type">Products</span> for <strong class="keyword">wireless</strong>
+      <span class="type">Products</span> <span class="copy">for <strong class="keyword">wireless</strong></span>
     </h2>
 
     <div class="sort-by">
