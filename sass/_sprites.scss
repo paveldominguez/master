@@ -17,3 +17,7 @@ $product-listing-spacing: 25px;
 $pdp-spacing: 15px;
 @import "sprites/pdp/*.png";
 @include all-pdp-sprites;
+
+$ui-spacing: 50px;
+@import "sprites/ui/*.png";
+@include all-ui-sprites;

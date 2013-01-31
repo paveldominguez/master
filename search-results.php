@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="product-list" class="product-list">
+<body id="search-results" class="search-results product-grid">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
@@ -30,9 +30,17 @@
 
   <section class="product-list-section">
 
-    <!-- Begin Product List Header -->
+    <!-- Begin Search Input Field -->
     <?php include('inc/fragments/search.input.field.php');?>
-    <!-- End Product List Header -->
+    <!-- End Search Input Field -->
+
+    <!-- Begin Search Category Tabs -->
+    <?php include('inc/fragments/search.category.tabs.php');?>
+    <!-- End Search Category Tabs -->
+
+    <!-- Begin Search Results Header -->
+    <?php include('inc/fragments/search.results.header.php');?>
+    <!-- End Search Results Header -->
 
     <div class="wrapper">
 
@@ -48,7 +56,7 @@
         <!-- Begin Product Listing -->
         <section class="products">
           <ul id="product-grid" class="product-grid">
-            <?php include('inc/fragments/product.featured.item.php');?>
+            <?php include('inc/fragments/product.list.featured.item.php');?>
             <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
           </ul>
         </section>

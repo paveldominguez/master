@@ -1,6 +1,7 @@
 .DS_Store
+.htpasswd
 .sass-cache
+compass_app_log.txt
 /js/scripts-min.js
 /css/styles.css
-/compass_app_log.txt
-/.htpasswd
+
