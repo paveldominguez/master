@@ -3,6 +3,11 @@ VZ = {}, // Container for firing common and page-specic JavaScript
 UTIL = {}, //
 isTouch = $jQ('html.touch').length > 0 ? true : false;
 
+jQuery.extend( jQuery.fn, {
+    hasParent: function(p) {
+        return this.parents().filter(p).length > 0 ? true : false;
+    }
+});
 /*
  * Global Functions
  */
@@ -29,20 +34,73 @@ var debounce = (function() {
 /*
  * Page Specific Functionality
  */
-var productGrid = {
-    productHover : function() {
-        $jQ('#product-grid .product').on({
-            mouseenter : function() {
-                $jQ(this).addClass('over');
-                $jQ(this).find('.product-hover').fadeIn('fast');
-            },
-            mouseleave : function() {
-                $jQ(this).removeClass('over');
-                $jQ(this).find('.product-hover').fadeOut('fast');
+var productGrid = (function() {
+    var pub = {
+        init : function() {
+            var $productGrid = $jQ('#product-grid'),
+            $products = $productGrid.find('.product'),
+            $quickviewLinks = $products.find('.quick-view');
+            if(!isTouch) {
+                $products.hover(pub.productTileEnter,pub.productTileLeave);
+                $quickviewLinks.on('click',pub.quickViewHandler);
             }
-        });
-    }
-};
+        },
+        productTileEnter : function() {
+            $jQ(this).addClass('over');
+            $jQ(this).find('.product-hover').stop(true,true).fadeIn('fast');
+            $jQ(this).find('.product-detail').stop(true,true).animate( { opacity:0 }, 'fast');
+        },
+        productTileLeave : function() {
+            $jQ(this).removeClass('over');
+            $jQ(this).find('.product-hover').fadeOut('fast');
+            $jQ(this).find('.product-detail').animate( { opacity:1 }, 'fast');
+        },
+        quickViewHandler : function() {
+            var $quickView = $jQ('#quick-view-overlay'),
+            $productTile = $jQ(this).parent().parent(),
+            $pTposition = $productTile.position();
+            console.log('product tile height: %d', $productTile.outerHeight());
+            $quickView.css(
+                {
+                    'display' : 'block',
+                    'position' : 'absolute',
+                    'top' : $pTposition.top ,
+                    'right' : 0,
+                    'height' : ( $productTile.outerHeight() * 2 ) - 1,
+                    'background-color' : '#FFF',
+                    'z-index' : '99999'
+                }
+            );
+            console.log('window height: %d\nscrolltop of clicked product: %d',$jQ(window).height(),$pTposition.top);
+            $jQ('html, body').animate( {
+                scrollTop : $pTposition.top + ($productTile.outerHeight() / 2 )
+            }, 'slow', function() {
+                $jQ(document).one(
+                    {
+                        resize : function(e) {
+                            console.log('resizin');
+                            $quickView.fadeOut('fast');
+                        },
+                        scroll : function(e) {
+                            console.log('scrollin');
+                            if(!$jQ(e.target).hasClass('.quick-view')) {
+                                $quickView.fadeOut('fast');
+                            }
+                        }
+                    }
+                );
+                $jQ(document).on('mouseup.quickView', function(e) {
+                    console.log(e.target);
+                    if ($jQ(e.target).closest($quickView).length === 0 && !$jQ(e.target).hasClass('.quick-view') ) {
+                        $quickView.fadeOut('fast');
+                        $jQ(document).off('mouseup.quickView');
+                    }
+                });
+            });
+        }
+    };
+    return pub;
+}());
 
 /* begin Search Results Page */
 
@@ -55,58 +113,61 @@ var searchResults = {
 /* end Search Results Page */
 
 var contentFilter = (function() {
-    function remove(o) {
-        $jQ(o).remove();
-    }
-    var $cf = $jQ('#content-filter');
-    var _contentFilter = {
+    // separate front-end  from business logic (below)
+    var toggleElement = function(o, remove) {
+        $jQ(o).slideToggle('fast', function() {
+            if(remove) {
+                $jQ(this).remove();
+            }
+        });
+    },
+    // separate business logic from front-end (below)
+    $cf = $jQ('#content-filter'),
+    pub = {
         init : function() {
             var $fs = $jQ('#filter-selections'),
             $collapsible = $cf.find('.collapsible .dimension-header'),
-            $multi = $cf.find('.multi-select .facet'),
+            $multis = $cf.find('.multi-select .facet'),
+            $facets = $cf.find('.facet'),
             $removable = $fs.find('.removable');
-
-            $cf.find('.facet, .dimension-header').on('click', _contentFilter.clickBridge);
-
+            
             $jQ('#clear-selections').on('click', function(e) {
                 e.preventDefault();
                 $removable.each(function() {
-                    $jQ(this).slideToggle('fast',
-                        function() {
-                            $jQ(this).remove();
-                        }
-                    );
+                    toggleElement(this, true);
                 });
             });
             $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
-            $collapsible.on('click', _contentFilter.toggleDimension); // handle dimension expansion/collapse
-            $multi.on('click', _contentFilter.multiFacetHandler); // handle clicks of multi-facet selection
-            $removable.on('click', _contentFilter.removableHandler);
+
+            // handling of various clicks
+            $facets.add($collapsible).on('click', pub.clickBridge); // prevent default action of click
+            $collapsible.on('click', pub.dimensionClick); // handle clicks on dimension (expansion/collapse)
+            $multis.on('click', pub.multiFacetClick); // handle clicks on multi-facet
+            $removable.on('click', pub.removeClick); // handle clicks on removable action
         },
-        toggleDimension : function(e) {
+        clickBridge : function(e) {
             e.preventDefault();
-            $jQ(this).next().slideToggle('fast');
         },
-        multiFacetHandler : function(e) {
-            e.preventDefault();
+        dimensionClick : function() {
+            toggleElement($jQ(this).next(), false);
+        },
+        facetClick : function() {
+            // var $hide = $jQ(this).hasParent('.dimension') ? $jQ(this).closest('.dimension') : $jQ(this);
+            // toggleElement($hide, false); // this will hide the dimension containing clicked facet, or facet itself..
+            
+            // logic to add clicked facet to filter-selections ?
+        },
+        multiFacetClick : function() {
             $jQ(this).toggleClass('selected');
         },
-        removableHandler : function(e) {
-            e.preventDefault();
-            $jQ(this).animate(
-                {
-                    left : -($cf.width()),
-                    opacity : 0
-                },
-                450,
-                function() {
-                    remove(this);
-                }
-            );
+        removeClick : function() {
+            toggleElement(this, true);
+
+            // logic to remove element from filter and re-show ?
         }
     };
-    return _contentFilter;
-})();
+    return pub;
+}());
 /*
  * Enable and Fire Page Specific Functionality
  */
@@ -125,9 +186,7 @@ VZ = {
     },
     'product-grid' : {
         init : function() {
-            if(!isTouch) {
-                productGrid.productHover();
-            }
+            productGrid.init();
             contentFilter.init();
         }
     },

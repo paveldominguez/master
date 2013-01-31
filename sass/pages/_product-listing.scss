@@ -4,6 +4,7 @@ $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
 $colorProductListHeaderBg: #EBEEEE;
 $colorLightGrayBorder: #DCDEDE;
+$colorQuickViewLink: #0066CC;
 
 $sizeHeaderFont: 80px;
 $sizeHeaderFontMed: 60px;
@@ -323,6 +324,7 @@ $leftColWidth: 255px;
         } 
         .product-grid { 
             @include clearfix();
+            position: relative;
             margin-bottom: 0;
         }
         .product {
@@ -374,33 +376,74 @@ $leftColWidth: 255px;
                 }
             }
             .product-hover {
-                display: none;
-                z-index: 9999;
-                .color-picker,
-                .quick-view {
-                    position: absolute;
-                    line-height: 18px;
-                    padding: 5px 15px;
+                    display: none;
                     z-index: 9999;
-                }
-                .color-picker{
-                    top: 5px;
-                    left: 0;
-                    img {
-                        display: block;
+                    .product-message,
+                    .color-picker,
+                    .quick-view,
+                    .add-cart {
+                        position: absolute;
+                        z-index: 9999;
+                        padding: 15px;
                     }
-                }
-                .quick-view {
-                    top: 0;
-                    right: 0;
-                    a {
-                        color: $colorLightGray;
-                        font-family: $fontVzwMedium;
-                        font-size: 12px;
+                    .quick-view,
+                    .add-cart {
+                        min-height: 50px;
+                    }
+                    .add-cart { 
+                        bottom: 0;
+                        right: 0;
+                        width: 50%;
+                        padding: 15px;
+                        background-color: #FFF;
+                        .add-cart-cta {
+                            display: table;
+                            float: right;
+                            width: 105px;
+                            height: 40px;
+                            background-color: $colorVzwRed;
+                            color: #FFF;
+                            @include border-radius(2px);
+                            span {
+                                display: table-cell;
+                                vertical-align: bottom;
+                                padding: 5px 10px;
+                            }
+                        }
+                    }
+                    .color-picker{
+                        top: 0;
+                        right: 0;
+                    }
+                    .product-message {
+                        top: 0;
+                        left: 0;
+                        font: {
+                            family: $fontArial;
+                            size: 12px;
+                            weight: bold;
+                        }
                         text-transform: uppercase;
+                        a {
+                            color: $colorVzwRed;
+                        }
+                    }
+                    .quick-view {
+                        bottom: 0;
+                        left: 0;
+                        width: 50%;
+                        background-color: #FFF;
+                        a {
+                            color: $colorQuickViewLink;
+                            font: {
+                                family: $fontVzwMedium;
+                                size: 14px;
+                            }
+                            text-transform: lowercase;
+                        }
                     }
                 }
-            }
+
             &.over .product-detail {
                 .name { color: $colorVzwRed; }
             }
@@ -435,6 +478,12 @@ $leftColWidth: 255px;
                     float: right;
                 }
             }
+        }
+        .quick-view-overlay {
+            @include clearfix();
+            display: none;
+            width: 100%;
+            overflow: hidden;
         }
     }
 }
@@ -540,7 +589,7 @@ $leftColWidth: 255px;
 //     }
 // }
 
-@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileSmall + 1) {
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
     #secondary-column {
         display: none;
     }

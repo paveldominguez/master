@@ -10,7 +10,9 @@
     </ul>
   </a>
   <div class="product-hover">
-    <div class="color-picker"><a href="javascript:void(0)"><img src="img/colorpicker.png"></a></div>
-    <div class="quick-view"><a href="javascript:void(0)">quick view</a></div>
+    <div class="product-message"><a href="#product-message" title="Sale">sale 15% off</a></div>
+    <div class="color-picker"><a href="#pick-color" title="Select color"><img src="img/colorpicker.png"></a></div>
+    <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+    <div class="add-cart"><a class="add-cart-cta" href="#add-to-cart" title="Add to Cart"><span>add to cart</span></a></div>
   </div>
 </li>
