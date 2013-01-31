@@ -50,16 +50,16 @@
       			<div id="focus" class="flexslider"><!-- focus images -->
       				<ul class="slides">
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" >
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" >
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" >
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" >
       					</li>
       				</ul>
       			</div><!-- end flexslider/focus images-->
@@ -68,34 +68,33 @@
       			<div id="thumbs" class="flexslider"><!-- thumbnail image nav -->
       				<ul class="slides">
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" >
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" >
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" >
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" >
       						<div class="vzn-active"></div>
       					</li>
       				</ul>
-      					<div class="zoom">
+      					<div id="carousel-zoom">
       					</div>
       			</div><!-- end #thumbs nav images-->
         		</div><!-- end thumb-wrap -->
       	</div><!-- end carousel -->
-
     </div><!-- end carousel-block  -->
 
 
     <div id="cart-block">
 
-    	<div class="shipping-offers">
+    	<div id="shipping-offers">
       			<p class="offer-text">Free 3-5 Ground Shipping on All Orders</p>
       	</div>
 
@@ -115,7 +114,7 @@
           			<div class="ratings"></div>
           		</li>
           		<li class="reviews">
-          			<a href="#" class="review-link">(47)</a>
+          			<a href="#" class="review-link" title="See reviews for this item." >(47)</a>
           		</li>
         	</ul><!-- end reviewBlock -->
 
@@ -138,7 +137,7 @@
 
 
       			<div id="add-cart-box">
-      				<a href="#">
+      				<a href="#" title="Add this item to your cart." >
       					<div class="cart-raw">
       						<div class="text">add to cart</div>
       					</div>
@@ -148,25 +147,23 @@
 
 
 
-
-
         	<div class="color-stock-block">
         	<span class="color-label">Selected color:</span><span class="color-option">White</span>
         		<ul id="avail-colors" class="inline-list">
 
-        			<li class="color-option black ">
+        			<li class="color-option black" title="black">
         				<div class="select-area"></div>
         			</li>
 
-        			<li class="color-option grey ">
+        			<li class="color-option grey" title="grey">
         				<div class="select-area"></div>
         			</li>
 
-        			<li class="color-option white selected">
+        			<li class="color-option white selected" title="white">
         				<div class="select-area"></div>
         			</li>
 
-        			<li class="color-option blue">
+        			<li class="color-option blue" title="blue">
         				<div class="select-area"></div>
         			</li>
         		</ul>
@@ -192,7 +189,7 @@
 					</div>
 
 					<div class="check">
-						<a href="#" class="link" >Check compatibility</a>
+						<a href="#" class="link" title="Check compatibility of this item.">Check compatibility</a>
 					</div>
 
 				</div><!-- end compat -->
@@ -259,8 +256,48 @@
 
 	</div> <!-- end cartBlock -->
 
+
+	<div id="zoom-block">
+
+		<div id="shipping-offers">
+      			<p class="offer-text">Free 3-5 Ground Shipping on All Orders</p>
+      			<p class="current-item">PowerUp Wireless Speaker by Nokia</p>
+      	</div>
+
+	<div id="zoom-carousel-block">
+
+      			<div id="zoom-focus" class="flexslider"><!-- focus images -->
+      				<ul id="zoom-slides" class="slides">
+      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" >
+      					</li>
+      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" >
+      					</li>
+      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" >
+      					</li>
+      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" >
+      					</li>
+      				</ul>
+
+      			</div><!-- end flexslider/focus images-->
+
+      	</div><!-- end zoom-carousel-block -->
+
+		<div id="zoom-close" title="Back to item details"></div>
+		<div id="zoom-controls">
+			<div class="bigger" title="Zoom in" ></div>
+			<div class="smaller" titel="Zoom out" ></div>
+		</div>
+
+	</div><!-- zoom-block -->
+
 </div><!-- end section-wrap -->
 </section> <!----------------------------------- END PDP HERO ----------------------->
+
+
 
 
 <section id="product-details"><!----------------- BEGIN PRODUCT DETAILS ------------->
@@ -270,11 +307,26 @@
   		<div class="tab-block">
 			<div id="tab-scroll">
       			<dl id="detail-tabs" class="tabs">
-      				<dd class="details active" ><a href="#details">Details</a></dd>
-        			<dd class="overview" ><a href="#overview">Overview</a></dd>
-        			<dd class="features" ><a href="#features">Features</a></dd>
-        			<dd class="specs" ><a href="#specs">Tech Specs</a></dd>
-        			<dd class="compat" ><a href="#compat">Compatibility</a></dd>
+      				<dd class="details active" >
+      					<a href="#details" title="See item details." >Details</a>
+      					<div class="vzn-active"></div>
+      				</dd>
+        			<dd class="overview" >
+        				<a href="#overview" title="See item overview." >Overview</a>
+        				<div class="vzn-active"></div>
+        			</dd>
+        			<dd class="features" >
+        				<a href="#features" title="See item features." >Features</a>
+        				<div class="vzn-active"></div>
+        			</dd>
+        			<dd class="specs" >
+        				<a href="#specs" title="See technical specifications for this item.">Tech Specs</a>
+        				<div class="vzn-active"></div>
+        			</dd>
+        			<dd class="compat" >
+        				<a href="#compat" title="Check compatibility of this item.">Compatibility</a>
+        				<div class="vzn-active"></div>
+        			</dd>
         		</dl>
 			</div><!-- end tab scroll -->
 

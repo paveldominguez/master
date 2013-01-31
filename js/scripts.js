@@ -120,15 +120,15 @@ VZ = {
     },
     'product-detail' : {
          init : function() {
-         // general use
-             var pgWidth = $jQ(document).width();
 
 
-         // HERO flexslider set-up
+	//======================== PDP HERO =================================
+
+         // HERO: flexslider set-up
 			$jQ('#thumbs').flexslider({
 				animation: "slide",
                 controlNav: false,
-                animationLoop: false,
+                animationLoop: true,
                 slideshow: false,
                 itemWidth: 45,
                 itemMargin: 10,
@@ -143,20 +143,28 @@ VZ = {
                 sync: "#thumbs"
                 });
 
+		// HERO: zoom flexslider set-up
+			$jQ('#zoom-focus').flexslider({
+				animation: "slide",
+                controlNav: "thumbnails"
+			});
 
-		// HERO onload: force cart layout
+
+
+		// HERO : force cart layout
+
+			//onload: cart layout tablet & above
+
 			setTimeout(function() {
-
-			// force cart-block height: tablet & above
+				var pgWidth = $jQ(document).width();
+				var heroHt = $jQ('#pdp-hero').height();
 				if (pgWidth > 767) {
-					var heroHt = $jQ('#pdp-hero').height();
 					$jQ('#cart-block').css('height', heroHt + 'px' );
 					}
+			}, 200);
 
-			}, 200);// end onload layout
 
-
-		// HERO resize: force cart layout
+			// resize: cart layout
 			$(window).resize(function(){
 					var resizePg = $jQ(document).width();
 					var resizeHt = $jQ('#carousel').height();
@@ -166,8 +174,7 @@ VZ = {
 					} else {
 						$jQ('#cart-block').css('height', 'auto' );
 					}
-
-			});//end resize layout
+			});
 
 
 		// HERO flexslider: active thumb animation
@@ -186,20 +193,175 @@ VZ = {
 			}); /* end onclick */
 
 
-		// DETAILS : switch active to overview below 768
 
-			//onload
-			if (pgWidth < 769) {
+		// HERO color selection
+		$jQ('.color-option').click(function(){
+			$jQ(this).parent().find('.selected').removeClass('selected');
+			$jQ(this).addClass('selected');
+		});
+
+
+
+
+		// ------------- HERO flexslider : ZOOM functions -----------------------
+
+			//ONLOAD : insert elements into flexslider js generated nav (once)
+				// center thumb nav
+					$jQ('#zoom-block .flex-control-thumbs').wrap('<div class="center-thumbs"><div class="center-block">');
+				// active thumb element
+					$jQ('<div class="vzn-active"></div>').appendTo('#zoom-block .flex-control-thumbs li');
+				// color selector
+					$jQ('<div class="rounded"><ul id="avail-colors" class="inline-list"><li class="color-option black "><div class="select-area"></div></li><li class="color-option grey "><div class="select-area"></div></li><li class="color-option white selected"><div class="select-area"></div></li><li class="color-option blue"><div class="select-area"></div></li></ul></div>')
+						.appendTo('.center-block');
+
+			// ONCLICK : carousel zoom
+			$jQ('#carousel-zoom').click(function () {
+				var pgHeight = ($jQ(window).height() - 60);
+				var leftStart = ($jQ(window).width() / -1);
+				var leftFinish = $jQ(window).width();
+
+				// Panel setup -------------------------------------------------
+
+				// set start position for fixed zoom panel
+				$jQ('#zoom-block').css('left', leftStart +'px').css('height', pgHeight + 'px');
+
+				//set up window specific for layout for fixed zoom panel
+				$jQ('#zoom-carousel-block').css('width', pgHeight + 'px').css('height', pgHeight + 'px');
+				$jQ('#zoom-focus .flex-viewport li').css('width', pgHeight + 'px').css('height', pgHeight + 'px' ).css('min-width', pgHeight + 'px').css('min-height', pgHeight + 'px' );
+
+
+
+				// BRING IT! -----------------------------------------------------
+				$jQ('#zoom-block').css('height', pgHeight + 'px').transition({ x : leftFinish + 'px',
+					easing: 'snap',
+					duration: '1100ms'});
+				//snap after to reset flexslider transform values
+				$jQ(window).trigger('resize');
+
+				// lose vertical scroll
+				setTimeout(function() {
+					$jQ('.product-detail').addClass('body-zoom');
+				}, 1100 );
+
+				// fade in controls
+				setTimeout(function() {
+					$jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeIn('slow');
+				}, 500);
+
+
+				// add in current thumb & color selection -----------------------------------
+					//onload: show vzn-active on current
+					$jQ('#zoom-block .flex-control-thumbs .flex-active').parent().find('.vzn-active').css('width', '100%' );
+
+					//onclick: fadeIn vzn-active, fadeOut
+					$jQ('#zoom-block .flex-control-thumbs li').click(function () {
+					$jQ(this).siblings().find('.vzn-active').stop().animate({
+						'width':'0px'
+						}, 250 );
+					$jQ(this).find('.vzn-active').stop().animate({
+						'width': '100%'
+						}, 500 );
+					}); /* end thumb onclick */
+
+					// color selection
+					$jQ('.color-option').click(function(){
+						$jQ(this).parent().find('.selected').removeClass('selected');
+						$jQ(this).addClass('selected');
+					});
+
+
+				//set lefthand zoom controls ----------------------------------------
+				$jQ('#zoom-controls .bigger').click(function () {
+
+					// get & store current
+					var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').width();
+					$jQ(this).parent().siblings('#zoom-carousel-block').attr('data-current', startWd );
+
+					// window
+					$jQ(this).parent().siblings('#zoom-carousel-block').
+						transition({ width: '90%', easing: 'snap', duration:'1000ms'});
+
+					// image
+					$jQ(this).parents('#zoom-block').find('.flex-active-slide').transition({
+						marginRight: '20%', duration: '10ms'}).transition({
+						scale:1.5, easing: 'snap', duration: '2000ms', delay: 500, queue:false }).
+						transition({ x: '20%', duration: '2000ms', queue:false });
+
+
+				}); /* end bigger */
+
+
+				$jQ('#zoom-controls .smaller').click(function () {
+
+					// get stored
+					var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').attr('data-current');
+					// window
+					$jQ(this).parent().siblings('#zoom-carousel-block').
+						transition({ width: startWd, easing: 'snap', duration:'1000ms'});
+
+					// image
+					$jQ(this).parents('#zoom-block').find('.flex-active-slide').transition({
+						scale:1, easing: 'snap', duration: '2000ms', queue:false }).
+						transition({ x: '0', duration: '2000ms', queue:false }).
+						transition({ marginRight: '5px', duration: '2000ms', queue:false });
+
+				}); /* end smaller */
+
+
+
+
+				// CLOSE IT! ----------------------------------------------------------
+				$jQ('#zoom-close').click(function () {
+
+					// fade out controls
+					setTimeout(function() {
+						$jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeOut('slow');
+					}, 250);
+
+					//lose it
+						$jQ('#zoom-block').transition({ x : leftStart + 'px',
+							easing: 'out',
+							duration: '1000ms' } );
+
+					// restore vertical scroll
+						setTimeout(function() {
+							$jQ('.product-detail').removeClass('body-zoom');
+						}, 400 );
+				}); // end set close
+
+			}); // end carousel onclick
+
+
+			// RESIZE : carousel zoom -----------------------------------------------
+			$(window).resize(function(){
+				var zoomResize = ($jQ(window).height() - 60 );
+				$jQ('#zoom-block').css('height', zoomResize + 'px' );
+				$jQ('#zoom-carousel-block').css('width', zoomResize + 'px').css('height', zoomResize + 'px' ).css('min-height', zoomResize + 'px' );
+				$jQ('#zoom-focus .flex-viewport li').css('width', zoomResize + 'px').css('min-width', zoomResize + 'px').css('min-height', zoomResize + 'px' );
+
+
+			}); // ------------- HERO : end all ZOOM functions ----------------------
+
+
+
+
+	//=============================== PDP Below the Fold =============================
+
+		// DETAILS : switch active tab to overview below 768
+
+			//onload : switch tab
+			var pgWidth = $jQ(document).width();
+			if (pgWidth < 901) {
 					$jQ('#detail-tabs .details').removeClass('active');
 					$jQ('#detail-tabs .overview').addClass('active');
 				} else {
 					$jQ('#detail-tabs .details').addClass('active');
 				}/* end onload */
 
-			//resize
+			//resize : switch tab
 			$(window).resize(function(){
 				var resizePg = $jQ(document).width();
-				if (resizePg < 769) {
+				if (resizePg < 901) {
 						$jQ('#detail-tabs .details').removeClass('active');
 						$jQ('#detail-tabs .overview').addClass('active');
 					} else {
@@ -208,10 +370,32 @@ VZ = {
 			});/* end resize */
 
 
+		// DETAILS tabs: active thumb animation
+
+			//onload: show vzn-active on current
+			$jQ('#detail-tabs .active').find('.vzn-active').css('width', '100%' );
+
+			//resize: show vzn-active on current
+			$(window).resize(function(){
+				$jQ('#detail-tabs .active').find('.vzn-active').css('width', '100%' );
+			});/* end resize */
+
+
+			//onclick: fadeIn current, fadeOut last
+			$jQ('#detail-tabs a').click(function () {
+				$jQ(this).parent().siblings().find('.vzn-active').stop().animate({
+					'width':'0px'
+				}, 250 );
+				$jQ(this).parent().find('.vzn-active').stop().animate({
+					'width': '100%'
+				}, 500 );
+			}); /* end onclick */
+
 
 		}
     }
-};
+    };
+
 
 
 
