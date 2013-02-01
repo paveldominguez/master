@@ -69,7 +69,7 @@
 
 	.body-zoom {  overflow:hidden; }
 
-	#shipping-offers {
+	.shipping-offers {
 		background: #9a9a9a url(../img/sprites/pdp/shipping-boxes-icon.png) 10px 10px no-repeat;
 		width:100%;
 		padding:10px 0px 10px 54px;
@@ -103,6 +103,7 @@
 		overflow:hidden;
 		float:left;
 
+		.shipping-offers { display:none; }
 
 		#carousel {
 			width:85%;
@@ -815,79 +816,96 @@
 
 /* bottom details & cross sell section ------- BEGIN BELOW-THE-FOLD ------- */
 
-#product-details { /*--------------------- details, overview, etc tabs -----*/
-	@include clearfix();
-
+#product-details { /*--------------------- details, overview section -----*/
 	margin-top:50px;
 	min-height:400px;
 
 	.tabbed-wrapper {
 		@include clearfix();
 
-			width:100%;
+		width:100%;
 
-			.tab-block {
-				@include column(10, collapse);
+		.tab-block {
+			@include column(10, collapse);
 
-				float:none;
-				margin:0 auto 0 auto;
+			float:none;
+			margin:0 auto 0 auto;
 
-				#detail-tabs {
+			#detail-tabs {
 
-					/* small device tabs to start */
-					.overview,
-					.features,
-					.specs { display: none; }
+		/* hide pdp-lite tabs */
+			.details { display: none; }
 
-					dd {
-						height:27px;
-						display:inline-block;
-						font-family: $fontVzwMedium;
-						text-transform:uppercase;
-						margin-right:20px;
-						letter-spacing:1px;
-						font-size:13px;
-						padding-bottom:3px;
-						position:relative;
+			dd {
+				height:27px;
+				display:inline-block;
+				font-family: $fontVzwMedium;
+				text-transform:uppercase;
+				margin-right:20px;
+				letter-spacing:1px;
+				font-size:13px;
+				padding-bottom:3px;
+				position:relative;
 
-							a { color: $cartGreyDk; }
-							a:hover { color: $colorVzwRed; }
+				a { color: $cartGreyDk; }
+				a:hover { color: $colorVzwRed; }
 
+				.vzn-active {
+					display:block;
+					width:0px; height:1px;
+					border-bottom: 2px solid $colorVzwRed;
+					position:relative;
+					top:4px;
+					} /* end active div */
+				}/* end dd */
 
-							.vzn-active {
-								 display:block;
-								 width:0px; height:1px;
-								border-bottom: 2px solid $colorVzwRed;
-								position:relative;
-								top:4px;
-								} /* end active div */
-
-
-
-						}/* end dd */
-
-					.active {
-						/* border-bottom: 2px solid red; */
-
-						a { color: $colorVzwRed;}
+				.active {
+					a { color: $colorVzwRed;}
 						}/* end active tab */
+					}/* end detail tabs */
 
-					}/* end tabs */
+				.tabs-content {
 
-			.tabs-content {
+					#featuresTab,
+					#compatTab,
+					#specsTab,
+					#detailsTab { display:none; }
 
-				#overviewTab,
-				#featuresTab,
-				#specsTab,
-				#compatTab { display:none; }
+					.active { display:block !important; }
 
-				.active { display:block !important; }
+					li {
 
-				li {
+					.tab-wrapper {
+						@include clearfix();
+						width:100%;
+						margin-top:30px;
 
-					.tab-wrapper { width:100%; }
+						.third {
+							width:30%;
+							float:left;
+							margin-right:5%;
 
+							h3 {
+								font-family: $fontVzwMedium;
+								text-transform:uppercase;
+								color: black;
+								font-size:10px;
+								} /* end third h3 */
+							} /* end general third */
 
+						.two-thirds {
+							width:60%;
+							float:left;
+							margin-right:10%;
+							} /* end general third */
+
+							.details-list { } /* end details ul */
+
+							.specs-list { } /* end specs ul */
+
+						.third.right { margin-right:0px; } /* end third right */
+
+						}/* end tab-wrapper */
 
 					}/* end general tab li */
 
@@ -897,43 +915,283 @@
 
 		}/* end tabbed wrapper */
 
-	} /*-------------------------- end product details, overview, etc tabs --- */
+	} /*-------------------------- end product details section --- */
 
 
-section#similar-plain { 	display:none;
+#lifestyle { /*--------------------- lifestyle section -----*/
+	margin-top:50px;
 
-	} /* end similar-plain carousel */
+	.lifestyle-wrapper {
+		@include column(10, collapse);
+		@include clearfix();
+
+		float:none;
+		margin:0 auto 0 auto;
+
+		.lifestyle-list {
+			width:100%;
+
+			.third {
+				width:30%;
+				float:left;
+				margin-right:5%;
+
+				h3 { }
+
+				p { }
+
+				.alpha { }
+				.beta { }
+				.gamma { }
+
+				}/* end lifestyle third li */
+
+			.third:last-child {
+				margin-right:0px;
+				}
+
+			}/* end lifestyle ul */
+		}/* end lifestyle wrapper */
+	} /*-------------------------------------  end lifestyle section --- */
 
 
-section#product-reviews { 	display:none;
-
-	} /* end product-reviews */
 
 
-section#splash-banner { 	display:none;
+#simple-carousel { /*------------------ simple carousel section ---- */
+	margin-top:50px;
+	min-height:400px;
 
-	} /* splashy-banner */
+	.tabbed-wrapper {
+		@include clearfix();
+
+		width:100%;
+
+		.tab-block {
+			@include column(10, collapse);
+
+			float:none;
+			margin:0 auto 0 auto;
+
+			#simple-carousel-tabs {
+
+				dd {
+					height:27px;
+					display:inline-block;
+					font-family: $fontVzwMedium;
+					text-transform:uppercase;
+					margin-right:20px;
+					letter-spacing:1px;
+					font-size:13px;
+					padding-bottom:3px;
+					position:relative;
+
+					a { color: $cartGreyDk; }
+					a:hover { color: $colorVzwRed; }
+
+					.vzn-active {
+						display:block;
+						width:0px; height:1px;
+						border-bottom: 2px solid $colorVzwRed;
+						position:relative;
+						top:4px;
+						} /* end active div */
+
+					}/* end dd */
+
+				.active {
+					a { color: $colorVzwRed;}
+					}/* end active tab */
+				}/* end simple carousel tabs */
+
+			.tabs-content {
+
+					#simple-othersTab,
+					#simple-worksTab { display:none; }
+
+					.active { display:block !important; }
+
+					li {
+
+					.tab-wrapper {
+						@include clearfix();
+						width:100%;
+
+						}/* end tab-wrapper */
+
+					}/* end general tab li */
+				}/* end tabs-content */
+			}/* end tab-block */
+		}/* end tabbed wrapper */
+
+	} /* ---------------- end simple carousel section ---------------*/
 
 
-section#similar-fancy { 	display:none;
+#product-reviews {/*------------------ product-reviews section ---- */
+	margin-top:50px;
+	min-height:400px;
 
-	} /* end similar-fancy carousel */
+	.tabbed-wrapper {
+		@include clearfix();
+
+		width:100%;
+
+		.tab-block {
+			@include column(10, collapse);
+
+			float:none;
+			margin:0 auto 0 auto;
+
+			#review-tabs {
+
+				dd {
+					height:27px;
+					display:inline-block;
+					font-family: $fontVzwMedium;
+					text-transform:uppercase;
+					margin-right:20px;
+					letter-spacing:1px;
+					font-size:13px;
+					padding-bottom:3px;
+					position:relative;
+
+					a { color: $cartGreyDk; }
+					a:hover { color: $colorVzwRed; }
+
+					.vzn-active {
+						display:block;
+						width:0px; height:1px;
+						border-bottom: 2px solid $colorVzwRed;
+						position:relative;
+						top:4px;
+						} /* end active div */
+
+					}/* end dd */
+
+				.active {
+					a { color: $colorVzwRed;}
+					}/* end active tab */
+				}/* end review tabs */
+
+
+			.tabs-content {
+
+				#questions-commentsTab { display:none; }
+
+				.active { display:block !important; }
+
+				li {
+
+					.tab-wrapper {
+						@include clearfix();
+						width:100%;
+
+			/* temporary adjustable image - replace with review code block */
+				.temp-image { width:100%; }
+
+						}/* end tab-wrapper */
+					}/* end general tab li */
+				}/* end tabs-content */
+			}/* end tab-block */
+		}/* end tabbed wrapper */
+	} /* ---------------------- end product-reviews section --------*/
+
+
+#splash-banner {/*------------------ splash banner section ------- */
+	margin-top:50px;
+
+
+	.banner { width:100%; }
+
+	} /* ------------------------- end splash banner section ----- */
+
+
+#fancy-carousel { /*------------------ fancy carousel section ---- */
+	margin-top:50px;
+	min-height:400px;
+
+	.tabbed-wrapper {
+		@include clearfix();
+
+		width:100%;
+
+		.tab-block {
+			@include column(10, collapse);
+
+			float:none;
+			margin:0 auto 0 auto;
+
+			#fancy-carousel-tabs {
+
+				dd {
+					height:27px;
+					display:inline-block;
+					font-family: $fontVzwMedium;
+					text-transform:uppercase;
+					margin-right:20px;
+					letter-spacing:1px;
+					font-size:13px;
+					padding-bottom:3px;
+					position:relative;
+
+					a { color: $cartGreyDk; }
+					a:hover { color: $colorVzwRed; }
+
+					.vzn-active {
+						display:block;
+						width:0px; height:1px;
+						border-bottom: 2px solid $colorVzwRed;
+						position:relative;
+						top:4px;
+						} /* end active div */
+
+					}/* end dd */
+
+				.active {
+					a { color: $colorVzwRed;}
+					}/* end active tab */
+				}/* end fancy carousel tabs */
+
+
+
+			.tabs-content {
+
+				#fancy-othersTab,
+				#fancy-worksTab { display:none; }
+
+				.active { display:block !important; }
+
+				li {
+
+					.tab-wrapper {
+						@include clearfix();
+						width:100%;
+
+						}/* end tab-wrapper */
+					}/* end general tab li */
+				}/* end tabs-content */
+			}/* end tab-block */
+		}/* end tabbed wrapper */
+
+	} /* ---------------- end fancy carousel section ---------------*/
 
 
 
 
 
-/*
+
+/*================================= BEGIN BREAKPOINTS ========================= */
+
+
+/* variables from styles.scss
+
 $screenXlarge: 1440px;
 $screenLarge: 1280px;
 $screenMedium: 1024px;
 $screenSmall: 768px;
 $screenMobileLarge: 568px;
 $screenMobileSmall: 320px;
+
 */
-
-
-/*================================= BEGIN BREAKPOINTS ========================= */
 
 
 /* 1440 + */
@@ -1064,11 +1322,6 @@ and ( max-width: 900px ) {
 
 				#detail-tabs {
 
-					/* switch visible tabs*/
-					.details { display:none; }
-					.overview,
-					.features,
-					.specs { display: inline-block }
 					} /* end tabs */
 				}/* end tab-block */
 			}/* end tabbed wrapper */
@@ -1092,8 +1345,11 @@ and ( max-width: 900px ) {
 	#pdp-hero {
 		min-height:320px;
 		max-height:2000px;
+		box-shadow:0 0 0 ;
 
 		#carousel-block {
+
+			.shipping-offers { display:block; }
 
 			#carousel {
 				width:100%;
@@ -1116,7 +1372,16 @@ and ( max-width: 900px ) {
 
 					.thumb-wrap {
 						margin-left: 0px;
-						left:0px;  }
+						left:0px;
+						position:relative;
+
+						#carousel-zoom { display:none; }
+
+						#thumbs {
+							width: 220px;
+							margin-left: -110px;
+							}/* end thumbs */
+						 }/* end thumb-wrap */
 
 				}/* end carousel */
 			}/* end carousel-block  */
@@ -1124,7 +1389,11 @@ and ( max-width: 900px ) {
 		#cart-block {
 			max-width:100%;
 			min-height:562px;
+
+			.shipping-offers { display:none; }
+
 				.header {
+					display: block;
 					position:relative;
 					top:0px;
 					min-height:144px;
@@ -1153,7 +1422,7 @@ and ( max-width: 900px ) {
 			.tab-block {
 
 
-				#tab-scroll {
+				.tab-scroll {
 					width:100%; overflow:auto;
 
 					@include clearfix();
@@ -1165,13 +1434,6 @@ and ( max-width: 900px ) {
 
 						dd { float:left; }
 
-
-
-						/* switch visible tabs*/
-						.details { display:none; }
-						.overview,
-						.features,
-						.specs { display: inline-block }
 
 						} /* end #detail-tabs  */
 					}/* end tab-scroll */
@@ -1224,8 +1486,10 @@ and ( max-width: 900px ) {
 @media only screen and (min-width: $screenMobileSmall )
 	and (max-width: $screenMobileLarge - 1 )  {
 
+	/* fix css compiled orm another page */
+	#site-header { display:block !important; }
 
-		/*---------------------------- BEGIN 320-567 BELOW-THE-FOLD ------------------ */
+	/*---------------------------- BEGIN 320-567 BELOW-THE-FOLD ------------------ */
 
 	#product-details { /*----- begin 320-567 product details, overview etc tabs ----*/
 
