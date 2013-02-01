@@ -5,7 +5,7 @@
     </figure>
     <ul class="product-detail">
       <li class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></li>
-      <li class="price">$299.00</li>
+      <li class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></li>
       <li class="rating"><img src="img/stars-gray.png" /></li>
     </ul>
   </a>

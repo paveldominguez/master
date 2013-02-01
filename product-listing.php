@@ -49,9 +49,15 @@
         <!-- Begin Product Listing -->
         <section class="products">
           <ul id="product-grid" class="product-grid">
+            <!-- featured grid item -->
             <?php include('inc/fragments/product.list.featured.item.php');?>
+            <!-- end featured grid item -->
+            <!-- grid items -->
             <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
-            <li id="quick-view-overlay" class="quick-view-overlay"></li>
+            <!-- end grid items -->
+            <!-- quick view item -->
+            <?php include('inc/fragments/quick-view-item.php'); ?>
+            <!-- end quick view item -->
           </ul>
         </section>
         <!-- End Product Listing -->

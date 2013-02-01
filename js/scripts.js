@@ -77,11 +77,11 @@ var productGrid = (function() {
             }, 'slow', function() {
                 $jQ(document).one(
                     {
-                        resize : function(e) {
+                        'resize.quickView' : function(e) {
                             console.log('resizin');
                             $quickView.fadeOut('fast');
                         },
-                        scroll : function(e) {
+                        'scroll.quickView' : function(e) {
                             console.log('scrollin');
                             if(!$jQ(e.target).hasClass('.quick-view')) {
                                 $quickView.fadeOut('fast');
