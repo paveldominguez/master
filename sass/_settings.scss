@@ -11,12 +11,12 @@ $mobileTotalColumns: 4;
 $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
 // Media Query Settings
-$screenXlarge: 1440px;
-$screenLarge: 1280px;
-$screenMedium: 1024px;
-$screenSmall: 768px;
-$screenMobileLarge: 568px;
-$screenMobileSmall: 320px; 
+$screenXlarge: 1440px !default;
+$screenLarge: 1280px !default;
+$screenMedium: 1024px !default;
+$screenSmall: 768px !default;
+$screenMobileLarge: 568px !default;
+$screenMobileSmall: 320px !default; 
 
 // Colors Settings
 

@@ -34,46 +34,46 @@ var debounce = (function() {
 /*
  * Page Specific Functionality
  */
-var productGrid = (function() {
+var contentGrid = (function() {
     var pub = {
         init : function() {
-            var $productGrid = $jQ('#product-grid'),
-            $products = $productGrid.find('.product'),
-            $quickviewLinks = $products.find('.quick-view');
+            var $contentGrid = $jQ('#main-column .content-grid'),
+            $contentItems = $contentGrid.find('.content-item'),
+            $quickviewLinks = $contentItems.find('.quick-view');
             if(!isTouch) {
-                $products.hover(pub.productTileEnter,pub.productTileLeave);
+                $contentItems.hover(pub.productTileEnter,pub.productTileLeave);
                 $quickviewLinks.on('click',pub.quickViewHandler);
             }
         },
         productTileEnter : function() {
             $jQ(this).addClass('over');
-            $jQ(this).find('.product-hover').stop(true,true).fadeIn('fast');
-            $jQ(this).find('.product-detail').stop(true,true).animate( { opacity:0 }, 'fast');
+            $jQ(this).find('.content-hover').stop(true,true).fadeIn('fast');
+            $jQ(this).find('.content-detail').stop(true,true).animate( { opacity:0 }, 'fast');
         },
         productTileLeave : function() {
             $jQ(this).removeClass('over');
-            $jQ(this).find('.product-hover').fadeOut('fast');
-            $jQ(this).find('.product-detail').animate( { opacity:1 }, 'fast');
+            $jQ(this).find('.content-hover').fadeOut('fast');
+            $jQ(this).find('.content-detail').animate( { opacity:1 }, 'fast');
         },
         quickViewHandler : function() {
             var $quickView = $jQ('#quick-view-overlay'),
-            $productTile = $jQ(this).parent().parent(),
-            $pTposition = $productTile.position();
-            console.log('product tile height: %d', $productTile.outerHeight());
+            $contentTile = $jQ(this).parent().parent(),
+            $cTposition = $contentTile.position();
+            console.log('content tile height: %d', $contentTile.outerHeight());
             $quickView.css(
                 {
                     'display' : 'block',
                     'position' : 'absolute',
-                    'top' : $pTposition.top ,
+                    'top' : $cTposition.top ,
                     'right' : 0,
-                    'height' : ( $productTile.outerHeight() * 2 ) - 1,
+                    'height' : ( $contentTile.outerHeight() * 2 ) - 1,
                     'background-color' : '#FFF',
                     'z-index' : '99999'
                 }
             );
-            console.log('window height: %d\nscrolltop of clicked product: %d',$jQ(window).height(),$pTposition.top);
+            console.log('window height: %d\nscrolltop of clicked product: %d',$jQ(window).height(),$cTposition.top);
             $jQ('html, body').animate( {
-                scrollTop : $pTposition.top + ($productTile.outerHeight() / 2 )
+                scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 )
             }, 'slow', function() {
                 $jQ(document).one(
                     {
@@ -106,7 +106,7 @@ var productGrid = (function() {
 
 var searchResults = {
     styleDropDown : function () {
-        $jQ("#sort-by").uniform();
+        $jQ("#sort-options").uniform();
     }
 };
 
@@ -184,9 +184,9 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
-    'product-grid' : {
+    'content-grid-page' : {
         init : function() {
-            productGrid.init();
+            contentGrid.init();
             contentFilter.init();
         }
     },
@@ -233,7 +233,7 @@ VZ = {
             );//end resizing
         }
     },
-    'search-results' : {
+    'search-results-page' : {
         init : function() {
             searchResults.styleDropDown();
         }

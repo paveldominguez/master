@@ -12,24 +12,18 @@
 
   <title>Verizon Wireless | Product Listing</title>
 
-  <!-- Included CSS Files (Uncompressed) -->
-  <!--
-  <link rel="stylesheet" href="stylesheets/foundation.css">
-  -->
-  
-  <!-- Included CSS Files (Compressed) -->
-  <!-- <link rel="stylesheet" href="css/app.css"> -->
+  <!-- Included CSS Files -->
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="product-grid" class="product-list product-grid">
+<body id="product-listing" class="content-grid-page">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section class="product-list-section">
+  <section class="content-grid-section">
 
     <!-- Begin Product List Header -->
     <?php include('inc/fragments/product.list.header.php');?>
@@ -44,25 +38,25 @@
       <!-- End Left Column -->
 
       <!-- Begin Main Content Container -->      
-      <div id="main-column" class="main-column">
+      <section id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
-        <section class="products">
-          <ul id="product-grid" class="product-grid">
-            <!-- featured grid item -->
-            <?php include('inc/fragments/product.list.featured.item.php');?>
-            <!-- end featured grid item -->
-            <!-- grid items -->
-            <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
-            <!-- end grid items -->
-            <!-- quick view item -->
-            <?php include('inc/fragments/quick-view-item.php'); ?>
-            <!-- end quick view item -->
-          </ul>
-        </section>
+
+        <ul class="content-grid">
+          <!-- featured grid item -->
+          <?php include('inc/fragments/product.list.featured.item.php');?>
+          <!-- end featured grid item -->
+          <!-- grid items -->
+          <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
+          <!-- end grid items -->
+          <!-- quick view item -->
+          <?php include('inc/fragments/quick-view-item.php'); ?>
+          <!-- end quick view item -->
+        </ul>
+
         <!-- End Product Listing -->
 
-      </div> 
+      </section> 
       <!-- End Main Content Container -->
 
     </div>
