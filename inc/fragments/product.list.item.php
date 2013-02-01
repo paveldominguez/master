@@ -21,7 +21,7 @@
     </figure>
     <ul class="product-detail">
       <li class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></li>
-      <li class="price">$189.00</li>
+      <li class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></li>
       <li class="rating"><img src="img/stars-gray.png" /></li>
     </ul>
   </a>
