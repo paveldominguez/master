@@ -21,15 +21,22 @@
   <!-- <link rel="stylesheet" href="css/app.css"> -->
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
+
+  <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
+  <script type="text/javascript" src="js/HANDOFF-FUNCTIONS.js"></script>
+  <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
 </head>
 <body id="category-list" class="category-list-page content-grid-page">
-  <?php include('inc/header.html'); ?>
-
+  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+  <script type="text/javascript">  
+    includeFragment('inc/header.html');
+  </script>
+  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section class="product-list-section">
+  <section class="category-list-section">
 
     <!-- Begin Category List Header -->
     <header class="category-list-header">
@@ -53,7 +60,11 @@
     <div class="wrapper">
 
       <aside id="secondary-column" class="secondary-column">
-        <?php include('inc/product-filter.html'); ?>
+        <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+        <script type="text/javascript">  
+          includeFragment('inc/content-filter.html');
+        </script>
+        <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
       </aside>
       <!-- Begin Main Content Container -->
       <section id="main-column" class="main-column">
@@ -89,7 +100,7 @@
             <!-- end featured grid item -->
             <!-- grid items -->
             <!-- some items in this grid will be hidden for various screen sizes
-            please take note of classes like "hide-for-large, hide-for-small," etc... -->
+            please take note of classes beginning with "hide-for" and "show-for," etc... -->
             <li class="content-item">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
@@ -126,7 +137,7 @@
                 <div class="add-cart"><a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart"><span>add to cart</span></a></div>
               </div>
             </li>
-            <li class="content-item hide-for-small">
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
                   <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
@@ -144,7 +155,7 @@
                 <div class="add-cart"><a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart"><span>add to cart</span></a></div>
               </div>
             </li>
-            <li class="content-item hide-for-small">
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
                   <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
@@ -164,7 +175,11 @@
             </li>
             <!-- end grid items -->
             <!-- quick view item -->
-            <?php include('inc/fragments/quick-view-item.php'); ?>
+            <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+            <script type="text/javascript">
+              includeFragment('inc/fragments/quick-view-item.html');
+            </script>
+            <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
             <!-- end quick view item -->
           </ul>
           <!-- End Product Listing -->
@@ -203,7 +218,7 @@
               <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
               <a href="content-cta">read story &gt;</a>
             </li>
-            <li class="content-item single show-for-large-up show-for-small">
+            <li class="content-item single hide-for-large-grid">
               <figure class="content-fig">
                 <img src="img/category-listing/category-single-fpo.jpg" alt="fpo image"/>
               </figure>
@@ -265,7 +280,7 @@
             <!-- end featured grid item -->
             <!-- grid items -->
             <!-- some items in this grid will be hidden for various screen sizes
-            please take note of classes like "hide-for-large, hide-for-small," etc... -->
+            please take note of classes starting with "hide-for-large, hide-for-small," etc... -->
             <li class="content-item">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
@@ -302,7 +317,7 @@
                 <div class="add-cart"><a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart"><span>add to cart</span></a></div>
               </div>
             </li>
-            <li class="content-item hide-for-small">
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
                   <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
@@ -320,7 +335,7 @@
                 <div class="add-cart"><a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart"><span>add to cart</span></a></div>
               </div>
             </li>
-            <li class="content-item hide-for-small">
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
               <a class="content-link" href="#" title="content title">
                 <figure class="content-fig">
                   <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
@@ -340,7 +355,11 @@
             </li>
             <!-- end grid items -->
             <!-- quick view item -->
-            <?php include('inc/fragments/quick-view-item.php'); ?>
+            <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+            <script type="text/javascript">
+              includeFragment('inc/fragments/quick-view-item.html');
+            </script>
+            <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
             <!-- end quick view item -->
           </ul>
 
@@ -358,6 +377,10 @@
 
   <!-- Footer -->
 
-  <?php include('inc/footer.html');?>
+  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+  <script type="text/javascript">  
+    includeFragment('inc/footer.html');
+  </script>
+  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 </body>
 </html>

@@ -179,6 +179,9 @@ VZ = {
     common : {
         init : function() {
             // initialize things that are used on every page
+            $jQ(window).resize(function() {
+                console.log('window width: %d', $jQ(window).width());
+            });
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions

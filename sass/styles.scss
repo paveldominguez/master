@@ -198,6 +198,12 @@ h1,h2,h3,h4,h5,h6 {
         }
     }
 }
+
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
+    .hide-for-large-grid { display: none; }
+    .show-for-large-grid { display: inherit; }
+}
+
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
     #site-header .top-bar {
         > ul > li {

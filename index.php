@@ -29,7 +29,7 @@
   <ul>
     <?php
       $currentURL = curPageURL();
-      $paths = array_filter(glob($docRoot.'/*.php'), function($v) {
+      $paths = array_filter(glob($docRoot.'/*.html'), function($v) {
         return false === strpos($v, 'index.php');
       });
       foreach ($paths as $filename){
