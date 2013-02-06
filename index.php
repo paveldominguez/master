@@ -34,7 +34,7 @@
       });
       foreach ($paths as $filename){
         $name = basename($filename);
-        $url = $currentURL . $name;
+        $url = '/'.$name;
         $url = str_replace(" ","", $url);
         $name = str_replace("-"," ", $name);
         $name = str_replace(".php"," ", $name);
