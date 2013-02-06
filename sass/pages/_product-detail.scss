@@ -804,6 +804,11 @@
 		@include clearfix();
 		width:100%;
 
+		#detail-tabs {
+			height:32px;
+			width:100%;
+			}
+
 		dd {
 			height: 27px;
 			display: inline-block;
@@ -811,6 +816,9 @@
 			position: relative;
 
 			h2 {
+				display:block;
+				width:auto;
+				height: auto;
 				font-family: $fontVzwMedium;
 				text-transform: uppercase;
 				letter-spacing: 1px;
@@ -820,12 +828,15 @@
 				padding-bottom: 3px;
 				} /* end h2 */
 
-			a { color: $cartGreyDk; }
+			a { color: $cartGreyDk;
+				height:auto;
+				width:auto; }
 			a:hover { color: $colorVzwRed; }
 
 			.vzn-active {
 				display:block;
-				width:0px; height:1px;
+				width:0px; height:2px;
+				background: $colorVzwRed;
 				border-bottom: 2px solid $colorVzwRed;
 				position:relative;
 				top:4px;
