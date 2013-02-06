@@ -15,7 +15,7 @@ var productDetail = (function() {
                 }, 200);
 
 
-             // ONLOAD : flexslider set-up
+             // ONLOAD : main flexslider set-up
              $jQ('#thumbs').flexslider({
                 animation: "slide",
                 controlNav: false,
@@ -35,48 +35,15 @@ var productDetail = (function() {
             });
 
 
-            // ONLOAD : ZOOM flexslider set-up
+            // ONLOAD : zoom flexslider set-up
             $jQ('#zoom-focus').flexslider({
                 animation: "slide",
                 controlNav: "thumbnails"
             });
 
 
-
-
-
             // ONLOAD : show vzn-active on current thumb
             $('#thumbs .flex-active-slide').find('.vzn-active').css('width', '45px');
-
-
-            // ONLOAD : BTF Simple Carousels flexslider set-up
-			$jQ('#simple-similar-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-simple');
-
-			$jQ('#simple-others-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-simple');
-
-			$jQ('#simple-works-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-simple');
-
-
-		// ONLOAD : BTF Fancy Carousel flexslider set-up
-			$jQ('#fancy-similar-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-fancy');
-
-			$jQ('#fancy-others-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-fancy');
-
-			$jQ('#fancy-works-slider').flexslider({
-				animation: "slide"
-			}).addClass('btf-fancy');
-
-
 
 
 
@@ -267,6 +234,11 @@ var productDetail = (function() {
 
             //=============================== PDP : BTF =============================//
 
+            // ONLOAD : ad slider CSS class to element IDs
+            $jQ('#simple-similar-slider, #simple-others-slider, #simple-works-slider').addClass('btf-simple');
+            $jQ('#fancy-similar-slider, #fancy-others-slider, #fancy-works-slider').addClass('btf-fancy');
+
+
             // ONLOAD : show vzn-active on current tab
             $jQ('.tabs .active').find('.vzn-active').css('width', '100%' );
 
@@ -291,32 +263,36 @@ var productDetail = (function() {
             });
 
             // loop through each tab & activate more-less where required
-            $jQ('#product-details .tab-wrapper').each(function() {
+            $jQ('#product-details .tab-wrapper').each(function(num,which) {
                 var tabWrap = $jQ(this);
                 var wrapHt = tabWrap.height();
+                var newHt = -1;
                 var tallest = -1;
                 var tabID = $jQ(this).parent().attr('id');
 
+                if (tabID === "compatTab") {
+                    var xtra = 98;
+                } else {
+                    var xtra = 30
+                }
+
                 tabWrap.children().each(function(i, child) {
-
-                    tallest = tallest > $(child).height() ? tallest : $(this).height();
-
-                    if ( tallest > wrapHt  && tabID !== "compatTab" ){
-                        // turn on more/less
-                        tabWrap.find('.more-less').css('display', 'block');
-                        // store data
-                        var newHt = (tallest + 30);
-                        tabWrap.attr('data-height', newHt);
-                    } else if ( tallest > wrapHt  && tabID === "compatTab" ) {
-
-                        // turn on more/less
-                        tabWrap.find('.more-less').css('display', 'block');
-                        // store data
-                        var compatHt = (tallest + 98);
-                        tabWrap.attr('data-height', compatHt);
-
+                    var check = $jQ(child).height();
+                    if ( check > tallest ) {
+                        tallest = check;
                     }
-                });
+                 });
+
+                if ( tallest > wrapHt ) {
+
+                    // turn on more/less
+                    tabWrap.find('.more-less').css('display', 'block');
+                    // store data
+                    var newHt = (tallest + xtra);
+                    tabWrap.attr('data-height', newHt);
+                }
+
+
             });
 
             // remove temp 'show' class after activation
@@ -362,7 +338,30 @@ var productDetail = (function() {
 
             });
 
+//*****************************************************************************************
 
+// ONLOAD : set up carousel from actual content
+    $jQ('.btf-simple').each(function(){
+        var window = $(this);
+        var list = window.find('ul.slides');
+        var itemCount = list.find('li').length;
+
+        listLength = ( itemCount * 215 );
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+//*****************************************************************************************
 
 
             //=============================== END PDP : BTF =============================//
