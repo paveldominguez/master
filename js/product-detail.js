@@ -1,9 +1,19 @@
 var productDetail = (function() {
-    
+
     var pub = {
         init : function() {
 
             //======================== PDP : HERO =================================//
+
+            // ONLOAD : force cart layout tablet & above
+            setTimeout(function() {
+                var pgWidth = $jQ(document).width();
+                var heroHt = $jQ('#pdp-hero').height();
+                    if (pgWidth > 767) {
+                        $jQ('#cart-block').css('height', heroHt + 'px' );
+                    }
+                }, 200);
+
 
              // ONLOAD : flexslider set-up
              $jQ('#thumbs').flexslider({
@@ -32,18 +42,44 @@ var productDetail = (function() {
             });
 
 
-            // ONLOAD : force cart layout tablet & above
-            setTimeout(function() {
-                var pgWidth = $jQ(document).width();
-                var heroHt = $jQ('#pdp-hero').height();
-                if (pgWidth > 767) {
-                    $jQ('#cart-block').css('height', heroHt + 'px' );
-                }
-            }, 200);
+
 
 
             // ONLOAD : show vzn-active on current thumb
             $('#thumbs .flex-active-slide').find('.vzn-active').css('width', '45px');
+
+
+            // ONLOAD : BTF Simple Carousels flexslider set-up
+			$jQ('#simple-similar-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-simple');
+
+			$jQ('#simple-others-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-simple');
+
+			$jQ('#simple-works-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-simple');
+
+
+		// ONLOAD : BTF Fancy Carousel flexslider set-up
+			$jQ('#fancy-similar-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-fancy');
+
+			$jQ('#fancy-others-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-fancy');
+
+			$jQ('#fancy-works-slider').flexslider({
+				animation: "slide"
+			}).addClass('btf-fancy');
+
+
+
+
+
 
 
             //............. zoom panel functions could be broken out as sep file? ..................//
@@ -231,9 +267,6 @@ var productDetail = (function() {
 
             //=============================== PDP : BTF =============================//
 
-
-            // ONCLICK :  active tab animation
-
             // ONLOAD : show vzn-active on current tab
             $jQ('.tabs .active').find('.vzn-active').css('width', '100%' );
 
@@ -275,6 +308,7 @@ var productDetail = (function() {
                         var newHt = (tallest + 30);
                         tabWrap.attr('data-height', newHt);
                     } else if ( tallest > wrapHt  && tabID === "compatTab" ) {
+
                         // turn on more/less
                         tabWrap.find('.more-less').css('display', 'block');
                         // store data

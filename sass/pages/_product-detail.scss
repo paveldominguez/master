@@ -1,25 +1,22 @@
-/* PDP styles */
-
-/* var & mixins ---------------- */
-
-	/* var */
-
-		/* hero font colors */
- 		$cartGreyLt: #727272;
- 		$cartGreyMd: #666666;
- 		$cartGreyDk: #3d4146;
-
- 		$actLinkBlue: #0066cc;
-
- 		$availColorBlk: #2e2e2e;
- 		$availColorWht: #ffffff;
- 		$availColorGrey: #b1b0b0;
- 		$availColorBlue: #51b0d8;
-
-		$featuredBg : #27a0cc;
-		$techinfoBG : #119a70;
 
 
+/*----------------------------- PDP : VAR, MIXINS, GENERAL CLASSES  ---------------- */
+
+	/* colors */
+
+ 	$cartGreyLt: #727272;
+ 	$cartGreyMd: #666666;
+ 	$cartGreyDk: #3d4146;
+
+ 	$actLinkBlue: #0066cc;
+
+ 	$availColorBlk: #2e2e2e;
+ 	$availColorWht: #ffffff;
+ 	$availColorGrey: #b1b0b0;
+ 	$availColorBlue: #51b0d8;
+
+	$featuredBg : #27a0cc;
+	$techinfoBG : #119a70;
 
 
 	/* mixins */
@@ -97,7 +94,7 @@
 
 
 
-/* top hero section ------------------- BEGIN HERO ---------------------- */
+/*----------------------------------------------- BEGIN HERO --------------------- */
 
 #pdp-hero {
 	@include clearfix();
@@ -312,7 +309,7 @@
 				}/* end review-block */
 			}/* end header */
 
-		#cart-details {
+		#cart-details { /* ---------------------- price & add-to-cart ------ */
 			@include cartBG;
 
 			position:absolute;
@@ -386,7 +383,7 @@
 					}/* end add-cart-box */
 				}/* end price-add */
 
-			.color-stock-block {
+			.color-stock-block { /* ---------------------- color selection ---------*/
 				@include cartBox;
 				@include boxBrdrT;
 
@@ -453,7 +450,7 @@
 					}/* end avail-colors ul */
 				}/* end color-stock-block */
 
-			.compat-ship-block {
+			.compat-ship-block { /* ------------------ compat & shipping ----------*/
 				@include boxBrdrT;
 
 				.compat {
@@ -501,7 +498,7 @@
 					}/* end pdp-ship */
 				} /* end compat-ship-block */
 
-			.social-block {
+			.social-block { /*------------------------------ social ------------------*/
 				@include boxBrdrT;
 				@include cartSocialBG;
 
@@ -797,7 +794,8 @@
 
 
 
-/* bottom details & cross sell section ------- BEGIN BELOW-THE-FOLD ---------- */
+/*-------------------------------------------- BEGIN BELOW-THE-FOLD ---------- */
+
 
 	/* ---------- universal tab styles ----------------------- */
 	.tabbed-wrapper {
@@ -805,8 +803,8 @@
 		width:100%;
 
 		#detail-tabs {
-			height:32px;
 			width:100%;
+			margin:0;
 			}
 
 		dd {
@@ -838,8 +836,8 @@
 				width:0px; height:0px;
 				background: $colorVzwRed;
 				border-bottom: 2px solid $colorVzwRed;
-				position:relative;
-				top:4px;
+				position:absolute;
+				bottom:3px;
 				} /* end active div */
 			}/* end dd */
 
@@ -852,12 +850,12 @@
 	/* ----------- end universal tab styles ------------------ */
 
 
+
+
 #product-details { /*--------------------- tabbed product details section -----*/
 	margin-top:50px;
 
 	.tabbed-wrapper {
-
-		 #detail-tabs { margin:0; }
 
 		.tab-block {
 			@include column(11, collapse);
@@ -964,7 +962,7 @@
 
 					}/* end general details tabs li */
 
-				#overviewTab { /* -----------  overview tab ----------- */
+				#overviewTab { /* ------------------------  overview tab ---------------- */
 
 					.tab-wrapper { }
 					.tab-wrapper.less {
@@ -1041,7 +1039,7 @@
 					} /* end overview tab */
 
 
-				#featuresTab { /* -----------  features tab ----------- */
+				#featuresTab { /* --------------------------  features tab ----------- */
 
 					.tab-wrapper {
 
@@ -1154,7 +1152,7 @@
 						} /* end tab-wrapper.less */
 					} /* end features tab */
 
-				#specsTab {
+				#specsTab { /*---------------------------------- specs tab -------------*/
 					.tab-wrapper {
 						font-family: $fontArial;
 
@@ -1270,7 +1268,7 @@
 						} /* end tab-wrapper.less */
 					} /* end specs tab */
 
-				#compatTab {
+				#compatTab { /* --------------------------- compatibility tab ----------*/
 					@include clearfix();
 
 					.tab-wrapper {
@@ -1393,16 +1391,16 @@
 						} /* end tab-wrapper.less */
 					} /* end compat tab */
 
-				#detailsTab {
+				#detailsTab {  /*--------------------------  details for PDP lite ---*/
 
-					} /* end details tab - for PDP Lite only -  */
+					} /* end details tab */
 				}/* end tabs-content */
 			}/* end tab-block */
 		}/* end tabbed wrapper */
-	} /*-------------------------- end product details section --- */
+	} /*------------------------------------------- end product details section----- */
 
 
-#lifestyle { /*--------------------- lifestyle section -----*/
+#lifestyle { /*------------------------------------------- lifestyle section --------*/
 	margin-top:20px;
 	background: #2a2d32;
 	color:#fff;
@@ -1459,12 +1457,56 @@
 
 			}/* end lifestyle ul */
 		}/* end lifestyle wrapper */
-	} /*-------------------------------------  end lifestyle section --- */
+	} /*----------------------------------------------  end lifestyle section -------- */
 
 
 
 
-#simple-carousel { /*------------------ simple carousel section ---- */
+
+/* ------------------------------------------- begin simple carousel section -----------*/
+
+/* -----------  simple carousel : slider styles -------- */
+
+	.btf-simple {
+
+    	.flexslider {margin: 0 0 60px; background: #fff; border: 4px solid #fff; position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+    	.flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+    	.loading .flex-viewport {max-height: 300px;}
+    	.flexslider .slides {zoom: 1;}
+
+    	.carousel li {margin-right: 5px}
+
+
+    	/* Direction Nav */
+    	.flex-direction-nav {*height: 0;}
+    	.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(images/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
+    	.flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
+    	.flex-direction-nav .flex-prev {left: -36px;}
+    	.flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
+    	.flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+    	.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+    	.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+    	/* Control Nav */
+    	.flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
+    	.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+    	.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}
+    	.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+    	.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+
+    	.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+    	.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+    	.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+    	.flex-control-thumbs img:hover {opacity: 1;}
+    	.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+    	@media screen and (max-width: 860px) {
+        	.flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+        	.flex-direction-nav .flex-next {opacity: 1; right: 0;}
+    	}
+	} /* end btf-simple */
+
+#simple-carousel { /*------------------ simple carousel : box styles ---- */
 	margin-top:50px;
 	min-height:400px;
 
@@ -1530,10 +1572,12 @@
 			}/* end tab-block */
 		}/* end tabbed wrapper */
 
-	} /* ---------------- end simple carousel section ---------------*/
+	} /* ----------------------------- end simple carousel section ---------------*/
 
 
-#product-reviews {/*------------------ product-reviews section ---- */
+
+
+#product-reviews {/*--------------------- product-reviews section ---------------- */
 	margin-top:50px;
 	min-height:400px;
 
@@ -1600,19 +1644,63 @@
 				}/* end tabs-content */
 			}/* end tab-block */
 		}/* end tabbed wrapper */
-	} /* ---------------------- end product-reviews section --------*/
+	} /* -------------------------------- end product-reviews section --------*/
 
 
-#splash-banner {/*------------------ splash banner section ------- */
+
+
+#splash-banner {/*--------------------------- splash banner section ---------- */
 	margin-top:50px;
-
-
 	.banner { width:100%; }
+	} /* ---------------------------------- end splash banner section -------- */
 
-	} /* ------------------------- end splash banner section ----- */
 
 
-#fancy-carousel { /*------------------ fancy carousel section ---- */
+
+/*------------------------- begin fancy carousel section  -------------------- */
+
+/* ------------------ fancy carousel :  slider styles ------------------------ */
+
+    .btf-fancy {
+
+    	.flexslider {margin: 0 0 60px; background: #fff; border: 4px solid #fff; position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+    	.flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+    	.loading .flex-viewport {max-height: 300px;}
+    	.flexslider .slides {zoom: 1;}
+
+    	.carousel li {margin-right: 5px}
+
+
+    	/* Direction Nav */
+    	.flex-direction-nav {*height: 0;}
+    	.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(images/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
+    	.flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
+    	.flex-direction-nav .flex-prev {left: -36px;}
+    	.flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
+    	.flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+    	.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+    	.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+    	/* Control Nav */
+    	.flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
+    	.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+    	.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}
+    	.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+    	.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+
+    	.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+    	.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+    	.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+    	.flex-control-thumbs img:hover {opacity: 1;}
+    	.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+    	@media screen and (max-width: 860px) {
+        	.flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+        	.flex-direction-nav .flex-next {opacity: 1; right: 0;}
+    	}
+	} /* end btf-fancy */
+
+#fancy-carousel { /*------------------------ fancy carousel : box styles ------- */
 	margin-top:50px;
 	min-height:400px;
 
@@ -1679,9 +1767,19 @@
 			}/* end tab-block */
 		}/* end tabbed wrapper */
 
-	} /* ---------------- end fancy carousel section ---------------*/
+	} /* ---------------- end fancy carousel section ------------------------*/
+
+/*-------------------------------------------- END BELOW-THE-FOLD ---------- */
 
 
+
+
+/*----------------------------------- BEGIN SCROLL DOWN ANCHOR BAR ---------- */
+
+
+
+
+/*----------------------------------- END SCROLL DOWN ANCHOR BAR ---------- */
 
 
 
@@ -1705,7 +1803,7 @@ $screenMobileSmall: 320px;
 
 @media only screen and (min-width: $screenXlarge ) {
 
-/* -----------------------------  1440+ HERO  --------------- */
+/* ------------------------------  1440+ HERO  --------------------------------- */
 
 	#pdp-hero {
 	#carousel-block {
@@ -1726,7 +1824,7 @@ $screenMobileSmall: 320px;
 @media only screen and (min-width: $screenMedium ) {
 
 
-/* -----------------------------  1024 + HERO ADJUSTMENTS --------------- */
+/* --------------------------------------  1024 + HERO  -------------------- */
 
 	#pdp-hero {
 
@@ -1745,13 +1843,7 @@ $screenMobileSmall: 320px;
 			}/* end cart-block */
 
 
-	}/*---------------------------  END 1024 HERO ------------------------- */
-
-
-
-
-
-
+	}/*---------------------------  END 1024 + HERO ------------------------- */
 
 
 
@@ -1765,7 +1857,7 @@ $screenMobileSmall: 320px;
 @media only screen and (min-width: $screenSmall )
 and ( max-width: 900px ) {
 
-	/* -----------------------------  768 HERO ADJUSTMENTS --------------- */
+	/* -----------------------------  768 - 900 HERO ------------------ */
 
 	#pdp-hero {
 		height:645px; max-height:645px;
@@ -1816,12 +1908,12 @@ and ( max-width: 900px ) {
 			}/* end cart-block */
 
 
-	}/*---------------------------  END 768 HERO ------------------------- */
+	}/*---------------------------  END 768 - 900 HERO ------------------------- */
 
 
-	/*---------------------------- BEGIN 768 BELOW-THE-FOLD ------------------ */
+	/*------------------------ BEGIN 768 - 900 BELOW-THE-FOLD ------------------ */
 
-	#product-details { /*----- begin 768 product details, overview etc tabs ----*/
+	#product-details {
 
 		.tabbed-wrapper {
 
@@ -1832,7 +1924,7 @@ and ( max-width: 900px ) {
 					} /* end tabs */
 				}/* end tab-block */
 			}/* end tabbed wrapper */
-		}/*------------------------end 768 product details, overview etc tabs ---*/
+		}
 
 
 	/*------------------------------ END 768 BELOW-THE-FOLD ----------------------*/
@@ -1847,7 +1939,7 @@ and ( max-width: 900px ) {
 
 @media only screen and (max-width: 767px ) {
 
-/* -----------------------------  767 -  HERO ADJUSTMENTS --------------- */
+/* -----------------------------------------  767 -  HERO ---------------------- */
 
 	#pdp-hero {
 		min-height:320px;
@@ -1912,12 +2004,12 @@ and ( max-width: 900px ) {
 			}/* end cart-block */
 
 
-	}/*---------------------------  END 767 - HERO ------------------------- */
+	}/*---------------------------  END 767 - HERO ---------------------------- */
 
 
 	/*---------------------------- BEGIN 767- BELOW-THE-FOLD ------------------ */
 
-	#product-details { /*----- begin 767- product details, overview etc tabs ----*/
+	#product-details {
 
 		.section-wrap {
 			width:85%;
@@ -1946,13 +2038,13 @@ and ( max-width: 900px ) {
 					}/* end tab-scroll */
 				}/* end tab-block */
 			}/* end tabbed wrapper */
-		}/*------------------------end 767- product details, overview etc tabs ---*/
+		}
 
 
 	/*------------------------------ END 767- BELOW-THE-FOLD ----------------------*/
 
 
-} /*---------------- END 767 -   ------------------- */
+} /*---------------------------------------------- END 767 -   ------------------- */
 
 
 
@@ -1966,7 +2058,7 @@ and ( max-width: 900px ) {
 @media only screen and (min-width: $screenMobileLarge )
 	and (max-width: 719px ) {
 
-	/* -----------------------------  568 - 767 HERO ADJUSTMENTS --------------- */
+	/* --------------------------------  568 - 767 HERO  -------------------------- */
 
 	#pdp-hero {
 	#carousel-block {
@@ -1998,12 +2090,12 @@ and ( max-width: 900px ) {
 @media only screen and (min-width: $screenMobileSmall )
 	and (max-width: $screenMobileLarge - 1 )  {
 
-	/* fix css compiled orm another page */
+	/* fix css compiled from another page */
 	#site-header { display:block !important; }
 
 	/*---------------------------- BEGIN 320-567 BELOW-THE-FOLD ------------------ */
 
-	#product-details { /*----- begin 320-567 product details, overview etc tabs ----*/
+	#product-details {
 
 		.tabbed-wrapper {
 
@@ -2016,22 +2108,10 @@ and ( max-width: 900px ) {
 					} /* end tabs */
 				}/* end tab-block */
 			}/* end tabbed wrapper */
-		}/*------------------------end 320-567 product details, overview etc tabs ---*/
+		}
 
 
 	/*------------------------------ END 320-567 BELOW-THE-FOLD ----------------------*/
 
-
-
-
-
-
 }/* end 320 - 479 */
 
-
-
-
-
-
-
-/* ================================= END BREAKPOINTS =========================== */
