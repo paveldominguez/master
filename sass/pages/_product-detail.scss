@@ -835,7 +835,7 @@
 
 			.vzn-active {
 				display:block;
-				width:0px; height:2px;
+				width:0px; height:0px;
 				background: $colorVzwRed;
 				border-bottom: 2px solid $colorVzwRed;
 				position:relative;
@@ -856,6 +856,8 @@
 	margin-top:50px;
 
 	.tabbed-wrapper {
+
+		 #detail-tabs { margin:0; }
 
 		.tab-block {
 			@include column(11, collapse);
