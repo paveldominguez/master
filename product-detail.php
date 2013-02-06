@@ -141,10 +141,8 @@
 
 
       			<div id="add-cart-box">
-      				<a href="#" title="Add this item to your cart." >
-      					<div class="cart-raw">
-      						<div class="text">add to cart</div>
-      					</div>
+      				<a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart">
+      					<span>add to cart</span>
       				</a>
       			</div><!-- end add-cart -->
        	</div><!-- end price-add -->
@@ -312,23 +310,23 @@
 			<div class="tab-scroll">
       			<dl id="detail-tabs" class="tabs">
       				<dd class="details " >
-      					<a href="#details" title="See item details." >Details</a>
+      					<a href="#details" title="See item details." ><h2>Details<h2></a>
       					<div class="vzn-active"></div>
       				</dd>
         			<dd class="overview active" >
-        				<a href="#overview" title="See item overview." >Overview</a>
+        				<a href="#overview" title="See item overview." ><h2>Overview</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         			<dd class="features" >
-        				<a href="#features" title="See item features." >Features</a>
+        				<a href="#features" title="See item features." ><h2>Features</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         			<dd class="specs" >
-        				<a href="#specs" title="See technical specifications for this item.">Tech Specs</a>
+        				<a href="#specs" title="See technical specifications for this item."><h2>Tech Specs</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         			<dd class="compat" >
-        				<a href="#compat" title="Check compatibility of this item.">Compatibility</a>
+        				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         		</dl>
@@ -343,10 +341,6 @@
 						<div class="overview-text two-thirds">
 							<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA, a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that  houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.   Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.
 							</p>
-							<div class="more-less">
-								<a href="#" class="more-text" title = "show more">more</a>
-								<a href="#" class="less-text" title = "show less">less</a>
-							</div>
 						</div><!-- end overview-text -->
 
 						<div class="you-need third right">
@@ -354,30 +348,52 @@
 							<ul class="you-need-items">
 
 								<li class="item">
+								<a href="#" class="prodLink" title="view this item">
 									<div class="product-image">
         									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
 									</div>
         							<div class="product-info">
         								<h5>Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
-        								<div class="price"></div>
+        								<div class="price">$189.99</div>
         								<div class="cta"></div>
         							</div>
+        						</a>
 								</li>
 
 								<li class="item">
+								<a href="#" class="prodLink" title="view this item">
 									<div class="product-image">
         									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
 									</div>
         							<div class="product-info">
         								<h5>Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
-        								<div class="price"></div>
+        								<div class="price">$189.99</div>
         								<div class="cta"></div>
         							</div>
+        						</a>
+								</li>
+
+								<li class="item">
+								<a href="#" class="prodLink" title="see this item">
+									<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+									</div>
+        							<div class="product-info">
+        								<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        								<div class="ratings"></div>
+        								<div class="price">$189.99</div>
+        								<div class="cta"></div>
+        							</div>
+        						</a>
 								</li>
 							</ul><!-- end you need ul  -->
 						</div><!-- end you need div  -->
+
+					<div class="more-less">
+						<a href="#" class="more-less-link" title="show more">more</a>
+					</div>
 
 					</div><!-- end overview tab-wrapper -->
 				</li><!-- end overview tab content -->
@@ -388,56 +404,78 @@
 					<div class="tab-wrapper">
 
 						<div class="third left">
-							<h3>Overview</h3>
-        					<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone …
-        					</p>
+        					<ul class="details-list">
+								<li>Wireless charging speaker</li>
+								<li>Legendary JBL® sound and complete wireless freedom </li>
+								<li>Wirelessly charge compatible device on top of the speaker</li>
+								<li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
+								<li>Wireless charging speaker</li>
+								<li>Legendary JBL® sound and complete wireless freedom </li>
+								<li>Wirelessly charge compatible device on top of the speaker</li>
+								<li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
+							</ul>
         				</div><!-- end details left -->
 
         				<div class="third center">
-							<h3>Features</h3>
 							<ul class="details-list">
 								<li>Wireless charging speaker</li>
 								<li>Legendary JBL® sound and complete wireless freedom </li>
 								<li>Wirelessly charge compatible device on top of the speaker</li>
-								<li></li>
 								<li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
 							</ul>
         				</div><!-- end details center -->
 
         				<div class="third right">
-							<div class="graphic-block">
+
 								<ul class="features">
-									<li>
-										<div class="image"></div>
+									<li class="smart">
+										<div class="image">
+											<h5 class="feature">Smart Accessory</h5>
+										</div>
 										<div class="hover-text">
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+												<span class="close"></span>
+											</p>
+
+										</div>
+									</li>
+									<li class="app">
+										<div class="image">
+											<h5 class="feature">App Enabled</h5>
+										</div>
+										<div class="hover-text">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+												<span class="close"></span>
 											</p>
 										</div>
 									</li>
-									<li>
-										<div class="image"></div>
+									<li class="data">
+										<div class="image">
+											<h5 class="feature">Data Plan Needed</h5>
+										</div>
 										<div class="hover-text">
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+												<span class="close"></span>
 											</p>
 										</div>
 									</li>
-									<li>
-										<div class="image"></div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-											</p>
+									<li class="wifi">
+										<div class="image">
+											<h5 class="feature">WiFi Enabled</h5>
 										</div>
-									</li>
-									<li>
-										<div class="image"></div>
 										<div class="hover-text">
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+												<span class="close"></span>
 											</p>
 										</div>
 									</li>
 								</ul>
-							<div class="graphic-block">
+
         				</div><!-- end details right -->
+
+        				<div class="more-less">
+							<a href="#" class="more-less-link" title="show more">more</a>
+						</div>
 
 					</div><!-- end features tab-wrapper -->
 				</li><!-- end overview tab content -->
@@ -448,7 +486,7 @@
         			<div class="tab-wrapper">
 
 						<div class="third left">
-							<h3>Tech Specs</h3>
+							<h3>Specifications</h3>
 							<ul class="specs-list">
 								<li>
 									<div class="specs-label">Weight</div>
@@ -462,35 +500,47 @@
 									<div class="specs-label">Length</div>
 									<div class="specs-data">196.45</div>
 								</li>
+
+								<li>
+									<div class="specs-label">Power Source</div>
+									<div class="specs-data">AC Wireless</div>
+								</li>
 							</ul>
         				</div><!-- end details left -->
 
         				<div class="third center">
-							<h3>Features</h3>
+							<h3>In the Box</h3>
 							<ul class="details-list">
 								<li>Wireless charging speaker</li>
-								<li>Legendary JBL® sound and complete wireless freedom </li>
-								<li>Wirelessly charge compatible device on top of the speaker</li>
-								<li></li>
-								<li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
+								<li>4.9' 3.5mm audio cable</li>
+								<li>USB 2.0 cable</li>
+								<li>AC power adpater</li>
+								<li>Carrying case</li>
+								<li>Owner's manual</li>
 							</ul>
         				</div><!-- end details center -->
 
         				<div class="third right">
-							<div class="graphic-block">
-								<div class="tech-info">
-									<div class="image">
-										<img src="">
-									</div>
-									<h3>Download the Manual</h3>
-									<p class="more">
-										<a href="#" title="more info">
-											Additional CTA?
-										</a>
-									</p>
+							<div class="tech-info">
+								<a href="#download-link" class="download-link" title="Download the manual for this item.">
+									<div class="image"></div>
+									<h3>Download Digital User Manual</h3>
+								</a>
+								<p>
+									Technical problems? <a href="#" title="Verizon Customer Service">Email us here</a>
+								</p>
+								<div id="download-click">
+									<div class="image"></div>
+									<h3>Success!</h3>
+									<p>Your manual is downloading.</p>
 								</div>
-							<div class="graphic-block">
+
+							</div><!-- end tech-info -->
         				</div><!-- end details right -->
+
+						<div class="more-less">
+							<a href="#" class="more-less-link" title="show more">more</a>
+						</div>
 
         			</div><!-- end tab wrapper -->
         		</li><!-- end specs tab-content -->
@@ -501,29 +551,23 @@
 
         				<div class="compat-sort">
 
-        					<ul class="sorting-elements>
+        					<ul class="sorting-elements">
         						<li class="summary">
-        							<div id="detail-total-items">
-        								54 Compatible Devices
+        							<div id="total-items">
+        								<span>54</span> Compatible Devices
         							</div>
         						</li>
 
         						<li class="search">
-        							<div id="detail-search-box">
-        								Search for Compatible Devices
-        							</div>
+        							<input type="search" id="detail-search-box" >
         						</li>
 
         						<li class="brand">
-        							<div id="detail-brand-select">
-        								Brand
-        							</div>
+        							<input type="list" id="detail-brand-select" value="Brand">
         						</li>
 
         						<li class="device">
-        							<div id="detail-device-select">
-        								Device
-        							</div>
+        							<input type="list" id="detail-device-select" value="Device">
         						</li>
 
         					</ul><!-- end sorting elements -->
@@ -577,9 +621,86 @@
         							</div>
         						</a></li>
 
+        						<li class="each"><a href="#" title="view this item">
+        							<div class="item-details">
+        								<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+										</div>
+        								<div class="product-info">
+        									<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        									<div class="ratings"></div>
+        									<div class="price"></div>
+        									<div class="cta"></div>
+        								</div>
+        							</div>
+        						</a></li>
+
+        						<li class="each"><a href="#" title="view this item">
+        							<div class="item-details">
+        								<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+										</div>
+        								<div class="product-info">
+        									<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        									<div class="ratings"></div>
+        									<div class="price"></div>
+        									<div class="cta"></div>
+        								</div>
+        							</div>
+        						</a></li>
+
+        						<li class="each"><a href="#" title="view this item">
+        							<div class="item-details">
+        								<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+										</div>
+        								<div class="product-info">
+        									<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        									<div class="ratings"></div>
+        									<div class="price"></div>
+        									<div class="cta"></div>
+        								</div>
+        							</div>
+        						</a></li>
+
+        						<li class="each"><a href="#" title="view this item">
+        							<div class="item-details">
+        								<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+										</div>
+        								<div class="product-info">
+        									<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        									<div class="ratings"></div>
+        									<div class="price"></div>
+        									<div class="cta"></div>
+        								</div>
+        							</div>
+        						</a></li>
+
+        						<li class="each"><a href="#" title="view this item">
+        							<div class="item-details">
+        								<div class="product-image">
+        									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
+										</div>
+        								<div class="product-info">
+        									<h5>Denon Globe Cruiser On-Ear Headphones</h5>
+        									<div class="ratings"></div>
+        									<div class="price"></div>
+        									<div class="cta"></div>
+        								</div>
+        							</div>
+        						</a></li>
 
         					</ul><!-- end returned items -->
         				</div>
+
+        			<div class="more-less">
+						<a href="#" class="more-less-link" title="show more">more</a>
+					</div>
+
+					<div class="see-all">
+						<a href="#" class="see-all-link" title="See all compatibe devices">See all compatible devices</a>
+					</div>
 
         			</div><!-- end compat wrapper -->
         		</li><!-- end compatibility tab-content -->
@@ -622,16 +743,12 @@
 							</ul>
         				</div><!-- end details right -->
 
+					<div class="more-less">
+						<a href="#" class="more-less-link" title="show more">more</a>
+					</div>
+
         			</div><!-- end details tab-wrapper -->
         		</li><!-- end details tab content , always hidden for now-->
-
-
-
-
-
-
-
-
 
       	</ul><!-- end tab-content -->
 
@@ -648,21 +765,21 @@
 			<ul class="lifestyle-list">
 				<li class="third">
 					<div class="alpha">
-						<h3>Lifestyle Alpha</h3>
+						<h2>Lifestyle Alpha</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
 						</p>
 					</div>
 				</li>
 				<li class="third">
 					<div class="beta">
-						<h3>Lifestyle Beta</h3>
+						<h2>Lifestyle Beta</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
 						</p>
 					</div>
 				</li>
 				<li class="third">
 					<div class="gamma">
-						<h3>Lifestyle Gamma</h3>
+						<h2>Lifestyle Gamma</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
 						</p>
 					</div>
@@ -688,15 +805,15 @@
 			<div class="tab-scroll">
       			<dl id="simple-carousel-tabs" class="tabs">
       				<dd class="similar active" >
-      					<a href="#simple-similar" title="Similar items" >Similar</a>
+      					<a href="#simple-similar" title="Similar items" ><h2>Similar</h2></a>
       					<div class="vzn-active"></div>
       				</dd>
         			<dd class="others" >
-        				<a href="#simple-others" title="Others also bought" >Others Also Bought</a>
+        				<a href="#simple-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         			<dd class="works" >
-        				<a href="#simple-works" title="Works with" >Works With</a>
+        				<a href="#simple-works" title="Works with" ><h2>Works With</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         		</dl>
@@ -1036,15 +1153,15 @@
 			<div class="tab-scroll">
       			<dl id="fancy-carousel-tabs" class="tabs">
       				<dd class="similar active" >
-      					<a href="#fancy-similar" title="Similar items" >Similar</a>
+      					<a href="#fancy-similar" title="Similar items" ><h2>Similar</h2></a>
       					<div class="vzn-active"></div>
       				</dd>
         			<dd class="others" >
-        				<a href="#fancy-others" title="Others also bought" >Others Also Bought</a>
+        				<a href="#fancy-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         			<dd class="works" >
-        				<a href="#fancy-works" title="Works with" >Works With</a>
+        				<a href="#fancy-works" title="Works with" ><h2>Works With</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
         		</dl>
@@ -1495,7 +1612,27 @@
 
   <!-- End Grid Section -->
 
-
+<div id="anchor-bar">"
+	<ul>
+		<li class="product">
+			<div class="anchor-thumb">
+				<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" title="Product Name">
+			</div>
+			<h2 class="anchor-title">Item Name</h2>
+		</li>
+		<li class="anchor-shipping">
+			<p>Shipping Offer Text</p>
+		</li>
+		<li class="anchor-cart">
+			<div class="price">$249<span>99</span></div>
+			<div class="cart-box">
+				<a class="button add-cart-cta" href="#add-to-cart" title="Add to Cart">
+      					<span>add to cart</span>
+      			</a>
+			</div>
+		</li>
+	</ul>
+</div><!-- End floating anchor bar -->
 
   <!-- Footer -->
 
