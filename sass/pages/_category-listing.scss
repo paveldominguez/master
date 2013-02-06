@@ -1,0 +1,50 @@
+.content-grid {
+    &.feature-grid {
+        .content-item {
+            &.large {
+                @include clearfix();
+                @include column(12);
+            }
+            &.two-wide {
+                @include column(6);
+            }
+            &.single {
+                @include column(3);
+            }
+        }
+    }
+    &.feature-right {
+        .content-item {
+            &.featured {
+                float: right;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+    .content-grid {
+        &.feature-grid {
+            .content-item {
+                &.two-wide {
+                    @include column(8);
+                }
+                &.single {
+                    @include column(4);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+
+}
+
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
+
+}
+
+@media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+
+}

@@ -14,7 +14,7 @@ $sortBG: #F1F3F2;
         strong:first-child{font-weight:400;}
         strong.keyword{font-weight: 700;}
     }
-    #uniform-sort-by{
+    #uniform-sort-options{
         @include border-radius(3px);
         @include ui-sprite(drop-down, false, 120px, 14px);
         background-color: $searchBG;
@@ -28,7 +28,7 @@ $sortBG: #F1F3F2;
             cursor:pointer;
         }
     }
-    .sort-by{
+    .sort{
         position:absolute;
         right:10px;
         top:2px;
@@ -191,7 +191,7 @@ $sortBG: #F1F3F2;
             }
         }
     }
-    .header{display: none;}
+    .search-results-page .header{display: none;}
     .search-bar {
         #search-keyword{min-height:40px;font-size: 22px;}
         .options{

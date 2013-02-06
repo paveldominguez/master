@@ -1,5 +1,6 @@
 <li id="quick-view-overlay" class="quick-view-overlay">
     <section class="quick-view-item">
+        <!-- main carousel slider -->
         <div id="quick-view-slider" class="slider">
             <ul class="slides">
                 <li class="first">
@@ -16,6 +17,8 @@
                 </li>
             </ul>
         </div>
+        <!-- end main carousel slider -->
+        <!-- thumbnails for slider -->
         <div id="quick-view-thumbs" class="slider-thumbs">
             <ul class="slides">
                 <li>
@@ -32,6 +35,7 @@
                 </li>
             </ul>
         </div>
+        <!-- end thumbnails for slider -->
     </section>
     <section class="quick-view-details">
         <header class="product-header">

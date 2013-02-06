@@ -10,25 +10,20 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Verizon Wireless | Product Listing</title>
+  <title>Verizon Wireless | Search Results</title>
 
-  <!-- Included CSS Files (Uncompressed) -->
-  <!--  <link rel="stylesheet" href="stylesheets/foundation.css">
-  -->
-  
-  <!-- Included CSS Files (Compressed) -->
-  <!-- <link rel="stylesheet" href="css/app.css"> -->
+  <!-- Included CSS Files -->
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/foundation/modernizr.foundation.js"></script>
 </head>
-<body id="search-results" class="search-results product-grid">
+<body id="search-results" class="search-results-page content-grid-page">
   <?php include('inc/header.html'); ?>
 
   <!-- End Header and Nav -->
 
   <!-- Main Grid Section -->
 
-  <section class="product-list-section">
+  <section class="content-grid-section">
 
     <!-- Begin Search Input Field -->
     <?php include('inc/fragments/search.input.field.php');?>
@@ -51,18 +46,16 @@
       <!-- End Left Column -->
 
       <!-- Begin Main Content Container -->      
-      <div id="main-column" class="main-column">
+      <section id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
-        <section class="products">
-          <ul id="product-grid" class="product-grid">
-            <?php include('inc/fragments/product.list.featured.item.php');?>
-            <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
-          </ul>
-        </section>
+        <ul class="content-grid">
+          <?php include('inc/fragments/product.list.featured.item.php');?>
+          <?php $productCount = 24; include('inc/fragments/product.list.item.php');?>
+        </ul>
         <!-- End Product Listing -->
 
-      </div> 
+      </section> 
       <!-- End Main Content Container -->
 
     </div>

@@ -34,46 +34,46 @@ var debounce = (function() {
 /*
  * Page Specific Functionality
  */
-var productGrid = (function() {
+var contentGrid = (function() {
     var pub = {
         init : function() {
-            var $productGrid = $jQ('#product-grid'),
-            $products = $productGrid.find('.product'),
-            $quickviewLinks = $products.find('.quick-view');
+            var $contentGrid = $jQ('#main-column .content-grid'),
+            $contentItems = $contentGrid.find('.content-item'),
+            $quickviewLinks = $contentItems.find('.quick-view');
             if(!isTouch) {
-                $products.hover(pub.productTileEnter,pub.productTileLeave);
+                $contentItems.hover(pub.productTileEnter,pub.productTileLeave);
                 $quickviewLinks.on('click',pub.quickViewHandler);
             }
         },
         productTileEnter : function() {
             $jQ(this).addClass('over');
-            $jQ(this).find('.product-hover').stop(true,true).fadeIn('fast');
-            $jQ(this).find('.product-detail').stop(true,true).animate( { opacity:0 }, 'fast');
+            $jQ(this).find('.content-hover').stop(true,true).fadeIn('fast');
+            $jQ(this).find('.content-detail').stop(true,true).animate( { opacity:0 }, 'fast');
         },
         productTileLeave : function() {
             $jQ(this).removeClass('over');
-            $jQ(this).find('.product-hover').fadeOut('fast');
-            $jQ(this).find('.product-detail').animate( { opacity:1 }, 'fast');
+            $jQ(this).find('.content-hover').fadeOut('fast');
+            $jQ(this).find('.content-detail').animate( { opacity:1 }, 'fast');
         },
         quickViewHandler : function() {
             var $quickView = $jQ('#quick-view-overlay'),
-            $productTile = $jQ(this).parent().parent(),
-            $pTposition = $productTile.position();
-            console.log('product tile height: %d', $productTile.outerHeight());
+            $contentTile = $jQ(this).parent().parent(),
+            $cTposition = $contentTile.position();
+            console.log('content tile height: %d', $contentTile.outerHeight());
             $quickView.css(
                 {
                     'display' : 'block',
                     'position' : 'absolute',
-                    'top' : $pTposition.top ,
+                    'top' : $cTposition.top ,
                     'right' : 0,
-                    'height' : ( $productTile.outerHeight() * 2 ) - 1,
+                    'height' : ( $contentTile.outerHeight() * 2 ) - 1,
                     'background-color' : '#FFF',
                     'z-index' : '99999'
                 }
             );
-            console.log('window height: %d\nscrolltop of clicked product: %d',$jQ(window).height(),$pTposition.top);
+            console.log('window height: %d\nscrolltop of clicked product: %d',$jQ(window).height(),$cTposition.top);
             $jQ('html, body').animate( {
-                scrollTop : $pTposition.top + ($productTile.outerHeight() / 2 )
+                scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 )
             }, 'slow', function() {
                 $jQ(document).one(
                     {
@@ -106,7 +106,7 @@ var productGrid = (function() {
 
 var searchResults = {
     styleDropDown : function () {
-        $jQ("#sort-by").uniform();
+        $jQ("#sort-options").uniform();
     }
 };
 
@@ -130,7 +130,7 @@ var contentFilter = (function() {
             $multis = $cf.find('.multi-select .facet'),
             $facets = $cf.find('.facet'),
             $removable = $fs.find('.removable');
-
+            
             $jQ('#clear-selections').on('click', function(e) {
                 e.preventDefault();
                 $removable.each(function() {
@@ -154,7 +154,7 @@ var contentFilter = (function() {
         facetClick : function() {
             // var $hide = $jQ(this).hasParent('.dimension') ? $jQ(this).closest('.dimension') : $jQ(this);
             // toggleElement($hide, false); // this will hide the dimension containing clicked facet, or facet itself..
-
+            
             // logic to add clicked facet to filter-selections ?
         },
         multiFacetClick : function() {
@@ -184,32 +184,32 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
-    'product-grid' : {
+    'content-grid-page' : {
         init : function() {
-            productGrid.init();
+            contentGrid.init();
             contentFilter.init();
         }
     },
-    'product-detail' : {
+        'product-detail' : {
 
 
          init : function() {
 
 
-	//======================== PDP : HERO =================================//
+    //======================== PDP Hero =================================
 
-         // ONLOAD : flexslider set-up
-			$jQ('#thumbs').flexslider({
-				animation: "slide",
+         // HERO: flexslider set-up
+            $jQ('#thumbs').flexslider({
+                animation: "slide",
                 controlNav: false,
                 animationLoop: true,
                 slideshow: false,
                 itemWidth: 45,
                 itemMargin: 10,
                 asNavFor: '#focus'
-			});
+            });
 
-			$jQ('#focus').flexslider({
+            $jQ('#focus').flexslider({
                 animation: "slide",
                 controlNav: false,
                 animationLoop: true,
@@ -218,318 +218,330 @@ VZ = {
                 });
 
 
-		// ONLOAD : ZOOM flexslider set-up
-			$jQ('#zoom-focus').flexslider({
-				animation: "slide",
+        // HERO: zoom flexslider set-up
+            $jQ('#zoom-focus').flexslider({
+                animation: "slide",
                 controlNav: "thumbnails"
-			});
+            });
 
 
-		// ONLOAD : force cart layout tablet & above
-			setTimeout(function() {
-				var pgWidth = $jQ(document).width();
-				var heroHt = $jQ('#pdp-hero').height();
-				if (pgWidth > 767) {
-					$jQ('#cart-block').css('height', heroHt + 'px' );
-					}
-			}, 200);
 
+        // HERO : force cart layout
 
-		// ONLOAD : show vzn-active on current thumb
-			$('#thumbs .flex-active-slide').find('.vzn-active').css('width', '45px');
+            //onload: cart layout tablet & above
 
+            setTimeout(function() {
+                var pgWidth = $jQ(document).width();
+                var heroHt = $jQ('#pdp-hero').height();
+                if (pgWidth > 767) {
+                    $jQ('#cart-block').css('height', heroHt + 'px' );
+                    }
+            }, 200);
 
-//............. zoom panel functions could be broken out as sep file? ..................//
 
-		// ONLOAD : insert elements into flexslider js-generated
-			$jQ('#zoom-block .flex-control-thumbs').wrap('<div class="center-thumbs"><div class="center-block">'); // for styling
-			$jQ('<div class="vzn-active"></div>').appendTo('#zoom-block .flex-control-thumbs li'); // insert thumb animation element
-			$jQ('<div class="rounded"><ul id="avail-colors" class="inline-list"><li class="color-option black "><div class="select-area"></div></li><li class="color-option grey "><div class="select-area"></div></li><li class="color-option white selected"><div class="select-area"></div></li><li class="color-option blue"><div class="select-area"></div></li></ul></div>').appendTo('.center-block'); // insert color selector
+            // resize: cart layout
+            $(window).resize(function(){
+                    var resizePg = $jQ(document).width();
+                    var resizeHt = $jQ('#carousel').height();
+                // force cart-block on resize: tablet & above
+                    if (resizePg > 767) {
+                        $jQ('#cart-block').css('height', resizeHt + 'px' );
+                    } else {
+                        $jQ('#cart-block').css('height', 'auto' );
+                    }
+            });
 
 
-		// ONCLICK : create & show zoom panel
-			$jQ('#carousel-zoom').click(function () {
+        // HERO flexslider: active thumb animation
 
-				// get page dimensions at time of click
-				var pgHeight = ($jQ(window).height() - 60);
+            //onload: apply vzn-active
+            $('#thumbs .flex-active-slide').find('.vzn-active').css('width', '45px');
 
-					// set element dimensions
-					$jQ('#zoom-carousel-block').css('width', pgHeight + 'px').css('height', pgHeight + 'px');
-					$jQ('#zoom-focus .flex-viewport li').css('width', pgHeight + 'px').css('height', pgHeight + 'px' );
+            //onclick: fadeIn current, fadeOut last
+            $jQ('#thumbs li').click(function () {
+                $(this).siblings().find('.vzn-active').stop().animate({
+                    'width':'0px'
+                }, 250 );
+                $(this).find('.vzn-active').stop().animate({
+                    'width':'45px'
+                }, 500 );
+            }); /* end onclick */
 
-					// set active thumb
-					$jQ('.flex-control-thumbs .flex-active').parent().find('.vzn-active').css('width', '100%' );
 
-					// set active thumb animation
-					$jQ('.flex-control-thumbs li').click(function () {
-						$jQ(this).siblings().find('.vzn-active').stop().animate({ 'width':'0px' }, 250 );
-						$jQ(this).find('.vzn-active').stop().animate({ 'width': '100%' }, 500 );
-					});
 
-				// BRING IT!
-					//scroll to top first
-					$jQ('html,body').scrollTop(0);
+        // HERO color selection
+        $jQ('.color-option').click(function(){
+            $jQ(this).parent().find('.selected').removeClass('selected');
+            $jQ(this).addClass('selected');
+        });
 
-					// slide in panel
-					$jQ('#zoom-block').css('height', pgHeight + 'px').animate({
-						'left': '0' }, 1200, function() {
-							$jQ('.product-detail').addClass('body-zoom'); });
 
-					//snap after to reset flexslider transform values
-					$jQ(window).trigger('resize');
+        // ------------- HERO flexslider : ZOOM functions -----------------------
 
-					// fade in controls
-					setTimeout(function() {
-						$jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeIn('slow');
-					}, 500);
+            //ONLOAD : insert elements into flexslider js generated nav (once)
+                // center thumb nav
+                    $jQ('#zoom-block .flex-control-thumbs').wrap('<div class="center-thumbs"><div class="center-block">');
+                // active thumb element
+                    $jQ('<div class="vzn-active"></div>').appendTo('#zoom-block .flex-control-thumbs li');
+                // color selector
+                    $jQ('<div class="rounded"><ul id="avail-colors" class="inline-list"><li class="color-option black "><div class="select-area"></div></li><li class="color-option grey "><div class="select-area"></div></li><li class="color-option white selected"><div class="select-area"></div></li><li class="color-option blue"><div class="select-area"></div></li></ul></div>')
+                        .appendTo('.center-block');
 
+            // ONCLICK : carousel zoom
+            $jQ('#carousel-zoom').click(function () {
 
-				// BIGGER
-				$jQ('#zoom-controls .bigger').click(function () {
+                $jQ('html,body').scrollTop(0);
 
-					// get & store current
-					var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').width();
-					$jQ(this).parent().siblings('#zoom-carousel-block').attr('data-current', startWd );
+                var pgHeight = ($jQ(window).height() - 60);
+                var leftStart = ($jQ(window).width() / -1);
+                var leftFinish = $jQ(window).width();
 
-					// window
-					$jQ(this).parent().siblings('#zoom-carousel-block').
-						transition({ width: '90%', easing: 'snap', duration:'1000ms'});
+                // Panel setup -------------------------------------------------
 
-					// images
-					$jQ(this).parents('#zoom-block').find('.flex-active-slide').siblings().css('opacity', '0');
+                // set start position for fixed zoom panel
+                $jQ('#zoom-block').css('left', leftStart +'px').css('height', pgHeight + 'px');
 
-					$jQ(this).parents('#zoom-block').find('#zoom-slides li').
-						transition({ scale:1.5, easing: 'snap', duration: '2000ms', delay: 500, queue:false }).
-						transition({ x: '15%', duration: '2000ms', queue:false });
+                //set up window specific for layout for fixed zoom panel
+                $jQ('#zoom-carousel-block').css('width', pgHeight + 'px').css('height', pgHeight + 'px');
+                $jQ('#zoom-focus .flex-viewport li').css('width', pgHeight + 'px').css('height', pgHeight + 'px' ).css('min-width', pgHeight + 'px').css('min-height', pgHeight + 'px' );
 
-					// add nav class
-					$jQ('#zoom-focus .flex-control-thumbs').addClass('big-nav');
 
-					// snap
-					$jQ(window).trigger('resize');
 
-				}); /* end bigger */
+                // BRING IT! -----------------------------------------------------
+                $jQ('#zoom-block').css('height', pgHeight + 'px').transition({ x : leftFinish + 'px',
+                    easing: 'snap',
+                    duration: '1100ms'});
+                //snap after to reset flexslider transform values
+                $jQ(window).trigger('resize');
 
+                // lose vertical scroll
+                setTimeout(function() {
+                    $jQ('.product-detail').addClass('body-zoom');
+                }, 1100 );
 
+                // fade in controls
+                setTimeout(function() {
+                    $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeIn('slow');
+                }, 500);
 
-				// SMALLER
-				$jQ('#zoom-controls .smaller').click(function () {
 
-					// get stored
-					var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').attr('data-current');
+                // add in current thumb & color selection -----------------------------------
+                    //onload: show vzn-active on current
+                    $jQ('#zoom-block .flex-control-thumbs .flex-active').parent().find('.vzn-active').css('width', '100%' );
 
-					//increment
-					$jQ('#zoom-slides').css('-webkit-transform', startWd + 'px');
+                    //onclick: fadeIn vzn-active, fadeOut
+                    $jQ('#zoom-block .flex-control-thumbs li').click(function () {
+                    $jQ(this).siblings().find('.vzn-active').stop().animate({
+                        'width':'0px'
+                        }, 250 );
+                    $jQ(this).find('.vzn-active').stop().animate({
+                        'width': '100%'
+                        }, 500 );
+                    }); /* end thumb onclick */
 
-					// restore
-					$jQ(this).parents('#zoom-block').find('#zoom-slides li').siblings().css('opacity', '1');
+                    // color selection
+                    $jQ('.color-option').click(function(){
+                        $jQ(this).parent().find('.selected').removeClass('selected');
+                        $jQ(this).addClass('selected');
+                    });
 
-					// window
-					$jQ(this).parent().siblings('#zoom-carousel-block').
-						transition({ width: startWd +'px', easing: 'snap', duration:'500ms'});
 
+                //set lefthand zoom controls ----------------------------------------
+                // bigger
+                $jQ('#zoom-controls .bigger').click(function () {
 
-					// image li
-					$jQ(this).parents('#zoom-block').find('#zoom-slides li').stop().transition({
-						width: startWd +'px', easing: 'snap', duration: '500ms', queue:false }).
-						transition({ scale:1, easing: 'snap', duration: '500ms',  queue:false }).
-						transition({ x: '0', duration: '500ms', queue:false }).
-						transition({ marginRight: '5px', duration: '500ms', queue:false });
+                    // get & store current
+                    var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').width();
+                    $jQ(this).parent().siblings('#zoom-carousel-block').attr('data-current', startWd );
 
-					// image
-					$jQ(this).parents('#zoom-block').find('#zoom-slides li img').transition({
-						maxWidth: startWd +'px', easing: 'snap', duration: '2000ms', queue:false }).
-						transition({ x: '0', duration: '2000ms', queue:false }).
-						transition({ marginRight: '5px', duration: '2000ms', queue:false });
+                    // window
+                    $jQ(this).parent().siblings('#zoom-carousel-block').
+                        transition({ width: '90%', easing: 'snap', duration:'1000ms'});
 
-					// remove nav class
-					$jQ('#zoom-focus .flex-control-thumbs').removeClass('big-nav');
+                    // images
+                    $jQ(this).parents('#zoom-block').find('#zoom-slides .flex-active-slide').siblings().css('opacity', '0');
 
-					// snap
-					$jQ(window).trigger('resize');
+                    $jQ(this).parents('#zoom-block').find('#zoom-slides li').transition({
+                        marginRight: '5px', duration: '10ms'}).transition({
+                        scale:1.5, easing: 'snap', duration: '2000ms', delay: 500, queue:false }).
+                        transition({ x: '15%', duration: '2000ms', queue:false });
 
+                    // add nav class
+                    $jQ('#zoom-focus .flex-control-thumbs').addClass('big-nav');
 
-				}); /* end smaller */
+                    // snap
+                    $jQ(window).trigger('resize');
 
+                }); /* end bigger */
 
-				// LOSE IT!
-				$jQ('#zoom-close').click(function () {
+                // smaller
+                $jQ('#zoom-controls .smaller').click(function () {
 
-					// fade out controls
-					setTimeout(function() {
-						$jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeOut('slow');
-					}, 250);
+                    // get stored
+                    var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').attr('data-current');
 
-					//restore vertical scroll
-					$jQ('.product-detail').removeClass('body-zoom');
+                    //increment
+                    $jQ('#zoom-slides').css('-webkit-transform', startWd + 'px');
 
-					// slide out panel
-					$jQ('#zoom-block').animate({'left': '-3000' }, 1200 );
+                    // restore
+                    $jQ(this).parents('#zoom-block').find('#zoom-slides li').siblings().css('opacity', '1');
 
-				}); // end set close
+                    // window
+                    $jQ(this).parent().siblings('#zoom-carousel-block').
+                        transition({ width: startWd +'px', easing: 'snap', duration:'500ms'});
 
-		}); // end onclick create panel
 
+                    // image li
+                    $jQ(this).parents('#zoom-block').find('#zoom-slides li').stop().transition({
+                        width: startWd +'px', easing: 'snap', duration: '500ms', queue:false }).
+                        transition({ scale:1, easing: 'snap', duration: '500ms',  queue:false }).
+                        transition({ x: '0', duration: '500ms', queue:false }).
+                        transition({ marginRight: '5px', duration: '500ms', queue:false });
 
+                    // image
+                    $jQ(this).parents('#zoom-block').find('#zoom-slides li img').transition({
+                        maxWidth: startWd +'px', easing: 'snap', duration: '2000ms', queue:false }).
+                        transition({ x: '0', duration: '2000ms', queue:false }).
+                        transition({ marginRight: '5px', duration: '2000ms', queue:false });
 
-//............. END zoom panel functions could be broken out as sep file? ..................//
+                    // remove nav class
+                    $jQ('#zoom-focus .flex-control-thumbs').removeClass('big-nav');
 
+                    // snap
+                    $jQ(window).trigger('resize');
 
-		// ONCLICK : active thumb animation
-			$jQ('#thumbs li').click(function () {
-				$(this).siblings().find('.vzn-active').stop().animate({
-					'width':'0px'
-				}, 250 );
-				$(this).find('.vzn-active').stop().animate({
-					'width':'45px'
-				}, 500 );
-			}); /* end onclick */
 
+                }); /* end smaller */
 
-		// ONCLICK : color selector
-			$jQ('.color-option').click(function(){
-				$jQ(this).parent().find('.selected').removeClass('selected');
-				$jQ(this).addClass('selected');
 
-				var selectedTitle = $jQ('.color-option.selected').attr('title');
-				$jQ(this).parents('.color-stock-block').find('span.color-option').html(selectedTitle).textTransform="uppercase";
-			});
 
 
-		// RESIZE : cart layout tablet & above
-			$(window).resize(function(){
-				var resizePg = $jQ(document).width();
-				var resizeHt = $jQ('#carousel').height();
+                // CLOSE IT! ----------------------------------------------------------
+                $jQ('#zoom-close').click(function () {
 
-					if (resizePg > 767) {
-							$jQ('#cart-block').css('height', resizeHt + 'px' );
-						} else {
-							$jQ('#cart-block').css('height', 'auto' );
-						}
-				});
+                    // fade out controls
+                    setTimeout(function() {
+                        $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeOut('slow');
+                    }, 250);
 
-		// RESIZE : carousel zoom -----------------------------------------------
-			$(window).resize(function(){
-				var zoomResize = ($jQ(window).height() - 60 );
-				$jQ('#zoom-block').css('height', zoomResize + 'px' );
-				$jQ('#zoom-carousel-block').css('width', zoomResize + 'px').css('height', zoomResize + 'px' ).css('min-height', zoomResize + 'px' );
-				$jQ('#zoom-focus .flex-viewport li').css('width', zoomResize + 'px').css('min-width', zoomResize + 'px').css('min-height', zoomResize + 'px' );
+                    //lose it
+                        $jQ('#zoom-block').transition({ x : leftStart + 'px',
+                            easing: 'out',
+                            duration: '1000ms' } );
 
-			});
+                    // restore vertical scroll
+                        setTimeout(function() {
+                            $jQ('.product-detail').removeClass('body-zoom');
+                        }, 400 );
+                }); // end set close
 
+            }); // end carousel onclick
 
-	//======================== END PDP : HERO =================================//
 
+            // RESIZE : carousel zoom -----------------------------------------------
+            $(window).resize(function(){
+                var zoomResize = ($jQ(window).height() - 60 );
+                $jQ('#zoom-block').css('height', zoomResize + 'px' );
+                $jQ('#zoom-carousel-block').css('width', zoomResize + 'px').css('height', zoomResize + 'px' ).css('min-height', zoomResize + 'px' );
+                $jQ('#zoom-focus .flex-viewport li').css('width', zoomResize + 'px').css('min-width', zoomResize + 'px').css('min-height', zoomResize + 'px' );
 
 
-	//=============================== PDP : BTF =============================//
+            }); // ------------- HERO : end all ZOOM functions ----------------------
 
 
-		// ONCLICK :  active tab animation
 
-			// ONLOAD : show vzn-active on current tab
-			$jQ('.tabs .active').find('.vzn-active').css('width', '100%' );
 
-			// ONCLICK : active tab animation
-			$jQ('.tabs a').click(function () {
-				$jQ(this).parent().siblings().find('.vzn-active').stop().animate({
-					'width':'0px'
-				}, 250 );
+    //=============================== PDP Below the Fold =============================
 
-				$jQ(this).parent().find('.vzn-active').stop().animate({
-					'width': '100%'
-				}, 500 );
-			}); /* end onclick */
+        // DETAILS tabs: active thumb animation
 
+            //onload: show vzn-active on current
+            $jQ('#detail-tabs .active').find('.vzn-active').css('width', '100%' );
 
+            //resize: show vzn-active on current
+            $(window).resize(function(){
+                $jQ('#detail-tabs .active').find('.vzn-active').css('width', '100%' );
+            });/* end resize */
 
-		// ONLOAD : install overview tabs more/less interaction
 
-			// apply 'show' class for assessing actual content
-			$jQ('#overviewTab').siblings().each(function() {
-				$jQ(this).addClass('show');
-			});
+            //onclick: fadeIn current, fadeOut last
+            $jQ('#detail-tabs a').click(function () {
+                $jQ(this).parent().siblings().find('.vzn-active').stop().animate({
+                    'width':'0px'
+                }, 250 );
+                $jQ(this).parent().find('.vzn-active').stop().animate({
+                    'width': '100%'
+                }, 500 );
+            }); /* end onclick */
 
-			// loop through each tab & activate more-less where required
-			$jQ('#product-details .tab-wrapper').each(function() {
-				var tabWrap = $jQ(this);
-				var wrapHt = tabWrap.height();
-				var tallest = -1;
-				var tabID = $jQ(this).parent().attr('id');
+        // SIMPLE CAROUSEL tabs: active thumb animation
 
-				tabWrap.children().each(function(i, child) {
+            //onload: show vzn-active on current
+            $jQ('#simple-carousel-tabs .active').find('.vzn-active').css('width', '100%' );
 
-					tallest = tallest > $(child).height() ? tallest : $(this).height();
+            //resize: show vzn-active on current
+            $(window).resize(function(){
+                $jQ('#simple-carousel-tabs .active').find('.vzn-active').css('width', '100%' );
+            });/* end resize */
 
-					if ( tallest > wrapHt  && tabID !== "compatTab" ){
-						// turn on more/less
-						tabWrap.find('.more-less').css('display', 'block');
-						// store data
-						var newHt = (tallest + 30);
-						tabWrap.attr('data-height', newHt);
-					} else if ( tallest > wrapHt  && tabID === "compatTab" ) {
-						// turn on more/less
-						tabWrap.find('.more-less').css('display', 'block');
-						// store data
-						var compatHt = (tallest + 98);
-						tabWrap.attr('data-height', compatHt);
 
-					}
-				});
-			});
+            //onclick: fadeIn current, fadeOut last
+            $jQ('#simple-carousel-tabs a').click(function () {
+                $jQ(this).parent().siblings().find('.vzn-active').stop().animate({
+                    'width':'0px'
+                }, 250 );
+                $jQ(this).parent().find('.vzn-active').stop().animate({
+                    'width': '100%'
+                }, 500 );
+            }); /* end onclick */
 
-			// remove temp 'show' class after activation
-				$jQ('#overviewTab').siblings().each(function() {
-					$jQ(this).removeClass('show');
-				});
-				$jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
 
+        // REVIEWS tabs: active thumb animation
 
+            //onload: show vzn-active on current
+            $jQ('#review-tabs .active').find('.vzn-active').css('width', '100%' );
 
-		// ONCLICK : more/less interaction
-			$jQ('a.more-less-link').toggle(function(event) {
-				var target = $jQ(this).parents('.tab-wrapper');
-				var full = (target.attr('data-height'));
+            //resize: show vzn-active on current
+            $(window).resize(function(){
+                $jQ('#review-tabs .active').find('.vzn-active').css('width', '100%' );
+            });/* end resize */
 
-				target.animate({ 'height' : full }, 250, function() { target.addClass('less'); target.find('.see-all').addClass('on'); });
-				$jQ(this).text('Less').css('background', 'url(../img/sprites/pdp/tab-less-arrow.png) no-repeat');
-				event.preventDefault();
-			}, function (event) {
-				var target = $jQ(this).parents('.tab-wrapper');
 
-				target.animate({ 'height' : '285px' }, 250, function() { target.removeClass('less'); target.find('.see-all').removeClass('on'); });
-				$jQ(this).text('More').css('background', 'url(../img/sprites/pdp/tab-more-arrow.png) no-repeat');
-				event.preventDefault();
-			});
+            //onclick: fadeIn current, fadeOut last
+            $jQ('#review-tabs a').click(function () {
+                $jQ(this).parent().siblings().find('.vzn-active').stop().animate({
+                    'width':'0px'
+                }, 250 );
+                $jQ(this).parent().find('.vzn-active').stop().animate({
+                    'width': '100%'
+                }, 500 );
+            }); /* end onclick */
 
 
-		// ONCLICK : featured tab graphic block interaction
 
-			$jQ('.features li').toggle(function(){
-				$jQ(this).find('.image').addClass('top');
-				$jQ(this).find('.hover-text').animate({ 'left': 0 }, 450 );
-			}, function() {
-				$jQ(this).find('.hover-text').animate({ 'left': '-500' }, 450 );
-				$jQ(this).find('.image').removeClass('top');
-			});
+        // FANCY CAROUSEL tabs: active thumb animation
 
-		// ONCLICK : download success interaction
+            //onload: show vzn-active on current
+            $jQ('#fancy-carousel-tabs .active').find('.vzn-active').css('width', '100%' );
 
-			$jQ('.download-link').click(function() {
+            //resize: show vzn-active on current
+            $(window).resize(function(){
+                $jQ('#fancy-carousel-tabs .active').find('.vzn-active').css('width', '100%' );
+            });/* end resize */
 
-				$jQ('#download-click').animate({ 'left': 0 }, 450 ).delay(4000).animate({ 'left': '-500px' }, 450 );
 
-			});
-
-
-
-
-		//=============================== END PDP : BTF =============================//
-
-
-		}
-	},
-    'search-results' : {
+            //onclick: fadeIn current, fadeOut last
+            $jQ('#fancy-carousel-tabs a').click(function () {
+                $jQ(this).parent().siblings().find('.vzn-active').stop().animate({
+                    'width':'0px'
+                }, 250 );
+                $jQ(this).parent().find('.vzn-active').stop().animate({
+                    'width': '100%'
+                }, 500 );
+            }); /* end onclick */
+        }
+    },
+    'search-results-page' : {
         init : function() {
             searchResults.styleDropDown();
         }
