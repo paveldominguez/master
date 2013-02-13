@@ -60,12 +60,18 @@ var productDetail = (function() {
             // ONCLICK : create & show zoom panel
             $jQ('#carousel-zoom').click(function () {
 
+                    // set outer limit
+                    $jQ('#zoom-block').wrapInner('<div class="zoom-wrap" />');
+
+
+
                     // get page dimensions at time of click
-                    var pgHeight = ($jQ(window).height() - 60);
+                    var pgHeight = ($jQ(window).height() ); //-60
+                    var imgHeight = (pgHeight * 1.2 );
 
                         // set element dimensions
-                        $jQ('#zoom-carousel-block').css('width', pgHeight + 'px').css('height', pgHeight + 'px');
-                        $jQ('#zoom-focus .flex-viewport li').css('width', pgHeight + 'px').css('height', pgHeight + 'px' );
+                        $jQ('#zoom-carousel-block').css('width', pgHeight + 'px').css('height', pgHeight + 'px').attr('data-strt-width', pgHeight );
+                        $jQ('#zoom-focus .flex-viewport li').css('width', imgHeight + 'px').css('height', imgHeight + 'px' );
 
                         // set active thumb
                         $jQ('.flex-control-thumbs .flex-active').parent().find('.vzn-active').css('width', '100%' );
@@ -80,8 +86,12 @@ var productDetail = (function() {
                         //scroll to top first
                         $jQ('html,body').scrollTop(0);
 
-                        // slide in panel
-                        $jQ('#zoom-block').css('height', pgHeight + 'px').animate({
+                        // set panel height;
+                        $jQ('#zoom-block').css('height', pgHeight + 'px');
+
+
+                        //slide in panel & anchor bar
+                        $jQ('#zoom-block, #anchor-bar').animate({
                             'left': '0' }, 1200, function() {
                                 $jQ('.product-detail').addClass('body-zoom'); });
 
@@ -97,69 +107,109 @@ var productDetail = (function() {
                     // BIGGER
                     $jQ('#zoom-controls .bigger').click(function () {
 
-                        // get & store current
-                    //  var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').width();
-                    //  $jQ(this).parent().siblings('#zoom-carousel-block').attr('data-current', startWd );
+                    // get current values
+                        var zBlk = $jQ('#zoom-carousel-block');
+                        var strtWd = zBlk.width();
+                        var moveUp = ( strtWd / -7 );
 
-                        // window
-                    //  $jQ(this).parent().siblings('#zoom-carousel-block').
-                    //      transition({ width: '90%', easing: 'snap', duration:'1000ms'});
+                    // store current settings, expand/move components & snap
+                        $jQ(zBlk).css('width', '85%');
+                        $jQ(window).trigger('resize');
 
-                        // images
-                    //  $jQ(this).parents('#zoom-block').find('.flex-active-slide').siblings().css('opacity', '0');
+                    // move image to background for mousemove
 
-                    //  $jQ(this).parents('#zoom-block').find('#zoom-slides li').
-                    //      transition({ scale:1.5, easing: 'snap', duration: '2000ms', delay: 500, queue:false }).
-                    //      transition({ x: '15%', duration: '2000ms', queue:false });
+                        $jQ('#zoom-slides li').each(function(){
 
-                        // add nav class
-                    //  $jQ('#zoom-focus .flex-control-thumbs').addClass('big-nav');
+                            var imgURL = $jQ(this).attr('data-thumb');
+                            var bigDim = zBlk.width();
 
-                        // snap
-                    //  $jQ(window).trigger('resize');
+                            $jQ(this).addClass('zoomed').css({
+                                'background': 'url(' + imgURL + ') no-repeat',
+                                'background-size': bigDim,
+                                'height': bigDim,
+                                'margin-top': moveUp
+                            });
 
-                }); /* end bigger */
+                            // hide <img>
+                            $jQ('.zoomed img').css('display', 'none');
+
+                            // insert pointer
+                            $jQ('<div class="zoom-point"></div>').appendTo(this);
+
+
+
+                        });
+
+
+
+
+                    // add mousemove to expanded image
+
+                            $jQ('.zoomed').on({
+                                mousedown: function (el) {
+                                    var startTop = el.pageY;
+                                    var startLft = el.pageX;
+                                    $jQ(this).attr('data-top', startTop ).attr('data-left', startLft).attr('data-state', 'down');
+                                },
+                                mouseup: function () {
+                                    $jQ(this).attr('data-state','up');
+                                },
+                                mousemove: function (el) {
+                                    var state = $jQ(this).attr('data-state');
+
+                                        if (state === 'down') {
+                                            var startTop = $(this).attr('data-top');
+                                            var startLft = $(this).attr('data-left');
+
+                                            var newTop = (el.pageY - startTop);
+                                            var newLeft = (el.pageX - startLft);
+
+                                            $jQ(this).css('top', newTop +'px').css('left', newLeft + 'px');
+                                        }
+                                    }
+                            }); /* end on */
+
+                    }); /* end bigger */
 
 
 
                     // SMALLER
                     $jQ('#zoom-controls .smaller').click(function () {
 
-                        // get stored
-                    //  var startWd = $jQ(this).parents('#zoom-block').find('#zoom-carousel-block').attr('data-current');
-
-                        //increment
-                    //  $jQ('#zoom-slides').css('-webkit-transform', startWd + 'px');
-
-                        // restore
-                    //  $jQ(this).parents('#zoom-block').find('#zoom-slides li').siblings().css('opacity', '1');
-
-                        // window
-                    //  $jQ(this).parent().siblings('#zoom-carousel-block').
-                    //      transition({ width: startWd +'px', easing: 'snap', duration:'500ms'});
 
 
-                        // image li
-                    //  $jQ(this).parents('#zoom-block').find('#zoom-slides li').stop().transition({
-                    //      width: startWd +'px', easing: 'snap', duration: '500ms', queue:false }).
-                    //      transition({ scale:1, easing: 'snap', duration: '500ms',  queue:false }).
-                    //      transition({ x: '0', duration: '500ms', queue:false }).
-                    //      transition({ marginRight: '5px', duration: '500ms', queue:false });
+                    // retrieve original values
+                        var zBlk = $jQ('#zoom-carousel-block');
+                        var strtWd = zBlk.attr('data-strt-width');
 
-                        // image
-                    //  $jQ(this).parents('#zoom-block').find('#zoom-slides li img').transition({
-                    //      maxWidth: startWd +'px', easing: 'snap', duration: '2000ms', queue:false }).
-                    //      transition({ x: '0', duration: '2000ms', queue:false }).
-                    //      transition({ marginRight: '5px', duration: '2000ms', queue:false });
+                    // reduce/move components & snap
+                        $jQ(zBlk).css('width', strtWd );
 
-                        // remove nav class
-                    //  $jQ('#zoom-focus .flex-control-thumbs').removeClass('big-nav');
+                        $jQ('#zoom-slides li').each(function(){
 
-                        // snap
-                    //  $jQ(window).trigger('resize');
+                            $jQ(this).removeClass('zoomed').removeAttr('data-state').css({
+                                'background': 'transparent',
+                                'background-size': '0',
+                                'height': strtWd,
+                                'margin-top': '0px',
+                                'top': '0px',
+                                'left': '0px'
+                            });
+
+                            // restore <img>
+                            $jQ(this).find('img').css('display', 'block');
+                            // turn off drag interaction
+                            $jQ(this).off();
+                            // remove pointer
+                            $jQ(this).find('.zoom-point').remove();
 
 
-                }); /* end smaller */
+                        });
+
+                        $jQ(window).trigger('resize');
+
+
+                    }); /* end smaller */
 
 
                     // LOSE IT!
@@ -174,7 +224,35 @@ var productDetail = (function() {
                         $jQ('.product-detail').removeClass('body-zoom');
 
                         // slide out panel
-                        $jQ('#zoom-block').animate({'left': '-3000' }, 1200 );
+                        $jQ('#zoom-block, #anchor-bar').animate({'left': '-3000' }, 1200 );
+
+                        // retrieve & restore original values
+                        var zBlk = $jQ('#zoom-carousel-block');
+                        var strtWd = zBlk.attr('data-strt-width');
+                        var active = $jQ('.zoomed');
+
+                    // reduce/move components & snap
+                        $jQ(zBlk).css('width', strtWd );
+
+                        $jQ('#zoom-slides li').each(function(){
+
+                            $jQ(this).removeClass('zoomed').removeAttr('data-state').css({
+                                'background': 'transparent',
+                                'background-size': '0',
+                                'height': strtWd,
+                                'margin-top': '0px',
+                                'top': '0px',
+                                'left': '0px'
+                            });
+                            // restore <img>
+                            $jQ(this).find('img').css('display', 'block');
+                            // turn off drag interaction
+                            $jQ(this).off();
+                            // remove pointer
+                            $jQ(this).find('.zoom-point').remove();
+                        });
+
+                        $jQ(window).trigger('resize');
 
                     }); // end set close
 
@@ -235,8 +313,7 @@ var productDetail = (function() {
             //=============================== PDP : BTF =============================//
 
             // ONLOAD : ad slider CSS class to element IDs
-            $jQ('#simple-similar-slider, #simple-others-slider, #simple-works-slider').addClass('btf-simple');
-            $jQ('#fancy-similar-slider, #fancy-others-slider, #fancy-works-slider').addClass('btf-fancy');
+            $jQ('#simple-similar-slider, #simple-others-slider, #simple-works-slider, #fancy-similar-slider, #fancy-others-slider, #fancy-works-slider').addClass('vzn-slide');
 
 
             // ONLOAD : show vzn-active on current tab
@@ -263,17 +340,18 @@ var productDetail = (function() {
             });
 
             // loop through each tab & activate more-less where required
-            $jQ('#product-details .tab-wrapper').each(function(num,which) {
+            $jQ('#product-details .tab-wrapper').each(function() {
                 var tabWrap = $jQ(this);
                 var wrapHt = tabWrap.height();
                 var newHt = -1;
                 var tallest = -1;
                 var tabID = $jQ(this).parent().attr('id');
+                var xtra = -1;
 
                 if (tabID === "compatTab") {
-                    var xtra = 98;
+                    xtra = 98;
                 } else {
-                    var xtra = 30
+                    xtra = 30;
                 }
 
                 tabWrap.children().each(function(i, child) {
@@ -284,15 +362,12 @@ var productDetail = (function() {
                  });
 
                 if ( tallest > wrapHt ) {
-
                     // turn on more/less
                     tabWrap.find('.more-less').css('display', 'block');
                     // store data
-                    var newHt = (tallest + xtra);
+                    newHt = (tallest + xtra);
                     tabWrap.attr('data-height', newHt);
                 }
-
-
             });
 
             // remove temp 'show' class after activation
@@ -300,7 +375,6 @@ var productDetail = (function() {
                 $jQ(this).removeClass('show');
             });
             $jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
-
 
 
             // ONCLICK : more/less interaction
@@ -333,25 +407,132 @@ var productDetail = (function() {
             // ONCLICK : download success interaction
 
             $jQ('.download-link').click(function() {
-
                 $jQ('#download-click').animate({ 'left': 0 }, 450 ).delay(4000).animate({ 'left': '-500px' }, 450 );
-
             });
 
-//*****************************************************************************************
+
+            // ONSCROLL : introduce anchor bar when user is below the fold
+
+            var btFold = $jQ('#price-block').offset().top;
+            var anchorShow = 0;
+
+            var checkScroll = setInterval(function() {
+
+                if (anchorShow === 0) {
+                    if ($jQ(window).scrollTop() >= btFold) {
+                    $jQ('#anchor-bar').stop().animate({'left': '0' }, 450 );
+                    anchorShow = 1;
+                    }
+                } else {
+                    if ($jQ(window).scrollTop() < btFold) {
+                            $jQ('#anchor-bar').stop().animate({'left': '-3000' }, 450 );
+                            anchorShow = 0;
+                    }
+                }
+            },250 );
+
+
+
+
+
+
+
+
+
+
+
+// ************ VZN_SLIDE CUSTOM CAROUSEL : split off into own  .js page for use beyond PDP ***************************//
 
 // ONLOAD : set up carousel from actual content
-    $jQ('.btf-simple').each(function(){
-        var window = $(this);
-        var list = window.find('ul.slides');
+    $jQ('.vzn-slide').each(function(){
+    // default counter
+        var advInc = -1;
+        var listInc = -1;
+
+    // set exact list length & increment by context & content
+        var window = $jQ(this);
+        var winLength = window.width();
+        var instance = window.attr('id');
+
+        var list = window.find('.slides');
         var itemCount = list.find('li').length;
 
-        listLength = ( itemCount * 215 );
+        //var simpleInc = ( winLength * 0.25 );  replace below with this  with resize & data field to make responsive
+        var simpleInc = 215;
 
+        if ( instance.indexOf('simple') > -1 ) { listInc = simpleInc; advInc = ( listInc * 4 ); }
+        if ( instance.indexOf('fancy') > -1 ) { advInc = 344; listInc = ( advInc / 2 ); advInc = ( advInc * 2.5 ); }
 
+        var listLength = (( itemCount * listInc ) + 1);
+        var prevInc = advInc;
+        var nextInc = ( advInc * -1 );
+
+        //alert(itemCount); alert(listLength);
+
+        list.css('width', listLength ).attr('data-length', listLength );
+
+    // create nav buttons & set initial display
+        $jQ('<div class="vzn-slide-prev"></div>').appendTo(window.parent()).attr('data-inc', prevInc).addClass('off');
+        $jQ('<div class="vzn-slide-next"></div>').appendTo(window.parent()).attr('data-inc', nextInc);
+
+    // last minute css adjustments
+        if ( instance.indexOf('fancy') > -1 ) { $jQ(this).find('.fancy-slider-item').each(function(){
+            var title= $jQ(this).find('h3');
+            $jQ(this).find('.fancy-ratings').appendTo(title);
+        }); }
 
     });
 
+// ONCLICK : nav button interaction
+    $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
+        // get the facts
+        var box = $jQ(this).parent();
+        var window = box.find('.vzn-slide');
+        var list = window.find('.slides');
+        var winLength = window.width();
+        var listLength = parseInt($jQ(list).attr('data-length'), 10);
+        var curPos = parseInt($jQ(list).css('left'), 10);
+        var advance = parseInt($jQ(this).attr('data-inc'), 10);
+
+    // do the math
+        var newPos = curPos + advance;
+        var stop = listLength + newPos ;
+
+    // alert(curPos); alert(newPos); alert(listLength); alert(stop);
+    // alert(listLength);
+
+    //decide what to do
+
+        if ( newPos === 0) { // back at beginning
+            //move it
+            $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
+            // turn prev off, leave next on
+            $(box).find('.vzn-slide-prev').addClass('off');
+            $(box).find('.vzn-slide-next').removeClass('off');
+
+        } else if ( stop <= winLength ) { // at end
+            //move it
+            $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
+            // turn next off, turn prev on
+            $(box).find('.vzn-slide-next').addClass('off');
+            $(box).find('.vzn-slide-prev').removeClass('off');
+
+        } else {
+             //move it
+            $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
+            // make sure both are on
+            $(box).find('.vzn-slide-next').removeClass('off');
+            $(box).find('.vzn-slide-prev').removeClass('off');
+
+        }
+
+    });
+
+// ONCLICK : nav button interaction in "off" state
+    $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function() { return false; });
+
+
+//********************* END VZN-SLIDE ***********************************//
 
 
 
@@ -361,7 +542,7 @@ var productDetail = (function() {
 
 
 
-//*****************************************************************************************
+
 
 
             //=============================== END PDP : BTF =============================//
