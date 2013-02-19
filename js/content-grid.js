@@ -40,14 +40,15 @@ var contentGrid = (function() {
                 scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 )
             }, 'slow', function() {
                 // pseudo:
-                // show quickview block...
-                // on scroll (target outside quick view), close quick view
-                // on click (target outside quick view), close quick view
+                // (on complete of showing quickview block...)
+                // on either:
+                //      scroll (target outside quick view), close quick view
+                //      click (target outside quick view), close quick view
                 // in both (previous) cases, remove even listener for scroll/click...
 
-
-
                 
+
+
                 // $jQ(document).one(
                 //     {
                 //         'resize.quickView' : function(e) {
