@@ -60,7 +60,7 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
-    'content-grid-page' : {
+    'product-listing-page' : {
         init : function() {
             contentGrid.init();
             contentFilter.init();

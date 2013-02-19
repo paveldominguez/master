@@ -408,17 +408,45 @@ $leftColWidth: 255px;
                         width: 105px;
                         height: 40px;
                         background-color: $colorVzwRed;
+                        border: none;
                         color: #FFF;
+                        cursor: pointer;
+                        font: {
+                            family: $fontVzw;
+                            size: 14px;
+                            weight: normal;
+                        }
                         span {
                             display: table-cell;
                             vertical-align: bottom;
-                            padding: 5px 10px;
+                            padding: 12px 0 5px 5px;
                         }
                     }
                 }
                 .color-picker{
                     top: 0;
                     right: 0;
+                    .colors {
+                        margin: 0;
+                        overflow: hidden;
+                        .color {
+                            float: left;
+                            border: {
+                                top: 1px solid #CCC;
+                                bottom: 1px solid #CCC;
+                            }
+                            a {
+                                display: block;
+                                width: 17px;
+                                height: 7px;
+                                img {
+                                    display: block;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
                 }
                 .content-message {
                     top: 0;

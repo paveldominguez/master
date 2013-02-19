@@ -20,7 +20,7 @@ var contentGrid = (function() {
             $jQ(this).find('.content-detail').animate( { opacity:1 }, 'fast');
         },
         quickViewHandler : function() {
-            var $quickView = $jQ('#quick-view-overlay'),
+            var $quickView = $jQ('.quick-view-overlay'),
             $contentTile = $jQ(this).parent().parent(),
             $cTposition = $contentTile.position();
             console.log('content tile height: %d', $contentTile.outerHeight());
@@ -28,7 +28,7 @@ var contentGrid = (function() {
                 {
                     'display' : 'block',
                     'position' : 'absolute',
-                    'top' : $cTposition.top ,
+                    'top' : $cTposition.top,
                     'right' : 0,
                     'height' : ( $contentTile.outerHeight() * 2 ) - 1,
                     'background-color' : '#FFF',
@@ -39,27 +39,36 @@ var contentGrid = (function() {
             $jQ('html, body').animate( {
                 scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 )
             }, 'slow', function() {
-                $jQ(document).one(
-                    {
-                        'resize.quickView' : function(e) {
-                            console.log('resizin');
-                            $quickView.fadeOut('fast');
-                        },
-                        'scroll.quickView' : function(e) {
-                            console.log('scrollin');
-                            if(!$jQ(e.target).hasClass('.quick-view')) {
-                                $quickView.fadeOut('fast');
-                            }
-                        }
-                    }
-                );
-                $jQ(document).on('mouseup.quickView', function(e) {
-                    console.log(e.target);
-                    if ($jQ(e.target).closest($quickView).length === 0 && !$jQ(e.target).hasClass('.quick-view') ) {
-                        $quickView.fadeOut('fast');
-                        $jQ(document).off('mouseup.quickView');
-                    }
-                });
+                // pseudo:
+                // show quickview block...
+                // on scroll (target outside quick view), close quick view
+                // on click (target outside quick view), close quick view
+                // in both (previous) cases, remove even listener for scroll/click...
+
+
+
+                
+                // $jQ(document).one(
+                //     {
+                //         'resize.quickView' : function(e) {
+                //             console.log('resizin');
+                //             $quickView.fadeOut('fast');
+                //         },
+                //         'scroll.quickView' : function(e) {
+                //             console.log('scrollin');
+                //             if(!$jQ(e.target).hasClass('.quick-view')) {
+                //                 $quickView.fadeOut('fast');
+                //             }
+                //         }
+                //     }
+                // );
+                // $jQ(document).on('mouseup.quickView', function(e) {
+                //     console.log(e.target);
+                //     if ($jQ(e.target).closest($quickView).length === 0 && !$jQ(e.target).hasClass('.quick-view') ) {
+                //         $quickView.fadeOut('fast');
+                //         $jQ(document).off('mouseup.quickView');
+                //     }
+                // });
             });
         }
     };
