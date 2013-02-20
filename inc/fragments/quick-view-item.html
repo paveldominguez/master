@@ -1,51 +1,33 @@
 <div id="quick-view-overlay" class="quick-view-overlay">
+    <a id="close-quick-view" href="#close-quick-view">close</a>
+    <ul class="quick-view-offers">
+        <li class="first offer">free shipping</li>
+        <!-- if more than one offer..
+        <li class="offer"></li>
+        <li class="last offer"></li> -->
+    </ul>
     <section class="quick-view-item">
         <!-- main carousel slider -->
         <div id="quick-view-slider" class="slider">
             <ul class="slides">
-                <li class="first">
+                <li class="first slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                     <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                 </li>
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
+                <li class="slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                 </li>
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
+                <li class="slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                 </li>
-                <li class="last">
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
+                <li class="last slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
+                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                 </li>
             </ul>
         </div>
         <!-- end main carousel slider -->
-        <!-- thumbnails for slider -->
-        <div id="quick-view-thumbs" class="slider-thumbs">
-            <ul class="slides">
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-                </li>
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
-                </li>
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
-                </li>
-                <li>
-                    <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
-                </li>
-            </ul>
-        </div>
-        <!-- end thumbnails for slider -->
     </section>
     <section class="quick-view-details">
         <header class="product-header">
-            <a id="close-quick-view" href="#close-quick-view">close</a>
-            <ul class="offer-details">
-                <li class="first offer">free shipping</li>
-                <!-- if more than offer..
-                <li class="offer"></li>
-                <li class="last offer"></li> -->
-            </ul>
             <!-- product header -->
             <hgroup class="product-header">
                 <h1 class="product-brand">jawbone</h1>
@@ -74,18 +56,11 @@
             </ul>
         </div> <!-- end color selector -->
         <div class="product-pricing">
-            <ul class="inline-list">
-                <li class="product-price">
-                    <p class="sale">Reg.$<span>299.99</span></p>
-                    <p class="price">$<span>249<sup>99</sup></span></p>
-                </li>
-                <li class="product-price-extra">
-                    sale 15%<br>off till 2/14
-                </li>
-            </ul>
+            <div class="sale">Reg.$<span>299.99</span></div>
+            <div class="price">$<span>249<sup>99</sup></span></div>
         </div>
         <div class="product-actions">
-            <button class="product-add-cart" href="#add-to-cart" title="Add to Cart"><span>Add to Cart</span></button>
+            <button class="product-add-cart" type="submit" title="Add to Cart"><span>Add to Cart</span></button>
             <a class="product-details" href="#" title="See Details"><span>See Details</span></a>
         </div>
     </section>

@@ -4,6 +4,7 @@ $colorLightGray: #999;
 $colorFeaturedPrice: #C00;
 $colorProductListHeaderBg: #EBEEEE;
 $colorLightGrayBorder: #DCDEDE;
+$colorQuickViewBackground: #EAEDED;
 $colorQuickViewLink: #0066CC;
 
 $sizeHeaderFont: 80px;
@@ -518,14 +519,68 @@ $leftColWidth: 255px;
             }
         }
     }
-    .quick-view-overlay {
-        @include clearfix();
-        display: none;
-        width: 100%;
-        overflow: hidden;
+}
+.quick-view-overlay {
+    @include clearfix();
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 500;
+    width: 100%;
+    overflow: hidden;
+    background: $colorQuickViewBackground url(../img/product-category-listing/quick-view-bg-bot.png) bottom left repeat-x;
+    .quick-view-item,
+    .quick-view-details {
+        float: left;
+        .product-pricing {
+            .sale {
+                text-decoration: line-through;
+            }
+        }
+    }
+    .quick-view-item {
+        @include column(9);
+        background: $colorQuickViewBackground url(../img/product-category-listing/quick-view-bg-top.png) top left repeat-x;
+        .slides {
+            .slide {
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 445px;
+                }
+            }
+        }
+        .flex-control-thumbs {
+            position: absolute;
+            left: 50%;
+            margin: 0 auto;
+            li {
+                cursor: pointer;
+                float: left;
+                img {
+                    display: block;
+                    max-width: 40px;
+                }
+            }
+        }
+    }
+    .quick-view-offers,
+    .quick-view-details {
+        @include column(3);
+    }
+    .quick-view-offers,
+    #close-quick-view {
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+    }
+    .quick-view-offers {
+        left: 0;
+    }
+    #close-quick-view {
+        right: 0;
     }
 }
-
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
     .content-grid { 
@@ -542,6 +597,37 @@ $leftColWidth: 255px;
                     img { max-width: 403px; }
                 }
             }
+        }
+    }
+    .quick-view-overlay {
+        .quick-view-item {
+            @include column(8);
+            .slides {
+                .slide {
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        max-width: 475px;
+                    }
+                }
+            }
+            .flex-control-thumbs {
+                position: absolute;
+                left: 50%;
+                margin: 0 auto;
+                li {
+                    cursor: pointer;
+                    float: left;
+                    img {
+                        display: block;
+                        max-width: 40px;
+                    }
+                }
+            }
+        }
+        .quick-view-offers,
+        .quick-view-details {
+            @include column(4);
         }
     }
 }
@@ -567,6 +653,45 @@ $leftColWidth: 255px;
                     padding: 0;
                 }
             }
+        }
+    }
+    .quick-view-overlay {
+        .quick-view-item,
+        .quick-view-details {
+            float: none;
+            height: 50%;
+        }
+        .quick-view-item {
+            @include column(12);
+            .slides {
+                .slide {
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        max-width: 245px;
+                    }
+                }
+            }
+            .flex-control-thumbs {
+                position: absolute;
+                top: 15%;
+                right: 0;
+                left: auto;
+                padding: 15px;
+                width: auto;
+                background-color: $colorQuickViewBackground;
+                li {
+                    cursor: pointer;
+                    float: none;
+                    img {
+                        display: block;
+                        max-width: 40px;
+                    }
+                }
+            }
+        }
+        .quick-view-details {
+            @include column(12);
         }
     }
 }
