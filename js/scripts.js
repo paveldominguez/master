@@ -47,7 +47,6 @@ VZ = {
     common : {
         init : function() {
             // initialize things that are used on every page
-
             var win = $jQ(window);
             $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
                 debounce(function() {

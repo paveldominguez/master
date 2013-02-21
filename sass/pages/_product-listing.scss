@@ -6,6 +6,7 @@ $colorProductListHeaderBg: #EBEEEE;
 $colorLightGrayBorder: #DCDEDE;
 $colorQuickViewBackground: #EAEDED;
 $colorQuickViewLink: #0066CC;
+$colorQuickViewTitle: #3D4146;
 
 $sizeHeaderFont: 80px;
 $sizeHeaderFontMed: 60px;
@@ -17,6 +18,32 @@ $wrapperPaddingLarge: 40px 30px 35px;
 $wrapperPaddingSmall: 20px 15px;
 
 $leftColWidth: 255px; 
+
+@mixin add-cart-cta {
+    .add-cart-cta {
+        @include border-radius(3px);
+        @include box-shadow(
+            // horizontal offset | vertical offset |  blur | zoom/distance | color
+          inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
+          inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
+        ); // this needs fallback to image for ie8
+        display: table;
+        background-color: $colorVzwRed;
+        border: none;
+        color: #FFF;
+        cursor: pointer;
+        font: {
+            family: $fontVzw;
+            size: 14px;
+            weight: normal;
+        }
+        span {
+            display: table-cell;
+            vertical-align: bottom;
+            padding: 12px 0 5px 5px;
+        }
+    }
+}
 
 #secondary-column { 
     float: left; 
@@ -330,14 +357,13 @@ $leftColWidth: 255px;
     
     .content-item {
         @include column(3);
+        float: left;  
         padding: 15px;
         position: relative;
-        float: left;  
-        margin: 0 0 30px 0;
+        margin: 0;
         background: none;
         border: 1px solid #CCC;
         border-collapse: collapse;
-        margin-bottom: 0;
         border-top: none;
         border-left: none;
         .content-link { 
@@ -357,7 +383,7 @@ $leftColWidth: 255px;
             }
         }
         &.featured { 
-            @include column(6, center);
+            @include column(6);
             background-color: none;
             float: left; 
             margin-bottom: 0;
@@ -397,31 +423,11 @@ $leftColWidth: 255px;
                     width: 50%;
                     padding: 15px;
                     background-color: #FFF;
+                    @include add-cart-cta();
                     .add-cart-cta {
-                        @include border-radius(3px);
-                        @include box-shadow(
-                            // horizontal offset | vertical offset |  blur | zoom/distance | color
-                          inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
-                          inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
-                        ); // this needs fallback to image for ie8
-                        display: table;
                         float: right;
                         width: 105px;
                         height: 40px;
-                        background-color: $colorVzwRed;
-                        border: none;
-                        color: #FFF;
-                        cursor: pointer;
-                        font: {
-                            family: $fontVzw;
-                            size: 14px;
-                            weight: normal;
-                        }
-                        span {
-                            display: table-cell;
-                            vertical-align: bottom;
-                            padding: 12px 0 5px 5px;
-                        }
                     }
                 }
                 .color-picker{
@@ -519,28 +525,175 @@ $leftColWidth: 255px;
             }
         }
     }
-}
+} 
+
+
 .quick-view-overlay {
     @include clearfix();
     display: none;
     position: absolute;
     right: 0;
-    z-index: 500;
+    z-index: 5000;
     width: 100%;
     overflow: hidden;
-    background: $colorQuickViewBackground url(../img/product-category-listing/quick-view-bg-bot.png) bottom left repeat-x;
+    background: $colorQuickViewBackground url(../img/product-category-listing/quick-view-bg-top.png) top left repeat-x;
+    .wrapper {
+        background: transparent url(../img/product-category-listing/quick-view-bg-bot.png) bottom left repeat-x;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 15px;
+    }
+    .quick-view-header {
+        @include column(3);
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px;
+        padding-left: 0;
+        z-index: 5001;
+        .quick-view-offers {
+            float: left;
+            padding-left: 40px;
+            @include category-listing-sprite(cat-boxes, false, 0, 0);
+            color: $colorLightGray;
+            font: {
+                family: $fontVzwMedium;
+                size: 14px;
+                weight: normal;
+            }
+            text-transform: capitalize;
+        }
+        .quick-view-close {
+            float: right;
+            text-indent: -9999px;
+            width: 28px;
+            height: 27px;
+            @include product-listing-sprite(prd-quickview-close, false, 0, 0);
+        }
+    }
     .quick-view-item,
     .quick-view-details {
         float: left;
+        height: 100%;
+    }
+    .quick-view-details {
+        @include column(3);
+        margin-top: 80px;
+        border-top: 1px solid #C5CACA;
+        .column {
+            float: none;
+        }
+        .product-header {
+            .product-name {
+                color: $colorQuickViewTitle;
+                font: {
+                    family: $fontVzwBook;
+                    size: 24px;
+                    weight: normal;
+                }
+                line-height: 35px;
+                margin: {
+                    top: 0;
+                    bottom: 5px;
+                }
+                .brand {
+                    color: $colorMediumGray;
+                    display: block;
+                    font: {
+                        family: $fontVzwMedium;
+                        size: 14px;
+                        weight: normal;
+                    }
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .product-color {
+            margin-top: 50px;
+            .color-info {
+                color: $colorMediumGray;
+                font: {
+                    family: $fontArial;
+                    size: 12px;
+                }
+                margin-bottom: 5px;
+                .color-option {
+                    font-weight: bold;
+                }
+            }
+            .product-colors {
+                margin: 0;
+                padding: 0;
+                .color {
+                    margin: 0;
+                    a {
+                        display: block;
+                        img {
+                            width: 55px;
+                            height: 36px;
+                        }
+                    }
+                }
+            }
+        }
         .product-pricing {
+            margin-top: 20px;
             .sale {
                 text-decoration: line-through;
+                color: $colorMediumGray;
+                font: {
+                    family: $fontArial;
+                    size: 12px;
+                }
+                margin-bottom: 5px;
+            }
+            .price {
+                color: #000;
+                font: {
+                    family: $fontVzwBook;
+                    size: 24px;
+                    weight: normal;
+                }
+            }
+        }
+        .product-actions {
+            margin-top: 20px;
+            .product-action {
+                @include clearfix();
+                width: 100%;
+                height: 55px;
+                margin-bottom: 10px;
+            }
+            @include add-cart-cta();
+            .add-cart-cta {
+                font-size: 18px;
+                span {
+                    padding: 25px 0 5px 15px;
+                }
+            }
+            .product-details {
+                @include border-radius(3px);
+                display: table;
+                background-color: #FFF;
+                border: 1px solid #DDD;
+                color: $colorQuickViewLink;
+                font: {
+                    family: $fontVzwMedium;
+                    size: 18px;
+                    weight: normal;
+                }
+                span {
+                    display: table-cell;
+                    vertical-align: bottom;
+                    padding: 0 0 10px 10px;
+                }
             }
         }
     }
     .quick-view-item {
         @include column(9);
-        background: $colorQuickViewBackground url(../img/product-category-listing/quick-view-bg-top.png) top left repeat-x;
         .slides {
             .slide {
                 img {
@@ -550,38 +703,47 @@ $leftColWidth: 255px;
                 }
             }
         }
-        .flex-control-thumbs {
-            position: absolute;
-            left: 50%;
-            margin: 0 auto;
-            li {
-                cursor: pointer;
-                float: left;
-                img {
-                    display: block;
-                    max-width: 40px;
+    }
+    .flex-control-thumbs {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        li {
+            position: relative;
+            cursor: pointer;
+            float: left;
+            img {
+                display: block;
+                max-width: 40px;
+            }
+            .decoration {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: $colorVzwRed;
+                @include transition(width .25s cubic-bezier(0, .50, .51, 1.00));
+            }
+            &.flex-active {
+                .decoration{
+                    width: 100%;
                 }
             }
         }
     }
-    .quick-view-offers,
-    .quick-view-details {
-        @include column(3);
-    }
-    .quick-view-offers,
-    #close-quick-view {
-        position: absolute;
-        top: 0;
-        z-index: 1000;
-    }
-    .quick-view-offers {
-        left: 0;
-    }
-    #close-quick-view {
-        right: 0;
-    }
 }
 
+.quick-view-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3500;
+    background-color: rgba(255, 255, 255, 0.35);
+}
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
     .content-grid { 
         .content-item {
@@ -625,7 +787,7 @@ $leftColWidth: 255px;
                 }
             }
         }
-        .quick-view-offers,
+        .quick-view-header,
         .quick-view-details {
             @include column(4);
         }
@@ -656,31 +818,35 @@ $leftColWidth: 255px;
         }
     }
     .quick-view-overlay {
+        .quick-view-header {
+            padding-left: 15px;
+        }
         .quick-view-item,
         .quick-view-details {
             float: none;
-            height: 50%;
         }
         .quick-view-item {
             @include column(12);
+            height: 60%;
             .slides {
                 .slide {
                     img {
                         display: block;
                         margin: 0 auto;
-                        max-width: 245px;
+                        max-width: 325px;
                     }
                 }
             }
             .flex-control-thumbs {
                 position: absolute;
-                top: 15%;
+                top: 50%;
                 right: 0;
                 left: auto;
+                bottom: auto;
                 padding: 15px;
                 width: auto;
                 background-color: $colorQuickViewBackground;
-                li {
+                > li {
                     cursor: pointer;
                     float: none;
                     img {
@@ -691,6 +857,42 @@ $leftColWidth: 255px;
             }
         }
         .quick-view-details {
+            @include column(12);
+            position: relative;
+            right: auto;
+            height: 40%;
+            margin-top: 0;
+            border-top: none;
+            .column {
+                width: 50%;
+                height: 100%;
+                float: left;
+                &:first-child {
+                    border-right: 1px solid #B2B9B9;
+                }
+                &:last-child {
+                    padding-left: 15px;
+                }
+            }
+            .product-color {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                .product-pricing {
+                    .sale {
+
+                    }
+                }
+            }
+            .product-actions {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+                padding-right: 15px;
+                width: 100%;
+            }
+        }
+        .quick-view-header{
             @include column(12);
         }
     }
@@ -744,13 +946,17 @@ $leftColWidth: 255px;
     }
     .content-grid { 
         .content-item {
+            float: left;
             width: 50%;
+            margin: 0;
             padding: 15px;
             .content-fig img {
                 max-width: 70%;
             }
             &.featured {
+                float: left;
                 width: 50%;
+                margin: 0;
                 padding: 15px;
                 .content-fig {
                     margin: 15px 0 0;
