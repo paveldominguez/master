@@ -1,0 +1,161 @@
+$colorArticleBorder: #DCDEDE;
+$colorSocialCount: #848483;
+
+.content-landing-page {
+    .content-grid {
+        border-top: none;
+    }
+}
+.featured-stories {
+    .story {
+        @include column(12);
+        position: relative;
+        padding: 15px;
+        border: {
+            left: 1px solid $colorArticleBorder;
+            bottom: 1px solid $colorArticleBorder;
+        }
+        .story-fig {
+            @include column(3);
+            //img { }
+        }
+        .story-content {
+            @include column(9);
+            padding-left: 15px;
+            .story-header {
+                h1 {
+                    font: {
+                        family: $fontVzwBook;
+                        size: 32px;
+                    }    
+                }
+            }
+        }
+        .story-social {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            .share {
+                float: left;
+                width: 56px;
+                border-left: 1px solid $colorArticleBorder;
+                a { 
+                    display: block; 
+                    height: 56px;
+                    .count {
+                        float: right;
+                        padding-right: 5px;
+                        color: $colorSocialCount;
+                        font: {
+                            family: $fontArial;
+                            size: 11px;
+                        }
+                    }
+                }
+                &.first { border-left: none; }
+                &.email {
+                    @include social-sprite(email, false, 2px, 28px);
+                }
+                &.facebook {
+                    @include social-sprite(facebook, false, 2px, 28px);
+                }
+                &.twitter {
+                    @include social-sprite(twitter, false, 2px, 28px);
+                }
+                &.g-plus {
+                    @include social-sprite(g-plus, false, 2px, 28px);
+                }
+                &.pinterest {
+                    @include social-sprite(pinterest, false, 2px, 28px);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+    .featured-stories {
+        .story {
+            @include column(12);
+            position: relative;
+            padding: 15px;
+            border: {
+                left: 1px solid $colorArticleBorder;
+                bottom: 1px solid $colorArticleBorder;
+            }
+            .story-fig {
+                @include column(3);
+                img { }
+            }
+            .story-content {
+                @include column(9);
+                padding-left: 15px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+    .featured-stories {
+        .story {
+            @include column(12);
+            position: relative;
+            padding: 15px;
+            border: {
+                left: 1px solid $colorArticleBorder;
+                bottom: 1px solid $colorArticleBorder;
+            }
+            .story-fig {
+                @include column(3);
+                img { }
+            }
+            .story-content {
+                @include column(9);
+                padding-left: 15px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
+    .content-landing-page {
+        .category-section .content-grid.feature-grid .content-item.large .content-detail .related-products {
+            display: none;
+        }
+    }
+    .featured-stories {
+        .story {
+            .story-fig {
+                width: 30%;
+                img { }
+            }
+            .story-content {
+                width: 70%;
+            }
+            .story-social { display: none; }
+        }
+    }
+}
+@media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+    .content-landing-page {
+        .category-section .content-grid.feature-grid .content-item.large .content-detail .related-products {
+            display: none;
+        }
+    }
+    .featured-stories {
+        .story {
+            .story-fig {
+                width: 40%;
+                img { }
+            }
+            .story-content {
+                width: 60%;
+                .story-header {
+                    h1 {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .story-social { display: none; }
+        }
+    }
+}

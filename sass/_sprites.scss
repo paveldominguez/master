@@ -18,6 +18,10 @@ $category-listing-spacing: 25px;
 @import "sprites/category-listing/*.png";
 @include all-category-listing-sprites;
 
+$social-spacing: 50px;
+@import "sprites/social/*.png";
+@include all-social-sprites;
+
 $pdp-spacing: 15px;
 @import "sprites/pdp/*.png";
 @include all-pdp-sprites;

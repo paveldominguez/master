@@ -404,13 +404,13 @@ $leftColWidth: 255px;
         }
         .content-hover {
                 display: none;
-                z-index: 9999;
+                z-index: 2500;
                 .content-message,
                 .color-picker,
                 .quick-view,
                 .add-cart {
                     position: absolute;
-                    z-index: 9999;
+                    z-index: 2500;
                     padding: 15px;
                 }
                 .quick-view,
@@ -829,6 +829,7 @@ $leftColWidth: 255px;
             @include column(12);
             height: 60%;
             .slides {
+                margin-top: 35px;
                 .slide {
                     img {
                         display: block;

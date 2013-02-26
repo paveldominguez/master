@@ -16,16 +16,14 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 
-.category-listing-page {
-    .content-cta {
-        color: $colorCategoryCTA;
-        font: {
-            family: $fontArial;
-            size: 10px;
-            weight: bold;
-        }
-        text-transform: uppercase;
+.content-cta {
+    color: $colorCategoryCTA;
+    font: {
+        family: $fontArial;
+        size: 10px;
+        weight: bold;
     }
+    text-transform: uppercase;
 }
 
 .category-list-header {

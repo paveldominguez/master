@@ -34,34 +34,38 @@ var contentGrid = (function() {
             });
             $jQ('html, body').animate( {
                 scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 ) + ( $parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0 )
-            }, 'slow', function() {
-                $jQ('#quick-view-slider').flexslider({
-                    animation: 'slide',
-                    controlNav: true,
-                    directionNav: false,
-                    controlsContainer: '#slider-controls',
-                    manualControls : '.flex-control-thumbs li',
-                    slideshow: false
-                });
-
-                var $sliderThumbs = $jQ('#slider-controls .flex-control-thumbs');
-                $sliderThumbs.attr('style','');
-                if( $jQ(window).width() >= 1024 ) {
-                    $sliderThumbs.css('margin-left','-' + ($sliderThumbs.outerWidth() / 2) + 'px');
-                } else {
-                    $sliderThumbs.css('margin-top','-' + ($sliderThumbs.outerHeight() / 2) + 'px');
-                }
-
-                $jQ(window).on({
-                    'resize.quickView' : pub.quickViewClose,
-                    'scroll.quickView' : pub.quickViewClose,
-                    'click.quickView' : function(e) {
-                        if ($jQ(e.target).closest($quickView).length === 0 && !$jQ(e.target).hasClass('.quick-view') ) {
-                            pub.quickViewClose(e);
+            }, 500, function() {
+                pub.initSlider();
+                setTimeout(function() { // ensure scroll is fully complete before attaching these event handlers
+                    $jQ(window).on({
+                        'resize.quickView' : pub.quickViewClose,
+                        'scroll.quickView' : pub.quickViewClose,
+                        'click.quickView' : function(e) {
+                            if ($jQ(e.target).closest($quickView).length === 0) {
+                                pub.quickViewClose(e);
+                            }
                         }
-                    }
-                }, { 'qv' : $quickView });
+                    }, { 'qv' : $quickView });
+                }, 1);
             });
+        },
+        initSlider : function() {
+            $jQ('#quick-view-slider').flexslider({
+                animation: 'slide',
+                controlNav: true,
+                directionNav: false,
+                controlsContainer: '#slider-controls',
+                manualControls : '.flex-control-thumbs li',
+                slideshow: false
+            });
+
+            var $sliderThumbs = $jQ('#slider-controls .flex-control-thumbs');
+            $sliderThumbs.attr('style','');
+            pub.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
+        },
+        setThumbnailMargins : function($sT, pos) {
+            var offset = pos === 'left' ? $sT.outerWidth() : $sT.outerHeight();
+            $sT.css('margin-' + pos, '-' + (offset / 2) + 'px');
         },
         quickViewClose : function(e) {
             e.preventDefault();

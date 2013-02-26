@@ -59,6 +59,12 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
+    'content-landing-page' : {
+        init : function() {
+            searchResults.styleDropDown();
+            contentFilter.init();
+        }
+    },
     'category-listing-page' : {
         init : function() {
             contentFilter.init();

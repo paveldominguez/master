@@ -1,0 +1,15 @@
+
+
+
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+
+}
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+
+}
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
+
+}
+@media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+
+}
