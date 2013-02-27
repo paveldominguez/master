@@ -22,6 +22,7 @@ $colorPromoFont: #6D6E71;
             text-indent: -9999px;
         }
         .promo-info {
+            border-top: 1px solid $colorPromoFont;
             .promo-copy {
                 color: $colorPromoFont;
                 font: {
