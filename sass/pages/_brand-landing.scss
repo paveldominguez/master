@@ -1,15 +1,106 @@
+$colorPromoBg: #EEEEEE;
+$colorPromoFont: #6D6E71;
 
-
+.brand-landing-page {
+    .header-info { display: none; }
+    .category-list-header {
+        height: 320px;
+        background: $colorPromoBg url(../img/brand-landing/sony-x-headphones.jpg) 125px -110px no-repeat;
+    }
+    .category-header-promo {
+        .promo-header {
+            @include clearfix();
+            display: block;
+            &:before,
+            &:after { 
+                content: none;
+                display: block; 
+            }
+            background: transparent url(../img/brand-landing/logo-sony.png) right center no-repeat;
+            height: 150px;
+            text-align: left;
+            text-indent: -9999px;
+        }
+        .promo-info {
+            .promo-copy {
+                color: $colorPromoFont;
+                font: {
+                    family: $fontVzwBook;
+                    size: 24px;
+                    style: italic;
+                }
+            }
+        }
+    }
+    .content-grid-header {
+        background-color: white;
+        .wrapper {
+            padding: 20px 30px;
+        }
+        .content-grid-category { display: none; }
+        .content-grid-heading .content-filter-count {
+            margin: 0;
+        }
+        .sort-options {
+            // reset position absolute and bottom/right in _product-listing.scss - lines 276 to 278
+            position: relative;
+            bottom: auto; 
+            right: auto;
+            // end reset block
+            float: right;
+        }
+    }
+}
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
 
 }
 @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
-
+    .brand-landing-page {
+        .category-list-header {
+            background-position: 50px -110px;
+        }
+    }
 }
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
-
+    .brand-landing-page {
+        .category-list-header {
+            position: relative;
+            background-position: 250px -110px;
+        }
+        .category-header-promo {
+            .promo-header {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                width: 100%;
+                background-image: url(../img/brand-landing/logo-sony-sm.png);
+                background-position: left bottom;
+            }
+            .promo-info {
+                display: none;
+            }
+        }
+    }
 }
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
-
+    .brand-landing-page {
+        .category-list-header {
+            position: relative;
+            background-position: 50px -110px;
+        }
+        .category-header-promo {
+            .promo-header {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                width: 100%;
+                background-image: url(../img/brand-landing/logo-sony-sm.png);
+                background-position: left bottom;
+            }
+            .promo-info {
+                display: none;
+            }
+        }
+    }
 }

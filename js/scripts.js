@@ -59,6 +59,12 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
+    'brand-landing-page' : {
+        init : function() {
+            contentGrid.init();
+            contentFilter.init();
+        }
+    },
     'content-landing-page' : {
         init : function() {
             searchResults.styleDropDown();
@@ -84,6 +90,8 @@ VZ = {
     'search-results-page' : {
         init : function() {
             searchResults.styleDropDown();
+            contentGrid.init();
+            contentFilter.init();
         }
     }
 };

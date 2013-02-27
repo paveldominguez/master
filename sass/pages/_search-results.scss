@@ -2,17 +2,24 @@
 $searchBG: #E5EBEB;
 $sortBG: #F1F3F2;
 
+.content-landing-header,
 .search-results-header{
     border-bottom:1px solid #ccc;
     padding-left:22px;
     h2{
-        font-size:30px;
-        font-family: $fontArial;
-        font-weight:400;
+        font: {
+            family: $fontVzwBook;
+            size: 32px;
+            weight: normal;
+        }   
         float:left;
         margin:10px 0 20px;
-        strong:first-child{font-weight:400;}
-        strong.keyword{font-weight: 700;}
+        .keyword{
+            font: {
+                family: $fontVzwBold;
+                weight: normal;
+            }
+        }
     }
     #uniform-sort-options{
         @include border-radius(3px);
@@ -149,40 +156,40 @@ $sortBG: #F1F3F2;
 
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
     .product-list-section{padding-top:20px;}
-    .category-tabs{
-        position: absolute;
-        top: 0;
-        width:100%;
-        background-color: $searchBG;
-        .show-for-mobile{
-            display: block;
-            font-size: 18px;
-        }
-        .inline-list{
-            margin: 0 0 0 108px;
-            li {
-                display: none;
-                a{
-                    color:#000;
-                    font-size: 18px;
-                    background-colorlor: transparent;
-                    border:0;
-                    padding: 0;
-                    text-transform: capitalize;
-                    border:0;
-                }
-                &.active{
-                    background-color: transparent;
-                    display: block;
-                    a{
-                        border-top: 0;
-                        padding-right: 12px;
-                        border-bottom: 2px solid #333;
-                    }
-                }
-            }
-        }
-    }
+    // .category-tabs{
+    //     position: absolute;
+    //     top: 0;
+    //     width:100%;
+    //     background-color: $searchBG;
+    //     .show-for-mobile{
+    //         display: block;
+    //         font-size: 18px;
+    //     }
+    //     .inline-list{
+    //         margin: 0 0 0 108px;
+    //         li {
+    //             display: none;
+    //             a{
+    //                 color:#000;
+    //                 font-size: 18px;
+    //                 background-colorlor: transparent;
+    //                 border:0;
+    //                 padding: 0;
+    //                 text-transform: capitalize;
+    //                 border:0;
+    //             }
+    //             &.active{
+    //                 background-color: transparent;
+    //                 display: block;
+    //                 a{
+    //                     border-top: 0;
+    //                     padding-right: 12px;
+    //                     border-bottom: 2px solid #333;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     .search-results-header{
         background-color: $searchBG;
         .sort-by{
