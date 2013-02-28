@@ -74,6 +74,7 @@ VZ = {
     },
     'category-listing-page' : {
         init : function() {
+            contentGrid.init();
             contentFilter.init();
         }
     },
