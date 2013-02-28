@@ -17,6 +17,7 @@
  	$availColorGrey: #b1b0b0;
  	$availColorBlue: #51b0d8;
 
+	$specialOfferBlue: #009eb6;
 
 	$pdpGreyMd:	#d6dcdc;
 	$featuredBg : #27a0cc;
@@ -33,12 +34,6 @@
 		-moz-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
 		-o-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
 		box-shadow: inset 0 0px 0 0px #eceeee, inset 0px -2px 6px #ccc; }
-		
-		
-	
-		
-		
-		
 
 	@mixin boxBrdrT { border-top: 1px solid #ccc; }
 	@mixin boxBrdrR { border-right: 1px solid #ccc; }
@@ -51,13 +46,16 @@
 						border-radius: 3px; }
 
 	@mixin ctaButton { @include cartRounded;
-						border:0px; background-color: #d00505;
+						border:0px; 
+						background-color: $colorVzwRed;
             			color: #FFF;
             			letter-spacing: 0px;
             			text-shadow: -1px -1px 0.3px rgba(0, 0, 0, 0.2);
             			-webkit-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
             			-moz-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
             			box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
+            			font-family: $fontVzwBook;
+            			cursor:pointer;
             			/* this needs fallback to image for ie8 */ }
 
 
@@ -167,11 +165,31 @@
 	input[type="list"] { font-family: $fontArial; }
 
 
-/*----------------------------------------------- BEGIN HERO --------------------- */
-#site-header {
+/*------------------------------------- TEMP HEADER ------------------------------ */
+
+.temp-pdp-header { 
+	@include anchorDrop;
+	width:100%;
+	height:165px; 
+	background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
+	padding-top: 106px; 
+	position:relative;
+	z-index:5;
+	
+	img {
+		display:block;
+		width: 1024px;
+		margin: 0px auto 0 auto;
+		}
+	}
+
+ #site-header {
 	@include anchorDrop;
 	position:relative;
-	z-index:5;}
+	z-index:5;} 
+
+
+/*----------------------------------------------- BEGIN HERO --------------------- */
 
 #pdp-hero {
 	@include clearfix();
@@ -198,8 +216,8 @@
 		.shipping-offers { display:none; }
 
 		#carousel {
-			width:100%;
-			min-height:582px;
+			width:90%;
+			min-height:504px;
 			max-height:720px;
 			margin:0 auto 0 auto;
 
@@ -2071,17 +2089,13 @@
 #pdp-plus{
 
 /* temp */ .vzn-slide-next { right:0px }
-	#site-header { height:105px;
-		background: #890000 url(../img/product-detail-page/pdp-plus/pdp-plus-header-placeholder.png) center top no-repeat;
-		}/* end pdp-plus site header */
-
+	
 	#pdp-hero {
-
-		#carousel-block {
-
-			.crsl-offer-box {
+	
+		.crsl-offer-box {
 				position:absolute;
 				top:40px; left:40px;
+				z-index:20; 
 				list-style-type: none;
 				width:172px; height:172px;
 				-webkit-border-radius: 86px;
@@ -2089,7 +2103,7 @@
 				-ms-border-radius: 86px;
 				-o-border-radius: 86px;
 				border-radius: 86px;
-				background: #009eb6;
+				background: $specialOfferBlue;
 
 
 				.offer-amt {
@@ -2121,8 +2135,7 @@
 
 				}/* end offer box */
 
-
-			} /* end crsl-block */
+		#carousel-block {  } /* end crsl-block */
 
 
 		#cart-block {
@@ -2383,6 +2396,23 @@
 
 
 		}/* end highlights */
+		
+		
+	#related-stories {
+		.section-wrap { }
+		
+		
+		.tabs-content {
+			/* general classes for all tabs */
+			.tab-wrapper { position:relative; }
+		
+		
+			} /* end tabs content ul */
+	
+	
+	
+	
+		} /* end related stories */
 
 
 

@@ -108,11 +108,11 @@ var productDetail = (function() {
 
 //ONLOAD : special offer display .........................................................
 
-    // turned off
-    //    $jQ('.offer').css('display', 'none');
-     //   $jQ('.no-offer').css('display', 'list-item');
+    // offers off
+      //  $jQ('.offer').css('display', 'none');
+      //  $jQ('.no-offer').css('display', 'list-item');
 
-    // turned on
+    // offers on
         $jQ('.offer').css('display', 'list-item');
         $jQ('.no-offer').css('display', 'none');
 
@@ -1184,7 +1184,7 @@ var tempProdName = window.location.search.substring(1); // ..... show TEMP click
 $jQ('.temp-wrap h2').text(tempProdName);
 
 
-$('#pdp-plus #site-header').html('');//......strip header HTML from pdp plus.............
+
 
         }
     };

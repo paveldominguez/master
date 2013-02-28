@@ -43,16 +43,13 @@
 </head>
 <body id="shopping-cart" class="cart">
 
-<!-- replace with final header include -->
+<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-cart-header">
-  		<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">
-    includeFragment('inc/header.html');
-  </script>
-  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-
+  		<script type="text/javascript">
+    		includeFragment('inc/header.html');
+  		</script>
   </div><!-- end temp header -->
-
+<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
 <section id="cart-header">
 	<div class="section-wrap">
@@ -62,8 +59,8 @@
 
 <section id="cart-data">
 	<div class="section-wrap">
+	
 		<div class="cart-table">
-		
 			<div class="table-header">
 				<div class="desc-block">
 					<h5 class="cart-label">Item Description</h5>
@@ -78,7 +75,7 @@
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="" title="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
@@ -128,7 +125,7 @@
 						
 						<div class="edit-panel"><!-- fades in -->
 							
-							<div class="edit-panel-close">X</div>
+							<div class="edit-panel-close"></div>
 							
 							<div class="edit-box qty">
 								<div class="edit-label">Qty:</div>
@@ -181,7 +178,7 @@
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="" title="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
@@ -231,7 +228,7 @@
 						
 						<div class="edit-panel"><!-- fades in -->
 							
-							<div class="edit-panel-close">X</div>
+							<div class="edit-panel-close"></div>
 							
 							<div class="edit-box qty">
 								<div class="edit-label">Qty:</div>
@@ -279,11 +276,12 @@
 				</div><!-- end sub block -->
 			</div><!-- end table row -->
 			
-						<div class="table-row"><!-- -------------- first product --------------- -->
+			
+			<div class="table-row"><!-- -------------- third product --------------- -->
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="" title="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
@@ -333,7 +331,7 @@
 						
 						<div class="edit-panel"><!-- fades in -->
 							
-							<div class="edit-panel-close">X</div>
+							<div class="edit-panel-close"></div>
 							
 							<div class="edit-box qty">
 								<div class="edit-label">Qty:</div>
@@ -380,30 +378,19 @@
 					<h4 class="subtotal">$299<span class="cents">99</span></h4>
 				</div><!-- end sub block -->
 			</div><!-- end table row -->
-			
-			
-			
-			
-			
-			
-			
-		
 		</div><!-- end cart-table -->
-		
-		
-		
-		
-		<div class="cart-sidebar">
+	
+	
+		<div class="cart-sidebar"><!-- ----------------- begin sidebar ------------- -->
 			<div class="cart-sidebar-wrap">
 			
-				<div class="special-header">
+				<div class="special-offer-block">
 					<p class="cart-offer-text">
 						Spend $10 more and your order qualifies for NEXT DAY DELIVERY!
 					</p>
 				</div>
 				
-				<div class="proceed">
-				
+				<div class="proceed-block">
 					<div id="cart-total-box">
 						<div class="total-label">Grand Total:</div>
 						<div id="grand-total">599<span class="cents">97</span></div>	
@@ -422,8 +409,59 @@
       						<span>Continue Shopping</span>
       					</button>
 					</div><!-- end keep shopping box -->
+				</div><!-- end proceed block -->
 				
-				</div><!-- end proceed -->
+				
+				<div id="also-bought-block">
+				
+					<div class="header">
+						<h3 class="title">Customers Also Bought</h3>
+					</div>
+					
+					<div class="also-bought-product"><!-- first product -->
+						<div class="product-image">
+							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+						</div><!-- end image -->
+						<div class="product-info">
+							<h5 class="title">
+								Lorem Ipsum Product Name by Brand
+							</h5>
+							
+							<div class="price">
+								$29.99
+							</div>
+							
+							<div class="add-also-bought">
+      							<button class="button add-secondary-to-cart" type="button" title="Add to Cart">
+      								<span>add to cart</span>
+      							</button>
+      						</div><!-- end add-also-bought -->
+						</div><!-- end product info -->
+					</div><!-- end first product -->
+					
+					
+					<div class="also-bought-product"><!-- first product -->
+						<div class="product-image">
+							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+						</div><!-- end image -->
+						<div class="product-info">
+							<h5 class="title">
+								Lorem Ipsum Product Name by Brand
+							</h5>
+							
+							<div class="price">
+								$29.99
+							</div>
+							
+							<div class="add-also-bought">
+      							<button class="button add-secondary-to-cart" type="button" title="Add to Cart">
+      								<span>add to cart</span>
+      							</button>
+      						</div><!-- end add-also-bought -->
+						</div><!-- end product info -->
+					</div><!-- end first product -->
+					
+				</div><!-- end also bought block -->
 			</div><!-- end sidebar wrap -->
 		</div><!-- end cart-sidebar -->
 	
@@ -431,7 +469,7 @@
 	
 	
 	
-	</div>
+	</div><!-- end section wrap -->
 </section><!-- end cart data -->
 
 
