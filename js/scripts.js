@@ -61,6 +61,7 @@ VZ = {
     },
     'brand-landing-page' : {
         init : function() {
+            $jQ("#sort-options").uniform();
             contentGrid.init();
             contentFilter.init();
         }
@@ -89,7 +90,7 @@ VZ = {
     },
     'search-results-page' : {
         init : function() {
-            searchResults.styleDropDown();
+            $jQ("#sort-options").uniform();
             contentGrid.init();
             contentFilter.init();
         }
