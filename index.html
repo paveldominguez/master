@@ -25,22 +25,22 @@
 </head>
 <body class="vzw-mls-pages">
   <h1>Verizon <img src="logo.png" alt="Verizon MLS Logo" /></h1>
-  <h2>Template Lising</h2>
+  <h3>Batch 1</h3>
   <ul>
-    <?php
-      $currentURL = curPageURL();
-      $paths = array_filter(glob($docRoot.'/*.html'), function($v) {
-        return false === strpos($v, 'index.php');
-      });
-      foreach ($paths as $filename){
-        $name = basename($filename);
-        $url = '/'.$name;
-        $url = str_replace(" ","", $url);
-        $name = str_replace("-"," ", $name);
-        $name = str_replace(".php"," ", $name);
-        echo('<li><a href="' . $url .'">'. $name);
-      }
-    ?>
+    <li><a href="product-listing.html">product listing</a></li>
+    <li><a href="category-listing.html">category listing</a></li>
+    <li><a href="search-results.html">search results</a></li>
+    <li><a href="product-detail.html">product detail</a></li>
+  </ul>
+  <h3>Batch 2</h3>
+  <ul>
+    <li><a href="article.html">article (not started)</a></li>
+    <li><a href="brand-landing.html">brand landing</a></li>
+    <li><a href="content-landing.html">content landing</a></li>
+    <li><a href="pdp-plus.html">product detail +</a></li>
+    <li><a href="cart-base.html">cart (currently in-progress)</a></li>
+    <li><a href="home.html">home (not started)</a></li>
+    <li><a href="product-listing-offers.html">product listing special offers (in-progress)</a></li>
   </ul>
 </body>
 </html>
