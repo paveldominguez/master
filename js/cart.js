@@ -10,45 +10,6 @@
 	 	$jQ("select").uniform();
 
 
-
-/* 					<div class="edit-panel"><!-- fades in -->
-							
-							<div class="edit-panel-close">X</div>
-							
-							<div class="edit-box qty">
-								<div class="edit-label">Qty:</div>
-								
-									<input type="text" name="quantity" class="cart-item-qty">
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box color">
-								<div class="edit-label">Color:</div>
-								
-									<select name="color" class="cart-item-color">
-										<option value="black">Black</option>
-										<option value="grey">Grey</option>
-										<option value="white">White</option>
-										<option value="blue">Blue</option>
-									</select>
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box size">
-								<div class="edit-label">Size:</div>
-								
-									<select name="size" class="cart-item-color">
-										<option value="small">Small</option>
-										<option value="medium">Medium</option>
-										<option value="large">Large</option>	
-									</select>
-								
-							</div><!-- end qty detail -->
-						
-						
-						
-*/
-
 // Shopping Cart Functions
 
 function editCart(button){
@@ -70,28 +31,75 @@ function editCart(button){
 	var currentColor = current.find('.color .item-data').text();
 	var currentSize = current.find('.size .item-data').text();
 	
+	// qty
 	panel.find('.cart-item-qty').val(currentQty);
 	
+	//color
 	panel.find('.cart-item-color option').each(function(){ 
 		var thisOption = $jQ(this).text();
 		if ( thisOption == currentColor ){
-			this.attr('selected', true);
-		} else {
-		
-		}
-		//this.selected = (this.text == currentColor);
-	
+			//change data
+			$jQ(this).attr('selected', true);
+			//change output
+			$jQ(this).parents('.selector').find('span').text(currentColor);
+		} 
 	});
-	//val(currentColor);
 	
+	// size
+	panel.find('.cart-item-size option').each(function(){ 
+		var thisOption = $jQ(this).text();
+		if ( thisOption == currentSize ){
+			//change form data
+			$jQ(this).attr('selected', true);
+			//change output
+			$jQ(this).parents('.selector').find('span').text(currentSize);
+		} 
+	});
+
 	
-	
-	
-	
-	panel.find('.cart-item-size option').val(currentSize);
-	
-	
-	
+	// update cart button
+		$jQ(panel).find('.save-cart-changes').click(function() {
+			updateCart(panel);
+		});
 	
 } // end editCart function
+
+
+function updateCart(panel){
+
+	var edit = $jQ(panel);
+
+	// get new values
+		var newQty = edit.find('.cart-item-qty').val();
+		var newColor = edit.find('.cart-item-color').find(':selected').text();
+		var newSize = edit.find('.cart-item-size').find(':selected').text();
+
+	// update static output
+		var detail = $jQ(panel).siblings('.detail-panel');
+	
+		detail.find('.qty').find('.item-data').text(newQty);
+		detail.find('.color').find('.item-data').text(newColor);
+		detail.find('.size').find('.item-data').text(newSize);
+	
+	
+	// add 'updated' status to button
+		detail.find('.updated').fadeIn('fast');
+		detail.find('.update-pointer').fadeIn('fast');
+	
+	// close edit panel
+		edit.fadeOut('slow');
+		edit.parents('.table-row').removeClass('this-row');
+		
+
+
+} // end updateCart function
+
+
+
+
+
+
+
+
+
 
