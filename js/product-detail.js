@@ -3,17 +3,19 @@ var productDetail = (function() {
     var pub = {
         init : function() {
 
+		
 // ONLOAD : universal vars for contextual/dynamic layouts
         var pgWidth = document.body.clientWidth;
-
+        var hero = document.getElementById('pdp-hero');
         var heroThumbs = window.document.getElementById('thumbs');
         var heroFocus = window.document.getElementById('focus');
         var heroCart = window.document.getElementById('cart-block');
-
+        var heroCrsl = window.document.getElementById('carousel-block');
         var zoomBtn = window.document.getElementById('carousel-zoom');
         var zoomBlock = window.document.getElementById('zoom-block');
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
         var zoomFocus = window.document.getElementById('zoom-focus');
+        var zoomSlides = window.document.getElementById('zoom-slides');
         var zoomThmbs = window.document.getElementById('zoom-thumbs');
         var zoomClrs = window.document.getElementById('zoom-color-select');
         var zoomClose = window.document.getElementById('zoom-close');
@@ -38,41 +40,38 @@ var productDetail = (function() {
             sync: "#thumbs"
         });
 
-        $jQ(zoomFocus).flexslider({
-            animation: "slide",
-            controlNav: "thumbnails"
-        });
+        //$jQ(zoomFocus).flexslider({
+        //    animation: "slide",
+        //    controlNav: "thumbnails"
+        //});
 
-
+        $jQ(zoomFocus).removeClass('flexslider').addClass('vzn-slide');
 
 // ONLOAD & RESIZE: responsive layout adjustments........................................
 
-        // hero onload : force cart layout > 960+
+        // hero onload : force hero layout > 960+
             if (pgWidth > 959) {
                 setTimeout(function() {
-                    var hero = document.getElementById('pdp-hero');
-                    var heroHt = 0;
-                    if (window.getComputedStyle) { //modern
-                        heroHt = window.getComputedStyle(hero).height;
+                    var heroHt = $jQ(heroCrsl).height();
+                    //alert(heroHt);
+                    heroCart.style.height = heroHt + 'px';
 
-                    } else { // IE<9
-                        heroHt = $jQ(hero).height();
-                    }
-                    var cart = document.getElementById('cart-block');
-                    cart.style.height = heroHt;
+
                 }, 200);
             } // end if
 
-        // hero resize : force cart layout > 767+
+    // hero resize : force cart layout > 767+
             $(window).resize(function(){
-                var resizePg = document.body.clientWidth;
-                var resizeHt = $jQ('#carousel').height();
-                if (resizePg > 767) {
+               var resizePg = document.body.clientWidth;
+                var resizeHt = $jQ(hero).height();
+               if (resizePg > 767) {
                     heroCart.style.height = resizeHt + 'px';
-                } else {
-                    heroCart.style.height = 'auto';
+
+               } else {
+                   heroCart.style.height = 'auto';
+
                 } // end if/else
-            });
+           });
 
 
         // hero onload : set hero nav width & store margin for centering > 768+
@@ -107,21 +106,49 @@ var productDetail = (function() {
             });
 
 
+//ONLOAD : special offer display .........................................................
+
+    // turned off
+    //    $jQ('.offer').css('display', 'none');
+     //   $jQ('.no-offer').css('display', 'list-item');
+
+    // turned on
+        $jQ('.offer').css('display', 'list-item');
+        $jQ('.no-offer').css('display', 'none');
+
+
+
 
 // ONLOAD : initial vzn-active display ..................................................
 
-    // hero : carousel current thumb, below the fold : current tab
-            $jQ('#thumbs .flex-active-slide, .tabs .active').find('.vzn-active').css('width', '100%');
+    // hero : carousel current thumb,
+            $jQ('#thumbs .flex-active-slide').find('.vzn-active').css('width', '100%');
+    // below the fold : current tab
+             $jQ('.tabs .active').find('.vzn-active').css('width', '100%');
+
+
+
+// ONLOAD : preload zoom panel components ...............................................
+
+    preloadZoom(zoomBlock);
+
+
+
+// ONLOAD : make form elements pretty
+
+    $jQ("select").uniform();
 
 
 
 // ONLOAD : install overview tabs more/less interaction below the fold ...................
 
-    //select these
-    var overTab = window.document.getElementById('overviewTab');
+    // select these
+        var allDetails = window.document.getElementById('product-details');
+        var overTab = window.document.getElementById('overviewTab');
+        var featTab = window.document.getElementById('featuresTab');
+        var specTab = window.document.getElementById('specsTab');
 
-    //desktop installation
-    if (pgWidth > 959 ){
+    if (pgWidth > 959 ) { //desktop installation
 
     // apply 'show' class for assessing actual content
         $jQ(overTab).siblings().each(function() {
@@ -139,14 +166,12 @@ var productDetail = (function() {
         });
         $jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
 
-    } // end desktop more/less install
+    } else if (pgWidth < 960 ) { //phablet installation
 
-
-    //phablet installation
-
-    if (pgWidth < 960 ){
-        //select these
-        var allDetails = window.document.getElementById('product-details');
+        // move these
+        $jQ(featTab).find('.third.center .details-list').appendTo('#featuresTab .third.left .tab-inner');
+        $jQ(specTab).find('.third.center').appendTo('#specsTab .third.left .tab-inner');
+        $jQ(compatTab).find('.see-all').appendTo('.compat-results .tab-inner');
 
         // apply 'show' class for assessing actual content
         $jQ(overTab).siblings().each(function() {
@@ -164,179 +189,98 @@ var productDetail = (function() {
         });
         $jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
 
-    } // end install phablet more/less
-
-// end more/less installation
+    } // end more/less installation
 
 
+// ONLOAD : install vzn-sliders .........................................................
+
+    $jQ('.vzn-slide').each(function(){
+        element = $jQ(this);
+        instance =  $jQ(this).attr('id');
+
+        if ( instance.indexOf('simple') > -1 ) {
+            $jQ(this).addClass('simple');
+            type = 'simple';
+        } else if ( instance.indexOf('fancy') > -1 ) {
+            $jQ(this).addClass('fancy');
+            type = 'fancy';
+        } else if ( instance.indexOf('zoom') > -1 ) {
+            $jQ(this).addClass('zoom');
+            type = 'zoom';
+        }
+        vznSlideInstall(element,type)
+    });
 
 
 
-// ONLOAD : insert zoom elements into flexslider js-generated..................................
-            $jQ('#zoom-block .flex-control-thumbs').attr('id', 'zoom-thumbs');
-            $jQ('#zoom-thumbs').wrap('<div class="center-thumbs"><div class="center-block">'); // for styling
-            $jQ('<div class="vzn-active"></div>').appendTo('#zoom-block .flex-control-thumbs li'); // insert thumb animation element
-            $jQ('<div id="zoom-color-select"><ul id="avail-colors" class="inline-list"><a class="color-option black" title="color option: black"><div class="select-area"></div></a><a class="color-option grey" title="color option: grey"><div class="select-area"></div></a><a class="color-option white selected" title="color option: white"><div class="select-area"></div></a><a class="color-option blue"><div class="select-area"></div></a></ul></div>').appendTo('.center-block'); // insert color selector
-            $jQ('.anchor-bar').clone().appendTo('#zoom-block'); //clone & insert current anchor bar
-            $jQ('#zoom-block .anchor-bar').css({
-                'top': '-60px',
-                'display': 'block',
-                'position': 'absolute'
-            }); // localize anchor-bar css
+// ONCLICK : hero .......................................................................
+
+    // active thumb animation..............................
+        $jQ(heroThumbs).find('li').click(function(){
+            vznActiveThumbs(this);
+        });
+
+
+    // color selectors .....................................
+        $jQ('.color-select').change(function() {
+            var colorChip = $jQ(this).parent().find('span');
+            var selectedColor = $jQ(colorChip).text();
+            var colorHx = '666';
+            var bgHx = 'fff';
+
+            if (selectedColor == 'Black') {
+                colorHx ='fff';
+                bgHx = '2e2e2e';
+
+            } else if (selectedColor == 'Grey') {
+                colorHx ='fff';
+                bgHx = 'b1b0b0';
+
+            } else if (selectedColor == 'White') {
+                colorHx ='666';
+                bgHx = 'fff';
+
+            } else if (selectedColor == 'Blue') {
+                colorHx ='fff';
+                bgHx = '51b0d8';
+
+            }
+           $jQ(colorChip).css({
+            'background-color': '#' + bgHx,
+            'color' : '#' + colorHx });
+
+        });
 
 
 
-// ONCLICK : hero interactions ...........................................................
 
-            // active thumb animation
-            $jQ(heroThumbs).find('li').click(function(){
-                vznActiveThumbs(this);
-            });
+     //   $jQ('.color-option').click(function(){
+     //       $jQ(this).parent().find('.selected').removeClass('selected');
+     //       $jQ(this).addClass('selected');
 
-
-            // color selector
-            $jQ('.color-option').click(function(){
-                $jQ(this).parent().find('.selected').removeClass('selected');
-                $jQ(this).addClass('selected');
-
-                var selectedTitle = $jQ('.color-option.selected').attr('title');
-                $jQ(this).parents('.color-stock-block').find('span.color-option').html(selectedTitle).textTransform="uppercase";
-            });
+     //       var selectedTitle = $jQ('.color-option.selected').attr('title');
+     //       $jQ(this).parents('.color-stock-block').find('span.color-option').html(selectedTitle).textTransform="uppercase";
+     //   });
 
 
-            // create contextual zoom panel
-            $jQ(zoomBtn).click(function () {
+    // create contextual zoom panel ..........................
+        $jQ(zoomBtn).click(function () {
+            createZoomPanel();
+        });
 
-                    // get page dimensions at time of click
-                        var pgWd = document.body.clientWidth;
-                        var pgHt = document.body.clientHeight;
-
-                    // reselect these
-                        var zoomThmbs = window.document.getElementById('zoom-thumbs');
-                        var zoomClrs = window.document.getElementById('zoom-color-select');
-
-                    // get starting left panel position & store
-                        var blkLft = $jQ(zoomBlock).css('left');
-                        $jQ(zoomBlock).attr('data-return', blkLft);
-
-                    // declare vars for image math, set on conditionals below
-                        var imgWd = 0;
-                        var imgHt = 0;
-                        var imgPs = 0;
-                        var imgLf = 0;
-
-                    // adjust images depending on presentation
-                        if ( pgHt >= pgWd ) { // portrait math
-                            imgWd = pgWd;
-                            imgHt = pgHt;
-                            imgPs = ((imgWd / -2 )-90);
-                            imgLf = 0.5;
-
-                        } else { // landscape math
-                            imgHt = (pgHt * 1.2 );
-                            imgWd = imgHt;
-                            imgPs = ((imgWd / -2 ) -90);
-                            imgLf = 0;
-                        } // end if else
-
-
-                    // apply math to images css
-                        $jQ(zoomFocus).find('.flex-viewport li img').each(function(){
-                            this.style.maxWidth = imgWd + 'px';
-                            this.style.top = '50%';
-                            this.style.marginTop = imgPs + 'px';
-                            this.style.left = imgLf + '%';
-                            $jQ(this).attr('data-vert-pos', imgPs );
-                        });
-
-
-                    // set zoomed carousel dimensionS & attributes
-                            zoomCrsl.style.width = pgHt + 'px';
-                            zoomCrsl.style.height = pgHt + 'px';
-                            $jQ(zoomCrsl).attr('data-strt-width', pgHt);
-
-                    // set li zoomed image containers & attributes
-                            $jQ(zoomFocus).find('.flex-viewport li').css({ 'height': imgHt + 'px' }).attr('data-start-height', imgHt );
-
-                    // set active thumb
-                        $jQ(zoomThmbs).find('.flex-active').parent().find('.vzn-active').css('width', '100%' );
-
-                    // set center-block width based on content
-                        var countZThmb = $jQ(zoomThmbs).find('li').length;
-                        var countZColors = $jQ(zoomClrs).find('a').length;
-                        var zThmbWd = ( (countZThmb * 55) + 1);// 1 for border-right
-                        var colorWidth = ( (countZColors * 45) + 15);// 15 for padding-left
-                        var centerWidth = ( zThmbWd + colorWidth );
-                        $jQ('.center-block').css('width', centerWidth + 'px');
-
-
-                    // SLIDE IN ZOOM PANEL & set up inside controls based on current window settings
-
-                        // scroll to top first
-                        window.scrollTo(0,0);
-
-                        // set panel height based on curent window
-                        zoomBlock.style.height = pgHt + 'px';
-
-                        // slide in panel
-                        $jQ(zoomBlock).css({ 'left': '0' });
-                        $jQ('html, body').addClass('body-zoom');
-
-                        // snap after to reset flexslider transform values
-                        $jQ(window).trigger('resize');
-
-                        // fade in controls
-                            setTimeout(function() {
-                                $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeIn('slow');
-                            }, 500);
-
-
-                        // ONCLICK : 'bigger'
-                        $jQ('#zoom-controls .bigger, #zoom-slides .flex-active-slide').click(biggerView);
-
-
-                        // ONCLICK : 'smaller'
-                        $jQ('#zoom-controls .smaller').click(smallerView);
-
-
-                        // ONCLICK : add to thumb navigation
-                        $jQ(zoomThmbs).find('li').click(function() {
-
-                            vznActiveThumbs(this);
-
-                            // clear dragged li info
-                            var zoomSlides = window.document.getElementById('zoom-slides');
-                            $jQ(zoomSlides).find('li').each(function(){
-                                clearDragged(this);
-                            }); // end each
-
-                        }); // end click
-
-
-                        // ONCLICK : 'close'
-                        $jQ(zoomClose).click(closeZoomPanel);
-
-
-                        // RESIZE : handle zoom panel resize
-                        $(window).resize(function(){
-
-                            $jQ(window).trigger('resize');
-                        });
-
-            }); // end create zoom panel
 
 
 
 
 // ONCLICK : below the fold ..............................................................
 
-        // all tabs : active tab animation
+        // all tabs : active tab animation .......................
             $jQ('.tabs a').click(function () {
                 vznActiveTabs(this);
             });
 
 
-        // desktop tabs : more/less interaction
+        // desktop tabs : more/less interaction ..................
             if (pgWidth > 959 ){
                 $jQ('a.more-less-link').toggle(function(event) {
                     showMore(this);
@@ -345,8 +289,7 @@ var productDetail = (function() {
                 });
             }
 
-
-        // phablet tabs : more/less interaction
+        // phablet tabs : more/less interaction ....................
             if (pgWidth < 960 ){
                $jQ('a.more-less-link').toggle(function(event) {
                     singleShowMore(this);
@@ -356,25 +299,51 @@ var productDetail = (function() {
             }
 
 
-
-        // featured tab : graphic block interaction
+        // featured tab : graphic block interaction ..................
             $jQ('.features li').toggle(function(){
                 $jQ(this).find('.image').addClass('top');
-                $jQ(this).find('.hover-text').animate({ 'left': 0 }, 450 );
+                hover = $jQ(this).find('.hover-text');
+                offset = 500 ;
+                hSlide(hover, offset);
             }, function() {
-                $jQ(this).find('.hover-text').animate({ 'left': '-500' }, 450 );
+                hover = $jQ(this).find('.hover-text');
+                offset = -500 ;
+                hSlide(hover, offset);
                 $jQ(this).find('.image').removeClass('top');
             });
 
-        // specs tab : download success interaction
 
-            $jQ('.download-link').click(function() {
-                $jQ('#download-click').animate({ 'left': 0 }, 450 ).delay(4000).animate({ 'left': '-500px' }, 450 );
+        // specs tab : download success interaction ....................
+            $jQ('#download-link').click(function() {
+
+                var hover = $jQ('#download-click');
+                offset = 500;
+                hSlide(hover, offset);
+                //$jQ('#download-click').css('left', '0px');
+                setTimeout(function() {
+                offset = -500;
+                hSlide(hover, offset);
+                    //$jQ('#download-click').css('left', '-500px');
+                }, 4000 );
+                event.preventDefault();
+            });
+
+
+        // vzn-slide nav button interaction "on" .......................
+            $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
+                vznSlideButtons(this);
+            });
+
+        // vzn-slide nav button interaction "off"
+            $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function(){
+                return false;
             });
 
 
 
-// ONSCROLL : introduce anchor bar when user is below the fold
+
+
+// ONSCROLL : introduce anchor bar when user is below the fold.............................
 
             var btFold = $jQ('#anchor-trigger').offset().top;
             var anchorShow = 0;
@@ -392,29 +361,57 @@ var productDetail = (function() {
                         anchorShow = 0;
                     }
                 }
-            },250 );
+            },10 );
 
 
 
 
-// DEFINE FUNCTIONS ......................................................................
 
 
-function vznActiveThumbs(element) { //....................... vzn Active Thumbs ..........
+
+/* ===================================================================================
+=============================== DEFINE FUNCTIONS =====================================
+==================================================================================== */
+
+
+
+
+function vznActiveThumbs(element) { //....................... vzn-active thumbs ..........
     $jQ(element).siblings().find('.vzn-active').css('width','0px');
     $jQ(element).find('.vzn-active').css('width', '100%');
 }
 
 
-function vznActiveTabs(element) { //......................... vzn Active Tabs ............
+function vznActiveTabs(element) { //......................... vzn-active tabs ............
     $jQ(element).parent().siblings().find('.vzn-active').css('width','0px');
     $jQ(element).parent().find('.vzn-active').css('width', '100%');
 }
 
 
-// desktop more/less accordion functions
 
-    function installDesktopMoreLess(element) { //................ install Desktop MoreLess ..............
+function preloadZoom(element) { //........................ preload zoom components .......
+    // create anchor bar
+        $jQ('.anchor-bar').clone().appendTo(element); //clone & insert current anchor bar
+        $jQ('#zoom-block .anchor-bar').css({
+            'top': '0px',
+            'display': 'block',
+            'position': 'absolute'
+        }).removeAttr('id');
+
+    //$jQ('#zoom-block .flex-control-thumbs').attr('id', 'zoom-thumbs');
+    //$jQ('#zoom-thumbs').wrap('<div class="center-thumbs"><div class="center-block">'); // for styling
+    //$jQ('<div class="vzn-active"></div>').appendTo('#zoom-block .flex-control-thumbs li'); // insert thumb animation element
+    //$jQ('<div id="zoom-color-select"><ul id="avail-colors" class="inline-list"><a class="color-option black" title="color option: black"><div class="select-area"></div></a><a class="color-option grey" title="color option: grey"><div class="select-area"></div></a><a class="color-option white selected" title="color option: white"><div class="select-area"></div></a><a class="color-option blue"><div class="select-area"></div></a></ul></div>').appendTo('.center-block'); // insert color selector
+
+
+    // 'element' passed is #zoom-block
+
+} // end preload zoom
+
+
+
+
+function installDesktopMoreLess(element) { //........ install tabs moreLess ...........
 
         // select these
             var tabWrap = $jQ(element);
@@ -456,7 +453,7 @@ function vznActiveTabs(element) { //......................... vzn Active Tabs ..
     } // end installMoreLess defintion
 
 
-    function showMore(element) { //................... showMore click for MoreLess........
+function showMore(element) { //.......................... tabs showMore click ..........
 
         var target = $jQ(element).parents('.tab-wrapper');
         var full = (target.attr('data-height'));
@@ -468,7 +465,7 @@ function vznActiveTabs(element) { //......................... vzn Active Tabs ..
     } // end showMore
 
 
-    function showLess(element) { //....................... showLess click for MoreLess........
+function showLess(element) { //............................. tabs showLess click .......
 
         var target = $jQ(element).parents('.tab-wrapper');
         var start = (target.attr('data-start'));
@@ -481,20 +478,20 @@ function vznActiveTabs(element) { //......................... vzn Active Tabs ..
 
 
 
-// single more/less accordion functions
-
-    function singleMoreLess(element) { //.................. install single MoreLess ......
+function singleMoreLess(element) { //................. install single moreLess ...........
 
     // select these
         var child = $jQ(element);
         var parent = $jQ(child).parent();
+        var parentID = parent.attr('class');
 
     // get their respective heights
         var childHt = child.height();
         var parentHt = parent.height();
 
-    // if need, clone link and activate
+    // if needed, clone link and activate
         if ( childHt > parentHt ) {
+            childHt = (childHt + 60);  // mod for larger touch buttons
             parent.addClass('single-more-less');
             $jQ(element).parents('.tab-wrapper').find('.more-less').first().clone().prependTo(parent).attr({
                 'data-child-height' : childHt,
@@ -505,26 +502,26 @@ function vznActiveTabs(element) { //......................... vzn Active Tabs ..
     } // end single more/less
 
 
-    function singleShowMore(element) { // ................... singleShowMore click ......
+    function singleShowMore(element) { // ................... single showMore click ......
 
         //select these
         var childHt = $jQ(element).parent().attr('data-child-height');
         var parent = $jQ(element).parents('.single-more-less');
         $jQ(parent).css('height', childHt).addClass('less').find('.see-all').addClass('on');
-        $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 4px no-repeat');
+        $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 18px no-repeat');
         event.preventDefault();
 
 
 
     } // end singleShowMore
 
-    function singleShowLess(element) { // ................... singleShowLess click ......
+    function singleShowLess(element) { // ................... single showLess click ......
 
         //select these
         var parentHt = $jQ(element).parent().attr('data-parent-height');
         var parent = $jQ(element).parents('.single-more-less');
         $jQ(parent).css('height', parentHt ).removeClass('less').find('.see-all').removeClass('on');
-        $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
+        $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 18px no-repeat');
         event.preventDefault();
 
 
@@ -534,23 +531,186 @@ function vznActiveTabs(element) { //......................... vzn Active Tabs ..
 
 
 
+function createZoomPanel() { // ............................ create zoom panel ..........
 
-function biggerView(){ // ................................. zoom panel 'bigger'..........
+    // reselect these
+        var zoomBlock = window.document.getElementById('zoom-block');
+        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
+        var zoomFocus = window.document.getElementById('zoom-focus');
+        var zoomSlides = window.document.getElementById('zoom-slides');
+
+    // get current page dimensions
+        var pgWd = document.body.clientWidth;
+        var pgHt = document.body.clientHeight;
+
+
+    // create panel width & offset to match current dimensions
+        var hSize = (pgWd + 15); //scroll bar width in Chrome, generate dynamically
+        var hOffset = (hSize * -1);
+
+    // new var for contextual layout differences
+        var crslWd = hSize;  // landscape
+        var lstOff = 0;    // landscape
+
+    // modify for portrait
+        if ( pgHt >= pgWd ) {
+            crslWd = pgHt;
+            lstOff = ((pgWd - crslWd)/2);
+            }
+
+    // set element dimensions & starting positions
+        //block
+        $jQ(zoomBlock).css({
+            'left': hOffset + 'px',
+            'width' : hSize + 'px',
+            'height': pgHt + 'px' });
+        $jQ(zoomBlock).attr('data-h-return', hOffset);
+
+        //carousel
+        $jQ(zoomCrsl).css({
+            'width' : crslWd + 'px',
+            'height': pgHt + 'px' });
+
+        //focus window
+        $jQ(zoomFocus).css({
+            'width' : crslWd + 'px',
+            'height': pgHt + 'px' });
+
+        // slide list
+        $jQ(zoomSlides).css({
+            'left' : lstOff + 'px' });
+
+        //slide
+        $jQ(zoomSlides).find('li').css({
+            'width' : crslWd + 'px',
+            'height': pgHt + 'px' });
+
+        // slide image
+        $jQ(zoomSlides).find('li').find('img').each(function(){
+            var imgHt = $(this).height();
+            var imgMgn = (imgHt / -2);
+            this.style.marginTop = imgMgn + 'px';
+            this.style.marginLeft = imgMgn + 'px';
+        });
+
+        // slide in panel
+            hSlide(zoomBlock, hSize);
+
+        // hide vertical scroll after
+            setTimeout(function() {
+                $jQ('html, body').addClass('body-zoom');
+            }, 750);
+
+        // fade in controls
+            setTimeout(function() {
+                $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls, .vzn-slide-prev, .vzn-slide-next').fadeIn('slow');
+            }, 500);
+
+        // ONCLICK : 'bigger'
+            $jQ('#zoom-controls .bigger, #current-zoom-slide').click(function(){
+                var currentSld = window.document.getElementById('current-zoom-slide');
+                biggerView(currentSld);
+            });
+
+
+        // ONCLICK : 'smaller'
+            $jQ('#zoom-controls .smaller').click(smallerView);
+
+        // ONCLICK : 'close'
+            $jQ(zoomClose).click(closeZoomPanel);
+
+
+ } // end create zoom panel
+
+
+
+
+function biggerView(slide){ // ................................. zoom panel 'bigger'..........
+
+    // declare these
+        image = slide.getElementsByTagName('img');
+        var format = 'decide';
 
     // get fresh page dimensions
         var pgWd = document.body.clientWidth;
         var pgHt = document.body.clientHeight;
 
-    // reselect these
-        var zoomSlides = window.document.getElementById('zoom-slides');
-        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
-        var zoomFocus = window.document.getElementById('zoom-focus');
+    // check format
+        if (pgHt >= pgWd) {
+            format = 'portrait';
+        } else {
+            format = 'landscape';
+        }
 
-    //set window & snap
-        zoomCrsl.style.width ='100%';
+
+    // zoom the image
+        vznZoomImg(image, format);
+
+    // make it draggable
+        vznDragImg(slide, format);
+
+} // end biggerView definition
+
+
+function smallerView() { // ................................. zoom panel 'smaller'........
+
+    // get fresh page dimensions
+        var pgWd = document.body.clientWidth;
+        var pgHt = document.body.clientHeight;
+
+
+
+    /* retrieve & restore to original values
+        var startCrsl = $jQ(zoomCrsl).attr('data-strt-width');
+
+        zoomCrsl.style.width = startCrsl + 'px';
+        zoomFocus.style.width = startCrsl + 'px';
+
+        // snap
         $jQ(window).trigger('resize');
 
-    // expand, convert to background & reposition
+    // reduce & restore li
+        $jQ(zoomSlides).find('li').each(function(){
+            restoreImages(this);
+        }); //end each li
+
+
+    // add fresh zoom function to li
+        $jQ('#zoom-slides .flex-active-slide').click(biggerView); */
+
+} // end smallerView
+
+
+
+
+
+
+function vznZoomImg(image, format) { // ... zoom image for 'bigger' & replace with background ...
+
+  if ( format == 'portrait' ) {
+    $jQ(image).css({
+        '-webkit-transform' : ' scale(1.5) translate3d(20%, 0%, 0)',
+        '-moz-transform' : ' scale(1.5) translate3d(20%, 0%, 0)',
+        '-ms-transform' : ' scale(1.5) translate3d(20%, 0%, 0)',
+        '-o-transform' : ' scale(1.5) translate3d(20%, 0%, 0)',
+        'transform' : ' scale(1.5) translate3d(20%, 0%, 0)' });
+  } else if ( format == 'landscape' ) {
+    $jQ(image).css({
+        '-webkit-transform' : ' scale(1.5) translate3d(0%, 0%, 0)',
+        '-moz-transform' : ' scale(1.5) translate3d(0%, 0%, 0)',
+        '-ms-transform' : ' scale(1.5) translate3d(0%, 0%, 0)',
+        '-o-transform' : ' scale(1.5) translate3d(0%, 0%, 0)',
+        'transform' : ' scale(1.5) translate3d(0%, 0%, 0)' });
+  }
+} // end vznZoomImg
+
+
+
+function vznDragImg(slide, format) {
+
+}
+
+    /* expand, convert to background & reposition
         $jQ(zoomSlides).find('li').each(function(){
 
             // get image url
@@ -573,7 +733,7 @@ function biggerView(){ // ................................. zoom panel 'bigger'.
             //  adjust vars based on context
                 if (pgHt >= pgWd) { // portrait
                     lgDim = parsedDim * 1.4;
-                    topAdj = 450;
+                    topAdj = 250;
 
                     // adjust increment
                     zoomFocus.style.width = lgDim + 'px';
@@ -581,7 +741,7 @@ function biggerView(){ // ................................. zoom panel 'bigger'.
 
                 } else { // landscape
                     lgDim = parsedDim;
-                    topAdj = 105;
+                    topAdj = 50;
                 }
 
             // dynamic vertical center
@@ -625,9 +785,8 @@ function biggerView(){ // ................................. zoom panel 'bigger'.
             var zoomed = $jQ('.zoomed');
             zoomed.mousedown(function(event){
                 handleDown(event, this);
-            });
+            }); */
 
-} // end biggerView definition
 
 
 
@@ -712,37 +871,7 @@ function clearDragged(element) { //.................... clear dragged img info .
 
 
 
-function smallerView() { // ................................. zoom panel 'smaller'........
 
-    // get fresh page dimensions
-        var pgWd = document.body.clientWidth;
-        var pgHt = document.body.clientHeight;
-
-    // reselect these
-        var zoomSlides = window.document.getElementById('zoom-slides');
-        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
-        var zoomFocus = window.document.getElementById('zoom-focus');
-
-
-    // retrieve & restore to original values
-        var startCrsl = $jQ(zoomCrsl).attr('data-strt-width');
-
-        zoomCrsl.style.width = startCrsl + 'px';
-        zoomFocus.style.width = startCrsl + 'px';
-
-        // snap
-        $jQ(window).trigger('resize');
-
-    // reduce & restore li
-        $jQ(zoomSlides).find('li').each(function(){
-            restoreImages(this);
-        }); //end each li
-
-
-    // add fresh zoom function to li
-        $jQ('#zoom-slides .flex-active-slide').click(biggerView);
-
-} // end smallerView
 
 
 
@@ -777,8 +906,6 @@ function restoreImages(element){ //....restore images for zoom panel 'smaller' &
         this.style.opacity = 1;
     }); // end each
 
-
-
 } // end restoreImages
 
 
@@ -799,8 +926,11 @@ function closeZoomPanel() { // ................................ zoom panel 'clos
         $jQ('html, body').removeClass('body-zoom');
 
     // slide out panel
-        var sldReturn = $jQ(zoomBlock).attr('data-return');
-        zoomBlock.style.left = sldReturn;
+        var sldReturn = $jQ(zoomBlock).attr('data-h-return');
+
+
+        hSlide(zoomBlock, sldReturn);
+
 
     // retrieve & restore original values
         var strtWd = $jQ(zoomCrsl).attr('data-strt-width');
@@ -820,107 +950,241 @@ function closeZoomPanel() { // ................................ zoom panel 'clos
 
 
 
+function vznSlideInstall (element, type) { //.................. vznSlide Install .........
+
+    //  first assemble these contextual values
+
+        if (type == 'simple') {
+
+            var startOff = $jQ('.vzn-slide.simple').first().offset().left;  // needsRESIZE
+            var baseIncr = $jQ(element).find('li').width();
+            var multi = getMulti(type);
+            $jQ(element).attr('data-start-off', startOff);
+
+
+        } else if (type == 'fancy') {
+
+            var startOff = $jQ('.vzn-slide.fancy').first().offset().left;  // needsRESIZE
+            var baseIncr = $jQ(element).find('.large-item').width();
+            var multi = getMulti(type);
+            $jQ(element).attr('data-start-off', startOff);
+
+
+            // while we're here, remodel list items for current design
+            $jQ(element).find('li').each(function() {
+                var title= $jQ(this).find('.product-title');
+                $jQ(this).find('.fancy-ratings').appendTo(title);
+            });
+
+        } else if (type == 'zoom') {
+
+            // select these at time of zoom panel creation
+            var zoomBlock = window.document.getElementById('zoom-block'); // needs RESIZE
+            var zoomSlides = window.document.getElementById('zoom-slides');
+
+            // establish dynamic width value & apply to slides along with initial current id
+            zSldWd = $jQ(zoomBlock).width();
+            $jQ(zoomSlides).find('li').css('width', zSldWd ).first().attr('id', 'current-zoom-slide');
+;
+
+
+            // copied from original pattern
+            var startOff = 0;
+            var baseIncr = $jQ(element).find('li').width();
+            var multi = 1;
+            $jQ(element).attr('data-start-off', startOff);
+
+        }
+
+    // math = amount to advance simple slider on each click
+            var advIncr = (baseIncr * multi);
+            var prvIncr = advIncr;
+            var nxtIncr = ( advIncr * -1 );
+
+    // then get length of curent slide container....
+            var list = $jQ(element).find('.slides');
+            var itemCount = list.find('li').length;
+
+    // ... and use it to set proper width for slide container regardless of rel position elements
+            var listIncr = 0;
+           if (type == 'fancy') {
+                listIncr = baseIncr / 2;
+            }  else {
+                listIncr = baseIncr;
+            }
+            var listLength = (( itemCount * listIncr ) + 1);
+
+    // finally, apply this to actual elements
+            list.css('width', listLength + 'px' ).attr('data-length', listLength );
+
+            $jQ('<div class="vzn-slide-prev"></div>').appendTo(element.parent()).attr('data-incr', prvIncr).addClass('off');
+            $jQ('<div class="vzn-slide-next"></div>').appendTo(element.parent()).attr('data-incr', nxtIncr);
+
+} // end vznSlideInstall
 
 
 
 
+function vznSlideButtons (element) { // ........................ vznSlide Buttons ........
+
+        // select these
+            var tabWrap = $jQ(element).parent();
+
+        // create these
+            var slideWindow = tabWrap.find('.vzn-slide');
+            var list = slideWindow.find('.slides');
+
+        //start these fresh each time
+            var newOff = 0;
+            var begDiff = 0;
+            var endDiff = 0;
+            var stopFctr = 0;
+            var endStop = 0;
+
+        // get these values
+            var winLngRaw = slideWindow.width();
+            var stOffRaw = $jQ(slideWindow).attr('data-start-off');
+            var lstLngRaw = $jQ(list).attr('data-length');
+            var advRaw = $jQ(element).attr('data-incr');
+            var curOffRaw = $jQ(list).offset().left;
 
 
-// VZN-SLIDE FUNCTIONS ....................................................................
-
-        // ONLOAD : set up carousel from actual content
-            $jQ('.vzn-slide').each(function(){
-                // default counter
-                var advInc = -1;
-                var listInc = -1;
-
-            // set exact list length & increment by context & content
-                var window = $jQ(this);
-                //var winLength = window.width();
-                var instance = window.attr('id');
-                var list = window.find('.slides');
-                var itemCount = list.find('li').length;
-
-            //var simpleInc = ( winLength * 0.25 );  replace below with this  with resize & data field to make responsive
-                var simpleInc = 215;
-
-                if ( instance.indexOf('simple') > -1 ) { listInc = simpleInc; advInc = ( listInc * 4 ); }
-                if ( instance.indexOf('fancy') > -1 ) { advInc = 344; listInc = ( advInc / 2 ); advInc = ( advInc * 2.5 ); }
-
-                var listLength = (( itemCount * listInc ) + 1);
-                var prevInc = advInc;
-                var nextInc = ( advInc * -1 );
-
-                list.css('width', listLength ).attr('data-length', listLength );
-
-            // create nav buttons & set initial display
-                $jQ('<div class="vzn-slide-prev"></div>').appendTo(window.parent()).attr('data-inc', prevInc).addClass('off');
-                $jQ('<div class="vzn-slide-next"></div>').appendTo(window.parent()).attr('data-inc', nextInc);
-
-            // fancy slider mod
-                if ( instance.indexOf('fancy') > -1 ) {
-                    $jQ(this).find('.fancy-slider-item').each(function(){
-                        var title= $jQ(this).find('h3');
-                        $jQ(this).find('.fancy-ratings').appendTo(title);
-                    });
-                }
-            }); // end onload vzn-slide
-
-
-        // ONCLICK : nav button interaction
-            $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
-                // get the facts
-                    var box = $jQ(this).parent();
-                    var window = box.find('.vzn-slide');
-                    var list = window.find('.slides');
-                    var winLength = window.width();
-                    var listLength = parseInt($jQ(list).attr('data-length'), 10);
-                    var curPos = parseInt($jQ(list).css('left'), 10);
-                    var advance = parseInt($jQ(this).attr('data-inc'), 10);
-
-                // do the math
-                    var newPos = curPos + advance;
-                    var stop = listLength + newPos ;
-
-                //decide what to do
-
-                    if ( newPos === 0) { // back at beginning
-                        //move it
-                            $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
-                        // turn prev off, leave next on
-                            $(box).find('.vzn-slide-prev').addClass('off');
-                            $(box).find('.vzn-slide-next').removeClass('off');
-
-                    } else if ( stop <= winLength ) { // at end
-                    //move it
-                        $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
-                    // turn next off, turn prev on
-                        $(box).find('.vzn-slide-next').addClass('off');
-                        $(box).find('.vzn-slide-prev').removeClass('off');
-
-                    } else {
-                    //move it
-                        $jQ(list).animate({ 'left': newPos + 'px' }, 450 );
-                    // make sure both are on
-                        $(box).find('.vzn-slide-next').removeClass('off');
-                        $(box).find('.vzn-slide-prev').removeClass('off');
-                    }
-            }); // end onclick vzn-slide
-
-
-        // ONCLICK : nav button "off" state
-            $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function() { return false; });
+        // parse them all
+            var windowLength = parseInt(winLngRaw, 10);
+            var startOff = parseInt(stOffRaw, 10);
+            var listLength = parseInt(lstLngRaw, 10);
+            var advance = parseInt(advRaw, 10);
+            var currentOff = parseInt(curOffRaw, 10);
 
 
 
+//alert(listLength); alert(windowLength);  alert(advance); alert(startOff);alert(currentOff);
+
+
+        // do the math
+            newOff = ((currentOff + advance)- startOff);
+            stopFctr = listLength + newOff ;
+            endStop = ((listLength - windowLength) * -1);
+
+//alert(currentOff); alert(newOff); alert(stopFctr); alert(endStop);
+
+        //decide what to do
+            if ( newOff >= 0) { // back at beginning
+
+                newOff = 0;
+
+            //move it
+                hSlide(list, newOff);
+
+            // turn prev off, leave next on
+                $(tabWrap).find('.vzn-slide-prev').addClass('off');
+                $(tabWrap).find('.vzn-slide-next').removeClass('off');
+
+            } else if ( newOff <= endStop ) { // at end
+
+                endDiff = newOff + stopFctr;
+
+            // move it
+                hSlide(list, endDiff);
+
+            // turn next off, turn prev on
+                $(tabWrap).find('.vzn-slide-next').addClass('off');
+                $(tabWrap).find('.vzn-slide-prev').removeClass('off');
+
+            } else { // somewhere in between
+            // move it
+                hSlide(list,newOff);
+
+            // make sure both are on
+                $(tabWrap).find('.vzn-slide-next').removeClass('off');
+                $(tabWrap).find('.vzn-slide-prev').removeClass('off');
+            }
+
+}
+
+
+
+function getMulti(type) { //........ responsively multipliers for vznSlide ............
+
+    if (type == 'simple') {
+       if ( pgWidth < 480 ) {  // mobile portrait
+                    multi = 1;
+                } else if ( pgWidth > 479 && pgWidth <720 ) { // mobile landscape
+                    multi = 2;
+                } else if ( pgWidth > 719 && pgWidth < 960 ) { // tablet portrait
+                    multi = 3;
+                } else if ( pgWidth > 959 && pgWidth < 1280 ) { // 1024 layout
+                    multi = 4;
+                } else if ( pgWidth > 1279 && pgWidth < 1440 ) { // 1280 layout
+                    multi = 4;
+                } else { // 1440+ layout
+                    multi = 5
+                } //end responsive val
+
+    } else if (type == 'fancy') {
+            if ( pgWidth < 480 ) {  // mobile portrait
+                    multi = 1;
+                } else if ( pgWidth > 479 && pgWidth <720 ) { // mobile landscape
+                    multi = 1.5;
+                } else if ( pgWidth > 719 && pgWidth < 960 ) { // tablet portrait
+                    multi = 2;
+                } else if ( pgWidth > 959 && pgWidth < 1280 ) { // 1024 layout
+                    multi = 2.5;
+                } else if ( pgWidth > 1279 && pgWidth < 1440 ) { // 1280 layout
+                    multi = 3;
+                } else { // 1440+ layout
+                    multi = 3.5;
+                } // end responsive val
+
+    } // end type check
+
+    return multi;
+
+} // end getMulti function
+
+
+
+function hSlide(element,hValue) { //....... horiz move only .............
+    $jQ(element).css({
+        '-webkit-transform': 'translate3d(' + hValue + 'px, 0, 0)',
+  		'-moz-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+  		'-ms-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+ 		'-o-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+  		'transform' : 'translate3d(' + hValue + 'px, 0, 0)'
+  	}); // end css
+} // end hSlide function
+
+function zSlide(element,hValue, vValue) { //....... horiz/vert move .............
+    $jQ(element).css({
+        '-webkit-transform': 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)',
+  		'-moz-transform' : 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)',
+  		'-ms-transform' : 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)',
+ 		'-o-transform' : 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)',
+  		'transform' : 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)'
+  	}); // end css
+} // end hSlide function
 
 
 
 
+//........................... TEMP development stuff......................................
 
 
 
+$jQ('.product-link').each(function() { //......... get info for TEMP product click .......
+        var prodName = $(this).find('.product-title').text();
+        var param = prodName.replace(/\s+/g, '');
 
+        $jQ(this).attr('title', 'Click to view ' + prodName );
+        $jQ(this).find('img').attr('title', 'Click to view ' + prodName );
+        $jQ(this).attr('href', 'pdp-temp-click.html' + '?' + param);
+});
+
+var tempProdName = window.location.search.substring(1); // ..... show TEMP click info ....
+$jQ('.temp-wrap h2').text(tempProdName);
+
+
+$('#pdp-plus #site-header').html('');//......strip header HTML from pdp plus.............
 
         }
     };

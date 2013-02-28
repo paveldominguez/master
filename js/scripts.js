@@ -47,6 +47,7 @@ VZ = {
     common : {
         init : function() {
             // initialize things that are used on every page
+
             var win = $jQ(window);
             $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
                 debounce(function() {
@@ -59,18 +60,7 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
-    'content-landing-page' : {
-        init : function() {
-            searchResults.styleDropDown();
-            contentFilter.init();
-        }
-    },
-    'category-listing-page' : {
-        init : function() {
-            contentFilter.init();
-        }
-    },
-    'product-listing-page' : {
+    'content-grid-page' : {
         init : function() {
             contentGrid.init();
             contentFilter.init();
@@ -79,6 +69,11 @@ VZ = {
     'product-detail' : {
         init : function() {
             productDetail.init();
+        }
+    },
+    'cart-functions' : {
+        init : function() {
+            cartFunctions.init();
         }
     },
     'search-results-page' : {

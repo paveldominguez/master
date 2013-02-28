@@ -6,7 +6,6 @@
 
 // Font Variables
 $fontArial: Arial, "Helvetica Neue", Helvetica, sans-serif;
-$fontVzw: "Verizon Apex";
 $fontVzwBook: "Verizon Apex Book";
 $fontVzwBold: "Verizon Apex Bold";
 $fontVzwLight: "Verizon Apex Light";
@@ -252,4 +251,4 @@ h1,h2,h3,h4,h5,h6 {
 @import "pages/product-detail";
 @import "pages/search-results";
 @import "pages/category-listing";
-@import "pages/content-landing";
+@import "pages/cart";

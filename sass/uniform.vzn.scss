@@ -1,0 +1,237 @@
+/*
+
+Uniform Theme: Uniform VZN
+Version: 1.8
+By: Josh Pyles modified by John Hiemstra
+License: MIT License
+---
+For use with the Uniform plugin:
+http://uniformjs.com/
+
+*/
+/*............. VZN MIXINS copied over until merge, delete later ........................*/
+
+    $cartGreyLt: #727272;
+ 	$cartGreyMd: #666666;
+ 	$cartGreyDk: #3d4146;
+
+ 	@mixin boxBrdrT { border-top: 1px solid #ccc; }
+	@mixin boxBrdrR { border-right: 1px solid #ccc; }
+	@mixin boxBrdrB { border-bottom: 1px solid #ccc; }
+	@mixin boxBrdrL { border-left: 1px solid #ccc; }
+	@mixin boxBrdrA { border: 1px solid #ccc; }
+
+	@mixin cartRounded { -webkit-border-radius: 3px;
+						-moz-border-radius: 3px;
+						border-radius: 3px; }
+
+
+/*............. VZN PDP SELECT BOXES ..................................................  */
+
+.product-detail {
+    div.selector {
+	    @include cartRounded;
+	    background:#fff;
+    height:45px;
+		border:0px;
+		font-weight:bold;
+        width:100% !important;
+		color: $cartGreyLt;
+		text-transform:lowercase;
+		font-size:12px;
+		line-height:60px;
+		padding: 0px 0 0 0px;
+
+        position:relative;
+		font-family: Arial, sans-serif !important;
+		background: #fff url(../img/sprites/pdp/grey-more.png) 95% 28px no-repeat;
+		cursor:pointer;
+
+        }
+
+    div.selector select {
+        position: absolute;
+        top: 0; left: 0;
+	    font-family: Arial, sans-serif !important;
+	    font-size: 12px; line-height:30px;
+	    min-height:45px;
+	    opacity: 0;
+
+        }
+
+    div.selector.active {
+
+        select {
+            left:10px; top:-10px;
+            font-family: Arial, sans-serif !important;
+            text-transform: lowercase;
+            font-size:14px;
+            line-height: 20px;
+            color: $cartGreyLt;
+
+            option {
+                display: block;
+
+
+                } /* end option */
+            }/* end select */
+        } /* end active */
+
+
+
+
+    div.selector span {
+        display: inline-block;
+        width:60% !important; height: 100%;
+	    color: $cartGreyLt;
+	    padding-left:10px;
+	    -webkit-border-radius: 3px 0 0 3px;
+	    -moz-border-radius: 3px 0 0 3px;
+	    border-radius: 3px 0 0 3px;
+        }
+
+    div.selector.disabled span {
+	    color: #bbb;
+    }
+
+
+
+}/* end product-detail */
+
+
+
+/*............................. DEFAULT THEME ..........................................*/
+$button-height: 30px;
+$button-margin-left: 13px;
+$button-padding: 8px 15px 0 2px;
+$button-span-height: 22px;
+$checkbox-height: 19px;
+$checkbox-width: 19px;
+$input-padding: 3px;
+$radio-height: 18px;
+$radio-width: 18px;
+$select-fixed-width: 190px;
+$select-height: 26px;
+$select-margin-left: 10px;
+$select-margin-right: 25px;
+$select-select-height: 22px;
+$select-select-top: 2px;
+$upload-action-width: 82px;
+$upload-filename-margin-top: 2px;
+$upload-filename-margin-bottom: 2px;
+$upload-filename-margin-left: 2px;
+$upload-filename-width: 85px;
+$upload-filename-padding: 0 10px;
+$upload-height: 28px;
+$upload-width: 190px;
+
+
+
+/* INPUT & TEXTAREA */
+
+input.text,
+input.email,
+input.search,
+input.tel,
+input.url,
+input.datetime,
+input.date,
+input.month,
+input.week,
+input.time,
+input.datetime-local,
+input.number,
+input.color,
+input.password,
+select.uniform-multiselect,
+textarea.uniform {
+	font-size: 12px;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: #777;
+	border-top: solid 1px #aaa;
+	border-left: solid 1px #aaa;
+	border-bottom: solid 1px #ccc;
+	border-right: solid 1px #ccc;
+
+}
+
+input.text:focus,
+input.email:focus,
+input.search:focus,
+input.tel:focus,
+input.url:focus,
+input.datetime:focus,
+input.date:focus,
+input.month:focus,
+input.week:focus,
+input.time:focus,
+input.datetime-local:focus,
+input.number:focus,
+input.color:focus,
+input.password:focus,
+select.uniform-multiselect:focus,
+textarea.uniform:focus {
+
+	border-color: #999;
+}
+
+/* PRESENTATION */
+
+/* Buttons */
+
+div.button.active span,
+div.button:active span {
+	color: #555;
+}
+
+div.button span {
+	font-weight: bold;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+div.button.disabled span {
+	color: #bbb;
+}
+
+/* Separate from above due to IE8 */
+div.button:disabled span {
+	color: #bbb;
+}
+
+
+/* Checker */
+div.checker {
+	margin-right: 5px;
+}
+
+/* Radio */
+div.radio {
+	margin-right: 3px;
+}
+
+/* Uploader */
+div.uploader span.action {
+	text-shadow: #fff 0px 1px 0px;
+	background-color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+div.uploader span.filename {
+	color: #777;
+	border-right: solid 1px #bbb;
+	font-size: 11px;
+}
+
+div.uploader.disabled span.action {
+	color: #aaa;
+}
+
+div.uploader.disabled span.filename {
+	border-color: #ddd;
+	color: #aaa;
+}
