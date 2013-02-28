@@ -15,60 +15,81 @@ http://uniformjs.com/
 .product-detail { /* end active */ }
 /* line 32, ../sass/uniform.vzn.scss */
 .product-detail div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: #fff; height: 45px; border: 0px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 60px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: white url(../img/sprites/pdp/grey-more.png) 95% 28px no-repeat; cursor: pointer; }
-/* line 52, ../sass/uniform.vzn.scss */
+/* line 51, ../sass/uniform.vzn.scss */
 .product-detail div.selector select { position: absolute; top: 0; left: 0; font-family: Arial, sans-serif !important; font-size: 12px; line-height: 30px; min-height: 45px; opacity: 0; }
-/* line 62, ../sass/uniform.vzn.scss */
+/* line 61, ../sass/uniform.vzn.scss */
 .product-detail div.selector.active { /* end select */ }
-/* line 64, ../sass/uniform.vzn.scss */
+/* line 63, ../sass/uniform.vzn.scss */
 .product-detail div.selector.active select { left: 10px; top: -10px; font-family: Arial, sans-serif !important; text-transform: lowercase; font-size: 14px; line-height: 20px; color: #727272; /* end option */ }
-/* line 72, ../sass/uniform.vzn.scss */
+/* line 71, ../sass/uniform.vzn.scss */
 .product-detail div.selector.active select option { display: block; }
-/* line 83, ../sass/uniform.vzn.scss */
+/* line 82, ../sass/uniform.vzn.scss */
 .product-detail div.selector span { display: inline-block; width: 60% !important; height: 100%; color: #727272; padding-left: 10px; -webkit-border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px; border-radius: 3px 0 0 3px; }
-/* line 93, ../sass/uniform.vzn.scss */
+/* line 92, ../sass/uniform.vzn.scss */
 .product-detail div.selector.disabled span { color: #bbb; }
 
-/* end product-detail */
+/* end product-detail select*/
+/*............. CART SELECT & INPUT BOXES ..................................................  */
+/* line 105, ../sass/uniform.vzn.scss */
+.cart { /* end active */ }
+/* line 106, ../sass/uniform.vzn.scss */
+.cart div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; border: 1px solid #cccccc; background: #fff; height: 36px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 45px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; cursor: pointer; }
+/* line 125, ../sass/uniform.vzn.scss */
+.cart div.selector select { position: absolute; top: 0; left: 0; font-family: Arial, sans-serif !important; font-size: 12px; line-height: 30px; min-height: 45px; opacity: 0; cursor: pointer; }
+/* line 135, ../sass/uniform.vzn.scss */
+.cart div.selector.active { /* end select */ }
+/* line 137, ../sass/uniform.vzn.scss */
+.cart div.selector.active select { left: 10px; top: -10px; font-family: Arial, sans-serif !important; text-transform: lowercase; font-size: 14px; line-height: 20px; color: #727272; /* end option */ }
+/* line 145, ../sass/uniform.vzn.scss */
+.cart div.selector.active select option { display: block; }
+/* line 156, ../sass/uniform.vzn.scss */
+.cart div.selector span { display: inline-block; width: 60% !important; height: 100%; color: #727272; padding-left: 10px; -webkit-border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px; border-radius: 3px 0 0 3px; }
+/* line 166, ../sass/uniform.vzn.scss */
+.cart div.selector.disabled span { color: #bbb; }
+/* line 170, ../sass/uniform.vzn.scss */
+.cart input.text { height: 36px; border: 1px solid #cccccc; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; font-weight: bold; color: #727272; text-transform: lowercase; font-size: 12px; padding-top: 13px; line-height: 36px; cursor: pointer; }
+
+/* end cart select & input */
 /*............................. DEFAULT THEME ..........................................*/
 /* INPUT & TEXTAREA */
-/* line 147, ../sass/uniform.vzn.scss */
+/* line 237, ../sass/uniform.vzn.scss */
 input.text, input.email, input.search, input.tel, input.url, input.datetime, input.date, input.month, input.week, input.time, input.datetime-local, input.number, input.color, input.password, select.uniform-multiselect, textarea.uniform { font-size: 12px; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-weight: normal; color: #777; border-top: solid 1px #aaaaaa; border-left: solid 1px #aaaaaa; border-bottom: solid 1px #cccccc; border-right: solid 1px #cccccc; }
 
-/* line 174, ../sass/uniform.vzn.scss */
+/* line 264, ../sass/uniform.vzn.scss */
 input.text:focus, input.email:focus, input.search:focus, input.tel:focus, input.url:focus, input.datetime:focus, input.date:focus, input.month:focus, input.week:focus, input.time:focus, input.datetime-local:focus, input.number:focus, input.color:focus, input.password:focus, select.uniform-multiselect:focus, textarea.uniform:focus { border-color: #999; }
 
 /* PRESENTATION */
 /* Buttons */
-/* line 184, ../sass/uniform.vzn.scss */
+/* line 274, ../sass/uniform.vzn.scss */
 div.button.active span, div.button:active span { color: #555; }
 
-/* line 188, ../sass/uniform.vzn.scss */
+/* line 278, ../sass/uniform.vzn.scss */
 div.button span { font-weight: bold; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
 
-/* line 196, ../sass/uniform.vzn.scss */
+/* line 286, ../sass/uniform.vzn.scss */
 div.button.disabled span { color: #bbb; }
 
 /* Separate from above due to IE8 */
-/* line 201, ../sass/uniform.vzn.scss */
+/* line 291, ../sass/uniform.vzn.scss */
 div.button:disabled span { color: #bbb; }
 
 /* Checker */
-/* line 207, ../sass/uniform.vzn.scss */
+/* line 297, ../sass/uniform.vzn.scss */
 div.checker { margin-right: 5px; }
 
 /* Radio */
-/* line 212, ../sass/uniform.vzn.scss */
+/* line 302, ../sass/uniform.vzn.scss */
 div.radio { margin-right: 3px; }
 
 /* Uploader */
-/* line 217, ../sass/uniform.vzn.scss */
+/* line 307, ../sass/uniform.vzn.scss */
 div.uploader span.action { text-shadow: white 0px 1px 0px; background-color: #fff; font-size: 11px; font-weight: bold; }
 
-/* line 224, ../sass/uniform.vzn.scss */
+/* line 314, ../sass/uniform.vzn.scss */
 div.uploader span.filename { color: #777; border-right: solid 1px #bbbbbb; font-size: 11px; }
 
-/* line 230, ../sass/uniform.vzn.scss */
+/* line 320, ../sass/uniform.vzn.scss */
 div.uploader.disabled span.action { color: #aaa; }
 
-/* line 234, ../sass/uniform.vzn.scss */
+/* line 324, ../sass/uniform.vzn.scss */
 div.uploader.disabled span.filename { border-color: #ddd; color: #aaa; }
