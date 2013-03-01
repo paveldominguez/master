@@ -102,8 +102,10 @@
       						<div class="vzn-active"></div>
       					</li>
       				</ul>
-      					<div id="carousel-zoom">
-      					</div>
+      						
+      				<div id="carousel-zoom"></div>
+      				<div id="view-360"><a class="view-360-link"></a></div>
+      			
       			</div><!-- end #thumbs nav images-->
         		</div><!-- end thumb-wrap -->
       	</div><!-- end carousel -->
@@ -168,27 +170,16 @@
         	<div class="color-stock-block">
 
 
-        	<div class="color-select-box">
-                    <select name="color-select" class="color-select">
-                        <option value="black">Select Color</option>
-                        <option value="black">Black</option>
-                        <option value="grey">Grey</option>
-                        <option value="white">White</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                    <!--<input type="list" id="color-select" placeholder = "Select Color"> -->
+        		<div class="color-select-box">
+        			<div class="swatch"></div>
+                	<select name="color-select" class="color-select">
+                    	<option value="">Select Color</option>
+                    	<option value="black">Black</option>
+                    	<option value="grey">Grey</option>
+                    	<option value="white">White</option>
+                    	<option value="blue">Blue</option>
+                	</select> <!--<input type="list" id="color-select" placeholder = "Select Color"> -->
         		</div>
-
-
-
-
-
-
-
-
-
-
-
 
                 <div class="size-select-box">
                     <select name="size-select" class="size-select">
@@ -197,8 +188,7 @@
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                         <option value="4">Four</option>
-                    </select>
-        		    <!-- <input type="list" id="size-select" placeholder = "Select Size"> -->
+                    </select> <!-- <input type="list" id="size-select" placeholder = "Select Size"> -->
         		</div>
 
         	</div> <!-- end color-stock-block -->
@@ -609,11 +599,23 @@
         						</li>
 
         						<li class="brand">
-        							<input type="list" id="detail-brand-select" placeholder="Brand">
+        							<select id="detail-brand-select">
+        								<option value="">select brand</option>
+        								<option value="Apple">Apple</option>
+        								<option value="Samsung">Samsung</option>
+        								<option value="Nokia">Nokia</option>
+        								<option value="Beats by Dre">Beats by Dre</option>
+        							</select>
         						</li>
 
         						<li class="device">
-        							<input type="list" id="detail-device-select" placeholder="Device">
+        							<select type="list" id="detail-device-select">
+        								<option value="">select device</option>
+        								<option value="iPhone 4">iPhone 4</option>
+        								<option value="iPhone 5">iPhone 5</option>
+        								<option value="Galaxy II">Galaxy II</option>
+        								<option value="Galaxy III">Galaxy III</option>
+        							</select>
         						</li>
 
         					    </ul><!-- end sorting elements -->

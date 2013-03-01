@@ -90,24 +90,26 @@
       			<div id="thumbs" class="flexslider"><!-- thumbnail image nav -->
       				<ul class="slides">
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" data-xcoord="0" data-ycoord="0">
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" data-xcoord="0" data-ycoord="0">
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" data-xcoord="0" data-ycoord="0">
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" data-xcoord="0" data-ycoord="0">
       						<div class="vzn-active"></div>
       					</li>
       				</ul>
-      					<div id="carousel-zoom">
-      					</div>
+      					
+      					<div id="carousel-zoom"></div>
+      					<div id="view-360"><a class="view-360-link"></a></div>
+      					
       			</div><!-- end #thumbs nav images-->
         		</div><!-- end thumb-wrap -->
       	</div><!-- end carousel -->
@@ -196,8 +198,10 @@
 
         	<div class="color-stock-block">
                 <div class="color-select-box">
+                	<div class="swatch"></div>
                     <select name="color-select" class="color-select">
-                        <option value="black">Select Color</option>
+                    	
+                        <option value="">Select Color</option>
                         <option value="black">Black</option>
                         <option value="grey">Grey</option>
                         <option value="white">White</option>
@@ -349,12 +353,26 @@
 <section id="product-details"><!-- ============= BEGIN PRODUCT DETAILS ============ -->
 <div class="section-wrap">
 
-    <div class="detail-hero-image-box">
-        <img src="" id="detail-hero-img" title="Wireless On-Ear Headphones with Control Talk">
-    </div>
+    
 
   	<div class="tabbed-wrapper">
   		<div class="tab-block">
+  		
+  			<div id="detail-hero-image-box">
+        		<div id="detail-hotspot" data-xcoord="0" data-ycoord="0">
+        			<div id="hotspot-pop-box">
+        				<div id="hotspot-content">
+        				</div>
+        				<div class="pointer">
+        				</div>
+        			</div>
+        		</div>
+    		</div>
+  		
+  		
+  		
+  		
+  		
 			<div class="tab-scroll">
       			<dl id="detail-tabs" class="tabs">
 
@@ -414,7 +432,7 @@
         								<h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
         								<div class="price">$189.99</div>
-        								<div class="cta"></div>
+        								<div class="cta">Add to Cart</div>
         							</div>
         						</a>
 								</li>
@@ -428,7 +446,7 @@
         								<h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
         								<div class="price">$189.99</div>
-        								<div class="cta"></div>
+        								<div class="cta">Add to Cart</div>
         							</div>
         						</a>
 								</li>
@@ -489,54 +507,7 @@
 							</div><!-- end tab-inner -->
         				</div><!-- end details center -->
 
-        				<div class="third right">
-                            <div class="tab-inner">
-								<ul class="features">
-									<li class="smart">
-										<div class="image">
-											<h5 class="feature">Smart Accessory</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-
-										</div>
-									</li>
-									<li class="app">
-										<div class="image">
-											<h5 class="feature">App Enabled</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-									<li class="data">
-										<div class="image">
-											<h5 class="feature">Data Plan Needed</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-									<li class="wifi">
-										<div class="image">
-											<h5 class="feature">WiFi Enabled</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-								</ul>
-                            </div><!-- end tab-inner -->
-        				</div><!-- end details right -->
-
+        				
         				<div class="more-less">
 							<a href="#" class="more-less-link" title="show more">more</a>
 						</div>
@@ -632,11 +603,23 @@
         						</li>
 
         						<li class="brand">
-        							<input type="list" id="detail-brand-select" placeholder="Brand">
+        							<select id="detail-brand-select">
+        								<option value="">select brand</option>
+        								<option value="Apple">Apple</option>
+        								<option value="Samsung">Samsung</option>
+        								<option value="Nokia">Nokia</option>
+        								<option value="Beats by Dre">Beats by Dre</option>
+        							</select>
         						</li>
 
         						<li class="device">
-        							<input type="list" id="detail-device-select" placeholder="Device">
+        							<select type="list" id="detail-device-select">
+        								<option value="">select device</option>
+        								<option value="iPhone 4">iPhone 4</option>
+        								<option value="iPhone 5">iPhone 5</option>
+        								<option value="Galaxy II">Galaxy II</option>
+        								<option value="Galaxy III">Galaxy III</option>
+        							</select>
         						</li>
 
         					    </ul><!-- end sorting elements -->
@@ -804,6 +787,16 @@
 
 		    <div class="btf-hero-image hero-right">
 		        <img src="" title="Product Content Hero Image #2" alt="Product Content Hero Image #2">
+		        <div id="btf-hero-data-1" class="btf-hero-data">
+		        	<div class="image"></div>
+		        	<div class="headline">Headline</div>
+		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
+		        </div>
+		        <div id="btf-hero-data-2" class="btf-hero-data">
+		        	<div class="image"></div>
+		        	<div class="headline">Headline</div>
+		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
+		        </div>
 		    </div><!-- end image -->
 
 		    <div class="btf-hero-icon hero-left">
@@ -838,6 +831,16 @@
 
 		    <div class="btf-hero-image hero-left">
 		        <img src="" title="Product Content Hero Image #1" alt="Product Content Hero Image #1">
+		        <div id="btf-hero-data-3" class="btf-hero-data">
+		        	<div class="image"></div>
+		        	<div class="headline">Headline</div>
+		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
+		        </div>
+		        <div id="btf-hero-data-4" class="btf-hero-data">
+		        	<div class="image"></div>
+		        	<div class="headline">Headline</div>
+		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
+		        </div>
 		    </div><!-- end image -->
 
 		    <div class="btf-hero-icon hero-right">
@@ -861,8 +864,11 @@
 
 
 <section id="pdp-plus-highlights"><!------------- BEGIN PDP+ HIGHLIGHTS SECTION ----->
-
 <div class="section-wrap">
+
+	<div class="section-header">
+		<h2 class="section-title">Highlights</h2>
+	</div>
 
 	<div class="tabbed-wrapper">
   		<div class="tab-block">
@@ -870,19 +876,19 @@
       			<dl id="pdp-plus-highlight-tabs" class="tabs">
       				<dd class="app-tab active" >
       					<a href="#app-highlight" title="Similar items" ><h2>App Enabled</h2></a>
-      					<div class="pointer"><</div>
+      					<div class="pointer"></div>
       				</dd>
       				<dd class="data-tab" >
         				<a href="#data-highlight" title="Others also bought" ><h2>Data Plan Required</h2></a>
-        				<div class="pointer"><</div>
+        				<div class="pointer"></div>
         			</dd>
         			<dd class="wifi-tab" >
         				<a href="#wifi-highlight" title="Works with" ><h2>Wifi Enabled</h2></a>
-        				<div class="pointer"><</div>
+        				<div class="pointer"></div>
         			</dd>
         			<dd class="smart-tab" >
         				<a href="#smart-highlight" title="Works with" ><h2>Smart Accessory</h2></a>
-        				<div class="pointer"><</div>
+        				<div class="pointer"></div>
         			</dd>
         		</dl>
 			</div><!-- end tab scroll -->
@@ -892,24 +898,188 @@
 
         		<li id="app-highlightTab" class="active"><!------- APP HIGHLIGHT TAB ------->
         			<div class="tab-wrapper">
-        			APP ENABLED
+        			
+        			<div class="feature-box">
+        				<div class="feature-title">
+        					<h3>App Enabled</h3>
+        				</div>
+        				
+        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				
+        				<div class="feature-list">
+        					<ul>
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        					</ul>
+        				</div><!-- end feature list -->
+        			</div><!-- end feature-box -->
+        			
+        			
+        			
+        			
+        			
+        			
+        			
         			</div>
         		</li>
-        		<li id="data-highlightTab" ><!------- APP HIGHLIGHT TAB ------->
+        		<li id="data-highlightTab" ><!------- DATA HIGHLIGHT TAB ------->
         			<div class="tab-wrapper">
-        			DATA PLAN REQUIRED
+        			
+        			<div class="feature-box">
+        				<div class="feature-title">
+        					<h3>Data Plan Required</h3>
+        				</div>
+        				
+        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				
+        				<div class="feature-list">
+        					<ul>
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        					</ul>
+        				</div><!-- end feature list -->
+        			</div><!-- end feature-box -->
+        			
+        			
+        			
+        			
+        			
         			</div>
         		</li>
-        		<li id="wifi-highlightTab" ><!------- APP HIGHLIGHT TAB ------->
+        		<li id="wifi-highlightTab" ><!------- WIFI HIGHLIGHT TAB ------->
         			<div class="tab-wrapper">
-        			WIFI ENABLED
+        			
+        			<div class="feature-box">
+        				<div class="feature-title">
+        					<h3>WiFi Enabled</h3>
+        				</div>
+        				
+        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				
+        				<div class="feature-list">
+        					<ul>
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        					</ul>
+        				</div><!-- end feature list -->
+        			</div><!-- end feature-box -->
+        			
+        			
+        			
+        			
+        			
+        			
+        			
         			</div>
         		</li>
-        		<li id="smart-highlightTab" ><!------- APP HIGHLIGHT TAB ------->
+        		<li id="smart-highlightTab" ><!------- SMART ACCESSORY HIGHLIGHT TAB ------->
         			<div class="tab-wrapper">
-        			SMART ACCESSORY
+        			
+        			<div class="feature-box">
+        				<div class="feature-title">
+        					<h3>Smart Accessory</h3>
+        				</div>
+        				
+        				<div class="plain-text">Lots lorem ipsum ... </div>
+        				
+        				<div class="feature-list">
+        					<ul>
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        						
+        						<li class="feature-item">
+        							<h4>Feature Name</h4>
+        							<p>Lotsa lorem ipsum ...</p>
+        							<a href="#" class="learn-more-link" title="Learn More">
+        								Learn more
+        							</a>
+        						</li>
+        					</ul>
+        				</div><!-- end feature list -->
+        			</div><!-- end feature-box -->
+        			
+        			
+        			
+        			
         			</div>
         		</li>
+
 
             </ul><!-- end tabs content ul -->
         </div><!-- end tabbed block -->
@@ -970,36 +1140,16 @@
 
 
 
-<section id="simple-carousel"><!------------- BEGIN SIMPLE CAROUSEL SECTION ----->
+<section id="similar-products"><!------------- BEGIN SIMILAR PRODUCTS SECTION ----->
 	<div class="section-wrap">
 
-	<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="simple-carousel-tabs" class="tabs">
-      				<dd class="similar active" >
-      					<a href="#simple-similar" title="Similar items" ><h2>Similar</h2></a>
-      					<div class="vzn-active"></div>
-      				</dd>
-        			<dd class="others" >
-        				<a href="#simple-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        			<dd class="works" >
-        				<a href="#simple-works" title="Works with" ><h2>Works With</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
+	<div class="section-header">
+		<h2 class="section-title">Similar Products</h2>
+	</div>
+	
 
-
-      		<ul class="tabs-content">
-
-        		<li id="simple-similarTab" class="active"><!------- SIMPLE SIMILAR TAB ------->
-        			<div class="tab-wrapper">
-
-						<div id="simple-similar-slider" class="vzn-slide" >
-							<ul class="slides">
+	<div id="simple-similar-slider" class="vzn-slide" >
+		<ul class="slides">
 								<li><a href="#" title="view this item1" class="product-link">
 									<div class="simple-slider-item">
 										<div class="simple-image">
@@ -1149,21 +1299,7 @@
 										</div>
 									</div><!-- end simple item -->
 								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-
-        			</div><!-- end details tab-wrapper -->
-        		</li><!-- end simple similar tab content -->
-
-
-
-				<li id="simple-othersTab"><!----- SIMPLE OTHERS TAB -------->
-					<div class="tab-wrapper">
-
-						<div id="simple-others-slider" class="vzn-slide" >
-							<ul class="slides">
+								
 								<li><a href="#" title="view this item" class="product-link">
 									<div class="simple-slider-item">
 
@@ -1240,116 +1376,22 @@
 										</div>
 									</div><!-- end simple item -->
 								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-					</div><!-- end overview tab-wrapper -->
-				</li><!-- end simple others tab content -->
-
-
-
-        		<li id="simple-worksTab"><!------------ SIMPLE WORKS TAB ---------------->
-					<div class="tab-wrapper">
-
-						<div id="simple-works-slider" class="vzn-slide">
-							<ul class="slides">
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-
-					</div><!-- end features tab-wrapper -->
-				</li><!-- end simple works tab content -->
-
-      		</ul><!-- end tab-content -->
-
-    	</div><!-- end tab-block -->
-	</div><!-- end tabbed wrapper -->
-
+			</ul>
+		</div><!-- simple-similar-slider -->
 	</div><!-- end section-wrap -->
-</section><!--------------------------------- END SIMPLE CAROUSEL SECTION -------->
+</section><!--------------------------------- END SIMILAR PRODUCTS SECTION -------->
 
 
 
 
 <section id="related-stories"><!-- ============== BEGIN RELATED STORIES SECTION ============= -->
 	<div class="section-wrap">
+	
+	<div class="section-header">
+		<h2 class="section-title">Related Stories</h2>
+	</div>
+
+
 		<div class="related-stories-wrapper">
 
 		    <div class="tabbed-wrapper">
@@ -1378,12 +1420,12 @@
 
       		        <ul class="tabs-content">
 
-        		        <li id="stories-alphaTab" class="active"><!------- APP HIGHLIGHT TAB ------->
+        		        <li id="stories-alphaTab" class="active"><!------- ALPHA STORY TAB ------>
         			        <div class="tab-wrapper">
 
         			            <div id="related-alpha-slider" class="vzn-slide">
 							        <ul class="slides">
-								        <li><a href="#" title="read this story" class="related-story-link">
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
 									        <div class="related-stories-large">
 										        <div class="large-story-info-box">
 											        <h5 class="large-story-cat">Audiophile</h5>
@@ -1405,21 +1447,716 @@
 
 									        </div><!-- end related stories large -->
 								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								      
+								      <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->  
+								        
+								        
+								        
+								        
 							        </ul>
 						        </div><!-- end slider -->
         			        </div><!-- tab-wrapper -->
         		        </li><!-- end alpha stories -->
 
 
-        		        <li id="stories-betaTab" class="active"><!------- APP HIGHLIGHT TAB ------->
+        		        <li id="stories-betaTab"><!------- BETA HIGHLIGHT TAB ------->
         			        <div class="tab-wrapper">
-        			            Beta Lifestyle
+        			                    			            <div id="related-alpha-slider" class="vzn-slide">
+							        <ul class="slides">
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								      
+								      <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->  
+								        
+								        
+								        
+								        
+							        </ul>
+						        </div><!-- end slider -->
         			        </div><!-- end tab-wrapper -->
         		        </li><!-- end beta stories -->
 
-        		        <li id="stories-gammaTab" class="active"><!------- APP HIGHLIGHT TAB ------->
+        		        <li id="stories-gammaTab"><!------- GAMMA HIGHLIGHT TAB ------->
         			        <div class="tab-wrapper">
-        			            Gamma Lifestyle
+        			                    			            <div id="related-alpha-slider" class="vzn-slide">
+							        <ul class="slides">
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								      
+								      <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->
+								        
+								        <li class="large-story"><a href="#" title="read this story" class="related-story-link">
+									        <div class="related-stories-large">
+										        <div class="large-story-info-box">
+											        <h5 class="large-story-cat">Audiophile</h5>
+											        <h3 class="large-story-title">Lorem Ipsum Dolor Sit</h3>
+											        <p class="large-story-text">Lotsa lorem ipsum dolor. sit...</p>
+										        </div>
+
+
+
+										        <div class="product-reveal">
+										            &larr;
+										        </div>
+										        <div class="related-product">
+										            <a href="#" title="view this item" class="product-link">
+										                <h4 class="related-product-title">Related Product</h4>
+											            <img src="" title="Related Product Title" alt="Related Product Title">
+											        </a>
+										        </div>
+
+									        </div><!-- end related stories large -->
+								        </a></li>
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li> <!-- end related stories small -->
+								        
+								        <li class="small-story"><a href="#" title="read this story" class="related-story-link">
+								        	<div class="related-stories-small">
+												<div class="image"></div>
+												<div class="teaser">Lorem ipsum dolor sit amet, consectrtur adipisicing ...</div>
+												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
+								        	</div>
+								        </a></li><!-- end related stories small -->  
+								        
+								        
+								        
+								        
+							        </ul>
+						        </div><!-- end slider -->
         			        </div><!-- end tab-wrapper -->
         		        </li><!-- end gamma stories -->
 
@@ -1437,36 +2174,17 @@
 
 
 
-<section id="fancy-carousel"><!------------- BEGIN FANCY CAROUSEL SECTION ----->
+<section id="others-bought"><!------------- BEGIN OTHERS BOUGHT SECTION ----->
 	<div class="section-wrap">
-
-	<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="fancy-carousel-tabs" class="tabs">
-      				<dd class="similar active" >
-      					<a href="#fancy-similar" title="Similar items" ><h2>Similar</h2></a>
-      					<div class="vzn-active"></div>
-      				</dd>
-        			<dd class="others" >
-        				<a href="#fancy-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        			<dd class="works" >
-        				<a href="#fancy-works" title="Works with" ><h2>Works With</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
+	
+	<div class="section-header">
+		<h2 class="section-title">Others Also Bought</h2>
+	</div>
 
 
-      		<ul class="tabs-content">
-
-        		<li id="fancy-similarTab" class="active"><!------- FANCY SIMILAR TAB ------->
-        			<div class="tab-wrapper">
-
-						<div id="fancy-similar-slider" class="vzn-slide">
-							<ul class="slides">
+	<div id="fancy-similar-slider" class="vzn-slide">
+		<ul class="slides">
+		
 								<li class="large-item"><a href="#" title="view this item1" class="product-link">
 									<div class="fancy-slider-item">
 
@@ -1730,19 +2448,7 @@
 										<h3 class="product-title">Smartphones</h3>
 									</div><!-- end fancy item 20 - category -->
 								</a></li>
-							</ul>
-						</div><!-- end fancy-similar slider -->
 
-        			</div><!-- end details tab-wrapper -->
-        		</li><!-- end fancy similar tab content -->
-
-
-
-				<li id="fancy-othersTab"><!----- FANCY OTHERS TAB -------->
-					<div class="tab-wrapper">
-
-						<div id="fancy-others-slider" class="vzn-slide">
-							<ul class="slides">
 								<li class="large-item"><a href="#" title="view this item1">
 									<div class="fancy-slider-item">
 
@@ -2013,19 +2719,7 @@
 										<h3>Smartphones</h3>
 									</div><!-- end fancy item 20 - category -->
 								</a></li>
-							</ul>
-						</div><!-- end fancy-others-slider-->
-
-					</div><!-- end overview tab-wrapper -->
-				</li><!-- end fancy others tab content -->
-
-
-
-        		<li id="fancy-worksTab"><!------------ FANCY WORKS TAB ---------------->
-					<div class="tab-wrapper">
-
-						<div id="fancy-works-slider" class="vzn-slide">
-							<ul class="slides">
+							
 								<li class="large-item"><a href="#" title="view this item1">
 									<div class="fancy-slider-item">
 
