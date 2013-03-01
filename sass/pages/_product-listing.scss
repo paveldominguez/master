@@ -56,6 +56,132 @@ $leftColWidth: 255px;
     margin-left: $leftColWidth + $columnGutter;
 }
 
+$hdrOfferCollapsed: 55px;
+.spec-offer-header {
+    position: relative;
+    height: $hdrOfferCollapsed;
+    overflow: hidden;
+    padding: 0 30px;
+    background-color: #29A0CD;
+    a, 
+    p {
+        color: white;
+        line-height: $hdrOfferCollapsed;
+    }
+    .offer-content {
+        position:relative;
+        line-height: $hdrOfferCollapsed;
+        background: transparent url(../img/product-category-listing/sp-ofr-aux-sm-top-right.png) 0 12px no-repeat;
+        .offer-cta { 
+            display: none; 
+            font: {
+                family: $fontVzwMedium;
+                size: 18px;
+            }
+        }
+        .offer-fig {
+            position: absolute;
+            top: -35px;
+            right: 95px;
+            width: 378px;
+        }
+        .offer-copy {
+            margin: 0 0 0 120px;
+            font: {
+                family: $fontVzwBookItalic;
+                size: 24px;
+            }
+            strong {
+                line-height: 41px;
+                sup {
+                    vertical-align: super;
+                }
+            }
+        }
+    }
+    .offer-actions {
+        position: absolute;
+        top: 0;
+        right: 30px;
+        text-align: right;
+        .expand, 
+        .collapse {
+            font: {
+                family: $fontArial;
+                size: 10px;
+                weight: bold;
+            }
+            text-transform: uppercase;
+        }
+        .expand {
+            padding-right: 15px;
+            @include product-listing-sprite(sp-ofr-show-more-white, false, 58px, 3px);
+        }
+        .collapse { 
+            display: none;
+            padding-right: 31px;
+            @include product-listing-sprite(sp-ofr-close-white, false, 38px, 14px);
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+    &.open {
+        height: auto;
+        .offer-content {
+            padding: 55px 0 20px;
+            background: transparent url(../img/product-category-listing/sp-ofr-aux-lg-top-right.png) 0 12px no-repeat;
+            .offer-fig {
+                position: absolute;
+                top: 70px;
+                right: 50px;
+                width: 564px;
+            }
+            .offer-copy {
+                margin-left: 75px;
+                strong {
+                    display: block;
+                    margin: -40px 0 0 -10px;
+                    font: {
+                        family: $fontVzwMedium;
+                        size: 148px;
+                        weight: normal;
+                    }
+                    line-height: 148px;
+                    sup {
+                        font: {
+                            family: $fontVzwLight;
+                            size: 85px;
+                        }
+                    }
+                    span {
+                        position: absolute;
+                        bottom: 18px;
+                        left: 247px;
+                        text-transform: uppercase;
+                        font: {
+                            family: $fontVzwBold;
+                            size: 40px;
+                        }
+                    }
+                }
+                .offer-cta { 
+                    display: block;
+                    font: {
+                        family: $fontVzwMedium;
+                        size: 18px;
+                    }
+                    span { padding-left: 8px; }
+                }
+            }
+        }
+        .offer-actions {
+            .expand { display: none; }
+            .collapse {
+                display: block;
+            }
+        }
+    }
+}
+
 .content-filter {
     padding: 15px 30px;
     .facet,
