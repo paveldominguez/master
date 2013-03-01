@@ -82,6 +82,11 @@ VZ = {
         init : function() {
             contentGrid.init();
             contentFilter.init();
+            var hdrOffer = $jQ('#spec-offer-header');
+            hdrOffer.find('.offer-actions .toggle').click(function(e) {
+                e.preventDefault();
+                hdrOffer.toggleClass('open');
+            });
         }
     },
     'product-detail' : {
