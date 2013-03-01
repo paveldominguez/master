@@ -3,6 +3,19 @@ var productDetail = (function() {
     var pub = {
         init : function() {
 
+
+//ONLOAD : special offer display .........................................................
+
+    // offers off
+      //  $jQ('.offer').css('display', 'none');
+      //  $jQ('.no-offer').css('display', 'list-item');
+
+    // offers on
+        $jQ('.offer').css('display', 'list-item');
+        $jQ('.no-offer').css('display', 'none');
+        
+        
+        
 		
 // ONLOAD : universal vars for contextual/dynamic layouts
         var pgWidth = document.body.clientWidth;
@@ -61,7 +74,7 @@ var productDetail = (function() {
             } // end if
 
     // hero resize : force cart layout > 767+
-            $(window).resize(function(){
+            $jQ(window).resize(function(){
                var resizePg = document.body.clientWidth;
                 var resizeHt = $jQ(hero).height();
                if (resizePg > 767) {
@@ -90,7 +103,7 @@ var productDetail = (function() {
             }
 
         // hero resize : toggle carousel thumb center
-            $(window).resize(function(){
+            $jQ(window).resize(function(){
                 var heroThumbs = window.document.getElementById('thumbs');
                 var resizePg = document.body.clientWidth;
 
@@ -104,17 +117,9 @@ var productDetail = (function() {
                     //$jQ('#thumbs').css('margin-left', cntrThmb + 'px');
                 }
             });
+ 
 
 
-//ONLOAD : special offer display .........................................................
-
-    // offers off
-      //  $jQ('.offer').css('display', 'none');
-      //  $jQ('.no-offer').css('display', 'list-item');
-
-    // offers on
-        $jQ('.offer').css('display', 'list-item');
-        $jQ('.no-offer').css('display', 'none');
 
 
 
@@ -138,6 +143,13 @@ var productDetail = (function() {
 
     $jQ("select").uniform();
 
+
+
+// ONLOAD : install custom tab function :P
+
+	$jQ('.tabs dd a').click(function(){
+		pdpTab(this);
+	});
 
 
 // ONLOAD : install overview tabs more/less interaction below the fold ...................
@@ -411,6 +423,46 @@ function preloadZoom(element) { //........................ preload zoom componen
 
 
 
+function pdpTab(href) { // ...................... custom tab function ...................
+
+	//remove active class from all tabs
+		$jQ(href).parents('.tabs').children().removeClass('active');
+	
+	//apply it to (this) clicked tab
+		$jQ(href).parent().addClass('active');
+
+
+
+
+	// get tab content target name
+		var rawName = $jQ(href).attr('href');
+		var tabName = rawName.substring(1);
+		var contentName = (tabName + 'Tab');
+		
+	
+	// remove active class from all tab content, find the right one and reapply
+		contentList = $jQ(href).parents('.tab-block').find('.tabs-content');
+		$jQ(contentList).children().removeClass('active').each(function(){
+			var thisID = $jQ(this).attr('id');
+			if ( thisID == contentName ) {
+				$jQ(this).addClass('active');
+				return false;
+			}
+		
+		});
+	
+
+
+
+
+
+
+
+
+} // end tab function
+
+
+
 function installDesktopMoreLess(element) { //........ install tabs moreLess ...........
 
         // select these
@@ -532,7 +584,7 @@ function singleMoreLess(element) { //................. install single moreLess .
 
 
 function createZoomPanel() { // ............................ create zoom panel ..........
-
+	//alert('yes');
     // reselect these
         var zoomBlock = window.document.getElementById('zoom-block');
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
@@ -587,7 +639,7 @@ function createZoomPanel() { // ............................ create zoom panel .
 
         // slide image
         $jQ(zoomSlides).find('li').find('img').each(function(){
-            var imgHt = $(this).height();
+            var imgHt = $jQ(this).height();
             var imgMgn = (imgHt / -2);
             this.style.marginTop = imgMgn + 'px';
             this.style.marginLeft = imgMgn + 'px';
@@ -1077,8 +1129,8 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
                 hSlide(list, newOff);
 
             // turn prev off, leave next on
-                $(tabWrap).find('.vzn-slide-prev').addClass('off');
-                $(tabWrap).find('.vzn-slide-next').removeClass('off');
+                $jQ(tabWrap).find('.vzn-slide-prev').addClass('off');
+                $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
 
             } else if ( newOff <= endStop ) { // at end
 
@@ -1088,16 +1140,16 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
                 hSlide(list, endDiff);
 
             // turn next off, turn prev on
-                $(tabWrap).find('.vzn-slide-next').addClass('off');
-                $(tabWrap).find('.vzn-slide-prev').removeClass('off');
+                $jQ(tabWrap).find('.vzn-slide-next').addClass('off');
+                $jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
 
             } else { // somewhere in between
             // move it
                 hSlide(list,newOff);
 
             // make sure both are on
-                $(tabWrap).find('.vzn-slide-next').removeClass('off');
-                $(tabWrap).find('.vzn-slide-prev').removeClass('off');
+                $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
+                $jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
             }
 
 }
@@ -1172,7 +1224,7 @@ function zSlide(element,hValue, vValue) { //....... horiz/vert move ............
 
 
 $jQ('.product-link').each(function() { //......... get info for TEMP product click .......
-        var prodName = $(this).find('.product-title').text();
+        var prodName = $jQ(this).find('.product-title').text();
         var param = prodName.replace(/\s+/g, '');
 
         $jQ(this).attr('title', 'Click to view ' + prodName );

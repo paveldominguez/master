@@ -4,7 +4,7 @@
 
 	/* colors */
 
- 	$cartGreyLt: #727272;
+ 	$cartGreyLt: #727272; 
  	$cartGreyMd: #666666;
  	$cartGreyDk: #3d4146;
  	$controlTxt: #c5c7c7;
@@ -82,6 +82,26 @@
 
 	@mixin cartSocialBG { background:url(../img/product-detail-page/pdp-backgrounds/cart-social-bg.png) repeat-x; }
 
+	@mixin offerPopBox {
+		width:153px; height:180px;
+		padding:15px;
+		@include cartRounded;
+		@include boxBrdrA;
+		background: #fff;
+		-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+        -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+        box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+        position:absolute;
+        z-index:10;
+        font-family: $fontArial;
+        }
+
+
+
+
+
+
+
 	@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
 						font-size:12px;
 						font-weight:bold;
@@ -155,7 +175,7 @@
 
 	select { opacity: 0; }
 
-	.offer, .offer-box {  display:none; }
+	.offer {  display:none; }
 
 	/* resets */
 	/* input[type="button"],
@@ -443,12 +463,22 @@
 						} /* end actual-price */
 
 						.original-price {
+							list-style:none; 
 							font-family: $fontArial;
 							color: $cartGreyMd;
 							font-size: 12px;
 							letter-spacing: -1px;
 							padding: 0px 0px 6px 4px;
 							position:relative; top:3px;
+							
+							.sale {  
+								text-decoration:none;
+								text-transform: uppercase;
+								color: $colorVzwRed;
+								font-weight:bold;
+								padding-right:5px; 
+								letter-spacing: 0px;
+								}
 
 							span { text-decoration: line-through;
 								display: inline-block;
@@ -758,10 +788,7 @@
 		@include clearfix();
 		width:100%;
 
-		#detail-tabs {
-			width:100%;
-			margin:0;
-			}
+
 
 		dd {
 			height: 27px;
@@ -799,10 +826,16 @@
 			}/* end dd */
 
 			dd.active a h2,
-			dd a h2:hover
-				{ color: $colorVzwRed;}
-					/* end active tab */
-			} /* end tabbed-wrapper */
+			dd a h2:hover { color: $colorVzwRed;} /* end active tab */
+		
+		.tabs-content {
+
+			.show { display:block !important; }
+
+			.active { display:block !important; }	
+			}		
+					
+		} /* end tabbed-wrapper */
 
 
 
@@ -826,6 +859,8 @@
 			#detail-tabs {
 				/* hide pdp-lite overview tab */
 				.details { display: none; }
+				width:100%;
+				margin:0;
 				}/* end detail tabs */
 
 			.tabs-content {
@@ -833,6 +868,7 @@
 				margin-bottom:20px;
 				overflow:hidden; /* don't remove this, needed for more/less jQ */
 
+				#overviewTab,
 				#featuresTab,
 				#specsTab,
 				#compatTab,
@@ -1518,7 +1554,8 @@
 			margin:0 auto 0 auto;
 
 			.tabs-content {
-
+					
+					#simple-similarTab,
 					#simple-othersTab,
 					#simple-worksTab { display:none; }
 
@@ -1744,7 +1781,8 @@
 					}/* end ratings */
 
 			/* end common fancy item styles */
-
+				
+				#fancy-similarTab,
 				#fancy-othersTab,
 				#fancy-worksTab { display:none; }
 
@@ -2124,13 +2162,13 @@
 					} /* end amt */
 
 				.offer-off {
-				color:#fff;
-				font-size:18px;
-				text-transform: uppercase;
-				font-family: $fontVzwBold;
-				position:relative;
-				left:106px; top:-22px;
-				font-weight:bold;
+					color:#fff;
+					font-size:18px;
+					text-transform: uppercase;
+					font-family: $fontVzwBold;
+					position:relative;
+					left:106px; top:-22px;
+					font-weight:bold;
 					} /* end off text */
 
 				}/* end offer box */
@@ -2150,41 +2188,88 @@
 
 				.pdp-plus-ship-block {
 					padding:0 0 20px 20px;
-					position:relative;
+					
 
 					.ship-details {
 						margin: 0 0 0 10px;
+						position:relative;
 						list-style-image: url(../img/product-detail-page/pdp-backgrounds/cart-bullet.png);
 
 
-						li { position: relative;
+						li { 
 							font-size: 13px;
 							line-height:23px;
 							font-weight:bold;
 							display:list-item;
 							letter-spacing: -1px;
 							padding:0 0 0px 0px;
-							color: $cartGreyMd; }
+							color: $cartGreyMd;
+							width:auto; }
 
 						.offer { color: $colorVzwRed;  }
 
 
 						.offer-more-icon {
+							position: relative;
 							display:inline-block;
-							background: url(../img/sprites/pdp/red-more.png) 3px 12px no-repeat;
-							width:36px; height:20px;
+							background: url(../img/sprites/pdp/red-right.png) 5px 12px no-repeat;
+							width:45px; height:20px;
 
-						}
+							}
 						.pdp-offer-pop {
 							position:absolute;
-							width:50%;
+							width:auto;
+							height:auto;
+							left: 7px; top: -72px;
+							 
+							.pointer { 
+								width:15px;
+								height:30px; 
+								position:absolute;
+								top:88px; left:-12px;
+								margin-top:-15px;
+								background: url(../img/sprites/pdp/offer-pop-pointer.png) no-repeat;
+								z-index:15;
+								}
 
 							.offer-box {
-								@include cartRounded;
-								width:150px;
-								height:auto;
-								padding:10px;
-								background:#fff;
+								@include offerPopBox;
+								
+								.offer-close {
+									position:absolute;
+									top:3px; right: 3px; 
+									width:24px; height:24px;
+									background: url(../img/sprites/cart/edit-panel-close-x.png) 6px 6px no-repeat; 
+									cursor:pointer;
+									} /* end close */
+									
+								h5.offer-title {
+									color: $cartGreyDk;
+									font-family: $fontArial;
+									font-size:12px;
+									letter-spacing:0px;
+									line-height: 17px; 
+									margin:3px 0 8px 0;
+									} /* end title */
+									
+								.offer-details {
+									font-size:12px;
+									color: $cartGreyMd;
+									font-weight:normal;
+									letter-spacing:0px;
+									line-height: 17px; 
+									} /* end details */
+									
+								.offer-link {
+									@include actionLink;
+									letter-spacing:0px;
+									font-size:11px;
+									text-transform: uppercase;
+									background: url(../img/sprites/pdp/blue-right.png) 65% 7px no-repeat;
+									position:absolute;
+									bottom:10px; left:15px;
+									width: 100%;
+									}		
 								} /* end offer-box */
 							}/* end offer-pop */
 
@@ -2354,7 +2439,7 @@
 		 		height:324px;
 		 		float:right;
 
-				#app-highlightTab { background: #29a0cd; height: 324px; }
+				#app-highlightTab, 
 		 		#data-highlightTab,
 				#wifi-highlightTab,
 				#smart-highlightTab { background: #29a0cd; display:none; height:324px; }
