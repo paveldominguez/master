@@ -45,11 +45,13 @@
 <body id="pdp-plus" class="product-detail">
 
 
-  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">
-    includeFragment('inc/header.html');
-  </script>
-  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+  <div class="temp-pdp-header">
+  		<script type="text/javascript">
+    		includeFragment('inc/header.html');
+  		</script>
+  </div><!-- end temp header -->
+<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
   <!-- End Header and Nav -->
 
@@ -57,6 +59,11 @@
 
 <section id="pdp-hero"><!--  ======================= BEGIN PDP HERO =============== -->
 <div class="section-wrap">
+
+	<div class="crsl-offer-box offer">
+    	<h4 class="offer-amt">10<span class="offer-unit">%</span></h4>
+    	<span class="offer-off">Off</span>
+    </div><!-- end crsl offer box -->
 
     <div id="carousel-block">
 
@@ -105,12 +112,7 @@
         		</div><!-- end thumb-wrap -->
       	</div><!-- end carousel -->
 
-      	<div class="crsl-offer-box offer">
-
-      	    <h4 class="offer-amt">10<span class="offer-unit">%</span></h4>
-      	    <span class="offer-off">Off</span>
-
-      	</div><!-- end crsl offer box -->
+      	
 
 
 
@@ -150,26 +152,35 @@
 				<div class="pdp-plus-ship">
 					<ul class="ship-details offer">
 					    <li class="sale offer">10% Off Until 1/25
-					        <div class="offer-more-icon"></div>
-					        <div class="pdp-offer-pop">
-					            <div class="offer-box">
-					                <h5 class="offer-title">Lorem ipsum dolor sit amet con sectetur</h5>
-					                <p class="offer-details">Lotsa lorem ipsum...</p>
-					                <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-					            </div><!-- end offer-box -->
-					            <div class="pointer"></div>
-					        </div><!-- end offer pop -->
+					        <div class="offer-more-icon">
+					   
+					        	<div class="pdp-offer-pop">
+					        		<div class="pointer"></div>
+					            	<div class="offer-box">
+					            		<div class="offer-close"></div>
+					                	<h5 class="offer-title">Lorem ipsum dolor sit amet con sectetur</h5>
+					                	<p class="offer-details">Lotsa lorem ipsum...</p>
+					                	<a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+					            	</div><!-- end offer-box -->
+					        	</div><!-- end offer pop -->
+					
+					        </div><!-- end offer more icon -->
+					        
 					    </li>
 						<li class="ship offer">Free 3-5 Ground Shipping
-						    <div class="offer-more-icon"></div>
-						    <div class="pdp-offer-pop">
-					            <div class="offer-box">
-					                <h5 class="offer-title">Lorem ipsum dolor sit amet con sectetur</h5>
-					                <p class="offer-details">Lotsa lorem ipsum...</p>
-					                <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-					            </div><!-- end offer-box -->
-					            <div class="pointer"></div>
-					        </div><!-- end offer pop -->
+						    <div class="offer-more-icon">
+					   
+					        	<div class="pdp-offer-pop">
+					        		<div class="pointer"></div>
+					            	<div class="offer-box">
+					            		<div class="offer-close"></div>
+					                	<h5 class="offer-title">Lorem ipsum dolor sit amet con sectetur</h5>
+					                	<p class="offer-details">Lotsa lorem ipsum...</p>
+					                	<a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+					            	</div><!-- end offer-box -->
+					        	</div><!-- end offer pop -->
+					
+					        </div><!-- end offer more icon -->
 					    </li>
 					</ul><!-- end offer ul -->
 					<ul  class="ship-details">
@@ -213,7 +224,7 @@
         	<div class="price-add">
         		<div id="price-block">
 
-					<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
+					<div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg. <span>&nbsp;$299.99&nbsp;</span></div>
         			<div class="actual-price">$249<span>99</span></div>
 
         		</div><!-- end priceBlock -->
@@ -363,7 +374,7 @@
         				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
-        			<dd class="reviews active" >
+        			<dd class="reviews" >
       					<a href="#consumer-reviews" title="Reviews" ><h2>Reviews</h2></a>
       					<div class="vzn-active"></div>
       				</dd>

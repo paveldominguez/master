@@ -13,13 +13,13 @@
 
 
 	/* new colors, mixins, etc */
- 		$cartGreyAltWht: #fbfbfb;
+ 		$cartGreyAltWht: #edefef;
  		$cartGreyFocus: #d9d9d9;
 						
 		@mixin cartHilight { 
-			-webkit-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, .8);
-			-moz-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, .8);
-        	box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, .8);
+			-webkit-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
+			-moz-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
+        	box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
 			}
 
 		@mixin cartButtonUp { 
@@ -38,6 +38,18 @@
 				}
 			}
 			
+		@mixin secondaryAddCart {
+			height:24px;
+			border: 0;
+			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			text-transform:uppercase;
+			color: $colorVzwRed;
+			font-family : $fontArial;
+			font-size:11px; 
+			padding-left:20px;
+			font-weight: bold; 
+			cursor:pointer; 
+			}
 			
 		@mixin cartButtonShadow {
 			height:100%;
@@ -76,10 +88,13 @@
 
 
 
-	.temp-cart-header { /* ............. TEMP replace header include ........ */
+	.temp-cart-header { /* ............. TEMP page header........ */
 		width:100%;
 		height:165px; overflow:hidden;
 		background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
+		position:relative;
+		z-index:5;
+		@include anchorDrop;
 		
 		#site-header { margin-top:106px; }
 		
@@ -92,7 +107,7 @@
 		
 	#cart-header { /* .............................. cart header ............... */
 		width:100%;
-		@include boxBrdrT;
+		/* @include boxBrdrT; in comp, changed to anchorDrop for consistency now */
 		@include boxBrdrB;
 		padding:6px 0 8px 0;
 		.cart-title{
@@ -114,7 +129,7 @@
 	
 	
 	#cart-data{ /* .................................... cart data ................. */
-	
+		padding-bottom:50px;
 		/* ........................ general cart classes first .............. */
 			.desc-block { 
 				@include clearfix;
@@ -145,8 +160,6 @@
 			width:75%; 
 			@include boxBrdrL;
 			@include boxBrdrB;
-			@include boxBrdrR;
-			
 			
 			.table-header {
 				@include clearfix();
@@ -179,7 +192,6 @@
 						img { 
 							width: 100%;
 							height:100%;
-							background: yellow;
 							border:0px;
 							}
 						 
@@ -216,10 +228,15 @@
 							
 						.remove-block {
 							position:absolute;
-							left:10px;
+							left:1px;
 							bottom:20px; 
 						
-							button { border:0px; background: transparent };
+							button { 
+								border:0px; 
+								background: transparent;
+								height:36px;
+								cursor: pointer; 
+								}
 							span { 
 								display:inline-block;
 								text-align: left;
@@ -290,12 +307,14 @@
 									font-size:14px; line-height:20px; 
 									}
 								span.updated { 
+									@include cartHilight;
 									display:none;
 									padding-top:5px;
 									float: right;
 									@include cartButtonShadow;
 									margin-right:-10px;
 									padding-top:6px;
+									background: #d9dede;
 									}
 								.update-pointer { 
 									display:none;
@@ -317,10 +336,13 @@
 							width:100%;
 							
 						
-							.edit-panel-close { 
+							.edit-panel-close {    
 								position:absolute;
-								top:10px; right: 20px; 
-								cursor:pointer;}
+								top:4px; right: 14px; 
+								width:24px; height:24px;
+								background: url(../img/sprites/cart/edit-panel-close-x.png) 6px 6px no-repeat; 
+								cursor:pointer;
+								}
 							
 							.edit-box {
 								@include clearfix();
@@ -340,21 +362,13 @@
 									float: right; 
 									
 									}
-									
-								
-									
-									
-									
-							
 								} /* end edit box */
 							
 							button.save-cart-changes { width: 100%; }
-							}	
+							} /* end edit panel */
 						}/* end order details */
 					 }/*end row desc block */
-					 
-				
-				
+			
 				.sub-block { 
 					height: 168px;
 					border:0;
@@ -371,15 +385,10 @@
 							position:relative;
 							top:-6px;
 							}
-						}
-						
+						}	
 					} /* end sub block */
-				
-				
 				} /* end table row */
 				
-			
-			
 			.table-row:nth-of-type(2n +1) { background: $cartGreyAltWht; }
 			.table-row:last-child { border-bottom:0; 
 				.desc-block, .sub-block { border-bottom:0px; }
@@ -390,26 +399,30 @@
 	
 		.cart-sidebar { /* ..................sidebar specific ................. */
 			@include cartBG;
+			@include boxBrdrR;
+			@include boxBrdrL;
 			display:inline-block;
 			float:right;
 			width:25%; 
 			
-			.special-header { 
+			.special-offer-block { 
 				width:100%;
 				height:auto;
-				background: #333 url(../img/sprites/pdp/shipping-boxes-icon.png) 15px 20px no-repeat;
+				background: $specialOfferBlue url(../img/sprites/pdp/shipping-boxes-icon.png) 15px 20px no-repeat;
 				padding:20px; 
-				
+				@include anchorDrop;
 				
 				.cart-offer-text {
 					font-family: $fontArial;
+					font-size:12px; 
 					font-weight:bold; 
 					color:#fff;
 					margin:0 0 0 40px;
 					}
-				}
+				} /* end special block */
 			
-			.proceed { padding:20px; 
+			.proceed-block { padding:20px; 
+				@include boxBrdrB;
 			
 				#cart-total-box {
 					height:60px;
@@ -430,7 +443,9 @@
 					#grand-total {
 						width:50%;
 						float: right;
-						font-size:36px; line-height:45px; 
+						font-size:36px; 
+						line-height:45px; 
+						letter-spacing: -1px;
 						text-align:right;
 						
 						.cents{ 
@@ -446,22 +461,19 @@
 					font-family: $fontArial;
 					color: $cartGreyLt;
 					width:100%; 
-					font-size:12px; 
+					font-size:11px; 
 					margin-bottom:40px; 
 					}
-			
-			
-			
-			
+	
 				#checkout-box {  
 					margin:10px 0 20px 0; 
 			
 					#checkout-button {
 						@include ctaButton;
-						width:100%; height: 63px;
+						width:100%; height: 78px;
 						position:relative;
 						font-size:18px;
-						font-family: $fontVzwMedium;
+						font-family: $fontVzwLight;
 		
                         span {
                         	text-transform:lowercase;
@@ -470,67 +482,88 @@
                             vertical-align: bottom;
                             bottom: 10px; left: 10px;
                         	}
+						}/* end checkout button */
+					} /* end checkout box */	
 					
-						}/* end button */
-					
-					} /* end checkout box */
-					
-				 } /* end proceed */
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-			
-			#keep-shopping-box {  
-				padding-bottom:20px;
-				width:100%;
-			
-				#continue-shopping-button {
-					@include cartButtonUp;
-					height:36px;
+				#keep-shopping-box {  
 					width:100%;
-					text-align: left;
-					font-size:16px; 
+			
+					#continue-shopping-button {
+						@include cartButtonUp;
+						height:36px;
+						width:100%;
+						text-align: left;
+						font-size:14px; 
+						}
+					}/* end keep shopping box */
+				} /* end proceed */
+				
+			#also-bought-block {
+				.header {
+					@include boxBrdrB;
+					padding:20px 0 10px 20px;
+					
+					h3.title {
+						font-family: $fontVzwBook;
+						font-weight:normal;
+						font-size:18px;
+						color: $cartGreyMd;
+						margin:0;
+						}
+					}
+				
+				
+				.also-bought-product {
+					width:100%;
+					@include clearfix();
+					@include boxBrdrB;
+					padding:15px 0 5px 10px;
+				
+					.product-image {
+						width:33.333%;
+						float:left;
+						
+						.also-img { width:100%; }
+						}
+				
+					.product-info { 
+						width: 66.666%;
+						float:right;
+						padding:0 5px 0px 10px; 
+						
+						.title { 
+							font-family: $fontArial; 
+							color: $cartGreyMd;
+							font-weight:normal;
+							font-size:12px;
+							padding-bottom:10px;
+							}
+						
+						.price { 
+							font-family: $fontArial; 
+							color: $cartGreyDk;
+							font-weight:bold;
+							font-size:12px; 
+							padding-bottom:10px;
+							}
+						
+						.add-also-bought {
+						
+							.add-secondary-to-cart {
+								@include secondaryAddCart;
+								}
+							
+						 	} /* end add also bought */
+					
+					
+						} /* end product info */
 				
 					}
-			
-
-				}
-			
-
-			}
-	
-	
-	
-	
-	
-	
-	
+				
+				
+				}/* end also-bought block */
+			} /* end sidebar */
 		}/* end data*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}/* end shoppingcart */
 	
 	
