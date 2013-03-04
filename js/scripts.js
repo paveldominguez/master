@@ -59,6 +59,11 @@ VZ = {
             // non priority calls go here, runs after all init functions
         }
     },
+    'home-page' : {
+        init : function() {
+
+        }
+    },
     'brand-landing-page' : {
         init : function() {
             $jQ("#sort-options").uniform();
