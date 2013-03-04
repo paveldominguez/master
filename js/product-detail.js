@@ -19,6 +19,7 @@ var productDetail = (function() {
 		
 // ONLOAD : universal vars for contextual/dynamic layouts
         var pgWidth = document.body.clientWidth;
+        var pdpType = $jQ('body').attr('id');
         var hero = document.getElementById('pdp-hero');
         var heroThumbs = window.document.getElementById('thumbs');
         var heroFocus = window.document.getElementById('focus');
@@ -90,7 +91,7 @@ var productDetail = (function() {
         // hero onload : set hero nav width & store margin for centering > 768+
                 var countThmb = $jQ('#thumbs .slides').find('li').length;
                 var thmbWd = (countThmb * 55);
-                var totalWd = (thmbWd + 45 ); //add standard width of zoom button
+                var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
                 var thmbMgnLft = (totalWd / -2);
                 heroThumbs.style.width = totalWd + 'px';
                 $jQ(heroThumbs).attr('data-center', thmbMgnLft );
@@ -161,22 +162,51 @@ var productDetail = (function() {
         var specTab = window.document.getElementById('specsTab');
 
     if (pgWidth > 959 ) { //desktop installation
+    
 
-    // apply 'show' class for assessing actual content
-        $jQ(overTab).siblings().each(function() {
-            $jQ(this).addClass('show');
-        });
+    	if ( pdpType == 'pdp' ) {
 
-    // compare & activate more-less where required
-        $jQ('#product-details .tab-wrapper').each(function() {
-            installDesktopMoreLess(this);
-        });
+			// apply 'show' class for assessing actual content
+        		$jQ(overTab).siblings().each(function() {
+            		$jQ(this).addClass('show');
+        		});
 
-    // remove temp hiding css after activation
-        $jQ(overTab).siblings().each(function() {
-            $jQ(this).removeClass('show');
-        });
-        $jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
+    		// compare & activate more-less where required
+        		$jQ('#product-details .tab-wrapper').each(function() {
+            		installDesktopMoreLess(this);
+        		});
+
+    		// remove temp hiding css after activation
+        		$jQ(overTab).siblings().each(function() {
+            		$jQ(this).removeClass('show');
+        		});
+        		$jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
+                	
+                	
+            } else if ( pdpType == 'pdp-plus' ) {
+
+				// move these
+        			
+        			$jQ(specTab).find('.third.center').appendTo('#specsTab .third.left .tab-inner');
+        			$jQ(compatTab).find('.see-all').appendTo('.compat-results .tab-inner');
+
+        		// apply 'show' class for assessing actual content
+        			$jQ(overTab).siblings().each(function() {
+            			$jQ(this).addClass('show');
+        			});
+
+        		// compare & activate where required
+        			$jQ(allDetails).find('.tab-inner').each(function(){
+            			singleMoreLess(this);
+        			});
+
+        		// remove temp hiding css after activation
+        			$jQ(overTab).siblings().each(function() {
+            			$jQ(this).removeClass('show');
+        			});
+        			$jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
+
+			} // end pdp type check
 
     } else if (pgWidth < 960 ) { //phablet installation
 
@@ -220,7 +250,8 @@ var productDetail = (function() {
             $jQ(this).addClass('zoom');
             type = 'zoom';
         }
-        vznSlideInstall(element,type)
+        vznSlideInstall(element,type);
+        //alert(element); alert(type);
     });
 
 
@@ -235,31 +266,29 @@ var productDetail = (function() {
 
     // color selectors .....................................
         $jQ('.color-select').change(function() {
-            var colorChip = $jQ(this).parent().find('span');
-            var selectedColor = $jQ(colorChip).text();
-            var colorHx = '666';
+        	var selectedSpan = $jQ(this).parent().find('span');
+        	var selectedColor =  selectedSpan.text();
+            var colorChip = $jQ(this).parents('.color-select-box').find('.swatch');
+            
             var bgHx = 'fff';
 
             if (selectedColor == 'Black') {
-                colorHx ='fff';
                 bgHx = '2e2e2e';
 
             } else if (selectedColor == 'Grey') {
-                colorHx ='fff';
                 bgHx = 'b1b0b0';
 
             } else if (selectedColor == 'White') {
-                colorHx ='666';
                 bgHx = 'fff';
 
             } else if (selectedColor == 'Blue') {
-                colorHx ='fff';
                 bgHx = '51b0d8';
 
             }
-           $jQ(colorChip).css({
-            'background-color': '#' + bgHx,
-            'color' : '#' + colorHx });
+           $jQ(colorChip).css({ 
+           		'background-color' : '#' + bgHx,
+           		'height' : '43px' });
+           $jQ(selectedSpan).css({ 'padding-left' : '54px' });
 
         });
 
@@ -294,12 +323,25 @@ var productDetail = (function() {
 
         // desktop tabs : more/less interaction ..................
             if (pgWidth > 959 ){
-                $jQ('a.more-less-link').toggle(function(event) {
-                    showMore(this);
-                }, function (event) {
-                    showLess(this);
-                });
-            }
+            
+            	if ( pdpType == 'pdp' ) {
+
+                	$jQ('a.more-less-link').toggle(function(event) {
+                    	showMore(this);
+                	}, function (event) {
+                    	showLess(this);
+                	});
+                	
+                } else if ( pdpType == 'pdp-plus' ) {
+                
+                	$jQ('a.more-less-link').toggle(function(event) {
+                    	singleShowMore(this);
+                	}, function (event) {
+                    	singleShowLess(this);
+                	});
+      
+                }   
+            } // end desktop if statement
 
         // phablet tabs : more/less interaction ....................
             if (pgWidth < 960 ){
@@ -450,14 +492,6 @@ function pdpTab(href) { // ...................... custom tab function ..........
 			}
 		
 		});
-	
-
-
-
-
-
-
-
 
 } // end tab function
 
@@ -539,7 +573,7 @@ function singleMoreLess(element) { //................. install single moreLess .
 
     // get their respective heights
         var childHt = child.height();
-        var parentHt = parent.height();
+        var parentHt = ( parent.height() + 20 );
 
     // if needed, clone link and activate
         if ( childHt > parentHt ) {
@@ -559,8 +593,10 @@ function singleMoreLess(element) { //................. install single moreLess .
         //select these
         var childHt = $jQ(element).parent().attr('data-child-height');
         var parent = $jQ(element).parents('.single-more-less');
+        
+        //change 'em
         $jQ(parent).css('height', childHt).addClass('less').find('.see-all').addClass('on');
-        $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 18px no-repeat');
+        $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 4px no-repeat');
         event.preventDefault();
 
 
@@ -572,8 +608,11 @@ function singleMoreLess(element) { //................. install single moreLess .
         //select these
         var parentHt = $jQ(element).parent().attr('data-parent-height');
         var parent = $jQ(element).parents('.single-more-less');
+        
+        
+        // chnage'em
         $jQ(parent).css('height', parentHt ).removeClass('less').find('.see-all').removeClass('on');
-        $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 18px no-repeat');
+        $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
         event.preventDefault();
 
 
@@ -1156,7 +1195,7 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
 
 
 
-function getMulti(type) { //........ responsively multipliers for vznSlide ............
+function getMulti(type) { //........ responsive multipliers for vznSlide ............
 
     if (type == 'simple') {
        if ( pgWidth < 480 ) {  // mobile portrait
