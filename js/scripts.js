@@ -82,11 +82,21 @@ VZ = {
         init : function() {
             contentGrid.init();
             contentFilter.init();
-            var hdrOffer = $jQ('#spec-offer-header');
-            hdrOffer.find('.offer-actions .toggle').click(function(e) {
+            // simple offer toggle..
+            // may break out into a general module that handles interactions (if other js is necessary) in offers
+            var hdrOffer = $jQ('#spec-offer-header'),
+            hdrOfferHeight = hdrOffer.outerHeight();
+            hdrOffer.find('.offer-actions .toggle').on('click', function(e) {
                 e.preventDefault();
                 hdrOffer.toggleClass('open');
+                /*
+                hdrOffer.toggleClass('open', 1600).promise().done(function() {
+                    var height = hdrOffer.hasClass('open') ? hdrOffer.prop('scrollHeight') : hdrOfferHeight;
+                    hdrOffer.animate({ height: height }, 'slow');
+                });
+                */
             });
+            // end offer toggle
         }
     },
     'product-detail' : {

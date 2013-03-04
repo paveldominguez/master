@@ -17,10 +17,12 @@ $fontVzwMedium: "Verizon Apex Medium";
 $colorVzwRed: #D00505;
 $colorVzwLogoBg: #B30000;
 $colorVzwNavBorder: #F6F6F6;
-$colorNavLinks: #666;
+$colorNavLinks: #757575;
 $colorNavAccountLinks: #999;
 $colorProductPanelBorder: #E5E5E5;
 $tabsBGcolor: #DFE3E4;
+$colorActiveTabBg: #E5EAEA;
+$colorActiveTabBrd: #B7BBBD;
 
 // Global Styles
 $globalGutter: 30px;
@@ -44,160 +46,61 @@ h1,h2,h3,h4,h5,h6 {
     padding: 0 $columnGutter;
     max-width: $screenXlarge - $columnGutter;
 }
-.top-bar {
-    ul {
-        > li:not(.name):hover, 
-        > li:not(.name).active, 
-        > li:not(.name):focus {
-            background: none; 
-            border-bottom: inherit;
-            a { 
-                color: $colorNavLinks;
+#site-header { 
+    .mls-nav {
+        overflow: hidden;
+        height: 45px;
+        .nav-tabs {
+            .logo,
+            .nav-tab { 
+                float: left; 
+                a { 
+                    display: block; 
+                    color: $colorNavLinks;
+                }
             }
-        }
-        > li.has-dropdown a:after {
-            border-color: $colorNavLinks transparent transparent transparent;
+            &.left {
+                .dropdown {
+                    a {
+                        background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
+                        padding-right: 15px;
+                    }
+                }
+            }
+            .nav-tab {
+                height: 45px;
+                line-height: 45px;
+                padding: 0 15px;
+                text-align: center;
+                font: {
+                    family: $fontVzwBook;
+                    size: 18px;
+                }
+                &.active {
+                    background-color: $colorActiveTabBg;
+                    border: {
+                        left: 1px solid $colorActiveTabBrd;
+                        right: 1px solid $colorActiveTabBrd;
+                    }
+                }
+            }
+            .logo {
+                width: 45px;
+                h1 { 
+                    margin: 0;
+                    text-indent: -9999px;
+                    padding: 15px;
+                    font-size: 18px;
+                    a {
+                        background-color: #757575;
+                    }
+                }
+            }
         }
     }
-}
-#site-header { 
-    .top-bar {
-        background-color: white;
-        border-bottom: 1px solid $colorVzwNavBorder;
-        height: 60px;
-        line-height: 60px;
-        font: {
-            family: $fontVzwMedium;
-            size: 12px;
-        }
-        margin: 0;
-        > ul {
-            height: 60px;
-            line-height: 60px;
-            &.right {
-                padding-right: 25px;
-                li {
-                    border: none;
-                    min-width: 30px;
-                    height: 60px;
-                    padding: {
-                        left: 10px;
-                        right: 10px;
-                    }
-                }
-            }
-            > li:not(.name):hover, 
-            > li:not(.name).active, 
-            > li:not(.name):focus {
-                background: none; 
-                border-bottom: inherit;
-                a { 
-                    color: $colorNavLinks;
-                }
-            }
-            > li.has-dropdown a:after {
-                border-color: $colorNavLinks transparent transparent transparent;
-            }
-            > li {
-                min-width: 60px;
-                line-height: 60px;
-                border-right: 1px solid $colorVzwNavBorder;
-                padding: 15px;
-                text-transform: uppercase;
-                .inline-list { 
-                    height: inherit;
-                    line-height: inherit;
-                    margin: 0;
-                    > li {
-                        height: 30px;
-                        line-height: 30px;
-                        margin: 0;
-                        &:last-child a:first-child {
-                            border-right: none;
-                        }
-                    }
-                }
-                a {
-                    display: block;
-                }
-                a:not(.button) {
-                    display: block;
-                    height: 30px;
-                    line-height: 30px;
-                    padding: 0;
-                    font-weight: normal;
-                    color: $colorNavLinks;
-                }
-                &.drawer {
-                    border-left: none;
-                    a:not(.button) { width:20px; height: 18px; margin: 6px auto;}
-                }
-                &.logo {
-                    text-indent: -9999px;
-                    h1 {
-                        background: #CCC;
-                        width: 100px;
-                        border-left: 25px solid $colorVzwLogoBg;
-                        a { 
-                            display: block;
-                        }
-                    }
-                }
-                &.has-dropdown a {
-                    padding-right: 25px;
-                }
-                &.account-links {
-                    border-right: none;
-                    a { 
-                        display: inline;
-                        color: $colorNavAccountLinks;
-                        font: {
-                            size: 12px;
-                        }
-                        text-decoration: none;
-                        padding: 0 10px;
-                        margin: 0;
-                        &:first-child {
-                            border-right: 1px solid $colorNavAccountLinks;
-                        }
-                    }
-                }
-                &.site-search {
-                    font-family: $fontVzwMedium;
-                    input[type="text"] {
-                        background: transparent url(../img/sprites/nav/nav-ico-mag.png) 65px center no-repeat;
-                        border: 1px solid #E1E1E1;
-                        @include border-radius(2px);
-                        box-shadow: none;
-                        display: block;
-                        color: $colorNavLinks;
-                        font-size: 10px;
-                        text-transform: uppercase;
-                        margin: 2px auto 0;
-                        padding: 5px 35px 5px 5px;
-                        width: 90px;
-                        height: 25px;
-                    }
-                }
-                &.location,
-                &.help,
-                &.shopping-bag {
-                    a:not(.button) { 
-                        padding: 15px 10px;
-                        margin: 0 auto;
-                    }
-                }
-                &.location a {
-                    background: transparent url(../img/sprites/nav/nav-ico-location.png) center center no-repeat;
-                }
-                &.help a {
-                    background: transparent url(../img/sprites/nav/nav-ico-help.png) center center no-repeat;
-                }
-                &.shopping-bag a {
-                    background: transparent url(../img/sprites/nav/nav-ico-shopping-bag.png) center center no-repeat;
-                }
-            }
-        }
+    .nav-tabs-content { 
+        display: none;
+        /* styles to come.. */
     }
 }
 
@@ -207,46 +110,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    #site-header .top-bar {
-        > ul > li {
-            min-width: 45px;
-            &.logo {
-                border-right: none;
-                width: auto;
-            }
-            &.site-search {
-                padding: 15px 15px 13px;
-                input[type="text"] {
-                    width: 25px;
-                    padding:0;
-                }
-            }
-            &.shopping-bag {
-                a:not(.button) { width:18px; height: 20px; margin: 5px auto;}
-            }
-        }
-    }
+
 }
 @media only screen and (max-width: $screenMobileSmall) {
-    #site-header .top-bar {
-        > ul > li {
-            &:not(.logo) {
-                padding: {
-                    left: 10px;
-                    right: 5px;
-                };
-            }
-            &.logo {
-                padding: {
-                    left: 10px;
-                    right: 10px;
-                };
-                h1 {
-                    width: 75px;
-                }
-            }
-        }
-    }
+    
 }
 // Page Includes
 @import "pages/product-listing";
