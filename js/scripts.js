@@ -1,6 +1,6 @@
 var $jQ = jQuery.noConflict(), // Prevent any future library conflicts
-VZ = {}, // Container for firing common and page-specic JavaScript
-UTIL = {}, //
+MLS = {}, // Container for firing common and page-specic JavaScript
+MLSUTIL = {}, //
 isTouch = $jQ('html.touch').length > 0 ? true : false;
 
 jQuery.extend( jQuery.fn, {
@@ -40,7 +40,7 @@ var debounce = (function() {
  * Enable and Fire Page Specific Functionality
  */
 
-VZ = {
+MLS = {
     config : {
         // container for commonly used configs throughout site
     },
@@ -125,9 +125,9 @@ VZ = {
  * Credit: Paul Irish - http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/
  */
 
-UTIL = {
+MLSUTIL = {
     fire : function(func, funcname, args) {
-        var namespace = VZ;  // indicate your obj literal namespace here
+        var namespace = MLS;  // indicate your obj literal namespace here
         funcname = (funcname === undefined) ? 'init' : funcname;
         if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
             namespace[func][funcname](args);
@@ -135,14 +135,14 @@ UTIL = {
     },
     loadEvents : function() {
         var bodyId = document.body.id;
-        UTIL.fire('common');
+        MLSUTIL.fire('common');
         $jQ.each(document.body.className.split(/\s+/),function(i, classnm) {
-            UTIL.fire(classnm);
-            UTIL.fire(classnm, bodyId);
+            MLSUTIL.fire(classnm);
+            MLSUTIL.fire(classnm, bodyId);
         });
-        UTIL.fire('common', 'finalize');
+        MLSUTIL.fire('common', 'finalize');
     }
 };
 
 // Initialize
-$jQ(document).ready(UTIL.loadEvents);
+$jQ(document).ready(MLSUTIL.loadEvents);
