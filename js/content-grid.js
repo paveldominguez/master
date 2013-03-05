@@ -1,6 +1,5 @@
 var contentGrid = {
     init : function() {
-        alert('hi');
         var $contentGrid = $jQ('#main-column .content-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
