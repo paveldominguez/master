@@ -61,7 +61,8 @@ MLS = {
     },
     'home-page' : {
         init : function() {
-
+            console.log("home init");
+            MLS.home.init();
         }
     },
     'brand-landing-page' : {

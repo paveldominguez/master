@@ -1,0 +1,4 @@
+MLS.ui ={
+	
+	tabs: function(){}
+};
