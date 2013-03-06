@@ -6,16 +6,17 @@
 		});
 
 	// make form elements pretty
-		$jQ(".cart-item-qty").uniform();
-	 	$jQ("select").uniform();
+		$jQ(".cart-item-qty").uniform(); // edit cart text input
+	 	$jQ("select").uniform(); //all select/option instances
+	 	$jQ(".button").uniform(); // input type="submit" per ATG spec
 
 
 // Shopping Cart Functions
 
 function editCart(button){
 	
-	var panel = $jQ(button).parent().siblings('.edit-panel');
-	var current = $jQ(button).parent();
+	var panel = $jQ(button).parents('.detail-panel').siblings('.edit-panel');
+	var current = $jQ(button).parents('.detail-panel');
 	
 	panel.fadeIn('slow');
 	panel.parents('.table-row').addClass('this-row');

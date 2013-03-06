@@ -27,7 +27,7 @@
 			@include boxBrdrA;
 			@include cartHilight;
 			background: #edf1f2;
-			font-size:14px; 
+			font-size:14px;  
 			 padding:0 10px 0 10px;
 			text-transform: lowercase;
 			font-family: $fontVzwBook;
@@ -228,8 +228,8 @@
 							
 						.remove-block {
 							position:absolute;
-							left:1px;
-							bottom:20px; 
+							left:10px;
+							bottom:0px; 
 						
 							button { 
 								border:0px; 
@@ -242,9 +242,15 @@
 								text-align: left;
 								width:72px;
 								@include actionLink;
-								font-size:10px;
+								font-size:11px;
 								text-transform:uppercase;
-								background: url(../img/sprites/cart/blue-close-x.png) 50px 0px no-repeat;
+								background: url(../img/sprites/cart/blue-close-x.png) 55px -1px no-repeat;
+								
+								input { 
+									position:relative; top:-20px;  
+									cursor:pointer; 
+									opacity:0;
+									}
 								
 								}
 						
@@ -284,7 +290,7 @@
 									float: left;
 									width:60px;
 									color: $cartGreyMd;
-									padding-left:10px;  
+									padding-left: 10px;  
 									}
 								.item-data { 
 									display:inline-block;
@@ -295,36 +301,63 @@
 									}
 								} /* end detail box */
 								
+							.edit-cart-input { 
+								height:36px; 
+								overflow:hidden;
+								position: relative;
+								top:20px; 
+								}
+								
 							.button { 
 								@include clearfix();
 								width : 100%; 
-								position: relative;
-								top:20px;
+								
+								padding-top:3px;
 							
 								span { 
 									float:left;
 									padding: 6px 3px 0 3px; 
-									font-size:14px; line-height:20px; 
-									}
-								span.updated { 
-									@include cartHilight;
-									display:none;
-									padding-top:5px;
-									float: right;
-									@include cartButtonShadow;
-									margin-right:-10px;
-									padding-top:6px;
-									background: #d9dede;
-									}
-								.update-pointer { 
-									display:none;
-									width:14px; height: 30px;
-									background: url(../img/sprites/cart/cart-button-updated-pointer.png) 0 4px no-repeat;
-									position: absolute;
-									top: 0px; left:35.5%;
-									z-index: 5;
-									}  
-								}     
+									font-size:14px; 
+									line-height:20px; 
+									height:36px;
+									
+									input {
+										position:relative;
+										top:-27px; left:-15px; 
+										width:135px;
+										opacity: 0;
+										}
+									}/* span */
+								
+								} /* end class 'button' */
+								
+							span.updated {
+								display:none;
+								@include cartHilight;
+								@include cartButtonUp;
+								@include cartButtonShadow; 
+								border: 0px; 
+								float: right;
+								background: transparent;
+								position:relative;
+								top: -40px; left:2px;
+								padding-top:12px;
+								padding-left:6px;
+								color: #acacac; 
+								font-size:14px;
+								font-weight:bold; 
+								z-index: 5;
+								height:36px;
+								
+								} 
+							.update-pointer { 
+								display:none;
+								width:14px; height: 30px;
+								background: url(../img/sprites/cart/cart-button-updated-pointer.png) 0 4px no-repeat;
+								position: absolute;
+								top: 0px; left:46px;
+								z-index: 6;
+								}      
 							}/* end detail panel */
 						
 						.edit-panel {
@@ -338,7 +371,7 @@
 						
 							.edit-panel-close {    
 								position:absolute;
-								top:4px; right: 14px; 
+								top:4px; right: 16px; 
 								width:24px; height:24px;
 								background: url(../img/sprites/cart/edit-panel-close-x.png) 6px 6px no-repeat; 
 								cursor:pointer;
@@ -364,7 +397,14 @@
 									}
 								} /* end edit box */
 							
-							button.save-cart-changes { width: 100%; }
+							.button { padding-top:12px; }
+							
+							.button.save-cart-changes { 
+								width: 135px;
+								position:relative;
+								top:-15px; left:-15px;
+								opacity: 0;
+								 }
 							} /* end edit panel */
 						}/* end order details */
 					 }/*end row desc block */
@@ -468,33 +508,66 @@
 				#checkout-box {  
 					margin:10px 0 20px 0; 
 			
-					#checkout-button {
+					#uniform-checkout-button{
 						@include ctaButton;
 						width:100%; height: 78px;
 						position:relative;
 						font-size:18px;
-						font-family: $fontVzwLight;
-		
+						
                         span {
+                        	font-family: $fontVzwBook;
                         	text-transform:lowercase;
                             display: block;
                             position:absolute;
                             vertical-align: bottom;
                             bottom: 10px; left: 10px;
-                        	}
-						}/* end checkout button */
+                            position:relative; width:100%;
+                            height:78px; top:50px;
+                            		
+                            input#checkout-button {
+                            	-webkit-appearance: none; 
+								display:inline-block;
+								width:100%; height:100%;
+								font-size:36px;
+								padding:30px 30px 0 0 ;
+								position:relative; 
+								top:-67px; left:-10px;
+								opacity:0;
+								cursor:pointer; 
+								
+                            	}/* end checkout button */
+                        	} /* end span */	
+						} /* end uniform button */	
 					} /* end checkout box */	
 					
 				#keep-shopping-box {  
 					width:100%;
 			
-					#continue-shopping-button {
+					#uniform-continue-shopping-button {
 						@include cartButtonUp;
 						height:36px;
 						width:100%;
 						text-align: left;
 						font-size:14px; 
-						}
+						
+						span {
+							width:100%;
+							display:inline-block;
+							padding-top:12px;
+							font-size:14px;
+			
+							#continue-shopping-button {
+							-webkit-appearance: none;
+							height:36px;
+							width:110%;
+							text-align: left;
+							font-size:14px; 
+							position:relative; left:-10px;
+							top:-25px; opacity: 0; 
+							
+								} /* end old button */
+							}/* end span */
+						} /* end uniform button */
 					}/* end keep shopping box */
 				} /* end proceed */
 				

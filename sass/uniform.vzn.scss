@@ -101,7 +101,7 @@ http://uniformjs.com/
 
 
 
-/*............. CART SELECT & INPUT BOXES ..................................................  */
+/*............. CART INPUT, SELECT & BUTTONS ..................................................  */
 
  .cart { 
     div.selector {
@@ -120,8 +120,7 @@ http://uniformjs.com/
 		font-family: Arial, sans-serif !important;
 		background: #fff url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat;
 		cursor:pointer;
-
-        }
+        } /* end selector */
 
     div.selector select {
         position: absolute;
@@ -131,7 +130,7 @@ http://uniformjs.com/
 	    min-height:45px;
 	    opacity: 0;
 		cursor:pointer;
-        }
+        }/* end select */
 
     div.selector.active {
 
@@ -162,9 +161,7 @@ http://uniformjs.com/
 	   
         }
 
-    div.selector.disabled span {
-	    color: #bbb;
-    }
+    div.selector.disabled span { }
 
 	input.text { 
 		height:36px; 
@@ -179,6 +176,33 @@ http://uniformjs.com/
 		line-height:36px;
 		cursor:pointer;
 		}
+		
+		
+/* Cart buttons -- most of this is in cart.scss */
+
+	div.button.active span,
+	div.button:active span {
+	
+		}
+
+	div.button span {
+		text-transform: lowercase;
+		font-weight:bold; 
+		}
+
+	div.button.disabled span { }
+
+	/* Separate from above due to IE8 */
+		div.button:disabled span { }
+
+	
+		
+		
+		
+		
+		
+		
+		
 
  }/* end cart select & input */
 
@@ -265,31 +289,6 @@ textarea.uniform:focus {
 	border-color: #999;
 }
 
-/* PRESENTATION */
-
-/* Buttons */
-
-div.button.active span,
-div.button:active span {
-	color: #555;
-}
-
-div.button span {
-	font-weight: bold;
-	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-
-div.button.disabled span {
-	color: #bbb;
-}
-
-/* Separate from above due to IE8 */
-div.button:disabled span {
-	color: #bbb;
-}
 
 
 /* Checker */

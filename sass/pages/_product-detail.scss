@@ -12,12 +12,12 @@
 	$colorVzwRed: #D00505;
  	$actLinkBlue: #0066cc;
 
+	$specialOfferBlue: #009eb6;
+
  	$availColorBlk: #2e2e2e;
  	$availColorWht: #ffffff;
  	$availColorGrey: #b1b0b0;
  	$availColorBlue: #51b0d8;
-
-	$specialOfferBlue: #009eb6;
 
 	$pdpGreyMd:	#d6dcdc;
 	$featuredBg : #27a0cc;
@@ -82,8 +82,7 @@
 
 	@mixin cartSocialBG { background:url(../img/product-detail-page/pdp-backgrounds/cart-social-bg.png) repeat-x; }
 
-	@mixin offerPopBox {
-		width:153px; height:180px;
+	@mixin plusPopBox {
 		padding:15px;
 		@include cartRounded;
 		@include boxBrdrA;
@@ -166,7 +165,8 @@
 
 	.section-wrap {
 		@include clearfix();
-		max-width:1440px;
+		max-width:1280px;
+		
 		margin:0 auto 0 auto; }
 
 	.body-zoom {  overflow:hidden; }
@@ -337,6 +337,11 @@
 								z-index:10;
 								cursor:pointer;
 								position:relative;
+								height:43px;
+								
+								img { width:90%;
+									height:auto;
+									margin:0 auto 0 auto; }
 								}/* end li */
 
 								 .vzn-active {
@@ -345,7 +350,7 @@
 								 	width:0px; height:1px;
 									border-bottom: 2px solid $colorVzwRed;
 									position:absolute;
-									bottom:3px;
+									bottom:0px;
 									} /* end active div */
 								}/* end slides */
 							}/* end viewport */
@@ -517,23 +522,30 @@
 					float: right;
 					width:45%;
 					cursor:pointer;
-
-					.add-cart-cta {
-						@include ctaButton;
-						width:100%; height: 78px;
-						position:relative;
-						 font-size:18px;
-						font-family: $fontVzwMedium;
-						
-	
-
-                        span {
-                            display: block;
-                            position:absolute;
-                            vertical-align: bottom;
-                            bottom: 10px; left: 10px;
-                        	}
-                    	} /* end add-cart-cta */
+					height:78px;
+					
+					.button {
+					
+					
+						span {
+						display:inline-block;
+							@include ctaButton;
+							width:100%; height: 78px;
+							position:relative;
+							font-size:16px;
+							font-family: $fontVzwBook;
+							text-transform: lowercase; 
+							padding: 50px 0 0 10px;
+							
+							input.add-cart-cta {
+								width:105%; height: 78px;
+								position:relative;
+								top:-66px; left:-9px;
+								-webkit-appearance: none;
+								opacity:0;
+                    			} /* end add-cart-cta */
+                    		} /* end span */
+                    	} /* end button */
 					}/* end add-cart-box */
 				}/* end price-add */
 
@@ -1041,9 +1053,12 @@
 						width:55%;
 						margin-right: 9%;
 						padding-bottom:20px;
+						overflow:hidden;
 						}
 
-					.you-need.third {  width:29%; }
+					.you-need.third {  
+						width:33%;
+						overflow:hidden; }
 
 					.you-need {
 						h3 {
@@ -1057,7 +1072,7 @@
 
 						.you-need-items {
 							@include clearfix();
-							width: 115%;
+							width: 100%;
 							margin: 0;
 
 							.item {
@@ -1594,6 +1609,7 @@
 
 		.tab-block {
 			@include column(10, collapse);
+			min-width:861px;
 			float:none;
 			margin:0 auto 0 auto;
 
@@ -1610,7 +1626,9 @@
 					.tab-wrapper {
 						@include clearfix();
 						width:100%;
+						max-width:861px;
 						position:relative;
+						margin:0 auto 0 auto;
 
 						.vzn-slide {
 							height:220px; /* split out */
@@ -2079,24 +2097,30 @@
 				max-width:174px;
 				float:right;
 
-				.add-cart-cta {
+				.button {
 				
-					@include ctaButton;
-					width:100%; height: 78px;
-					position:relative;
-					font-size:18px;
-					font-family: $fontVzwMedium;
-					
-                    float: right;
-                    width:100%; height: 45px;
-                    
-                    span {
-                        display: block;
-                        position:absolute;
-                        left:10px; bottom:10px;
-                        font-family: $fontVzwBook;
-                        }
-                    } /* end add-cart-cta */
+					span {
+						@include ctaButton;
+						font-size:16px;
+						line-height:30px;
+						font-family: $fontVzwBook;
+						padding: 10px 0 0 10px;
+						float: right;
+                    	width:100%; 
+                    	height: 45px;
+                    	position:relative;
+                    	text-transform: lowercase;
+
+						input.add-cart-cta {
+							-webkit-appearance: none;
+							width:105%; height: 45px;
+							position:relative;
+							top:-40px; left:-8px;
+							cursor:pointer;
+							opacity:0;
+                    		}
+                    	} /* end span */
+                    } /* button */
 				} /* end cart-box */
 			}/* end price/cart li */
 		} /* end ul */
@@ -2166,730 +2190,12 @@
 .vzn-slide-prev.off,
 .vzn-slide-next.off { opacity: 0.333; pointer-events: none;  }
 
+
+
+
 /*----------------------------------- END UNIVERSAL VZN-SLIDE CSS ---------- */
 
 
-/*------------------------------------ PDP-PLUS BASE MODIFICATIONS --------------------- */
-#pdp-plus{
-
-
-/* general pdp-plus */
-
-	.section-header { 
-			padding: 30px 0 20px 0;
-			
-			.section-title {
-				margin:0; 
-				font-size:30px;
-				}
-			}
-
-
-/* start grid */
-	
-	#pdp-hero { /*.......................................pdp plus hero ................. */
-	
-		.crsl-offer-box {
-				position:absolute;
-				top:40px; left:40px;
-				z-index:20; 
-				list-style-type: none;
-				width:172px; height:172px;
-				-webkit-border-radius: 86px;
-				-moz-border-radius: 86px;
-				-ms-border-radius: 86px;
-				-o-border-radius: 86px;
-				border-radius: 86px;
-				background: $specialOfferBlue;
-
-
-				.offer-amt {
-					color:#fff;
-					font-size:72px;
-					font-family: $fontVzwBook;
-					letter-spacing: -9px;
-					margin:40px 0 0 27px;
-
-					.offer-unit{
-						display:inline-block;
-						font-size:40px;
-						font-family: $fontVzwLight;
-						font-weight:normal;
-						position:relative;
-						top:-25px; left: 7px;
-						}/* end unit */
-					} /* end amt */
-
-				.offer-off {
-					color:#fff;
-					font-size:18px;
-					text-transform: uppercase;
-					font-family: $fontVzwBold;
-					position:relative;
-					left:106px; top:-22px;
-					font-weight:bold;
-					} /* end off text */
-
-				}/* end offer box */
-
-		#carousel-block {  } /* end crsl-block */
-
-
-		#cart-block {
-			min-height:594px;
-
-			.header {
-				top:20px;
-				}/* end header */
-
-			#cart-details {
-
-
-				.pdp-plus-ship-block {
-					padding:0 0 20px 20px;
-					
-
-					.ship-details {
-						margin: 0 0 0 10px;
-						position:relative;
-						list-style-image: url(../img/product-detail-page/pdp-backgrounds/cart-bullet.png);
-
-
-						li { 
-							font-size: 13px;
-							line-height:23px;
-							font-weight:bold;
-							display:list-item;
-							letter-spacing: -1px;
-							padding:0 0 0px 0px;
-							color: $cartGreyMd;
-							width:auto; }
-
-						.offer { color: $colorVzwRed;  }
-
-
-						.offer-more-icon {
-							position: relative;
-							display:inline-block;
-							background: url(../img/sprites/pdp/red-right.png) 5px 12px no-repeat;
-							width:45px; height:20px;
-
-							}
-						.pdp-offer-pop {
-							position:absolute;
-							width:auto;
-							height:auto;
-							left: 7px; top: -72px;
-							 
-							.pointer { 
-								width:15px;
-								height:30px; 
-								position:absolute;
-								top:88px; left:-12px;
-								margin-top:-15px;
-								background: url(../img/sprites/pdp/offer-pop-pointer.png) no-repeat;
-								z-index:15;
-								}
-
-							.offer-box {
-								@include offerPopBox;
-								
-								.offer-close {
-									position:absolute;
-									top:3px; right: 3px; 
-									width:24px; height:24px;
-									background: url(../img/sprites/cart/edit-panel-close-x.png) 6px 6px no-repeat; 
-									cursor:pointer;
-									} /* end close */
-									
-								h5.offer-title {
-									color: $cartGreyDk;
-									font-family: $fontArial;
-									font-size:12px;
-									letter-spacing:0px;
-									line-height: 17px; 
-									margin:3px 0 8px 0;
-									} /* end title */
-									
-								.offer-details {
-									font-size:12px;
-									color: $cartGreyMd;
-									font-weight:normal;
-									letter-spacing:0px;
-									line-height: 17px; 
-									} /* end details */
-									
-								.offer-link {
-									@include actionLink;
-									letter-spacing:0px;
-									font-size:11px;
-									text-transform: uppercase;
-									background: url(../img/sprites/pdp/blue-right.png) 65% 7px no-repeat;
-									position:absolute;
-									bottom:10px; left:15px;
-									width: 100%;
-									}		
-								} /* end offer-box */
-							}/* end offer-pop */
-
-						.compat-link {
-							@include actionLink;
-							background: url(../img/sprites/pdp/blue-device-icon.png) 0px 6px no-repeat;
-							padding:5px 0 5px 16px;
-							margin-left:-16px;
-							font-family: $fontVzwBook;
-							font-size:13px;
-							letter-spacing:-1px;
-							}
-
-						} /* end standard shipping details ul */
-
-
-					.ship-details.offer {
-						list-style-image: url(../img/product-detail-page/pdp-backgrounds/red-cart-bullet.png);
-
-
-						} /* end offer ul */
-
-
-					} /*  end ship block */
-
-
-
-				.color-stock-block {
-					@include clearfix();
-					padding:0;
-					width:100%;
-			 		height:63px;
-
-					margin:0 auto 0 auto;
-					position:relative;
-
-					.color-select-box {
-						float:left;
-						margin:15px 0 0 15px;
-						width:44.5%;
-
-						#color-select {
-							} /* end input */
-						} /* end color-select */
-
-					.size-select-box { float:right;
-						margin:0;
-						width:44.5%;
-						margin:15px 15px 0 0px;
-
-						#size-select {
-
-							}/* end input */
-
-						} /* end size */
-
-					} /* end color-stock-block */
-
-				.price-add {
-					@include cartBG;
-					padding: 20px 15px 20px 15px;
-
-					#add-cart-box { width:48% }
-					}/* end price add */
-
-				}/* end cart-details */
-			}/* end pdp-plus cart block */
-		}/* end pdp-plus hero */
-
-
-	#product-details { /*............................ product details section ...........*/
-		min-height: 640px;
-		margin:0px auto 50px auto;
-
-
-		.section-wrap { 
-			position: relative;
-			max-width:1024px;  }
-
-		#detail-hero-image-box {
-			position:absolute;
-			top:-95px; right:0;
-			width:33.333%;
-			height:640px;    
-			background: url(../img/product-detail-page/pdp-plus/detail-hero-bg.png) no-repeat;
-			background-position: 0px -145px; 
-			
-			#detail-hotspot {   
-				#hotspot-pop-box {
-					#hotspot-content {
-						font-family: $fontArial;
-						}
-					.pointer { 
-						}
-					}
-		
-				}/* end hotspot */
-
-			} /* end hero image box */
-
-		.tabbed-wrapper {
-			margin-top:95px;
-			
-			
-
-			.tab-scroll {
-
-				dd {
-					h2 { font-size: 12px; }
-					} /* end dd */
-
-				} /* end tab-scroll */
-
-			.tabs-content {
-				width:70%;
-				float:left;
-				
-				#overviewTab {
-					.tab-wrapper { min-height:504px; }
-					
-					.overview-text.two-thirds {
-						width: 85%;
-						margin:0;
-						display:block; 
-						height: 267px; 
-						} /* end overview */
-						
-					.you-need.third.right { 
-						width:100%; 
-						border-top:35px solid #fff;
-						height:240px;
-						display:block;
-						background:#fff;
-						
-						.you-need-items { 
-							width:85%;
-							
-							.item { 
-								@include heroBG;
-								height:105px;
-								@include clearfix();
-							
-								.product-link { 
-									width:100%;
-									height:100%; 
-									display:block;
-									}
-									
-								.product-image { 
-									width:30%;
-									float:left;
-									}
-									
-								.product-info {
-									width: 50%;
-									float:left;
-									margin-left:10px;
-									
-									.product-title {
-										margin:5px 0 3px 0;
-										}
-										
-									.cta { 
-										@include secondaryAddCart;
-										position:relative;
-										top:5px; 
-										}
-										
-									}
-								}
-							}/* end items list */
-						}
-					} /* end overview tab */
-					
-				#featuresTab {
-					.tab-wrapper { height:504px; 
-						
-						.third.left, .third.center {		
-							width:45%; 
-							float:left;
-							margin-right:5%;
-						
-							} /* end new divs */
-						}/* end tab wrapper */
-					}/* end features tab */
-					
-				#specsTab {
-				
-				
-				
-				
-					} /* end specs tab */
-				
-				
-
-				#consumer-reviewsTab,
-				#questions-commentsTab { display:none; }
-
-
-				}
-
-			} /* end tabbed-wrapper */
-
-
-		} /* end product-details */
-
-
-	.btf-hero-wrapper { /* ......................... btf hero section ................... */
-			@include clearfix();
-			max-width:1024px;
-			float:none;
-			margin:0 auto 0 auto; 
-			height:512px;
-		    .btf-hero-image { width:75%; height: 100%; background: yellow; }
-		    .btf-hero-icon { width: 25%; height:50%; background: black; }
-		    .btf-hero-text-box { width: 25%; height:50%; background: white; position:relative; }
-		    .tab-pointer {
-		    	position:absolute;
-		    	top:-15px; left:50%; margin-left:-15px;
-		    	width:1px; height:1px;
-		    	border-bottom:15px solid #fff;
-		    	border-left:15px solid transparent;
-		    	border-right:15px solid transparent;
-
-		    	 }
-		} /* end btf hero wrapper */
-
-	#btf-hero-right,
-	#btf-hero-left {
-			.hero-right { float:right; }
-			.hero-left {float:left; }
-		}/* end hero right */
-
-	#btf-hero-left {
-		margin-bottom: 50px;
-		} /* end hero left */
-		
-		
-
-	#pdp-plus-highlights { /* ................... highlights section ....................*/
-		@include clearfix();
-		
-		.section-wrap {
-			@include clearfix();
-			float:none; 
-			@include column(10, collapse);
-			max-width:1024px;
-			margin:0 auto 0 auto; }
-			
-		.section-header { 
-			padding: 30px 0 20px 0;
-			
-			.section-title {
-				margin:0; 
-				font-size:30px;
-				}
-			}
-
-		.tab-block {
-			@include clearfix();
-
-			.tab-scroll {
-				width:25%;
-				float:left;
-
-				dd {
-					display:block;
-					height:81px;
-					background: $pdpGreyMd;
-					@include boxBrdrB;
-					margin-right:0;
-					}
-
-
-				}/* end left */
-
-
-		 	.tabs-content {
-		 		width: 75%;
-		 		height:324px;
-		 		float:right;
-
-				#app-highlightTab, 
-		 		#data-highlightTab,
-				#wifi-highlightTab,
-				#smart-highlightTab { background: #29a0cd; display:none; height:324px; }
-				
-				.feature-box {
-					padding:20px; 
-					
-					.feature-title {
-						h3 {
-							margin:0px; 
-							}
-						} /* end feature title */
-				
-					.feature-list {
-					
-						ul { list-style: none; }
-						li { 
-							display:inline-block;
-							width:33.333%;
-							float:left;
-							padding:10px; 
-							}
-
-						} /* end feature list */
-				
-				
-				
-					} /* end feature-box */
-				
-				
-
-		 		}/* end right */
-			} /* end table block */
-
-
-
-		.highlight-stats-box {
-
-			.stats-list {
-				@include clearfix();
-
-
-				.highlight-stat {
-					@include boxBrdrL;
-					width:25%;
-					display:inline-block; float:left;
-					padding-left:20px;
-
-
-					.stat-header{
-						h5 {
-							text-transform: uppercase;
-							font-size:12px;
-							color: $cartGreyMd;
-							font-family: $fontVzwMedium;}
-						} /* end stat header */
-
-					.stat-value {
-						font-family: $fontVzwLight;
-						font-size:72px;
-						color: $cartGreyMd;}
-
-					}/* end highlight stat */
-				} /* end list */
-			}
-
-
-		}/* end highlights */
-		
-		
-	#similar-products { /* .......................... similar product scroller ............*/
-		margin:40px 0 40px 0;
-		
-		.section-wrap { 
-			max-width: 1024px; 
-			min-height:360px;
-			position: relative;  }
-		#simple-similar-slider { 
-			@include clearfix();
-			height:225px; 
-			}
-	
-	
-	
-	
-	
-	
-		}/* end similar product scroller */	
-		
-		
-		
-		
-		
-	#related-stories { /* ........................ related stories section ................*/
-		margin:40px 0 40px 0;
-		
-		.section-wrap { width:100%; }
-		.section-header { 
-			width:1024px; 
-			display:block;
-			margin:0 auto 0 auto;
-			}
-		
-		.related-stories-wrapper {
-			@include boxBrdrT;
-			position:relative;
-			padding-left:195px; 
-			
-			@tab-block { 
-				
-				}
-		
-			.tab-scroll {
-				width:195px;
-				position:absolute;
-				left:0; top:0;
-			
-				dd { 
-					display:block;
-					width:100%;
-					height:172px;
-					@include cartBG;
-					@include boxBrdrB;
-					
-					a { display:block;
-						width:100%;
-						height:100%;
-						}
-				
-					} /* end dd tab each */
-			
-			
-			
-			
-				} /* end tab scroll */
-		
-		
-		
-			.tabs-content {
-				width:auto;
-				float:left;
-				
-				#stories-alphaTab,
-				#stories-betaTab,
-				#stories-gammaTab { 
-					display:none; }
-					
-				.active { display:block; }
-				
-				.tab-wrapper { position:relative; }
-				
-				.vzn-slide { 
-					@include clearfix();
-					width:1200px; 
-					height: 540px;
-					
-					.slides {
-						position:absolute;
-						height:516px; 
-					
-						.large-story {
-							height:516px;
-							width:516px;
-							
-							position:absolute;
-							@include boxBrdrL;
-							@include boxBrdrB;
-							}
-					
-						.small-story { 
-							width: 258px;
-							height:258px; 
-						
-							position:absolute;
-							@include boxBrdrL;
-							@include boxBrdrB; 
-							}
-							
-							
-						li:nth-of-type(1) { top:0; left: 0; }
-						li:nth-of-type(2) { top:0; left: 516px; }
-						li:nth-of-type(3) { top:258px; left: 516px; }
-						
-						li:nth-of-type(4) { top:0; left: 774px; }
-						li:nth-of-type(5) { top:0; left: 1290px; }
-						li:nth-of-type(6) { top:258px; left: 1290px; }
-						
-						li:nth-of-type(7) { top:0; left: 1548px; }
-						li:nth-of-type(8) { top:0; left: 2064px; }
-						li:nth-of-type(9) { top:258px; left: 2064px; }
-							
-							
-							
-							
-							
-							
-						} /* end slides */
-					
-					
-					
-					
-					
-					
-					
-					 
-					}
-		
-				.vzn-slide-prev {
-					top:-30px; 
-					right:auto;
-					left:120px; 
-					}	
-				.vzn-slide-next {
-					top:-30px; 
-					left:180px;
-					right:auto;
-					}
-
-		
-		
-		
-		
-		
-		
-		
-		
-				} /* end tabs content ul */
-			} /* end related stories wrapper */
-			
-		} /* end related stories */
-
-
-
-	#others-bought { /* ........................ others also bought section ................*/
-		margin:40px 0 40px 0;
-		
-		.section-wrap { 
-			width:100%;
-			min-height:420px;
-			position: relative;
-			
-			.section-header { 
-				width:1024px; 
-				display:block;
-				margin:0 auto 0 auto;
-				}
-				
-			#fancy-similar-slider { 
-				@include clearfix();
-				height:225px; 
-				}
-			
-			.vzn-slide-prev {
-					top:45px; 
-					right:108px;
-					left:auto; 
-					}	
-			.vzn-slide-next {
-					top:45px; 
-					right:72px;
-					}
-
-			} /* end section wrap */
-
-
-
-
-
-
-
-
-
-
-		} /* end others bought */
-		
-	}/* end pdp plus */
-
-/*----------------------------------- END PDP-PLUS BASE MODS ---------------------------*/
 
 
 
@@ -2914,18 +2220,50 @@ $screenMobileSmall: 320px;
 
 /* --------------------------------- BASE DESKTOP LAYOUT 960 + ---------------------*/
 
-@media only screen and ( min-width:  960px  ),
+@media only screen and ( min-width:  960px  ) and ( max-width: 1279px ),
 screen and (width: 1024px ) and (orientation: landscape) {
 
 /* -----------------------------------------  960 + HERO  -------------------------- */
 
  body { min-width: 960px; }
 
+
+
+
+
+
+
+
+
+
 	#pdp-hero {
+		min-height:612px;
+		max-height:612px;
+		
 		#carousel-block {
+			min-height:612px;
+			max-height:612px;
+			
 			#carousel {
-				#focus {  margin-top:-7.5%;
-					.flex-viewport { }
+				min-height:612px;
+				max-height:612px;
+				
+				#focus {  margin-top:-5%;
+					
+					.flex-viewport {
+						.slides{
+							li {
+								min-height:612px;
+								max-height:612px;
+								
+								img {
+									min-width:576px;
+									max-width:612px;
+									margin:0 auto 0 auto;
+									}
+								}
+							}
+					 	}
 					}/* end focus */
 				}/* end carousel */
 			}/* end carousel-block  */
@@ -2968,6 +2306,39 @@ screen and (width: 1024px ) and (orientation: landscape) {
 /*------------------------ END 960 + BELOW-THE-FOLD --------------------------- */
 
 }/*------------------------------END BASE DESKTOP 960 + ------------------------*/
+
+
+
+/* --------------------------------- CAROUSEL ADJUSTMENT SMALL LAPTOPS ---------------------*/
+
+@media only screen and ( min-width:  960px  ) and ( max-width: 1008px ) {
+
+
+
+#pdp-hero {
+	
+		
+		#carousel-block {
+			
+			
+			#carousel {
+			
+				
+				#focus {  margin-top:-3.5%;
+					}
+				}
+			}
+		}
+
+}/* -----------------------------  END CAROUSEL FOR SMALL LAPTOP  -------------------------- */
+
+
+
+
+
+
+
+
 
 
 
@@ -3617,21 +2988,24 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 #pdp-hero {
 	min-height: 670px;
 		#carousel-block {
+			@include boxBrdrL;
 			min-height: 670px;
+			
 			#carousel {
 				min-height: 670px;
 				#focus {
-					margin-top:-15%;
+					margin-top:-10%;
 
 					}/* end focus */
 				}/* end carousel */
 			}/* end carousel-block  */
 
 		#cart-block {
+			@include boxBrdrR;
 			min-height: 670px;
 			}/* end cart-block */
 		#zoom-block {
-			left:-1500px;
+			left:-2000px;
 			}
 
 }/*-------------------  END 1280+ HERO ----------------- */
@@ -3654,23 +3028,22 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 	#pdp-hero {
 
 	.section-wrap {
-		@include boxBrdrL;
-		@include boxBrdrR;
+		
 		}
 
 	#carousel-block {
 			#carousel {
 				#focus {
-					margin-top:-18%;
+					/*margin-top:-18%; */
 					}/* end focus */
 				}/* end carousel */
 			}/* end carousel-block  */
 
 		#cart-block {
-			@include boxBrdrR;
+			/*@include boxBrdrR; */
 			}/* end cart-block */
 		#zoom-block {
-			left:-2000px;
+			/*left:-2000px;*/
 			}
 	}/*-------------------  END 1440 + HERO ----------------- */
 
@@ -3683,9 +3056,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 				li {
 					.tab-wrapper {
 						.vzn-slide {
-							min-width:1076px;
-							max-width:1076px;
-							margin:0 auto 0 auto; }
+						 }
 						} /* end tab-wrapper */
 					} /* end li */
 				}/* end tabs-content */

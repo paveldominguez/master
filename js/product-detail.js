@@ -53,6 +53,30 @@ var productDetail = (function() {
             slideshow: false,
             sync: "#thumbs"
         });
+        
+        
+        // handle extras for pdp-plus absolute positioned expanded images
+        setTimeout(function(){
+        	$jQ(heroFocus).find('li').each(function(){
+        		var liWd = $jQ(this).width();
+        		$jQ(this).css('height', liWd);
+        		$jQ(this).find('img').each(function(){
+        			var xCrd = $jQ(this).attr('data-xcoord');
+        			var yCrd = $jQ(this).attr('data-ycoord');
+        			
+        				if ( pgWidth > 1279 ) { yCrd = 0; }
+        				
+        			$jQ(this).css({
+        				'right' : xCrd + 'px',
+        				'bottom' : yCrd + 'px'
+        			});
+        		});
+        	});
+        }, 200 );
+        
+        
+        
+        
 
         //$jQ(zoomFocus).flexslider({
         //    animation: "slide",
@@ -151,6 +175,24 @@ var productDetail = (function() {
 	$jQ('.tabs dd a').click(function(){
 		pdpTab(this);
 	});
+	
+	
+// ONLOAD : position product details hero image on pdp-plus
+	
+	if ( pdpType == 'pdp-plus' ) {
+	
+		$jQ('#detail-hero-image-box').find('img').each(function(){
+		
+			var xCrd= $jQ(this).attr('data-xcoord');
+			var yCrd= $jQ(this).attr('data-ycoord');
+			
+			$jQ(this).css({ 
+				'top': yCrd + 'px',
+				'left': xCrd + 'px'
+			});
+		});
+	}
+	
 
 
 // ONLOAD : install overview tabs more/less interaction below the fold ...................
@@ -310,6 +352,22 @@ var productDetail = (function() {
         });
 
 
+	// special offers pop-ups in cart
+	
+	if ( pdpType == "pdp-plus" ) { //TEMP 'if' until pdp templates are finalized
+	
+		$jQ('.offer-more-icon').click(function() {
+			var iconPos = $jQ(this).position().left;
+			var boxPos = iconPos + 20;
+			
+			$jQ(this).parent().find('.pdp-offer-pop').css('left', boxPos).fadeIn('fast');
+		});
+		
+		
+		$jQ('.offer-close').click(function(){
+			$jQ(this).parents('.pdp-offer-pop').fadeOut('fast');
+		});
+	} // end TEMP 'if'
 
 
 
@@ -324,7 +382,7 @@ var productDetail = (function() {
         // desktop tabs : more/less interaction ..................
             if (pgWidth > 959 ){
             
-            	if ( pdpType == 'pdp' ) {
+            	if ( pdpType == 'pdp' ) { 
 
                 	$jQ('a.more-less-link').toggle(function(event) {
                     	showMore(this);
@@ -332,7 +390,7 @@ var productDetail = (function() {
                     	showLess(this);
                 	});
                 	
-                } else if ( pdpType == 'pdp-plus' ) {
+                } else if ( pdpType == 'pdp-plus' ) { // pdp-plus never uses the 'tabs' version
                 
                 	$jQ('a.more-less-link').toggle(function(event) {
                     	singleShowMore(this);
@@ -352,7 +410,50 @@ var productDetail = (function() {
                 });
             }
 
-
+		// pdp-plus hotspot interaction
+			if ( pdpType == "pdp-plus" ) {
+			
+			// select these
+				var spot = $jQ('#detail-hotspot');
+				var box = spot.next();
+			// get hotspot starting point
+				var spotLft = spot.attr('data-xcoord');
+				var spotTop = spot.attr('data-ycoord');
+			
+			// do math for content box position
+				var lftVar = parseInt(spotLft, 10);
+				var boxLft = (lftVar + 34);
+				
+				var topVar = parseInt(spotTop, 10);
+				var boxTop = ((topVar / 2) + 47);
+			
+			
+			//apply positioning	
+				spot.css({
+					'left': spotLft + 'px',
+					'top' : spotTop + 'px'
+				});
+				
+				box.css({
+					'left': boxLft + 'px',
+					'top' : boxTop + 'px'
+				});
+			
+			
+			//click functions	
+				spot.click(function(){
+					box.fadeIn();
+				});
+		
+				box.find('.hotspot-close').click(function(){
+					$jQ(this).parent().fadeOut();
+				});
+				
+		
+		
+			}
+				
+		
         // featured tab : graphic block interaction ..................
             $jQ('.features li').toggle(function(){
                 $jQ(this).find('.image').addClass('top');
@@ -577,9 +678,9 @@ function singleMoreLess(element) { //................. install single moreLess .
 
     // if needed, clone link and activate
         if ( childHt > parentHt ) {
-            childHt = (childHt + 60);  // mod for larger touch buttons
+            childHt = (childHt + 10);  // mod for larger touch buttons
             parent.addClass('single-more-less');
-            $jQ(element).parents('.tab-wrapper').find('.more-less').first().clone().prependTo(parent).attr({
+            $jQ(element).parents('.tab-wrapper').find('.more-less').first().clone().appendTo(parent).attr({
                 'data-child-height' : childHt,
                 'data-parent-height' : parentHt
             }); //end attr
@@ -592,9 +693,29 @@ function singleMoreLess(element) { //................. install single moreLess .
 
         //select these
         var childHt = $jQ(element).parent().attr('data-child-height');
+        var parentHt = $jQ(element).parent().attr('data-parent-height');
         var parent = $jQ(element).parents('.single-more-less');
         
-        //change 'em
+        
+        // if pdp-plus 960+
+        var pgWd = document.body.clientWidth;
+        var template = $jQ('body').attr('id');
+        
+        //alert(template); alert(pgWd);
+        if (template == 'pdp-plus' && pgWd > 959) {
+        
+        	// do the math
+        	var curTab  = $jQ(parent).parent();
+        	var curTabHt  = $jQ(curTab).height();
+        	var htDiff = ((childHt - parentHt));
+        	var newTabHt = curTabHt + htDiff;
+        	
+        	// make the change
+        	//alert(curTabHt); alert(htDiff);
+        	curTab.css('height', newTabHt);
+        }// if pdp plus 960+
+        
+        // make the change
         $jQ(parent).css('height', childHt).addClass('less').find('.see-all').addClass('on');
         $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 4px no-repeat');
         event.preventDefault();
@@ -607,10 +728,35 @@ function singleMoreLess(element) { //................. install single moreLess .
 
         //select these
         var parentHt = $jQ(element).parent().attr('data-parent-height');
+        var childHt = $jQ(element).parent().attr('data-child-height');
         var parent = $jQ(element).parents('.single-more-less');
         
         
-        // chnage'em
+        
+        // if pdp-plus 960+
+        var pgWd = document.body.clientWidth;
+        var template = $jQ('body').attr('id');
+        
+        //alert(template); alert(pgWd);
+        if (template == 'pdp-plus' && pgWd > 959) {
+        
+        	// do the math
+        	var curTab  = $jQ(parent).parent();
+        	var curTabHt  = $jQ(curTab).height();
+        	var htDiff = ((childHt - parentHt));
+        	var newTabHt = curTabHt - htDiff;
+        	
+        	// make the change
+        	//alert(curTabHt); alert(htDiff); alert(newTabHt);
+        	curTab.css('height', newTabHt);
+        }// if pdp plus 960+
+        
+        
+        
+        
+        
+        
+        // make the change
         $jQ(parent).css('height', parentHt ).removeClass('less').find('.see-all').removeClass('on');
         $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
         event.preventDefault();
@@ -633,7 +779,7 @@ function createZoomPanel() { // ............................ create zoom panel .
     // get current page dimensions
         var pgWd = document.body.clientWidth;
         var pgHt = document.body.clientHeight;
-
+		
 
     // create panel width & offset to match current dimensions
         var hSize = (pgWd + 15); //scroll bar width in Chrome, generate dynamically
@@ -1173,7 +1319,7 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
 
             } else if ( newOff <= endStop ) { // at end
 
-                endDiff = newOff + stopFctr;
+                endDiff = newOff + stopFctr -1;
 
             // move it
                 hSlide(list, endDiff);
@@ -1209,7 +1355,7 @@ function getMulti(type) { //........ responsive multipliers for vznSlide .......
                 } else if ( pgWidth > 1279 && pgWidth < 1440 ) { // 1280 layout
                     multi = 4;
                 } else { // 1440+ layout
-                    multi = 5
+                    multi = 4; // was 5 
                 } //end responsive val
 
     } else if (type == 'fancy') {
