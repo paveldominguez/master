@@ -1,6 +1,6 @@
 var $jQ = jQuery.noConflict(), // Prevent any future library conflicts
-VZ = {}, // Container for firing common and page-specic JavaScript
-UTIL = {}, //
+MLS = {}, // Container for firing common and page-specic JavaScript
+MLSUTIL = {}, //
 isTouch = $jQ('html.touch').length > 0 ? true : false;
 
 jQuery.extend( jQuery.fn, {
@@ -40,7 +40,7 @@ var debounce = (function() {
  * Enable and Fire Page Specific Functionality
  */
 
-VZ = {
+MLS = {
     config : {
         // container for commonly used configs throughout site
     },
@@ -57,6 +57,12 @@ VZ = {
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions
+        }
+    },
+    'home-page' : {
+        init : function() {
+            console.log("home init");
+            MLS.home.init();
         }
     },
     'brand-landing-page' : {
@@ -82,11 +88,21 @@ VZ = {
         init : function() {
             contentGrid.init();
             contentFilter.init();
-            var hdrOffer = $jQ('#spec-offer-header');
-            hdrOffer.find('.offer-actions .toggle').click(function(e) {
+            // simple offer toggle..
+            // may break out into a general module that handles interactions (if other js is necessary) in offers
+            var hdrOffer = $jQ('#spec-offer-header'),
+            hdrOfferHeight = hdrOffer.outerHeight();
+            hdrOffer.find('.offer-actions .toggle').on('click', function(e) {
                 e.preventDefault();
                 hdrOffer.toggleClass('open');
+                /*
+                hdrOffer.toggleClass('open', 1600).promise().done(function() {
+                    var height = hdrOffer.hasClass('open') ? hdrOffer.prop('scrollHeight') : hdrOfferHeight;
+                    hdrOffer.animate({ height: height }, 'slow');
+                });
+                */
             });
+            // end offer toggle
         }
     },
     'product-detail' : {
@@ -110,9 +126,9 @@ VZ = {
  * Credit: Paul Irish - http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/
  */
 
-UTIL = {
+MLSUTIL = {
     fire : function(func, funcname, args) {
-        var namespace = VZ;  // indicate your obj literal namespace here
+        var namespace = MLS;  // indicate your obj literal namespace here
         funcname = (funcname === undefined) ? 'init' : funcname;
         if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
             namespace[func][funcname](args);
@@ -120,14 +136,14 @@ UTIL = {
     },
     loadEvents : function() {
         var bodyId = document.body.id;
-        UTIL.fire('common');
+        MLSUTIL.fire('common');
         $jQ.each(document.body.className.split(/\s+/),function(i, classnm) {
-            UTIL.fire(classnm);
-            UTIL.fire(classnm, bodyId);
+            MLSUTIL.fire(classnm);
+            MLSUTIL.fire(classnm, bodyId);
         });
-        UTIL.fire('common', 'finalize');
+        MLSUTIL.fire('common', 'finalize');
     }
 };
 
 // Initialize
-$jQ(document).ready(UTIL.loadEvents);
+$jQ(document).ready(MLSUTIL.loadEvents);

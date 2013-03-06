@@ -2,32 +2,619 @@
   <!-- <div class="top-band">
     <a href="http://www.verizon.com/" title="Back to Verizon.com">&lt; verizon.com</a>
   </div> -->
-  <nav class="top-bar">
-      <ul class="left">
-        <!-- <li class="drawer show-for-small"><a href="#" class="ui-nav-drawer" title="map"></a></li> -->
-        <li class="logo name">
-          <h1>
-            <a href="/" title="VZW: MLS">VZW: MLS</a>
-          </h1>
-        </li>
-        <li class="has-dropdown nav-lifestyles"><a href="#" title="Lifestyles">Lifestyle</a></li>
-        <li class="has-dropdown nav-products"><a href="#" title="Products">Products</a></li>
-        <li class="has-dropdown nav-you hide-for-small"><a href="#" title="You">You</a></li>
-        <li class="account-links hide-for-medium-down">
-         <ul class="inline-list">
-            <li><a href="#" title="login">login</a></li>
-            <li><a href="#" title="sign up">sign up</a></li>
-         </ul>
-        </li>
-      </ul>
-      <ul class="right hide-for-small">
-        <li class="site-search">
-          <input type="text" placeholder="search" />
-        </li>
-        <li class="location"><a href="#" title="Map"></a></li>
-        <li class="help"><a href="#" title="Help"></a></li>
-        <li class="shopping-bag"><a href="#" title="My Shopping Bag"></a></li>
-      </ul>
-    </section>
+  <nav class="mls-nav tab-wrapper">
+    <ul id="nav-tabs-primary" class="nav-tabs left">
+      <li class="logo first">
+        <h1>
+          <a href="/" title="VZW: MLS">VZW: MLS</a>
+        </h1>
+      </li>
+      <li class="nav-tab dropdown"><a href="#nav-tab1" rel="nav-tab1" title="Lifestyles">lifestyles</a></li>
+      <li class="nav-tab dropdown"><a href="#nav-tab2" rel="nav-tab2" title="Products">products</a></li>
+      <li class="nav-tab dropdown active"><a href="#nav-tab3" rel="nav-tab3" title="Brands">brands</a></li>
+      <li class="nav-tab last"><a href="#" title="Special Offers">special offers</a></li>
+    </ul>
+    <ul id="nav-tabs-secondary" class="nav-tabs right">
+      <li class="nav-tab dropdown first"><a href="#nav-search" title="Search">search</a></li>
+      <li class="nav-tab dropdown last"><a href="#nav-cart" title="Cart">cart</a></li>
+    </ul>
   </nav>
+  <section id="nav-tabs-content" class="nav-tabs-content">
+    <div id="nav-tab1" class="tab-content lifestyles">
+      <ul class="tall-tab-section">
+        <li class="tall-tab fashionista first">
+          <a href="#" title="Fashionista">Fashionista</a>
+        </li>
+        <li class="tall-tab fitness-buff">
+          <a href="#" title="Fitness Buff">Fitness Buff</a>
+        </li>
+        <li class="tall-tab medialorem">
+          <a href="#" title="Medialorem">Medialorem</a>
+        </li>
+        <li class="tall-tab traveler">
+          <a href="#" title="Traveler">Traveler</a>
+        </li>
+        <li class="tall-tab modern-family">
+          <a href="#" title="Modern Family">Modern Family</a>
+        </li>
+        <li class="tall-tab fun-seeker last">
+          <a href="#" title="Fun Seeker">Fun Seeker</a>
+        </li>
+      </ul>
+    </div>
+    <div id="nav-tab2" class="tab-content products">
+      <div class="side-nav-section tab-wrapper">
+        <ul id="nav-tab2-subnav">
+          <li class="subnav-tab first">
+            <a href="#tab2-subnav1" rel="tab2-subnav1" class="tab2-subnav1" title="Photo &amp; Video">photo &amp; video</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav2" rel="tab2-subnav2" class="tab2-subnav2" title="Cases &amp; Protection">cases &amp; protection</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav3" rel="tab2-subnav3" class="tab2-subnav3" title="Chargers &amp; Power">chargers &amp; power</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav4" rel="tab2-subnav4" class="tab2-subnav4" title="Health &amp; Fitness">health &amp; fitness</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav5" rel="tab2-subnav5" class="tab2-subnav5" title="Home &amp; Family">home &amp; family</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav6" rel="tab2-subnav6" class="tab2-subnav6" title="Memory &amp; Storage">memory &amp; storage</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav7" rel="tab2-subnav7" class="tab2-subnav7" title="Productivity">productivity</a>
+            <span class="indicator"></span>
+          </li>
+          <li class="subnav-tab">
+            <a href="#tab2-subnav8" rel="tab2-subnav8" class="tab2-subnav8" title="See All">see all</a>
+            <span class="indicator"></span>
+          </li>
+        </ul>
+        <div id="nav-tab2-subnav-content" class="subnav-content">
+          <ul id="tab2-subnav1" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav2" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav3" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav4" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav5" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav6" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav7" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+          <ul id="tab2-subnav8" class="subnav-grid">
+            <li class="nav-grid-item first">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="lorem ipsum">
+                <figure class="nav-grid-fig">
+                  <img src="img/nav/fpo-nav-grid-item" alt="alt"/>
+                  <figcaption class="title">lorem ipsum</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-grid-item">
+              <a href="#" title="telescopes">see all lorem ipsum &gt;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="nav-tab3" class="tab-content brands">
+      <ul class="tab-section">
+        <li class="tab first">
+          <a href="#" class="sony" title="Sony">Sony</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="canon" title="Canon">Canon</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="epson" title="Epson">Epson</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="panasonic" title="Panasonic">Panasonic</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="lg" title="LG">LG</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="apple" title="Apple">Apple</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="microsoft" title="Microsoft">Microsoft</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="insignia" title="Insignia">Insignia</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="intel" title="Intel">Intel</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="lg" title="LG">LG</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="hp" title="hp">hp</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="nikon" title="Nikon">Nikon</a>
+        </li>
+        <li class="tab">
+          <a href="#" class="belkin" title="Belkin">Belkin</a>
+        </li>
+        <li class="tab last">
+          <a href="#" title="See all brands">See all brands &gt;</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </header>

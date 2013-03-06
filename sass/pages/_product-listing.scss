@@ -71,7 +71,8 @@ $hdrOfferCollapsed: 55px;
     .offer-content {
         position:relative;
         line-height: $hdrOfferCollapsed;
-        background: transparent url(../img/product-category-listing/sp-ofr-aux-sm-top-right.png) 0 12px no-repeat;
+        background: transparent url(../img/product-category-listing/sp-ofr-jack-top-right.png) 0 12px no-repeat;
+        @include background-size(75px);
         .offer-cta { 
             display: none; 
             font: {
@@ -116,19 +117,21 @@ $hdrOfferCollapsed: 55px;
         .expand {
             padding-right: 15px;
             @include product-listing-sprite(sp-ofr-show-more-white, false, 58px, 3px);
+            @include transition(width .25s cubic-bezier(0, .50, .51, 1.00));
         }
         .collapse { 
             display: none;
             padding-right: 31px;
             @include product-listing-sprite(sp-ofr-close-white, false, 38px, 14px);
             color: rgba(255, 255, 255, 0.5);
+            @include transition(width .25s cubic-bezier(0, .50, .51, 1.00));
         }
     }
     &.open {
         height: auto;
         .offer-content {
             padding: 55px 0 20px;
-            background: transparent url(../img/product-category-listing/sp-ofr-aux-lg-top-right.png) 0 12px no-repeat;
+            @include background-size(130px);
             .offer-fig {
                 position: absolute;
                 top: 70px;
@@ -145,7 +148,8 @@ $hdrOfferCollapsed: 55px;
                         size: 148px;
                         weight: normal;
                     }
-                    line-height: 148px;
+                    line-height: 1em;
+                    sup, span { line-height: 1em; }
                     sup {
                         font: {
                             family: $fontVzwLight;
@@ -154,7 +158,7 @@ $hdrOfferCollapsed: 55px;
                     }
                     span {
                         position: absolute;
-                        bottom: 18px;
+                        bottom: 70px;
                         left: 247px;
                         text-transform: uppercase;
                         font: {
