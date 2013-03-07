@@ -49,7 +49,8 @@ MLS = {
                 }, 300);
             });
             // END - FOR DEBUGGING MEDIA QUERIES, WILL NOT BE IN FINAL JS
-            MLS.ui.tabs('#site-header');
+            // iniitialize site nav tabs
+            MLS.ui.tabs('#mls-nav');
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions
