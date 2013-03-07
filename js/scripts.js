@@ -3,11 +3,6 @@ MLS = {}, // Container for firing common and page-specic JavaScript
 MLSUTIL = {}, //
 isTouch = $jQ('html.touch').length > 0 ? true : false;
 
-jQuery.extend( jQuery.fn, {
-    hasParent: function(p) {
-        return this.parents().filter(p).length > 0 ? true : false;
-    }
-});
 /*
  * Global Functions
  */
@@ -54,6 +49,7 @@ MLS = {
                 }, 300);
             });
             // END - FOR DEBUGGING MEDIA QUERIES, WILL NOT BE IN FINAL JS
+            MLS.ui.tabs('#site-header');
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions
