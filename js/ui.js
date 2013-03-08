@@ -1,21 +1,24 @@
 MLS.ui = {
+	// clickable tabs
+	tabs: function(element, startOpen) {
 
-	tabs: function(element) {
 		var scope = element,
-			tabs = $('.tab-content li', scope),
+			$contentTabs = $jQ(scope + ' > .tab-content > .tab'),
 			activeClass = "active";
 
-		$('.tab-menu li', scope).each(function(i, el) {
-			$(this).add(tabs[i]).attr("tab", i + 1);
+		$jQ(scope + ' > .tab-menu > .tab').each(function(i, el) {
+			$jQ(this).add($contentTabs[i]).attr("tab", i + 1);
 		});
 
-		$('.tab-menu li', scope).on('click', function() {
-			var tab = $(this).attr("tab");
-			$('.tab-menu li, .tab-content li').removeClass(activeClass);
-			$(this).addClass(activeClass);
-			$('.tab-content li[tab=' + tab + ']', scope).addClass(activeClass);
+		$jQ(scope + ' > .tab-menu > .tab').on('click', function(e) {
+			e.preventDefault();
+			var tab = $jQ(this).attr("tab");
+			$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+			$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
 		});
 
-		$('.tab-menu li:first-child,.tab-content li:first-child', scope).addClass(activeClass);
+		if( startOpen !== undefined ) {
+			$jQ(scope + ' > .tab-menu > .tab:first-child').add(scope + ' > .tab-content > .tab:first-child').addClass(activeClass);
+		}
 	}
 };

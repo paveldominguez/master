@@ -49,10 +49,11 @@ h1,h2,h3,h4,h5,h6 {
 #site-header { 
     .mls-nav {
         overflow: hidden;
-        height: 45px;
         .nav-tabs {
+            height: 45px;
+            margin: 0;
             .logo,
-            .nav-tab { 
+            .nav-item { 
                 float: left; 
                 a { 
                     display: block; 
@@ -60,18 +61,22 @@ h1,h2,h3,h4,h5,h6 {
                 }
             }
             &.left {
-                .dropdown {
+                > .tab {
                     a {
                         background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
                         padding-right: 15px;
                     }
                 }
             }
-            .nav-tab {
+            .nav-item {
                 height: 45px;
                 line-height: 45px;
                 padding: 0 15px;
                 text-align: center;
+                border: {
+                    left: 1px solid white;
+                    right: 1px solid white;
+                }
                 font: {
                     family: $fontVzwBook;
                     size: 18px;
@@ -98,9 +103,12 @@ h1,h2,h3,h4,h5,h6 {
             }
         }
     }
-    .nav-tabs-content { 
-        display: none;
-        /* styles to come.. */
+    .tab-content {
+        margin: 0;
+        > .tab { 
+            display: none; 
+            &.active { display: block; }
+        }
     }
 }
 
