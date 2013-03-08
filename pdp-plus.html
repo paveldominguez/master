@@ -47,6 +47,17 @@
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
+  
+  		<div id="states">
+  			<ul>
+  				<li id="state-standard" class="on">standard</li>
+  				<li id="state-sale">sale</li>
+  				<li id="product-oos">product OOS</li>
+  				<li id="color-oos">color OOS</li>
+  			</ul>
+  		</div><!-- TEMP set of buttons to toggle states for dev -->
+  
+  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
@@ -224,6 +235,21 @@
 
 
       			<div id="add-cart-box">
+      			
+      				<div class="OOS product">
+      					<p>Sorry, this product is out of stock.
+      					</p>
+      				</div>
+      			
+      				<div class="OOS color">
+      					<p>Sorry, thiscolor is out of stock. Try another color. 
+      					</p>
+      				</div>
+      			
+      			
+      			
+      			
+      			
       				<input class="button add-cart-cta" type="button" title="Add to Cart" value= "Add to Cart">
       			</div><!-- end add-cart -->
 
@@ -345,7 +371,7 @@
   			<div id="detail-hero-image-box">
   				<img src="img/product-detail-page/pdp-plus/detail-hero-bg.png" title="Beats by Dre On-Ear Headphones" data-xcoord="125" data-ycoord="-90" >
 			
-        		<div id="detail-hotspot" data-xcoord="180" data-ycoord="270"></div>
+        		<div id="detail-hotspot" data-xcoord="140" data-ycoord="495"></div>
         			<div id="hotspot-pop-box">
         				<div class="hotspot-close"></div>
         				<div class="pointer"></div>
@@ -408,7 +434,7 @@
 
 						<div class="you-need third right">
 						    <div class="tab-inner">
-							    <h3>You'll Need These</h3>
+							    <h3>This product requires these accessories:</h3>
 							    <ul class="you-need-items">
 
 								<li class="item">
@@ -776,12 +802,12 @@
 		    <div class="btf-hero-image hero-right">
 		        
 		        <div id="btf-hero-data-1" class="btf-hero-data">
-		        	<img src="" title="">
+		        	<div class="image"></div>
 		        	<div class="headline">Headline</div>
 		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
 		        </div>
 		        <div id="btf-hero-data-2" class="btf-hero-data">
-		        	<img src="" title="">
+		        	<div class="image"></div>
 		        	<div class="headline">Headline</div>
 		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
 		        </div>
@@ -890,32 +916,33 @@
         			
         			<div class="feature-box">
         				<div class="feature-title">
-        					<h3>App Enabled</h3>
+        					<h3>Try these Apps</h3>
         				</div>
         				
-        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. Suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt.
+        				</div>
         				
         				<div class="feature-list">
         					<ul>
         						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<h4>Facebook</h4>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>
         						</li>
         						
         						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<h4>Yelp</h4>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>
         						</li>
         						
         						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<h4>Foursquare</h4>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>
@@ -940,7 +967,8 @@
         					<h3>Data Plan Required</h3>
         				</div>
         				
-        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. Suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt.
+        				</div>
         				
         				<div class="feature-list">
         					<ul>
@@ -985,7 +1013,8 @@
         					<h3>WiFi Enabled</h3>
         				</div>
         				
-        				<div class="plain-text">Lotsa lorem ipsum ... </div>
+        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. Suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt.
+        				</div>
         				
         				<div class="feature-list">
         					<ul>
@@ -1032,13 +1061,14 @@
         					<h3>Smart Accessory</h3>
         				</div>
         				
-        				<div class="plain-text">Lots lorem ipsum ... </div>
+        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. Suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt.
+        				</div>
         				
         				<div class="feature-list">
         					<ul>
         						<li class="feature-item">
         							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>
@@ -1046,7 +1076,7 @@
         						
         						<li class="feature-item">
         							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>
@@ -1054,7 +1084,7 @@
         						
         						<li class="feature-item">
         							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
+        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
         							<a href="#" class="learn-more-link" title="Learn More">
         								Learn more
         							</a>

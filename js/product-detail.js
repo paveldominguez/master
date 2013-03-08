@@ -3,19 +3,6 @@ var productDetail = (function() {
     var pub = {
         init : function() {
 
-
-//ONLOAD : special offer display .........................................................
-
-    // offers off
-      //  $jQ('.offer').css('display', 'none');
-      //  $jQ('.no-offer').css('display', 'list-item');
-
-    // offers on
-        $jQ('.offer').css('display', 'list-item');
-        $jQ('.no-offer').css('display', 'none');
-        
-        
-        
 		
 // ONLOAD : universal vars for contextual/dynamic layouts
         var pgWidth = document.body.clientWidth;
@@ -64,7 +51,11 @@ var productDetail = (function() {
         			var xCrd = $jQ(this).attr('data-xcoord');
         			var yCrd = $jQ(this).attr('data-ycoord');
         			
-        				if ( pgWidth > 1279 ) { yCrd = 0; }
+        				if ( pgWidth > 1279 ) { 
+        				
+        				var parsedY = parseInt(yCrd, 10);
+        				
+        				yCrd = parsedY + 75; } // build out this logic with more exmaple photography
         				
         			$jQ(this).css({
         				'right' : xCrd + 'px',
@@ -229,7 +220,6 @@ var productDetail = (function() {
 
 				// move these
         			
-        			$jQ(specTab).find('.third.center').appendTo('#specsTab .third.left .tab-inner');
         			$jQ(compatTab).find('.see-all').appendTo('.compat-results .tab-inner');
 
         		// apply 'show' class for assessing actual content
@@ -410,7 +400,7 @@ var productDetail = (function() {
                 });
             }
 
-		// pdp-plus hotspot interaction
+		// pdp-plus details hero image & hotspot interaction
 			if ( pdpType == "pdp-plus" ) {
 			
 			// select these
@@ -425,7 +415,7 @@ var productDetail = (function() {
 				var boxLft = (lftVar + 34);
 				
 				var topVar = parseInt(spotTop, 10);
-				var boxTop = ((topVar / 2) + 47);
+				var boxTop = ((topVar) );
 			
 			
 			//apply positioning	
@@ -440,7 +430,7 @@ var productDetail = (function() {
 				});
 			
 			
-			//click functions	
+			//hotspot click functions	
 				spot.click(function(){
 					box.fadeIn();
 				});
@@ -449,9 +439,36 @@ var productDetail = (function() {
 					$jQ(this).parent().fadeOut();
 				});
 				
-		
-		
-			}
+			
+			// hide image for bazaar voice tabs, show for the rest
+				
+				var dTabs = window.document.getElementById('detail-tabs');
+
+				$jQ(dTabs).find('.overview a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.features a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.specs a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.compat a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+
+				$jQ(dTabs).find('.reviews a').click(function(){
+					$jQ('#detail-hero-image-box').hide();
+				}); 
+				
+				$jQ(dTabs).find('.questions a').click(function(){
+					$jQ('#detail-hero-image-box').hide();
+				});
+
+			} // end 'if pdp plus'
 				
 		
         // featured tab : graphic block interaction ..................
@@ -1192,11 +1209,9 @@ function vznSlideInstall (element, type) { //.................. vznSlide Install
     //  first assemble these contextual values
 
         if (type == 'simple') {
-
-            var startOff = $jQ('.vzn-slide.simple').first().offset().left;  // needsRESIZE
             var baseIncr = $jQ(element).find('li').width();
             var multi = getMulti(type);
-            $jQ(element).attr('data-start-off', startOff);
+            
 
 
         } else if (type == 'fancy') {
@@ -1271,58 +1286,49 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
             var slideWindow = tabWrap.find('.vzn-slide');
             var list = slideWindow.find('.slides');
 
-        //start these fresh each time
-            var newOff = 0;
-            var begDiff = 0;
-            var endDiff = 0;
-            var stopFctr = 0;
-            var endStop = 0;
+        //start fresh each time
+            var newPosition = 0;
 
         // get these values
-            var winLngRaw = slideWindow.width();
-            var stOffRaw = $jQ(slideWindow).attr('data-start-off');
+            var winLngRaw = slideWindow.width(); // window length
             var lstLngRaw = $jQ(list).attr('data-length');
             var advRaw = $jQ(element).attr('data-incr');
-            var curOffRaw = $jQ(list).offset().left;
+            var curPosRaw = $jQ(list).position().left;
+           
 
 
         // parse them all
             var windowLength = parseInt(winLngRaw, 10);
-            var startOff = parseInt(stOffRaw, 10);
             var listLength = parseInt(lstLngRaw, 10);
             var advance = parseInt(advRaw, 10);
-            var currentOff = parseInt(curOffRaw, 10);
+            var currentPosition = parseInt(curPosRaw, 10);
+            
+        //calculate end position
+			var endPosition = (windowLength - listLength) ; 
+			// if this is 0 or positive, no slideshow at all ADD THIS LOGIC!!!!!!!!!!!!!!!!!
 
 
+//alert(listLength); alert(windowLength);  alert(advance); alert(currentPosition); alert(endPosition);
 
-//alert(listLength); alert(windowLength);  alert(advance); alert(startOff);alert(currentOff);
 
-
-        // do the math
-            newOff = ((currentOff + advance)- startOff);
-            stopFctr = listLength + newOff ;
-            endStop = ((listLength - windowLength) * -1);
-
-//alert(currentOff); alert(newOff); alert(stopFctr); alert(endStop);
-
+        // do the 'loop' math
+            newPosition = (currentPosition + advance);
+            
         //decide what to do
-            if ( newOff >= 0) { // back at beginning
+            if ( newPosition >= 0) { // back at beginning
+                newPosition = 0;
 
-                newOff = 0;
+            	//move it
+                	hSlide(list, newPosition);
 
-            //move it
-                hSlide(list, newOff);
+            	// turn prev off, leave next on
+                	$jQ(tabWrap).find('.vzn-slide-prev').addClass('off');
+                	$jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
 
-            // turn prev off, leave next on
-                $jQ(tabWrap).find('.vzn-slide-prev').addClass('off');
-                $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
-
-            } else if ( newOff <= endStop ) { // at end
-
-                endDiff = newOff + stopFctr -1;
+            } else if ( newPosition <= endPosition ) { // at end
 
             // move it
-                hSlide(list, endDiff);
+                hSlide(list, endPosition);
 
             // turn next off, turn prev on
                 $jQ(tabWrap).find('.vzn-slide-next').addClass('off');
@@ -1330,7 +1336,7 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
 
             } else { // somewhere in between
             // move it
-                hSlide(list,newOff);
+                hSlide(list,newPosition);
 
             // make sure both are on
                 $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
@@ -1406,6 +1412,120 @@ function zSlide(element,hValue, vValue) { //....... horiz/vert move ............
 
 //........................... TEMP development stuff......................................
 
+
+// ............. state toggle buttons in header .........
+
+	var stndrd = document.getElementById('state-standard');
+	var sale = document.getElementById('state-sale');
+	var prod = document.getElementById('product-oos');
+	var clr = document.getElementById('color-oos');
+
+
+	$jQ(stndrd).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(sale).removeClass('on');
+			$jQ(prod).removeClass('on');
+			$jQ(clr).removeClass('on');
+		
+		//turn off everything else
+	
+		  	// turn off sale, restore standard where req
+        		$jQ('.offer').css('display', 'none');
+        		$jQ('.no-offer').css('display', 'list-item');
+        	
+        	// turn off product, restore button
+        		$jQ('.OOS.product').css('display', 'none');
+        		$jQ('.add-cart-cta').removeClass('oos');
+        	
+        	
+        	// turn off color, 
+				$jQ('.OOS.color').css('display', 'none');
+				
+			// restore cta button
+        		$jQ('#add-cart-box').removeClass('oos');	
+	
+	});
+	
+	
+	
+	$jQ(sale).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+	
+		// turn on sale elements, hide standard where req
+        	$jQ('.offer').css('display', 'list-item');
+        	$jQ('.no-offer').css('display', 'none');
+	});
+
+
+	$jQ(prod).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(clr).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.product').css('display', 'block');
+			$jQ('.OOS.color').css('display', 'none');	
+			$jQ('.add-cart-cta').addClass('oos');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+	});
+
+
+
+	$jQ(clr).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(prod).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.color').css('display', 'block');
+			$jQ('.OOS.product').css('display', 'none');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+
+			
+	});
+
+
+
+  
+
+
+        
+       
+        
 
 
 $jQ('.product-link').each(function() { //......... get info for TEMP product click .......
