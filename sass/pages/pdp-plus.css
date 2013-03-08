@@ -1,36 +1,23 @@
 /*
-Syntax error: File to import not found or unreadable: foundation/common/ratios.
-              Load paths:
-                /Volumes/Nemo/Development/repos/Sapient/vzw/sass
-                /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets
-                /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets
-                Compass::SpriteImporter
-        on line 1 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/_settings.scss
-        from line 8 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/_app.scss
-        from line 2 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/styles.scss
-
-1: /Volumes/Nemo/Development/repos/Sapient/vzw/sass/styles.scss
+Syntax error: Undefined mixin 'clearfix'.
+        on line 183 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss, in `clearfix'
+        from line 183 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss
 
 Backtrace:
-/Volumes/Nemo/Development/repos/Sapient/vzw/sass/_settings.scss:1
-/Volumes/Nemo/Development/repos/Sapient/vzw/sass/_app.scss:8
-/Volumes/Nemo/Development/repos/Sapient/vzw/sass/styles.scss:2
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/import_node.rb:67:in `import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/import_node.rb:28:in `imported_file'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/import_node.rb:37:in `css_import?'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:217:in `visit_import'
+/Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss:183:in `clearfix'
+/Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss:183
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:253:in `visit_mixin'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
+/Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:320:in `visit_rule'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.6/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
@@ -75,4 +62,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: foundation/common/ratios.\A               Load paths:\A                 /Volumes/Nemo/Development/repos/Sapient/vzw/sass\A                 /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A         on line 1 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/_settings.scss\A         from line 8 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/_app.scss\A         from line 2 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/styles.scss\A \A 1: /Volumes/Nemo/Development/repos/Sapient/vzw/sass/styles.scss"; }
+  content: "Syntax error: Undefined mixin 'clearfix'.\A         on line 183 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss, in `clearfix'\A         from line 183 of /Volumes/Nemo/Development/repos/Sapient/vzw/sass/pages/pdp-plus.scss"; }

@@ -1,42 +1,28 @@
-
-// .home-page {
-
-// }
-
-// @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
-
-// }
-// @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
-
-// }
-// @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
-
-// }
-// @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
-
-// }
-
 $colorPromoBg: #EEEEEE;
 $colorPromoFont: #6D6E71;
 
 .home-page {
     .home-hero {
-        max-height: 500px;
+        max-height: 400px;
+        max-width: 1400px;
         overflow: hidden;
-        .hero-info {
-            position: absolute;
-            right: 0;
-            height: 100%;
-            width: 34%;
-            background: #2a2d32;
-            top: 0;
-            max-height: 500px;
-            .hero-copy {
-                color: $colorPromoFont;
-                font: {
-                    family: $fontVzwBook;
-                    size: 24px;
-                    style: italic;
+        #home-hero-slider{
+            .slides li{display:none;}
+            .hero-info {
+                position: absolute;
+                right: 0;
+                height: 100%;
+                width: 34%;
+                background: #2a2d32;
+                top: 0;
+                max-height: 500px;
+                .hero-copy {
+                    color: $colorPromoFont;
+                    font: {
+                        family: $fontVzwBook;
+                        size: 24px;
+                        style: italic;
+                    }
                 }
             }
         }
