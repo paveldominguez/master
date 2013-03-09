@@ -1,7 +1,10 @@
 MLS.ui = {
-	// clickable tabs
-	tabs: function(element, startOpen) {
+	/* 
+	 * Clickable Tabs
+	 * @element: (string) parent (containing) element
+	 */
 
+	tabs: function(element) {
 		var scope = element,
 			$contentTabs = $jQ(scope + ' > .tab-content > .tab'),
 			activeClass = "active";
@@ -17,8 +20,44 @@ MLS.ui = {
 			$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
 		});
 
-		if( startOpen !== undefined ) {
-			$jQ(scope + ' > .tab-menu > .tab:first-child').add(scope + ' > .tab-content > .tab:first-child').addClass(activeClass);
-		}
+		$jQ(scope + ' > .tab-menu > .tab:first-child').add(scope + ' > .tab-content > .tab:first-child').addClass(activeClass);
+	},
+
+	/* 
+	 * Navigation Tabs
+	 * @element: (string) containing element
+	 */
+	navTabs : function(element) {
+		var scope = element,
+			$contentTabs = $jQ(element + ' > .tab-content > .tab'),
+			activeClass = "active";
+
+		$jQ(scope + ' > .tab-menu > .tab').each(function(i, el) {
+			$jQ(this).add($contentTabs[i]).attr("tab", i + 1);
+		});
+
+		$jQ(scope + ' > .tab-menu > .nav-item').on({
+			'hover' : function() {
+				if($jQ(this).hasClass('tab')) {
+					var tab = $jQ(this).attr("tab");
+					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
+
+					$jQ(scope).one('mouseleave', function(e) {
+						$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+					});
+				} else
+				if(!$jQ(this).hasClass('.tab')) {
+					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+				}
+			},
+			'click' : function() {
+				if($jQ(this).hasClass('tab')) {
+					var tab = $jQ(this).attr("tab");
+					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
+				}
+			}
+		});
 	}
 };

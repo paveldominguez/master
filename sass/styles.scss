@@ -10,13 +10,15 @@ $fontVzw: "Verizon Apex";
 $fontVzwBook: "Verizon Apex Book";
 $fontVzwBookItalic: "Verizon Apex Book Italic";
 $fontVzwBold: "Verizon Apex Bold";
+$fontVzwBoldItalic: "Verizon Apex Bold Italic";
 $fontVzwLight: "Verizon Apex Light";
 $fontVzwMedium: "Verizon Apex Medium";
 
 // Color Variables
 $colorVzwRed: #D00505;
 $colorVzwLogoBg: #B30000;
-$colorVzwNavBorder: #F6F6F6;
+$colorVzwNavBrd: #FFFFFF;
+$colorVzwNavBrdShade: #D1D3D0;
 $colorNavLinks: #757575;
 $colorNavAccountLinks: #999;
 $colorProductPanelBorder: #E5E5E5;
@@ -46,84 +48,34 @@ h1,h2,h3,h4,h5,h6 {
     padding: 0 $columnGutter;
     max-width: $screenXlarge - $columnGutter;
 }
+
+#site-container {
+    max-width: $rowWidth;
+    margin: 0 auto;
+}
 #site-header { 
-    .mls-nav {
-        overflow: hidden;
-        .nav-tabs {
-            height: 45px;
-            margin: 0;
-            .logo,
-            .nav-item { 
-                float: left; 
-                a { 
-                    display: block; 
-                    color: $colorNavLinks;
-                }
-            }
-            &.left {
-                > .tab {
-                    a {
-                        background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
-                        padding-right: 15px;
-                    }
-                }
-            }
-            .nav-item {
-                height: 45px;
-                line-height: 45px;
-                padding: 0 15px;
-                text-align: center;
-                border: {
-                    left: 1px solid white;
-                    right: 1px solid white;
-                }
-                font: {
-                    family: $fontVzwBook;
-                    size: 18px;
-                }
-                &.active {
-                    background-color: $colorActiveTabBg;
-                    border: {
-                        left: 1px solid $colorActiveTabBrd;
-                        right: 1px solid $colorActiveTabBrd;
-                    }
-                }
-            }
-            .logo {
-                width: 45px;
-                h1 { 
-                    margin: 0;
-                    text-indent: -9999px;
-                    padding: 15px;
-                    font-size: 18px;
-                    a {
-                        background-color: #757575;
-                    }
-                }
-            }
-        }
-    }
-    .tab-content {
-        margin: 0;
-        > .tab { 
-            display: none; 
-            &.active { display: block; }
-        }
-    }
+
 }
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
     .hide-for-large-grid { display: none; }
     .show-for-large-grid { display: inherit; }
 }
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
 
+}
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
+
+}
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-
+    
 }
 @media only screen and (max-width: $screenMobileSmall) {
     
 }
 // Page Includes
+@import "globals/mega-menu";
+@import "pages/home";
 @import "pages/product-listing";
 @import "pages/product-detail";
 @import "pages/search-results";

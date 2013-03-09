@@ -1,0 +1,198 @@
+#mls-nav-mobile { display: none; }
+.mls-nav {
+    overflow: hidden;
+    .nav-tabs {
+        height: 45px;
+        margin: 0;
+        .logo,
+        .nav-item { 
+            float: left; 
+            a { 
+                display: block; 
+                color: $colorNavLinks;
+            }
+        }
+        &.left {
+            > .tab {
+                span {
+                    cursor: pointer;
+                    background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
+                    padding-right: 15px;
+                }
+            }
+        }
+        .nav-item {
+            height: 45px;
+            line-height: 45px;
+            padding: 0 15px;
+            text-align: center;
+            border: {
+                left: 1px solid white;
+                right: 1px solid white;
+            }
+            font: {
+                family: $fontVzwBook;
+                size: 18px;
+            }
+            &.active {
+                background-color: $colorActiveTabBg;
+                border: {
+                    left: 1px solid $colorActiveTabBrd;
+                    right: 1px solid $colorActiveTabBrd;
+                }
+                span {
+                    background-image: url(../img/sprites/ui/drop-down-active.png);
+                }
+            }
+        }
+        .logo {
+            width: 45px;
+            h1 { 
+                margin: 0;
+                text-indent: -9999px;
+                padding: 15px;
+                font-size: 18px;
+                a {
+                    background-color: #757575;
+                }
+            }
+        }
+    }
+    .tab-content > .tab {
+        display: none;
+        &.active { display: block; }
+    }
+    > .tab-content {
+        clear: both;
+        position: absolute;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        background-color: $colorActiveTabBg;
+        > .tab { 
+            ul { margin: 0; }
+            .tab-menu {
+                float: left;
+                width: 245px;
+            }
+            .tab-content {
+                width: auto;
+                margin-left: 245px;
+            }
+        }
+        .lifestyles .tall-tab-section {
+            height: 342px;
+            .tall-tab {
+                @include column(2);
+                overflow: hidden;
+                height: 100%;
+                border: {
+                    left: 1px solid $colorVzwNavBrd;
+                    right: 2px solid $colorVzwNavBrdShade;
+                }
+                a {
+                    position: relative;
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+                    .tab-fig {
+                        display: table-cell;
+                        width: 100%;
+                        padding-bottom: 75px;
+                        text-align: center;
+                        vertical-align: bottom;
+                        figcaption {
+                            position: absolute;
+                            bottom: 10px;
+                            left: 15px;
+                            color: white;
+                            font: {
+                                family: $fontVzwBoldItalic;
+                                size: 18px;
+                            }
+                        }
+                    }
+                }
+                &.fashionista {
+                    border-left: none;
+                    background: transparent url(../img/nav/bgFashionista.jpg) top center no-repeat;
+                }
+                &.fitness {
+                    background: transparent url(../img/nav/bgFitness.jpg) top center no-repeat;
+                }
+                &.medialorem {
+                    background: transparent url(../img/nav/bgMedialorem.jpg) top center no-repeat;
+                }
+                &.traveler {
+                    background: transparent url(../img/nav/bgTraveler.jpg) top center no-repeat;
+                }
+                &.family {
+                    background: transparent url(../img/nav/bgFamily.jpg) top center no-repeat;
+                }
+                &.fun-seeker {
+                    background: transparent url(../img/nav/bgFunseeker.jpg) top center no-repeat;
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $screenMedium - 1) {
+    .mls-nav { 
+        > .tab-content {
+            .lifestyles .tall-tab-section {
+                .tall-tab {
+                    width: 33.33333%;
+                    height: 50%;
+                    a {
+                        .tab-fig {
+                            padding: 0;
+                            vertical-align: middle;
+                            img {
+                                max-width: 18%;
+                            }
+                        }
+                    }
+                    &.medialorem {
+                        border-right: none;
+                    }
+                    &.traveler {
+                        border-left: none;
+                    }
+                    &.fashionista,
+                    &.fitness,
+                    &.medialorem {
+                        border-bottom: 1px solid $colorVzwNavBrdShade;
+                    }
+                    &.traveler,
+                    &.family,
+                    &.fun-seeker { 
+                        border-top: 1px solid $colorVzwNavBrd;
+                    }
+                    &.fashionista,
+                    &.fitness,
+                    &.medialorem,
+                    &.traveler,
+                    &.family,
+                    &.fun-seeker { 
+                        @include background-size(100%);
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenMobileLarge - 1) {
+    #mls-nav-mobile { display: block; }
+    #mls-nav { display: none; }
+    .left { float: left; }
+    .right { float: right; }
+}
+@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
+    
+}
+@media only screen and (max-width: $screenMobileSmall) {
+    
+}
