@@ -1,3 +1,5 @@
+$colorCountRed: #C00;
+
 #mls-nav-mobile { display: none; }
 .mls-nav {
     overflow: hidden;
@@ -55,6 +57,37 @@
                 a {
                     background-color: #757575;
                 }
+            }
+        }
+        .nav-search,
+        .nav-cart {
+            padding: 0;
+            a {
+                text-indent: -9999px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        .nav-search {
+            a{
+                @include nav-sprite(nav-ico-search, false, 16px, 15px);
+            }
+        }
+        .nav-cart {
+            padding-right: 15px;
+            cursor: pointer;
+            font: {
+                family: $fontArial;
+                size: 12px;
+                weight: bold;
+            }
+            a{
+                @include nav-sprite(nav-ico-cart, false, 18px, 15px);
+            }
+            a,
+            .count { 
+                float: left; 
+                color: $colorCountRed;
             }
         }
     }
@@ -187,6 +220,8 @@
 @media only screen and (max-width: $screenMobileLarge - 1) {
     #mls-nav-mobile { display: block; }
     #mls-nav { display: none; }
+}
+@media only screen and (max-width: $screenSmall) {
     .left { float: left; }
     .right { float: right; }
 }
