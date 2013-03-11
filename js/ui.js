@@ -59,5 +59,24 @@ MLS.ui = {
 				}
 			}
 		});
+	},
+	navAccordion : function(element) {
+		var scope = element,
+		$accordionTabs = $jQ(scope + ' > .tab > a'),
+		activeClass = "active";
+
+		$accordionTabs.on('click', function(e) {
+			$jQ(scope + ' > .tab').removeClass(activeClass);
+			var $acContent = $jQ(this).next(),
+			$wHeight = $jQ(window).outerHeight(),
+			$navHeight = $jQ('#nav-mobile-tabs-primary').outerHeight(),
+			$acTabHeight = $jQ(scope + ' > .tab').outerHeight();
+
+			if($acContent.hasClass('accordion-content')) {
+				e.preventDefault();
+				$jQ(this).parent().addClass(activeClass);
+				$acContent.css('height', $wHeight - $navHeight - ($jQ(scope + ' > li').length * $acTabHeight ));
+			}
+		});
 	}
 };

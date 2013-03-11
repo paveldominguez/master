@@ -1,6 +1,13 @@
 $colorCountRed: #C00;
-
-#mls-nav-mobile { display: none; }
+#mls-nav-mobile,
+#mls-nav-mobile-modal { display: none; }
+#mls-nav-mobile-modal { 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 100;
+    background: rgba(60, 64, 69, 0.5);
+}
 .mls-nav {
     overflow: hidden;
     .nav-tabs {
@@ -59,6 +66,22 @@ $colorCountRed: #C00;
                 }
             }
         }
+        .nav-actions {
+            text-indent: -9999px;
+            padding: 0;
+            a {
+                @include nav-sprite(nav-ico-drawer, false, 16px, 15px);
+                display: block;
+                width: 50px;
+                height: 45px;
+                padding: 0;
+            }
+            &.active {
+                a { 
+                    @include nav-sprite(nav-ico-close-drawer, false, 15px, 16px);
+                }
+            }
+        }
         .nav-search,
         .nav-cart {
             padding: 0;
@@ -114,7 +137,7 @@ $colorCountRed: #C00;
                 margin-left: 245px;
             }
         }
-        .lifestyles .tall-tab-section {
+        .tall-tab-section {
             height: 342px;
             .tall-tab {
                 @include column(2);
@@ -175,7 +198,7 @@ $colorCountRed: #C00;
 @media only screen and (max-width: $screenMedium - 1) {
     .mls-nav { 
         > .tab-content {
-            .lifestyles .tall-tab-section {
+            .tall-tab-section {
                 .tall-tab {
                     width: 33.33333%;
                     height: 50%;
@@ -218,12 +241,106 @@ $colorCountRed: #C00;
     }
 }
 @media only screen and (max-width: $screenMobileLarge - 1) {
-    #mls-nav-mobile { display: block; }
     #mls-nav { display: none; }
+    #mls-nav-mobile { 
+        display: block;
+    }
+    .modal-active {
+        #mls-nav-mobile-modal { display: block; }
+    }
+    .mls-nav {
+        .nav-tabs {
+            .nav-actions {
+                &.active {
+                    position: absolute;
+                    top: 0; left: 0;
+                    height: 46px;
+                    z-index: 500;
+                    border-bottom: 1px solid $colorActiveTabBg;
+                }
+            }
+        }
+        > .tab-content {
+            .tall-tab-section {
+                .tall-tab {
+                    float: left;
+                    width: 50%;
+                    height: 33.33333%;
+                    a {
+                        .tab-fig {
+                            padding: 0;
+                            vertical-align: middle;
+                            img {
+                                max-width: 15%;
+                            }
+                        }
+                    }
+                    &.medialorem {
+                        border-top: 1px solid $colorVzwNavBrd;
+                    }
+                    &.traveler {
+                        border-bottom: 1px solid $colorVzwNavBrdShade;
+                    }
+                    &.family,
+                    &.fun-seeker {
+                        border-bottom: none; 
+                    }
+                    &.fashionista,
+                    &.medialorem,
+                    &.family {
+                        border: {
+                            left: none;
+                            right: 1px solid $colorVzwNavBrdShade;
+                        }
+                    }
+                    &.fitness,
+                    &.traveler,
+                    &.fun-seeker {
+                        border-left: 1px solid $colorVzwNavBrd;
+                    }
+                }
+            }
+        }
+    }
+    .mls-nav-content {
+        border-top: 1px solid $colorActiveTabBrd;
+        z-index: 250;
+        .accordion-nav {
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid $colorActiveTabBrd;
+                font: {
+                    family: $fontVzwBook;
+                    size: 24px;
+                }
+                > a {
+                    display: table;
+                    width: 100%;
+                    height: 70px;
+                    padding: 15px 25px 10px;
+                    color: $colorNavMobile;
+                    span {
+                        display: table-cell;
+                        vertical-align: bottom;
+                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
+                    }
+                }
+                .accordion-content {
+                    display: none;
+                }
+               &.active .accordion-content {
+                    clear: both;
+                    display: block;
+                }
+            }
+        }
+    }
 }
 @media only screen and (max-width: $screenSmall) {
-    .left { float: left; }
-    .right { float: right; }
+    #site-header {
+        .left { float: left; }
+        .right { float: right; }
+    }
 }
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
     

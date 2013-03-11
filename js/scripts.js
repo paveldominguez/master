@@ -52,6 +52,7 @@ MLS = {
             // iniitialize site nav tabs
             MLS.ui.navTabs('#mls-nav');
             MLS.ui.navTabs('#mls-nav-mobile');
+            MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2');
         },
         finalize: function() {
