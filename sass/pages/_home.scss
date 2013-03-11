@@ -27,6 +27,105 @@ $colorPromoFont: #6D6E71;
             }
         }
     }
+    .madlib{
+        .madlib-header{
+
+            height:80px;background:#d9dfdf;margin-top:10px;text-align:center;
+            h2{
+                font-size: 29px; padding-top: 24px; font-family: "Verizon Apex Bold"; color: #3d4146;
+                input{
+                    width: 197px;
+                    height: 30px;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    font-size: 29px;
+}
+            } 
+        }
+        .section-wrap{max-width: 855px;}
+        .content-grid{border-top:none;}
+        .content-grid .content-item {
+            width:25%;
+            .content-fig img{
+                max-width:115px;
+            }
+        }
+    }
+
+    .mobile-community,.lifestyles,.featured-reviews,.trending-products,.trending-categories{
+        .section-wrap{max-width:855px;}
+    }
+
+    .mobile-community{
+        ul.tiles{
+            max-width:1024px;
+            margin:10px auto;
+            li{
+                float: left; height: 255px; width: 255px; margin-top: 1px; margin-right: 1px;position: relative;
+                .icon{position: absolute;bottom:10px;right:10px;}
+                &.twitter{
+                    background:#692145;
+                    p{
+                        font-family: "Verizon Apex Book Italic";
+                        font-size: 20px;
+                        color: #fff;
+                        line-height: 1.2em;
+                        font-weight: 600;
+                        padding: 30px;
+                    }
+                    .icon{
+                        width: 26px;
+                        height:19px;
+                        background: url(../img/home/twitter.png);}
+                }
+                &.twitter-alt{
+                    background:#29a0cd;
+                    p{
+                        font-family: "Verizon Apex Book Italic";
+                        font-size: 20px;
+                        color: #fff;
+                        line-height: 1.2em;
+                        font-weight: 600;
+                        padding: 30px;
+                    }                    
+                    .icon{
+                        width: 26px;
+                        height:19px;
+                        background: url(../img/home/twitter.png);}
+                }
+                &.facebook{
+                    .icon{
+                        width:13px;
+                        height:23px;
+                        background: url(../img/home/facebook.png);}
+                }
+                &.pinterest{
+                    .icon{
+                        width:20px;
+                        height: 24px;
+                        background: url(../img/home/pinterest.png);}
+                }
+                &.instagram{
+                    .icon{
+                        width:24px;
+                        height:25px;
+                        background: url(../img/home/instagram.png);}
+                }
+                &.youtube{
+                    .icon{
+                        width:22px;
+                        height: 28px;
+                        background: url(../img/home/youtube.png);}
+                }
+            }
+        }
+    }
+    .trending-products{
+        .product-hero{
+            margin: 15px 0px 50px 0px;
+        }
+    }
 }
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
