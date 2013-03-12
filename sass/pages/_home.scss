@@ -146,6 +146,8 @@ $techinfoBG : #119a70;
 
 
     /* ----------- end universal tab styles ------------------ */
+
+
     .home-hero {
         max-height: 400px;
         max-width: 1400px;
@@ -171,6 +173,12 @@ $techinfoBG : #119a70;
             }
         }
     }
+    .category-section{
+        .content-header{
+            padding:0 0 15px 0;
+        }
+    }
+
     .madlib{
         .madlib-header{
 
@@ -267,13 +275,12 @@ $techinfoBG : #119a70;
     }
     .trending-products{
         .product-hero{
-            margin: 15px 0px 50px 0px;
+            margin: 15px 0px 30px 0px;
         }
         ul.content-grid{
             margin:0;
         }
             .tabbed-wrapper {
-            margin-top:95px;
             
             .tab-scroll {
 
@@ -292,6 +299,36 @@ $techinfoBG : #119a70;
                 }
 
             } /* end tabbed-wrapper */
+    }
+    .trending-categories{
+        .slides{
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            overflow: hidden;
+            li{
+                position: relative;
+                width: 213px;
+                height: 213px;
+                float: left;
+                overflow: hidden;
+                border-left: 1px solid #ccc;
+                padding:15px;
+                img{
+                    position: absolute;
+                    right:0;
+                    bottom:0;
+                    z-index: 1;
+                }
+                p{
+                    position: relative;
+                    z-index:2;
+                    font-family: $fontVzwMedium;
+                    font-size: 14px;
+                    color:$cartGreyMd;
+                }
+            }
+        }
     }
 }
 
