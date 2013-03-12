@@ -50,7 +50,10 @@ MLS = {
             });
             // END - FOR DEBUGGING MEDIA QUERIES, WILL NOT BE IN FINAL JS
             // iniitialize site nav tabs
-            MLS.ui.tabs('#mls-nav');
+            MLS.ui.navTabs('#mls-nav');
+            MLS.ui.navTabs('#mls-nav-mobile');
+            MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
+            MLS.ui.tabs('#nav-tab2');
         },
         finalize: function() {
             // non priority calls go here, runs after all init functions

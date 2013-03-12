@@ -1,0 +1,505 @@
+$colorCountRed: #C00;
+$colorSubnavTabBg: #D3D8D9;
+$colorSubnavActiveTabBg: #2A2D32;
+$colorSubnavTabBrd: #C5C9CB;
+$colorSubnavGridBrd: #C9CDCE;
+$colorNavGridText: #333333;
+#mls-nav-mobile,
+#mls-nav-mobile-modal { display: none; }
+#mls-nav-mobile-modal { 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 100;
+    background: rgba(60, 64, 69, 0.5);
+}
+.mls-nav {
+    overflow: hidden;
+    .nav-tabs {
+        height: 45px;
+        margin: 0;
+        .logo,
+        .nav-item { 
+            float: left; 
+            a { 
+                display: block; 
+                color: $colorNavLinks;
+            }
+        }
+        &.left {
+            > .tab {
+                span {
+                    cursor: pointer;
+                    background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
+                    padding-right: 15px;
+                }
+            }
+        }
+        .nav-item {
+            height: 45px;
+            line-height: 45px;
+            padding: 0 15px;
+            text-align: center;
+            border: {
+                left: 1px solid white;
+                right: 1px solid white;
+            }
+            font: {
+                family: $fontVzwBook;
+                size: 18px;
+            }
+            &.active {
+                background-color: $colorActiveTabBg;
+                border: {
+                    left: 1px solid $colorActiveTabBrd;
+                    right: 1px solid $colorActiveTabBrd;
+                }
+                span {
+                    background-image: url(../img/sprites/ui/drop-down-active.png);
+                }
+            }
+        }
+        .logo {
+            width: 45px;
+            h1 { 
+                margin: 0;
+                text-indent: -9999px;
+                padding: 15px;
+                font-size: 18px;
+                a {
+                    background-color: #757575;
+                }
+            }
+        }
+        .nav-actions {
+            text-indent: -9999px;
+            padding: 0;
+            a {
+                @include nav-sprite(nav-ico-drawer, false, 16px, 15px);
+                display: block;
+                width: 50px;
+                height: 45px;
+                padding: 0;
+            }
+            &.active {
+                a { 
+                    @include nav-sprite(nav-ico-close-drawer, false, 15px, 16px);
+                }
+            }
+        }
+        .nav-search,
+        .nav-cart {
+            padding: 0;
+            a {
+                text-indent: -9999px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        .nav-search {
+            a{
+                @include nav-sprite(nav-ico-search, false, 16px, 15px);
+            }
+        }
+        .nav-cart {
+            padding-right: 15px;
+            cursor: pointer;
+            font: {
+                family: $fontArial;
+                size: 12px;
+                weight: bold;
+            }
+            a{
+                @include nav-sprite(nav-ico-cart, false, 18px, 15px);
+            }
+            a,
+            .count { 
+                float: left; 
+                color: $colorCountRed;
+            }
+        }
+    }
+    .tab-content > .tab {
+        display: none;
+        &.active { display: block; }
+    }
+    > .tab-content {
+        clear: both;
+        position: absolute;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        background-color: $colorActiveTabBg;
+        > .tab { 
+            ul { margin: 0; }
+            .tab-menu {
+                float: left;
+                width: 245px;
+            }
+            .tab-content {
+                width: auto;
+                margin-left: 245px;
+            }
+        }
+        .tall-tab-section {
+            height: 342px;
+            .tall-tab {
+                @include column(2);
+                overflow: hidden;
+                height: 100%;
+                border: {
+                    left: 1px solid $colorVzwNavBrd;
+                    right: 2px solid $colorVzwNavBrdShade;
+                }
+                a {
+                    position: relative;
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+                    .tab-fig {
+                        display: table-cell;
+                        width: 100%;
+                        padding-bottom: 75px;
+                        text-align: center;
+                        vertical-align: bottom;
+                        figcaption {
+                            position: absolute;
+                            bottom: 10px;
+                            left: 15px;
+                            color: white;
+                            font: {
+                                family: $fontVzwBoldItalic;
+                                size: 18px;
+                            }
+                        }
+                    }
+                }
+                &.fashionista {
+                    border-left: none;
+                    background: transparent url(../img/nav/bgFashionista.jpg) top center no-repeat;
+                }
+                &.fitness {
+                    background: transparent url(../img/nav/bgFitness.jpg) top center no-repeat;
+                }
+                &.medialorem {
+                    background: transparent url(../img/nav/bgMedialorem.jpg) top center no-repeat;
+                }
+                &.traveler {
+                    background: transparent url(../img/nav/bgTraveler.jpg) top center no-repeat;
+                }
+                &.family {
+                    background: transparent url(../img/nav/bgFamily.jpg) top center no-repeat;
+                }
+                &.fun-seeker {
+                    background: transparent url(../img/nav/bgFunseeker.jpg) top center no-repeat;
+                    border-right: none;
+                }
+            }
+        }
+        .subnav {
+            padding: 10px;
+            .tab {
+                position: relative;
+                height: 40px;
+                background-color: $colorSubnavTabBg;
+                border-bottom: 1px solid $colorSubnavTabBrd;
+                &.last { border: none; }
+                a {
+                    display: block;
+                    line-height: 40px;
+                    padding: 0 0 0 40px;
+                    color: $colorNavLinks;
+                }
+                &.active {
+                    &:active {
+                        background-color: $colorSubnavActiveTabBg;
+                    }
+                    a {
+                        color: white;
+
+                    }
+                    .indicator {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        right: -5px;
+                        margin-top: -7px;
+                        width: 6px;
+                        height: 14px;
+                        @include nav-sprite(subnav-active, false, 0, 0);
+                    }
+                    &.photo {
+                        @include nav-sprite(subnav-ico-camera-active, false, 12px, 15px);
+                    }
+                    &.cases {
+                        @include nav-sprite(subnav-ico-case-active, false, 12px, 15px);
+                    }
+                    &.chargers {
+                        @include nav-sprite(subnav-ico-bolt-active, false, 15px, 15px);
+                    }
+                    &.health {
+                        @include nav-sprite(subnav-ico-health-active, false, 10px, 15px);
+                    }
+                    &.family {
+                        @include nav-sprite(subnav-ico-family-active, false, 10px, 10px);
+                    }
+                    &.memory {
+                        @include nav-sprite(subnav-ico-storage-active, false, 15px, 15px);
+                    }
+                    &.productivity {
+                        @include nav-sprite(subnav-ico-productivity-active, false, 15px, 15px);
+                    }
+                    &.see-all {
+                        @include nav-sprite(subnav-ico-see-all-active, false, 15px, 15px);
+                    }
+                    &.photo, &.cases, &.chargers, &.health, &.family, &.memory, &.productivity, &.see-all {
+                        background-color: $colorSubnavActiveTabBg;
+                    }
+                }
+                &.photo {
+                    @include nav-sprite(subnav-ico-camera, false, 12px, 15px);
+                }
+                &.cases {
+                    @include nav-sprite(subnav-ico-case, false, 12px, 15px);
+                }
+                &.chargers {
+                    @include nav-sprite(subnav-ico-bolt, false, 15px, 15px);
+                }
+                &.health {
+                    @include nav-sprite(subnav-ico-health, false, 10px, 15px);
+                }
+                &.family {
+                    @include nav-sprite(subnav-ico-family, false, 10px, 10px);
+                }
+                &.memory {
+                    @include nav-sprite(subnav-ico-storage, false, 15px, 15px);
+                }
+                &.productivity {
+                    @include nav-sprite(subnav-ico-productivity, false, 15px, 15px);
+                }
+                &.see-all {
+                    @include nav-sprite(subnav-ico-see-all, false, 15px, 15px);
+                }
+            }
+        }
+        .products {
+            border-bottom: 1px solid $colorSubnavGridBrd;
+        }
+        .subnav-grid {
+            height: 342px;
+            .nav-grid-item {
+                float: left;
+                position: relative;
+                width: 20%;
+                height: 50%;
+                border: {
+                    right: 1px solid $colorSubnavGridBrd;
+                    bottom: 1px solid $colorSubnavGridBrd;
+                }
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+                &.cta-all {
+                    display: table;
+                    a {
+                        display: table-cell;
+                        padding: 0 35px;
+                        vertical-align: middle;
+                        text-transform: uppercase;
+                        text-align: center;
+                        font: {
+                            family: $fontVzwMedium;
+                            size: 12px;
+                        }
+                    }
+                }
+                a {
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+                    color: $colorVzwRed;
+                    .nav-grid-fig {
+                        display: table-cell;
+                        margin: 0 auto;
+                        text-align: center;
+                        vertical-align: middle;
+                        figcaption {
+                            position: absolute;
+                            bottom: 15px;
+                            left: 15px;
+                            color: $colorNavGridText;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $screenMedium - 1) {
+    .mls-nav { 
+        > .tab-content {
+            .tall-tab-section {
+                .tall-tab {
+                    width: 33.33333%;
+                    height: 50%;
+                    a {
+                        .tab-fig {
+                            padding: 0;
+                            vertical-align: middle;
+                            img {
+                                max-width: 18%;
+                            }
+                        }
+                    }
+                    &.medialorem {
+                        border-right: none;
+                    }
+                    &.traveler {
+                        border-left: none;
+                    }
+                    &.fashionista,
+                    &.fitness,
+                    &.medialorem {
+                        border-bottom: 1px solid $colorVzwNavBrdShade;
+                    }
+                    &.traveler,
+                    &.family,
+                    &.fun-seeker { 
+                        border-top: 1px solid $colorVzwNavBrd;
+                    }
+                    &.fashionista,
+                    &.fitness,
+                    &.medialorem,
+                    &.traveler,
+                    &.family,
+                    &.fun-seeker { 
+                        @include background-size(100%);
+                    }
+                }
+            }
+            .subnav-grid {
+                .nav-grid-item {
+                    width: 25%;
+                    a .nav-grid-fig figcaption {
+                        left: 5px;
+                    }
+                    &.cta-all {
+                        a {
+                            padding: 0 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenMobileLarge - 1) {
+    #mls-nav { display: none; }
+    #mls-nav-mobile { 
+        display: block;
+    }
+    .modal-active {
+        #mls-nav-mobile-modal { display: block; }
+    }
+    .mls-nav {
+        .nav-tabs {
+            .nav-actions {
+                &.active {
+                    position: absolute;
+                    top: 0; left: 0;
+                    height: 46px;
+                    z-index: 500;
+                    border-bottom: 1px solid $colorActiveTabBg;
+                }
+            }
+        }
+        > .tab-content {
+            .tall-tab-section {
+                .tall-tab {
+                    float: left;
+                    width: 50%;
+                    height: 33.33333%;
+                    a {
+                        .tab-fig {
+                            padding: 0;
+                            vertical-align: middle;
+                            img {
+                                max-width: 15%;
+                            }
+                        }
+                    }
+                    &.medialorem {
+                        border-top: 1px solid $colorVzwNavBrd;
+                    }
+                    &.traveler {
+                        border-bottom: 1px solid $colorVzwNavBrdShade;
+                    }
+                    &.family,
+                    &.fun-seeker {
+                        border-bottom: none; 
+                    }
+                    &.fashionista,
+                    &.medialorem,
+                    &.family {
+                        border: {
+                            left: none;
+                            right: 1px solid $colorVzwNavBrdShade;
+                        }
+                    }
+                    &.fitness,
+                    &.traveler,
+                    &.fun-seeker {
+                        border-left: 1px solid $colorVzwNavBrd;
+                    }
+                }
+            }
+        }
+    }
+    .mls-nav-content {
+        border-top: 1px solid $colorActiveTabBrd;
+        z-index: 250;
+        .accordion-nav {
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid $colorActiveTabBrd;
+                font: {
+                    family: $fontVzwBook;
+                    size: 24px;
+                }
+                > a {
+                    display: table;
+                    width: 100%;
+                    height: 70px;
+                    padding: 15px 25px 10px;
+                    color: $colorNavMobile;
+                    span {
+                        display: table-cell;
+                        vertical-align: bottom;
+                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
+                    }
+                }
+                .accordion-content {
+                    display: none;
+                }
+               &.active .accordion-content {
+                    clear: both;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenSmall) {
+    #site-header {
+        .left { float: left; }
+        .right { float: right; }
+    }
+}
+@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
+    
+}
+@media only screen and (max-width: $screenMobileSmall) {
+    
+}
