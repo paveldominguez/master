@@ -1,7 +1,151 @@
 $colorPromoBg: #EEEEEE;
 $colorPromoFont: #6D6E71;
+$cartGreyLt: #727272; 
+$cartGreyMd: #666666;
+$cartGreyDk: #3d4146;
+$controlTxt: #c5c7c7;
+
+$colorVzwRed: #D00505;
+$actLinkBlue: #0066cc;
+
+$specialOfferBlue: #009eb6;
+
+$fontArial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$fontVzw: "Verizon Apex";
+$fontVzwBook: "Verizon Apex Book";
+$fontVzwBookItalic: "Verizon Apex Book Italic";
+$fontVzwBold: "Verizon Apex Bold";
+$fontVzwLight: "Verizon Apex Light";
+$fontVzwMedium: "Verizon Apex Medium";
+
+
+/* colors */
+
+$cartGreyLt: #727272; 
+$cartGreyMd: #666666;
+$cartGreyDk: #3d4146;
+$controlTxt: #c5c7c7;
+
+$colorVzwRed: #D00505;
+$actLinkBlue: #0066cc;
+
+$specialOfferBlue: #009eb6;
+
+$availColorBlk: #2e2e2e;
+$availColorWht: #ffffff;
+$availColorGrey: #b1b0b0;
+$availColorBlue: #51b0d8;
+
+$pdpGreyMd: #d6dcdc;
+$featuredBg : #27a0cc;
+$techinfoBG : #119a70;
+@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
+                        font-size:12px;
+                        font-weight:bold;
+                        text-transform:capitalize;
+                        color: $actLinkBlue; }
+
+@mixin accordion {  -webkit-transition: height 300ms ease-out;
+                    -moz-transition: height 300ms ease-out;
+                    -o-transition: height 300ms ease-out;
+                    -ms-transition: height 300ms ease-out;
+                    transition: height 300ms ease-out; }
+
+@mixin slideFast {  -webkit-transition: 300ms ease-in-out;
+                    -moz-transition: 300ms ease-in-out;
+                    -o-transition: 300ms ease-in-out;
+                    -ms-transition: 300ms ease-in-out;
+                    transition: 300ms ease-in-out; }
+
+@mixin slideMedium {-webkit-transition: 450ms ease-in-out;
+                    -moz-transition: 450ms ease-in-out;
+                    -o-transition: 450ms ease-in-out;
+                    -ms-transition: 450ms ease-in-out;
+                    transition: 450ms ease-in-out; }
+
+@mixin slideSlow1 { -webkit-transition: 600ms ease-in-out;
+                    -moz-transition: 600ms ease-in-out;
+                    -o-transition: 600ms ease-in-out;
+                    -ms-transition: 600ms ease-in-out;
+                    transition: 600ms ease-in-out; }
+
+@mixin slideSlow2 { -webkit-transition: 750ms ease-in-out;
+                    -moz-transition: 750ms ease-in-out;
+                    -o-transition: 750ms ease-in-out;
+                    -ms-transition: 750ms ease-in-out;
+                    transition: 750ms ease-in-out; }
+
+@mixin zoomBlockTop {-webkit-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+                    -moz-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+                    -o-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+                    -ms-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+                    transition: left 750ms ease-in-out, top 0s ease 0.5s; }
+
+@mixin simpleSwipeFrame { width:100%; overflow:auto;}
+@mixin simpleSwipeList {    width:auto;
+                    float:left;
+                    margin-right: -999em;
+                        white-space:nowrap; }
 
 .home-page {
+
+    .tabbed-wrapper {
+        @include clearfix();
+        width:100%;
+
+
+
+        dd {
+            height: 27px;
+            display: inline-block;
+            margin-right: 20px;
+            position: relative;
+
+            h2 {
+                display:block;
+                width:auto;
+                height: auto;
+                font-family: $fontVzwMedium;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 13px;
+                margin: 0px;
+                font-weight:normal;
+                padding-bottom: 3px;
+                } /* end h2 */
+
+            a { color: $cartGreyDk;
+                height:auto;
+                width:auto; }
+            a:hover { color: $colorVzwRed; }
+
+            .vzn-active {
+                @include slideFast;
+                display:block;
+                width:0px; height:0px;
+                background: $colorVzwRed;
+                border-bottom: 2px solid $colorVzwRed;
+                position:absolute;
+                bottom:3px;
+                } /* end active div */
+            }/* end dd */
+
+            dd.active a h2,
+            dd a h2:hover { color: $colorVzwRed;} /* end active tab */
+        
+        .tabs-content {
+
+            .show { display:block !important; }
+
+            .active { display:block !important; }   
+            }       
+                    
+        } /* end tabbed-wrapper */
+
+
+
+
+    /* ----------- end universal tab styles ------------------ */
     .home-hero {
         max-height: 400px;
         max-width: 1400px;
@@ -125,6 +269,29 @@ $colorPromoFont: #6D6E71;
         .product-hero{
             margin: 15px 0px 50px 0px;
         }
+        ul.content-grid{
+            margin:0;
+        }
+            .tabbed-wrapper {
+            margin-top:95px;
+            
+            .tab-scroll {
+
+                dd {
+                    h2 { font-size: 12px; }
+                    } /* end dd */
+                } /* end tab-scroll */
+
+            .tabs-content {
+                
+            
+                #consumer-reviewsTab,
+                #questions-commentsTab { display:none; }
+
+
+                }
+
+            } /* end tabbed-wrapper */
     }
 }
 
