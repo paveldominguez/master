@@ -56,7 +56,7 @@ MLS.ui = {
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
-				}
+				} 
 			}
 		});
 	},
@@ -75,7 +75,7 @@ MLS.ui = {
 			if($acContent.hasClass('accordion-content')) {
 				e.preventDefault();
 				$jQ(this).parent().addClass(activeClass);
-				$acContent.css('height', $wHeight - $navHeight - ($jQ(scope + ' > li').length * $acTabHeight ));
+				$acContent.css('height', $wHeight);
 			}
 		});
 	}

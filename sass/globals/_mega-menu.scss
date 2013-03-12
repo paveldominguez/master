@@ -1,4 +1,9 @@
 $colorCountRed: #C00;
+$colorSubnavTabBg: #D3D8D9;
+$colorSubnavActiveTabBg: #2A2D32;
+$colorSubnavTabBrd: #C5C9CB;
+$colorSubnavGridBrd: #C9CDCE;
+$colorNavGridText: #333333;
 #mls-nav-mobile,
 #mls-nav-mobile-modal { display: none; }
 #mls-nav-mobile-modal { 
@@ -192,6 +197,143 @@ $colorCountRed: #C00;
                 }
             }
         }
+        .subnav {
+            padding: 10px;
+            .tab {
+                position: relative;
+                height: 40px;
+                background-color: $colorSubnavTabBg;
+                border-bottom: 1px solid $colorSubnavTabBrd;
+                &.last { border: none; }
+                a {
+                    display: block;
+                    line-height: 40px;
+                    padding: 0 0 0 40px;
+                    color: $colorNavLinks;
+                }
+                &.active {
+                    &:active {
+                        background-color: $colorSubnavActiveTabBg;
+                    }
+                    a {
+                        color: white;
+
+                    }
+                    .indicator {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        right: -5px;
+                        margin-top: -7px;
+                        width: 6px;
+                        height: 14px;
+                        @include nav-sprite(subnav-active, false, 0, 0);
+                    }
+                    &.photo {
+                        @include nav-sprite(subnav-ico-camera-active, false, 12px, 15px);
+                    }
+                    &.cases {
+                        @include nav-sprite(subnav-ico-case-active, false, 12px, 15px);
+                    }
+                    &.chargers {
+                        @include nav-sprite(subnav-ico-bolt-active, false, 15px, 15px);
+                    }
+                    &.health {
+                        @include nav-sprite(subnav-ico-health-active, false, 10px, 15px);
+                    }
+                    &.family {
+                        @include nav-sprite(subnav-ico-family-active, false, 10px, 10px);
+                    }
+                    &.memory {
+                        @include nav-sprite(subnav-ico-storage-active, false, 15px, 15px);
+                    }
+                    &.productivity {
+                        @include nav-sprite(subnav-ico-productivity-active, false, 15px, 15px);
+                    }
+                    &.see-all {
+                        @include nav-sprite(subnav-ico-see-all-active, false, 15px, 15px);
+                    }
+                    &.photo, &.cases, &.chargers, &.health, &.family, &.memory, &.productivity, &.see-all {
+                        background-color: $colorSubnavActiveTabBg;
+                    }
+                }
+                &.photo {
+                    @include nav-sprite(subnav-ico-camera, false, 12px, 15px);
+                }
+                &.cases {
+                    @include nav-sprite(subnav-ico-case, false, 12px, 15px);
+                }
+                &.chargers {
+                    @include nav-sprite(subnav-ico-bolt, false, 15px, 15px);
+                }
+                &.health {
+                    @include nav-sprite(subnav-ico-health, false, 10px, 15px);
+                }
+                &.family {
+                    @include nav-sprite(subnav-ico-family, false, 10px, 10px);
+                }
+                &.memory {
+                    @include nav-sprite(subnav-ico-storage, false, 15px, 15px);
+                }
+                &.productivity {
+                    @include nav-sprite(subnav-ico-productivity, false, 15px, 15px);
+                }
+                &.see-all {
+                    @include nav-sprite(subnav-ico-see-all, false, 15px, 15px);
+                }
+            }
+        }
+        .products {
+            border-bottom: 1px solid $colorSubnavGridBrd;
+        }
+        .subnav-grid {
+            height: 342px;
+            .nav-grid-item {
+                float: left;
+                position: relative;
+                width: 20%;
+                height: 50%;
+                border: {
+                    right: 1px solid $colorSubnavGridBrd;
+                    bottom: 1px solid $colorSubnavGridBrd;
+                }
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+                &.cta-all {
+                    display: table;
+                    a {
+                        display: table-cell;
+                        padding: 0 35px;
+                        vertical-align: middle;
+                        text-transform: uppercase;
+                        text-align: center;
+                        font: {
+                            family: $fontVzwMedium;
+                            size: 12px;
+                        }
+                    }
+                }
+                a {
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+                    color: $colorVzwRed;
+                    .nav-grid-fig {
+                        display: table-cell;
+                        margin: 0 auto;
+                        text-align: center;
+                        vertical-align: middle;
+                        figcaption {
+                            position: absolute;
+                            bottom: 15px;
+                            left: 15px;
+                            color: $colorNavGridText;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -234,6 +376,19 @@ $colorCountRed: #C00;
                     &.family,
                     &.fun-seeker { 
                         @include background-size(100%);
+                    }
+                }
+            }
+            .subnav-grid {
+                .nav-grid-item {
+                    width: 25%;
+                    a .nav-grid-fig figcaption {
+                        left: 5px;
+                    }
+                    &.cta-all {
+                        a {
+                            padding: 0 25px;
+                        }
                     }
                 }
             }
