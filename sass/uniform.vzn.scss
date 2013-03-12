@@ -178,7 +178,7 @@ http://uniformjs.com/
 		}
 		
 		
-/* Cart buttons -- most of this is in cart.scss */
+/* Cart buttons -- this is already in cart.scss */
 
 	div.button.active span,
 	div.button:active span {
@@ -186,8 +186,7 @@ http://uniformjs.com/
 		}
 
 	div.button span {
-		text-transform: lowercase;
-		font-weight:bold; 
+	
 		}
 
 	div.button.disabled span { }
