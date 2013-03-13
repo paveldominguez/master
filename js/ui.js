@@ -400,4 +400,5 @@ MLS.ui = {
 				} // do nothing until position divides by 3 again 
 			} // end special-case-check-then-loop
 		} // end lifestylePosition
+	}
 };
