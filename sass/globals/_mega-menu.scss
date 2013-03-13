@@ -123,6 +123,9 @@ $colorNavGridText: #333333;
         display: none;
         &.active { display: block; }
     }
+    .tall-tab-section,
+    .subnav-grid,
+    .brands { height: 342px; }
     > .tab-content {
         clear: both;
         position: absolute;
@@ -143,7 +146,6 @@ $colorNavGridText: #333333;
             }
         }
         .tall-tab-section {
-            height: 342px;
             .tall-tab {
                 @include column(2);
                 overflow: hidden;
@@ -287,7 +289,6 @@ $colorNavGridText: #333333;
             border-bottom: 1px solid $colorSubnavGridBrd;
         }
         .subnav-grid {
-            height: 342px;
             .nav-grid-item {
                 float: left;
                 position: relative;
@@ -334,6 +335,130 @@ $colorNavGridText: #333333;
                 }
             }
         }
+        .brands { 
+            border: {
+                top: 1px solid $colorSubnavGridBrd;
+                bottom: 1px solid $colorSubnavGridBrd;
+            }
+        }
+        .brand-list {
+            height: 100%;
+            .tab {
+                position: relative;
+                display: table;
+                float: left;
+                width: 20%;
+                height: 33.33334%;
+                border: {
+                    right: 1px solid $colorSubnavGridBrd;
+                    bottom: 1px solid $colorSubnavGridBrd;
+                }
+                &.brand-5, &.brand-10, &.brand-15 {
+                    border-right: none;
+                }
+                &.brand-11, &.brand-12, &.brand-13, &.brand-14, &.brand-15 {
+                    border-bottom: none;
+                }
+                a {
+                    display: table-cell;
+                    width: 100%; height: 100%;
+                    text-align: center;
+                    vertical-align: middle;
+                    span { display: block; margin: 0 auto; text-indent: -99999px; }
+                    &.sony {
+                        span {
+                            @include nav-sprite(nav-brand-sony, false, 0, 0);
+                            width: 97px;
+                            height: 18px;
+                        }
+                    }
+                    &.canon {
+                        span {
+                            @include nav-sprite(nav-brand-canon, false, 0, 0);
+                            width: 94px;
+                            height: 20px;
+                        }
+                    }
+                    &.epson {
+                        span {
+                            @include nav-sprite(nav-brand-epson, false, 0, 0);
+                            width: 102px;
+                            height: 25px;
+                        }
+                    }
+                    &.panasonic {
+                        span {
+                            @include nav-sprite(nav-brand-panasonic, false, 0, 0);
+                            width: 125px;
+                            height: 20px;
+                        }
+                    }
+                    &.lg {
+                        span {
+                            @include nav-sprite(nav-brand-lg, false, 0, 0);
+                            width: 93px;
+                            height: 42px;
+                        }
+                    }
+                    &.samsung {
+                        span {
+                            @include nav-sprite(nav-brand-samsung, false, 0, 0);
+                            width: 95px;
+                            height: 32px;
+                        }
+                    }
+                    &.apple {
+                        span {
+                            @include nav-sprite(nav-brand-apple, false, 0, 0);
+                            width: 35px;
+                            height: 44px;
+                        }
+                    }
+                    &.microsoft {
+                        span {
+                            @include nav-sprite(nav-brand-microsoft, false, 0, 0);
+                            width: 123px;
+                            height: 26px;
+                        }
+                    }
+                    &.insignia {
+                        span {
+                            @include nav-sprite(nav-brand-insignia, false, 0, 0);
+                            width: 112px;
+                            height: 31px;
+                        }
+                    }
+                    &.intel {
+                        span {
+                            @include nav-sprite(nav-brand-intel, false, 0, 0);
+                            width: 75px;
+                            height: 50px;
+                        }
+                    }
+                    &.hp {
+                        span {
+                            @include nav-sprite(nav-brand-hp, false, 0, 0);
+                            width: 79px;
+                            height: 49px;
+                        }
+                    }
+                    &.nikon {
+                        span {
+                            @include nav-sprite(nav-brand-nikon, false, 0, 0);
+                            width: 110px;
+                            height: 30px;
+                        }
+                    }
+                    &.belkin {
+                        span {
+                            @include nav-sprite(nav-brand-belkin, false, 0, 0);
+                            width: 110px;
+                            height: 31px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -342,7 +467,7 @@ $colorNavGridText: #333333;
         > .tab-content {
             .tall-tab-section {
                 .tall-tab {
-                    width: 33.33333%;
+                    width: 33.33334%;
                     height: 50%;
                     a {
                         .tab-fig {
@@ -395,6 +520,12 @@ $colorNavGridText: #333333;
         }
     }
 }
+@media only screen and (max-width: $screenSmall) {
+    #site-header {
+        .left { float: left; }
+        .right { float: right; }
+    }
+}
 @media only screen and (max-width: $screenMobileLarge - 1) {
     #mls-nav { display: none; }
     #mls-nav-mobile { 
@@ -420,7 +551,7 @@ $colorNavGridText: #333333;
                 .tall-tab {
                     float: left;
                     width: 50%;
-                    height: 33.33333%;
+                    height: 33.33334%;
                     a {
                         .tab-fig {
                             padding: 0;
@@ -452,6 +583,91 @@ $colorNavGridText: #333333;
                     &.traveler,
                     &.fun-seeker {
                         border-left: 1px solid $colorVzwNavBrd;
+                    }
+                }
+            }
+            .products,
+            .brand-list {
+                height: 100%;
+                border: {
+                    top: 1px solid $colorSubnavGridBrd;
+                    bottom: none;
+                }
+                .tab {
+                    width: 50%;
+                    height: 20%;
+                    border: {
+                        right: 1px solid $colorSubnavGridBrd;
+                        bottom: 1px solid $colorSubnavGridBrd;
+                    }
+                    &.brand-5, &.brand-15 { border-right: 1px solid $colorSubnavGridBrd; }
+                    &.brand-2, &.brand-4, &.brand-6, &.brand-8, &.brand-10 {
+                        border-right: none;
+                    }
+                    &.brand-9, &.brand-10 {
+                        border-bottom: none;
+                    }
+                }
+            }
+            .products {
+                padding: 0;
+                .tab {
+                    float: left;
+                    display: table;
+                    background: #D7DCDD;
+                    &.product-9, &.product-10 {
+                        border-bottom: none;
+                    }
+                    a {
+                        display: table-cell;
+                        line-height: 18px;
+                        padding: 0 25px 0 60px;
+                        text-align: left;
+                        vertical-align: middle;
+                        &.photo {
+                            //@include nav-sprite(subnav-ico-camera, false, 0, 0);
+                            background: transparent url(../img/sprites/nav/subnav-ico-camera.png) 30px center no-repeat;
+                        }
+                        &.cases {
+                            //@include nav-sprite(subnav-ico-case, false, 12px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-case.png) 30px center no-repeat;
+                        }
+                        &.chargers {
+                            //@include nav-sprite(subnav-ico-bolt, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-bolt.png) 30px center no-repeat;
+                        }
+                        &.health {
+                            //@include nav-sprite(subnav-ico-health, false, 10px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-health.png) 30px center no-repeat;
+                        }
+                        &.family {
+                            //@include nav-sprite(subnav-ico-family, false, 10px, 10px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-family.png) 30px center no-repeat;
+                        }
+                        &.memory {
+                            //@include nav-sprite(subnav-ico-storage, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-storage.png) 30px center no-repeat;
+                        }
+                        &.productivity {
+                            //@include nav-sprite(subnav-ico-productivity, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-productivity.png) 30px center no-repeat;
+                        }
+                        &.travel {
+                            //@include nav-sprite(subnav-ico-travel, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-travel.png) 30px center no-repeat;
+                        }
+                        &.audio {
+                            //@include nav-sprite(subnav-ico-audio, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-audio.png) 30px center no-repeat;
+                        }
+                        &.gaming {
+                            //@include nav-sprite(subnav-ico-gaming, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-gaming.png) 30px center no-repeat;
+                        }
+                        &.see-all {
+                            //@include nav-sprite(subnav-ico-see-all, false, 15px, 15px);
+                            background: transparent url(../img/sprites/nav/subnav-ico-see-all.png) 30px center no-repeat;
+                        }
                     }
                 }
             }
@@ -490,16 +706,4 @@ $colorNavGridText: #333333;
             }
         }
     }
-}
-@media only screen and (max-width: $screenSmall) {
-    #site-header {
-        .left { float: left; }
-        .right { float: right; }
-    }
-}
-@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    
-}
-@media only screen and (max-width: $screenMobileSmall) {
-    
 }

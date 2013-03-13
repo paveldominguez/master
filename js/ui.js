@@ -56,10 +56,14 @@ MLS.ui = {
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
-				} 
+				}
 			}
 		});
 	},
+	/* 
+	 * Navigation Accordion (for mobile view)
+	 * @element: (string) containing element
+	 */
 	navAccordion : function(element) {
 		var scope = element,
 		$accordionTabs = $jQ(scope + ' > .tab > a'),
@@ -78,5 +82,19 @@ MLS.ui = {
 				$acContent.css('height', $wHeight);
 			}
 		});
+
+		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function() {
+			if($jQ(this).hasClass(activeClass)) {
+				$jQ(this).add('.tab').removeClass(activeClass);
+			}
+		})
+	},
+	/* 
+	 * Update Content
+	 * @container: (string) containing element
+	 * @data: (string) html data
+	 */
+	updateContent : function(container, data) {
+		$jQ(container).html(data);
 	}
 };
