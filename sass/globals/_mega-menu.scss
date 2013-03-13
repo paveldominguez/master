@@ -144,6 +144,21 @@ $colorNavGridText: #333333;
                 width: auto;
                 margin-left: 245px;
             }
+            .cta-all {
+                display: table;
+                a {
+                    display: table-cell;
+                    padding: 0 35px;
+                    vertical-align: middle;
+                    text-transform: uppercase;
+                    text-align: center;
+                    color: $colorVzwRed;
+                    font: {
+                        family: $fontVzwMedium;
+                        size: 12px;
+                    }
+                }
+            }
         }
         .tall-tab-section {
             .tall-tab {

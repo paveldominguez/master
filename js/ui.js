@@ -87,7 +87,7 @@ MLS.ui = {
 			if($jQ(this).hasClass(activeClass)) {
 				$jQ(this).add('.tab').removeClass(activeClass);
 			}
-		})
+		});
 	},
 	/* 
 	 * Update Content
