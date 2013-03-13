@@ -39,6 +39,19 @@ $availColorBlue: #51b0d8;
 $pdpGreyMd: #d6dcdc;
 $featuredBg : #27a0cc;
 $techinfoBG : #119a70;
+$pdpGreyMd: #d6dcdc;
+$featuredBg : #27a0cc;
+$techinfoBg : #119a70;
+$btfHiliteBg : #2a2d32;
+
+@mixin heroBG { background: #ebeeee; }
+@mixin cartBG { background: #e2e6e6; }
+@mixin boxBrdrT { border-top: 1px solid #ccc; }
+@mixin boxBrdrR { border-right: 1px solid #ccc; }
+@mixin boxBrdrB { border-bottom: 1px solid #ccc; }
+@mixin boxBrdrL { border-left: 1px solid #ccc; }
+@mixin boxBrdrA { border: 1px solid #ccc; }
+
 @mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
                         font-size:12px;
                         font-weight:bold;
@@ -153,7 +166,39 @@ $techinfoBG : #119a70;
         max-width: 1400px;
         overflow: hidden;
         #home-hero-slider{
-            .slides li{display:none;}
+            .promo-cta {
+                clear: both;
+                cursor: pointer;
+                @include border-radius(3px);
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+                border: 1px solid #3B3F45;
+                display: table;
+                margin: 20px 0;
+                width: 130px;
+                // height: 55px;
+                height:43px;
+                color: #FFF;
+                // font-size: 18px;
+                font-size: 14px;
+                span {
+                    display: table-cell;
+                    vertical-align: bottom;
+                    // padding: 10px 15px;
+                    padding: 3px 5px;
+                }
+            }
+            .slides{ 
+                margin:0;
+                li{
+                    display:none;
+                    max-height: 319px;
+                    &.alt{
+                        .hero-info{
+                            background:transparent;
+                        }
+                    }
+                }
+            }
             .hero-info {
                 position: absolute;
                 right: 0;
@@ -300,6 +345,305 @@ $techinfoBG : #119a70;
 
             } /* end tabbed-wrapper */
     }
+        #lifestyles { /* ........................ lifestyles section ................*/
+        height: auto;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        max-width: 1024px;
+        width: 100%;
+        
+        .section-wrap { 
+            width:100%;
+            max-width:1024px; }
+        .section-header { 
+            width:861px; 
+            display:block;
+            margin:0 auto 0 auto;
+            }
+        
+        .lifestyles-wrapper {
+            @include boxBrdrT;
+            @include boxBrdrR;
+            @include boxBrdrL;
+            position:relative;
+            padding-left:172px; 
+            
+            .tabbed-wrapper { @include clearfix(); }
+            
+            .tab-block { @include clearfix(); }
+        
+            .tab-scroll {
+                width:172px;
+                position:absolute;
+                left:0; top:0;
+            
+                dd { 
+                    display:block;
+                    width:100%;
+                    height:172px;
+                    color: $cartGreyDk;
+                    @include cartBG;
+                    @include boxBrdrB;
+                    
+                    a { 
+                        position:relative;
+                        display:block;
+                        width:100%;
+                        height:100%;
+                        padding: 115px 0 0 0;
+                        
+                        h2 {
+                            color: $cartGreyMd;
+                            font-size:12px;
+                            letter-spacing: -0.5px;
+                            text-align:center;
+                            
+                            }
+                        h2:hover { color:$btfHiliteBg; }
+                        
+                        }
+                    .pointer { 
+                        width: 1px; height:1px;
+                        border-left:15px solid $btfHiliteBg;
+                        border-top:15px solid transparent;
+                        border-bottom:15px solid transparent;
+                        position:absolute;
+                        left:99%; top:50%;
+                        margin-top:-15px;
+                        display: none;
+                        z-index:10;
+                        }
+                
+                    } /* end dd tab each */
+                dd.active {
+                    a h2, a h2:hover { color:#ffffff; }
+                    }
+                .alpha-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px 30px no-repeat; }   
+                .alpha-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px -103px no-repeat; 
+                    .pointer { display:block; }
+                    }
+                .beta-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px 35px no-repeat; } 
+                .beta-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px -108px no-repeat; 
+                    .pointer { display:block; }
+                    }
+                .gamma-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px 30px no-repeat; }   
+                .gamma-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px -105px no-repeat; 
+                    .pointer { display:block; }
+                    }
+                } /* end tab scroll */
+        
+            .tabs-content {
+                width:auto;
+                float:left;
+                margin-bottom:0; 
+                
+                #lifestyles-alphaTab,
+                #lifestyles-betaTab,
+                #lifestyles-gammaTab { 
+                    display:none; }
+                    
+                .active { display:block; }
+                
+                .tab-wrapper { position:relative; }
+                
+                .vzn-slide { 
+                    @include clearfix();
+                    width:850px; 
+                    height: 516px;
+                    
+                    .slides {
+                        position:absolute;
+                        height:516px; 
+                    
+                        .large-story {
+                            height:516px;
+                            width:516px;
+                            padding:0;
+                            font-size:0; line-height:0;
+                            
+                            position:absolute;
+                            /* @include boxBrdrL; */
+                            @include boxBrdrB;
+                            
+                            .related-stories-large {
+                                display:block;
+                                width: 94.186%; height:94.186%;
+                                margin:0; padding:0;
+                                background: url(../img/product-detail-page/pdp-plus/lifestyles-large-1.png) no-repeat;
+                                -webkit-background-size: cover !important;
+                                -moz-background-size: cover !important;
+                                background-size: cover !important;
+                                position:absolute; top:3%; left:3%;
+                                overflow:hidden;
+                            
+                                .large-story-info-box {
+                                    width: 50%; height: 50%;
+                                    background: #fff;
+                                    position:absolute;
+                                    bottom:-1px; left: 0;
+                                    padding:10px 15px;
+                                        
+                                    .large-story-cat {
+                                        font-size:10px; 
+                                        font-family: $fontArial;
+                                        text-transform: uppercase;
+                                        color: $cartGreyMd;
+                                        margin-bottom:20px;
+                                        }
+                                        
+                                    .large-story-title {
+                                        font-size:17px;
+                                        line-height: 23px;
+                                        width:80%;
+                                        white-space: normal;
+                                        letter-spacing: -1px;
+                                        margin-bottom:15px;
+                                        color: $cartGreyDk;
+                                        font-family: $fontVzwBook;
+                                        font-weight:normal;
+                                        }
+                                        
+                                    .large-story-text {
+                                        font-size: 12px;
+                                        line-height: 18px;
+                                        font-family: $fontArial;
+                                        margin:0;
+                                        white-space: normal;
+                                        color: $cartGreyDk;
+                                        width:90%;
+                                        }
+                                            
+                                    .large-story-link {
+                                        width:100px;
+                                        height:24px;
+                                        background: url(../img/sprites/pdp/blue-right.png) 75px no-repeat;                                      
+                                        position:absolute;
+                                        bottom:0px; left: 15px;
+                                            
+                                        a { display:block;
+                                            width: 100%; height: 100%;
+                                            @include actionLink; 
+                                            line-height:24px;
+                                            font-size:10px;
+                                            text-transform:uppercase;
+                                            }
+                                        }
+                                    } /* end info box */
+                                    
+                                .product-reveal { position:absolute;
+                                        bottom:-1px; right : 0;
+                                        width:45px; height: 45px;
+                                        background: url(../img/product-detail-page/pdp-plus/lifestyles-large-reveal-arrow.jpg) no-repeat;
+                                        cursor:pointer; }   
+                                
+                                .related-product { 
+                                    position:absolute; 
+                                    top:100%;
+                                    left:100%;
+                                    height:102%;
+                                    width:102%;
+                                    
+                                    background: #fff url(../img/product-detail-page/pdp-plus/lifestyles-large-related-product-background.jpg) no-repeat;
+                                    @include slideMedium;   
+                                    @include clearfix();
+                                    cursor:pointer;
+                                    
+                                    .related-product-title { 
+                                        display:block;
+                                        float:right;
+                                        width:70%;
+                                        text-align:left; 
+                                        padding:0 20px 0 0;
+                                        margin:12.5% 0px 30px 0;
+                                        letter-spacing:-1px;
+                                        font-size:18px; 
+                                        line-height:23px;
+                                        white-space: normal;
+                                        font-family: $fontVzwBook;
+                                        font-weight:normal;
+                                        }
+                                    
+                                    a { display:block;
+                                        float:right;
+                                        width:75%; height: auto;
+                                        padding:0 0px 60px 0;
+                                        position:relative;
+                                        cursor:pointer;
+                                        z-index:10;
+                                        
+                                        img { 
+                                            display:block !important;
+                                            width:75%; height:auto;
+                                            height:auto;
+                                            margin:0 auto 0 auto; 
+                                            }
+                                    
+                                        .related-product-cta {
+                                            @include actionLink;
+                                            text-transform: uppercase;
+                                            font-size: 10px;
+                                            height:24px;
+                                            width: 100%;
+                                            line-height:24px;
+                                            position: absolute;
+                                            bottom:0;
+                                            left: 25px;
+                                            background:url(../img/sprites/pdp/blue-right.png) 270px 8px no-repeat;
+                                            }
+                                        } /* end enclosing a */
+                                    }/* end related product */
+                                } /* end related story */
+                            } /* end large-story container */
+                            
+                        .large-story:nth-of-type(1) { border-left:0px; }
+                    
+                        .small-story { 
+                            width: 258px;
+                            height:258px;
+                            padding:15px; 
+                        
+                            position:absolute;
+                            @include boxBrdrR;
+                            @include boxBrdrL;
+                            @include boxBrdrB; 
+                            
+                            .related-stories-small {
+                            
+                                .image { 
+                                    display:block;
+                                    width:226px;
+                                    height:auto; 
+                                    padding:0; margin:0; 
+                                    }
+                                .teaser { 
+                                    font-size:17px;
+                                    line-height:23px;
+                                    white-space:normal;
+                                    letter-spacing: -1px;
+                                    }
+                                .read-story {
+                                    width: 100%;
+                                    position: absolute;
+                                    bottom:15px;
+                                    background: url(../img/sprites/pdp/blue-right.png) 72px 10px no-repeat; 
+                                    height: 24px; 
+                                    a {
+                                        @include actionLink;
+                                        text-transform: uppercase;
+                                        font-size:10px;
+                                        }
+                                    }           
+                                } /* end related story */
+                            } /* end small container */                         
+                        } /* end slides */      
+                    } /* end vzn slide */
+        
+                .vzn-slide-prev { top: -30px; right:99px; left: auto; }
+                .vzn-slide-next { top: -30px; right: 54px; }
+
+                } /* end tabs content ul */
+            } /* end lifestyles wrapper */
+        } /* end lifestyles stories */
     .trending-categories{
         .slides{
             border-top: 1px solid #ccc;
