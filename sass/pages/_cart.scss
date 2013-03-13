@@ -38,6 +38,20 @@
 				}
 			}
 			
+		@mixin secondaryAddCartGrey {
+			height:24px;
+			border: 0;
+			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			text-transform:uppercase;
+			color: $colorVzwRed;
+			font-family : $fontArial;
+			font-size:11px; 
+			padding-left:20px;
+			font-weight: bold; 
+			cursor:pointer; 
+			text-align: left;
+			}
+			
 		@mixin secondaryAddCart {
 			height:24px;
 			border: 0;
@@ -90,11 +104,10 @@
 
 	.temp-cart-header { /* ............. TEMP page header........ */
 		width:100%;
-		height:165px; overflow:hidden;
+		height:155px; overflow:hidden;
 		background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
 		position:relative;
 		z-index:5;
-		@include anchorDrop;
 		
 		#site-header { margin-top:106px; }
 		
@@ -206,10 +219,13 @@
 						padding:16px 20px 16px 10px;
 						
 						h2 { 
+							font-family: $fontVzwBook;
+							font-weight:normal;
 							font-size:20px;
 							line-height: 24px;
 							margin: 0px 0 5px 0px; 
-							color: $cartGreyMd;
+							color: $cartGreyDk;
+							letter-spacing: -1px;
 							}
 						
 						.unit-price {
@@ -340,12 +356,11 @@
 								float: right;
 								background: transparent;
 								position:relative;
-								top: -40px; left:2px;
-								padding-top:12px;
-								padding-left:6px;
-								color: #acacac; 
+								top: -40px; left:0px;
+								padding:12px 6px 0 12px;
+								color: $cartGreyDk; 
 								font-size:14px;
-								font-weight:bold; 
+								font-weight:normal; 
 								z-index: 5;
 								height:36px;
 								
@@ -355,7 +370,7 @@
 								width:14px; height: 30px;
 								background: url(../img/sprites/cart/cart-button-updated-pointer.png) 0 4px no-repeat;
 								position: absolute;
-								top: 0px; left:46px;
+								top: 0px; left:48px;
 								z-index: 6;
 								}      
 							}/* end detail panel */
@@ -515,7 +530,7 @@
 						font-size:18px;
 						
                         span {
-                        	font-family: $fontVzwBook;
+                        	font-family: $fontVzwMedium;
                         	text-transform:lowercase;
                             display: block;
                             position:absolute;
@@ -525,6 +540,7 @@
                             height:78px; top:50px;
                             		
                             input#checkout-button {
+                            	font-family: $fontVzwMedium;
                             	-webkit-appearance: none; 
 								display:inline-block;
 								width:100%; height:100%;
@@ -622,9 +638,16 @@
 						
 						.add-also-bought {
 						
+							.span { color:transparent; } /* end span */
+								
 							.add-secondary-to-cart {
-								@include secondaryAddCart;
-								}
+								@include secondaryAddCartGrey;
+								position: relative; 
+								top:-18px; 
+								height:24px; width: 100%;
+								
+								} /* end actual input styles */
+								
 							
 						 	} /* end add also bought */
 					

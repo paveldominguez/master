@@ -21,7 +21,7 @@
 
 	$pdpGreyMd:	#d6dcdc;
 	$featuredBg : #27a0cc;
-	$techinfoBG : #119a70;
+	$techinfoBg : #119a70;
 
 
 	/* mixins */
@@ -165,7 +165,7 @@
 
 	.section-wrap {
 		@include clearfix();
-		max-width:1280px;
+		max-width:1024px;
 		
 		margin:0 auto 0 auto; }
 
@@ -199,9 +199,8 @@
 /*------------------------------------- TEMP HEADER ------------------------------ */
 
 .temp-pdp-header { 
-	@include anchorDrop;
 	width:100%;
-	height:165px; 
+	height:150px; 
 	background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
 	padding-top: 106px; 
 	position:relative;
@@ -234,7 +233,10 @@
 	.section-wrap {
 		background: #ebeeee url(../img/product-detail-page/pdp-backgrounds/thumb-nav-bg.png) center bottom repeat-x;
 		overflow: hidden;
-		position:relative; }
+		position:relative;
+		min-width:960px; 
+		max-width: 1280px; 
+		}
 
 	#carousel-block { /* ------------------------- BEGIN CAROUSEL --------------- */
 		@include column(8, collapse);
@@ -523,6 +525,7 @@
 					width:45%;
 					cursor:pointer;
 					height:78px;
+					position:relative;
 					
 					.button {
 					
@@ -532,10 +535,10 @@
 							@include ctaButton;
 							width:100%; height: 78px;
 							position:relative;
-							font-size:16px;
-							font-family: $fontVzwBook;
+							font-size:18px;
+							font-family: $fontVzwMedium;
 							text-transform: lowercase; 
-							padding: 50px 0 0 10px;
+							padding: 45px 0 0 10px;
 							
 							input.add-cart-cta {
 								width:105%; height: 78px;
@@ -544,9 +547,47 @@
 								-webkit-appearance: none;
 								opacity:0;
                     			} /* end add-cart-cta */
+                    			
+                    		
+                    			
                     		} /* end span */
+                    	
+                    		
                     	} /* end button */
+                    
 					}/* end add-cart-box */
+					
+				#add-cart-box.oos { 
+					 top:-12px;
+					
+					.OOS { 
+						margin:5px 0 10px 0;
+						p { 
+							color: $colorVzwRed;
+							font-size: 12px;
+							line-height: 14px;
+							font-family: $fontArial;
+							font-weight:bold; margin:0px; 
+							}
+						}
+					
+					
+					.button {
+						opacity: 0.333;
+					
+						span { 
+                    		padding-top:15px !important;
+                    		max-height:45px; 
+                    	
+                    		input.add-cart-cta { 
+                    			top:-20px; 
+                    			max-height:45px; 
+                    			}
+                    		}
+                    	}
+					} /* end oos classes */
+					
+					
 				}/* end price-add */
 
 			.color-stock-block { /* ---------------------- color selection ---------*/
@@ -1062,8 +1103,8 @@
 
 					.you-need {
 						h3 {
-							font-family: $fontVzwMedium;
-							text-transform: capitalize;
+							font-family: $fontVzwBook;
+							text-transform:none;
 							font-size: 18px;
 							color: $cartGreyDk;
 							font-weight: normal;
@@ -1307,7 +1348,7 @@
 								@include clearfix();
 								height: 250px;
 								width: 100%;
-								background: $techinfoBG;
+								background: $techinfoBg;
 								padding: 20px;
 								position: relative;
 								overflow: hidden;
@@ -1353,10 +1394,10 @@
 									height: 100%;
 									position: absolute;
 									top:0; left: -500px;
-									background: $techinfoBG;
+									background: $techinfoBg;
 
 									.image {
-										background: $techinfoBG url(../img/product-detail-page/pdp-backgrounds/download-success-icon.png) no-repeat;
+										background: $techinfoBg url(../img/product-detail-page/pdp-backgrounds/download-success-icon.png) no-repeat;
 										} /* end succes image */
 									p {
 										text-transform:uppercase;
@@ -1601,7 +1642,11 @@
 #simple-carousel {
 	margin-top:50px;
 
-	.section-wrap { height: 285px; }
+	.section-wrap { 
+		height: 285px; 
+		max-width: 861px; 
+		margin:0 auto 0 auto;
+		}
 
 	.tabbed-wrapper {
 		@include clearfix();
@@ -1814,13 +1859,19 @@
 			.tabs-content {
 
 			/* common fancy item styles */
+			
+				.vzn-slide.fancy {
+					@include boxBrdrL;
+					@include boxBrdrR;
+					}
+				
 				h3 {
 					font-family: $fontArial;
 					font-size:14px;
 					color: $cartGreyLt;
 					font-weight: normal;
 					position:absolute;
-					top:0; left: 0;
+					top:0; left: 15px;
 					z-index:10;
 					width:50%;
 					} /* end h3 */
@@ -1829,7 +1880,7 @@
 					font-size:28px;
 					color: $cartGreyDk;
 					position: absolute;
-					bottom:-10px; left: -5px;
+					bottom:10px; left: 15px;
 
 					span { font-size:16px;
 						position:absolute;
@@ -1893,6 +1944,8 @@
 											} /* end fancy image */
 										}/* end slider item */
 									} /* end large-item */
+									
+								.large-item:nth-of-type(1) { border-left:0px; }
 
 								.small-item {
 									@include boxBrdrL;
@@ -1942,47 +1995,20 @@
 										h4 { font-size: 12px;
 											text-transform: uppercase;
 											color: $colorVzwRed;
+											font-family: $fontVzwMedium;
+											font-weight:normal;
 											position:absolute;
-											left:-5px; top: -20px; }
+											left:15px; top: 0px; }
 
-										h3 { font-family: $fontVzwBook;
-											color: $cartGreyDk;
+										h3 { font-family: $fontVzwMedium;
+											font-weight: normal;
+											color: $cartGreyLt;
 											position:absolute;
-											left:-5px; top:-8px;
+											left:15px; top:12px;
 											font-size:19px; }
 
 										}/* end slider item */
 									} /* end category */
-
-					/* TEMP : manual positioning to establish math pattern,  	*
-					using array index numbering and exceptions for				*
-					1, 11, 21, etc can make infinite repeat ---------------------------	*/
-
-								li:nth-of-type(1) { top:0; left:0; } /* i=0 */
-								li:nth-of-type(2) { top:0; left:344px; } /* i=1, 2x */
-								li:nth-of-type(3) { top:172px; left:344px; } /* i=2, 2x */
-								li:nth-of-type(4) { top:172px; left:516px; } /* i=3, 3x */
-								li:nth-of-type(5) { top:0; left:688px; } /* i=4, 4x */
-
-								li:nth-of-type(6) { top:0; left:860px; }  /* i=5, 5x */
-								li:nth-of-type(7) { top:0; left:1204px; }  /* i=6, 7x */
-								li:nth-of-type(8) { top:172px; left:1204px; } /* i=7, 7x */
-								li:nth-of-type(9) { top:172px; left:1376px; } /* i=8, 8x */
-								li:nth-of-type(10) { top:0; left:1548px; }  /* i=9, 9x */
-
-								li:nth-of-type(11) { top:0; left:1720px; }  /* i=10, 10x */
-								li:nth-of-type(12) { top:0; left:2064px; }  /* i=11, 12x */
-								li:nth-of-type(13) { top:172px; left:2064px; } /* i=12, 12x */
-								li:nth-of-type(14) { top:172px; left:2236px; } /* i=13, 13x */
-								li:nth-of-type(15) { top:0; left:2408px; }  /* i=14, 14x */
-
-								li:nth-of-type(16) { top:0; left:2580px; }  /* i=15, 15x */
-								li:nth-of-type(17) { top:0; left:2924px; }  /* i=16, 17x */
-								li:nth-of-type(18) { top:172px; left:2924px; } /* i=17, 17x */
-								li:nth-of-type(19) { top:172px; left:3096px; }  /* i=18, 18x */
-								li:nth-of-type(20) { top:0; left:3268px; }  /* i=19, 19x */
-
-					/* -------------- END TEMP --------------------------------------	*/
 								} /* end ul.slides */
 							} /* end vzn-slide */
 
@@ -2017,7 +2043,7 @@
 	ul {
 		@include clearfix();
 		@include column(12, collapse);
-		max-width:1440px;
+		max-width:1280px;
 		margin: 0 auto 0 auto;
 		float:none;
 
@@ -2045,11 +2071,14 @@
 
 			.anchor-title {
 				color: $cartGreyMd;
+				font-family: $fontVzwBook;
 				display:inline-block;
 				float:left;
 				font-size:18px;
-				margin:24px 0 0 10px;
+				margin:18px 0 0 10px;
 				letter-spacing: -1px;
+				font-weight:normal;
+				width: 80%;
 				}/* end title h2 */
 			}/* end img/title li */
 
@@ -2103,7 +2132,7 @@
 						@include ctaButton;
 						font-size:16px;
 						line-height:30px;
-						font-family: $fontVzwBook;
+						font-family: $fontVzwMedium;
 						padding: 10px 0 0 10px;
 						float: right;
                     	width:100%; 
@@ -2169,7 +2198,7 @@
 	} /* end vzn-slide */
 
 .vzn-slide-prev {
-	@include pdp-sprite(carousel-left);
+	@include pdp-sprite(btf-carousel-left);
 	position: absolute;
 	left: -45px; top:50%;
 	width:36px; height: 36px;
@@ -2179,7 +2208,7 @@
 	pointer-events: auto; }
 
 .vzn-slide-next {
-	@include pdp-sprite(carousel-right);
+	@include pdp-sprite(btf-carousel-right);
 	position: absolute;
 	right: -54px; top:50%;
 	width:36px; height:36px;
@@ -3066,7 +3095,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 /*--------------------------------- END 1440 + BELOW-THE-FOLD ----------------------- */
 
-}/* ---------------------------- END SECOND WIDESCREEN 1440 +  -------------------------------*/
+}/* ------------------------- END SECOND WIDESCREEN 1440 +  ---------------------------*/
 
 
 
@@ -3074,10 +3103,40 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 
 
-/* =============== CSS for temp-click ================ */
+/* =============== TEMP elements for development purposes ================ */
+
+#states { /* ................................... toggle buttons in header ...............*/
+	position:absolute;
+	top:5px; right: 10px;
+	
+	li { display:inline-block; float:left; 
+		color: #ddd; padding:0 5px 0 5px;
+		border-right: 1px solid #ddd;
+		font-family: $fontArial; 
+		font-size:12px; 
+		cursor: pointer; }
+	li:last-child { border-right:0px; padding-right:0px; }
+	li:hover { color:#fff; }
+	
+
+	li.on { color:#fff; font-weight:bold; }
 
 
-#tempClick .section-wrap {
+
+
+
+
+
+	} /* end states */
+
+
+
+
+
+
+
+
+#tempClick .section-wrap { /* ....................... product click pages ............... */
 	@include heroBG;
 	@include boxBrdrB;
 

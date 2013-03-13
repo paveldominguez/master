@@ -3,21 +3,8 @@ var productDetail = (function() {
     var pub = {
         init : function() {
 
-
-//ONLOAD : special offer display .........................................................
-
-    // offers off
-      //  $jQ('.offer').css('display', 'none');
-      //  $jQ('.no-offer').css('display', 'list-item');
-
-    // offers on
-        $jQ('.offer').css('display', 'list-item');
-        $jQ('.no-offer').css('display', 'none');
-        
-        
-        
 		
-// ONLOAD : universal vars for contextual/dynamic layouts
+// ONLOAD for js: universal vars for contextual/dynamic layouts
         var pgWidth = document.body.clientWidth;
         var pdpType = $jQ('body').attr('id');
         var hero = document.getElementById('pdp-hero');
@@ -34,7 +21,9 @@ var productDetail = (function() {
         var zoomClrs = window.document.getElementById('zoom-color-select');
         var zoomClose = window.document.getElementById('zoom-close');
 
-// ONLOAD : flexslider install ..........................................................
+
+
+// ONLOAD hero : flexslider install ..........................................................
 
         $jQ(heroThumbs).flexslider({
             animation: "slide",
@@ -56,36 +45,36 @@ var productDetail = (function() {
         
         
         // handle extras for pdp-plus absolute positioned expanded images
-        setTimeout(function(){
-        	$jQ(heroFocus).find('li').each(function(){
-        		var liWd = $jQ(this).width();
-        		$jQ(this).css('height', liWd);
-        		$jQ(this).find('img').each(function(){
-        			var xCrd = $jQ(this).attr('data-xcoord');
-        			var yCrd = $jQ(this).attr('data-ycoord');
+        	if ( pdpType == 'pdp-plus' ) {
+        		setTimeout(function(){
+        			$jQ(heroFocus).find('li').each(function(){
+        				var liWd = $jQ(this).width();
+        				$jQ(this).css('height', liWd);
+        				$jQ(this).find('img').each(function(){
+        					var xCrd = $jQ(this).attr('data-xcoord');
+        					var yCrd = $jQ(this).attr('data-ycoord');
         			
-        				if ( pgWidth > 1279 ) { yCrd = 0; }
+        					if ( pgWidth > 1279 ) { 
+        						var parsedY = parseInt(yCrd, 10);
+        						yCrd = parsedY + 75; 
+        					} // build out this logic with more example photography
         				
-        			$jQ(this).css({
-        				'right' : xCrd + 'px',
-        				'bottom' : yCrd + 'px'
-        			});
-        		});
-        	});
-        }, 200 );
+        					$jQ(this).css({
+        						'right' : xCrd + 'px',
+        						'bottom' : yCrd + 'px'
+        					});
+        				}); // find img
+        			}); // find li
+        		}, 200 );
+        	} // end pdp type
         
-        
-        
-        
+		// make zoom panel vzn-slide instead
+        	$jQ(zoomFocus).removeClass('flexslider').addClass('vzn-slide');
 
-        //$jQ(zoomFocus).flexslider({
-        //    animation: "slide",
-        //    controlNav: "thumbnails"
-        //});
 
-        $jQ(zoomFocus).removeClass('flexslider').addClass('vzn-slide');
 
-// ONLOAD & RESIZE: responsive layout adjustments........................................
+
+// ONLOAD & RESIZE hero : responsive layout adjustments........................................
 
         // hero onload : force hero layout > 960+
             if (pgWidth > 959) {
@@ -98,7 +87,7 @@ var productDetail = (function() {
                 }, 200);
             } // end if
 
-    // hero resize : force cart layout > 767+
+    	// hero resize : force cart layout > 767+
             $jQ(window).resize(function(){
                var resizePg = document.body.clientWidth;
                 var resizeHt = $jQ(hero).height();
@@ -145,11 +134,13 @@ var productDetail = (function() {
  
 
 
+// ONLOAD hero : preload zoom panel components ...............................................
+
+    preloadZoom(zoomBlock);
 
 
 
-
-// ONLOAD : initial vzn-active display ..................................................
+// ONLOAD both : initial vzn-active display ..................................................
 
     // hero : carousel current thumb,
             $jQ('#thumbs .flex-active-slide').find('.vzn-active').css('width', '100%');
@@ -158,26 +149,100 @@ var productDetail = (function() {
 
 
 
-// ONLOAD : preload zoom panel components ...............................................
-
-    preloadZoom(zoomBlock);
-
-
-
-// ONLOAD : make form elements pretty
+// ONLOAD both : make form elements pretty...................................................
 
     $jQ("select").uniform();
 
 
 
-// ONLOAD : install custom tab function :P
+
+// ONLOAD both : install vzn-sliders .........................................................
+
+    // find each instance of 'vzn-slide' & apply class/functions
+    	$jQ('.vzn-slide').each(function(){
+        	element = $jQ(this);
+        	instance =  $jQ(this).attr('id');
+        	increment = $jQ(this).find('li:first').width();
+		
+        	if ( instance.indexOf('simple') > -1 ) {
+            	$jQ(this).addClass('simple');
+            	type = 'simple';
+        	} else if ( instance.indexOf('fancy') > -1 ) {
+            	$jQ(this).addClass('fancy');
+            	type = 'fancy';
+        	} else if ( instance.indexOf('zoom') > -1 ) {
+            	$jQ(this).addClass('zoom');
+            	type = 'zoom';
+        	} else if ( instance.indexOf('lifestyles') > -1 ) {
+            	$jQ(this).addClass('lifestyles');
+            	type = 'lifestyles';
+        	}
+        	vznSlideInstall(element,type, increment);
+    	});
+
+
+	// vzn-slide 'others also bought' : layout
+			var fncyList = $jQ('.fancy').find('.slides');
+			
+			$jQ(fncyList).each(function() {
+				var increment = $jQ(this).find('li:first').width();
+				$jQ(this).find('li').each(function(index, element) {
+					fancyPosition(element, index, increment);
+				});
+			});	
+	
+
+	// vzn-slide 'pdp lifestyles' : layout
+			if ( pdpType == "pdp-plus" ) {
+			 	var lsList = $jQ('#lifestyles').find('.slides');
+			 	
+			 	$jQ(lsList).each(function(){
+			 		var increment = $jQ(this).find('li:first').width();
+			 		$jQ(this).find('li').each(function(index, element) {	
+			 			lifestylePosition(element, index, increment);
+			 		});
+			 	}); // end each list 
+			} // end 'if pdp plus' : lifestyles vzn-slide
+			
+		
+			
+	// vzn-slide nav button : "on" .......................
+        $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
+        	// create modifier for lifestyles slider based on actual number of items
+        	if ($jQ(this).siblings('.vzn-slide').hasClass('lifestyles')) {
+        		//alert('yes');
+        		var lstLngth = $jQ(this).siblings('.vzn-slide').find('.slides').attr('data-length');
+        		var thisIncr = $jQ(this).attr('data-incr');
+        		var endMod = lstLngth/thisIncr;
+        		//alert(lstLngth); alert(thisIncr);
+        
+        	} else {
+        	
+        		var endMod = 0;
+        	
+        	}
+        	
+        	
+            vznSlideButtons(this, endMod);
+        });
+
+    // vzn-slide nav button : "off"
+        $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function(){
+            return false;
+        });
+
+
+
+
+
+// ONLOAD below the fold : install custom tab function :P ....................................
 
 	$jQ('.tabs dd a').click(function(){
 		pdpTab(this);
 	});
 	
 	
-// ONLOAD : position product details hero image on pdp-plus
+// ONLOAD below the fold : position product details hero image on pdp-plus ....................
 	
 	if ( pdpType == 'pdp-plus' ) {
 	
@@ -195,7 +260,7 @@ var productDetail = (function() {
 	
 
 
-// ONLOAD : install overview tabs more/less interaction below the fold ...................
+// ONLOAD below the fold : install more/less interaction on product detail tabs ...................
 
     // select these
         var allDetails = window.document.getElementById('product-details');
@@ -229,7 +294,6 @@ var productDetail = (function() {
 
 				// move these
         			
-        			$jQ(specTab).find('.third.center').appendTo('#specsTab .third.left .tab-inner');
         			$jQ(compatTab).find('.see-all').appendTo('.compat-results .tab-inner');
 
         		// apply 'show' class for assessing actual content
@@ -276,27 +340,11 @@ var productDetail = (function() {
     } // end more/less installation
 
 
-// ONLOAD : install vzn-sliders .........................................................
 
-    $jQ('.vzn-slide').each(function(){
-        element = $jQ(this);
-        instance =  $jQ(this).attr('id');
-
-        if ( instance.indexOf('simple') > -1 ) {
-            $jQ(this).addClass('simple');
-            type = 'simple';
-        } else if ( instance.indexOf('fancy') > -1 ) {
-            $jQ(this).addClass('fancy');
-            type = 'fancy';
-        } else if ( instance.indexOf('zoom') > -1 ) {
-            $jQ(this).addClass('zoom');
-            type = 'zoom';
-        }
-        vznSlideInstall(element,type);
-        //alert(element); alert(type);
-    });
-
-
+			
+			
+			
+			
 
 // ONCLICK : hero .......................................................................
 
@@ -336,16 +384,6 @@ var productDetail = (function() {
 
 
 
-
-     //   $jQ('.color-option').click(function(){
-     //       $jQ(this).parent().find('.selected').removeClass('selected');
-     //       $jQ(this).addClass('selected');
-
-     //       var selectedTitle = $jQ('.color-option.selected').attr('title');
-     //       $jQ(this).parents('.color-stock-block').find('span.color-option').html(selectedTitle).textTransform="uppercase";
-     //   });
-
-
     // create contextual zoom panel ..........................
         $jQ(zoomBtn).click(function () {
             createZoomPanel();
@@ -353,21 +391,19 @@ var productDetail = (function() {
 
 
 	// special offers pop-ups in cart
+		if ( pdpType == "pdp-plus" ) { //TEMP 'if' until pdp templates are finalized
 	
-	if ( pdpType == "pdp-plus" ) { //TEMP 'if' until pdp templates are finalized
-	
-		$jQ('.offer-more-icon').click(function() {
-			var iconPos = $jQ(this).position().left;
-			var boxPos = iconPos + 20;
+			$jQ('.offer-more-icon').click(function() {
+				var iconPos = $jQ(this).position().left;
+				var boxPos = iconPos + 20;
 			
-			$jQ(this).parent().find('.pdp-offer-pop').css('left', boxPos).fadeIn('fast');
-		});
+				$jQ(this).parent().find('.pdp-offer-pop').css('left', boxPos).fadeIn('fast');
+			});
 		
-		
-		$jQ('.offer-close').click(function(){
-			$jQ(this).parents('.pdp-offer-pop').fadeOut('fast');
-		});
-	} // end TEMP 'if'
+			$jQ('.offer-close').click(function(){
+				$jQ(this).parents('.pdp-offer-pop').fadeOut('fast');
+			});
+		} // end TEMP 'if'
 
 
 
@@ -401,6 +437,7 @@ var productDetail = (function() {
                 }   
             } // end desktop if statement
 
+
         // phablet tabs : more/less interaction ....................
             if (pgWidth < 960 ){
                $jQ('a.more-less-link').toggle(function(event) {
@@ -410,7 +447,8 @@ var productDetail = (function() {
                 });
             }
 
-		// pdp-plus hotspot interaction
+
+		// pdp-plus details : hero image & hotspot interaction
 			if ( pdpType == "pdp-plus" ) {
 			
 			// select these
@@ -425,7 +463,7 @@ var productDetail = (function() {
 				var boxLft = (lftVar + 34);
 				
 				var topVar = parseInt(spotTop, 10);
-				var boxTop = ((topVar / 2) + 47);
+				var boxTop = ((topVar) );
 			
 			
 			//apply positioning	
@@ -440,7 +478,7 @@ var productDetail = (function() {
 				});
 			
 			
-			//click functions	
+			//hotspot click functions	
 				spot.click(function(){
 					box.fadeIn();
 				});
@@ -449,12 +487,40 @@ var productDetail = (function() {
 					$jQ(this).parent().fadeOut();
 				});
 				
-		
-		
-			}
+			
+			// hide hero image for bazaar voice tabs, show for the rest
+				
+				var dTabs = window.document.getElementById('detail-tabs');
+
+				$jQ(dTabs).find('.overview a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.features a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.specs a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+				
+				$jQ(dTabs).find('.compat a').click(function(){
+					$jQ('#detail-hero-image-box').show();
+				});
+
+				$jQ(dTabs).find('.reviews a').click(function(){
+					$jQ('#detail-hero-image-box').hide();
+				}); 
+				
+				$jQ(dTabs).find('.questions a').click(function(){
+					$jQ('#detail-hero-image-box').hide();
+				});
+
+			} // end 'if pdp plus' : product detail clicks
+			
 				
 		
-        // featured tab : graphic block interaction ..................
+    	// featured tab : graphic block interaction ..................
             $jQ('.features li').toggle(function(){
                 $jQ(this).find('.image').addClass('top');
                 hover = $jQ(this).find('.hover-text');
@@ -465,7 +531,8 @@ var productDetail = (function() {
                 offset = -500 ;
                 hSlide(hover, offset);
                 $jQ(this).find('.image').removeClass('top');
-            });
+            }); //end graphic block clicks
+
 
 
         // specs tab : download success interaction ....................
@@ -481,23 +548,29 @@ var productDetail = (function() {
                     //$jQ('#download-click').css('left', '-500px');
                 }, 4000 );
                 event.preventDefault();
-            });
+            }); // end specs tab click
 
+		
+		
+		// pdp lifestyles : reveal item clicks
+			if ( pdpType == "pdp-plus" ) {
+			
+				$jQ('.product-reveal').stop().click(function(){	
+					var rThis = $jQ(this).next();
+					var rHt = rThis.width() ; 
+					var rWd = rThis.height() ;
+					vznReveal( rThis, rHt, rWd );
+				}); // end reveal click
+				
+				$jQ('.related-product').stop().click(function(){	
+					vznHide(this);
+				}); // end reveal click
+			} // end pdp lifestyle reveal clicks
 
-        // vzn-slide nav button interaction "on" .......................
-            $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
-                vznSlideButtons(this);
-            });
-
-        // vzn-slide nav button interaction "off"
-            $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function(){
-                return false;
-            });
-
-
-
-
-
+			
+			
+			
+			
 // ONSCROLL : introduce anchor bar when user is below the fold.............................
 
             var btFold = $jQ('#anchor-trigger').offset().top;
@@ -1187,32 +1260,26 @@ function closeZoomPanel() { // ................................ zoom panel 'clos
 
 
 
-function vznSlideInstall (element, type) { //.................. vznSlide Install .........
+function vznSlideInstall (element, type, increment) { //.................. vznSlide Install .........
 
     //  first assemble these contextual values
 
-        if (type == 'simple') {
+		var baseIncr = increment;
 
-            var startOff = $jQ('.vzn-slide.simple').first().offset().left;  // needsRESIZE
-            var baseIncr = $jQ(element).find('li').width();
-            var multi = getMulti(type);
-            $jQ(element).attr('data-start-off', startOff);
-
-
+        if (type == 'simple') { 
+            var multi = getMulti(type); // for responsive change
+            var mod = 0;
+            
         } else if (type == 'fancy') {
+            var multi = getMulti(type); // for responsive change
+            var mod = 1;
 
-            var startOff = $jQ('.vzn-slide.fancy').first().offset().left;  // needsRESIZE
-            var baseIncr = $jQ(element).find('.large-item').width();
-            var multi = getMulti(type);
-            $jQ(element).attr('data-start-off', startOff);
+        } else if (type == 'lifestyles') {
 
-
-            // while we're here, remodel list items for current design
-            $jQ(element).find('li').each(function() {
-                var title= $jQ(this).find('.product-title');
-                $jQ(this).find('.fancy-ratings').appendTo(title);
-            });
-
+        	baseIncr = baseIncr + 1; // accomodate box-sizing border math
+        	var multi = 1.5; // use function when we get to responsive
+        	var mod = -1;
+      
         } else if (type == 'zoom') {
 
             // select these at time of zoom panel creation
@@ -1222,19 +1289,19 @@ function vznSlideInstall (element, type) { //.................. vznSlide Install
             // establish dynamic width value & apply to slides along with initial current id
             zSldWd = $jQ(zoomBlock).width();
             $jQ(zoomSlides).find('li').css('width', zSldWd ).first().attr('id', 'current-zoom-slide');
-;
-
 
             // copied from original pattern
             var startOff = 0;
-            var baseIncr = $jQ(element).find('li').width();
             var multi = 1;
+            var mod = 0;
             $jQ(element).attr('data-start-off', startOff);
 
-        }
+        }  // end type check
 
     // math = amount to advance simple slider on each click
             var advIncr = (baseIncr * multi);
+            advIncr = advIncr + mod;
+            
             var prvIncr = advIncr;
             var nxtIncr = ( advIncr * -1 );
 
@@ -1242,17 +1309,22 @@ function vznSlideInstall (element, type) { //.................. vznSlide Install
             var list = $jQ(element).find('.slides');
             var itemCount = list.find('li').length;
 
-    // ... and use it to set proper width for slide container regardless of rel position elements
+    // ... and use it to set proper width for slide container 
             var listIncr = 0;
-           if (type == 'fancy') {
+           if (type == 'fancy' || type == 'lifestyles' ) {
                 listIncr = baseIncr / 2;
+                
+                // add logic for end of list if last element is large product/story !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
             }  else {
                 listIncr = baseIncr;
             }
             var listLength = (( itemCount * listIncr ) + 1);
+            
+
 
     // finally, apply this to actual elements
-            list.css('width', listLength + 'px' ).attr('data-length', listLength );
+            list.css('width', listLength + 'px' ).attr('data-length', listLength ).attr('data-items', itemCount);
 
             $jQ('<div class="vzn-slide-prev"></div>').appendTo(element.parent()).attr('data-incr', prvIncr).addClass('off');
             $jQ('<div class="vzn-slide-next"></div>').appendTo(element.parent()).attr('data-incr', nxtIncr);
@@ -1262,8 +1334,8 @@ function vznSlideInstall (element, type) { //.................. vznSlide Install
 
 
 
-function vznSlideButtons (element) { // ........................ vznSlide Buttons ........
-
+function vznSlideButtons (element, mod) { // ........................ vznSlide Buttons ........
+		
         // select these
             var tabWrap = $jQ(element).parent();
 
@@ -1271,73 +1343,115 @@ function vznSlideButtons (element) { // ........................ vznSlide Button
             var slideWindow = tabWrap.find('.vzn-slide');
             var list = slideWindow.find('.slides');
 
-        //start these fresh each time
-            var newOff = 0;
-            var begDiff = 0;
-            var endDiff = 0;
-            var stopFctr = 0;
-            var endStop = 0;
+        //start fresh each time
+            var newPosition = 0;
 
         // get these values
-            var winLngRaw = slideWindow.width();
-            var stOffRaw = $jQ(slideWindow).attr('data-start-off');
+            var winLngRaw = slideWindow.width(); // window length
             var lstLngRaw = $jQ(list).attr('data-length');
             var advRaw = $jQ(element).attr('data-incr');
-            var curOffRaw = $jQ(list).offset().left;
+            var curPosRaw = $jQ(list).position().left;
+           	
 
 
         // parse them all
             var windowLength = parseInt(winLngRaw, 10);
-            var startOff = parseInt(stOffRaw, 10);
             var listLength = parseInt(lstLngRaw, 10);
             var advance = parseInt(advRaw, 10);
-            var currentOff = parseInt(curOffRaw, 10);
+            var currentPosition = parseInt(curPosRaw, 10);
+            
+        //calculate end position
+			var endPosition = (windowLength - listLength) ; 
+			// if this is 0 or positive, no slideshow at all ADD THIS LOGIC!!!!!!!!!!!!!!!!!
 
 
+//alert(listLength); alert(windowLength);  alert(advance); alert(currentPosition); alert(endPosition);
 
-//alert(listLength); alert(windowLength);  alert(advance); alert(startOff);alert(currentOff);
 
-
-        // do the math
-            newOff = ((currentOff + advance)- startOff);
-            stopFctr = listLength + newOff ;
-            endStop = ((listLength - windowLength) * -1);
-
-//alert(currentOff); alert(newOff); alert(stopFctr); alert(endStop);
-
+        // do the 'loop' math
+            newPosition = (currentPosition + advance);
+            
         //decide what to do
-            if ( newOff >= 0) { // back at beginning
+        
+        	
+        	 
+        if ( slideWindow.hasClass('lifestyles')  && $jQ(tabWrap).find('.vzn-slide-next').hasClass('off') ) { // end position check : lifestyles only
+        			
+        			var lifestyleEndCheck = listLength + currentPosition;
+        			var lifestyleIncr = Math.abs(advance) * 2 ;
+        					//alert (lifestyleIncr); alert( lifestyleEndCheck);
+        			if ( lifestyleEndCheck <   lifestyleIncr ) { //  modify first 'prev' advance only 
+        			 
+        				var leftGap = windowLength - advance;
+        				
+        				advance = advance - leftGap - 3;
+        				
+        			 	newPosition = (currentPosition + advance);
+        			 
+        			 			//alert(advance); alert (newPosition); alert( lifestyleEndCheck);
+        			 			//newPosition = ( currentPosition + lifestyleEndCheck );
+        			 
+        			 	// move it
+                			hSlide(list,newPosition);
+                			
+                		// turn both on
+                			$jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
+                			$jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');	
+        			 
+        			 
+        			} // end mod prev advance
+        
+        	} else { //run through the loop for everyone
+        
+        
+        	
+            	if ( newPosition >= 0) { // back at beginning
+                	newPosition = 0;
 
-                newOff = 0;
+            		//move it
+                		hSlide(list, newPosition);
 
-            //move it
-                hSlide(list, newOff);
+            		// turn prev off, leave next on
+                		$jQ(tabWrap).find('.vzn-slide-prev').addClass('off');
+                		$jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
 
-            // turn prev off, leave next on
-                $jQ(tabWrap).find('.vzn-slide-prev').addClass('off');
-                $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
+            	} else if ( newPosition <= endPosition ) { // at end
+            
+            		// modify to hide border-right as req
+        
+         				if (slideWindow.hasClass('simple')) { // don't mod simple
+        					newPosition = endPosition;
+        				} else if (slideWindow.hasClass('fancy')) {
+							newPosition = endPosition + 5; // do mod fancy 
+						} else if (slideWindow.hasClass('lifestyles')) { // do mod lifestyles 
+							var endModify = mod * -2;
+						newPosition = endPosition + endModify; // do mod lifestyles 
+						}
+					
+					// move it
+                			hSlide(list,newPosition);
+                			
+                		
+                	// leave prev on, turn next off
+                		$jQ(tabWrap).find('.vzn-slide-next').addClass('off');
+                		$jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
+		
 
-            } else if ( newOff <= endStop ) { // at end
+            	} else { // somewhere in between
+            
+            		// move it
+                		hSlide(list,newPosition);
 
-                endDiff = newOff + stopFctr -1;
+            		// make sure both are on
+                		$jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
+                		$jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
+            	}
+            
+            
+            
+            } // end loop for everyone
 
-            // move it
-                hSlide(list, endDiff);
-
-            // turn next off, turn prev on
-                $jQ(tabWrap).find('.vzn-slide-next').addClass('off');
-                $jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
-
-            } else { // somewhere in between
-            // move it
-                hSlide(list,newOff);
-
-            // make sure both are on
-                $jQ(tabWrap).find('.vzn-slide-next').removeClass('off');
-                $jQ(tabWrap).find('.vzn-slide-prev').removeClass('off');
-            }
-
-}
+} // end vznSlideButtons
 
 
 
@@ -1350,12 +1464,8 @@ function getMulti(type) { //........ responsive multipliers for vznSlide .......
                     multi = 2;
                 } else if ( pgWidth > 719 && pgWidth < 960 ) { // tablet portrait
                     multi = 3;
-                } else if ( pgWidth > 959 && pgWidth < 1280 ) { // 1024 layout
+                } else if ( pgWidth > 959 ) { // 1024 layout
                     multi = 4;
-                } else if ( pgWidth > 1279 && pgWidth < 1440 ) { // 1280 layout
-                    multi = 4;
-                } else { // 1440+ layout
-                    multi = 4; // was 5 
                 } //end responsive val
 
     } else if (type == 'fancy') {
@@ -1365,12 +1475,8 @@ function getMulti(type) { //........ responsive multipliers for vznSlide .......
                     multi = 1.5;
                 } else if ( pgWidth > 719 && pgWidth < 960 ) { // tablet portrait
                     multi = 2;
-                } else if ( pgWidth > 959 && pgWidth < 1280 ) { // 1024 layout
+                } else if ( pgWidth > 959 ) { // 1024 layout
                     multi = 2.5;
-                } else if ( pgWidth > 1279 && pgWidth < 1440 ) { // 1280 layout
-                    multi = 3;
-                } else { // 1440+ layout
-                    multi = 3.5;
                 } // end responsive val
 
     } // end type check
@@ -1391,6 +1497,7 @@ function hSlide(element,hValue) { //....... horiz move only .............
   	}); // end css
 } // end hSlide function
 
+
 function zSlide(element,hValue, vValue) { //....... horiz/vert move .............
     $jQ(element).css({
         '-webkit-transform': 'translate3d(' + hValue + 'px,' + vValue + 'px, 0)',
@@ -1402,10 +1509,238 @@ function zSlide(element,hValue, vValue) { //....... horiz/vert move ............
 } // end hSlide function
 
 
+function vznReveal(element, ht, wd) { // ...... reveal element from bottom right, goes with vznHide
+	var wdIncr = (wd * .985 ) * -1;
+	var htIncr = (ht * .9775) * -1; 
+		
+	$jQ(element).css({
+		'-webkit-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+        '-moz-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+        '-ms-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+        '-o-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+        'transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ' 
+
+	}); // end css
+} // end vznReveal
+
+function vznHide(element) { // ...... hide element from top left, goes with vznReveal
+	$jQ(element).css({
+		'-webkit-transform' : ' translate3d(0, 0, 0)',
+        '-moz-transform' : ' translate3d(0, 0, 0)',
+        '-ms-transform' : ' translate3d(0, 0, 0)',
+        '-o-transform' : ' translate3d(0, 0, 0)',
+        'transform' : ' translate3d(0, 0, 0)' 
+
+	}); // end css
+} // end vznHide
+
+
+
+function fancyPosition (item, position, increment) {
+
+	var incr = increment / 2;
+	var addIncr = increment;
+	
+	// general li values
+		var left = incr * position;;
+		var top = 0;
+
+	// exceptions 
+		if ( position === 1 || position%5 === 1 ) { //left values for positions-1-6-11-16-etc
+			left = left + incr;
+			}
+	
+		if ( position%5 === 2 || position%5 === 3 ) { //top values for positions-2-3-7-8-12-13-etc
+			top = incr;
+		}
+		
+	// apply values
+		
+		$jQ(item).css({
+			'left' : left + 'px',
+			'top' : top + 'px'
+		});
+		
+	// then, edit layout inside each item (all of them )
+        $jQ(item).each(function() {
+            var title= $jQ(this).find('.product-title');
+            $jQ(this).find('.fancy-ratings').appendTo(title);
+        });
+}
+
+
+
+
+
+
+function lifestylePosition(item, position, increment) {
+	
+	var incr = increment / 2;
+	var addIncr = increment;
+	var left = 0;
+	var nextLeft = 0;
+	var top = 0;
+	
+	if (position < 3) {// check for initial special case
+		
+		if (position == 0) { // do nothing to position-0	 
+			} else { // left value for positions-1-2
+			left = 2 * incr;
+		}
+		
+		if (position == 2) { //top value for positions-2
+			top = incr;
+		}
+		
+		$jQ(item).css({ 
+			'top' : top +'px',
+			'left' : left + 'px'
+		});
+	
+	} else {
+		//cycle of 3
+	
+		if ( position%3 === 0 ) { // values for positions-3-6-9-etc
+		
+			left = position * incr;
+			$jQ(item).css({ 'left' : left + 'px' });
+			
+			nextLeft = left + addIncr
+			
+			$jQ(item).next('li').css({ 'left' : nextLeft + 'px' }); // values for positions-4-7-10-etc
+			
+			$jQ(item).next('li').next('li').css({ // values for positions-5-8-11-etc
+				'left' : nextLeft + 'px',
+				'top' : incr + 'px' });
+	
+		} // do nothing until position divides by 3 again 
+	} // end special-case-check-then-loop
+} // end lifestylePosition
+
+
+
+
+
+
+
 
 
 //........................... TEMP development stuff......................................
 
+
+// ............. TEMP state toggle buttons in header .........
+
+	var stndrd = document.getElementById('state-standard');
+	var sale = document.getElementById('state-sale');
+	var prod = document.getElementById('product-oos');
+	var clr = document.getElementById('color-oos');
+
+
+	$jQ(stndrd).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(sale).removeClass('on');
+			$jQ(prod).removeClass('on');
+			$jQ(clr).removeClass('on');
+		
+		//turn off everything else
+	
+		  	// turn off sale, restore standard where req
+        		$jQ('.offer').css('display', 'none');
+        		$jQ('.no-offer').css('display', 'list-item');
+        	
+        	// turn off product, restore button
+        		$jQ('.OOS.product').css('display', 'none');
+        		$jQ('.add-cart-cta').removeClass('oos');
+        	
+        	
+        	// turn off color, 
+				$jQ('.OOS.color').css('display', 'none');
+				
+			// restore cta button
+        		$jQ('#add-cart-box').removeClass('oos');	
+	
+	});
+	
+	
+	
+	$jQ(sale).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+	
+		// turn on sale elements, hide standard where req
+        	$jQ('.offer').css('display', 'list-item');
+        	$jQ('.no-offer').css('display', 'none');
+	});
+
+
+	$jQ(prod).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(clr).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.product').css('display', 'block');
+			$jQ('.OOS.color').css('display', 'none');	
+			$jQ('.add-cart-cta').addClass('oos');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+	});
+
+
+
+	$jQ(clr).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(prod).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.color').css('display', 'block');
+			$jQ('.OOS.product').css('display', 'none');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+
+			
+	}); // end TEMP state buttons 
+
+
+
+  
+
+
+        
+       
+        
 
 
 $jQ('.product-link').each(function() { //......... get info for TEMP product click .......
