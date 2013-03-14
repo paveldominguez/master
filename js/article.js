@@ -5,10 +5,9 @@ MLS.article = {
     },
     getArticleContent : function(e) {
         e.preventDefault();
-        console.log('clicked article');
         if($jQ(this).hasClass('article')) {
             $jQ.ajax({
-                url: '../article.html',
+                url: '../article.html', // this will need to be replaced with the url that will return the article html
                 data: { articleId : MLS.util.getUrlParam('articleId') },
                 success : MLS.article.displayContent,
                 dataType: 'html'
