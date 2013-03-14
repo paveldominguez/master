@@ -2,7 +2,7 @@ MLS.home = {
 
 	init: function() {
 
-		//Flex Slider
+		//Flex Slider hero
 		$jQ('#home-hero-slider').flexslider({
 			animation: "fade",
 			controlNav: true,
@@ -12,6 +12,8 @@ MLS.home = {
 
 		});
 
+		//init vzSliders
+		MLS.ui.vzSlider.init();
 
 
 	}
