@@ -28,7 +28,7 @@ $colorNavGridText: #333333;
         }
         &.left {
             > .tab {
-                span {
+                a {
                     cursor: pointer;
                     background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
                     padding-right: 15px;
@@ -54,7 +54,7 @@ $colorNavGridText: #333333;
                     left: 1px solid $colorActiveTabBrd;
                     right: 1px solid $colorActiveTabBrd;
                 }
-                span {
+                a {
                     background-image: url(../img/sprites/ui/drop-down-active.png);
                 }
             }
