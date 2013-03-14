@@ -27,7 +27,7 @@ MLS.ui = {
 	 * Navigation Tabs
 	 * @element: (string) containing element
 	 */
-	navTabs : function(element) {
+	navTabs: function(element) {
 		var scope = element,
 			$contentTabs = $jQ(element + ' > .tab-content > .tab'),
 			activeClass = "active";
@@ -37,8 +37,8 @@ MLS.ui = {
 		});
 
 		$jQ(scope + ' > .tab-menu > .nav-item').on({
-			'hover' : function() {
-				if($jQ(this).hasClass('tab')) {
+			'hover': function() {
+				if ($jQ(this).hasClass('tab')) {
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
@@ -46,13 +46,12 @@ MLS.ui = {
 					$jQ(scope).one('mouseleave', function(e) {
 						$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					});
-				} else
-				if(!$jQ(this).hasClass('.tab')) {
+				} else if (!$jQ(this).hasClass('.tab')) {
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 				}
 			},
-			'click' : function() {
-				if($jQ(this).hasClass('tab')) {
+			'click': function() {
+				if ($jQ(this).hasClass('tab')) {
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
@@ -64,19 +63,19 @@ MLS.ui = {
 	 * Navigation Accordion (for mobile view)
 	 * @element: (string) containing element
 	 */
-	navAccordion : function(element) {
+	navAccordion: function(element) {
 		var scope = element,
-		$accordionTabs = $jQ(scope + ' > .tab > a'),
-		activeClass = "active";
+			$accordionTabs = $jQ(scope + ' > .tab > a'),
+			activeClass = "active";
 
 		$accordionTabs.on('click', function(e) {
 			$jQ(scope + ' > .tab').removeClass(activeClass);
 			var $acContent = $jQ(this).next(),
-			$wHeight = $jQ(window).outerHeight(),
-			$navHeight = $jQ('#nav-mobile-tabs-primary').outerHeight(),
-			$acTabHeight = $jQ(scope + ' > .tab').outerHeight();
+				$wHeight = $jQ(window).outerHeight(),
+				$navHeight = $jQ('#nav-mobile-tabs-primary').outerHeight(),
+				$acTabHeight = $jQ(scope + ' > .tab').outerHeight();
 
-			if($acContent.hasClass('accordion-content')) {
+			if ($acContent.hasClass('accordion-content')) {
 				e.preventDefault();
 				$jQ(this).parent().addClass(activeClass);
 				$acContent.css('height', $wHeight);
@@ -84,7 +83,7 @@ MLS.ui = {
 		});
 
 		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function() {
-			if($jQ(this).hasClass(activeClass)) {
+			if ($jQ(this).hasClass(activeClass)) {
 				$jQ(this).add('.tab').removeClass(activeClass);
 			}
 		});
@@ -94,7 +93,7 @@ MLS.ui = {
 	 * @container: (string) containing element
 	 * @data: (string) html data
 	 */
-	updateContent : function(container, data) {
+	updateContent: function(container, data) {
 		$jQ(container).html(data);
 	},
 	vzSlider: {
@@ -240,6 +239,10 @@ MLS.ui = {
 
 				_self.slideButtons(this, endMod);
 
+				$jQ('.tabs dd a').click(function() {
+					_self.slideTab(this);
+				});
+
 			});
 		},
 		slideButtons: function() {
@@ -352,6 +355,33 @@ MLS.ui = {
 
 			} // end loop for everyone
 		},
+
+		slideTab: function(href) {
+			//remove active class from all tabs
+			$jQ(href).parents('.tabs').children().removeClass('active');
+
+			//apply it to (this) clicked tab
+			$jQ(href).parent().addClass('active');
+
+
+
+			// get tab content target name
+			var rawName = $jQ(href).attr('href');
+			var tabName = rawName.substring(1);
+			var contentName = (tabName + 'Tab');
+
+
+			// remove active class from all tab content, find the right one and reapply
+			contentList = $jQ(href).parents('.tab-block').find('.tabs-content');
+			$jQ(contentList).children().removeClass('active').each(function() {
+				var thisID = $jQ(this).attr('id');
+				if (thisID == contentName) {
+					$jQ(this).addClass('active');
+					return false;
+				}
+
+			});
+		},
 		lifestylePosition: function(item, position, increment) {
 
 			var incr = increment / 2;
@@ -399,6 +429,37 @@ MLS.ui = {
 
 				} // do nothing until position divides by 3 again 
 			} // end special-case-check-then-loop
-		} // end lifestylePosition
+		}, // end lifestylePosition
+		fancyPosition: function(item, position, increment) {
+
+			var incr = increment / 2;
+			var addIncr = increment;
+
+			// general li values
+			var left = incr * position;
+			var top = 0;
+
+			// exceptions 
+			if (position === 1 || position % 5 === 1) { //left values for positions-1-6-11-16-etc
+				left = left + incr;
+			}
+
+			if (position % 5 === 2 || position % 5 === 3) { //top values for positions-2-3-7-8-12-13-etc
+				top = incr;
+			}
+
+			// apply values
+
+			$jQ(item).css({
+				'left': left + 'px',
+				'top': top + 'px'
+			});
+
+			// then, edit layout inside each item (all of them )
+			$jQ(item).each(function() {
+				var title = $jQ(this).find('.product-title');
+				$jQ(this).find('.fancy-ratings').appendTo(title);
+			});
+		}
 	}
 };
