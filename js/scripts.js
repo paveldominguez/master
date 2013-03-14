@@ -74,8 +74,9 @@ MLS = {
     },
     'content-landing-page' : {
         init : function() {
-            searchResults.styleDropDown();
+            //searchResults.styleDropDown();
             contentFilter.init();
+            MLS.article.articleHandler();
         }
     },
     'category-listing-page' : {

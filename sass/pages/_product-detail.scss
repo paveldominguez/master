@@ -756,7 +756,7 @@
 		height:100%;
 		max-height:1220px; /* 1280 (NoteII - 60 for anchor bar */
 		z-index:40;
-		padding-bottom:90px;
+		/* padding-bottom:90px; */
 
 		.zoom-wrap{
 			@include clearfix();
@@ -765,7 +765,7 @@
 			float:none;
 			margin:0 auto 0 auto;
 			position:relative;
-			height:auto;
+			height:100%;
 			}
 
 		#zoom-close {
@@ -835,7 +835,8 @@
 
 			#zoom-focus {
 				margin:0 auto 0 auto;
-				height:auto;
+				width:100%;
+				height:100%;
 
 				#zoom-slides{
 					@include clearfix();
@@ -843,19 +844,29 @@
 					 li {
 					 	display:inline-block !important;
 					 	position:relative;
+					 	cursor: url(../img/sprites/pdp/zoom-bigger-cursor.png) 24 24, url(../img/sprites/pdp/zoom-bigger-cursor.cur) 24 24, crosshair;
 
 					 	img {
 					 		@include slideMedium;
-					 		width:80%; height:auto;
+					 		width:70%; height:auto;
 					 		display: block;
 					 		position:absolute; top:50%; left: 50%;
 					 		}
-					 	}
+					 	} /* end zoom li */
+					 li.zoomed {
+					 	cursor: url(../img/sprites/pdp/zoom-scroll-all.png) 24 24 , url(../img/sprites/pdp/zoom-scroll-all.cur) 24 24, move;
+					 	}/* end zoomed */
 					} /* end zoom slides */
 				 }/* end  #zoom-focus */
 
-			.vzn-slide-prev {  top:auto; left: auto; bottom: 36px; right: 72px; display: none; }
-			.vzn-slide-next {  top:auto; left: auto; bottom: 36px; right: 36px; display: none; }
+			.vzn-slide-prev {  
+				background:url(../img/sprites/pdp/carousel-left.png) no-repeat;
+				top:auto; left: auto; bottom: 36px; right: 72px; display: none; 
+				}
+			.vzn-slide-next {  
+				background:url(../img/sprites/pdp/carousel-right.png) no-repeat;
+				top:auto; left: auto; bottom: 36px; right: 36px; display: none; 
+				}
 
 
 
@@ -2257,17 +2268,14 @@ screen and (width: 1024px ) and (orientation: landscape) {
  body { min-width: 960px; }
 
 
-
-
-
-
-
-
-
-
 	#pdp-hero {
 		min-height:612px;
 		max-height:612px;
+		
+		.section-wrap {
+			min-height:612px;
+			max-height:612px;
+			}
 		
 		#carousel-block {
 			min-height:612px;
@@ -3016,6 +3024,14 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 #pdp-hero {
 	min-height: 670px;
+	
+	.section-wrap {
+		min-height:670px;
+		max-height:670px;
+		}
+	
+	
+	
 		#carousel-block {
 			@include boxBrdrL;
 			min-height: 670px;
