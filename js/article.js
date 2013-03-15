@@ -7,14 +7,14 @@ MLS.article = {
         e.preventDefault();
         if($jQ(this).hasClass('article')) {
             $jQ.ajax({
-                url: '../article.html', // this will need to be replaced with the url that will return the article html
+                url: 'sample-response.json', // this will need to be replaced with the url that will return the article json
                 data: { articleId : MLS.util.getUrlParam('articleId', this.href) },
                 success : MLS.article.displayContent,
-                dataType: 'html'
+                dataType: 'json'
             });
         }
     },
     displayContent : function(data) {
-        MLS.ui.updateContent('#article-content', data);
+        MLS.ui.updateContent('#article-content', data.responseHTML);
     }
 };
