@@ -27,8 +27,8 @@ $colorNavGridText: #333333;
             }
         }
         &.left {
-            > .tab {
-                span {
+            > .tab:not(.nav-actions) {
+                a {
                     cursor: pointer;
                     background: transparent url(../img/sprites/ui/drop-down.png) right center no-repeat;
                     padding-right: 15px;
@@ -48,13 +48,13 @@ $colorNavGridText: #333333;
                 family: $fontVzwBook;
                 size: 18px;
             }
-            &.active {
+            &.active:not(.nav-actions) {
                 background-color: $colorActiveTabBg;
                 border: {
                     left: 1px solid $colorActiveTabBrd;
                     right: 1px solid $colorActiveTabBrd;
                 }
-                span {
+                a {
                     background-image: url(../img/sprites/ui/drop-down-active.png);
                 }
             }
@@ -557,7 +557,6 @@ $colorNavGridText: #333333;
                     top: 0; left: 0;
                     height: 46px;
                     z-index: 500;
-                    border-bottom: 1px solid $colorActiveTabBg;
                 }
             }
         }

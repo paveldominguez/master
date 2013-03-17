@@ -147,6 +147,14 @@
     					-o-transition: 750ms ease-in-out;
     					-ms-transition: 750ms ease-in-out;
     					transition: 750ms ease-in-out; }
+    					
+    					
+	@mixin crslFade {	-webkit-transition: opacity 500ms ease-in-out;
+   						-moz-transition: opacity 500ms ease-in-out;
+    					-o-transition: opacity 500ms ease-in-out;
+    					-ms-transition: opacity 500ms ease-in-out;
+    					transition: opacity 500ms ease-in-out; }
+
 
 	@mixin zoomBlockTop	{-webkit-transition: left 750ms ease-in-out, top 0s ease 0.5s;
    						-moz-transition: left 750ms ease-in-out, top 0s ease 0.5s;
@@ -273,11 +281,18 @@
 							height:100%;
 							border-color: transparent;
 							margin-right:0px;
+							opacity: 0;
+							@include crslFade;
 
 							img {
 								border-color: transparent;
 								}/* end image */
 							}/* end li */
+							
+						li.flex-active-slide {
+							opacity: 1;
+							@include crslFade;
+							}
 						}/* end slides */
 					}/* end viewport */
 
@@ -343,10 +358,10 @@
 								
 								img { width:90%;
 									height:auto;
-									margin:0 auto 0 auto; }
-								}/* end li */
-
-								 .vzn-active {
+									margin:0 auto 0 auto; 
+									}
+									
+								.vzn-active {
 								 	@include slideFast;
 								 	display:block;
 								 	width:0px; height:1px;
@@ -354,7 +369,18 @@
 									position:absolute;
 									bottom:0px;
 									} /* end active div */
-								}/* end slides */
+								
+								}/* end li */
+								
+							li.flex-active-slide {
+								.vzn-active { width: 100%; }
+								}
+								 
+							}/* end slides */
+								
+							
+								
+								
 							}/* end viewport */
 
 					.loading .flex-viewport { max-height: 300px; }
@@ -842,10 +868,13 @@
 					@include clearfix();
 
 					 li {
+					 	@include crslFade;
 					 	display:inline-block !important;
 					 	position:relative;
 					 	cursor: url(../img/sprites/pdp/zoom-bigger-cursor.png) 24 24, url(../img/sprites/pdp/zoom-bigger-cursor.cur) 24 24, crosshair;
-
+						opacity: 0;
+						
+						
 					 	img {
 					 		@include slideMedium;
 					 		width:70%; height:auto;
@@ -853,6 +882,12 @@
 					 		position:absolute; top:50%; left: 50%;
 					 		}
 					 	} /* end zoom li */
+					 	
+					 li#current-zoom-slide { 
+					 	@include crslFade;
+					 	opacity: 1; 
+					 	}
+					 	
 					 li.zoomed {
 					 	cursor: url(../img/sprites/pdp/zoom-scroll-all.png) 24 24 , url(../img/sprites/pdp/zoom-scroll-all.cur) 24 24, move;
 					 	}/* end zoomed */
@@ -861,12 +896,52 @@
 
 			.vzn-slide-prev {  
 				background:url(../img/sprites/pdp/carousel-left.png) no-repeat;
-				top:auto; left: auto; bottom: 36px; right: 72px; display: none; 
+				top:auto; left: auto; bottom: 18px; right: 72px; display: none; 
 				}
 			.vzn-slide-next {  
 				background:url(../img/sprites/pdp/carousel-right.png) no-repeat;
-				top:auto; left: auto; bottom: 36px; right: 36px; display: none; 
+				top:auto; left: auto; bottom: 18px; right: 36px; display: none; 
 				}
+
+			#vzn-zoom-thumbs { 
+				position: absolute; left:50%; bottom:18px;
+				
+				#zoom-thumb-list {
+				
+					li {
+						display: inline-block;
+						width:45px; height: 45px;
+						float: left;
+						margin-right: 10px;
+						position: relative;
+						cursor:pointer;
+						
+							img { width : 100%; }
+							
+							.vzn-active {
+								@include slideFast;
+								display:block;
+								width:0px; height:1px;
+								border-bottom: 2px solid $colorVzwRed;
+								position:absolute;
+								bottom:0px;
+								} /* end active div */
+							
+							
+						}/* end li */
+						
+					li:last-child { margin-right:0; }
+					li.active { 
+						pointer-events: none;
+					
+						.vzn-active { width: 100%; }
+						}
+					
+					}/* end ul */
+				
+				 
+				}
+
 
 
 
@@ -928,6 +1003,9 @@
 
 			dd.active a h2,
 			dd a h2:hover { color: $colorVzwRed;} /* end active tab */
+			
+			dd.active .vzn-active { width : 100%; }
+			
 		
 		.tabs-content {
 
@@ -1695,6 +1773,7 @@
 								@include boxBrdrB;
 								@include boxBrdrR;
 								overflow:hidden;
+								height:215px;
 
 								li {
 									width: 215px; /*  change out for responsive size */
@@ -2058,17 +2137,14 @@
 		margin: 0 auto 0 auto;
 		float:none;
 
-		li {
-			display: inline-block;
-			float: left;
-			width:45%;
-			margin-right: 5%;
-
-			} /* end general li */
+		li { display: inline-block; } /* end general li */
 
 		.product {
 			@include clearfix();
 			padding: 0 10px 0 10px;
+			float: left;
+			width:65%;
+			margin-right: 5%;
 
 			.anchor-thumb {
 				width: 60px;
@@ -2391,6 +2467,8 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 	#pdp-hero {
 		height:645px; max-height:645px;
+		
+		.section-wrap { min-width:768px; }
 
 		#carousel-block {
 			@include column(7, collapse);
@@ -2409,7 +2487,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 					margin-top:-12.5%;
 
 					.flex-direction-nav {
-						display:none;
+						/* display:none; */
 						}
 					}/* end focus */
 
@@ -2435,11 +2513,12 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 /*------------- BEGIN 768 - 959 BELOW-THE-FOLD ------------ */
 
 #simple-carousel {
-	.vzn-slide {
-		min-width:646px;
-		max-width:646px;
-		margin:0 auto 0 auto;
-		} /* end vzn-slide */
+	.tabbed-wrapper {
+		.tab-block {
+			width:646px;
+			min-width: 646px;
+			}
+		}
 	} /* end simple carousel */
 
 
