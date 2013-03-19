@@ -8,7 +8,7 @@
 	// make form elements pretty
 		$jQ(".cart-item-qty").uniform(); // edit cart text input
 	 	$jQ("select").uniform(); //all select/option instances
-	 	$jQ(".button").uniform(); // input type="submit" per ATG spec
+	 	$jQ("input.button").uniform(); // input type="submit" per ATG spec
 
 
 // Shopping Cart Functions
@@ -94,13 +94,3 @@ function updateCart(panel){
 
 
 } // end updateCart function
-
-
-
-
-
-
-
-
-
-

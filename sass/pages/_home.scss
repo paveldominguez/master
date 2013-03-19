@@ -15,6 +15,7 @@ $fontVzw: "Verizon Apex";
 $fontVzwBook: "Verizon Apex Book";
 $fontVzwBookItalic: "Verizon Apex Book Italic";
 $fontVzwBold: "Verizon Apex Bold";
+$fontVzwBoldItalic: "Verizon Apex Bold Italic";
 $fontVzwLight: "Verizon Apex Light";
 $fontVzwMedium: "Verizon Apex Medium";
 
@@ -185,6 +186,7 @@ $btfHiliteBg : #2a2d32;
                     vertical-align: bottom;
                     // padding: 10px 15px;
                     padding: 3px 5px;
+                    line-height: 40px;
                 }
             }
             .slides{ 
@@ -194,7 +196,30 @@ $btfHiliteBg : #2a2d32;
                     max-height: 319px;
                     &.alt{
                         .hero-info{
+                            width:530px;
+                            padding: 40px 20px 0 0;
+                            padding-right:20px;
+                            padding-top:40px;
+
                             background:transparent;
+                            h1{
+                                color:#fff;
+                                font: {
+                                    family: $fontVzwBoldItalic;
+                                    size: 90px;
+                                }
+                            }
+                            .hero-sub{
+                                float:right;
+                                width:260px;
+                                .hero-copy{
+                                    color:#fff;
+                                    font: {
+                                        family: $fontVzwBookItalic;
+                                        size:18px;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -207,13 +232,30 @@ $btfHiliteBg : #2a2d32;
                 background: #2a2d32;
                 top: 0;
                 max-height: 500px;
-                .hero-copy {
-                    color: $colorPromoFont;
-                    font: {
+                padding: 40px 18px 18px 18px;
+                a.button{
+                    display:inline-block;
+                    margin-right: 10px;
+                }
+                h3{
+                        color:#fff;
                         family: $fontVzwBook;
-                        size: 24px;
-                        style: italic;
+                        font-size: 18px;
                     }
+                h1.price{
+                        color:#fff;
+                        sup{
+                            position: relative;
+                            top: 3px;
+                        }
+                    }
+                .hero-copy {
+                    color: #fff;
+                    p.hero-copy{
+                        font-size: 14px;
+                        font-family: $fontArial;
+                    }
+                    
                 }
             }
         }
