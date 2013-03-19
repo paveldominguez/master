@@ -224,6 +224,31 @@ $btfHiliteBg : #2a2d32;
                     }
                 }
             }
+            .product-hero{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 66%;
+                height: 100%;
+                padding: 50px 0 0 90px;
+                img{
+                    display: inline-block;
+                    float: left;
+                    height: 80%;
+                }
+                h1{
+                    color: #fff;
+                    font-size: 80px;
+                    display: inline-block;
+                    float: left;
+                    text-align: left;
+                    font-family: "Verizon Apex Extra Bold Italic";
+                    width: 60%;
+                    line-height: 70px;
+                    padding-left: 30px;
+                    padding-top: 30px;
+                }
+            }
             .hero-info {
                 position: absolute;
                 right: 0;
