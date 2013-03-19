@@ -210,7 +210,7 @@
 	width:100%;
 	height:150px; 
 	background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
-	padding-top: 106px; 
+	padding-top: 104px; 
 	position:relative;
 	z-index:5;
 	
@@ -2319,19 +2319,9 @@
 
 
 
-/* ----------------------------- BEGIN RESPONSIVE BREAKPOINTS ---------------- */
+/* ----------------------------- BEGIN RESPONSIVE  ---------------- */
 
 
-/* variables from styles.scss
-
-$screenXlarge: 1440px;
-$screenLarge: 1280px;
-$screenMedium: 1024px;
-$screenSmall: 768px;
-$screenMobileLarge: 568px;
-$screenMobileSmall: 320px;
-
-*/
 
 
 /* --------------------------------- BASE DESKTOP LAYOUT 960 + ---------------------*/
@@ -2589,7 +2579,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 									.product-info {
 										float:right;
 										width:50%;
-										padding-top:10px;
+										
 										margin-right: 10px;
 
 										h5 {
@@ -2758,7 +2748,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 			}
 		}
 
-}/* ---------------------------- END TABLETS LAYOUT  768 - 959 ------------------  */
+}/* ---------------------------- END NO MAN'S  815 - 959 ------------------  */
 
 
 
@@ -2767,17 +2757,18 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 @media only screen and (max-width: 767px ) {
 
 
-/* -----------------------------------------  767 -  HERO -------------------------- */
-
-	#pdp-hero {
+	#pdp-hero { /* -----------------------  767 -  HERO ------------------ */
 		max-height:3000px;
 		box-shadow:0 0 0 ;
+		
+		.section-wrap { min-width:320px; }
 
 		#carousel-block {
 			position: relative;
 			min-height:320px;
 
 			.shipping-offers { display:block; }
+			
 			#carousel {
 				width:100%;
 				min-height:320px;
@@ -2838,18 +2829,13 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 			}/* end cart-block */
 
 
-
-
-
-
-
-
 	}/*-----------  END 767 - HERO ---------------- */
+
 
 /*----------- BEGIN 767- BELOW-THE-FOLD ------------ */
 
-/* simple horiz swiping for all tabs */
-	.tabbed-wrapper {
+
+	.tabbed-wrapper { /* ................simple horiz swiping for all tabs................ */
 		width:85%;
 		margin: 0 auto 0 auto;
 
@@ -2875,8 +2861,8 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 	.vzn-slide-prev, .vzn-slide-next { display: none; }
 
 
-/* product details tabs */
-#product-details{
+
+#product-details { /*......................... product details tabs..................... */
 	margin-top:10px;
 	.tabbed-wrapper {
 		width : 92.5%; float:right;
@@ -2935,7 +2921,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 									.product-info {
 										float:right;
 										width:50%;
-										padding-top:10px;
+										
 										margin-right: 10px;
 
 										h5 {
@@ -2965,9 +2951,9 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 
 
-/* lifestyle content */
 
-#lifestyle {
+
+#lifestyle { /* ........................... lifestyle ................................. */
 	.lifestyle-wrapper {
 		.lifestyle-list {
 
@@ -3009,7 +2995,14 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 
 
-#simple-carousel {
+#simple-carousel { /* ........................ simple carousel ........................*/
+	
+	.tabbed-wrapper {
+		.tab-block {
+			min-width: 320px; 
+			}
+		}
+	
 	.vzn-slide {
 		min-width:100%;
 		max-width:100%;
@@ -3018,10 +3011,11 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 	} /* end simple carousel */
 
 
-#fancy-carousel {
+#fancy-carousel { /* ........................ fancy carousel ........................*/
 	.section-wrap { height: auto; }
 	.tabbed-wrapper {
 		.tab-block {
+			min-width: 320px; 
 			.tab-scroll {
 				#fancy-carousel-tabs.tabs {
 					@include simpleSwipeList;
@@ -3068,10 +3062,14 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 .anchor-bar {
 	ul{
-		li { width: 25%; margin: 0; }
+		li { width: 25%; }
 		.product {
-			.anchor-title { display:none; }
-
+			width: 25%;
+			margin:0;
+				
+			.anchor-title { 
+				display:none; 
+				}
 			}/* end product */
 		.anchor-cart {
 			width:75%;
@@ -3083,10 +3081,6 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 
 
 
-
-
-
-	/*------------------------------ END 767- BELOW-THE-FOLD ----------------------*/
 
 } /*---------------------------------------------- END 767 -   ------------------- */
 

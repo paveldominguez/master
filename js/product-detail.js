@@ -113,24 +113,11 @@ var productDetail = (function() {
             }
 
 // ONLOAD hero : preload zoom panel components ...............................................
-
     preloadZoom(zoomBlock);
 
 
-
-// ONLOAD both : initial vzn-active display ..................................................
-
-    // hero : carousel current thumb,
-            //$jQ('#thumbs .flex-active-slide').find('.vzn-active').css('width', '100%');
-    // below the fold : current tab
-             //$jQ('.tabs .active').find('.vzn-active').css('width', '100%');
-
-
-
 // ONLOAD both : make form elements pretty...................................................
-
     $jQ("select").uniform();
-
 
 
 
@@ -324,6 +311,9 @@ var productDetail = (function() {
         $jQ('#product-details .tabs-content').css('overflow', 'visible').css('height','auto');
 
     } // end more/less installation
+
+
+
 
 
 
@@ -551,7 +541,7 @@ var productDetail = (function() {
 				//dynamic content width
 					var lsContainer = $jQ('#lifestyles .section-wrap').width();
 					var lsTabs = $jQ('#lifestyles .tab-scroll').width();
-					var lsContent = lsContainer - lsTabs;
+					var lsContent = (lsContainer - lsTabs) - 1 ;
 			
 					$jQ('#lifestyles .tabs-content').css({ 'width' : lsContent + 'px' });
 			
@@ -703,16 +693,62 @@ var productDetail = (function() {
 		
 			var lsContainer = $jQ('#lifestyles .section-wrap').width();
 			var lsTabs = $jQ('#lifestyles .tab-scroll').width();
-			var lsContent = lsContainer - lsTabs;
+			var lsContent = (lsContainer - lsTabs) - 1;
 			
 			$jQ('#lifestyles .tabs-content').css({ 'width' : lsContent + 'px' });
 		
 		});
+
+
+
+
+		
+/* ====================================================================================
+============================= PDP+ 320 REMODEL ========================================
+======================================================================================= */
+
+if ( pdpType == "pdp-plus" && pgWidth < 768) {	
+		
+	// hero 
+		$jQ('#cart-block .header').prependTo('#carousel-block');
+		$jQ('.actual-price').clone().prependTo('#review-block');		
+		
+		$jQ('.pdp-plus-ship-block').appendTo('.price-add');
+		$jQ('.ship-details .compat-link').appendTo('.pdp-plus-ship-block');
+		
+	// btf : overview
+		var overviewContent = $jQ('#overviewTab .overview-text').html();
+		$jQ(overviewContent).prependTo('#overview-320 .content-320');
+	
+	//btf : accessories
+		var accHead = $jQ('#overviewTab .you-need h3').html();
+		$jQ('#accessories-320 h2').html(accHead);
+		var accBody = $jQ('#overviewTab .you-need-items').html(); 
+		$jQ('#accessories-320 .accessory-content').html(accBody);
 		
 		
-		
-		
-		
+	// btf : hero
+		$jQ('.btf-hero-image').each(function(){
+			var heroHt = $jQ(this).width() * .5;
+			$jQ(this).css('height', heroHt + 'px');
+			var imgAdj = $jQ(this).find('img').attr('data-320-adjust');
+			$jQ(this).find('img').css('margin-top', imgAdj +'%');
+
+		});
+
+
+
+
+
+
+
+} /* end if pdp+
+
+
+
+
+
+
 
 
 /* ===================================================================================
@@ -1628,8 +1664,8 @@ function zSlide(element,hValue, vValue) { //....... horiz/vert move ............
 
 
 function vznReveal(element, ht, wd) { // ...... reveal element from bottom right, goes with vznHide
-	var wdIncr = (wd * .985 ) * -1;
-	var htIncr = (ht * .9775) * -1; 
+	var wdIncr = (wd) * -1;
+	var htIncr = (ht * .98) * -1; 
 		
 	$jQ(element).css({
 		'-webkit-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
