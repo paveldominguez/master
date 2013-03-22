@@ -76,7 +76,7 @@ MLS = {
         init : function() {
             //searchResults.styleDropDown();
             contentFilter.init();
-            MLS.article.articleHandler();
+            MLS.ajax.article.init();
         }
     },
     'category-listing-page' : {
