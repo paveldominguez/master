@@ -61,7 +61,6 @@ MLS = {
     },
     'home-page' : {
         init : function() {
-            console.log("home init");
             MLS.home.init();
         }
     },
@@ -70,6 +69,7 @@ MLS = {
             $jQ("#sort-options").uniform();
             contentGrid.init();
             contentFilter.init();
+            MLS.ajax.cart.init();
         }
     },
     'content-landing-page' : {
@@ -83,12 +83,14 @@ MLS = {
         init : function() {
             contentGrid.init();
             contentFilter.init();
+            MLS.ajax.cart.init();
         }
     },
     'product-listing-page' : {
         init : function() {
             contentGrid.init();
             contentFilter.init();
+            MLS.ajax.cart.init();
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -116,6 +118,7 @@ MLS = {
             $jQ("#sort-options").uniform();
             contentGrid.init();
             contentFilter.init();
+            MLS.ajax.cart.init();
         }
     }
 };
