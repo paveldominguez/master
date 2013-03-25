@@ -103,6 +103,13 @@ $btfHiliteBg : #2a2d32;
 
 .home-page {
 
+    .content-grid .content-item {
+            width:25%;
+            .content-fig img{
+                max-width:115px;
+            }
+    }
+
     .tabbed-wrapper {
         @include clearfix();
         width:100%;
@@ -157,11 +164,7 @@ $btfHiliteBg : #2a2d32;
         } /* end tabbed-wrapper */
 
 
-        .content-grid .content-item {
-            width:25%;
-            .content-fig img{
-                max-width:115px;
-            }
+
 
     /* ----------- end universal tab styles ------------------ */
 
@@ -313,7 +316,11 @@ $btfHiliteBg : #2a2d32;
         }
         .section-wrap{max-width: 855px;}
         .content-grid{border-top:none;}
-
+        .content-grid .content-item {
+            width:25%;
+            .content-fig img{
+                max-width:115px;
+            }
         }
     }
 

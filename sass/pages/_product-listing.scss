@@ -236,8 +236,19 @@ $hdrOfferCollapsed: 55px;
             }
             &.selected-facets {
                 border: none;
+
                 .removable {
-                    padding-right: 0;
+                    // &[data-multi="true"]{
+                    //     display:none;
+                    // }
+                    border: none;
+                    padding: 0 15px;
+                    text-transform: uppercase;
+                    margin-bottom: 1px;
+                    border-bottom: 1px solid #dcdede;
+                    position: relative;
+                    line-height: 50px;
+                    font-size:12px;
                     .action {
                         @include product-filter-sprite(prd-fltr-remove, false, 20px, 20px);
                         padding: 25px;
