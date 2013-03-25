@@ -547,31 +547,35 @@ $bgPositionPromoSmall: -85px 35px;
                                         line-height: 32px;
                                     }
                                 }
-                                .content-action {
-                                    .add-cart-cta {
-                                        @include border-radius(3px);
-                                        @include box-shadow(
-                                            // horizontal offset | vertical offset |  blur | zoom/distance | color
-                                          inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
-                                          inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
-                                        ); // this needs fallback to image for ie8
-                                        cursor: pointer;
+                                .content-action {      
+                                    div.button {
+                                        @include add-cart-cta();
                                         display: table;
+                                        position: relative;
+                                        overflow: hidden;
                                         float: right;
                                         width: 105px;
                                         height: 40px;
-                                        background-color: $colorVzwRed;
-                                        border: none;
-                                        color: #FFF;
-                                        font: {
-                                            family: $fontVzwBook;
-                                            size: 14px;
-                                            weight: normal;
+                                        span,
+                                        span .add-cart-cta {
+                                            width: 105px;
+                                            height: 40px;
                                         }
                                         span {
                                             display: table-cell;
+                                            padding: 0 0 5px 5px;
                                             vertical-align: bottom;
-                                            padding: 15px 0 5px 5px;
+                                            input[type="submit"] {
+                                                -webkit-appearance: none;
+                                            }
+                                            .add-cart-cta {
+                                                border: none;
+                                                cursor: pointer;
+                                                display: block;
+                                                position: absolute;
+                                                top: 0; left: 0;
+                                                opacity: 0;
+                                            }
                                         }
                                     }
                                 }
