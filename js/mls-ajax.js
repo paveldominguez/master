@@ -10,7 +10,7 @@ MLS.ajax = {
     },
     article : {
         init: function() {
-            $jQ('.content-cta').live('click', MLS.ajax.article.getArticleContent);
+            $jQ('.content-cta').on('click', MLS.ajax.article.getArticleContent);
         },
         getArticleContent : function(e) {
             e.preventDefault();
@@ -28,7 +28,7 @@ MLS.ajax = {
     },
     cart : {
         init : function() {
-            $jQ('.add-cart-cta').live('click', MLS.ajax.cart.addItem);
+            $jQ('.add-cart-cta').on('click', MLS.ajax.cart.addItem);
         },
         addItem : function(e) {
             e.preventDefault();
