@@ -27,10 +27,10 @@ var contentFilter = (function() {
                 $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
 
                 // handling of various clicks
-                $facets.add($collapsible).live('click', pub.clickBridge); // prevent default action of click
-                $collapsible.live('click', pub.dimensionClick); // handle clicks on dimension (expansion/collapse)
-                $facets.live('click', pub.facetClick); // handle clicks on multi-facet
-                $removable.live('click', pub.removeFilter); // handle clicks on removable action
+                $facets.add($collapsible).on('click', pub.clickBridge); // prevent default action of click
+                $collapsible.on('click', pub.dimensionClick); // handle clicks on dimension (expansion/collapse)
+                $facets.on('click', pub.facetClick); // handle clicks on multi-facet
+                $removable.on('click', pub.removeFilter); // handle clicks on removable action
 
             },
             addFilter: function(el) {
