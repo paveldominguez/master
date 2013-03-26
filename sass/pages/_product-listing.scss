@@ -238,9 +238,9 @@ $hdrOfferCollapsed: 55px;
                 border: none;
 
                 .removable {
-                    // &[data-multi="true"]{
-                    //     display:none;
-                    // }
+                    &[data-multi="true"]{
+                        display:none;
+                    }
                     border: none;
                     padding: 0 15px;
                     text-transform: uppercase;
