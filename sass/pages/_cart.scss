@@ -340,14 +340,14 @@
 								
 							.edit-cart-input { 
 								height:36px; 
-								overflow:hidden;
+								overflow-y:hidden;
 								position: relative;
 								top:10px; 
 								
 								.edit-cart {
 									@include cartButtonUp;
 									display:block;
-									width:100%;
+									width:99%;
 									height:100%;
 									color:$cartGreyMd;
 									font-size: 16px;
@@ -698,7 +698,7 @@
 
 	#mls-nav-content {
 		background: transparent;
-		z-index:20;
+		z-index:21;
 		max-width:1280px;
 		
 		li { 
@@ -786,6 +786,7 @@
 					 		
 					 		.item-image-block {
 					 			width: 25%;
+					 			max-width:82px;
 					 			position: absolute;
 					 			left:0px;
 					 			
