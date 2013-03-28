@@ -37,7 +37,7 @@ MLS.ui = {
 		});
 
 		$jQ(scope + ' > .tab-menu > .nav-item').on({
-			'hover': function() {
+			'mouseenter': function() {
 				if ($jQ(this).hasClass('tab')) {
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
@@ -50,8 +50,9 @@ MLS.ui = {
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 				}
 			},
-			'click': function() {
+			'click': function(e) {
 				if ($jQ(this).hasClass('tab')) {
+					e.preventDefault();
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
