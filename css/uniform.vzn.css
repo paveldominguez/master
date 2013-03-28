@@ -48,31 +48,3 @@ http://uniformjs.com/
 .cart input.text { height: 36px; border: 1px solid #cccccc; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; font-weight: bold; color: #727272; text-transform: lowercase; font-size: 12px; padding-top: 13px; line-height: 36px; cursor: pointer; }
 
 /* end cart select & input */
-/*............................. DEFAULT THEME ..........................................*/
-/* INPUT & TEXTAREA */
-/* line 259, ../sass/uniform.vzn.scss */
-input.text, input.email, input.search, input.tel, input.url, input.datetime, input.date, input.month, input.week, input.time, input.datetime-local, input.number, input.color, input.password, select.uniform-multiselect, textarea.uniform { font-size: 12px; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-weight: normal; color: #777; border-top: solid 1px #aaaaaa; border-left: solid 1px #aaaaaa; border-bottom: solid 1px #cccccc; border-right: solid 1px #cccccc; }
-
-/* line 286, ../sass/uniform.vzn.scss */
-input.text:focus, input.email:focus, input.search:focus, input.tel:focus, input.url:focus, input.datetime:focus, input.date:focus, input.month:focus, input.week:focus, input.time:focus, input.datetime-local:focus, input.number:focus, input.color:focus, input.password:focus, select.uniform-multiselect:focus, textarea.uniform:focus { border-color: #999; }
-
-/* Checker */
-/* line 294, ../sass/uniform.vzn.scss */
-div.checker { margin-right: 5px; }
-
-/* Radio */
-/* line 299, ../sass/uniform.vzn.scss */
-div.radio { margin-right: 3px; }
-
-/* Uploader */
-/* line 304, ../sass/uniform.vzn.scss */
-div.uploader span.action { text-shadow: white 0px 1px 0px; background-color: #fff; font-size: 11px; font-weight: bold; }
-
-/* line 311, ../sass/uniform.vzn.scss */
-div.uploader span.filename { color: #777; border-right: solid 1px #bbbbbb; font-size: 11px; }
-
-/* line 317, ../sass/uniform.vzn.scss */
-div.uploader.disabled span.action { color: #aaa; }
-
-/* line 321, ../sass/uniform.vzn.scss */
-div.uploader.disabled span.filename { border-color: #ddd; color: #aaa; }

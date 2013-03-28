@@ -152,7 +152,7 @@
 				}
 			}/* end temp header */
 		
-		 
+		 .checkout-text-input { margin-bottom:30px; }
 		
 	#checkout-header { 
 		.section-wrap {
@@ -164,6 +164,7 @@
 			font-family: $fontVzwLight;
 			font-size:72px;
 			font-weight: normal;
+			color: $cartGreyDk;
 			}
 		    
 		.cart-link {
@@ -182,29 +183,141 @@
 		}/* end checkout header */
 	
 	#begin-checkout {  
-		@include clearfix();
-	
+		.section-wrap{
+			@include clearfix();
+			height:500px;
+				}
+		
 		.sign-in, .guest-checkout {
 			display: inline-block;
 			width:50%;
-			height:470px;
+			height:100%;
+			@include boxBrdrT;
+			@include boxBrdrB;
 			
 			.form-box {
-				width:75%;
-				margin:45px auto 45px auto;
+				width:65%;
+				height:auto;
+				margin:36px auto 36px auto;
+				
+				.form-title {
+					font-size:25px;
+					font-family: $fontVzwBook;
+					font-weight: normal;
+					color: $cartGreyDk;
+					letter-spacing: -1px;
+				
+					.bold {
+						font-family: $fontVzwBold;
+						}
+					}/* end title */
+				
+				.form-instructions {
+					font-family: $fontArial;
+					font-size:12px;
+					line-height: 16px;
+					color: $cartGreyMd;
+					padding: 0;
+					margin:10px 0 25px 0px;
+					
+					span { font-weight: bold; }
+					}/* end instructions */
+				
+				
+				.form-item-title { 
+					font-size:10px;
+					font-family: $fontArial;
+					color: $cartGreyMd;
+					text-transform: uppercase;
+					padding: 0;
+					margin: 15px 0 5px 0;
+					
+					.pass-req {
+						display:inline-block;
+						@include actionLink;
+						font-weight: normal;
+						font-size: 11px; 
+						width:100px; 
+						margin-left:10px;
+						background: url(../img/sprites/pdp/blue-more.png) 77px 4px no-repeat;
+					
+						}
+					
+					.pass-req:before { content:"( "; color: $cartGreyMd; }
+					.pass-req:after { content:" )"; color: $cartGreyMd;  }
+					
+					
+					
+					}
+				
+				.create-login { 
+					@include clearfix();
+					padding: 0;
+					margin: 0px 0 25px 0; 
+				
+					.form-item-title { margin-top:0px; }
+				
+					.checker { /* uniform wrapper */
+						width:20px;
+						height:20px;
+						float: left;
+						-webkit-border-radius: 2px;
+						border: 1px solid #aaa;
+					
+						span { /* uniform wrapper */
+					
+							.create-login-checkbox { 
+								width:20px; 
+								height: 20px; 
+								opacity: 0;
+								
+								}
+							} /* span */
+							
+						span.checked {
+							background: url(../img/sprites/cart/checkout-checkbox-checked.png) 3px 0px no-repeat;
+						
+						
+							}
+							
+							
+							
+						}/* end checker (uniform wrapper) */
+						
+					.checkbox-label { 
+						width: 120px;
+						float: left;
+						font-family: $fontArial;
+						font-size: 12px;
+						line-height:22px;
+						color: $cartGreyMd;
+						padding-left:10px; 
+						}
+						
+					}/* end create login box */
+				
+				
+				
+				
+				
 				}
 			}
 			
 		.sign-in { 
 			float:left;
 			@include heroBG;
+			@include boxBrdrR;
+			@include boxBrdrL;
 			}
 		
 		
 		
 		
 		
-		.guest-checkout { float: right; }
+		.guest-checkout { 
+			float: right;
+			@include boxBrdrR; 
+			}
 	
 	
 	

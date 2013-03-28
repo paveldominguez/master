@@ -1,4 +1,6 @@
-// Minicart 
+
+
+// Minicart ............................................................................................
 
 	// initial click : extend minicart box height if required
 	$jQ('#nav-cart').one('mouseenter', function() {
@@ -56,20 +58,21 @@
 		});
 	
 	}// end define minicartEdit 
-	
-	
 
 // End Minicart
 
 
-// Shopping Cart Page : Onload 
 
-	// edit cart button
+
+
+// Shopping Cart ......................................................................................... 
+
+	// onload : edit cart button 
 		$jQ('.edit-cart').click(function() {
 			editCart(this);
 		});
 
-	// make form elements pretty
+	// onload : make form elements pretty 
 		$jQ(".cart-item-qty").uniform(); // edit cart text input
 	 	$jQ("select").uniform(); //all select/option instances
 	 	$jQ("input.button").uniform(); // input type="submit" per ATG spec
@@ -158,3 +161,17 @@ function updateCart(panel){
 
 
 } // end updateCart function
+
+
+
+
+// Checkout ............................................................................................
+
+	// make 'begin checkout' elements pretty
+		$jQ(".create-login-checkbox").uniform();
+		$jQ(".begin-checkout-submit").uniform();
+
+
+
+
+

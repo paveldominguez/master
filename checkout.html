@@ -83,8 +83,24 @@
 	
 		<div class="sign-in">
 			<div class="form-box">
-				<h2>Sign-In</h2>
-			</div>
+				<h2 class="form-title"><span class="bold">Sign</span>-In</h2>
+				<p class="form-instructions">
+					If you <span>have a MyVerizon login</span>, sign in for access to saved shipping and billing information.
+				</p>
+				<form id="my-Verizon-login">
+				
+					<h5 class="form-item-title">Email Address</h5>
+					<input name="my-Verizon-email" type="text" class="checkout-text-input">
+					
+					<h5 class="form-item-title">Password</h5>
+					<input name="my-Verizon-password" type="text" class="checkout-text-input">
+					
+					
+					<input name="my-Verizon-login-submit" type="submit" class="begin-checkout-submit">
+					
+				</form>
+				
+			</div><!-- end form box -->
 		</div>
 	
 	
@@ -92,14 +108,52 @@
 	
 		<div class="guest-checkout">
 			<div class="form-box">
-			 	<h2>Guest Checkout</h2>
-			 </div>
+			 	<h2 class="form-title"><span class="bold">Guest</span> Checkout</h2>
+			 
+			 	<p class="form-instructions">
+					If you <span>don't have a MyVerizon login</span>, you can check out without signing in.
+				</p>
+			
+				<div class="create-login">
+					<h5 class="form-item-title">
+						Are you a Verizon Customer without an Account?
+					</h5>
+					<input name="create-login" value="Create a login" type="checkbox" class="create-login-checkbox">
+					<div class="checkbox-label">
+						Create a login.
+					</div>
+				</div>
+			
+				<form id="guest-checkout">
+				
+					<div class="create-vzn-login">
+				
+						<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
+						<input name="create-login-mobile-number" type="tel" class="checkout-text-input">
+					
+						<h5 class="form-item-title">Password<span class="pass-req">Requirements &nbsp;&nbsp;&nbsp;</span></h5>
+						<input name="create-login-password" type="text" class="checkout-text-input">
+					
+						<h5 class="form-item-title">Verify Password</h5>
+						<input name="create-login-verify-password" type="text" class="checkout-text-input">
+						
+						<div id="password-requirements">
+							<p>Must be 4-12 characters long, using letters, numbers, and at least one special character.</p>
+						</div>
+						
+						
+					</div><!-- end create login box -->
+					
+					<input name="create-login-submit" type="submit" class="begin-checkout-submit">
+					
+				</form>
+			</div><!-- end form-box -->
 		</div>
 	
 	
 	
 		
-	</div>
+	</div><!-- end section wrap -->
 </section><!-- end begin checkout -->
 
 
