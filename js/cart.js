@@ -1,7 +1,7 @@
 // Minicart 
 
-	// initial hover : extend minicart box height if required
-	$jQ('#nav-cart').one('mouseenter', function() {
+	// initial click : extend minicart box height if required
+	$jQ('#nav-cart').one('click', function() {
 	
 	 	var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
 		var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
@@ -18,7 +18,7 @@
 	// button actions
 	
 	$jQ('.remove').find('a').each(function(){
-		minicartEdit(this);
+		minicartEdit(this);  
 	});
 	
 	
@@ -41,7 +41,7 @@
 			});
 		
 		// cancel remove
-			$jQ('.minicart-cancel-remove').click(function(){
+			$jQ('.minicart-cancel-remove').click(function(e){
 				e.preventDefault();
 	
 				$jQ('.remove-msg').remove();

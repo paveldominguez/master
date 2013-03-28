@@ -404,16 +404,20 @@ var productDetail = (function() {
             	if ( pdpType == 'pdp' ) { 
 
                 	$jQ('a.more-less-link').toggle(function(event) {
+                		
                     	showMore(this);
                 	}, function (event) {
+                		
                     	showLess(this);
                 	});
                 	
                 } else if ( pdpType == 'pdp-plus' ) { // pdp-plus never uses the 'tabs' version
                 
                 	$jQ('a.more-less-link').toggle(function(event) {
+                		
                     	singleShowMore(this);
                 	}, function (event) {
+                		
                     	singleShowLess(this);
                 	});
       
@@ -424,8 +428,10 @@ var productDetail = (function() {
         // phablet tabs : more/less interaction ....................
             if (pgWidth < 960 ){
                $jQ('a.more-less-link').toggle(function(event) {
+               		
                     singleShowMore(this);
                 }, function (event) {
+                	
                     singleShowLess(this);
                 });
             }
@@ -919,7 +925,7 @@ function showMore(element) { //.......................... tabs showMore click ..
 
         $jQ(target).css('height', full).addClass('less').find('.see-all').addClass('on');
         $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 4px no-repeat');
-        event.preventDefault();
+       
 
     } // end showMore
 
@@ -931,7 +937,7 @@ function showLess(element) { //............................. tabs showLess click
 
         $jQ(target).css('height', start).removeClass('less').find('.see-all').removeClass('on');
         $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
-        event.preventDefault();
+        
 
     }// end showLess
 
@@ -990,7 +996,7 @@ function singleMoreLess(element) { //................. install single moreLess .
         // make the change
         $jQ(parent).css('height', childHt).addClass('less').find('.see-all').addClass('on');
         $jQ(element).text('Less').css('background', 'url(../img/sprites/pdp/blue-less.png) 0 4px no-repeat');
-        event.preventDefault();
+        
 
 
 
