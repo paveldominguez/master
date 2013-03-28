@@ -50,8 +50,9 @@ MLS.ui = {
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 				}
 			},
-			'click': function() {
+			'click': function(e) {
 				if ($jQ(this).hasClass('tab')) {
+					e.preventDefault();
 					var tab = $jQ(this).attr("tab");
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
