@@ -20,28 +20,20 @@ $wrapperPaddingSmall: 20px 15px;
 $leftColWidth: 255px; 
 
 @mixin add-cart-cta {
-    .add-cart-cta {
-        @include border-radius(3px);
-        @include box-shadow(
-            // horizontal offset | vertical offset |  blur | zoom/distance | color
-          inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
-          inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
-        ); // this needs fallback to image for ie8
-        display: table;
-        background-color: $colorVzwRed;
-        border: none;
-        color: #FFF;
-        cursor: pointer;
-        font: {
-            family: $fontVzwBook;
-            size: 14px;
-            weight: normal;
-        }
-        span {
-            display: table-cell;
-            vertical-align: bottom;
-            padding: 12px 0 5px 5px;
-        }
+    @include border-radius(3px);
+    @include box-shadow(
+        // horizontal offset | vertical offset |  blur | zoom/distance | color
+      inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
+      inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
+    ); // this needs fallback to image for ie8
+    background-color: $colorVzwRed;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    font: {
+        family: $fontVzwBook;
+        size: 14px;
+        weight: normal;
     }
 }
 
@@ -244,8 +236,19 @@ $hdrOfferCollapsed: 55px;
             }
             &.selected-facets {
                 border: none;
+
                 .removable {
-                    padding-right: 0;
+                    &[data-multi="true"]{
+                        display:none;
+                    }
+                    border: none;
+                    padding: 0 15px;
+                    text-transform: uppercase;
+                    margin-bottom: 1px;
+                    border-bottom: 1px solid #dcdede;
+                    position: relative;
+                    line-height: 50px;
+                    font-size:12px;
                     .action {
                         @include product-filter-sprite(prd-fltr-remove, false, 20px, 20px);
                         padding: 25px;
@@ -553,11 +556,35 @@ $hdrOfferCollapsed: 55px;
                     width: 50%;
                     padding: 15px;
                     background-color: #FFF;
-                    @include add-cart-cta();
-                    .add-cart-cta {
+                    div.button {
+                        @include add-cart-cta();
+                        display: table;
+                        position: relative;
+                        overflow: hidden;
                         float: right;
                         width: 105px;
                         height: 40px;
+                        span,
+                        span .add-cart-cta {
+                            width: 105px;
+                            height: 40px;
+                        }
+                        span {
+                            display: table-cell;
+                            padding: 0 0 5px 5px;
+                            vertical-align: bottom;
+                            input[type="submit"] {
+                                -webkit-appearance: none;
+                            }
+                            .add-cart-cta {
+                                border: none;
+                                cursor: pointer;
+                                display: block;
+                                position: absolute;
+                                top: 0; left: 0;
+                                opacity: 0;
+                            }
+                        }
                     }
                 }
                 .color-picker{

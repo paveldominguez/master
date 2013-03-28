@@ -103,6 +103,13 @@ $btfHiliteBg : #2a2d32;
 
 .home-page {
 
+    .content-grid .content-item {
+            width:25%;
+            .content-fig img{
+                max-width:115px;
+            }
+    }
+
     .tabbed-wrapper {
         @include clearfix();
         width:100%;
