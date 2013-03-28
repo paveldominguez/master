@@ -131,11 +131,7 @@
 		
 		#site-header { margin-top:106px; }
 		
-		img {
-			display:block;
-			width: 1024px;
-			margin: 0px auto 0 auto;
-			}
+		
 		}
 		
 	#cart-header { /* .............................. cart header ............... */
@@ -697,22 +693,28 @@
 		}
 
 	#mls-nav-content {
-		background: transparent;
+		
 		z-index:21;
 		max-width:1280px;
 		
 		li { 
-			background: #e5eaea;
+			
 			position:relative;
 			z-index:20; 
 			}
 		
 		#nav-tab4 {
+			width:58%;
+			height: auto;
+			background: #e5eaea;
+			position: absolute;
+			top: 0; right: 0;
+			
 			#minicart-box {
-				float:right;
-				width:58%;
+				
+				width:100%;
 				height: auto;
-				background: #e5eaea;
+				
 				padding:10px;
 				@include clearfix();
 				@include boxBrdrL;
