@@ -86,6 +86,11 @@ MLS = {
             MLS.ajax.cart.init();
         }
     },
+    'lifestyle-landing-page' : {
+        init : function() {
+            contentFilter.init();
+        }
+    },
     'product-listing-page' : {
         init : function() {
             contentGrid.init();
