@@ -36,6 +36,10 @@
 	$featuredBg : #27a0cc;
 	$techinfoBg : #119a70;
 	$btfHiliteBg : #2a2d32;
+	
+	/* pdp-plus colors */
+	$highlightBg: #29a0cd;
+	$pdpAmber: #ffba62;
 
 
 	/* mixins */
@@ -793,6 +797,12 @@
   						width:30%;
   						float: left;
   						height:100%;
+  						
+  						img { 
+  							display:block;
+  							margin: 0 auto 0 auto;
+  							width: auto !important; height: auto !important;
+  							}
   						}
   						
   					.headline, .text {
@@ -884,13 +894,13 @@
 			img { width: 100%; height: 100%; }
 			#btf-hero-data-1 { display:none;
 			top:0; right:270px;
-  				.image { background:url(../img/product-detail-page/pdp-plus/btf-hero-plugs.png) no-repeat; }
+  				.image {  }
   				
   				} /* end hero data #1 */
   				
   			#btf-hero-data-2 { display:none;
   				top:0px; right:0px;
-  				.image { background:url(../img/product-detail-page/pdp-plus/btf-hero-bluetooth-icon.png) no-repeat; }
+  				.image { }
   				 
   				} /* end hero data #2 */	
 			}/* end hero image */
@@ -908,15 +918,20 @@
 			img { width: 100%; height: 100%; }
 			#btf-hero-data-3 { 
 				bottom:0; left:0px;
-  				.image { background:url(../img/product-detail-page/pdp-plus/btf-hero-plugs.png) no-repeat; }
+  				.image { }
   				} /* end hero data #1 */
   				
   			#btf-hero-data-4 { 
   			@include boxBrdrL;
   				bottom:0; left: 270px;
-  				.image { background:url(../img/product-detail-page/pdp-plus/btf-hero-bluetooth-icon.png) 15px 20px no-repeat; }
+  				.image {  }
   				} /* end hero data #2 */
 			}
+			
+		#btf-320-hero-data-frame ,
+		#btf-320-data-slider { display:none; }
+			
+			
 		} /* end hero left   */
 
 	#pdp-plus-highlights { /* ................... highlights section ....................*/
@@ -1702,19 +1717,19 @@
 								li.category:nth-of-type(3n) { background-color: #ffba62; } // amber
 									
 								li.category:nth-of-type(5n) { background-color: #b42561; } // cranberry
-								li.category:nth-of-type(10n) { background-color: #ffba62; } // amber
-								li.category:nth-of-type(15n) { background-color: #29a0cd; } // blue
+								li.category:nth-of-type(10n) { background-color: $pdpAmber; } // amber
+								li.category:nth-of-type(15n) { background-color: $highlightBg; } // blue
 								li.category:nth-of-type(20n) { background-color: #b42561; } // cranberry
-								li.category:nth-of-type(25n) { background-color: #ffba62; } // amber
+								li.category:nth-of-type(25n) { background-color: $pdpAmber; } // amber
 								
-								li.category:nth-of-type(5n + 3) { background-color: #29a0cd; } // blue
+								li.category:nth-of-type(5n + 3) { background-color: $highlightBg; } // blue
 								li.category:nth-of-type(10n + 3) { background-color: #b42561; } // cranberry
-								li.category:nth-of-type(15n + 3) { background-color: #ffba62; } // amber
-								li.category:nth-of-type(20n + 3) { background-color: #29a0cd; } // blue 
+								li.category:nth-of-type(15n + 3) { background-color: $pdpAmber; } // amber
+								li.category:nth-of-type(20n + 3) { background-color: $highlightBg; } // blue 
 								li.category:nth-of-type(25n + 3) { background-color: #b42561; } // cranberry   
 								
-								li.category:nth-of-type(3) { background-color: #ffba62; } // amber
-								li.category:nth-of-type(40n) { background-color: #ffba62; } // amber	
+								li.category:nth-of-type(3) { background-color: $pdpAmber; } // amber
+								li.category:nth-of-type(40n) { background-color: $pdpAmber; } // amber	
 									
 								} /* end ul.slides */
 							} /* end vzn-slide */
@@ -2167,7 +2182,8 @@ screen and (width: 768px ) and (orientation: portrait) {
 #lifestyles, #others-bought { display: none; }
 
 #product-details .wrap-320,
-#tabs-320, #tabs-320 .wrap-320 { display: block; }
+#tabs-320, #tabs-320 .wrap-320,
+#similar-products .wrap-320 { display: block; }
 
 
 
@@ -2247,12 +2263,11 @@ screen and (width: 768px ) and (orientation: portrait) {
 		width:100%;
 		display:block;
 		position:relative;
+		float:none;
 		} 
 	.btf-hero-image { 
 		overflow:hidden;
 		img { height:auto !important; }
-		#btf-hero-data-3,
-		#btf-hero-data-4 { display:none; }
 		}
 	.btf-hero-icon { 
 		height: 78px;
@@ -2282,28 +2297,112 @@ screen and (width: 768px ) and (orientation: portrait) {
 		
 			}
 		}
+		
+	#btf-320-hero-data-frame {
+		display:block !important;
+		@include simpleSwipeFrame;
+		
+		#btf-320-data-slider { 
+			display:block !important;
+			@include simpleSwipeList;
+			
+			
+			#btf-hero-data-1,
+			#btf-hero-data-2 { display: none; }
+			
+			
+			div { 
+				float:left;
+				width:270px;
+				display: inline-block;
+				@include clearfix();
+				@include boxBrdrR;
+				
+				.image { 
+					width:30%;
+					display:inline-block;
+					float:left;
+					border-right:0px;
+					
+					img { 
+						display:block;
+						width: auto;
+						margin: 0 auto 0 auto;
+						}
+					}
+				
+				.headline, .text { 
+					width:60%;
+					line-height:15px;
+					float:right;
+					font-family: $fontArial;
+					border-right:0px; 
+					}
+				.headline { 
+					font-size:11px;
+					height:15px;
+					text-transform: uppercase;
+					margin:20px 7.5% 10px 0;
+					font-weight: bold;
+					color: $cartGreyDk;
+					}
+				.text{ 
+					font-size:10px;
+					height:45px;
+					white-space: normal;
+					margin-right: 7.5%;
+					color: $cartGreyMd;
+					}
+				
+				
+				}/* end div */
+				
+			div:last-child { border-right: 0px; }
+				
+			} /* end list */	
+		} /* end frame */   
 	
+		
 	}/* end wrapper/ general btf hero */ 
 	
 #product-details {
 	min-height: 216px;
+	margin-bottom:25px;
 	
 	.lifestyles-content {
 		@include simpleSwipeFrame;
+		width: 110%;
 		
 		li { 
-			background: #29a0cd; 
 			padding:30px; 
 			width:270px; 
 			color:#fff;
 			@include boxBrdrR;
+			padding-left:80px;
+			text-transform: uppercase;
+			font-weight:bold;
 			}
+			
+		.alpha { 
+			background: $highlightBg url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) no-repeat;
+			background-size:45px; background-position: 20px -72px; 
+			}
+		.beta { 
+			background: $highlightBg url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) no-repeat;
+			background-size:45px; background-position: 20px -72px;  
+			}
+		.gamma { 
+			background: $highlightBg url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) no-repeat;
+			background-size:45px; background-position: 20px -72px;  
+			}
+		
 		li:last-child { border-right:0px; }
 		}
 		
 		
 	.accessory-frame { 
 		@include simpleSwipeFrame;
+		width: 110%;
 		
 		.accessory-content {
 			@include clearfix();
@@ -2385,49 +2484,86 @@ screen and (width: 768px ) and (orientation: portrait) {
 	}/* end product details */
 	
 	
+#btf-hero-left { margin-bottom:25px; }
+
+	
 #pdp-plus-highlights { /* .................. highlights adjustments ................. */
+
+	.section-header { 
+		width: 83.333%;
+		margin: 0 auto 0 auto;
+		
+		.section-title {
+		font-size: 24px; 
+			}
+		}
+
 
 	.tabbed-wrapper { width: 100%; 
 	
 		.tab-block {
 			@include simpleSwipeFrame;
 		
-			.tab-scroll {
-				display:none;
-				@include simpleSwipeFrame;
-				width: 100%;
-	
-				#pdp-plus-highlight-tabs {
-					@include clearfix();
-					@include simpleSwipeList;
-					width: auto;
-					
-					}/* end highlight-tabs/ list */
-				dd { 
-						float: left; 
-						display: inline-block;
-						width: 80%;
-						
-						.pointer { right:30px; }
-						} /* indiv tab */
-	
-				}/* end tab scroll / frame */
+			.tab-scroll { display:none; }
 				
 			ul.tabs-content {
+				height:351px;
 				@include clearfix();
 				@include simpleSwipeList;
-			
-				 
-				 li { 
+		
+				li { 
 				 	display:inline;  
 				 	white-space: nowrap;
 				 	float:left;
 				 	width:270px; 
 				 	@include boxBrdrR;
 				 	
+				 	.movedTab {
+				 		height: 81px;
+				 		width: 100%;
+				 		position:relative;
+				 		
+				 		a { 
+							position:relative;
+							display: block;
+							width:100%;
+							height:100%;
+							padding:20px 0px 0 80px;
+						
+							h2 { color: #fff; 
+								text-align: left;
+								text-transform:uppercase; 
+								font-size:12px;
+								font-family: $fontArial;
+								font-weight:bold;
+								letter-spacing: -0.5px; }
+							h2:hover { color:#fff; }
+						
+							} /* end a */
+					
+											
+						.pointer {
+							display:block;
+							position: absolute;
+							width:1px; height: 1px;
+							border-left: 15px solid transparent;
+							border-right: 15px solid transparent;
+							border-bottom: 15px solid #fff;
+							top:auto; right:auto; 
+							bottom: 0px; left:33px;
+							margin:0;
+							}
+				 	
+				 		}/* end moved Tab */
+				 	
+				 	.tab-wrapper { 
+				 		width:100%;
+				 		height:270px;
+				 		}
+				 	
 				 	
 				 	.feature-box { 
-				 		padding:30px;
+				 		padding:20px 30px 20px 30px;
 				 		max-height: 270px;
 				 		
 				 		.feature-title h3 {
@@ -2449,9 +2585,18 @@ screen and (width: 768px ) and (orientation: portrait) {
 				 	
 				 #data-highlightTab,
 				 #wifi-highlightTab,
-				 #smart-highlightTab { display: inline-block; }
+				 #smart-highlightTab { 
+				 	display: inline-block;
+				 	height:351px; 
+				 	}
 				 	
 				#app-highlightTab {
+					height:351px;
+					.movedTab {
+						background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/hilight-app-icon.png) 33px -58px no-repeat; 
+						background-size:30px;
+						.pointer { border-bottom-color: rgb(235, 238, 238); }
+						}
 				
 					.feature-box {
 						.feature-list {
@@ -2486,13 +2631,33 @@ screen and (width: 768px ) and (orientation: portrait) {
 							} /* list */
 						}/* box */
 				
-				
-				
-				
 					}/* end app tab */
 			
+				#data-highlightTab { 
+					.movedTab {
+						background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/hilight-data-icon.png) 33px -58px no-repeat; 
+						background-size:30px;
+						.pointer {  border-bottom-color: $highlightBg; }
+						}
+					}
+				
+				#wifi-highlightTab {
+					.movedTab {
+					 	background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/hilight-wifi-icon.png) 33px -58px no-repeat; 
+						background-size:30px;
+						.pointer {  border-bottom-color: $highlightBg; } 
+						}
+					}
+				
+				#smart-highlightTab { 
+					.movedTab {
+						background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/hilight-smart-icon.png) 33px -58px no-repeat; 
+						background-size:30px;
+						.pointer {  border-bottom-color: $highlightBg; }
+						}
+					}
 			
-			
+		
 			
 				}/* end tabs content */
 	

@@ -1,0 +1,260 @@
+/* Checkout SCSS (built from Cart SCSS) */
+
+
+
+	/* resets */	
+	
+		/*input[type="button"],
+		button { padding:0px !important; border:0px !important; background: none; }
+		*/
+		input[type="search"],
+		input[type="list"],
+		input[type="number"] { font-family: $fontArial; }
+
+
+	/* mixins, colors, etc from other pages - TEMP */
+		$highlightBg: #29a0cd;
+		$pdpAmber: #ffba62;
+		$techinfoBg : #119a70;
+		
+		$cartGreyLt: #727272; 
+ 		$cartGreyMd: #666666;
+ 		$cartGreyDk: #3d4146;
+ 		$controlTxt: #c5c7c7;
+
+		$colorVzwRed: #D00505;
+ 		$actLinkBlue: #0066cc;
+
+		$specialOfferBlue: #009eb6;
+		
+		@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
+						font-size:12px;
+						font-weight:bold;
+						text-transform:capitalize;
+						color: $actLinkBlue; }
+
+
+	/* new colors, mixins, etc */
+ 		$cartGreyAltWht: #edefef;
+ 		$cartGreyFocus: #d9d9d9;
+						
+		@mixin cartHilight { 
+			-webkit-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
+			-moz-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
+        	box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
+			}
+
+		@mixin cartButtonUp { 
+			@include cartRounded;
+			@include boxBrdrA;
+			@include cartHilight;
+			background: #edf1f2;
+			font-size:14px;  
+			 padding:0 10px 0 10px;
+			text-transform: lowercase;
+			font-family: $fontVzwBook;
+			cursor:pointer;
+			
+			span { color: #acacac;
+				text-shadow: 0px 1px 1px #fff; 
+				}
+			}
+			
+		@mixin secondaryAddCartGrey {
+			height:24px;
+			border: 0;
+			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			text-transform:uppercase;
+			color: $colorVzwRed;
+			font-family : $fontArial;
+			font-size:11px; 
+			padding-left:20px;
+			font-weight: bold; 
+			cursor:pointer; 
+			text-align: left;
+			}
+			
+		@mixin secondaryAddCart {
+			height:24px;
+			border: 0;
+			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			text-transform:uppercase;
+			color: $colorVzwRed;
+			font-family : $fontArial;
+			font-size:11px; 
+			padding-left:20px;
+			font-weight: bold; 
+			cursor:pointer; 
+			}
+			
+		@mixin cartButtonShadow {
+			height:100%;
+			overflow-y: hidden;
+			-webkit-box-shadow: -2px 0px 4px 1px rgba(0, 0, 0, 0.25); 
+            -moz-box-shadow: -2px 0px 4px 1px rgba(0, 0, 0, 0.25); 
+            box-shadow: 0px -2px 4px 1px rgba(0, 0, 0, 0.25); 
+            padding: 0 9px 0 9px; 
+			}
+		
+		@mixin cartEditPanel {
+			@include cartRounded;
+			@include boxBrdrA;
+			background: #fff;
+			-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+            -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+            box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+			position: absolute;
+			z-index:10; top:-120px; 
+			padding:20px; 
+			}	
+
+		@mixin greyCartButton {
+			@include cartRounded;
+			@include boxBrdrA;
+			width: 100%; height: 100%;
+			background: #f2f2f2;
+			color:$cartGreyMd;
+			font-family: $fontVzwMedium;
+			text-transform: lowercase;
+			-webkit-box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 2px 1px rgba(0, 0, 0, 0.15);
+            			-moz-box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 2px 1px rgba(0, 0, 0, 0.15);
+            			box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 2px 1px rgba(0, 0, 0, 0.15);
+			}
+
+
+	
+/* Checkout Styles */
+  
+#checkout-page {
+
+	/* general & temp classes */
+	
+		.section-wrap { 
+			@include clearfix();
+			width:100%;
+			max-width:1024px;
+			position:relative;
+			}
+
+		.temp-cart-header { /* ............. TEMP page header........ */
+			width:100%;
+			height:155px; overflow:hidden;
+			background: url(../img/cart/three-row-nav-bg.png) repeat-x; 
+			position:relative;
+			z-index:5;
+		
+			#site-header { margin-top:106px; }
+		
+			img {
+				display:block;
+				width: 1024px;
+				margin: 0px auto 0 auto;
+				}
+			}/* end temp header */
+		
+		 
+		
+	#checkout-header { 
+		.section-wrap {
+			padding: 45px 0 0 90px;
+			}
+		
+	
+		.checkout-title { 
+			font-family: $fontVzwLight;
+			font-size:72px;
+			font-weight: normal;
+			}
+		    
+		.cart-link {
+			position:absolute;
+			top: 15px; left: 36px;
+	
+			a {
+				@include actionLink;
+				text-transform:uppercase;
+				font-size:11px;
+				padding: 0 0 0 10px;
+				background:url(../img/sprites/pdp/blue-left.png) 0px 2px no-repeat;
+				}
+			}/* end cart-link */
+	
+		}/* end checkout header */
+	
+	#begin-checkout {  
+		@include clearfix();
+	
+		.sign-in, .guest-checkout {
+			display: inline-block;
+			width:50%;
+			height:470px;
+			
+			.form-box {
+				width:75%;
+				margin:45px auto 45px auto;
+				}
+			}
+			
+		.sign-in { 
+			float:left;
+			@include heroBG;
+			}
+		
+		
+		
+		
+		
+		.guest-checkout { float: right; }
+	
+	
+	
+	
+		}/* end begin checkout */
+
+
+	#checkout {
+
+		#checkout-sequence {
+		
+		
+		
+		
+		
+			}/* end checkout sequence */
+			
+			
+		#checkout-sidebar {
+		
+		
+		
+		
+		
+			}/* end checkout-sidebar */
+
+
+
+
+
+		}/* end checkout */
+
+
+	}/* end checkout-page */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

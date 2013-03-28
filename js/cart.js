@@ -1,4 +1,68 @@
-// Shopping Cart Onload 
+// Minicart 
+
+	// initial hover : extend minicart box height if required
+	$jQ('#nav-cart').one('mouseenter', function() {
+	
+	 	var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
+		var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
+		if (cartCt >= bannerCt ){
+			setTimeout(function(){
+				var cartHt = $jQ('#minicart-cart').height();
+				//alert(cartHt);
+				cartHt = parseInt(cartHt, 10) + 90;
+				$jQ('#minicart-cart').css('height', cartHt + 'px');
+			}, 200);
+		}	
+	});
+
+	// button actions
+	
+	$jQ('.remove').find('a').each(function(){
+		minicartEdit(this);
+	});
+	
+	
+	function minicartEdit(removeBtn){
+	
+		$jQ(removeBtn).click(function(e){ // first 'remove' click
+			e.preventDefault();
+			var block = $jQ(removeBtn).parents('.minicart-item');
+			var editBox = $jQ(removeBtn).parents('.minicart-edit');
+	
+			$jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
+			$jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block'));        
+			$jQ(block).css('background-color' , '#d6d9d9');
+			$jQ(removeBtn).addClass('yes-remove');
+		
+		
+		// second 'remove' click
+			$jQ('.yes-remove').click(function(){	
+				$jQ(block).remove();
+			});
+		
+		// cancel remove
+			$jQ('.minicart-cancel-remove').click(function(){
+				e.preventDefault();
+	
+				$jQ('.remove-msg').remove();
+				$jQ(block).css('background-color' , '#e5eaea');
+				$jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
+				$jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
+			
+				minicartEdit(removeBtn);
+				
+			});
+	
+		});
+	
+	}// end define minicartEdit 
+	
+	
+
+// End Minicart
+
+
+// Shopping Cart Page : Onload 
 
 	// edit cart button
 		$jQ('.edit-cart').click(function() {

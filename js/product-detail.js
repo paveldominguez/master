@@ -733,10 +733,26 @@ if ( pdpType == "pdp-plus" && pgWidth < 768) {
 			$jQ(this).css('height', heroHt + 'px');
 			var imgAdj = $jQ(this).find('img').attr('data-320-adjust');
 			$jQ(this).find('img').css('margin-top', imgAdj +'%');
-
+			$jQ(this).find('.btf-hero-data').appendTo('#btf-320-data-slider');
 		});
 
-
+	// btf : highlights
+		$jQ('#pdp-plus-highlight-tabs').find('dd').each(function(idx, el){
+			// get values and index of whats moving
+				var tab = $jQ(this).html();
+				var which = idx + 1;
+			// get element its moving to
+				$jQ('#pdp-plus-highlights .tabs-content').children('li').each(function(idx, el){
+					if(which == (idx + 1) ){
+						$jQ('<div class="movedTab">' + tab + '</div>').prependTo(el);
+					}
+				});
+		});
+		
+	// similar products
+		$jQ('#similar-products .section-wrap').addClass('wrap-320');
+		$jQ('#similar-products .plus-slider-wrap').addClass('content-320');
+	
 
 
 
