@@ -44,7 +44,7 @@
 <body id="checkout-page">
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <div class="temp-pdp-header">
+	<div class="temp-pdp-header">
   
   		<!-- <div id="states">
   			<ul>
@@ -77,6 +77,7 @@
 	</div>
 </section><!-- end checkout header -->
 
+<div id="checkout-page-wrap">
 
 <section id="begin-checkout">
 	<div class="section-wrap">
@@ -87,16 +88,19 @@
 				<p class="form-instructions">
 					If you <span>have a MyVerizon login</span>, sign in for access to saved shipping and billing information.
 				</p>
-				<form id="my-Verizon-login">
-				
-					<h5 class="form-item-title">Email Address</h5>
-					<input name="my-Verizon-email" type="text" class="checkout-text-input">
+				<form id="my-Verizon-login" method="post">
 					
-					<h5 class="form-item-title">Password</h5>
-					<input name="my-Verizon-password" type="text" class="checkout-text-input">
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Email Address</h5>
+						<input name="myVerizonEmail" type="email" class="checkout-text-input">
+					</div>
 					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Password</h5>
+						<input name="myVerizonPassword" type="text" class="checkout-text-input">
+					</div>
 					
-					<input name="my-Verizon-login-submit" type="submit" class="begin-checkout-submit">
+					<input name="myVerizonLoginSubmit" type="submit" class="begin-checkout-submit" value="Sign-In" id="guest-entrance">
 					
 				</form>
 				
@@ -118,33 +122,39 @@
 					<h5 class="form-item-title">
 						Are you a Verizon Customer without an Account?
 					</h5>
-					<input name="create-login" value="Create a login" type="checkbox" class="create-login-checkbox">
+					<input name="create-login" value="Create a login" type="checkbox" class="create-login-checkbox" >
 					<div class="checkbox-label">
 						Create a login.
 					</div>
 				</div>
 			
-				<form id="guest-checkout">
+				<form id="create-vzn-login" method="post">
 				
-					<div class="create-vzn-login">
+					<div class="create-login-fields">
 				
-						<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
-						<input name="create-login-mobile-number" type="tel" class="checkout-text-input">
-					
-						<h5 class="form-item-title">Password<span class="pass-req">Requirements &nbsp;&nbsp;&nbsp;</span></h5>
-						<input name="create-login-password" type="text" class="checkout-text-input">
-					
-						<h5 class="form-item-title">Verify Password</h5>
-						<input name="create-login-verify-password" type="text" class="checkout-text-input">
-						
-						<div id="password-requirements">
-							<p>Must be 4-12 characters long, using letters, numbers, and at least one special character.</p>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
+							<input name="createLoginFromMobile" type="tel" class="checkout-text-input">
 						</div>
 						
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Password<span class="pass-req">Requirements &nbsp;&nbsp;&nbsp;</span></h5>
+							<input name="createLoginPassword" type="text" class="checkout-text-input"id="new-vzn-password">
+						</div>
 						
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Verify Password</h5>
+							<input name="createLoginVerify" type="text" class="checkout-text-input" >
+						</div>
+						
+						<div id="password-requirements">
+							<div class="req-pointer"></div>
+							<p>Must be 4-12 characters long, using letters, numbers, and at least one special character.</p>
+						</div>
+					
 					</div><!-- end create login box -->
 					
-					<input name="create-login-submit" type="submit" class="begin-checkout-submit">
+					<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Guest Checkout">
 					
 				</form>
 			</div><!-- end form-box -->
@@ -163,6 +173,48 @@
 	
 	
 		<section id="checkout-sequence">
+		
+		
+			<div id="shipping-info" class="checkout-step">
+				<div class="step-title-block">
+					<h2 class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</h2>
+					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+				</div>
+				<div class="step-info-block">
+				 	something
+				</div>
+			</div>
+			
+			<div id="shipping-method" class="checkout-step">
+				<div class="step-title-block">
+					<h2 class="step-title"><span class="bold">2<span class="sep"> | </span>Shipping</span> Method</h2>
+					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+				</div>
+				<div class="step-info-block">
+				 	something
+				</div>
+			</div>
+			
+			<div id="billing-info" class="checkout-step">
+				<div class="step-title-block">
+				 	<h2 class="step-title"><span class="bold">3<span class="sep"> | </span>Billing</span> Information</h2>
+				 	<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+				 </div>
+				 <div class="step-info-block">
+				 	something
+				</div>
+			</div>
+			
+			<div id="confirm-order" class="checkout-step">
+				<div class="step-title-block">
+					<h2 class="step-title"><span class="bold">4<span class="sep"> | </span>Confirm</span> Order</h2>
+					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+				</div>
+				<div class="step-info-block">
+				 	something
+				</div>
+			</div>
+	
 		</section>
 		
 		
@@ -247,7 +299,7 @@
 </section><!-- end checkout -->
 
 
-
+</div><!-- end  checkout page wrap -->
 
 
 

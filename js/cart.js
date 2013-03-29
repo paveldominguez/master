@@ -166,12 +166,98 @@ function updateCart(panel){
 
 
 // Checkout ............................................................................................
-
-	// make 'begin checkout' elements pretty
+	// set up phone number
+	
+		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    		phone_number = phone_number.replace(/\s+/g, ""); 
+			return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+		}, "Please specify a valid phone number");
+	
+	
+	// validation rules : 'begin checkout' > sign into Verizon	
+		$jQ('#my-Verizon-login').validate({
+			rules: {
+				myVerizonEmail: {
+					required: true,
+					email: true
+				},
+				myVerizonPassword: {
+					required: true,
+					minlength: 4
+				}
+			},
+			
+			messages: {
+				myVerizonEmail: "Please enter a valid email address",
+				myVerizonPassword: {
+					required: "Please enter your password",
+					minlength: "Your password must be at least 4 characters long"
+				}
+			}
+		});	
+			
+	// validation rules : 'begin checkout' > create login 
+	
+		$jQ('#create-vzn-login').validate({
+		
+			rules: {
+				createLoginFromMobile: {
+					required: true,
+					phoneUS: true,	
+				},
+				createLoginPassword: {
+					required: true,
+					minlength: 4
+				},
+				createLoginVerify: {
+					equalTo: '#new-vzn-password'
+				}
+			},
+			
+			messages: {
+				createLoginFromMobile: {
+					required: "Please enter your Verizon Wireless number",
+					phoneUS: "Please enter your Verizon Wireless number"
+					},
+				createLoginPassword: {
+					required: "Please enter a password",
+					minlength: "Your password must be at least 4 characters long"
+					},
+				createLoginVerify: {
+					required: 'Please re-enter your password to confirm',
+					equalTo: 'Sorry, your passwords don\'t match'
+					}
+			},
+			success: function () {
+				//alert('yeah');
+			}
+		});	
+	
+		
+	// 'begin checkout' : make elements pretty
 		$jQ(".create-login-checkbox").uniform();
 		$jQ(".begin-checkout-submit").uniform();
+		
+	// 'begin checkout' : create vzn login
+		$jQ('.create-login-checkbox').change(function() {
+			$jQ('.create-login-fields').toggle('fast');	
+		});
+		
+	// 'begin checkout' : password requirements
+		$jQ('.pass-req').click(function() {
+			$jQ('#password-requirements').toggle('fast');
+		});
 
 
-
+	// 'begin checkout' : successful entrance to guest checkout
+		$jQ('#create-vzn-login').submit(function(e) {
+			e.preventDefault();
+			if ($jQ(this).valid()) {
+				$jQ('#begin-checkout').fadeOut(300);
+				$jQ('.checkout-title').text('Checkout');
+			}
+		});
+		
+		
 
 
