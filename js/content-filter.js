@@ -89,10 +89,7 @@ var contentFilter = (function() {
                     //Remove facet from selected facets
                     var isMulti = $jQ(this).attr('data-multi');
                     toggleElement(this, true, isMulti);
-                    if (!isMulti){
-                        //Show hidden dimension if not visible
-                        toggleElement($jQ('#' + hiddenDimension), false, isMulti);
-                    }
+                    toggleElement($jQ('#' + hiddenDimension), false, isMulti);
                 }
                 //Update Filter
                 pub.updateFilter();
