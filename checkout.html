@@ -91,13 +91,15 @@
 				<form id="my-Verizon-login" method="post">
 					
 					<div class="form-input-wrap">
-						<h5 class="form-item-title">Email Address</h5>
-						<input name="myVerizonEmail" type="email" class="checkout-text-input">
+						<h5 class="form-item-title">User ID or Phone Number</h5>
+						<input name="myVerizonID" type="text" class="checkout-text-input" placeholder="User ID or Phone Number">
+						<a href="#" class="forgot">Forgot your User ID?</a>
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Password</h5>
-						<input name="myVerizonPassword" type="text" class="checkout-text-input">
+						<input name="myVerizonPassword" type="password" class="checkout-text-input" placeholder="Password">
+						<a href="#" class="forgot">Forgot your password?</a>
 					</div>
 					
 					<input name="myVerizonLoginSubmit" type="submit" class="begin-checkout-submit" value="Sign-In" id="guest-entrance">
@@ -134,17 +136,17 @@
 				
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
-							<input name="createLoginFromMobile" type="tel" class="checkout-text-input">
+							<input name="createLoginFromMobile" type="tel" class="checkout-text-input" placeholder="212-345-6789">
 						</div>
 						
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Password<span class="pass-req">Requirements &nbsp;&nbsp;&nbsp;</span></h5>
-							<input name="createLoginPassword" type="text" class="checkout-text-input"id="new-vzn-password">
+							<input name="createLoginPassword" type="text" class="checkout-text-input"id="new-vzn-password" placeholder="password">
 						</div>
 						
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Verify Password</h5>
-							<input name="createLoginVerify" type="password" class="checkout-text-input" >
+							<input name="createLoginVerify" type="password" class="checkout-text-input" placeholder="verify password">
 						</div>
 						
 						<div id="password-requirements">
@@ -190,42 +192,52 @@
 				 	
 				 	<div class="form-input-wrap">
 						<h5 class="form-item-title">First Name</h5>
-						<input name="checkoutFirstName" type="text" class="checkout-input">
+						<input name="checkoutFirstName" type="text" class="checkout-input" placeholder="First Name">
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Last Name</h5>
-						<input name="checkoutLastName" type="text" class="checkout-input">
+						<input name="checkoutLastName" type="text" class="checkout-input" placeholder="Last Name">
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Email <span class="grey">| For Order Updates</span></h5>
-						<input name="checkoutEmail" type="email" class="checkout-input">
+						<input name="checkoutEmail" type="email" class="checkout-input" placeholder="your.name@verizon.net">
 					</div>
 					
 					<div class="newsletter-signup">
-						<input type="checkbox" >
-						<h5> Newsletter signup </h5>
+						<input name="newsletterSignUp" type="checkbox" id="newsletter-signup">
+						<h5>Sign-up for Newsletter updates<div class="checkout-dropdown">
+							<a href="#" class="checkout-dropdown-link">
+								What's in it for me?
+							</a>
+							<div class="checkout-dropdown-panel">
+								<div class="pointer"></div>
+								<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+									eu rutrum mi turpis elementum augue.
+								</p>
+							</div><!-- end dropdwn panel -->
+						</div><!-- end dropdown --></h5>
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
-						<input name="checkoutPhone" type="tel" class="checkout-input">
+						<input name="checkoutPhone" type="tel" class="checkout-input" placeholder="212-345-6789">
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
-						<input name="checkoutAddress" type="text" class="checkout-input">
+						<input name="checkoutAddress" type="text" class="checkout-input" placeholder="123 Main Street">
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Address 2</h5>
-						<input name="checkoutAddress2" type="text" class="checkout-input">
+						<input name="checkoutAddress2" type="text" class="checkout-input" placeholder="Apt. 1">
 					</div>
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">City</h5>
-						<input name="checkoutCity" type="text" class="checkout-input">
+						<input name="checkoutCity" type="text" class="checkout-input" placeholder="New York">
 					</div>
 					
 					<div class="form-input-wrap state">
@@ -246,7 +258,7 @@
 					
 					<div class="form-input-wrap zip">
 						<h5 class="form-item-title">Zip Code</h5>
-						<input name="checkoutZip" type="text" class="checkout-input">
+						<input name="checkoutZip" type="text" class="checkout-input" placeholder="12345">
 					</div>
 					
 				 	
@@ -313,7 +325,7 @@
 								See Detailed Shipping Information
 							</a>
 							<div class="checkout-dropdown-panel">
-							<div class="pointer"></div>
+								<div class="pointer"></div>
 								<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
 									eu rutrum mi turpis elementum augue.
 								</p>
@@ -324,17 +336,17 @@
 					<div class="shipping-option-radios">
 					
 						<div class="form-input-wrap">
-							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-ground-5-day" checked="checked">
+							<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-ground-5-day" >
 							<h5 class="form-item-title">2 to 5 Day Ground - <span class="offer">Free!</span><span class="ship-price no-offer">$2.99</span></h5>
 						</div>
 						
 						<div class="form-input-wrap">
-							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-overnight">
+							<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-overnight">
 							<h5 class="form-item-title">Overnight Shipping - <span class="ship-price">$12.99</span></h5>
 						</div>
 						
 						<div class="form-input-wrap">
-							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-ground-2-day">
+							<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-ground-2-day">
 							<h5 class="form-item-title">2-Day Ground -
 								<span class="radio-offer offer">
 									Free!
@@ -359,13 +371,17 @@
 						</div>
 						
 						<div class="form-input-wrap">
-							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-sat-overnight">
+							<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-sat-overnight">
 							<h5 class="form-item-title">Saturday Priority Overnight Shipping - <span class="ship-price">$19.99</span></h5>
 						</div>
 						
 						<div class="form-input-wrap">
-							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-priority-overnight">
+							<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-priority-overnight">
 							<h5 class="form-item-title">2-Day Ground - <span class="ship-price">Regularly $14.99</span></h5>
+						</div>
+						
+						<div id="no-shipping-selected">
+							<p>Please select your shipping method</p>
 						</div>
 						
 					</div><!-- end shipping radios -->
@@ -408,7 +424,7 @@
 							<div class="credit-card-info">
 					
 								<div class="form-input-wrap">
-									<input name="cardNumber" type="text" class="checkout-input" id="card-number">
+									<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="1234 5678 1234 5678">
 									<h5 class="form-item-title">Credit Card Number</h5>
 								</div>
 								
@@ -482,7 +498,7 @@
 									
 									<li class="security-item code">
 										<div class="form-input-wrap">
-											<input name="ccCode" type="text" class="checkout-input" id="card-code">
+											<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="123">
 											<h5 class="form-item-title">
 												Security Code
 												<div class="checkout-dropdown">
@@ -575,32 +591,32 @@
 				 	
 				 		<div class="form-input-wrap">
 							<h5 class="form-item-title">First Name</h5>
-							<input name="billingFirstName" type="text" class="checkout-input">
+							<input name="billingFirstName" type="text" class="checkout-input" placeholder="First Name">
 						</div>
 					
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Last Name</h5>
-							<input name="billingLastName" type="text" class="checkout-input" >
+							<input name="billingLastName" type="text" class="checkout-input" placeholder="Last Name" >
 						</div>
 
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
-							<input name="billingPhone" type="tel" class="checkout-input">
+							<input name="billingPhone" type="tel" class="checkout-input" placeholder="212-345-6789">
 						</div>
 					
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
-							<input name="billingAddress" type="text" class="checkout-input">
+							<input name="billingAddress" type="text" class="checkout-input" placeholder="123 Main Street">
 						</div>
 					
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Address 2</h5>
-							<input name="billingAddress2" type="text" class="checkout-input">
+							<input name="billingAddress2" type="text" class="checkout-input" placeholder="Apt. 1">
 						</div>
 					
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">City</h5>
-							<input name="billingCity" type="text" class="checkout-input">
+							<input name="billingCity" type="text" class="checkout-input" placeholder="New York">
 						</div>
 					
 						<div class="form-input-wrap state">
@@ -619,7 +635,7 @@
 					
 						<div class="form-input-wrap zip">
 							<h5 class="form-item-title">Zip Code</h5>
-							<input name="billingZip" type="text" class="checkout-input">
+							<input name="billingZip" type="text" class="checkout-input" placeholder="12345">
 						</div>
 	 				</div><!-- end billing-address-block --> 
 				</div><!-- end info block -->	
@@ -948,7 +964,7 @@
 				 			</li>
 				 			
 				 			<li class="disclaimer secure">
-				 				<div class="title">Our Return Policy</div>
+				 				<div class="title">Secure Purchasing</div>
 				 				<p class="content">Donec adipiscing pretium dapibus. 
 				 					Nunc gravida elementum risus et volutpat. 
 				 					In hac habitasse platea dictumst. 
@@ -957,7 +973,7 @@
 				 			</li>
 				 	
 				 			<li class="disclaimer privacy">
-				 				<div class="title">Our Return Policy</div>
+				 				<div class="title">Our Privacy Policy</div>
 				 				<p class="content">Donec adipiscing pretium dapibus. 
 				 					Nunc gravida elementum risus et volutpat. 
 				 					In hac habitasse platea dictumst. 

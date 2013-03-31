@@ -179,9 +179,8 @@ function updateCart(panel){
 	// validation rules : 'begin checkout' > sign into Verizon	
 		$jQ('#my-Verizon-login').validate({
 			rules: {
-				myVerizonEmail: {
-					required: true,
-					email: true
+				myVerizonID: {
+					required: true
 				},
 				myVerizonPassword: {
 					required: true,
@@ -190,7 +189,7 @@ function updateCart(panel){
 			},
 			
 			messages: {
-				myVerizonEmail: "Please enter a valid email address",
+				myVerizonID: "Please enter a valid email address",
 				myVerizonPassword: {
 					required: "Please enter your password",
 					minlength: "Your password must be at least 4 characters long"
@@ -272,9 +271,25 @@ function updateCart(panel){
 		var which = $jQ(this).attr('id');
 		//alert(which);
 		if (which == 'ship-method-complete') {
-		
-			//alert('do nothing');
-		
+			
+			var radios = $jQ(this).parent().find('.checkout-radio-input');
+			var valid = false;
+			
+			var i = 0;
+			$jQ(radios).each(function(i) {
+			
+				if (this.checked) { 
+					alert(i);
+					valid = true; 
+					$jQ('#no-shipping-selected').hide();
+					var shippingType = $jQ('input[name=shipRadio]:checked').siblings('h5').html();
+					$jQ('#sum-shipping').html(shippingType);
+					return false;
+				} 
+				
+			}); // end each
+			$jQ('#no-shipping-selected').show();
+			
 		} else {
 			
 		
