@@ -305,13 +305,20 @@ $btfHiliteBg : #2a2d32;
             h2{
                 font-size: 29px; padding-top: 24px; font-family: "Verizon Apex Bold"; color: #3d4146;
                 input{
-                    width: 197px;
-                    height: 30px;
+                    color:#bdc2c3;
+                    width: 173px;
+                    height: 37px;
                     background: none;
                     border: none;
                     outline: none;
                     font-size: 29px;
-}
+                    line-height: 37px;
+                    border-bottom: 1px solid #515459;
+                    padding-bottom: 7px;
+                }
+                #uniform-madlib-select{
+                    display:inline;
+                }
             } 
         }
         .section-wrap{max-width: 855px;}

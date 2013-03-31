@@ -14,7 +14,7 @@ http://uniformjs.com/
 /* line 31, ../sass/uniform.vzn.scss */
 .product-detail { /* end active */ }
 /* line 32, ../sass/uniform.vzn.scss */
-.product-detail div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; min-height: 45px; max-height: 45px; border: 0px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 60px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: #ebeeee url(../img/sprites/pdp/grey-more.png) 95% 28px no-repeat; cursor: pointer; border: 1px solid #cccccc; }
+.product-detail div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; min-height: 45px; max-height: 45px; border: 0px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 60px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: #ebeeee url(../img/sprites/pdp/grey-more.png) 95% 28px no-repeat; cursor: pointer; border: 1px solid #ccc; }
 /* line 52, ../sass/uniform.vzn.scss */
 .product-detail div.selector select { position: absolute; top: 0; left: 0; font-family: Arial, sans-serif !important; font-size: 12px; line-height: 30px; min-height: 45px; opacity: 0; }
 /* line 62, ../sass/uniform.vzn.scss */
@@ -31,20 +31,20 @@ http://uniformjs.com/
 /* end product-detail select*/
 /*............. CART INPUT, SELECT & BUTTONS ..................................................  */
 /* line 106, ../sass/uniform.vzn.scss */
-.cart, #checkout-page { /* end selector */ /* end select */ /* end active */ /* Cart buttons -- this is already in cart.scss */ /* Separate from above due to IE8 */ }
+.cart { /* end selector */ /* end select */ /* end active */ /* Cart buttons -- this is already in cart.scss */ /* Separate from above due to IE8 */ }
 /* line 107, ../sass/uniform.vzn.scss */
-.cart div.selector, #checkout-page div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; border: 1px solid #cccccc; background: #fff; height: 36px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 45px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; cursor: pointer; }
+.cart div.selector { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; border: 1px solid #ccc; background: #fff; height: 36px; font-weight: bold; width: 100% !important; color: #727272; text-transform: lowercase; font-size: 12px; line-height: 45px; padding: 0px 0 0 0px; position: relative; font-family: Arial, sans-serif !important; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; cursor: pointer; }
 /* line 125, ../sass/uniform.vzn.scss */
-.cart div.selector select, #checkout-page div.selector select { position: absolute; top: 0; left: 0; font-family: Arial, sans-serif !important; font-size: 12px; line-height: 30px; min-height: 45px; opacity: 0; cursor: pointer; }
+.cart div.selector select { position: absolute; top: 0; left: 0; font-family: Arial, sans-serif !important; font-size: 12px; line-height: 30px; min-height: 45px; opacity: 0; cursor: pointer; }
 /* line 135, ../sass/uniform.vzn.scss */
-.cart div.selector.active, #checkout-page div.selector.active { /* end select */ }
+.cart div.selector.active { /* end select */ }
 /* line 137, ../sass/uniform.vzn.scss */
-.cart div.selector.active select, #checkout-page div.selector.active select { left: 10px; top: -10px; font-family: Arial, sans-serif !important; text-transform: lowercase; font-size: 14px; line-height: 20px; color: #727272; /* end option */ }
+.cart div.selector.active select { left: 10px; top: -10px; font-family: Arial, sans-serif !important; text-transform: lowercase; font-size: 14px; line-height: 20px; color: #727272; /* end option */ }
 /* line 145, ../sass/uniform.vzn.scss */
-.cart div.selector.active select option, #checkout-page div.selector.active select option { display: block; }
+.cart div.selector.active select option { display: block; }
 /* line 156, ../sass/uniform.vzn.scss */
-.cart div.selector span, #checkout-page div.selector span { display: inline-block; width: 60% !important; height: 100%; color: #727272; padding-left: 10px; }
+.cart div.selector span { display: inline-block; width: 60% !important; height: 100%; color: #727272; padding-left: 10px; }
 /* line 166, ../sass/uniform.vzn.scss */
-.cart input.text, #checkout-page input.text { height: 36px; border: 1px solid #cccccc; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; font-weight: bold; color: #727272; text-transform: lowercase; font-size: 12px; padding-top: 13px; line-height: 36px; cursor: pointer; }
+.cart input.text { height: 36px; border: 1px solid #ccc; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: white url(../img/sprites/pdp/grey-more.png) 95% 18px no-repeat; font-weight: bold; color: #727272; text-transform: lowercase; font-size: 12px; padding-top: 13px; line-height: 36px; cursor: pointer; }
 
 /* end cart select & input */
