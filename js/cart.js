@@ -264,10 +264,6 @@ function updateCart(panel){
 	
 	// Main Checkout Sequence
 	
-	//	validation rules
-	
-
-
 	
 	// validation loop for 'next step' buttons
 	
@@ -277,7 +273,7 @@ function updateCart(panel){
 		//alert(which);
 		if (which == 'ship-method-complete') {
 		
-			alert('do fuck all');
+			//alert('do nothing');
 		
 		} else {
 			
@@ -302,8 +298,8 @@ function updateCart(panel){
     		});
     		
     		$selects.each(function(slctI) {
-        			alert('selects');
-        			alert(slctI);
+        			//alert('selects');
+        			//alert(slctI);
         			data = $jQ(this).find(':selected').text();	
         			copySelects( section, slctI, data );	
         	});
@@ -365,12 +361,51 @@ function updateCart(panel){
 				checkoutCity: {
 					required: true	
 				},
-				checkoutState: {
-					required: true	
-				},
 				checkoutZip: {
 					required: true	
-				}		
+				},
+				cardNumber: {
+					required: true,
+					minlength: 16,
+					maxlength:  16,
+					digits: true
+				},	
+				ccCode: {
+					required: true,
+					minlength: 3,
+					maxlength:  4,
+					digits: true
+				},
+				billingFirstName: {
+					required: true
+				},
+				billingLastName: {
+					required: true
+				},
+				billingPhone: {
+					required: true,
+					phoneUS: true
+				},
+				billingAddress: {
+					required: true	
+					},
+				billingAddress2: {
+					},
+				billingCity: {
+					required: true	
+					},
+				billingZip: {
+					required: true
+					},
+				discountCode: {
+				
+					},
+				giftCardNumber: {
+				
+					},
+				discountCardPin: {
+				
+					},
 			},
 			
 			messages: {
@@ -401,7 +436,43 @@ function updateCart(panel){
 					},
 				checkoutZip: {
 					required: "Please enter your zip code"
-					}		
+					},
+				cardNumber: {
+					required: "Please enter your card number",
+					minlength: "Please enter a valid card number",
+					maxlength:  "Please enter a valid card number",
+					digits: "Please enter a valid card number"
+					},
+				ccCode: {
+					required: "Please enter the security code on the back of your card",
+					minlength: "Please enter a valid security code",
+					maxlength:  "Please enter a valid security code",
+					digits: "Please enter a valid security code"
+					},
+				billingFirstName: {
+					required: "Please enter your first name"
+					},
+				billingLastName: {
+					required: "Please enter your last name"
+					},
+				billingPhone: {
+					required: "Please enter your phone number",
+					phoneUS: "Please eneter a valid phone number"
+					},
+				billingAddress: {
+					required: "Please enter your street address"	
+					},
+				billingAddress2: {
+					},
+				billingCity: {
+					required: "Please enter your city"	
+					},
+				billingState: {
+					required: "Please select your state"
+					},
+				billingZip: {
+					required: "Please enter your zip code"
+					},		
 				}
 			});	
 
@@ -416,7 +487,7 @@ function copyInputs( section, inputI, data ) {
 	$jQ('#' + section ).parents('.checkout-step').find('.summary').each(function(sumI) {
 		//alert(sumI); alert(data);
 		if (inputI == sumI ) {
-			alert('woot!'); alert(data);
+			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
 		
 		}
@@ -434,7 +505,7 @@ function copySelects( section, inputI, data ) {
 	$jQ('#' + section ).parents('.checkout-step').find('.select-summary').each(function(sumI) {
 		//alert(sumI); alert(data);
 		if (inputI == sumI ) {
-			alert('woot!'); alert(data);
+			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
 		
 		}
