@@ -166,13 +166,15 @@ function updateCart(panel){
 
 
 // Checkout ............................................................................................
-	// set up phone number
+	// set up phone number for all forms
 	
 		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
     		phone_number = phone_number.replace(/\s+/g, ""); 
 			return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
 		}, "Please specify a valid phone number");
 	
+	
+	// 'Begin Checkout' Forms
 	
 	// validation rules : 'begin checkout' > sign into Verizon	
 		$jQ('#my-Verizon-login').validate({
@@ -202,11 +204,11 @@ function updateCart(panel){
 		
 			rules: {
 				createLoginFromMobile: {
-					required: true,
+					required: false,
 					phoneUS: true,	
 				},
 				createLoginPassword: {
-					required: true,
+					required: false,
 					minlength: 4
 				},
 				createLoginVerify: {
@@ -230,7 +232,8 @@ function updateCart(panel){
 			},
 			success: function () {
 				//alert('yeah');
-			}
+			},
+			ignore : '.ignore'
 		});	
 	
 		
@@ -258,6 +261,363 @@ function updateCart(panel){
 			}
 		});
 		
+	
+	// Main Checkout Sequence
+	
+	
+	// validation loop for 'next step' buttons
+	
+	$jQ('.checkout-next').click(function(e) {
+		e.preventDefault();
+		var which = $jQ(this).attr('id');
+		//alert(which);
+		if (which == 'ship-method-complete') {
 		
+			//alert('do nothing');
+		
+		} else {
+			
+		
+			var validator = $jQ("#vzn-checkout").validate();
+			var valid = true;
+    		var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input');
+    		var $selects = $jQ(this).siblings('.step-info-block').find('.checkout-select-input');
+			var section = $jQ(this).attr('id');
+		
+    		$inputs.each(function(inputI) {
+    			
+        		if (!validator.element(this) && valid) {
+            		valid = false;
+        		} else {
+        	
+        			var data = $jQ(this).val();
+
+        			copyInputs( section, inputI, data );
+        	
+        		}
+    		});
+    		
+    		$selects.each(function(slctI) {
+        			//alert('selects');
+        			//alert(slctI);
+        			data = $jQ(this).find(':selected').text();	
+        			copySelects( section, slctI, data );	
+        	});
+
+    	if (valid) {
+    	
+    		if (section == 'billing-info-complete') { // special case : copy name to out-of-sequence field 
+    			var first = $jQ('#confirmed-first-name').text();
+    			var last = $jQ('#confirmed-last-name').text();
+    			$jQ('#name-on-card').text( first + ' ' + last);
+    		}
+    	
+    	
+    	
+    	
+    	
+    	
+        	//alert(section);
+        	// get & copy select data from checkout- to sum-
+        		
+        	
+        	// then hide form & button
+        	
+        	// then show summary
+        	
+        	// then open the next panel
+        	
+    	}
+			
+	}
+		}); // end next step click
 
 
+// checkout validation rules & messages : validate.js
+
+	$jQ('#vzn-checkout').validate({
+		
+			rules: {
+				checkoutFirstName: {
+					required: true	
+				},
+				checkoutLastName: {
+					required: true	
+				},
+				checkoutEmail: {
+					required: true,
+					email: true	
+				},
+				checkoutPhone: {
+					required: true,
+					phoneUS: true	
+				},
+				checkoutAddress: {
+					required: true	
+				},
+				checkoutAddress2: {
+					required: false	
+				},
+				checkoutCity: {
+					required: true	
+				},
+				checkoutZip: {
+					required: true	
+				},
+				cardNumber: {
+					required: true,
+					minlength: 16,
+					maxlength:  16,
+					digits: true
+				},	
+				ccCode: {
+					required: true,
+					minlength: 3,
+					maxlength:  4,
+					digits: true
+				},
+				billingFirstName: {
+					required: true
+				},
+				billingLastName: {
+					required: true
+				},
+				billingPhone: {
+					required: true,
+					phoneUS: true
+				},
+				billingAddress: {
+					required: true	
+					},
+				billingAddress2: {
+					},
+				billingCity: {
+					required: true	
+					},
+				billingZip: {
+					required: true
+					},
+				discountCode: {
+				
+					},
+				giftCardNumber: {
+				
+					},
+				discountCardPin: {
+				
+					},
+			},
+			
+			messages: {
+				checkoutFirstName: {
+					required: "Please enter your first name"
+					},
+				checkoutLastName: {
+					required: "Please enter your last name"
+					},
+				checkoutEmail: {
+					required: "Please enter your email address",
+					email: "Please enter a valid email address"	
+					},
+				checkoutPhone: {
+					required: "Please enter your phone number",
+					phoneUS: "Please enter a valid phone number"	
+					},
+				checkoutAddress: {
+					required: "Please enter your street address"	
+					},
+				checkoutAddress2: {
+					},
+				checkoutCity: {
+					required: "Please enter your city"	
+					},
+				checkoutState: {
+					required: "Please select your state"
+					},
+				checkoutZip: {
+					required: "Please enter your zip code"
+					},
+				cardNumber: {
+					required: "Please enter your card number",
+					minlength: "Please enter a valid card number",
+					maxlength:  "Please enter a valid card number",
+					digits: "Please enter a valid card number"
+					},
+				ccCode: {
+					required: "Please enter the security code on the back of your card",
+					minlength: "Please enter a valid security code",
+					maxlength:  "Please enter a valid security code",
+					digits: "Please enter a valid security code"
+					},
+				billingFirstName: {
+					required: "Please enter your first name"
+					},
+				billingLastName: {
+					required: "Please enter your last name"
+					},
+				billingPhone: {
+					required: "Please enter your phone number",
+					phoneUS: "Please eneter a valid phone number"
+					},
+				billingAddress: {
+					required: "Please enter your street address"	
+					},
+				billingAddress2: {
+					},
+				billingCity: {
+					required: "Please enter your city"	
+					},
+				billingState: {
+					required: "Please select your state"
+					},
+				billingZip: {
+					required: "Please enter your zip code"
+					},		
+				}
+			});	
+
+
+
+// FUNCTIONS ...............................................................................
+
+function copyInputs( section, inputI, data ) {
+	
+	//alert(section); alert(inputI); alert(data);
+	//alert('yep');
+	$jQ('#' + section ).parents('.checkout-step').find('.summary').each(function(sumI) {
+		//alert(sumI); alert(data);
+		if (inputI == sumI ) {
+			//alert('woot!'); alert(data);
+			$jQ(this).text(data);
+		
+		}
+	
+	});
+
+} // end copyInputs
+
+
+
+function copySelects( section, inputI, data ) {
+	
+	//alert(section); alert(inputI); alert(data);
+	//alert('yep');
+	$jQ('#' + section ).parents('.checkout-step').find('.select-summary').each(function(sumI) {
+		//alert(sumI); alert(data);
+		if (inputI == sumI ) {
+			//alert('woot!'); alert(data);
+			$jQ(this).text(data);
+		
+		}
+	
+	});
+	
+} // end copy Selects
+
+
+
+
+// ............. TEMP state toggle buttons in header .........
+
+	var stndrd = document.getElementById('state-standard');
+	var sale = document.getElementById('state-sale');
+	var prod = document.getElementById('product-oos');
+	var clr = document.getElementById('color-oos');
+
+
+	$jQ(stndrd).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(sale).removeClass('on');
+			$jQ(prod).removeClass('on');
+			$jQ(clr).removeClass('on');
+		
+		//turn off everything else
+	
+		  	// turn off sale, restore standard where req
+        		$jQ('.offer').css('display', 'none');
+        		$jQ('.no-offer').css('display', 'list-item');
+        	
+        	// turn off product, restore button
+        		$jQ('.OOS.product').css('display', 'none');
+        		$jQ('.add-cart-cta').removeClass('oos');
+        	
+        	
+        	// turn off color, 
+				$jQ('.OOS.color').css('display', 'none');
+				
+			// restore cta button
+        		$jQ('#add-cart-box').removeClass('oos');	
+	
+	});
+	
+	
+	
+	$jQ(sale).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+	
+		// turn on sale elements, hide standard where req
+        	$jQ('.offer').css('display', 'list-item');
+        	$jQ('.no-offer').css('display', 'none');
+	});
+
+
+	$jQ(prod).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(clr).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.product').css('display', 'block');
+			$jQ('.OOS.color').css('display', 'none');	
+			$jQ('.add-cart-cta').addClass('oos');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+	});
+
+
+
+	$jQ(clr).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var sale = document.getElementById('state-sale');
+		var prod = document.getElementById('product-oos');
+		var clr = document.getElementById('color-oos');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			$jQ(prod).removeClass('on');
+	
+		//turn on product, turn off color where req,
+			$jQ('.OOS.color').css('display', 'block');
+			$jQ('.OOS.product').css('display', 'none');
+			
+		// mod cta button
+			$jQ('#add-cart-box').addClass('oos');
+
+			
+	}); // end TEMP state buttons 

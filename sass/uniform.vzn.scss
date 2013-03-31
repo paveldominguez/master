@@ -103,7 +103,7 @@ http://uniformjs.com/
 
 /*............. CART INPUT, SELECT & BUTTONS ..................................................  */
 
- .cart { 
+ .cart, #checkout-page { 
     div.selector {
 	    @include cartRounded;
 	    @include boxBrdrA;
@@ -194,14 +194,6 @@ http://uniformjs.com/
 	/* Separate from above due to IE8 */
 		div.button:disabled span { }
 
-	
-		
-		
-		
-		
-		
-		
-		
 
  }/* end cart select & input */
 
