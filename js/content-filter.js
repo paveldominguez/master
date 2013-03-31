@@ -53,8 +53,9 @@ var contentFilter = (function() {
                 e.preventDefault();
             },
             dimensionClick: function() {
-                $jQ(this).toggleClass('active');
-                toggleElement($jQ(this).next(), false);
+                $jQ(this).toggleClass('active').promise().done(function(){
+                    toggleElement($jQ(this).next(), false);
+                });
             },
             facetClick: function(e) {
                 // this will hide the dimension containing clicked facet, or facet itself..
