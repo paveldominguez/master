@@ -46,14 +46,14 @@
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
   
-  		<!-- <div id="states">
+  		 <div id="states">
   			<ul>
   				<li id="state-standard" class="on">standard</li>
   				<li id="state-sale">sale</li>
-  				<li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li>
+  				<!-- <li id="product-oos">product OOS</li>
+  				<li id="color-oos">color OOS</li> -->
   			</ul>
-  		</div> TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS-->
+  		</div><!-- TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS -->
   
   
   		<script type="text/javascript">
@@ -144,7 +144,7 @@
 						
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Verify Password</h5>
-							<input name="createLoginVerify" type="text" class="checkout-text-input" >
+							<input name="createLoginVerify" type="password" class="checkout-text-input" >
 						</div>
 						
 						<div id="password-requirements">
@@ -174,48 +174,812 @@
 	
 		<section id="checkout-sequence">
 		
-		
 			<div id="shipping-info" class="checkout-step">
 				<div class="step-title-block">
 					<h2 class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</h2>
 					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
 				</div>
+				
+				<form id="vzn-checkout">
+				
 				<div class="step-info-block">
-				 	something
-				</div>
-			</div>
+				
+					<div class="pointer">V</div>
+				
+				 	<p class="instructions">Please enter all required information for shipping and order status:</p>
+				 	
+				 	<div class="form-input-wrap">
+						<h5 class="form-item-title">First Name</h5>
+						<input name="checkoutFirstName" type="text" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Last Name</h5>
+						<input name="checkoutLastName" type="text" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Email <span class="grey">| For Order Updates</span></h5>
+						<input name="checkoutEmail" type="email" class="checkout-input">
+					</div>
+					
+					<div class="newsletter-signup">
+						<input type="checkbox" >
+						<h5> Newsletter signup </h5>
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
+						<input name="checkoutPhone" type="tel" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
+						<input name="checkoutAddress" type="text" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">Address 2</h5>
+						<input name="checkoutAddress2" type="text" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap">
+						<h5 class="form-item-title">City</h5>
+						<input name="checkoutCity" type="text" class="checkout-input">
+					</div>
+					
+					<div class="form-input-wrap state">
+						<h5 class="form-item-title">State</h5>
+						<select name="checkoutState" class="checkout-select-input">
+							
+							<option value="CA" selected>CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="ME">ME</option>
+							<option value="MI">MI</option>
+							<option value="NC">NC</option>
+							<option value="NJ">NJ</option>
+							<option value="NY">NY</option>
+						
+						</select>    	
+					</div>
+					
+					<div class="form-input-wrap zip">
+						<h5 class="form-item-title">Zip Code</h5>
+						<input name="checkoutZip" type="text" class="checkout-input">
+					</div>
+					
+				 	
+				 	
+				</div><!-- end info block -->
+				
+				<a id="ship-info-complete" class="checkout-next" href="#">Next Step</a>
+				
+				<div class="step-info-summary">
+					
+					<div class="ship-contact">
+						<h5>Contact</h5>
+						<ul>
+							<li class="ship-name">
+								<div id="sum-first-name" class="summary"></div>
+								<div id="sum-last-name" class="summary"></div>
+							</li>
+						
+						
+							<li id="sum-email" class="summary"></li>
+							<li id="sum-phone" class="summary"></li>
+						</ul>
+					</div>
+					
+					<div class="ship-address">
+						<h5>Shipping Address</h5>
+						<ul>
+							
+						
+							<li id="sum-address-1" class="summary"></li>
+							<li id="sum-address-2" class="summary"></li>
+							
+							<li class="ship-city-state">
+								<div id="sum-city" class="summary"></div>
+								<div id="sum-state" class="select-summary"></div>
+								<div id="sum-zip" class="summary"></div>
+							</li>
+						
+						</ul>
+					</div>
+					
+					<div class="edit-checkout-step">
+						Edit
+					</div>
+				
+				</div><!-- end info summary -->
 			
-			<div id="shipping-method" class="checkout-step">
+			</div><!-- end checkout step 1 -->
+		
+		
+		
+			<div id="shipping-method" class="checkout-step"><!-- begin checkout step 2 -->
 				<div class="step-title-block">
 					<h2 class="step-title"><span class="bold">2<span class="sep"> | </span>Shipping</span> Method</h2>
-					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+					<h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">4</span></h5>
 				</div>
 				<div class="step-info-block">
-				 	something
-				</div>
-			</div>
+				
+					<div class="pointer">V</div>
+				
+					<p class="instructions">Please select a shipping method:
+						<div class="checkout-dropdown">
+							<a href="#" class="checkout-dropdown-link">
+								See Detailed Shipping Information
+							</a>
+							<div class="checkout-dropdown-panel">
+							<div class="pointer"></div>
+								<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+									eu rutrum mi turpis elementum augue.
+								</p>
+							</div><!-- end dropdwn panel -->
+						</div><!-- end dropdown -->
+					</p>
+					
+					<div class="shipping-option-radios">
+					
+						<div class="form-input-wrap">
+							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-ground-5-day" checked="checked">
+							<h5 class="form-item-title">2 to 5 Day Ground - <span class="offer">Free!</span><span class="ship-price no-offer">$2.99</span></h5>
+						</div>
+						
+						<div class="form-input-wrap">
+							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-overnight">
+							<h5 class="form-item-title">Overnight Shipping - <span class="ship-price">$12.99</span></h5>
+						</div>
+						
+						<div class="form-input-wrap">
+							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-ground-2-day">
+							<h5 class="form-item-title">2-Day Ground -
+								<span class="radio-offer offer">
+									Free!
+									<span class="ship-price">
+										Regularly $6.99
+									</span>
+							
+									<div class="checkout-dropdown">
+										<a href="#" class="checkout-dropdown-link">
+											See Detailed Shipping Information
+										</a>
+										<div class="checkout-dropdown-panel">
+											<div class="pointer"></div>
+											<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+												eu rutrum mi turpis elementum augue.
+											</p>
+										</div><!-- end dropdwn panel -->
+									</div><!-- end dropdown -->
+								</span>
+								<span class="ship-price no-offer">$6.99</span>
+							</h5>
+						</div>
+						
+						<div class="form-input-wrap">
+							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-sat-overnight">
+							<h5 class="form-item-title">Saturday Priority Overnight Shipping - <span class="ship-price">$19.99</span></h5>
+						</div>
+						
+						<div class="form-input-wrap">
+							<input name="ship-radio" type="radio" class="checkout-radio-input" id="ship-priority-overnight">
+							<h5 class="form-item-title">2-Day Ground - <span class="ship-price">Regularly $14.99</span></h5>
+						</div>
+						
+					</div><!-- end shipping radios -->
+					
+					<a id="ship-method-complete" class="checkout-next" href="#">Next Step</a>
+					
+				</div><!-- end info block -->
+					
+				 
+				 	
+				 <div class="step-info-summary">
+					
+					<div class="ship-method-summary">
+						<div id="sum-shipping" class="summary">Selected Shipping Method Placeholder</div>
+					</div>
+					
+					<div class="edit-checkout-step">
+						Edit
+					</div>
+				
+				</div><!-- end info summary -->		
+			</div><!-- end checkout step 2 -->
 			
-			<div id="billing-info" class="checkout-step">
+			
+			
+			<div id="billing-info" class="checkout-step"><!-- begin checkout step 3 -->
 				<div class="step-title-block">
 				 	<h2 class="step-title"><span class="bold">3<span class="sep"> | </span>Billing</span> Information</h2>
-				 	<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+				 	<h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">4</span></h5>
 				 </div>
-				 <div class="step-info-block">
-				 	something
-				</div>
-			</div>
+				<div class="step-info-block">
+				 	
+				 	<div class="pointer">V</div>
+				 	
+				 	<div class="billing-info-block">
+				 		<div class="billing-info">
+				 		
+				 			<p class="instructions">Please enter your card information:</p>
+					
+							<div class="credit-card-info">
+					
+								<div class="form-input-wrap">
+									<input name="cardNumber" type="text" class="checkout-input" id="card-number">
+									<h5 class="form-item-title">Credit Card Number</h5>
+								</div>
+								
+								<ul class="card-list">
+								
+									<li class="card">
+										<a href="#" class="card-click">
+											<img src="" title="Visa Card" alt="Visa Card">
+										</a>
+									</li>
+								
+									<li class="card">
+										<a href="#" class="card-click">
+											<img src="" title="Master Card" alt="Master Card">
+										</a>
+									</li>
+									
+									<li class="card">
+										<a href="#" class="card-click">
+											<img src="" title="American Express" alt="American Express">
+										</a>
+									</li>
+									
+									<li class="card">
+										<a href="#" class="card-click">
+											<img src="" title="Discover Card" alt="Discover Card">
+										</a>
+									</li>
+								
+								</ul><!-- end card list -->
+								
+								<ul class="card-security">
+								
+									<li class="security-item month">
+										<div class="form-input-wrap">
+											<select name="ccMonth"  class="checkout-select-input" id="card-month">
+												<option value="1" selected>January</option>
+												<option value="2">February</option>
+												<option value="3">March</option>
+												<option value="4">April</option>
+												<option value="5">May</option>
+												<option value="6">June</option>
+												<option value="7">July</option>
+												<option value="8">August</option>
+												<option value="9">September</option>
+												<option value="10">October</option>
+												<option value="11">November</option>
+												<option value="12">Decemeber</option>
+												
+											</select>
+											<h5 class="form-item-title">Expiration Date</h5>
+										</div>
+									</li>
+									
+									<li class="security-item year">
+										<div class="form-input-wrap">
+											<select name="ccYear" class="checkout-select-input" id="card-year">
+												<option value ="13" selected>2013</option>
+												<option value ="14">2014</option>
+												<option value ="15">2015</option>
+												<option value ="16">2016</option>
+												<option value ="17">2017</option>
+												<option value ="18">2018</option>
+												<option value ="19">2019</option>
+												<option value ="20">2020</option>
+												<option value ="21">2021</option>
+											</select>
+											<h5 class="form-item-title">&nbsp;</h5>
+										</div>
+									</li>
+									
+									<li class="security-item code">
+										<div class="form-input-wrap">
+											<input name="ccCode" type="text" class="checkout-input" id="card-code">
+											<h5 class="form-item-title">
+												Security Code
+												<div class="checkout-dropdown">
+													<a href="#" class="checkout-dropdown-link">
+														What's this?
+													</a>
+													<div class="checkout-dropdown-panel">
+														<div class="pointer"></div>
+														<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+															eu rutrum mi turpis elementum augue.
+														</p>
+													</div><!-- end dropdwn panel -->
+												</div><!-- end dropdown -->
+											</h5>
+										</div>
+									</li><!-- end security-code block -->
+								
+								</ul><!-- end security items list -->
+								
+								
+								<div id="secure-payment-process" class="checkout-dropdown">
+									<a href="#" class="checkout-dropdown-link">
+										Read about our secure payment process
+									</a>
+									<div class="checkout-dropdown-panel">
+										<div class="pointer"></div>
+										<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+											eu rutrum mi turpis elementum augue.
+										</p>
+									</div><!-- end dropdwn panel -->
+								</div><!-- end dropdown -->
+				 			</div><!-- end credit-card-info -->
+				 		
+				 		</div><!-- end billing-info -->
+				 	
+				 		<div class="security-block"><!-- floats right -->
+				 		
+				 			<ul class="list">
+				 			
+				 				<li class="security-item"><!-- item one -->
+				 					<img src="" title="Norton/Verisign Secure Checkout">
+				 				</li>
+				 				
+				 				<li class="security-item"><!-- item two -->
+				 					<h4 class="title">Security</h4>
+				 					<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
+				 						ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
+				 						Sed suscipit lobortis justo, id commodo erat dapibus ac.
+				 					</p>
+				 				</li>
+				 				
+				 				<li class="security-item"><!-- item three -->
+				 					<h4 class="title">Privacy</h4>
+				 					<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
+				 						ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
+				 						Sed suscipit lobortis justo, id commodo erat dapibus ac.
+				 					</p>
+				 				</li>
+				 				
+				 				<li class="security-item"><!-- item four -->
+				 					<h4 class="title">Easy Return Policy</h4>
+				 					<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
+				 						ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
+				 						Sed suscipit lobortis justo, id commodo erat dapibus ac.
+				 					</p>
+				 				</li>
+				 				
+				 				<li class="security-item"><!-- item five -->
+				 					<h4 class="title">Customer Guarantee</h4>
+				 					<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
+				 						ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
+				 						Sed suscipit lobortis justo, id commodo erat dapibus ac.
+				 					</p>
+				 				</li>
 			
-			<div id="confirm-order" class="checkout-step">
+				 			</ul><!-- end list -->
+				 		
+				 		
+				 		</div><!-- end security block -->
+				 	</div><!-- end billing info block -->
+				 	
+				 	
+				 	<div class="billing-address-block">
+				 		<p class="instructions">Please enter your billing address:</p>
+				 		
+				 		<div class="same-as-shipping">
+				 			<input name="sameAsShipping" type="checkbox" id="same-as-shipping" >
+				 			<div class="label">Same as shipping adress</div>
+				 		</div>
+				 	
+				 		<div class="form-input-wrap">
+							<h5 class="form-item-title">First Name</h5>
+							<input name="billingFirstName" type="text" class="checkout-input">
+						</div>
+					
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Last Name</h5>
+							<input name="billingLastName" type="text" class="checkout-input" >
+						</div>
+
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
+							<input name="billingPhone" type="tel" class="checkout-input">
+						</div>
+					
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
+							<input name="billingAddress" type="text" class="checkout-input">
+						</div>
+					
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Address 2</h5>
+							<input name="billingAddress2" type="text" class="checkout-input">
+						</div>
+					
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">City</h5>
+							<input name="billingCity" type="text" class="checkout-input">
+						</div>
+					
+						<div class="form-input-wrap state">
+							<h5 class="form-item-title">State</h5>
+							<select name="billingState" type="text" class="checkout-select-input">
+								<option value="CA" selected>CA</option>
+								<option value="CO">CO</option>
+								<option value="CT">CT</option>
+								<option value="ME">ME</option>
+								<option value="MI">MI</option>
+								<option value="NC">NC</option>
+								<option value="NJ">NJ</option>
+								<option value="NY">NY</option>
+							</select>
+						</div>
+					
+						<div class="form-input-wrap zip">
+							<h5 class="form-item-title">Zip Code</h5>
+							<input name="billingZip" type="text" class="checkout-input">
+						</div>
+	 				</div><!-- end billing-address-block --> 
+				</div><!-- end info block -->	
+				 
+				<div class="step-info-summary">
+		
+					<div class="billing-card">
+						<h5>Card Information: </h5>
+						<div class="card-image">
+							<img src="" tile="Selected Card Image">
+						</div>
+						<ul>
+							<li id="name-on-card">Placeholder</li>	
+							<li class="last-four">(Ending in <span id="confirmed-last-four" class="summary">Placeholder</span>)</li>
+							<li class="expires">Expires <span id="confirmed-month" class="select-summary">XX</span>/<span id="confirmed-year" class="select-summary">XX</span></li>
+							<li id="confirmed-code" class="summary" style="display:none;"></li>
+							
+						</ul>
+					</div><!-- end card block -->
+					
+					<div class="billing-address">
+						<h5>Billing Address: </h5>
+						<ul>
+							<li class="address-name">
+								<div id="confirmed-first-name" class="summary">Place</div>
+								<div id="confirmed-last-name" class="summary">Holder</div>
+								<div id="confirmed-phone" class="summary" style="display:none;"></div>
+							</li>	
+							<li id="confirmed-address1" class="summary">111 Placeholder Street</li>
+							<li id="confirmed-address2" class="summary">Apt. XX</li>
+							<li class="city-state-zip">
+							
+								<div id="confirmed-city" class="summary">
+									Placeholderville
+								</div>,
+								
+								<div id="confirmed-state" class="select-summary">
+								 XX
+								</div>
+								
+								<div id="confirmed-zip" class="summary">
+									XXXXX
+								</div>
+								
+							</li>
+						</ul>
+					</div><!-- end billing address -->
+						
+					
+					<div class="edit-checkout-step">
+						Edit
+					</div>
+				
+				</div><!-- end info summary --> 
+				 
+				 
+				 <div class="discounts-gifts">
+				 	
+				 		<div id="discount-code" class="disc-block">
+				 		
+				 			<div class="title-block">
+				 				<h3>Do you have a discount code?</h3>
+				 			</div>
+				 			
+				 			<div class="content-block">
+				 		
+				 				<div class="form-input-wrap">
+									<h5 class="form-item-title">Discount Code</h5>
+									<input name="discountCode" type="text" class="checkout-input">
+									<input name="applyDiscountCode" type="submit" value="Apply" class="apply-button">
+								</div>
+								
+								<div class="discount-success-block">
+									<p>
+										<span>Success!</span> 
+										Discount code #1234 credited to your account.
+									</p>
+									
+									<div class="remove-discount">	
+										<a href="#" class="remove-discount">Remove</a>
+									</div>
+								
+								</div><!-- end success block -->								
+							</div><!-- end content block -->
+							
+				 		</div><!-- end discount-code-block -->
+				 		
+				 		
+				 		<div id="gift-card" class="disc-block">	
+				 			<div class="title-block">
+				 				<h3>Do you have a gift card?</h3>
+				 				<div class="title-tips">
+				 					<a href="#" title="Find Your Gift Card Pin">
+				 						Where can I find my PIN?
+				 					</a>
+				 					<div class="tip-content">
+				 						<div class="pointer"></div>
+				 						<div class="title">Gift Card PIN Stuff</div>	
+				 					</div>
+				 				</div><!-- end tips -->
+				 			</div><!-- end title block -->
+				 			
+				 			<div class="content-block">
+				 		
+				 				<div class="form-input-wrap">
+									<h5 class="form-item-title">Discount Code</h5>
+									<input name="giftCardNumber" type="text" class="checkout-input">
+									<input name="giftCardPin" type="text" class="checkout-input">
+									<input name="applyGiftCard" type="submit" value="Apply" class="apply-button">
+								</div>
+									
+								
+								<div class="discount-success-block">
+									<p>
+										<span>Success!</span> 
+										Discount code #1234 credited to your account.
+									</p>
+									
+									<div class="remove-discount">	
+										<a href="#" class="remove-discount">Remove</a>
+									</div>
+								
+								</div><!-- end success block -->	
+								
+								<div class="add-gift-card">
+									<a href="#" class="add-gift-card-link">Add Another Gift Card</a>
+								</div>
+								
+								<p class="billing-disclaimer">
+									Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+									eu rutrum mi turpis elementum augue.
+								</p>
+								
+							</div><!-- end content-block  -->		
+				 		</div><!-- end gift card -->
+				 		
+				 	</div><!-- end discounts/gifts -->
+				 
+				 
+				 
+				 
+				 <p class="checkout-not-charge">
+				 	Your card will not be charged at this time.
+				 </p>
+				 	
+				 <a id="billing-info-complete" class="checkout-next" href="#">Next Step</a>
+				 	
+				 <p class="billing-disclaimer">Quisque lacinia nisi id sapien luctus a aliquet mauris ultricies. 
+				 	Integer quis magna justo, et euismod nisl. Cum sociis natoque penatibus et magnis 
+				 	dis parturient montes, nascetur ridiculus mus.
+				 </p>
+				 	
+				
+				
+				
+			</div><!-- end checkout step 3 -->
+			
+			
+			<div id="confirm-order" class="checkout-step"><!-- begin checkout step 4 -->
 				<div class="step-title-block">
 					<h2 class="step-title"><span class="bold">4<span class="sep"> | </span>Confirm</span> Order</h2>
-					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
+					<h5 class="step-number">Step <span class="bold">4</span> of <span class="bold">4</span></h5>
 				</div>
 				<div class="step-info-block">
-				 	something
+				
+					<p class="instructions">
+						This is the last step before purchasing.  
+						Please review your order, make your final edits and click 'Place Your Order' when ready.  
+						These items will require a signature for delivery:
+					</p>
+				
+				
+					<div class="final-cart-table">
+					
+						<div class="table-row"><!-- -------------- first product in cart --------------- -->
+							<div class="desc-block">
+				
+								<div class="cart-product-image">
+									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								</div><!-- end product image -->
+					
+								<div class="cart-product-info">
+									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+						
+									<div class="unit-price">
+						
+										<span class="original-price offer">$399.99</span>
+										<span class="actual-price">$299.99</span>	
+										<span class="discount offer">10% off</span>
+							
+									</div><!-- end unit price -->
+					
+									<div class="size-color">
+									
+										<div class="size">Size: <span class="data">Place</span></div>
+										<div class="size">Color: <span class="data">Holder</span></div>
+									
+									</div>
+								</div><!-- end crt-product-info -->
+							</div><!-- end desc block -->	
+								
+							
+							<div class="edit-panel">	
+							
+								<div class="edit-box qty">
+									<div class="edit-label">Qty:</div>
+								
+									<select  name="final-qty" class="checkout-text-input">
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								
+								</div><!-- end qty detail -->
+							</div><!-- end  edit panel -->
+						</div><!-- end table row -->
+			
+						<div class="table-row"><!-- -------------- second product in cart --------------- -->
+							<div class="desc-block">
+				
+								<div class="cart-product-image">
+									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								</div><!-- end product image -->
+					
+								<div class="cart-product-info">
+									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+						
+									<div class="unit-price">
+						
+										<span class="original-price offer">$399.99</span>
+										<span class="actual-price">$299.99</span>	
+										<span class="discount offer">10% off</span>
+							
+									</div><!-- end unit price -->
+					
+									<div class="size-color">
+									
+										<div class="size">Size: <span class="data">Place</span></div>
+										<div class="size">Color: <span class="data">Holder</span></div>
+									
+									</div>
+								</div><!-- end crt-product-info -->
+							</div><!-- end desc block -->	
+								
+							
+							<div class="edit-panel">	
+							
+								<div class="edit-box qty">
+									<div class="edit-label">Qty:</div>
+								
+									<select  name="final-qty" class="checkout-text-input">
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								
+								</div><!-- end qty detail -->
+							</div><!-- end  edit panel -->
+						</div><!-- end table row -->
+						
+						<div class="table-row"><!-- -------------- third product in cart --------------- -->
+							<div class="desc-block">
+				
+								<div class="cart-product-image">
+									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								</div><!-- end product image -->
+					
+								<div class="cart-product-info">
+									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+						
+									<div class="unit-price">
+						
+										<span class="original-price offer">$399.99</span>
+										<span class="actual-price">$299.99</span>	
+										<span class="discount offer">10% off</span>
+							
+									</div><!-- end unit price -->
+					
+									<div class="size-color">
+									
+										<div class="size">Size: <span class="data">Place</span></div>
+										<div class="size">Color: <span class="data">Holder</span></div>
+									
+									</div>
+								</div><!-- end crt-product-info -->
+							</div><!-- end desc block -->	
+								
+							
+							<div class="edit-panel">	
+							
+								<div class="edit-box qty">
+									<div class="edit-label">Qty:</div>
+								
+									<select  name="final-qty" class="checkout-text-input">
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								
+								</div><!-- end qty detail -->
+							</div><!-- end  edit panel -->
+						</div><!-- end table row -->
+			
+						<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order">
+				
+				 	</form><!-- end checkout form -->
+				 	
+				 	<div class="checkout-disclaimers">
+				 		<ul>
+				 			<li class="disclaimer returns">
+				 				<div class="title">Our Return Policy</div>
+				 				<p class="content">Donec adipiscing pretium dapibus. 
+				 					Nunc gravida elementum risus et volutpat. 
+				 					In hac habitasse platea dictumst. 
+				 					Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				 				</p>
+				 			</li>
+				 			
+				 			<li class="disclaimer secure">
+				 				<div class="title">Our Return Policy</div>
+				 				<p class="content">Donec adipiscing pretium dapibus. 
+				 					Nunc gravida elementum risus et volutpat. 
+				 					In hac habitasse platea dictumst. 
+				 					Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				 				</p>
+				 			</li>
+				 	
+				 			<li class="disclaimer privacy">
+				 				<div class="title">Our Return Policy</div>
+				 				<p class="content">Donec adipiscing pretium dapibus. 
+				 					Nunc gravida elementum risus et volutpat. 
+				 					In hac habitasse platea dictumst. 
+				 					Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				 				</p>
+				 			</li>
+				 		</ul>
+				 		
+				 		<div class="checkout-footnotes">
+				 			* Nunc gravida elementum risus et volutpat.
+				 		</div>
+				 	
+				 		<div class="checkout-footnotes">
+				 			*** In hac habitasse platea dictumst.
+				 		</div>
+				 		
+				 		<div class="checkout-footnotes">
+				 			***** Integer congue commodo tincidunt. Etiam justo mi, rutrum feugiat sagittis a, 
+				 			rutrum quis risus. Vestibulum quam nunc, pellentesque quis sollicitudin sit amet, 
+				 			mattis sit amet leo. Duis tellus ante, suscipit at condimentum at, auctor vitae odio. 
+				 			Suspendisse potenti. Pellentesque blandit auctor urna, nec vulputate ante aliquam eu.
+				 		</div>
+				 	</div>
+				 	
 				</div>
 			</div>
 	
-		</section>
+		</section><!-- end checkout sequence -->
 		
 		
 		
@@ -229,70 +993,107 @@
 					</p>
 				</div>
 				
-				<div class="proceed-block">
-					<div id="cart-total-box">
-						<div class="total-label">Grand Total:</div>
-						<div id="grand-total">599<span class="cents">97</span></div>	
-					</div><!-- end cart total box -->
+				<div class="checkout-cart-summary">
+				
+					<div class="item-brief">
+						<p><span id="item-total">3</span> items in your cart</p>
+					</div><!-- end cart brief -->
 					
-					<div class="ship-tax"><span>*</span> Shipping and Taxes not yet calculated</div>
 					
-					<div id="checkout-box">
-						<input id="checkout-button" class="button" type="submit" title="Checkout" value="checkout">
-					</div><!-- end checkout box-->
+					<div class="item-details">
+						<ul class="item-list">
+						
+							<li class="item">
+							
+								<div class="item-image">
+									<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Product Name">
+								</div>
+						
+								<div class="item-info">
+									<ul>
+										
+										<li>
+											<div class="item-title">
+												Beats by Dre - Wireless On-Ear Pro Headphones
+											</div>
+										</li>
+										
+										<li>
+											<div class="price">
+												$<span class="item-price">249.99</span>
+											</div>
+									
+											<div class="qty">
+												Qty: <span class="item-qty">1</span>
+											</div>
+										</li>
+										
+										<li>
+											<div class="item-color">
+												Black
+											</div>
+											
+											<div class="item-size">
+												Medium
+											</div>
+										</li>
+										
+									</ul>
+								</div>
+						
+							</li>
 					
-					<div id="keep-shopping-box">
-						<input class="button" id="continue-shopping-button" type="submit" title="Continue Shopping" value="Continue Shopping">
-					</div><!-- end keep shopping box -->
-				</div><!-- end proceed block -->
+						</ul>
+					</div><!-- end cart item details -->
+					
+					
+					<div class="totals">
+					
+						<ul>
+							<li id = "checkout-cart-subtotal" >
+								<div class="label">SubTotal</div>
+								
+								<div class="data">
+									$<span id="subtotal">399.99</span>
+								</div>
+							</li><!-- end subtotal -->
+					
+							<li id = "checkout-cart-tax" >
+								<div class="label">
+									Estimated Tax
+								</div>
+								
+								<div class="data">
+									$<span id="tax">24.31</span>
+								</div>
+							</li><!-- end tax -->
+							
+							<li id = "checkout-cart-ship" >
+								<div class="label">
+									Shipping & Handling
+								</div>
+								
+								<div class="data">
+									<span class="no-offer">$<span id="shipping">16.95</span></span>
+									<span class="offer">FREE!</span>
+								</div>
+							</li>
+							
+							<li id = "checkout-cart-total" >
+								<div class="label">
+									Grand Total
+								</div>
+								
+								<div class="data">
+									$<span id="total">399.99</span>
+								</div>
+							</li>
+						</ul>
+					</div><!-- end totals -->
 				
 				
-				<div id="also-bought-block">
+				</div><!-- end checkout-cart-summary -->
 				
-					<div class="header">
-						<h3 class="title">Customers Also Bought</h3>
-					</div>
-					
-					<div class="also-bought-product"><!-- first product -->
-						<div class="product-image">
-							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
-						</div><!-- end image -->
-						<div class="product-info">
-							<h5 class="title">
-								Lorem Ipsum Product Name by Brand
-							</h5>
-							
-							<div class="price">
-								$29.99
-							</div>
-							
-							<div class="add-also-bought">
-      							<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
-      						</div><!-- end add-also-bought -->
-						</div><!-- end product info -->
-					</div><!-- end first product -->
-					
-					
-					<div class="also-bought-product"><!-- first product -->
-						<div class="product-image">
-							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
-						</div><!-- end image -->
-						<div class="product-info">
-							<h5 class="title">
-								Lorem Ipsum Product Name by Brand
-							</h5>
-							
-							<div class="price">
-								$29.99
-							</div>
-							
-							<div class="add-also-bought">
-      							<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
-      						</div><!-- end add-also-bought -->
-						</div><!-- end product info -->
-					</div><!-- end first product -->
-					
-				</div><!-- end also bought block -->
 			</div><!-- end sidebar wrap -->
 		</section><!-- end checkout sidebar -->	
 	</div><!-- end section wrap -->	

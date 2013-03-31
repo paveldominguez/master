@@ -440,6 +440,9 @@
 
 
 		#checkout {
+			.section-wrap {
+				min-height:900px;
+				}
 			
 
 			#checkout-sequence {
@@ -448,6 +451,8 @@
 				float: left;
 				@include boxBrdrL;
 				@include boxBrdrR;
+				@include boxBrdrB;
+				
 				
 				.checkout-step {
 					width: 100%;
@@ -464,10 +469,11 @@
 						.step-title {
 							font-family: $fontVzwBook;
 							font-weight: normal;
-							font-size: 20px;
-							line-height: 90px;
+							font-size: 24px;
+							line-height: 98px;
 							padding-left: 9%;
 							letter-spacing: -1px;
+							color:$cartGreyDk;
 						
 							
 							} /* end title */
@@ -479,8 +485,9 @@
 							text-transform: lowercase;
 							position: absolute;
 							right: 9%;
-							bottom: 0px;
+							bottom: -3px;
 							letter-spacing: -1px;
+							color:$cartGreyDk;
 						
 							}/* end step number */
 							
@@ -513,16 +520,347 @@
 			#checkout-sidebar {
 				display: inline-block;
 				width: 25%;
-				float: right
+				height: 100%;
+				padding: 0; margin: 0;
+				float: right;
+				@include boxBrdrR;
+				@include boxBrdrL;
+				@include boxBrdrB;
+				@include cartBG;
+				position:relative;
+				left: -1px; 
 		
-		
-		
-		
+				.special-offer-block { 
+					width:100%;
+					height:auto;
+					background: $specialOfferBlue url(../img/sprites/pdp/shipping-boxes-icon.png) 15px 20px no-repeat;
+					padding:20px; 
+					@include anchorDrop;
+				
+					.cart-offer-text {
+						font-family: $fontArial;
+						font-size:12px; 
+						font-weight:bold; 
+						color:#fff;
+						margin:0 0 0 40px;
+						}
+					} /* end special block */
+					
+				.checkout-cart-summary {	
+					
+					.item-brief { 
+						width: 100%;
+						height:81px;
+						@include boxBrdrB;
+						background: #fff;
+					
+						p { 
+							font-size:20px;
+							line-height: 20px;
+							color: $cartGreyMd;
+							letter-spacing: -1px;
+							padding: 45px 0 0 20px;
+						
+							#item-total { }
+							}
+						
+						} /* end item-brief */
+					
+					
+					.item-details { 
+						@include cartBG;
+						@include boxBrdrB;
+					
+						.item-list {
+							display: block;
+							width: 100%;
+							padding: 0; margin: 0;
+					
+							.item {
+							display: block;
+							width: 100%;
+							height: 81px;
+							@include clearfix();
+							
+								.item-image { 
+									width: 25%;
+									float: left;
+									padding:15px 0 15px 0;
+								
+									img { 
+										width: 90%;
+										margin: 0 auto 0 5px;
+										}
+									
+									} /* end item image */
+									
+									
+								.item-info {
+									width: 75%;
+									float: right;
+									
+									padding: 15px 0 15px 0;
+									
+									ul {
+										display: block;
+										width: 90%;
+										margin: 0 auto 0 auto;
+										overflow: hidden;
+									
+										li {
+											display: block;
+											width: 100%;
+											 @include clearfix();
+											 margin: 0 0 5px 0;
+											 
+									
+											.item-title {
+												font-family: $fontArial;
+												color: $cartGreyMd;
+												font-weight: normal;
+												font-size: 12px;
+												line-height:14px;
+												white-space: nowrap;
+												}
+											
+											.price { 
+												display: inline-block;
+												float:left;
+												font-family: $fontArial;
+												color: $cartGreyDk;
+												font-weight: bold;
+												font-size: 12px;
+												line-height:14px;
+											
+												.item-price { }
+												}
+											
+											.qty { 
+												display: inline-block;
+												float:left;
+												margin-left: 10px;
+												font-family: $fontArial;
+												color: $cartGreyLt;
+												font-weight: normal;
+												font-size: 12px;
+												line-height:14px;
+											
+												.item-qty { 
+													color: $cartGreyMd;
+													font-weight: bold; 
+													}
+												}
+											
+											.item-color, .item-size {
+												display: inline-block;
+												float:left;
+												font-family: $fontArial;
+												color: $cartGreyLt;
+												font-weight: normal;
+												font-size: 12px;
+												line-height:14px; }
+											
+											.item-size:before { content: ", "; }
+									
+											} /* end info li */
+										} /* end info ul */
+									} /* end item info */
+								} /* end item */
+							} /* end item list */
+						} /* end item details */
+					
+					
+					.totals { 
+						@include cartBG;
+					
+						ul {
+							display:block;
+							width:100%;
+							padding: 10px 0 20px 0;
+						
+							li { 
+								width:100%;
+								display: block;
+								@include clearfix();
+								margin-bottom:10px;
+								height: 30px;
+								position:relative;
+								padding: 10px 0 0 0;
+							
+								.label { 
+									font-family: $fontArial;
+									font-size: 10px;
+									line-height: 18px;
+									text-transform: uppercase;
+									color: $cartGreyMd;
+									width: 60%;
+									text-align: left;
+									background: transparent;
+									position: absolute;
+									left: 10px; bottom: -3px; 
+									}
+								
+								.data { 
+									width: 35%;
+									text-align: right;
+									float: right;
+									font-family: $fontArial;
+									font-size: 14px;
+									line-height: 20px;
+									color: $cartGreyDk;
+									padding: 0 10px 0 0;
+								
+									#subtotal { }
+									
+									#tax { }
+									
+									#shipping  { }
+									
+									#total { }
+									}
+								
+								}
+							
+							#checkout-cart-subtotal { }
+							
+							#checkout-cart-tax { }
+							
+							#checkout-cart-ship {
+							
+								.offer { 
+									color: $colorVzwRed;
+									font-weight: bold;
+									}
+								}
+							
+							#checkout-cart-total { 
+							
+								.label { 
+									font-family: $fontVzwBook;
+									font-weight: normal;
+									line-height:24px;
+									font-size: 18px;
+									text-transform: none; 
+									bottom:-8px;
+									}
+									
+								.data { 
+									font-family: $fontVzwMedium;
+									font-weight: normal;
+									line-height: 24px;
+									font-size: 18px;
+									text-transform: none; 
+									}
+							
+							
+							}
+					
+					
+							} /* end totals ul */
+						} /* end totals */
+					
+					
+					} /* end cart summary */
+					
 				}/* end checkout-sidebar */
-
 			}/* end checkout */
+			
+			
+/* RESPONSIVE */	
+	
+/* --------------------------------- BASE DESKTOP LAYOUT 960 + ---------------------*/
 
-	}/* end checkout-page */
+@media only screen and ( min-width:  960px  ),
+screen and (width: 1024px ) and (orientation: landscape) {
+
+	body { min-width: 960px; }
+
+
+
+
+
+
+}/* end 960 media query
+
+
+/* ----------------------------- TABLET  LAYOUTS 768 - 959 ---------------------*/
+
+@media only screen and (min-width: $screenSmall )
+and ( max-width: 959px ),
+screen and (width: $screenSmall ) and ( orientation: portrait) {
+
+
+
+
+
+}/* end tablet query */
+
+
+
+
+
+/*----------------------------- NO MAN's LAND LAYOUT  815 - 959  ------------------*/
+@media only screen and (min-width: 815px) and (max-width: 959px ) {
+
+
+
+}/* end no man's query */
+
+
+
+
+
+
+
+/*----------------------------- BEGIN SMALL DEVICE LAYOUT  767 -   ------------------*/
+
+@media only screen and (max-width: 767px ) {
+
+
+
+} /* end small device query */
+
+
+
+/* --------------------------------- BEGIN FIRST WIDESCREEN ADJUSTMENTS 1024+ -----------------*/
+
+@media only screen and (min-width: 1024px ) {
+
+
+}/* END FIRST WIDESCREEN ADJUSTMENTS 1024+ */
+
+
+
+
+/* --------------------------------- BEGIN SECOND WIDESCREEN ADJUSTMENTS 1095+ -----------------*/
+
+@media only screen and (min-width: 1095px ) {
+
+
+}/* END SECOND WIDESCREEN ADJUSTMENTS 1095+ */
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------- BEGIN THIRD WIDESCREEN ADJUSTMENTS 1280+ -----------------*/
+
+@media only screen and (min-width: $screenLarge ) {
+
+
+
+}/* ---------------------------- END THIRD WIDESCREEN 1280+  -------------------------------*/
+
+
+
+
+
+}/* end checkout-page */
 
 
 
