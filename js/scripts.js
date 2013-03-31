@@ -27,6 +27,32 @@ var debounce = (function() {
 })();
 
 /*
+ * Cross Browser Placeholder
+ */
+jQuery(function() {
+    jQuery.support.placeholder = false;
+    var test = document.createElement('input');
+    if('placeholder' in test) {jQuery.support.placeholder = true;}
+});
+if(!$jQ.support.placeholder) {
+    var active = document.activeElement;
+    $jQ(':text').focus(function () {
+        if ($jQ(this).attr('placeholder') !== '' && $jQ(this).val() === $jQ(this).attr('placeholder')) {
+            $jQ(this).val('').removeClass('hasPlaceholder');
+        }
+    }).blur(function () {
+        if ($jQ(this).attr('placeholder') !== '' && ($jQ(this).val() === '' || $jQ(this).val() === $jQ(this).attr('placeholder'))) {
+            $jQ(this).val($jQ(this).attr('placeholder')).addClass('hasPlaceholder');
+        }
+    });
+    $jQ(':text').blur();
+    $jQ(active).focus();
+    $jQ('form').submit(function () {
+        $jQ(this).find('.hasPlaceholder').each(function() { $jQ(this).val(''); });
+    });
+}
+
+/*
  * Page Specific Functionality
  */
 
