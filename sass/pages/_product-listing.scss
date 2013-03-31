@@ -287,12 +287,12 @@ $hdrOfferCollapsed: 55px;
                     padding: 0;
                     a {
                         padding-left: 40px;
-                        @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
                     }
                     &.selected {
                         a {
-                            @include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                            //@include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
                             color: #000;
+                            background: url(../img/color-check.png) center center no-repeat;
                         }
                     }
                 }
