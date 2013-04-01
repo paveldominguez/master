@@ -279,20 +279,29 @@ $hdrOfferCollapsed: 55px;
                     &.green { background-color: #18a24f; }
                     a {
                         display: block;
+                        background-image:none !important;
+                    }
+
+                    &.selected{
+                        a{
+                            background: url(../img/color-check.png) center center no-repeat !important;
+                        }
                     }
                 }
+
+                
             }
             &.multi-select {
                 .facet {
                     padding: 0;
                     a {
                         padding-left: 40px;
+                        @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
                     }
                     &.selected {
                         a {
-                            //@include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                            @include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
                             color: #000;
-                            background: url(../img/color-check.png) center center no-repeat;
                         }
                     }
                 }

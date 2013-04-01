@@ -216,6 +216,7 @@ $btfHiliteBg : #2a2d32;
                                     size: 90px;
                                 }
                             }
+                            
                             .hero-sub{
                                 float:right;
                                 width:260px;
@@ -265,6 +266,15 @@ $btfHiliteBg : #2a2d32;
                 top: 0;
                 max-height: 500px;
                 padding: 40px 18px 18px 18px;
+                .carrot{
+                    position: absolute;
+                    left: -24px;
+                    top: 45%;
+                    background: url(../img/home/carrot.png);
+                    display: block;
+                    height: 46px;
+                    width: 24px;
+                }
                 a.button{
                     display:inline-block;
                     margin-right: 10px;
@@ -416,7 +426,9 @@ $btfHiliteBg : #2a2d32;
                 } /* end tab-scroll */
 
             .tabs-content {
-                
+                &>li{
+                    display:none;
+                }
             
                 #consumer-reviewsTab,
                 #questions-commentsTab { display:none; }
@@ -726,18 +738,20 @@ $btfHiliteBg : #2a2d32;
             } /* end lifestyles wrapper */
         } /* end lifestyles stories */
     .trending-categories{
+        ol.flex-control-paging{display:none;}
         .slides{
             border-top: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
-            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
             overflow: hidden;
             li{
+
                 position: relative;
                 width: 213px;
                 height: 213px;
                 float: left;
                 overflow: hidden;
-                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
                 padding:15px;
                 img{
                     position: absolute;
