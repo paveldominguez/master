@@ -1,0 +1,497 @@
+$colorLifestyleGray: #3B3F44;
+$colorLifestyleLight: #DCDEDE;
+
+.lifestyle-landing-page {
+    .guided-nav {
+        width: 255px;
+        position: absolute;
+        top: 427px;
+        left: 0;
+        z-index: 100;
+    }
+    .category-section {
+        clear: both;
+        overflow: hidden;
+        .content-header {
+            padding: 50px 70px;
+            .title {
+                vertical-align: baseline;
+                strong {
+                    font: {
+                        family: $fontVzwBold;
+                        weight: normal;
+                    }
+                }
+                a {
+                    color: #06C;
+                    font: {
+                        family: $fontArial;
+                        size: 10px;
+                        weight: bold;
+                    }
+                    letter-spacing: 0;
+                    margin-left: 12px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    .flex-direction-nav {
+        float: right;
+        margin: 8px 0 0;
+        li { 
+            float: left; margin-left: 15px; 
+            .flex-prev,
+            .flex-next {
+                display: block;
+                width: 30px;
+                height: 30px;
+                text-indent: -9999px;
+                &.flex-disabled {
+                    cursor: default;
+                    opacity: 0.35;
+                }
+            }
+            .flex-prev {
+                @include pdp-sprite(btf-carousel-left, false, 0 ,0);
+            }
+            .flex-next {
+                @include pdp-sprite(btf-carousel-right, false, 0 ,0);
+            }
+        }
+    }
+    .featured-lifestyle {
+        position: relative;
+        height: 475px;
+        .featured-fig {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-height: 475px;
+            overflow: hidden;
+            width: 100%;
+            z-index: 1;
+            img { width: 100%; max-width: 100%; min-height: 475px; }
+        }
+        .header { 
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 210px;
+            z-index: 100;
+            .title {
+                margin: 0;
+                line-height: 210px;
+                color: $colorLifestyleGray;
+                font: {
+                    family: $fontVzwBoldItalic;
+                    size: 98px;
+                    weight: normal;
+                }
+                letter-spacing: -7px;
+                text-align: right;
+                .spacer {
+                    display: inline-block;
+                    width: 42%;
+                    height: 50px;
+                    margin-left: 50px;
+                    background-color: $colorLifestyleGray;
+                }
+            }
+            .next-lifestyle {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 90px;
+                line-height: 90px;
+                font: {
+                    family: $fontVzwBook;
+                    size: 22px;
+                }
+                strong {
+                    font-weight: bold;
+                }
+                span, strong, a { 
+                    display: inline-block;
+                }
+                a {
+                    width: 60px;
+                    height: 90px;
+                    text-indent: -99999px;
+                    line-height: 90px;
+                    margin: 0 20px;
+                    @include ui-sprite(lifestyle-next, false, 0, 15px);
+                }
+            }
+        }
+        .featured-copy {
+            position: absolute;
+            right: 0;
+            top: 165px;
+            z-index: 100;
+            width: 42%;
+            color: $colorLifestyleGray;
+            font: {
+                family: $fontVzwBook;
+                size: 18px;
+            }
+        }
+    }
+    .featured-story {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid $colorLifestyleLight;
+        .story-fig,
+        .story-content {
+            float: left;
+        }
+        .story-fig {
+            width: 58%;
+            img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        .story-content {
+            width: 42%;
+            .story-header,
+            .story-subheader,
+            .pub-date,
+            .copy,
+            .story-tags,
+            .actions {
+                padding: {
+                    left: 70px;
+                    right: 70px;
+                }
+            }
+            .story-header{
+                border-bottom: 1px solid $colorLifestyleLight;
+                margin: 0 0 20px 0;
+                padding: {
+                    top: 90px;
+                    bottom: 8px;
+                }
+                font: {
+                    family: $fontVzwBook;
+                    size: 32px;
+                    weight: normal;
+                }
+                strong {
+                    font-family: $fontVzwBold;
+                }
+            }
+            .story-subheader,
+            .pub-date,
+            .copy {
+                font: {
+                    family: $fontVzwBook;
+                    size: 18px;
+                    weight: normal;
+                }
+            }
+            .story-subheader {
+                margin: 0;
+            }
+            .copy {
+                margin: 20px 0;
+                font-size: 14px;
+            }
+            .actions {
+                position: absolute;
+                bottom: 50px;
+                right: 0;
+                width: 42%;
+                .story-cta {
+                    float: left;
+                    clear: both;
+                    cursor: pointer;
+                    @include border-radius(3px);
+                    @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+                    border: 1px solid $colorLifestyleGray;
+                    display: table;
+                    margin: 0;
+                    width: 105px;
+                    height: 55px;
+                    color: #FFF;
+                    font-size: 18px;
+                    span {
+                        display: table-cell;
+                        vertical-align: bottom;
+                        padding: 10px 15px;
+                    }
+                }
+                .view-all-cta {
+                    display: block;
+                    float: right;
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
+    .lifestyle-gallery {
+        .gallery-slider {
+            overflow: hidden;
+            .gallery-slide {
+                .slide-fig {
+                    display: block;
+                    padding: 10px 15px;
+                    width: 100%;
+                    border: 1px solid $colorLifestyleLight;
+                    border-left: none;
+                    img { width: 100%; max-width: 100%; }
+                }
+                .slide-content {
+                    padding: 15px 70px;
+                    .slide-header {
+                        h1, h3 { margin: 0; }
+                        h3 {
+                            font: {
+                                family: $fontArial;
+                                size: 10px;
+                                weight: bold;
+                            }
+                            text-transform: uppercase;
+                        }
+                        h1 {
+                            margin-bottom: 10px;
+                            font: {
+                                family: $fontVzwBook;
+                                size: 56px;
+                                weight: normal;
+                            }
+                            text-transform: capitalize;
+                        }
+                    }
+                    .slide-description {
+                        background: transparent url(../img/lifestyle-landing/gallery-copy-pre.png) 5px 5px no-repeat;
+                        font: {
+                            family: $fontArial;
+                            size: 14px;
+                        }
+                        padding-left: 60px;
+                        width: 60%;
+                    }
+                }
+            }
+        }
+    }
+    .content-grid {
+        margin: 0;
+        .content-item {
+            width: 25%;
+            height: 250px;
+        }
+    }
+    .lifestyle-guides {
+        .guides-slider {
+            .guide-slide {
+                .guide-grid {
+                    .content-item {
+                        .wrapper {
+                            position: relative;
+                            height: 100%;
+                        }
+                        .guide-copy,
+                        .guide-icon,
+                        .story-cta {
+                            position: absolute;
+                        }
+                        .guide-copy {
+                            top: 10px;
+                            left: 10px;
+                            color: #FFF;
+                            font: {
+                                family: $fontVzwBook;
+                                size: 32px;
+                            }
+                            line-height: 36px;
+                            letter-spacing: -2px;
+                            width: 70%;
+                        }
+                        .story-cta {
+                            bottom: 10px;
+                            left: 10px;
+                            color: #FFF;
+                            font: {
+                                family: $fontArial;
+                                size: 10px;
+                                weight: bold;
+                            }
+                            text-transform: uppercase;
+                        }
+                        .guide-icon {
+                            bottom: 10px;
+                            right: 10px;
+                        }
+                        .slide-1 {
+                            background-color: #1A264C;
+                        }
+                        .slide-2 {
+                            background-color: #5BBB82;
+                        }
+                        .slide-3 {
+                            background-color: #E4A301;
+                        }
+                        .slide-4 {
+                            background-color: #D60000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .lifestyle-product-board {
+        .content-grid {
+            border-color: #FFF;
+            .content-item { 
+                border-color: #FFF;
+                padding: 0;
+                a { 
+                    display: block;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .lifestyle-user-reviews {
+        .user-review-slider {
+            border: {
+                top: 1px solid $colorLifestyleLight;
+                bottom: 1px solid $colorLifestyleLight;
+            }
+            overflow: hidden;
+            .review-slide {
+                .top-review,
+                .bot-review { 
+                    overflow: hidden; 
+                    height: 323px;
+                    width: 100%;
+                    .review-fig {
+                        img {
+                            display: block;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+                .top-review {
+                    border-left: 55px solid #FFF;
+                    border-right: 78px solid #B32464;
+                    .review-fig {
+                        background-color: #57AE7B;
+                        vertical-align: middle;
+                    }
+                }
+                .bot-review {
+                    border-right: 55px solid #FFF;
+                    border-left: 92px solid #FCBD5C;
+                    .review-fig {
+                        background-color: #3999BF;
+                        vertical-align: bottom;
+                    }
+                }
+                .review-fig,
+                .review-details {
+                    float: left;
+                    height: 100%;
+                }
+                .review-fig {
+                    width: 55%;
+                }
+                .review-details {
+                    padding: 100px 35px 0;
+                    width: 45%;
+                    .title {
+                        font: {
+                            family: $fontVzwBook;
+                            size: 18px;
+                            weight: normal;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .lifestyle-products {
+        .products-slider {
+            .product-grid {
+                height: 342px;
+                overflow: hidden;
+                margin: 0;
+                border: {
+                    top: 1px solid $colorLifestyleLight;
+                    bottom: 1px solid $colorLifestyleLight;
+                }
+                .grid-item {
+                    float: left;
+                    position: relative;
+                    border: {
+                        bottom: 1px solid $colorLifestyleLight;
+                        right: 1px solid $colorLifestyleLight;
+                    }
+                    .product a {
+                        display: block;
+                        overflow: hidden;
+                    }
+                    &.featured,
+                    &.wide {
+                        width: 40%;
+                    }
+                    &.featured {
+                        height: 100%;
+                    }
+                    &.wide,
+                    &.single {
+                        height: 50%;
+                    }
+                    &.wide {
+
+                    }
+                    &.single {
+                        width: 20%;
+                        .details {
+                            .title,
+                            .desc {
+                                font: {
+                                    family: $fontVzwBold;
+                                    weight: normal; 
+                                }
+                            }
+                            .title {
+                                font-size: 12px;
+                            }
+                            .desc {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                    .details,
+                    .price {
+                        position: absolute;
+                        left: 10px;
+                    }
+                    .details {
+                        width: 40%;
+                        top: 10px;
+                        .title {
+                            font: {
+                                family: $fontArial;
+                                size: 12px;
+                                weight: normal;
+                            }
+                        }
+                    }
+                    .price {
+                        bottom: 10px;
+                    }
+                    .product-fig {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}

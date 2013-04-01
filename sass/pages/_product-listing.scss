@@ -279,8 +279,17 @@ $hdrOfferCollapsed: 55px;
                     &.green { background-color: #18a24f; }
                     a {
                         display: block;
+                        background-image:none !important;
+                    }
+
+                    &.selected{
+                        a{
+                            background: url(../img/color-check.png) center center no-repeat !important;
+                        }
                     }
                 }
+
+                
             }
             &.multi-select {
                 .facet {

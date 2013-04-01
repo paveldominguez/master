@@ -40,9 +40,46 @@ MLS.ajax = {
             );
         },
         addItemSuccess : function(data) {
-            // unable to create complete response handler at the moment (mini cart not complete...)
-            // we will provide the proper fragment to return here
-            alert(data);
+            if(data.hasOwnProperty('success')) {
+                $jQ('#minicart-item-list').append(data.success.responseHTML);
+            }
+            else {
+                // error, unable to add to cart
+                // display error response: .append(data.error.responseHTML);
+            }
+        }
+    },
+    minicart : {
+        init : function() {
+            // remove item from mini cart
+        }
+    },
+    homepage : {
+        init : function() {
+            // homepage madlib
+        }
+    },
+    pdpsearch : {
+        init : function() {
+            // pdp in-page search functionality
+        }
+    },
+    colorPicker : {
+        contentItem : null,
+        init : function() {
+            $jQ('.content-grid .content-item .colors .color a').on('click', MLS.ajax.colorPicker.updateImage);
+        },
+        updateImage : function(e) {
+            e.preventDefault();
+            MLS.ajax.colorPicker.contenItem = $jQ(this).parent().parent().parent();
+            MLS.ajax.sendRequest(
+                $jQ(this).href,
+                { color : $jQ(this).data('color'), existingImageUrl: $jQ(this).src },
+                MLS.ajax.colorPicker.updateImageSuccess
+            );
+        },
+        updateImageSuccess : function(data) {
+            MLS.ui.updateContent($jQ(MLS.ajax.colorPicker.contentItem).find('.content-fig'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
         }
     }
 };
