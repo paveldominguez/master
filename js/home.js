@@ -21,6 +21,9 @@ MLS.home = {
 		//Flex Sliders
 		MLS.home.sliders.init();
 
+		//Featured Reviews
+		MLS.home.featuredReviews();
+
 		//Trending Products tabs Dirty
 		$jQ('dd','#detail-tabs').on('click',function(e){
 			e.preventDefault();
@@ -33,7 +36,15 @@ MLS.home = {
 
 
 	},
-
+	featuredReviews: function(){
+		//select random color for each item entry
+		var colorArray = ['green','yellow','blue','red','purple','charcoal'];
+		$jQ('.featured-review .product-img').each(function(){
+			console.log("go");
+			var color = Math.floor((Math.random()*colorArray.length)+1);
+			$jQ(this).addClass(colorArray[color]);
+		});
+	},
 	sliders:{
 		init:function(){
 			// $jQ('.home-page').find('.fslider').each(function(){
@@ -48,6 +59,15 @@ MLS.home = {
 				slideshow:false
 
 			});
+			$jQ('.featuredReviewSlider').flexslider({
+				animation: "slide",
+				animationLoop: false,
+				itemWidth: 995,
+				itemMargin: 0,
+				maxItems:1,
+				slideshow:false
+
+			});
 		}
 	},
 	madlib: {
@@ -58,11 +78,19 @@ MLS.home = {
 				name: 'devices',
 				remote: 'js/data/devices.json',
 				limit: 10
-			}).on('typeahead:selected',function(){
+			}).on('change keyup typeahead:selected typeahead:closed',function(){
 				console.log($jQ(this).val());
-				$jQ(this).stop().animate({
-				width: $jQ(this).val().length*18
-				},100);
+				if ( $jQ(this).val() ==="enter device" || $jQ(this).val() ==="" ){
+					$jQ(this).stop().animate({
+						width: 173
+					},100);
+				}else{
+					if ($jQ(this).val().length > 3){
+						$jQ(this).stop().animate({
+							width: $jQ(this).val().length*16
+						},100);
+					}
+				}
 			});
 		}
 	}
