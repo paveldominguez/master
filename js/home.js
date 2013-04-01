@@ -59,15 +59,19 @@ MLS.home = {
 				slideshow:false
 
 			});
-			$jQ('.featuredReviewSlider').flexslider({
-				animation: "slide",
-				animationLoop: false,
-				itemWidth: 995,
-				itemMargin: 0,
-				maxItems:1,
-				slideshow:false
-
-			});
+            $jQ('.featuredReviewSlider').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-products .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.875
+            });
+            $jQ(window).resize(function() {
+                $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.85});
+            });
 		}
 	},
 	madlib: {
