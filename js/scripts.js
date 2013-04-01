@@ -96,6 +96,7 @@ MLS = {
             contentGrid.init();
             contentFilter.init();
             MLS.ajax.cart.init();
+            MLS.ajax.colorPicker.init();
         }
     },
     'content-landing-page' : {
@@ -108,6 +109,7 @@ MLS = {
     'category-listing-page' : {
         init : function() {
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
         }
@@ -115,11 +117,75 @@ MLS = {
     'lifestyle-landing-page' : {
         init : function() {
             contentFilter.init();
+
+            //gallery
+            $jQ('#lifestyle-gallery').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-gallery .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: $jQ(window).outerWidth() * 0.93
+            });
+            $jQ(window).resize(function() {
+                $jQ('#lifestyle-gallery').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
+            });
+
+            //guides
+            $jQ('#lifestyle-guides').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-guides .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500
+            });
+
+            //product pinterst gallery
+            $jQ('#lifestyle-product-board').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-product-board .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500
+            });
+
+            //user reviews
+            $jQ('#lifestyle-user-reviews').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-user-reviews .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500
+            });
+
+            //gallery
+            $jQ('#lifestyle-products').flexslider({
+                animation: 'slide',
+                controlsContainer: '#lifestyle-products .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: $jQ(window).outerWidth() * 0.85
+            });
+            $jQ(window).resize(function() {
+                $jQ('#lifestyle-products').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
+            });
         }
     },
     'product-listing-page' : {
         init : function() {
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
             // simple offer toggle..
@@ -148,6 +214,7 @@ MLS = {
         init : function() {
             $jQ("#sort-options").uniform();
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
         }

@@ -13,6 +13,7 @@ var contentFilter = (function() {
     },
     // separate business logic from front-end (below)
     $cf = $jQ('#content-filter'),
+    filterArray = null,
         pub = {
             init: function() {
                 var $fs = $jQ('#filter-selections'),
@@ -30,6 +31,7 @@ var contentFilter = (function() {
                 $multis.on('click', pub.multiFacetClick);
                 // handle clicks on removable action
                 $fs.on('click', '.removable', pub.removeFilter);
+                $jQ('#content-filter .facet-list .facet a').on('click', pub.processRequest);
             },
             addFilter: function(el) {
                 var single = $jQ(el).parents().hasClass('dimension') ? false : true;
@@ -108,14 +110,24 @@ var contentFilter = (function() {
                 pub.updateFilter();
             },
             updateFilter: function() {
-                var filterArray=[];
+                filterArray = [];
                 $jQ('.selected-facets li','#filter-selections').each(function(){
                     var filterName = $jQ(this).attr('data-facet-dimension');
                     var filterValue = $jQ(this).attr('data-facet-title');
                     var newFilter = {name:filterName, value:filterValue};
                     filterArray.push(newFilter);
                 });
-                console.log(filterArray);
+                pub.processRequest();
+            },
+            processRequest : function() {
+                MLS.ajax.sendRequest(
+                    'guided-navigation.jsp',
+                    {data : filterArray},
+                    pub.updateGrid
+                );
+            },
+            updateGrid : function(data) {
+                MLS.ui.updateContent('#main-column .content-grid', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
             }
         };
     return pub;
