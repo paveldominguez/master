@@ -1,0 +1,8 @@
+{
+    "success" : {
+        "responseHTML" : /* this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
+    },
+    "error" : {
+        "responseHTML" : /* this response should include <li class="content-item"
+    }
+}

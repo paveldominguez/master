@@ -96,6 +96,7 @@ MLS = {
             contentGrid.init();
             contentFilter.init();
             MLS.ajax.cart.init();
+            MLS.ajax.colorPicker.init();
         }
     },
     'content-landing-page' : {
@@ -108,6 +109,7 @@ MLS = {
     'category-listing-page' : {
         init : function() {
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
         }
@@ -183,6 +185,7 @@ MLS = {
     'product-listing-page' : {
         init : function() {
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
             // simple offer toggle..
@@ -211,6 +214,7 @@ MLS = {
         init : function() {
             $jQ("#sort-options").uniform();
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
         }
