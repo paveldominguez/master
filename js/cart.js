@@ -31,7 +31,7 @@
 				var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
 		
 				if (cartCt >= bannerCt ){
-				alert(cartHt);
+				
 					setTimeout(function(){
 						var cartHt = $jQ('#minicart-cart').height();
 						
@@ -221,6 +221,7 @@ function updateCart(panel){
 
 
 // Checkout ............................................................................................
+	
 	// set up phone number for all forms
 	
 		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
@@ -229,9 +230,9 @@ function updateCart(panel){
 		}, "Please specify a valid phone number");
 	
 	
-	// 'Begin Checkout' Forms
+// 'Begin Checkout' Forms ............................................................
 	
-	// validation rules : 'begin checkout' > sign into Verizon	
+	// validation rules & messages ( validate.js ) : 'begin checkout' > sign into Verizon	
 		$jQ('#my-Verizon-login').validate({
 			rules: {
 				myVerizonID: {
@@ -252,7 +253,7 @@ function updateCart(panel){
 			}
 		});	
 			
-	// validation rules : 'begin checkout' > create login 
+	// validation rules & messages ( validate.js )  : 'begin checkout' > create login 
 	
 		$jQ('#create-vzn-login').validate({
 		
@@ -316,8 +317,14 @@ function updateCart(panel){
 		});
 		
 	
-	// Main Checkout Sequence
 	
+// Main Checkout Sequence.................................................................
+
+	// make elements pretty
+		$jQ(".checkout-final").uniform();
+		
+
+
 	
 	// validation loop for 'next step' buttons
 	
@@ -402,7 +409,7 @@ function updateCart(panel){
 		}); // end next step click
 
 
-// checkout validation rules & messages : validate.js
+// validation rules & messages ( validate.js ) : full checkout sequence
 
 	$jQ('#vzn-checkout').validate({
 		
@@ -544,6 +551,55 @@ function updateCart(panel){
 					},		
 				}
 			});	
+
+
+
+// Sidebar : 1024+ responsive positioning
+
+	var sidebar = $jQ('#checkout-sidebar');
+
+	var startTop = sidebar.offset().top;
+	var startLeft = sidebar.offset().left;
+	var startWidth = sidebar.width();
+	//alert(startLeft);
+	
+	$jQ(window).scroll(function(){
+	
+		var scrollPos = $jQ(this).scrollTop();
+		if ( scrollPos >= startTop ) {
+			$jQ('#checkout-sidebar').addClass('fixed').css({
+				'left': startLeft +'px',
+				'width': startWidth + 'px'
+			});
+		} else {
+			$jQ('#checkout-sidebar').removeClass('fixed').css({
+				'left' : 'auto',
+				'width' : '25%'
+			});
+		}
+	
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
