@@ -359,6 +359,7 @@ $colorLifestyleLight: #DCDEDE;
     }
     .lifestyle-user-reviews {
         .user-review-slider {
+            height: 100%;
             border: {
                 top: 1px solid $colorLifestyleLight;
                 bottom: 1px solid $colorLifestyleLight;
@@ -368,7 +369,7 @@ $colorLifestyleLight: #DCDEDE;
                 .top-review,
                 .bot-review { 
                     overflow: hidden; 
-                    height: 323px;
+                    height: 325px;
                     width: 100%;
                     .review-fig {
                         img {
@@ -383,6 +384,7 @@ $colorLifestyleLight: #DCDEDE;
                     .review-fig {
                         background-color: #57AE7B;
                         vertical-align: middle;
+                        .indicator { right: -17.5px;}
                     }
                 }
                 .bot-review {
@@ -391,25 +393,74 @@ $colorLifestyleLight: #DCDEDE;
                     .review-fig {
                         background-color: #3999BF;
                         vertical-align: bottom;
+                        .indicator { left: -17.5px;}
                     }
                 }
-                .review-fig,
+                .review-image,
                 .review-details {
                     float: left;
                     height: 100%;
                 }
-                .review-fig {
+                .review-image {
+                    display: table;
                     width: 55%;
+                    .review-fig {
+                        display: table-cell;
+                        padding-top: 25px;
+                        position: relative;
+                        vertical-align: middle;
+                        img { max-height: 300px; }
+                        .indicator {
+                            @include ui-sprite(diamond, false, 0, 0);
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -33px;
+                            width: 35px;
+                            height: 33px;
+                        }
+                    }
                 }
                 .review-details {
                     padding: 100px 35px 0;
+                    position: relative;
                     width: 45%;
                     .title {
+                        margin-bottom: 4px;
                         font: {
                             family: $fontVzwBook;
                             size: 18px;
                             weight: normal;
                         }
+                    }
+                    .copy {
+                        margin: 12px 0 4px;
+                        font: {
+                            family: $fontVzwBookItalic;
+                            size: 18px;
+                        }
+                        line-height: 22px;
+                    }
+                    .credit {
+                        font: {
+                            family: $fontArial;
+                            size: 12px;
+                        }
+                        .divider { 
+                            margin: 0 8px;
+                        }
+                    }
+                    a {
+                        position: absolute;
+                        left: 35px;
+                        bottom: 30px;
+                        color: #06C;
+                        font: {
+                            family: $fontArial;
+                            size: 10px;
+                            weight: bold;
+                        }
+                        text-transform: uppercase;
                     }
                 }
             }
@@ -432,9 +483,49 @@ $colorLifestyleLight: #DCDEDE;
                         bottom: 1px solid $colorLifestyleLight;
                         right: 1px solid $colorLifestyleLight;
                     }
-                    .product a {
-                        display: block;
-                        overflow: hidden;
+                    .product {
+                        height: 100%;
+                        a {
+                            height: 100%;
+                            display: block;
+                            overflow: hidden;
+                            .details,
+                            .header {
+                                color: #666;
+                            }
+                            .header{
+                                color: #666;
+                                .title { 
+                                    margin-bottom: 4px; 
+                                    font: {
+                                        family: $fontArial;
+                                        size: 12px;
+                                        weight: normal;
+                                    }
+                                }
+                            }
+                            .details {
+                                .title {
+                                    margin: 0 0 4px;
+                                }
+                            }
+                            .price {
+                                color: #3C4045;
+                                font: {
+                                    family: $fontVzwBook;
+                                    size: 32px;
+                                    weight: normal;
+                                }
+                                sup { 
+                                    vertical-align: super;
+                                    font-size: 18px;
+                                    line-height: .5em;
+                                }
+                            }
+                        }
+                        .product-img {
+                            position: absolute;
+                        }
                     }
                     &.featured,
                     &.wide {
@@ -442,30 +533,55 @@ $colorLifestyleLight: #DCDEDE;
                     }
                     &.featured {
                         height: 100%;
+                        .product-img {
+                            bottom: 10px;
+                            right: 25px;
+                        }
                     }
                     &.wide,
                     &.single {
                         height: 50%;
                     }
                     &.wide {
-
+                        .details {
+                            .title { margin: 0 0 4px; }
+                        }
+                        .product-img {
+                            bottom: 0;
+                            right: 10px;
+                        }
                     }
                     &.single {
                         width: 20%;
+                        .headphones {
+                            background-color: #FFBA62;
+                        }
+                        .cases {
+                            background-color: #B42561;
+                        }
                         .details {
                             .title,
                             .desc {
+                                color: #FFF;
                                 font: {
                                     family: $fontVzwBold;
                                     weight: normal; 
                                 }
                             }
-                            .title {
-                                font-size: 12px;
-                            }
                             .desc {
-                                font-size: 18px;
+                                font-size: 12px;
+                                margin: 0 0 4px;
+                                text-transform: uppercase;
                             }
+                            .title {
+                                font-size: 18px;
+                                margin: 0;
+                                text-transform: capitalize;
+                            }
+                        }
+                        .product-img {
+                            bottom: 10px;
+                            left: 10px;
                         }
                     }
                     .details,
@@ -486,9 +602,6 @@ $colorLifestyleLight: #DCDEDE;
                     }
                     .price {
                         bottom: 10px;
-                    }
-                    .product-fig {
-                        float: right;
                     }
                 }
             }

@@ -62,7 +62,7 @@ MLS.home = {
             $jQ('.featuredReviewSlider').flexslider({
                 animation: 'slide',
                 controlsContainer: '#lifestyle-products .slide-nav',
-                animationLoop: false,
+                animationLoop: true,
                 controlNav: false,
                 directionNav: true,
                 slideshow: false,
