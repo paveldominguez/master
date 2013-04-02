@@ -65,7 +65,35 @@
 <!-- End Header and Nav -->
 
 <!-- Main Grid Section -->
-
+<section id="checkout-nav-overlay" >
+	<div class="section-wrap">
+		<div class="title">
+			<h2 class="nav-title">Gadgets & Gear</h2>
+		</div>
+		
+		<div class="checkout-links">
+			<ul>
+				<li class="help">
+					<a href="#" class="help-link" title="Need Help?">Need Help?</a>
+				</li>
+				
+				<li class="chat">
+					<a href="#" class="nav-contact-link">Chat</a>
+				</li>
+				
+				<li class="call">
+					<a href="#" class="nav-contact-link">Call</a>
+				</li>
+			</ul>
+		</div><!-- end checkout links -->
+		
+		<div class="checkout-minicart-block">
+				<div id="checkout-minicart-tab">
+				</div>
+			<div id="checkout-minicart">
+		
+	</div><!-- end section wrap -->
+</section>
 
 
 <section id="checkout-header">
@@ -172,7 +200,7 @@
 
 <section id="checkout">
 	<div class="section-wrap">
-	
+		<form id="vzn-checkout">
 	
 		<section id="checkout-sequence">
 		
@@ -182,9 +210,10 @@
 					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
 				</div>
 				
-				<form id="vzn-checkout">
 				
-				<div class="step-info-block">
+				
+				<div class="step-info-block hide-complete">
+					
 				
 					<div class="pointer">V</div>
 				
@@ -265,9 +294,9 @@
 				 	
 				</div><!-- end info block -->
 				
-				<a id="ship-info-complete" class="checkout-next" href="#">Next Step</a>
+				<a id="ship-info-complete" class="checkout-next hide-complete" href="#">Next Step</a>
 				
-				<div class="step-info-summary">
+				<div class="step-info-summary hide-input">
 					
 					<div class="ship-contact">
 						<h5>Contact</h5>
@@ -315,7 +344,7 @@
 					<h2 class="step-title"><span class="bold">2<span class="sep"> | </span>Shipping</span> Method</h2>
 					<h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">4</span></h5>
 				</div>
-				<div class="step-info-block">
+				<div class="step-info-block hide-complete">
 				
 					<div class="pointer">V</div>
 				
@@ -386,13 +415,11 @@
 						
 					</div><!-- end shipping radios -->
 					
-					<a id="ship-method-complete" class="checkout-next" href="#">Next Step</a>
-					
 				</div><!-- end info block -->
 					
-				 
+				<a id="ship-method-complete" class="checkout-next hide-complete" href="#">Next Step</a> 
 				 	
-				 <div class="step-info-summary">
+				 <div class="step-info-summary hide-input">
 					
 					<div class="ship-method-summary">
 						<div id="sum-shipping" class="summary">Selected Shipping Method Placeholder</div>
@@ -412,7 +439,8 @@
 				 	<h2 class="step-title"><span class="bold">3<span class="sep"> | </span>Billing</span> Information</h2>
 				 	<h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">4</span></h5>
 				 </div>
-				<div class="step-info-block">
+				 
+				<div class="step-info-block hide-complete">
 				 	
 				 	<div class="pointer">V</div>
 				 	
@@ -640,7 +668,7 @@
 	 				</div><!-- end billing-address-block --> 
 				</div><!-- end info block -->	
 				 
-				<div class="step-info-summary">
+				<div class="step-info-summary hide-input">
 		
 					<div class="billing-card">
 						<h5>Card Information: </h5>
@@ -692,7 +720,7 @@
 				</div><!-- end info summary --> 
 				 
 				 
-				 <div class="discounts-gifts">
+				 <div class="discounts-gifts hide-complete">
 				 	
 				 		<div id="discount-code" class="disc-block">
 				 		
@@ -783,13 +811,13 @@
 				 
 				 
 				 
-				 <p class="checkout-not-charge">
+				 <p class="checkout-not-charge hide-complete">
 				 	Your card will not be charged at this time.
 				 </p>
 				 	
-				 <a id="billing-info-complete" class="checkout-next" href="#">Next Step</a>
+				 <a id="billing-info-complete" class="checkout-next hide-complete" href="#">Next Step</a>
 				 	
-				 <p class="billing-disclaimer">Quisque lacinia nisi id sapien luctus a aliquet mauris ultricies. 
+				 <p class="billing-disclaimer hide-complete">Quisque lacinia nisi id sapien luctus a aliquet mauris ultricies. 
 				 	Integer quis magna justo, et euismod nisl. Cum sociis natoque penatibus et magnis 
 				 	dis parturient montes, nascetur ridiculus mus.
 				 </p>
@@ -805,7 +833,7 @@
 					<h2 class="step-title"><span class="bold">4<span class="sep"> | </span>Confirm</span> Order</h2>
 					<h5 class="step-number">Step <span class="bold">4</span> of <span class="bold">4</span></h5>
 				</div>
-				<div class="step-info-block">
+				<div class="step-info-block hide-complete">
 				
 					<p class="instructions">
 						This is the last step before purchasing.  
@@ -948,7 +976,7 @@
 							</div><!-- end  edit panel -->
 						</div><!-- end table row -->
 			
-						<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order">
+						<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
 				
 				 	</form><!-- end checkout form -->
 				 	
@@ -999,8 +1027,9 @@
 				 	</div>
 				 	
 				</div>
-			</div>
-	
+				
+			</form><!-- end vzn-checkout -->	
+			</div><!-- end section-wrap -->
 		</section><!-- end checkout sequence -->
 		
 		
@@ -1112,9 +1141,10 @@
 							</li>
 						</ul>
 					</div><!-- end totals -->
-				
-				
 				</div><!-- end checkout-cart-summary -->
+				<div class="sidebar-finish">
+					<input name="sidebarPlaceOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
+				</div>
 				
 			</div><!-- end sidebar wrap -->
 		</section><!-- end checkout sidebar -->	

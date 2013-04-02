@@ -1,21 +1,72 @@
 
+	
+	
+	
 
 // Minicart ............................................................................................
 
+
+	// move to Nav Overlay on Checkout Page Only
+	$jQ('#checkout-minicart').each(function() {
+		
+		// tab
+			var minicartTab = $jQ(this).parents('#checkout-page').find('#nav-cart').html();
+			$jQ(this).siblings('#checkout-minicart-tab').html(minicartTab);
+	
+		// contents
+			var minicartContents = $jQ(this).parents('#checkout-page').find('#nav-tab4').html();
+			$jQ(this).html(minicartContents);
+	});
+
+
+	// show checkout minicart on hover
+	
+		$jQ('#checkout-minicart-tab, #checkout-minicart').hover(
+	
+			function(){ 
+				$jQ('#checkout-minicart-tab').addClass('hover');
+				$jQ('#checkout-minicart').show();
+				
+				var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
+				var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
+		
+				if (cartCt >= bannerCt ){
+				
+					setTimeout(function(){
+						var cartHt = $jQ('#minicart-cart').height();
+						
+						cartHt = parseInt(cartHt, 10) + 90;
+						$jQ('#minicart-cart').css('height', cartHt + 'px');
+					}, 200);
+				}
+			},
+	
+			function(){
+				$jQ('#checkout-minicart-tab').removeClass('hover');
+				$jQ('#checkout-minicart').hide(); 
+			}
+		);
+	
+
+
 	// initial click : extend minicart box height if required
 	$jQ('#nav-cart').one('mouseenter', function() {
+		
 	
 	 	var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
 		var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
+		
 		if (cartCt >= bannerCt ){
 			setTimeout(function(){
 				var cartHt = $jQ('#minicart-cart').height();
-				//alert(cartHt);
 				cartHt = parseInt(cartHt, 10) + 90;
 				$jQ('#minicart-cart').css('height', cartHt + 'px');
 			}, 200);
 		}	
 	});
+	
+	
+	
 
 	// button actions
 	
@@ -60,6 +111,10 @@
 	}// end define minicartEdit 
 
 // End Minicart
+
+
+
+
 
 
 
@@ -166,6 +221,7 @@ function updateCart(panel){
 
 
 // Checkout ............................................................................................
+	
 	// set up phone number for all forms
 	
 		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
@@ -174,9 +230,9 @@ function updateCart(panel){
 		}, "Please specify a valid phone number");
 	
 	
-	// 'Begin Checkout' Forms
+// 'Begin Checkout' Forms ............................................................
 	
-	// validation rules : 'begin checkout' > sign into Verizon	
+	// validation rules & messages ( validate.js ) : 'begin checkout' > sign into Verizon	
 		$jQ('#my-Verizon-login').validate({
 			rules: {
 				myVerizonID: {
@@ -197,7 +253,7 @@ function updateCart(panel){
 			}
 		});	
 			
-	// validation rules : 'begin checkout' > create login 
+	// validation rules & messages ( validate.js )  : 'begin checkout' > create login 
 	
 		$jQ('#create-vzn-login').validate({
 		
@@ -261,8 +317,14 @@ function updateCart(panel){
 		});
 		
 	
-	// Main Checkout Sequence
 	
+// Main Checkout Sequence.................................................................
+
+	// make elements pretty
+		$jQ(".checkout-final").uniform();
+		
+
+
 	
 	// validation loop for 'next step' buttons
 	
@@ -272,7 +334,7 @@ function updateCart(panel){
 		//alert(which);
 		if (which == 'ship-method-complete') {
 			
-			var radios = $jQ(this).parent().find('.checkout-radio-input');
+			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
 			var valid = false;
 			
 			var i = 0;
@@ -284,11 +346,14 @@ function updateCart(panel){
 					$jQ('#no-shipping-selected').hide();
 					var shippingType = $jQ('input[name=shipRadio]:checked').siblings('h5').html();
 					$jQ('#sum-shipping').html(shippingType);
-					return false;
+					
 				} 
 				
 			}); // end each
-			$jQ('#no-shipping-selected').show();
+			
+			if (valid == false ) {
+				$jQ('#no-shipping-selected').show();
+			}
 			
 		} else {
 			
@@ -318,9 +383,10 @@ function updateCart(panel){
         			data = $jQ(this).find(':selected').text();	
         			copySelects( section, slctI, data );	
         	});
+        }
 
     	if (valid) {
-    	
+    		alert('valid');
     		if (section == 'billing-info-complete') { // special case : copy name to out-of-sequence field 
     			var first = $jQ('#confirmed-first-name').text();
     			var last = $jQ('#confirmed-last-name').text();
@@ -328,27 +394,22 @@ function updateCart(panel){
     		}
     	
     	
-    	
-    	
-    	
-    	
-        	//alert(section);
-        	// get & copy select data from checkout- to sum-
-        		
-        	
-        	// then hide form & button
+        	// hide inputs & buttons
+        		$jQ(this).parents('.checkout-step').find('.hide-complete').hide();
         	
         	// then show summary
+        		$jQ(this).parents('.checkout-step').find('.hide-input').show();
         	
         	// then open the next panel
+        		$jQ(this).parents('.checkout-step').next('.checkout-step').find('.hide-complete').show();
         	
     	}
 			
-	}
+	
 		}); // end next step click
 
 
-// checkout validation rules & messages : validate.js
+// validation rules & messages ( validate.js ) : full checkout sequence
 
 	$jQ('#vzn-checkout').validate({
 		
@@ -490,6 +551,55 @@ function updateCart(panel){
 					},		
 				}
 			});	
+
+
+
+// Sidebar : 1024+ responsive positioning
+
+	var sidebar = $jQ('#checkout-sidebar');
+
+	var startTop = sidebar.offset().top;
+	var startLeft = sidebar.offset().left;
+	var startWidth = sidebar.width();
+	//alert(startLeft);
+	
+	$jQ(window).scroll(function(){
+	
+		var scrollPos = $jQ(this).scrollTop();
+		if ( scrollPos >= startTop ) {
+			$jQ('#checkout-sidebar').addClass('fixed').css({
+				'left': startLeft +'px',
+				'width': startWidth + 'px'
+			});
+		} else {
+			$jQ('#checkout-sidebar').removeClass('fixed').css({
+				'left' : 'auto',
+				'width' : '25%'
+			});
+		}
+	
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
