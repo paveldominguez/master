@@ -11,6 +11,13 @@ MLS.ajax = {
     article : {
         init: function() {
             $jQ('.content-cta').on('click', MLS.ajax.article.getArticleContent);
+            $jQ('.article-cta').hover(
+                function(){
+                    $jQ(this).next('.article-preview-container').show();
+                },
+                function(){
+                $jQ(this).next('.article-preview-container').hide();}
+                );
         },
         getArticleContent : function(e) {
             e.preventDefault();
