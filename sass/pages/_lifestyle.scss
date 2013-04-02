@@ -343,15 +343,52 @@ $colorLifestyleLight: #DCDEDE;
         }
     }
     .lifestyle-product-board {
+        .flex-viewport{overflow:visible !important;}
         .content-grid {
+            overflow:visible;
             border-color: #FFF;
             .content-item { 
+                position: relative;
                 border-color: #FFF;
                 padding: 0;
                 a { 
                     display: block;
                     img {
                         width: 100%;
+                    }
+                }
+                .grid-pop-out{
+                    display:none;
+                    position: absolute;
+                    background: #fff;
+                    -webkit-box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
+                    box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
+                    top: 0;
+                    height: 150%;
+                    z-index: 1;
+                    padding: 11px;
+                    width: 110%;
+                    margin-left: -5%;
+                    margin-top: -5%;
+                    .name{
+                        font-family: arial;
+                        font-size:13px;
+                        color:#0066cc;
+                    }
+                    .product-image{
+                        text-align: center;
+                        width: 100%;
+                        overflow: hidden;
+                        height: 72%;
+                        img{
+                            width:100%;
+                        }
+                        width: 95%;
+                    }
+                }
+                &:hover{
+                    .grid-pop-out{
+                        display:block;
                     }
                 }
             }
