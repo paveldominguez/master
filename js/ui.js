@@ -1,4 +1,36 @@
 MLS.ui = {
+	/*
+	 * Grid Hover (popout)
+	 * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
+	 */
+	gridHover : function(selector, details, padding) {
+        $jQ(selector).on('mouseenter',function(e){
+            e.preventDefault();
+            var el = $jQ(this),
+            offset = el.offset(),
+            width = el.outerWidth(),
+            height = el.outerHeight(),
+            detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
+
+            padding = (typeof padding !== 'undefined') ? padding : 40;
+
+            el.addClass('active');
+            if(typeof details !== 'undefined') {
+				$jQ('#grid-pop-out .details').html( $jQ(details).html() );
+			}
+
+            $jQ('#grid-pop-out').css({
+                top: offset.top - (padding / 2),
+                left: offset.left - (padding / 2),
+                width: width + padding,
+                height: height + padding + detailHeight
+            }).stop(true, true).fadeIn('fast').on('mouseleave', function() {
+				el.removeClass('active');
+                $jQ(this).stop(true, true).fadeOut('fast');
+            });
+        });
+    },
+
 	/* 
 	 * Clickable Tabs
 	 * @element: (string) parent (containing) element

@@ -1,18 +1,7 @@
 MLS.lifestyle = {
     init : function() {
-        $jQ('li.product-board-slide li.content-item').on('click',function(e){
-            e.preventDefault();
-            var offset = $jQ(this).offset();
-            var position = $jQ(this).position();
-            var width = $jQ(this).width();
-            var height = $jQ(this).height();
-            var detailHeight = $jQ('#grid-pop-out .details').height();
-            $jQ('#grid-pop-out').css({top:offset.top - 20, left:offset.left, width:width+2,height:height+40+detailHeight}).show();
-            $jQ('#grid-pop-out .close').one('click',function(){
-                $jQ('#grid-pop-out').hide();
-            });
-            //Grab the details div from the source directly then calculate height, alternatively can use data atrib
-        });
+        var contentItem = '.product-board-slide .content-item';
+        MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
 
         //gallery
         $jQ('#lifestyle-gallery').flexslider({

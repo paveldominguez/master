@@ -144,7 +144,7 @@ MLS = {
             // end offer toggle
         }
     },
-    'product-detail' : {
+    'product-detail' : { // add -page
         init : function() {
             productDetail.init();
         }
@@ -156,6 +156,11 @@ MLS = {
             MLS.ajax.colorPicker.init();
             contentFilter.init();
             MLS.ajax.cart.init();
+        }
+    },
+    'special-offers-landing-page' : {
+        init : function() {
+            contentFilter.init();
         }
     }
 };

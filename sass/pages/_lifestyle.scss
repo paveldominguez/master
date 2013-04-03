@@ -357,8 +357,7 @@ $colorLifestyleLight: #DCDEDE;
                         width: 100%;
                     }
                 }
-
-   
+                .details { display: none; }
             }
         }
     }
@@ -613,41 +612,3 @@ $colorLifestyleLight: #DCDEDE;
         }
     }
 }
-
-                #grid-pop-out{
-                    display:none;
-                    position: absolute;
-                    background: transparent;
-                    -webkit-box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
-                    box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
-                    top: 0;
-                    height: 150%;
-                    z-index: 1;
-                    border: 20px solid #fff;
-                    .close{
-                        background:url(../img/lifestyle-landing/close.png) no-repeat;
-                        display:block;
-                        position: absolute;
-                        top: -39px;
-                        right: -34px;
-                        width: 32px;
-                        height: 31px;
-                    }
-                    .details{
-                        background: #fff;
-                        position: absolute;
-                        bottom: 0;
-                        height: 130px;
-                        display: block;
-                        width: 100%;
-                      
-                        .name{
-                            font-family: arial;
-                            font-size:13px;
-                            color:#0066cc;
-                        }
-                    }
-                    
-                   
-
-                }
