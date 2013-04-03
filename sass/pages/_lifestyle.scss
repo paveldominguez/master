@@ -357,40 +357,8 @@ $colorLifestyleLight: #DCDEDE;
                         width: 100%;
                     }
                 }
-                .grid-pop-out{
-                    display:none;
-                    position: absolute;
-                    background: #fff;
-                    -webkit-box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
-                    box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
-                    top: 0;
-                    height: 150%;
-                    z-index: 1;
-                    padding: 11px;
-                    width: 110%;
-                    margin-left: -5%;
-                    margin-top: -5%;
-                    .name{
-                        font-family: arial;
-                        font-size:13px;
-                        color:#0066cc;
-                    }
-                    .product-image{
-                        text-align: center;
-                        width: 100%;
-                        overflow: hidden;
-                        height: 72%;
-                        img{
-                            width:100%;
-                        }
-                        width: 95%;
-                    }
-                }
-                &:hover{
-                    .grid-pop-out{
-                        display:block;
-                    }
-                }
+
+   
             }
         }
     }
@@ -645,3 +613,41 @@ $colorLifestyleLight: #DCDEDE;
         }
     }
 }
+
+                #grid-pop-out{
+                    display:none;
+                    position: absolute;
+                    background: transparent;
+                    -webkit-box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
+                    box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, .2);
+                    top: 0;
+                    height: 150%;
+                    z-index: 1;
+                    border: 20px solid #fff;
+                    .close{
+                        background:url(../img/lifestyle-landing/close.png) no-repeat;
+                        display:block;
+                        position: absolute;
+                        top: -39px;
+                        right: -34px;
+                        width: 32px;
+                        height: 31px;
+                    }
+                    .details{
+                        background: #fff;
+                        position: absolute;
+                        bottom: 0;
+                        height: 130px;
+                        display: block;
+                        width: 100%;
+                      
+                        .name{
+                            font-family: arial;
+                            font-size:13px;
+                            color:#0066cc;
+                        }
+                    }
+                    
+                   
+
+                }
