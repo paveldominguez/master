@@ -40,7 +40,6 @@ MLS.home = {
 		//select random color for each item entry
 		var colorArray = ['green','yellow','blue','red','purple','charcoal'];
 		$jQ('.featured-review .product-img').each(function(){
-			console.log("go");
 			var color = Math.floor((Math.random()*colorArray.length)+1);
 			$jQ(this).addClass(colorArray[color]);
 		});
@@ -62,7 +61,7 @@ MLS.home = {
             $jQ('.featuredReviewSlider').flexslider({
                 animation: 'slide',
                 controlsContainer: '#lifestyle-products .slide-nav',
-                animationLoop: false,
+                animationLoop: true,
                 controlNav: false,
                 directionNav: true,
                 slideshow: false,

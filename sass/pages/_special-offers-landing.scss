@@ -1,0 +1,28 @@
+.special-offers-landing-page {    
+    .category-section {
+        overflow: hidden;
+        .content-header {
+            padding: 20px 40px;
+            .title {
+                vertical-align: baseline;
+                strong {
+                    font: {
+                        family: $fontVzwBold;
+                        weight: normal;
+                    }
+                }
+                a {
+                    color: #06C;
+                    font: {
+                        family: $fontArial;
+                        size: 10px;
+                        weight: bold;
+                    }
+                    letter-spacing: 0;
+                    margin-left: 12px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
