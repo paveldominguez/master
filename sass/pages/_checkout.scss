@@ -169,19 +169,12 @@
 			}/* end temp header */
 		
 		 
-		 
+	/* input styles */	
+	 
 		 .form-input-wrap { 
 		 	position: relative;
 		 	margin-bottom:30px; 
 		 	}
-		 
-		 input[type="text"],
-		 input[type="email"],
-		 input[type="tel"] { @include heroBG; }
-		 
-		 input[type="text"]:focus,
-		 input[type="email"]:focus,
-		 input[type="tel"]:focus { background: #fff; }
 		 
 		 input.error { 
 		 	background:#fff;
@@ -219,12 +212,69 @@
 	
 		.hide-complete, .hide-input { display:none; }
 		
+		.forgot, .privacy-link { 
+			@include actionLink;
+			font-size: 12px; 
+			font-weight: normal;
+			}
+			
+		.checker { /* uniform wrapper */
+			width:20px;
+			height:20px;
+			float: left;
+			-webkit-border-radius: 2px;
+			border: 1px solid #aaa;
+					
+			span { /* uniform wrapper */
+					
+				input[type="checkbox"] { 
+					width:20px; 
+					height: 20px; 
+					opacity: 0;
+					}
+				} /* span */
+							
+			span.checked {
+				background: url(../img/sprites/cart/checkout-checkbox-checked.png) 3px 0px no-repeat;
+				}
+			}/* end checker (uniform wrapper) */
+			
+		.checkbox-label { 
+			width: 120px;
+			float: left;
+			font-family: $fontArial;
+			font-size: 12px;
+			line-height:20px;
+			color: $cartGreyMd;
+			padding-left:10px; 
+			}				
+			
+		input[type="text"], input[type="password"], input[type="tel"] {
+			color: $cartGreyDk;
+			font-family: $fontVzwBook;
+			font-weight: normal;
+			background: #fff;
+			margin: 3px 0 5px 0; 
+			padding: 8px;
+			font-size:18px;
+			}
 		
-		::-webkit-input-placeholder { color:#bbb; } 
-		:-moz-placeholder { color:#bbb; } /* Firefox 18- */
-		::-moz-placeholder {  color:#bbb; } /* Firefox 19+ */
-		.hasPlaceholder { color: #bbb; }
-		
+		input[type="text"].hasPlaceholder,
+		input[type="password"].hasPlaceholder,
+		input[type="tel"].hasPlaceholder { 
+			color: #bbb;
+			font-family: $fontVzwLight;
+			font-weight: normal; 
+			}
+			
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="tel"]:focus {
+			color: $cartGreyDk;
+			font-family: $fontVzwBook;
+			font-weight: normal; 
+			}
+			
 		
 	/* Begin Checkout Grid .................................................................. */
 		
@@ -235,10 +285,7 @@
 			width:100%;
 			background: #fff; 
 		
-			.section-wrap { 
-				
-				height: 45px; max-height:45px;
-				}
+			.section-wrap { height: 45px; max-height:45px; }
 			
 			.title {
 				display: inline-block;
@@ -251,9 +298,8 @@
 					color: $cartGreyDk;
 					font-weight: normal;
 					letter-spacing: -1px;
-					
 					}
-				}
+				} /* end title */
 			
 			.checkout-links { 
 				position:absolute;
@@ -288,10 +334,8 @@
 						
 					.chat { @include boxBrdrR; }
 						
-					}/* end ul */
-					
+					}/* end ul */	
         		} /* end checkout-links */
-        		
         		
         	.checkout-minicart-block {
         			width: 100%;
@@ -341,415 +385,8 @@
 						height: auto;
 						background: #e5eaea;
 			
-						#minicart-box {
-				
-				width:100%;
-				height: auto;
-				
-				padding:10px;
-				@include clearfix();
-				@include boxBrdrL;
-				@include boxBrdrR;
-				@include boxBrdrB;
-				-webkit-box-shadow: rgba(119, 119, 119, 0.7) 0px 2px 3px 2px;
-				-moz-box-shadow: rgba(119, 119, 119, 0.7) 0px 2px 3px 2px;
-				box-shadow: rgba(119, 119, 119, 0.7) 0px 2px 3px 2px;
-				
-				position:relative;
-				
-				#minicart-banner-box {
-					float:left;
-					width: 247px;
-					
-					.minicart-banner {
-						width:100%;
-						height:112px;
-						padding: 20px 20px 20px 80px;
-					
-						.minicart-h3 { 
-							font-family: $fontVzwLight;
-							font-size:18px;
-							line-height:23px;
-							font-style: italic;
-							color:#fff;
-							padding: 0;
-							margin: 0 0 2px 0;
-							letter-spacing: -1px;
-							
-							.minicart-bold {
-								font-family:$fontVzwMedium;
-								} /* end bold */
-							}/* end  h3 */
+						/* universal minicart styles in cart.scss */
 
-						.minicart-cta {
-							font-family: $fontArial;
-							font-size:11px;
-							text-transform: uppercase;
-							font-weight: bold;
-							color: #fff;
-							width: auto;
-							padding-right:20px;
-							background: url(../img/sprites/pdp/wht-right.png) 78px 2px no-repeat;
-							}/* end cta */
-
-						}/* end banner */
-						
-					.ship { background: $highlightBg url(../img/cart/minicart-truck-icon.png) 10px 35px no-repeat; }
-				
-					.brand { background: $pdpAmber url(../img/cart/minicart-brand-bg.png) no-repeat; }
-					
-					.lifestyle { background: $techinfoBg url(../img/cart/minicart-lifestyle-bg.png) 10px 30px no-repeat; }
-						
-				
-					} /* end banner-box */
-					
-	
-				#minicart-cart {
-					float:right;
-					width:50%;
-					height: auto;
-					margin-left:10px;
-					position: relative;
-					
-					#minicart-item-list {
-						width:100%;
-					
-						.minicart-item {
-					 		position:relative;
-					 		@include clearfix();
-					 		height:78px;
-					 		width: 100%;
-					 		@include boxBrdrB;
-					 		
-					 		.item-image-block {
-					 			width: 25%;
-					 			max-width:82px;
-					 			position: absolute;
-					 			left:0px;
-					 			
-					 			.minicart-item-image {
-					 				width:75%;
-					 				margin: 10px auto 10px 5px;
-					 				}
-					 			}
-					 			
-					 		.item-info-block {
-					 			width: 75%;
-					 			position: absolute;
-					 			right: 0px;
-					 			padding:14px 10px 10px 0;
-					 			
-					 			li { 
-					 				display: block;
-					 				@include clearfix();
-					 				font-family: $fontArial;
-					 				background: transparent;
-					 				font-size: 12px;
-					 				line-height:16px;
-					 				}
-					 		
-					 			.minicart-item-title {
-					 				overflow:hidden;
-					 				
-					 				 a { 
-					 					white-space: nowrap;
-					 					@include actionLink;
-					 					font-size: 12px;
-					 					line-height:16px;
-					 					font-weight: normal;
-					 					}
-					 		
-					 				}/* end title */
-					 				
-					 			.item-details {
-					 				@include clearfix();
-					 				
-					 				
-					 				.minicart-item-price { 
-					 					width:25%;
-					 					float:left;
-					 					margin-right:2.5%;
-					 					}
-					 				
-					 				.minicart-item-price,
-					 				.minicart-item-price .price {
-					 					display:inline-block;
-					 					color: $cartGreyDk;
-					 					font-weight: bold;
-					 					font-family: $fontArial;
-					 					font-size:12px;
-					 					line-height:16px;
-					 					}
-					 					
-					 				.color-size {
-					 					display: inline-block;
-					 					width:60%;
-					 					float:left;
-					 					@include clearfix();
-					 					
-					 					.minicart-item-color,
-					 					.minicart-item-size { 
-					 						font-size:12px;
-					 						line-height:16px;
-					 						color: $cartGreyLt;
-					 						width:auto;
-					 						display:inline-block; 
-					 						}
-					 					}/* end color-size */
-					 				
-					 				}/* end item details */
-					 				
-					 				
-					 			.item-qty {
-					 				font-size:12px;
-					 				line-height:16px;
-					 				color: $cartGreyLt;
-					 					
-					 				.minicart-item-qty {
-					 					color: $cartGreyDk;
-					 					font-weight: bold;
-					 					}
-					 				}/* end item-qty */
-					 			
-					 			.remove-msg {
-					 				font-family: $fontArial;
-					 				color: $cartGreyDk;
-					 				font-size:12px;
-					 				font-family: 16px;
-					 				position: absolute;
-					 				top: 0; left: 0;
-									background: #d6d9d9;
-					 				width: 100%; height: 100%;
-					 				padding:15px 20px 0 0 ;
-					 				z-index: 20; 
-					 				}
-					 		
-					 			
-					 			}/* end info block */
-						
-							.minicart-edit {
-								position:absolute;
-								bottom: 16px;
-								right: 20px;
-								@include clearfix();
-								width:96px;
-								font-size: 10px;
-								line-height:10px;
-								z-index: 25; 
-								
-								.edit {
-									width: auto;
-									padding-right:15px;
-									float:left;
-									@include boxBrdrR;
-									font-size: 10px;
-									line-height:10px;
-									}
-									
-								.remove {
-									padding-left: 10px;
-									width: auto;
-									float:right;
-									font-size: 10px;
-									line-height:10px;
-									}
-									
-								.edit a, .remove a {
-									@include actionLink;
-									text-transform: uppercase;
-									font-size:10px;
-									line-height:10px;
-									
-									}
-								.remove a.yes-remove {
-									@include actionLink;
-									color: $colorVzwRed;
-									text-transform: uppercase;
-									font-size:10px;
-									line-height:10px;
-									
-								
-									
-									
-									
-									
-									} /* end less remove */
-								}/* end minicart -edit */
-						
-						
-							}/* end item */
-					
-						}/* end item-list */
-						
-					
-					
-					}/* end minicart-cart */
-				
-				.minicart-border-block {
-					position: absolute;
-					top:-5px; right: 0px;
-					width: 81px; height:5px;
-					background: #e5eaea;
-					z-index:25;
-					}
-				
-				.minicart-summary {
-					width: 50%;
-					height: 90px; 
-					position: absolute;
-					bottom: 10px; right: 0px;
-					
-						
-					.minicart-total {
-						width: 100%;
-						height:40px;
-						padding-right: 20px; 
-						
-						.label { 
-							width: 50px;
-							float: left;
-							font-family: $fontArial;
-							color:$cartGreyMd;
-							font-size: 12px;
-							line-height:45px;
-							background: transparent;
-							font-weight: normal;
-							}
-							
-						.actual-sub {
-							width: auto;
-							float:right;
-							font-size:20px;
-							color:$cartGreyDk;
-							font-weight: bold;
-							
-							#minicart-subtotal {
-								font-size:20px;
-								color:$cartGreyDk;
-								font-weight: bold;
-								}
-							} /* end actual sub */
-							
-						.minicart-sale { 
-							width: auto; 
-							font-size:12px;
-							line-height:14px;
-							height:14px; 
-							margin-top:15px;
-							float:right;
-							margin-right: 15px; 
-							@include clearfix();
-							
-							span { 
-								display: inline-block;
-								font-size:12px;
-								line-height:14px;
-								height:14px; 
-								}
-							.label { 
-								float: left;
-								margin-right:3px;
-								font-size:12px;
-								line-height:14px;
-								height:14px; 
-								text-transform: uppercase;
-								color: $colorVzwRed;
-								font-weight: bold; 
-								}
-							.original-price {
-								display: inline-block;
-								width: auto;
-								float: right;
-								font-size:12px;
-								line-height:14px;
-								height:14px;
-								font-family: $fontArial;
-								color: $cartGreyLt;
-								letter-spacing: -1px;
-								
-								#minicart-original-price { text-decoration: line-through; }
-								} /* end original -price */		
-							}/* end sale block */
-						}/* end minicart total block */	
-						
-					.minicart-buttons {
-						display:block;
-						width: 100%;
-						height: 50px;
-						position: relative;
-						@include clearfix();
-						
-						.view-cart,
-						.checkout { 
-							position: absolute;
-							width:45%;
-							height:100%;
-							}
-					
-						.view-cart { 
-							left:0px;
-							
-							.minicart-view-cart {
-								display: block;
-								@include greyCartButton;
-								padding: 20px 0 0 10px;
-								
-								.qty-items-in-cart { 
-									font-size:12px;
-									font-family: $fontVzwMedium; 
-									}
-								}
-							 }/* end view cart */
-							 
-						.checkout { 
-							right: 20px;
-							
-							.button {
-								width: 100%;
-								height: 100%;
-					
-								span {
-									display:inline-block;
-									@include ctaButton;
-									width:100%; height: 100%;
-									position:relative;
-									font-size:14px;
-									font-family: $fontVzwMedium;
-									text-transform: lowercase; 
-									padding: 20px 0 0 10px;
-							
-									input.add-cart-cta {
-										width:105%; height:50px;
-										position:relative;
-										top:-50px; left:-9px;
-										-webkit-appearance: none;
-										opacity:0;
-										cursor: pointer;
-                    					} /* end add-cart-cta */
-                    			
-                    				} /* end span */
-                    	
-                    			} /* end button */
-                    			
-                    		} /* end checkout div */
-							
-						} /* end minicart buttons */
-						
-						
-						
-						
-						
-						
-					} /* end minicart-summary */
-				
-				}/* end minicart-box */
-
-			
-			
-			
-			
-			
-			
         				} /* end checkout-minicart */	
         			}/* end minicart block */		
 			} /* end nav overlay */
@@ -784,8 +421,8 @@
 	
 		#begin-checkout { 
 			position:absolute;
+			z-index:10;
 			top:0; left: 0%;
-			z-index:30;
 			width: 100%;
 			height:100%;
 			background:#ffffff;
@@ -855,42 +492,15 @@
 						.pass-req:after { content:" )"; color: $cartGreyMd;  }
 						} /* end form title */
 				
+			
 					.create-login { 
 						@include clearfix();
 						padding: 0;
 						margin: 0px 0 25px 0; 
 				
-						.form-item-title { margin-top:0px; }
-				
-						.checker { /* uniform wrapper */
-							width:20px;
-							height:20px;
-							float: left;
-							-webkit-border-radius: 2px;
-							border: 1px solid #aaa;
-					
-							span { /* uniform wrapper */
-					
-								.create-login-checkbox { 
-									width:20px; 
-									height: 20px; 
-									opacity: 0;
-									}
-								} /* span */
-							
-							span.checked {
-								background: url(../img/sprites/cart/checkout-checkbox-checked.png) 3px 0px no-repeat;
-								}
-							}/* end checker (uniform wrapper) */
-						
-						.checkbox-label { 
-							width: 120px;
-							float: left;
-							font-family: $fontArial;
-							font-size: 12px;
-							line-height:20px;
-							color: $cartGreyMd;
-							padding-left:10px; 
+						.form-input-wrap {
+							margin-top: 15px;
+							.form-item-title { margin-top:0px; }
 							}
 						}/* end create login box */	
 					
@@ -922,7 +532,7 @@
 							} /* end span */
 						} /* end button */	
 						
-					label.error { bottom: -20px; left: 0; }
+					label.error { bottom: -5px; left: 0; padding:3px 0 3px 0;}
 					label.warning { background-color: #222; }
 						
 							
@@ -934,6 +544,9 @@
 				@include cartBG;
 				@include boxBrdrR;
 				@include boxBrdrL;
+				
+				label.error { @include cartBG; }
+				
 				}
 		
 		 
@@ -970,6 +583,9 @@
 					
 						} /* end password requirements */
 					} /* end create login box */
+					
+				label.error { @include cartBG; }
+					
 				} /* end guest checkout box */
 			}/* end 'begin checkout' */
 
@@ -1030,6 +646,56 @@
 					
 					.step-info-block, .hide-input {
 						@include boxBrdrT; 
+						}
+						
+					.step-info-block {
+						@include clearfix();
+						padding: 30px 72px 30px 72px;
+						
+						
+						.pointer { 
+							width:36px;
+							height:30px;
+							position: relative; 
+							left: 0px; top: -31px;   
+							background: url(../img/sprites/cart/checkout-step-pointer.png) no-repeat; 
+							}
+					
+						.instructions { 
+							font-size: 18px;
+							color: $cartGreyMd;
+							}
+							
+						.form-input-wrap {
+							width: 60%; 
+							float: left;
+							@include clearfix();
+							
+							.form-item-title {
+								color: $cartGreyDk;
+								font-family: $fontArial;
+								font-size: 10px;
+								font-weight: bold;
+								text-transform: uppercase;
+								padding: 0; margin: 0 0 8px 0;
+								}
+								
+							input[type="text"], input[type="tel"], input[type="email"] { 
+								background: #fff;
+								margin: 0 0 15px 0; 
+								padding: 8px;
+								font-size:18px;
+								}
+							}
+					
+					
+					
+					
+					
+					
+					
+					
+					
 						}
 					
 				
@@ -1292,10 +958,7 @@
 									text-transform: none; 
 									}
 							
-							
-							}
-					
-					
+								} /* end checkout-cart-total */
 							} /* end totals ul */
 						} /* end totals */
 					} /* end cart summary */
@@ -1307,21 +970,14 @@
 	
 					}
 					
-					
-					
-					
-					
 				}/* end checkout-sidebar */
 				
 			#checkout-sidebar.fixed {
 				position:fixed;
 				top: 20px; 
 				left: inherit;
-				z-index:25;
-				}
-				
-				
-				
+				z-index:5;
+				}	
 			}/* end checkout */
 			
 			

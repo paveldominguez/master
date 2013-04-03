@@ -229,6 +229,13 @@ function updateCart(panel){
 			return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
 		}, "Please specify a valid phone number");
 	
+	// make all instances of these inputs pretty with uniform
+
+		$jQ("input:submit, input:checkbox").uniform();
+		
+	
+	
+	
 	
 // 'Begin Checkout' Forms ............................................................
 	
@@ -245,7 +252,7 @@ function updateCart(panel){
 			},
 			
 			messages: {
-				myVerizonID: "Please enter a valid email address",
+				myVerizonID: "Please enter your User ID",
 				myVerizonPassword: {
 					required: "Please enter your password",
 					minlength: "Your password must be at least 4 characters long"
@@ -290,11 +297,6 @@ function updateCart(panel){
 			},
 			ignore : '.ignore'
 		});	
-	
-		
-	// 'begin checkout' : make elements pretty
-		$jQ(".create-login-checkbox").uniform();
-		$jQ(".begin-checkout-submit").uniform();
 		
 	// 'begin checkout' : create vzn login
 		$jQ('.create-login-checkbox').change(function() {
