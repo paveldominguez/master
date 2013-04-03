@@ -126,11 +126,21 @@
 					
 					<div class="form-input-wrap">
 						<h5 class="form-item-title">Password</h5>
-						<input name="myVerizonPassword" type="password" class="checkout-text-input" placeholder="Password">
+						<input name="myVerizonPassword" type="password" class="checkout-text-input hasPlaceholder" placeholder="Password">
 						<a href="#" class="forgot">Forgot your password?</a>
 					</div>
 					
-					<input name="myVerizonLoginSubmit" type="submit" class="begin-checkout-submit" value="Sign-In" id="guest-entrance">
+					<div class="remember-me">
+						<input name="remember-me" value="Create a login" type="checkbox" class="remember-me-checkbox" >
+						<div class="checkbox-label">
+							Remember Me (<a href="#" title="Read Our Privacy Policy" class="privacy-link">Privacy Policy</a>)
+						</div>
+				</div>
+					
+					
+					
+					
+					<input name="myVerizonLoginSubmit" type="submit" class="begin-checkout-submit" value="Sign-In" id="existing-vzn-login">
 					
 				</form>
 				
@@ -164,7 +174,7 @@
 				
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
-							<input name="createLoginFromMobile" type="tel" class="checkout-text-input" placeholder="212-345-6789">
+							<input name="createLoginFromMobile" type="tel" class="checkout-text-input hasPlaceholder" placeholder="212-345-6789">
 						</div>
 						
 						<div class="form-input-wrap">
@@ -174,7 +184,7 @@
 						
 						<div class="form-input-wrap">
 							<h5 class="form-item-title">Verify Password</h5>
-							<input name="createLoginVerify" type="password" class="checkout-text-input" placeholder="verify password">
+							<input name="createLoginVerify" type="password" class="checkout-text-input hasPlaceholder" placeholder="verify password">
 						</div>
 						
 						<div id="password-requirements">
@@ -215,7 +225,7 @@
 				<div class="step-info-block hide-complete">
 					
 				
-					<div class="pointer">V</div>
+					<div class="pointer"></div>
 				
 				 	<p class="instructions">Please enter all required information for shipping and order status:</p>
 				 	
@@ -346,7 +356,7 @@
 				</div>
 				<div class="step-info-block hide-complete">
 				
-					<div class="pointer">V</div>
+					<div class="pointer"></div>
 				
 					<p class="instructions">Please select a shipping method:
 						<div class="checkout-dropdown">
@@ -442,7 +452,7 @@
 				 
 				<div class="step-info-block hide-complete">
 				 	
-				 	<div class="pointer">V</div>
+				 	<div class="pointer"></div>
 				 	
 				 	<div class="billing-info-block">
 				 		<div class="billing-info">

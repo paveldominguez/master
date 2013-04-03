@@ -31,6 +31,11 @@ var contentGrid = {
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
+        
+        if ($parentTile.hasClass('bundle')) {
+        	 $quickView = $jQ('.quick-view-overlay.bundle')
+        }
+        
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
@@ -123,3 +128,105 @@ var contentGrid = {
  
     }// end featuredHide
 };
+
+
+
+
+
+// ............. TEMP state toggle buttons in header .........
+
+	var stndrd = document.getElementById('state-standard');
+	var newProd = document.getElementById('state-new-products');
+	var featSale = document.getElementById('state-sale-featured');
+	var itemSale = document.getElementById('state-sale-item');
+	
+	$jQ(stndrd).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var newProd = document.getElementById('state-new-products');
+		var featSale = document.getElementById('state-sale-featured');
+		var itemSale = document.getElementById('state-sale-item');
+
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(newProd).removeClass('on');
+			$jQ(featSale).removeClass('on');
+			$jQ(itemSale).removeClass('on');
+		
+		//turn off all special cases
+
+        	$jQ('.new-product').css('display', 'none');
+        	$jQ('.sale-featured').css('display', 'none');
+			$jQ('.sale-item').css('display', 'none');
+		
+	});
+	
+	
+	
+	$jQ(newProd).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var newProd = document.getElementById('state-new-products');
+		var featSale = document.getElementById('state-sale-featured');
+		var itemSale = document.getElementById('state-sale-item');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+	
+		// turn on new product elements
+        	$jQ('.new-product').css('display', 'block');
+        	
+       
+	});
+
+
+	$jQ(featSale).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var newProd = document.getElementById('state-new-products');
+		var featSale = document.getElementById('state-sale-featured');
+		var itemSale = document.getElementById('state-sale-item');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+		
+		//turn on featured sale elements & add class depending on screen width	
+		var pageWidth = document.body.clientWidth;
+		if (pageWidth < 1281) {
+			$jQ('.sale-featured.three-across').css('display', 'block').parent().addClass('sale-featured-block');
+		} else if (pageWidth > 1280) {
+			$jQ('.sale-featured.four-across').css('display', 'block').parent().addClass('sale-featured-block');
+		}
+	});
+
+
+
+	$jQ(itemSale).click(function() {
+	
+		var stndrd = document.getElementById('state-standard');
+		var newProd = document.getElementById('state-new-products');
+		var featSale = document.getElementById('state-sale-featured');
+		var itemSale = document.getElementById('state-sale-item');
+
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+
+		//turn on item sale elements & turn off hover
+			$jQ('.sale-item').css('display', 'block');
+			
+		
+        	    
+        	
+			
+			
+	}); // end TEMP state buttons 
+
+
+
+
+
+

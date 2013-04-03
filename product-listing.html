@@ -23,9 +23,23 @@
 <body id="product-listing" class="product-listing-page">
   <div id='site-container'>
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">  
-    includeFragment('inc/header.html');
-  </script>
+    <div class="temp-pdp-header">
+  
+  		<div id="states">
+  			<ul>
+  				<li id="state-standard" class="on">standard</li>
+  				<li id="state-new-products">new products</li>
+  				<li id="state-sale-featured">featured sale</li>
+  				<li id="state-sale-item">item-sale</li>
+  			</ul>
+  		</div><!-- TEMP set of buttons to toggle states for dev -->
+  
+  
+  		<script type="text/javascript">  
+    		includeFragment('inc/header.html');
+  		</script>
+  
+   	</div>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
   <!-- End Header and Nav -->
@@ -36,9 +50,12 @@
 
     <!-- Begin Product List Header -->
     <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-    <script type="text/javascript">  
-      includeFragment('inc/fragments/content-grid-header.html');
-    </script>
+
+    	<script type="text/javascript">  
+      	includeFragment('inc/fragments/content-grid-header.html');
+    	</script>
+   
+    
     <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
     <!-- End Product List Header -->
 
