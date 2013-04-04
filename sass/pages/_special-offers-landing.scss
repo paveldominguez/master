@@ -96,4 +96,56 @@
             }
         }
     }
+    .special-offers {
+        .special-offers-slider {
+            .special-offers-slide {
+                .content-grid {
+                    .content-item {
+                        height: 250px;
+                        padding: 15px;
+                        position: relative;
+                        margin: 0;
+                        background: none;
+                        border: {
+                            right: 1px solid #cccccc;
+                        }
+                        .wrapper {
+                            height: 220px;
+                            overflow: hidden;
+                            position: relative;
+                            &.slide-1 {
+                                background-color: #5BBB82;
+                            }
+                            &.slide-2 {
+                                background-color: #FFBA62;
+                            }
+                            &.slide-3 {
+                                background-color: #D60000;
+                            }
+                            &.slide-4 {
+                                background-color: #5BBB82;
+                            }
+                        }
+                        .sale-img,
+                        .sale-details,
+                        .sale-link {
+                            position: absolute;
+                        }
+                        .sale-img {
+                            top: 0; right: 0;
+                            z-index: 1;
+                        }
+                        .sale-details {
+                            top: 40px; left: 15px;
+                            z-index: 2;
+                        }
+                        .sale-link {
+                            bottom: 15px; left: 15px;
+                            z-index: 3;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
