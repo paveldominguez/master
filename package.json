@@ -1,5 +1,5 @@
 {
-  "name": "Mobile Lifestyle Store",
+  "name": "MobileLifestyleStore",
   "version": "0.0.1",
   "author": "SapientNitro <nitro@sapient.com>",
   "description": "a zero configuration front-end development generator",
@@ -15,7 +15,7 @@
     {
       "name": "Cesar Perez",
       "email": "cperez1@sapient.com"
-    }
+    },
     {
       "name": "Chris Burke",
       "email": "cburke@sapient.com"
