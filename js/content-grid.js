@@ -9,11 +9,11 @@ var contentGrid = {
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
         if(!isTouch) {
-            $contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
+            MLS.ui.gridHover($contentItems, $contentItems.find('.content-hover'), 10);
+            //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
             $quickviewLinks.on('click',{ '$contentGrid' : $contentGrid }, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
-       
     },
     productTileEnter : function() {
         $jQ(this).addClass('over');

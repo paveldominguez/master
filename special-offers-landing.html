@@ -26,7 +26,7 @@
   <script type="text/javascript" src="js/HANDOFF-FUNCTIONS.js"></script>
   <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
 </head>
-<body id="category-list" class="special-offers-landing-page">
+<body id="special-offers-landing" class="special-offers-landing-page">
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <script type="text/javascript">
     includeFragment('inc/header.html');
@@ -41,7 +41,6 @@
     <!-- Begin Category Header -->
 
     <script type="text/javascript">
-      includeFragment('inc/fragments/special-offers-landing-header.html');
     </script>
 
     <!-- End Category Header -->
@@ -65,22 +64,341 @@
             <h1 class="title"><strong>On Sale</strong> Now</h1>
             <a href="#view-all" title="View All">view all</a>
           </header>
+          
           <ul class="content-grid">
-
+            <!-- featured grid item -->
+            <li class="featured content-item">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
+                  <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+              <div class="content-item-offer">
+                <span>Sale 10% Off</span>
+              </div>
+            </li>
+            <!-- end featured grid item -->
+            <!-- grid items -->
+            <!-- some items in this grid will be hidden for various screen sizes
+            please take note of classes beginning with "hide-for" and "show-for," etc... -->
+            <li class="content-item">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+              <div class="content-item-offer">
+                <span>Sale 10% Off</span>
+              </div>
+            </li>
+            <li class="content-item hide-for-medium-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+              <div class="content-item-offer">
+                <span>Sale 10% Off</span>
+              </div>
+            </li>
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+              <div class="content-item-offer">
+                <span>Sale 10% Off</span>
+              </div>
+            </li>
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+              <div class="content-item-offer">
+                <span>Sale 10% Off</span>
+              </div>
+            </li>
           </ul>
         </article>
 
 
 
         <!-- Bundle Deals -->
-        <article id="bundle-deails" class="bundle-deals category-section">
+        <article id="bundle-deals" class="bundle-deals category-section">
           <header class="content-header">
             <h1 class="title"><strong>Bundle</strong> Deals<a href="#view-all" title="View All">view all</a></h1>
             <div class="slide-nav"></div>
           </header>
           <ul class="bundle-deals-slider slides">
-            <li class="bundle-deals-slide">
-
+            <li class="bundle-deals-slide bundle">
+              <div class="wrapper">
+                <div class="quick-view-header">
+                    <ul class="quick-view-offers">
+                        <li class="first offer">free shipping</li>
+                        <!-- if more than one offer..
+                        <li class="offer"></li>
+                        <li class="last offer"></li> -->
+                    </ul>
+                    <a id="close-quick-view" class="quick-view-close" href="#close-quick-view">close</a>
+                </div>
+                <section class="quick-view-item">
+                
+                  <div class="offer-box"> 
+                <div class="offer-amt">20</div>
+                <div class="offer-unit">%</div>
+                <div class="offer-off">Off</div>
+              </div>
+                
+                    <!-- main carousel slider -->
+                    <div id="quick-view-slider" class="bundle">
+                       <img src="img/product-detail-page/plp-spcl/plp-bundle-item.png" title="Nokia Lumia 822 Bundle">
+                    </div>
+                </section>
+                <section class="quick-view-details bundle">
+                    <div class="column">
+                        <header class="product-header">
+                            <h1 class="product-name">Nokia Lumia 822 Bundle</h1>   
+                        </header> <!-- end quick view header-->
+                        
+                        <div class="bundle-details"> 
+                          <p>Nemo enim ipsam voluptatem quia voluptas sit 
+                            aspernatur aut odit aut fugit.  This bundle includes:</p>
+                            
+                            <ul id="bundle-pieces">
+                                <li>Nokia Lumia 822 Anti-Scratch Display Protectors</li>
+                                <li>Nokia Lumia 822 Phone Case </li>
+                                <li>Verizon Vehicle Charger with Dual Output</li>
+                            </ul>
+                        </div> <!-- end bundle details -->
+                    </div><!-- end quick view details -->
+                    
+                    <div class="column">
+                      <div class="product-pricing">
+                            <div class="sale">Reg.$<span>299.99</span></div>
+                            <div class="price">$<span>249<sup>99</sup></span></div>
+                        </div>
+                        
+                        <div class="value-add">
+                          You save 20% when you buy all three together.
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <div class="product-actions">
+                            <input class="add-cart-cta product-action" type="submit" title="Add to Cart" value="Add Bundle to Cart">  
+                        </div>
+                    </div>
+                </section>
+              </div>
+            </li>
+            <li class="bundle-deals-slide bundle">
+              <div class="wrapper">
+                <div class="quick-view-header">
+                    <ul class="quick-view-offers">
+                        <li class="first offer">free shipping</li>
+                        <!-- if more than one offer..
+                        <li class="offer"></li>
+                        <li class="last offer"></li> -->
+                    </ul>
+                    <a id="close-quick-view" class="quick-view-close" href="#close-quick-view">close</a>
+                </div>
+                <section class="quick-view-item">
+                
+                  <div class="offer-box"> 
+                <div class="offer-amt">20</div>
+                <div class="offer-unit">%</div>
+                <div class="offer-off">Off</div>
+              </div>
+                
+                    <!-- main carousel slider -->
+                    <div id="quick-view-slider" class="bundle">
+                       <img src="img/product-detail-page/plp-spcl/plp-bundle-item.png" title="Nokia Lumia 822 Bundle">
+                    </div>
+                </section>
+                <section class="quick-view-details bundle">
+                    <div class="column">
+                        <header class="product-header">
+                            <h1 class="product-name">Nokia Lumia 822 Bundle</h1>   
+                        </header> <!-- end quick view header-->
+                        
+                        <div class="bundle-details"> 
+                          <p>Nemo enim ipsam voluptatem quia voluptas sit 
+                            aspernatur aut odit aut fugit.  This bundle includes:</p>
+                            
+                            <ul id="bundle-pieces">
+                                <li>Nokia Lumia 822 Anti-Scratch Display Protectors</li>
+                                <li>Nokia Lumia 822 Phone Case </li>
+                                <li>Verizon Vehicle Charger with Dual Output</li>
+                            </ul>
+                        </div> <!-- end bundle details -->
+                    </div><!-- end quick view details -->
+                    
+                    <div class="column">
+                      <div class="product-pricing">
+                            <div class="sale">Reg.$<span>299.99</span></div>
+                            <div class="price">$<span>249<sup>99</sup></span></div>
+                        </div>
+                        
+                        <div class="value-add">
+                          You save 20% when you buy all three together.
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <div class="product-actions">
+                            <input class="add-cart-cta product-action" type="submit" title="Add to Cart" value="Add Bundle to Cart">  
+                        </div>
+                    </div>
+                </section>
+              </div>
             </li>
           </ul>
         </article>
@@ -89,14 +407,159 @@
         <!-- Special Offers -->
         <article id="special-offers" class="special-offers category-section">
           <header class="content-header">
-            <h1 class="title"><strong>Bundle</strong> Deals<a href="#view-all" title="View All">view all</a></h1>
+            <h1 class="title"><strong>Special</strong> Offers</h1>
             <div class="slide-nav"></div>
           </header>
           <ul class="special-offers-slider slides">
             <li class="special-offers-slide">
-              <ul class="offers">
-                <li class="offer">
-                  offer
+              <ul class="content-grid">
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-1">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-2">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-3">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-4">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="special-offers-slide">
+              <ul class="content-grid">
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-1">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-2">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-3">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-item offer-sale">
+                  <div class="wrapper slide-4">
+                    <img src="img/product-detail-page/plp-spcl/plp-item-sale-bg.png" class="sale-img" title="Headphone on Sale">
+                    <div class="sale-details">
+                      <div class="splash">
+                        <span class="digits">10</span>
+                        <span class="unit">%</span>
+                        <span class="words">off</span>
+                      </div>
+                      <div class="details">
+                        All headphones, this week only.
+                      </div>  
+                    </div>
+                    <div class="sale-link">
+                      <a href="#">Learn More</a>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </li>

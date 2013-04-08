@@ -25,4 +25,127 @@
             }
         }
     }
+    .header-promo {
+        height: 320px;
+        background-color: #36BDB1;
+    }
+    .promo-fig {
+        float: left;
+        margin: 50px 0 0 75px;
+    }
+    .promo-content {
+        float: right;
+        width: 305px;
+        .promo-copy {
+            margin-top: 35px;
+            color: #FFF;
+            font: {
+                family: $fontVzwBookItalic;
+                size: 24px;
+            }
+            > span {
+                display: block;
+                margin-bottom: 10px;
+            }
+            strong {
+                position: relative;
+                display: block;
+                margin: -40px 0 0 -10px;
+                font-family: "Verizon Apex Medium";
+                font-size: 148px;
+                font-weight: normal;
+                line-height: 1em;
+                sup {
+                    vertical-align: super;
+                    font: {
+                        family: $fontVzwLight;
+                        size: 85px;
+                    }
+                }
+                span {
+                    position: absolute;
+                    top: 65px;
+                    left: 175px;
+                    text-transform: uppercase;
+                    font: {
+                        family: $fontVzwBold;
+                        size: 40px;
+                    }
+                }
+            }
+            .promo-cta {
+                clear: both;
+                cursor: pointer;
+                @include border-radius(3px);
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+                border: 1px solid #3B3F45;
+                display: table;
+                margin: 35px 25px 0;
+                width: 130px;
+                height: 55px;
+                color: #FFF;
+                font: {
+                    family: $fontVzwBook;
+                    size: 18px;
+                }
+                span {
+                    display: table-cell;
+                    vertical-align: bottom;
+                    padding: 10px 15px;
+                }
+            }
+        }
+    }
+    .special-offers {
+        .special-offers-slider {
+            .special-offers-slide {
+                .content-grid {
+                    .content-item {
+                        height: 250px;
+                        padding: 15px;
+                        position: relative;
+                        margin: 0;
+                        background: none;
+                        border: {
+                            right: 1px solid #cccccc;
+                        }
+                        .wrapper {
+                            height: 220px;
+                            overflow: hidden;
+                            position: relative;
+                            &.slide-1 {
+                                background-color: #5BBB82;
+                            }
+                            &.slide-2 {
+                                background-color: #FFBA62;
+                            }
+                            &.slide-3 {
+                                background-color: #D60000;
+                            }
+                            &.slide-4 {
+                                background-color: #5BBB82;
+                            }
+                        }
+                        .sale-img,
+                        .sale-details,
+                        .sale-link {
+                            position: absolute;
+                        }
+                        .sale-img {
+                            top: 0; right: 0;
+                            z-index: 1;
+                        }
+                        .sale-details {
+                            top: 40px; left: 15px;
+                            z-index: 2;
+                        }
+                        .sale-link {
+                            bottom: 15px; left: 15px;
+                            z-index: 3;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
