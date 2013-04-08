@@ -21,22 +21,23 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             compass: {
-                files: ['sass/{,*/}*.{scss,sass}'],
+                files: ['sass/**/*.scss'],
                 tasks: ['compass']
             },
             livereload: {
                 files: [
-                    '{,*/}*.html',
-                    '{.tmp,}css/{,*/}*.css',
-                    '{.tmp,}js/{,*/}*.js',
-                    'img/{,*/}*.{png,jpg,jpeg,webp}'
+                    'inc/**/*.html',
+                    '*.html',
+                    'css/*.css',
+                    'js/**/*js',
+                    'img/**/*.{png,jpg,jpeg,webp}'
                 ],
-                tasks: ['optimize:livereload', 'livereload']
+                tasks: ['livereload']
             }
         },
         connect: {
             options: {
-                port: 9000,
+                port: 8888,
                 // change this to '0.0.0.0' to access the server from outside
                 hostname: 'localhost'
             },
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'dist')
+                            mountFolder(connect, '')
                         ];
                     }
                 }
@@ -56,7 +57,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'dist')
+                            mountFolder(connect, '')
                         ];
                     }
                 }
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect) {
                         return [
-                            mountFolder(connect, 'dist')
+                            mountFolder(connect, '')
                         ];
                     }
                 }
@@ -76,7 +77,7 @@ module.exports = function (grunt) {
                 path: 'http://localhost:<%= connect.options.port %>'
             },
             wiki: {
-                path: ''
+                path: 'https://bitbucket.org/wdavidow/sapient-vzw-mobile-lifestyle-store'
             }
         },
         clean: {
@@ -88,23 +89,31 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'js/{,*/}*.js',
-                '!js/vendor/*'
+                'js/{,*/}*.js'
             ]
+        },
+        bless: {
+            options: {
+                cacheBuster: false,
+                compress: true,
+                force: true
+            },
+            files: {
+                'tmp/css/styles.css': 'css/styles.css'
+            }
         },
         compass: {
             options: {
                 sassDir: 'sass',
-                cssDir: '.tmp/css',
+                cssDir: 'css',
                 imagesDir: 'img',
                 javascriptsDir: 'js',
                 fontsDir: 'fonts',
-                importPath: 'app/components',
                 relativeAssets: true
             },
             debug: {
                 options: {
-                    debugInfo: true
+                    debugInfo: false
                 }
             },
             dist: {
@@ -119,53 +128,13 @@ module.exports = function (grunt) {
                 }
             }
         },
-        includereplace: {
-            compile: {
-                // options: {
-                //     // Global variables available in all files
-                //     globals: {
-                //         foo: 'bar',
-                //     },
-                //     prefix: '<!-- @@', // HTML comment style: <!-- @@include('foo.bar') -->
-                //     suffix: ' -->'
-                // },
-                src: '*.html', // Files to perform replacements and includes with
-                dest: 'dist' // Destinaion directory to copy files to
-            }
-        },
-        rig: {
-            all: {
-                files: {
-                    'dist/js/app.js': [
-                        'js/build.js',
-                        'js/ready.js'
-                    ],
-                    'js/vendor/jquery.js': [
-                        'components/jquery/jquery.js'
-                    ],
-                    'dist/scripts/vendor/plugins.js': [
-                        'js/vendor/plugins.js'
-                    ]
-                }
-            }
-        },
-        concat: {
-            all: {
-                files: {
-                    'dist/css/style.css': [
-                        '.tmp/css/{,*/}*.css',
-                        'css/{,*/}*.css'
-                    ]
-                }
-            }
-        },
         imagemin: {
             all: {
                 files: [{
                     expand: true,
                     cwd: 'img',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: 'dist/images'
+                    dest: 'images'
                 }]
             }
         },
@@ -193,8 +162,8 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess',
                         'fonts/**',
-                        'inc/*.html',
-                        '{,*/}*.html'
+                        'inc/**',
+                        '*.html'
                     ]
                 }]
             }
@@ -208,22 +177,25 @@ module.exports = function (grunt) {
 
         if (target === 'debug' || target === undefined) {
             return grunt.task.run([
-                'compass:debug',
-                'optimize:debug'
+                'compass',
+                'optimize',
+                'bless'
             ]);
         }
 
         if (target === 'dist') {
             return grunt.task.run([
                 'compass:dist',
-                'optimize:dist'
+                'optimize:dist',
+                'bless'
             ]);
         }
 
         if (target === 'qa') {
             return grunt.task.run([
                 'compass:qa',
-                'optimize:qa'
+                'optimize:qa',
+                'bless'
             ]);
         }
     });
@@ -231,20 +203,21 @@ module.exports = function (grunt) {
     grunt.registerTask('optimize', 'Internal task used by `build` task', function (target) {
         if (target === 'debug' || target === 'qa' || target === 'livereload' || target === undefined) {
             return grunt.task.run([
-                'includereplace',
-                'concat',
+                //'includereplace',
+                //'concat',
+                'bless'
                 //'imagemin',
-                'rig',
-                'copy:debug'
+                //'rig',
+
             ]);
         }
 
         if (target === 'dist') {
             return grunt.task.run([
-                'concat',
+                //'concat',
                 //'imagemin',
-                'rig',
-                'copy:dist'
+                //'rig',
+                'bless'
             ]);
         }
     });
