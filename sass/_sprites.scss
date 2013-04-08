@@ -29,3 +29,7 @@ $pdp-spacing: 15px;
 $ui-spacing: 50px;
 @import "sprites/ui/*.png";
 @include all-ui-sprites;
+
+$cart-spacing: 15px;
+@import "sprites/cart/*.png";
+@include all-cart-sprites;

@@ -222,16 +222,37 @@ function updateCart(panel){
 
 // Checkout ............................................................................................
 	
-	// set up phone number for all forms
 	
+	
+	// make all instances of these inputs pretty with uniform
+		$jQ("input:submit, input:checkbox").uniform();
+		
+		
+	
+	// add these methods to validation
+	
+		// phone number format
+		
 		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
     		phone_number = phone_number.replace(/\s+/g, ""); 
 			return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
 		}, "Please specify a valid phone number");
 	
-	// make all instances of these inputs pretty with uniform
-
-		$jQ("input:submit, input:checkbox").uniform();
+	
+	
+		// ignore placeholder text
+		
+		jQuery.validator.addMethod("noPlaceholder", function (value, element) {
+			if (value == $jQ(element).attr('placeholder')) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+		
+		
+		
+	
 		
 	
 	
@@ -243,10 +264,12 @@ function updateCart(panel){
 		$jQ('#my-Verizon-login').validate({
 			rules: {
 				myVerizonID: {
-					required: true
+					required: true,
+					noPlaceholder: true
 				},
 				myVerizonPassword: {
 					required: true,
+					noPlaceholder: true,
 					minlength: 4
 				}
 			},
@@ -255,6 +278,7 @@ function updateCart(panel){
 				myVerizonID: "Please enter your User ID",
 				myVerizonPassword: {
 					required: "Please enter your password",
+					noPlaceholder: "Please enter your password",
 					minlength: "Your password must be at least 4 characters long"
 				}
 			}
@@ -267,10 +291,12 @@ function updateCart(panel){
 			rules: {
 				createLoginFromMobile: {
 					required: false,
+					noPlaceholder: true,
 					phoneUS: true,	
 				},
 				createLoginPassword: {
 					required: false,
+					noPlaceholder: true,
 					minlength: 4
 				},
 				createLoginVerify: {
@@ -281,10 +307,12 @@ function updateCart(panel){
 			messages: {
 				createLoginFromMobile: {
 					required: "Please enter your Verizon Wireless number",
+					noPlaceholder: "Please enter your Verizon Wireless number",
 					phoneUS: "Please enter your Verizon Wireless number"
 					},
 				createLoginPassword: {
 					required: "Please enter a password",
+					noPlaceholder: "Please enter your own unique password",
 					minlength: "Your password must be at least 4 characters long"
 					},
 				createLoginVerify: {
@@ -300,7 +328,20 @@ function updateCart(panel){
 		
 	// 'begin checkout' : create vzn login
 		$jQ('.create-login-checkbox').change(function() {
+		
 			$jQ('.create-login-fields').toggle('fast');	
+			if ($jQ(this).is(':checked')) {
+				
+				$jQ(this).parents('.guest-checkout').find('.button').find('span').html(
+					'Register & Checkout<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Register & Checkout">'
+				);
+				
+			} else { 
+			
+				$jQ(this).parents('.guest-checkout').find('.button').find('span').html(
+					'Guest Checkout<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Guest Checkout">'
+				);
+			}
 		});
 		
 	// 'begin checkout' : password requirements
@@ -313,9 +354,24 @@ function updateCart(panel){
 		$jQ('#create-vzn-login').submit(function(e) {
 			e.preventDefault();
 			if ($jQ(this).valid()) {
+				window.scrollTo(0,0);
 				$jQ('#begin-checkout').fadeOut(300);
+				$jQ('#checkout').addClass('visible');
 				$jQ('.checkout-title').text('Checkout');
-			}
+				
+				var sidebar = $jQ('.visible #checkout-sidebar');
+				var startTop = sidebar.offset().top;
+				var startLeft = sidebar.offset().left;
+				var startWidth = sidebar.width();
+				sidebar.attr({
+					'data-start-top' : startTop,
+					'data-start-left' : startLeft,
+					'data-start-width' : startWidth
+					});
+					
+				$jQ('#checkout.visible').find('input');
+					
+			}// end guest entrance if 
 		});
 		
 	
@@ -325,7 +381,11 @@ function updateCart(panel){
 	// make elements pretty
 		$jQ(".checkout-final").uniform();
 		
-
+	// inline dropdowns action
+		$jQ('.checkout-dropdown-link').click(function(e){
+			e.preventDefault();
+			$jQ(this).siblings('.checkout-dropdown-panel').toggle();	
+		});
 
 	
 	// validation loop for 'next step' buttons
@@ -333,9 +393,14 @@ function updateCart(panel){
 	$jQ('.checkout-next').click(function(e) {
 		e.preventDefault();
 		var which = $jQ(this).attr('id');
-		//alert(which);
+		
+		// clear unused fields
+			$jQ('.not').remove();
+		
+		
+		// step-specific rules
 		if (which == 'ship-method-complete') {
-			
+
 			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
 			var valid = false;
 			
@@ -343,7 +408,7 @@ function updateCart(panel){
 			$jQ(radios).each(function(i) {
 			
 				if (this.checked) { 
-					alert(i);
+					//alert(i);
 					valid = true; 
 					$jQ('#no-shipping-selected').hide();
 					var shippingType = $jQ('input[name=shipRadio]:checked').siblings('h5').html();
@@ -388,7 +453,13 @@ function updateCart(panel){
         }
 
     	if (valid) {
-    		alert('valid');
+    		//alert('valid');
+    		
+    		if (section == 'ship-info-complete') { // special case : copy name to additional field	
+    			var shipName = $jQ('#ship-name-block').html();
+    			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary');
+    		}
+    		
     		if (section == 'billing-info-complete') { // special case : copy name to out-of-sequence field 
     			var first = $jQ('#confirmed-first-name').text();
     			var last = $jQ('#confirmed-last-name').text();
@@ -396,84 +467,147 @@ function updateCart(panel){
     		}
     	
     	
-        	// hide inputs & buttons
-        		$jQ(this).parents('.checkout-step').find('.hide-complete').hide();
+        	// show/hide as required
+        		var thisBlock = $jQ(this).parents('.checkout-step');
         	
-        	// then show summary
-        		$jQ(this).parents('.checkout-step').find('.hide-input').show();
+        	// hide current block inputs & buttons
+       			thisBlock.find('.hide-complete').addClass('hidden');
+        	
+        	// show current block summary
+        		thisBlock.find('.step-info-summary').removeClass('hidden');
         	
         	// then open the next panel
-        		$jQ(this).parents('.checkout-step').next('.checkout-step').find('.hide-complete').show();
+        		thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+        	
+        	// last, scroll page to where all data is visible
+        		scrollPgTo('#shipping-info', 20);
         	
     	}
 			
 	
 		}); // end next step click
 
+	
+// edit step-info after next-step validation
+
+	$jQ('.edit-checkout-step').click(function(){
+	
+		var thisStep = $jQ(this).parents('.checkout-step');
+		
+		// close open input & open its summary
+        	thisStep.siblings('.checkout-step').find('.hide-complete').each(function() {	
+        		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').removeClass('hidden');
+        	});
+	
+		// close this panels summary next
+			$jQ(this).parents('.step-info-summary').addClass('hidden');
+
+		// show this panels inputs & buttons
+        	thisStep.find('.hide-complete').removeClass('hidden');
+        	
+        // last, scroll page to top of re-opened section
+        	scrollPgTo (thisStep, 20);
+        	
+       
+	});
+	
+
 
 // validation rules & messages ( validate.js ) : full checkout sequence
 
-	$jQ('#vzn-checkout').validate({
-		
+
+		$jQ('#vzn-checkout').validate({
 			rules: {
 				checkoutFirstName: {
-					required: true	
+					required: true,
+					noPlaceholder: true
+							
 				},
 				checkoutLastName: {
-					required: true	
+					required: true,
+					noPlaceholder: true	
+					
+				},
+				checkoutCompany: {
+					required: true,
+					noPlaceholder: true,
+					},
+				checkoutAttention: {
+					required: true,
+					noPlaceholder: true,
+					
 				},
 				checkoutEmail: {
 					required: true,
+					noPlaceholder: true,
 					email: true	
 				},
 				checkoutPhone: {
 					required: true,
+					noPlaceholder: true,
 					phoneUS: true	
 				},
 				checkoutAddress: {
-					required: true	
+					required: true,
+					noPlaceholder: true,	
 				},
 				checkoutAddress2: {
-					required: false	
+					required: false,
+					noPlaceholder: false,	
 				},
 				checkoutCity: {
-					required: true	
+					required: true,
+					noPlaceholder: true,	
+				},
+				checkoutState: {
+					required: true
 				},
 				checkoutZip: {
-					required: true	
+					required: true,
+					digits: true,
+					minlength: 5,
+					noPlaceholder: true,	
 				},
 				cardNumber: {
 					required: true,
+					noPlaceholder: true,
 					minlength: 16,
 					maxlength:  16,
 					digits: true
 				},	
 				ccCode: {
 					required: true,
+					noPlaceholder: true,
 					minlength: 3,
 					maxlength:  4,
 					digits: true
 				},
 				billingFirstName: {
-					required: true
+					required: true,
+					noPlaceholder: true,
 				},
 				billingLastName: {
-					required: true
+					required: true,
+					noPlaceholder: true,
 				},
 				billingPhone: {
 					required: true,
+					noPlaceholder: true,
 					phoneUS: true
 				},
 				billingAddress: {
-					required: true	
+					required: true,
+					noPlaceholder: true,
 					},
 				billingAddress2: {
 					},
 				billingCity: {
-					required: true	
+					required: true,
+					noPlaceholder: true	
 					},
 				billingZip: {
-					required: true
+					required: true,
+					noPlaceholder: true
 					},
 				discountCode: {
 				
@@ -488,105 +622,209 @@ function updateCart(panel){
 			
 			messages: {
 				checkoutFirstName: {
-					required: "Please enter your first name"
+					required: "Please enter your first name",
+					noPlaceholder: "Please enter your first name"
 					},
 				checkoutLastName: {
-					required: "Please enter your last name"
-					},
+					required: "Please enter your last name",
+					noPlaceholder: "Please enter your last name"
+					},	
+				checkoutCompany: {
+					required: "Please enter your company name",
+					noPlaceholder: "Please enter your company name"
+				},
+				checkoutAttention: {
+					required: "Please enter your first and last name",
+					noPlaceholder: "Please enter your first and last name"
+				},			
 				checkoutEmail: {
 					required: "Please enter your email address",
+					noPlaceholder: "Please enter your email address",
 					email: "Please enter a valid email address"	
 					},
 				checkoutPhone: {
 					required: "Please enter your phone number",
+					noPlaceholder: "Please enter your phone number",
 					phoneUS: "Please enter a valid phone number"	
 					},
 				checkoutAddress: {
-					required: "Please enter your street address"	
+					required: "Please enter your street address",
+					noPlaceholder: "Please enter your street address"	
 					},
 				checkoutAddress2: {
 					},
 				checkoutCity: {
-					required: "Please enter your city"	
+					required: "Please enter your city",
+					noPlaceholder: "Please enter your city"
 					},
 				checkoutState: {
 					required: "Please select your state"
 					},
 				checkoutZip: {
-					required: "Please enter your zip code"
+					required: "Please enter your zip code",
+					noPlaceholder: "Please enter your zip code",
+					digits: "Please enter your 5 digit zip code",
+					minlength: "Please enter your 5 digit zip code"
+					
 					},
 				cardNumber: {
 					required: "Please enter your card number",
+					noPlaceholder: "Please enter your card number",
 					minlength: "Please enter a valid card number",
 					maxlength:  "Please enter a valid card number",
 					digits: "Please enter a valid card number"
 					},
 				ccCode: {
 					required: "Please enter the security code on the back of your card",
+					noPlaceholder: "Please enter your security code",
 					minlength: "Please enter a valid security code",
 					maxlength:  "Please enter a valid security code",
 					digits: "Please enter a valid security code"
 					},
 				billingFirstName: {
-					required: "Please enter your first name"
+					required: "Please enter your first name",
+					noPlaceholder: "Please enter your first name"
 					},
 				billingLastName: {
-					required: "Please enter your last name"
+					required: "Please enter your last name",
+					noPlaceholder: "Please enter your last name"
 					},
 				billingPhone: {
 					required: "Please enter your phone number",
-					phoneUS: "Please eneter a valid phone number"
+					noPlaceholder: "Please enter your phone number",
+					phoneUS: "Please enter a valid phone number"
 					},
 				billingAddress: {
-					required: "Please enter your street address"	
+					required: "Please enter your street address",
+					noPlaceholder: "Please enter your street address"	
 					},
 				billingAddress2: {
 					},
 				billingCity: {
-					required: "Please enter your city"	
+					required: "Please enter your city",
+					noPlaceholder: "Please enter your city"	
 					},
 				billingState: {
-					required: "Please select your state"
+					required: "Please select your state",
+					noPlaceholder: "Please enter your state"
 					},
 				billingZip: {
-					required: "Please enter your zip code"
+					required: "Please enter your zip code",
+					noPlaceholder: "Please enter your zip code"
 					},		
 				}
 			});	
 
 
 
-// Sidebar : 1024+ responsive positioning
 
-	var sidebar = $jQ('#checkout-sidebar');
 
-	var startTop = sidebar.offset().top;
-	var startLeft = sidebar.offset().left;
-	var startWidth = sidebar.width();
-	//alert(startLeft);
+// STEP 1 SPECIFICS : Residence/business form adjustment
+
+	$jQ('#checkout-where-to').change(function(){
 	
-	$jQ(window).scroll(function(){
-	
-		var scrollPos = $jQ(this).scrollTop();
-		if ( scrollPos >= startTop ) {
-			$jQ('#checkout-sidebar').addClass('fixed').css({
-				'left': startLeft +'px',
-				'width': startWidth + 'px'
-			});
-		} else {
-			$jQ('#checkout-sidebar').removeClass('fixed').css({
-				'left' : 'auto',
-				'width' : '25%'
-			});
-		}
-	
+		//var which = $jQ(this).find('option:selected').val();
+		
+		var replace = $jQ('#destination').attr('data-removed');
+		if (replace != "") {
+		
+			$jQ('<div class="replaced not"></div>').appendTo('#destination').html(replace);
+		
+		} 
+		
+		// first change what shows
+		
+			$jQ(this).parents('.step-info-block').find('#destination').children().each(function(){
+		
+				if ( $jQ(this).hasClass('not') ) {
+					$jQ(this).removeClass('not');
+				} else {
+					$jQ(this).addClass('not');
+				}
+			})
+		
+		
+		// then remove/replace elements 
+		
+			var removed = $jQ('#destination').find('.not').html();
+			$jQ('#destination').find('.not').remove();
+			$jQ('#destination').attr('data-removed', removed);
 	});
 
 
 
 
+// STEP 3 SPECIFICS in user order
+
+	// first, account or card selection
+	
+		$jQ('.billing-select').change(function(){
+		
+		// uncheck other option & switch container styles
+			$jQ(this).parents('.billing-option').addClass('checked').siblings().find('span').removeClass('checked').find('.billing-select').prop(
+				'checked', false).parents('.billing-option').removeClass('checked');
+			
+		// add checked style to checked 'tab'
+		//	$jQ(this).parents('.billing-select-box').find('span.checked').parents('.billing-option').addClass('checked');
+		
+		// hide unchecked content
+			$jQ('.billing-details-block').find('.hidden').removeClass('hidden').siblings().addClass('hidden');
+		
+	
+		// show checked content
+		
+		
+		
+		
+		
+		
+		
+		});
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Sidebar : 1024+ responsive positioning
+
+	$jQ(window).scroll(function(){
+		
+		if($jQ('#checkout').hasClass('visible')) {
+			
+			var scrollPos = $jQ(this).scrollTop();
+				
+			var sidebar = $jQ('.visible #checkout-sidebar')
+			var startTop = sidebar.attr('data-start-top');
+			var startWidth = sidebar.attr('data-start-width');
+				
+			if ( scrollPos >= startTop ) {
+				sidebar.addClass('fixed').css({
+					'width': startWidth + 'px'
+				});
+			} else {
+				sidebar.removeClass('fixed').css({
+					'width' : '25%'
+				});
+			} // end 'if sidebar position'
+		} // end 'if checkout visible '
+		
+	});
+
+	
 
 
 
@@ -616,13 +854,9 @@ function copyInputs( section, inputI, data ) {
 		if (inputI == sumI ) {
 			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
-		
 		}
-	
 	});
-
 } // end copyInputs
-
 
 
 function copySelects( section, inputI, data ) {
@@ -634,12 +868,32 @@ function copySelects( section, inputI, data ) {
 		if (inputI == sumI ) {
 			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
-		
 		}
-	
 	});
-	
 } // end copy Selects
+
+
+
+function scrollPgTo( where, topPad) {
+        if (topPad == undefined) {
+            topPadding = 0;
+        }
+        var moveTo = $jQ(where).offset().top - topPad;
+        $jQ('html, body').stop().animate({
+            scrollTop: moveTo
+        }, 250);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -648,103 +902,37 @@ function copySelects( section, inputI, data ) {
 
 	var stndrd = document.getElementById('state-standard');
 	var sale = document.getElementById('state-sale');
-	var prod = document.getElementById('product-oos');
-	var clr = document.getElementById('color-oos');
-
-
+	
 	$jQ(stndrd).click(function() {
 	
 		var stndrd = document.getElementById('state-standard');
 		var sale = document.getElementById('state-sale');
-		var prod = document.getElementById('product-oos');
-		var clr = document.getElementById('color-oos');
-
-	
+		
 		// change font colors for nav
 			$jQ(this).addClass('on');
 			$jQ(sale).removeClass('on');
-			$jQ(prod).removeClass('on');
-			$jQ(clr).removeClass('on');
-		
+			
 		//turn off everything else
 	
 		  	// turn off sale, restore standard where req
         		$jQ('.offer').css('display', 'none');
-        		$jQ('.no-offer').css('display', 'list-item');
-        	
-        	// turn off product, restore button
-        		$jQ('.OOS.product').css('display', 'none');
-        		$jQ('.add-cart-cta').removeClass('oos');
-        	
-        	
-        	// turn off color, 
-				$jQ('.OOS.color').css('display', 'none');
-				
-			// restore cta button
-        		$jQ('#add-cart-box').removeClass('oos');	
-	
+        		$jQ('.no-offer').css('display', 'inline-block');
+       	
 	});
 	
-	
-	
+
 	$jQ(sale).click(function() {
 	
 		var stndrd = document.getElementById('state-standard');
 		var sale = document.getElementById('state-sale');
-		var prod = document.getElementById('product-oos');
-		var clr = document.getElementById('color-oos');
-
+		
 		// change font colors for nav
 			$jQ(this).addClass('on');
 			$jQ(stndrd).removeClass('on');
 	
 		// turn on sale elements, hide standard where req
-        	$jQ('.offer').css('display', 'list-item');
+        	$jQ('.offer').css('display', 'inline-block');
         	$jQ('.no-offer').css('display', 'none');
 	});
 
 
-	$jQ(prod).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var sale = document.getElementById('state-sale');
-		var prod = document.getElementById('product-oos');
-		var clr = document.getElementById('color-oos');
-
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-			$jQ(clr).removeClass('on');
-	
-		//turn on product, turn off color where req,
-			$jQ('.OOS.product').css('display', 'block');
-			$jQ('.OOS.color').css('display', 'none');	
-			$jQ('.add-cart-cta').addClass('oos');
-			
-		// mod cta button
-			$jQ('#add-cart-box').addClass('oos');
-	});
-
-
-
-	$jQ(clr).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var sale = document.getElementById('state-sale');
-		var prod = document.getElementById('product-oos');
-		var clr = document.getElementById('color-oos');
-
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-			$jQ(prod).removeClass('on');
-	
-		//turn on product, turn off color where req,
-			$jQ('.OOS.color').css('display', 'block');
-			$jQ('.OOS.product').css('display', 'none');
-			
-		// mod cta button
-			$jQ('#add-cart-box').addClass('oos');
-
-			
-	}); // end TEMP state buttons 
