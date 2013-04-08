@@ -24,7 +24,7 @@ MLS.home = {
 		//Featured Reviews
 		MLS.home.featuredReviews();
 
-		//Trending Products tabs Dirty
+		//Trending Products tabs
 		$jQ('dd','#detail-tabs').on('click',function(e){
 			e.preventDefault();
 			var tab = $jQ(this).find('a').attr('href');
@@ -46,21 +46,24 @@ MLS.home = {
 	},
 	sliders:{
 		init:function(){
-			// $jQ('.home-page').find('.fslider').each(function(){
-			// console.log($jQ(this));
-			// });
-			$jQ('.fslider').flexslider({
-				animation: "slide",
-				animationLoop: true,
-				itemWidth: 212,
-				itemMargin: 0,
-				maxItems:4,
-				slideshow:false
-
-			});
+            $jQ('.trending-categories .fslider').flexslider({
+                animation: 'slide',
+                controlsContainer: 'section.trending-categories .slide-nav',
+                animationLoop: true,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: 212,
+                maxItems:4,
+                itemMargin: 0
+            });
+            $jQ(window).resize(function() {
+                $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.85});
+            });
             $jQ('.featuredReviewSlider').flexslider({
                 animation: 'slide',
-                controlsContainer: '#lifestyle-products .slide-nav',
+                controlsContainer: 'section.featured-reviews .slide-nav',
                 animationLoop: true,
                 controlNav: false,
                 directionNav: true,
@@ -81,16 +84,22 @@ MLS.home = {
 				name: 'devices',
 				remote: 'js/data/devices.json',
 				limit: 10
-			}).on('change keyup typeahead:selected typeahead:closed',function(){
+			}).on('change keyup typeahead:selected typeahead:closed',function(e){
 				console.log($jQ(this).val());
-				if ( $jQ(this).val() ==="enter device" || $jQ(this).val() ==="" ){
+				if ( e.type === "typeahead:closed" ){
+					$jQ(this).blur();
+				}
+				if ( e.type === "typeahead:selected" ){
+					//Fire secondary
+				}
+				if ( $jQ(this).val() === "enter device" || $jQ(this).val() === "" ){
 					$jQ(this).stop().animate({
 						width: 173
 					},100);
 				}else{
 					if ($jQ(this).val().length > 3){
 						$jQ(this).stop().animate({
-							width: $jQ(this).val().length*16
+							width: $jQ(this).val().length*17
 						},100);
 					}
 				}

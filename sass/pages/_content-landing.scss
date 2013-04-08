@@ -4,6 +4,12 @@ $colorSocialCount: #848483;
 $colorShowMoreBorder: #D1D2D2;
 
 .content-landing-page {
+    .tab-content-wrapper{
+        display:none;
+        &.active{
+            display:block;
+        }
+    }
     .page-header {
         background-color: $colorLightBg;
         padding: 15px;
