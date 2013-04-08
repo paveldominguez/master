@@ -9,22 +9,22 @@ var contentGrid = {
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
         if(!isTouch) {
-             MLS.ui.gridHover($contentItems, $contentItems.find('.content-hover'), 10);
+            MLS.ui.gridHover($contentItems, $contentItems.find('.content-hover'), 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
             $quickviewLinks.on('click',{ '$contentGrid' : $contentGrid }, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
     },
-    // productTileEnter : function() {
-    //     $jQ(this).addClass('over');
-    //     $jQ(this).find('.content-hover').stop(true,true).fadeIn('fast');
-    //     $jQ(this).find('.content-detail').stop(true,true).animate( { opacity:0 }, 'fast');
-    // },
-    // productTileLeave : function() {
-    //     $jQ(this).removeClass('over');
-    //     $jQ(this).find('.content-hover').fadeOut('fast');
-    //     $jQ(this).find('.content-detail').animate( { opacity: 1 }, 'fast');
-    // },
+    productTileEnter : function() {
+        $jQ(this).addClass('over');
+        $jQ(this).find('.content-hover').stop(true,true).fadeIn('fast');
+        $jQ(this).find('.content-detail').stop(true,true).animate( { opacity:0 }, 'fast');
+    },
+    productTileLeave : function() {
+        $jQ(this).removeClass('over');
+        $jQ(this).find('.content-hover').fadeOut('fast');
+        $jQ(this).find('.content-detail').animate( { opacity: 1 }, 'fast');
+    },
     quickViewHandler : function(e) {
         var $quickView = $jQ('#quick-view-overlay'),
         $parentTile = $jQ(this).parent().parent(),

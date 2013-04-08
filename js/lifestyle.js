@@ -7,7 +7,7 @@ MLS.lifestyle = {
         $jQ('#lifestyle-gallery').flexslider({
             animation: 'slide',
             controlsContainer: '#lifestyle-gallery .slide-nav',
-            animationLoop: true,
+            animationLoop: false,
             controlNav: false,
             directionNav: true,
             slideshow: false,
@@ -22,17 +22,6 @@ MLS.lifestyle = {
         $jQ('#lifestyle-guides').flexslider({
             animation: 'slide',
             controlsContainer: '#lifestyle-guides .slide-nav',
-            animationLoop: true,
-            controlNav: false,
-            directionNav: true,
-            slideshow: false,
-            animationSpeed: 500
-        });
-
-        //product pinterst gallery
-        $jQ('#lifestyle-product-board').flexslider({
-            animation: 'slide',
-            controlsContainer: '#lifestyle-product-board .slide-nav',
             animationLoop: true,
             controlNav: false,
             directionNav: true,
@@ -55,7 +44,7 @@ MLS.lifestyle = {
         $jQ('#lifestyle-products').flexslider({
             animation: 'slide',
             controlsContainer: '#lifestyle-products .slide-nav',
-            animationLoop: true,
+            animationLoop: false,
             controlNav: false,
             directionNav: true,
             slideshow: false,
