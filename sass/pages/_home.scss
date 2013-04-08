@@ -303,9 +303,34 @@ $btfHiliteBg : #2a2d32;
         }
     }
     .category-section{
+        padding-top:60px;
         .content-header{
             padding:0 0 15px 0;
         }
+        .flex-direction-nav {
+            float: right;
+            margin: 35px 0 0;
+            li { 
+                float: left; margin-left: 15px; 
+                .flex-prev,
+                .flex-next {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    text-indent: -9999px;
+                    &.flex-disabled {
+                        cursor: default;
+                        opacity: 0.35;
+                    }
+                }
+                .flex-prev {
+                    @include pdp-sprite(btf-carousel-left, false, 0 ,0);
+                }
+                .flex-next {
+                    @include pdp-sprite(btf-carousel-right, false, 0 ,0);
+                }
+            }
+    }
     }
 
     .madlib{
@@ -325,9 +350,52 @@ $btfHiliteBg : #2a2d32;
                     line-height: 37px;
                     border-bottom: 1px solid #515459;
                     padding-bottom: 7px;
+                    &:focus{
+                        background: #fff !important;
+                        border: none;
+                        border-radius: 3px;
+                        padding: 5px;
+                        font-size: 27px;
+                    }
                 }
                 #uniform-madlib-select{
                     display:inline;
+                }
+                .tt-hint{
+                    display: none;
+                }
+                .tt-dropdown-menu{
+                    background: #fff;
+                    padding: 0;
+                    min-width:170px;
+                     -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2); 
+                     -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2); 
+                     box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+                     border-radius: 2px;
+                     border-top: 1px solid #e4e5e5;
+                     border-left: 1px solid #e4e5e5;
+                    .tt-suggestions{
+                        .tt-suggestion{
+                            &.tt-is-under-cursor{
+                                background: #3b3e45;
+                                p{
+                                    border:0;
+                                }
+                            }
+                            p{
+                                margin: 0 15px;
+                                border-top: 1px solid #f8f8f8;
+                                text-align:left;
+                                font-size:27px;
+                                font-weight:normal;
+                                font-family: "Verizon Apex Book";
+                                color: #ddddde;
+                                margin-bottom:0;
+                                padding-bottom:0;
+
+                            }
+                        }
+                    }
                 }
             } 
         }
@@ -447,7 +515,7 @@ $btfHiliteBg : #2a2d32;
                 float:left;
                 display:block;
                 border:1px solid #f8f8f8;
-                height: 446px;
+                max-height: 370px;
                 position: relative;
                 .carrot{
 
@@ -462,9 +530,12 @@ $btfHiliteBg : #2a2d32;
                 }
                 .user-review{
                     font-family:$fontVzwBookItalic;
-                    font-size:32px;
+                    font-size:25px;
                     color:#3d4146;
                     line-height: 1.2em;
+                }
+                .post-info{
+                    font-size:12px;
                 }
             }
         }
@@ -799,6 +870,10 @@ $btfHiliteBg : #2a2d32;
         } /* end lifestyles stories */
     .trending-categories{
         ol.flex-control-paging{display:none;}
+        .flex-viewport{
+            border-right: 1px solid #cecece;
+            height: 215px;
+        }
         .slides{
             border-top: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
