@@ -174,6 +174,7 @@ MLS = {
     'special-offers-landing-page' : {
         init : function() {
             contentFilter.init();
+            MLS.specialOffers.init();
         }
     }
 };
