@@ -17,7 +17,14 @@ MLS.ajax = {
                 },
                 function(){
                 $jQ(this).next('.article-preview-container').hide();}
-                );
+            );
+            $jQ('#article-detail .close').on('click', function () {
+                var height = $jQ('#article-detail').height();
+                $jQ('#article-detail').animate({top: '-'+height}, 300,function () {
+                    $jQ('#article-modal-overlay').fadeOut();
+                    $jQ('#article-detail').empty();
+                });
+            });
         },
         getArticleContent : function(e) {
             e.preventDefault();
