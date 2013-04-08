@@ -763,29 +763,45 @@ function updateCart(panel){
 		// uncheck other option & switch container styles
 			$jQ(this).parents('.billing-option').addClass('checked').siblings().find('span').removeClass('checked').find('.billing-select').prop(
 				'checked', false).parents('.billing-option').removeClass('checked');
-			
-		// add checked style to checked 'tab'
-		//	$jQ(this).parents('.billing-select-box').find('span.checked').parents('.billing-option').addClass('checked');
 		
-		// hide unchecked content
-			$jQ('.billing-details-block').find('.hidden').removeClass('hidden').siblings().addClass('hidden');
-		
-	
-		// show checked content
-		
-		
-		
-		
-		
-		
+		// hide unchecked content / reveal checked
+			$jQ('.billing-details-block').find('.billing-detail-content.hidden').removeClass('hidden').siblings().addClass('hidden');
 		
 		});
 
 
+	// second, saved card or new card
+	
+		// radio change (either option)
+		
+		$jQ('input[name=cardChoice]').change(function(){
+			$jQ(this).siblings('.card-choice-detail-block').removeClass('hidden').parent().siblings('.form-input-wrap').find('.card-choice-detail-block').addClass('hidden');
+			
+			// handle edit button visibility
+				if ($jQ(this).parent().hasClass('new-card')) {
+					$jQ('.edit-saved-card').addClass('hidden');
+				} else {
+					$jQ('.edit-saved-card').removeClass('hidden');
+				}
+		});
+		
+		
 
 
+		$jQ('.edit-saved-card').click(function(){
+		
+			// saved card off
+				$jQ('.saved-card').find('.checkout-radio-input').prop('checked', false).siblings('.card-choice-detail-block').addClass('hidden');
+			
+			
+			// new card on 
+				$jQ('.new-card').find('.checkout-radio-input').prop('checked', true).siblings('.card-choice-detail-block').removeClass('hidden');
+			
+			// edit button off
+				$jQ(this).addClass('hidden');
+			
 
-
+		});
 
 
 

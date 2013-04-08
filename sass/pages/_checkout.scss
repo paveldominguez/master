@@ -59,6 +59,19 @@
 			span { color: #acacac;
 				text-shadow: 0px 1px 1px #fff; 
 				}
+				
+			span.checkout {
+				display: inline-block;
+				font-size: 14px;
+				line-height: 14px; 
+				text-transform: lowercase;
+				color: $cartGreySelect;
+				font-family: $fontArial;
+				font-weight: bold; 
+				padding: 14px 0 0 0px;
+				}
+				
+				
 			}
 			
 		@mixin secondaryAddCartGrey {
@@ -250,13 +263,6 @@
 				position: absolute;
 				top: 50%; margin-top: -18px;
 				right: 9%; 
-				font-size: 14px;
-				line-height: 14px; 
-				text-transform: lowercase;
-				color: $cartGreySelect;
-				font-family: $fontArial;
-				font-weight: bold; 
-				padding: 14px 0 0 10px;
 				}
 				
 			}/* end common info summary styles */
@@ -1094,6 +1100,31 @@
 					
 				#billing-info {
 				
+					.billing-card { /* use in both info-block & summary-block */
+						@include clearfix();
+						.card-image {
+							display: inline-block;
+							float: left;
+							width: 60px; height: 36px; 
+							padding: 0; margin: 0 10px 0 0;
+							}
+						.visa { @include cart-sprite(visa-bw); }
+						.mastercard { @include cart-sprite(mastercard-bw); }
+						.amex { @include cart-sprite(amex-bw); }
+						.discover { @include cart-sprite(discover-bw); }
+						
+						.card-info {
+							display: inline-block;
+							width: auto;
+													
+							li { 
+								@include checkoutContent;
+								}
+													
+													
+							}/* end card-info ul */
+						}/* end billing card block */
+				
 					.step-info-block {
 				
 						.billing-info-block {
@@ -1216,17 +1247,57 @@
 							
 								.details-card {
 								
-									.form-input-wrap {
+									.card-choice-block {
 										@include clearfix();
-										
-										.form-item-title { 
-											display: inline-block;
-											width: auto;
-											float: left;
-											margin: 0 0 0 10px;
-											}
-										}
 								
+										.form-input-wrap {
+											@include clearfix();
+										
+											.checkout-radio-input { float: left; }
+										
+											.form-item-title { 
+												display: inline-block;
+												width: 90%;
+												float: left;
+												margin: 7px 0 0 20px;
+												}
+												
+											.card-choice-detail-block {
+												@include clearfix();
+												width: 90%;
+												margin: 25px 0 0 36px;
+											
+												.billing-card { /* for saved card info */
+													width: 75%;
+													
+													.card-image { margin-top:3px; }
+													.visa { @include cart-sprite(visa-color); }
+													.mastercard { @include cart-sprite(mastercard-color); }
+													.amex { @include cart-sprite(amex-color); }
+													.discover { @include cart-sprite(discover-color); }
+													
+													}
+											
+											
+											
+											
+											
+												}/* end card choice detail block */
+												
+											.card-choice-detail-block.hidden { display: none; }	
+											
+											}
+										
+										.edit-saved-card {
+											@include cartButtonUp;
+											position: absolute;
+											top: 45px; right: 10px;
+											width: 90px;
+											height: 36px;
+											}
+										.edit-saved-card.hidden { display: none; }
+											
+										} /* end card-choice-block */
 								
 								 	}/* end details-card */
 							
