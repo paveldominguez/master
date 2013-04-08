@@ -1,0 +1,80 @@
+html, body {
+    font-family: $fontVzwBook;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: $fontVzwLight;
+}
+
+.wrapper {
+    @include clearfix();
+    position: relative;
+    margin: 0 auto;
+    padding: 0 $columnGutter;
+    max-width: $screenXlarge - $columnGutter;
+}
+
+#site-container {
+    max-width: $rowWidth;
+    margin: 0 auto;
+}
+
+#site-header { 
+    position: relative;
+    z-index: 1000 !important;
+}
+
+#grid-pop-out{
+    display:none;
+    position: absolute;
+    background: transparent;
+    @include box-shadow(2px 2px 7px 5px rgba(0, 0, 0, .2));
+    top: 0;
+    height: 150%;
+    z-index: 1;
+    border: 20px solid #fff;
+    // .close{
+    //     background:url(../img/lifestyle-landing/close.png) no-repeat;
+    //     display:block;
+    //     position: absolute;
+    //     top: -39px;
+    //     right: -34px;
+    //     width: 32px;
+    //     height: 31px;
+    // }
+    .details{
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        height: 130px;
+        display: block;
+        width: 100%;
+      
+        .name{
+            font-family: arial;
+            font-size:13px;
+            color:#0066cc;
+        }
+    }
+}
+
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
+    .hide-for-large-grid { display: none; }
+    .show-for-large-grid { display: inherit; }
+}
+@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+
+}
+@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
+
+}
+@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
+    
+}
+@media only screen and (max-width: $screenMobileSmall) {
+    
+}

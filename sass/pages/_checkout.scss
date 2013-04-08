@@ -141,6 +141,29 @@
 			background-image: -webkit-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Webkit (Chrome 11+) */ 
 			}
 	
+		@mixin checkoutLabel {
+			color: $cartGreyDk;
+			font-family: $fontArial;
+			font-size: 10px;
+			line-height: 10px;
+			font-weight: bold;
+			text-transform: uppercase;
+			}
+	
+		@mixin checkoutContent {
+			color: $cartGreyMd;
+			font-family: $fontArial;
+			font-size: 12px;
+			line-height:15px;
+			font-weight: normal;
+			text-transform: none;
+			}
+			
+	
+	
+	
+	
+	
 	
 	
 /* Checkout Styles */
@@ -204,11 +227,7 @@
 			padding: 30px 0 20px 0;
 		
 			h5 { 
-				font-family: $fontArial;
-				text-transform: uppercase;
-				font-size: 11px;
-				color: $cartGreyDk;
-				font-weight: bold;
+				@include checkoutLabel;
 				margin: 0 0 10px 0;
 				}
 				
@@ -216,16 +235,10 @@
 						
 			li { 
 				width: 100%;
-				font-family: $fontArial;
-				font-size: 12px;
-				line-height: 16px;
-				color: $cartGreyDk;
+				@include checkoutContent;
 							
 				div {
-					font-family: $fontArial;
-					font-size: 12px;
-					line-height: 16px;
-					color: $cartGreyDk;
+					@include checkoutContent;
 					}
 				} /* end common li */
 				
@@ -262,13 +275,9 @@
 		 	}	
 		 	
 		 label.error { 
+		 	@include checkoutLabel;
 		 	width: 100%;
-		 	font-family: $fontArial;
-		 	text-transform: uppercase;
-		 	font-size: 10px;
-		 	line-height:10px;
 		 	color: $colorVzwRed;
-		 	font-weight: bold;
 		 	position: absolute;
 		 	bottom: 0; left: 0;
 		 	}
@@ -276,7 +285,7 @@
 		.forgot, .privacy-link { 
 			@include actionLink;
 			font-size: 12px; 
-			line-height:14px;
+			line-height:15px;
 			font-weight: normal;
 			}
 			
@@ -348,10 +357,7 @@
 		.checkout-dropdown {
 			display: inline-block;
 			width: auto;
-			font-family: $fontArial;
-			font-size:12px;
-			font-weight: normal;
-			line-height: 15px; 
+			@include checkoutContent; 
 			color: $cartGreyDk;
 			position: relative;
 			
@@ -434,13 +440,10 @@
 			}	
 			
 			.optional { 
+				@include checkoutLabel;
 				position: absolute;
 				left: 396px; top: 32px;
 				color: $cartGreySelect;
-				font-family: $fontArial;
-				font-size: 10px;
-				text-transform: uppercase;
-				font-weight: bold;
 				padding: 0 0 0 12px;
 				@include pdp-sprite(grey-left);
 			
@@ -660,10 +663,7 @@
 						}/* end title */
 				
 					.form-instructions {
-						font-family: $fontArial;
-						font-size:12px;
-						line-height: 16px;
-						color: $cartGreyMd;
+						@include checkoutContent;
 						padding: 0;
 						margin:10px 0 25px 0px;
 					
@@ -672,10 +672,8 @@
 				
 				
 					.form-item-title { 
-						font-size:10px;
-						font-family: $fontArial;
+						@include checkoutLabel;
 						color: $cartGreyMd;
-						text-transform: uppercase;
 						padding: 0;
 						margin: 15px 0 5px 0;
 					
@@ -794,10 +792,8 @@
 							}
 					
 						p { 
-							font-size:12px;
-							line-height:16px;
+							@include checkoutContent;
 							padding: 0; margin: 0;
-							color: $cartGreyMd;
 							}
 					
 						} /* end password requirements */
@@ -895,11 +891,7 @@
 							@include clearfix();
 							
 							.form-item-title {
-								color: $cartGreyDk;
-								font-family: $fontArial;
-								font-size: 10px;
-								font-weight: bold;
-								text-transform: uppercase;
+								@include checkoutLabel;
 								padding: 0; margin: 0 0 8px 0;
 								
 								.grey { color: $cartGreyLt; }
@@ -959,13 +951,9 @@
 						@include clearfix();
 							
 						h5 { 
+							@include checkoutContent;
 							width: 90%;
 							float: left;
-							font-family: $fontArial;
-							font-size: 12px;
-							line-height:15px;
-							color: $cartGreyMd;
-							font-weight: normal;
 							padding: 0; 
 							margin: 2px 0 0 10px;
 							
@@ -1134,8 +1122,10 @@
 										float: left;
 										margin: 5px 0 0 10px;
 										text-transform: uppercase;
+										font-family: $fontVzwMedium;
+										font-weight: normal;
 										color: $cartGreyDk;
-										font-size: 12px;
+										font-size: 11px;
 										}
 									} /* end common billing option styles*/   
 									
@@ -1160,6 +1150,10 @@
 									padding-top:15px;
 									
 									.checker { background: #fff; }
+									
+									.billing-select-label {
+										color: $colorVzwRed;
+										}
 									}
 									
 								} /* end billing select block */
@@ -1177,7 +1171,8 @@
 								width: 70%;
 								min-height:200px;
 								height: auto;
-								padding: 0; margin: 0;
+								padding: 15px; 
+								margin: 0;
 								position: relative;
 								
 							
@@ -1190,13 +1185,50 @@
 				 					.instructions { 
 				 						background: transparent;
 				 						margin: 0;
-				 						padding: 10px 0 20px 0;
+				 						padding: 10px 0 10px 0;
 				 						}
-									}
+									} /* end billing-detail-content  common styles */
 							
-				 				.details-account { }	
+				 				.details-account {
+				 				
+				 					.account-disclaimer {
+				 						@include checkoutContent;
+				 						margin: 0 0 20px 0;
+				 						}
+				 						
+				 					.account-billing-address {
+				 					
+				 						h5 { @include checkoutLabel; }
+				 						
+				 						li { 
+				 							@include clearfix();
+				 							@include checkoutContent;
+				 							
+				 							div { 
+				 								@include checkoutContent;
+				 								display: inline-block;
+				 								float: left;
+				 								margin: 0 3px 0 0;
+				 								}
+				 							}
+				 						}/* end account address */ 
+				 					} /* end details-account */
 							
-								.details-card { }	
+								.details-card {
+								
+									.form-input-wrap {
+										@include clearfix();
+										
+										.form-item-title { 
+											display: inline-block;
+											width: auto;
+											float: left;
+											margin: 0 0 0 10px;
+											}
+										}
+								
+								
+								 	}/* end details-card */
 							
 								.details-account.hidden, .details-card.hidden { display: none; }
 				
