@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // load local tasks from /tasks/grunt folder
-    grunt.loadNpmTasks('grunt-bless');
+    grunt.loadNpmTasks('grunt-bless', 'grunt-devtools');
 
     grunt.initConfig({
         watch: {
@@ -46,7 +46,6 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect) {
                         return [
-                            mountFolder(connect, '.tmp'),
                             mountFolder(connect, '')
                         ];
                     }
