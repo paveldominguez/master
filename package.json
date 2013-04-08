@@ -41,7 +41,8 @@
     "grunt-devtools": "~0.1.0-x",
     "grunt-include-replace": "~0.1.0",
     "grunt-rigger": "~0.4.x",
-    "matchdep": "~0.1.1"
+    "matchdep": "~0.1.1",
+    "grunt-bless": "~0.1.0"
   },
   "engines": {
     "node": ">=0.8.0"
