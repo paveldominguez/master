@@ -16,13 +16,13 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // load local tasks from /tasks/grunt folder
-    grunt.loadTasks('tasks/grunt');
+    grunt.loadNpmTasks('grunt-bless');
 
     grunt.initConfig({
         watch: {
             compass: {
                 files: ['sass/**/*.scss'],
-                tasks: ['compass']
+                tasks: ['compass', 'bless']
             },
             livereload: {
                 files: [
@@ -39,13 +39,13 @@ module.exports = function (grunt) {
             options: {
                 port: 8888,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: 'localhost',
+                base: ''
             },
             livereload: {
                 options: {
                     middleware: function (connect) {
                         return [
-                            lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, '')
                         ];
@@ -94,12 +94,10 @@ module.exports = function (grunt) {
         },
         bless: {
             options: {
-                cacheBuster: false,
-                compress: true,
                 force: true
             },
             files: {
-                'tmp/css/styles.css': 'css/styles.css'
+                'css/styles.css': 'css/styles.css'
             }
         },
         compass: {
@@ -115,17 +113,6 @@ module.exports = function (grunt) {
                 options: {
                     debugInfo: false
                 }
-            },
-            dist: {
-                options: {
-                    outputStyle: 'nested',
-                    noLineComments: true
-                }
-            },
-            qa: {
-                options: {
-                    outputStyle: 'expanded'
-                }
             }
         },
         imagemin: {
@@ -138,36 +125,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        copy: {
-            debug: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '',
-                    dest: 'dist',
-                    src: [
-                        '*.{ico,txt}',
-                        '.htaccess',
-                        'fonts/**'
-                    ]
-                }]
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '',
-                    dest: 'dist',
-                    src: [
-                        '*.{ico,txt}',
-                        '.htaccess',
-                        'fonts/**',
-                        'inc/**',
-                        '*.html'
-                    ]
-                }]
-            }
-        }
     });
 
     grunt.renameTask('regarde', 'watch');
@@ -178,26 +135,11 @@ module.exports = function (grunt) {
         if (target === 'debug' || target === undefined) {
             return grunt.task.run([
                 'compass',
-                'optimize',
+                //'optimize',
                 'bless'
             ]);
         }
 
-        if (target === 'dist') {
-            return grunt.task.run([
-                'compass:dist',
-                'optimize:dist',
-                'bless'
-            ]);
-        }
-
-        if (target === 'qa') {
-            return grunt.task.run([
-                'compass:qa',
-                'optimize:qa',
-                'bless'
-            ]);
-        }
     });
 
     grunt.registerTask('optimize', 'Internal task used by `build` task', function (target) {
@@ -205,7 +147,7 @@ module.exports = function (grunt) {
             return grunt.task.run([
                 //'includereplace',
                 //'concat',
-                'bless'
+                //'bless'
                 //'imagemin',
                 //'rig',
 
