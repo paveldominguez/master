@@ -1,10 +1,10 @@
-var contentFilter = (function() {
+var contentFilter = (function () {
     // separate front-end from business logic (below)
-    var toggleElement = function(o, remove, multi) {
+    var toggleElement = function (o, remove, multi) {
         if (multi) {
             $jQ(o).remove();
         } else {
-            $jQ(o).slideToggle('fast', function() {
+            $jQ(o).slideToggle('fast', function () {
                 if (remove) {
                     $jQ(this).remove();
                 }
@@ -19,8 +19,8 @@ var contentFilter = (function() {
                 var $fs = $jQ('#filter-selections'),
                     $collapsible = $cf.find('.collapsible .dimension-header'),
                     $multis = $cf.find('.multi-select .facet'),
-                    $facets = $cf.find('.facet'),
-                    $removable = $fs.find('.removable');
+                    $facets = $cf.find('.facet');
+                    //$removable = $fs.find('.removable');
                 $jQ('#clear-selections').on('click', pub.resetFilter);
                 $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
 
@@ -59,7 +59,7 @@ var contentFilter = (function() {
                     toggleElement($jQ(this).next(), false);
                 });
             },
-            facetClick: function (e) {
+            facetClick: function () {
                 // this will hide the dimension containing clicked facet, or facet itself..
                 var $hide = $jQ(this).parents().hasClass('dimension') ? $jQ(this).closest('.dimension') : $jQ(this);
                 toggleElement($hide, false);
@@ -138,6 +138,13 @@ var contentFilter = (function() {
                 //Update content Type
                 $jQ('.results-count', '.content-landing-header').text(data.contentType);
                 //Get Current options
+                $jQ('.dimension[data-dimension]').each(function () {
+                    var dimension = $jQ(this).attr('data-dimension');
+                    if ($jQ.inArray(dimension, data.options) < 0) {
+                        $jQ(this).hide();
+                    }
+                });
+
 
 
             }
