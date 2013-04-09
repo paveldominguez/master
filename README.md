@@ -1,16 +1,26 @@
 # Verizon Mobile Life Store
-Basic info for dev requirements
+Dev Setup
 
-## Requirements
+## Building MLS
 
-#### SASS
+We'll be using grunt to build and serve the project. Using grunt will allow us all to have the same dev environment across the board. 
 
-#### Compass
+Here are the requirements:
+
+* Node.js (v0.8.22)
+* Ruby
+* Grunt
+* Sass
+* Compass
+* sassy-math
+* modular-scale
+* zurb-foundation (3.22)
+
+For Mac Users:
 
 
-## Developers
 
 
-Will Davidow,
-John Himestra,
-Chris Burke
+For Windows Users:
+
+
