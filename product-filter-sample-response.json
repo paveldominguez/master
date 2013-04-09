@@ -1,8 +1,14 @@
 {
     "success" : {
-        "responseHTML" : /* this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
+        "responseHTML" : '<html></html>',// this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
+        "resultCount" : 296,
+        "contentType": "guides",
+        "options" : ["dimension-a"]
     },
     "error" : {
-        "responseHTML" : /* this response should include <li class="content-item"
+        "responseHTML" : // this response should include <li class="content-item"
+        "resultCount" : 0,
+        "contentType": "",
+        "options" : {}
     }
 }

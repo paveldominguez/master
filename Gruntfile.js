@@ -93,7 +93,6 @@ module.exports = function (grunt) {
         },
         bless: {
             options: {
-                force: true
             },
             files: {
                 'css/styles.css': 'css/styles.css'
