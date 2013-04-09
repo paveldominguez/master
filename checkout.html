@@ -369,7 +369,7 @@
 					</div>
 					
 					<div class="edit-checkout-step">
-						Edit
+						<span class="checkout">Edit</span>
 					</div>
 				
 				</div><!-- end info summary -->
@@ -465,7 +465,7 @@
 					</div>
 					
 					<div class="edit-checkout-step">
-						Edit
+						<span class="checkout">Edit</span>
 					</div>
 				
 				</div><!-- end info summary -->		
@@ -541,26 +541,114 @@
 				 				<div class="card-choice-block">
 				 				
 				 					<div class="form-input-wrap saved-card">
-										<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-saved-card" >
+										<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-saved-card" checked>
 										<h5 class="form-item-title">Pay with Saved Card</h5>
 										<div class="card-choice-detail-block">
-											Saved Card Details Here
-										</div>
+											<div class="billing-card">
+												<div class="card-image mastercard">
+												</div>
+												<ul class="card-info">
+													<li id="name-on-card">John Public</li>	
+													<li class="last-four">(Ending in <span id="confirmed-last-four">6789</span>)</li>
+													<li class="expires">Expires <span id="confirmed-month">01</span>/<span id="confirmed-year" class="select-summary">13</span></li>
+													
+												</ul>
+											</div><!-- end billing-card -->
+										</div>									
 									</div><!-- form-input-wrap saved card-->
 				 				
 				 					<div class="form-input-wrap new-card">
-										<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-saved-card">
+										<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-new-card">
 										<h5 class="form-item-title">Pay with New Card</h5>
-										<div class="card-choice-detail-block">
-											New Card Details Here
-										</div>
+										<div class="card-choice-detail-block hidden">
+											
+											<div class="credit-card-info">
+					
+												<div class="form-input-wrap">
+													<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="1234 5678 1234 5678">
+													<h5 class="form-item-title">Credit Card Number</h5>
+												</div>
+								
+												<ul class="card-list">
+								
+													<li class="visa"><a href="#" class="card-click"></a></li>
+													<li class="mastercard"><a href="#" class="card-click"></a></li>
+													<li class="amex"><a href="#" class="card-click"></a></li>
+													<li class="discover"><a href="#" class="card-click"></a></li>
+								
+												</ul><!-- end card list -->
+								
+												<ul class="card-security">
+								
+													<li class="security-item month">
+														<div class="form-input-wrap">
+															<select name="ccMonth"  class="checkout-select-input" id="card-month">
+																<option value="1" selected>January</option>
+																<option value="2">February</option>
+																<option value="3">March</option>
+																<option value="4">April</option>
+																<option value="5">May</option>
+																<option value="6">June</option>
+																<option value="7">July</option>
+																<option value="8">August</option>
+																<option value="9">September</option>
+																<option value="10">October</option>
+																<option value="11">November</option>
+																<option value="12">Decemeber</option>
+															</select>
+															<h5 class="form-item-title">Expiration Date</h5>
+														</div>
+													</li>
+									
+													<li class="security-item year">
+														<div class="form-input-wrap">
+															<select name="ccYear" class="checkout-select-input" id="card-year">
+																<option value ="13" selected>2013</option>
+																<option value ="14">2014</option>
+																<option value ="15">2015</option>
+																<option value ="16">2016</option>
+																<option value ="17">2017</option>
+																<option value ="18">2018</option>
+																<option value ="19">2019</option>
+																<option value ="20">2020</option>
+																<option value ="21">2021</option>
+															</select>
+															<h5 class="form-item-title">&nbsp;</h5>
+														</div>
+													</li>
+									
+													<li class="security-item code">
+														<div class="form-input-wrap">
+															<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="123">
+															<h5 class="form-item-title">
+																Security Code
+																<div class="checkout-dropdown">
+																	<a href="#" class="checkout-dropdown-link">
+																		What's this?
+																	</a>
+																	<div class="checkout-dropdown-panel">
+																		<div class="pointer"></div>
+																		<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
+																			eu rutrum mi turpis elementum augue.
+																		</p>
+																	</div><!-- end dropdwn panel -->
+																</div><!-- end dropdown -->
+															</h5>
+														</div>
+													</li><!-- end security-code block -->
+								
+												</ul><!-- end security items list -->
+											</div> <!-- end credit card info -->
+										</div> <!-- end card-choice-detail-block for new card -->
 									</div><!-- form-input-wrap new card-->
+									
+									<div class="edit-saved-card"><span class="checkout">Edit</span></div>
 				 				
 				 				</div><!-- end card choice block -->
 				 				
-				 			
 				 			</div><!-- end details card -->
-				 		
+				 			
+				 			
 				 		</div><!-- end billing-details-block -->
 				 		
 				 		<div class="billing-boilerplate">
