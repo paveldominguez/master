@@ -46,9 +46,16 @@ h1,h2,h3,h4,h5,h6 {
     //     width: 32px;
     //     height: 31px;
     // }
+    .top-bar,
+    .details {
+        position: absolute;
+    }
+    .top-bar { 
+        top: 0;
+        display: block;
+    }
     .details{
         background: #fff;
-        position: absolute;
         bottom: 0;
         height: 130px;
         display: block;
