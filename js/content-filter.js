@@ -139,9 +139,13 @@ var contentFilter = (function () {
                 $jQ('.results-count', '.content-landing-header').text(data.contentType);
                 //Get Current options
                 $jQ('.dimension[data-dimension]').each(function () {
-                    var dimension = $jQ(this).attr('data-dimension');
-                    if ($jQ.inArray(dimension, data.options) < 0) {
-                        $jQ(this).hide();
+                    var dimension = $jQ(this);
+                    var dimensionName = $jQ(this).attr('data-dimension');
+                    var dimensionFacets = $jQ(this).next();
+                    if ($jQ.inArray(dimensionName, data.options) < 0) {
+                        $jQ(dimension, dimensionFacets).hide();
+                    } else {
+                        $jQ(dimension, dimensionFacets).show();
                     }
                 });
 
