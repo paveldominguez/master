@@ -571,7 +571,7 @@ function updateCart(panel){
 				cardNumber: {
 					required: true,
 					noPlaceholder: true,
-					minlength: 16,
+					minlength: 15,
 					maxlength:  16,
 					digits: true
 				},	
@@ -756,7 +756,7 @@ function updateCart(panel){
 
 // STEP 3 SPECIFICS in user order
 
-	// first, account or card selection
+	// 1. billing-info-block :  account or card selection
 	
 		$jQ('.billing-select').change(function(){
 		
@@ -767,15 +767,32 @@ function updateCart(panel){
 		// hide unchecked content / reveal checked
 			$jQ('.billing-details-block').find('.billing-detail-content.hidden').removeClass('hidden').siblings().addClass('hidden');
 		
+		
+		// enforce proper show/hide of billing address info/form below billing-info block
+		
+			if($jQ(this).parents('.billing-option').hasClass('bill-account')){ /* hide both on any 'account' click ' */
+		 		$jQ('.step-info-summary.billing-address').addClass('hidden');
+		 		$jQ('.new-billing-info-form').addClass('hidden');
+		 	} else  { /* decide which to show on any 'card' click */
+		 		var currentCardChoice = $jQ('input[name=cardChoice]:checked').attr('id');
+		 		
+		 		if (currentCardChoice == 'choose-saved-card') {
+		 			$jQ('.step-info-summary.billing-address').removeClass('hidden');
+		 		} else {
+		 			$jQ('.new-billing-info-form').removeClass('hidden');
+		 		}
+		 	
+		 	}
+		
 		});
 
 
-	// second, saved card or new card
-	
-		// radio change (either option)
+	// 2. billing-info-block : saved card or new card
 		
 		$jQ('input[name=cardChoice]').change(function(){
-			$jQ(this).siblings('.card-choice-detail-block').removeClass('hidden').parent().siblings('.form-input-wrap').find('.card-choice-detail-block').addClass('hidden');
+		
+			// handle detail block under button
+				$jQ(this).siblings('.card-choice-detail-block').removeClass('hidden').parent().siblings('.form-input-wrap').find('.card-choice-detail-block').addClass('hidden');
 			
 			// handle edit button visibility
 				if ($jQ(this).parent().hasClass('new-card')) {
@@ -783,27 +800,60 @@ function updateCart(panel){
 				} else {
 					$jQ('.edit-saved-card').removeClass('hidden');
 				}
+				
+			// handle saved billing/new billing form below
+				$jQ('.billing-address').each(function(){
+					$jQ(this).toggleClass('hidden');
+				});
+			
 		});
 		
 		
 
-
+	// 3.  billing-info-block : edit saved card button	
+	
 		$jQ('.edit-saved-card').click(function(){
 		
 			// saved card off
 				$jQ('.saved-card').find('.checkout-radio-input').prop('checked', false).siblings('.card-choice-detail-block').addClass('hidden');
-			
 			
 			// new card on 
 				$jQ('.new-card').find('.checkout-radio-input').prop('checked', true).siblings('.card-choice-detail-block').removeClass('hidden');
 			
 			// edit button off
 				$jQ(this).addClass('hidden');
+				
+			// handle saved billing/new billing form below
+				$jQ('.billing-address').each(function(){
+					$jQ(this).toggleClass('hidden');
+				});
 			
-
+			// get saved info and populate form on this click only !!!!!!!!!!!!!!!!!!!!!!!!!!
 		});
 
-
+	// 4. billing-info-block : credit card icon selection on input
+	
+		$jQ('#card-number').on('keyup', function() { 
+			if(this.value.length === 2) { 
+			
+			var number = $jQ(this).val();
+			var cardListItem = 0;
+			
+				if (number >= 40 && number <= 49 ) {
+					cardListItem = 'visa';
+				} else if (number == 34 || number == 37) {
+					cardListItem='amex';
+				} else if ( number >= 50 && number <=55 ) {
+					cardListItem='mc';
+				} else if ( number == 65 ) {
+					cardListItem='discover';
+				}
+				
+				$jQ(this).parents('.form-input-wrap').next().find('.' + cardListItem).addClass('entered').siblings().removeClass('entered');
+				
+				
+			} /* end if 2 digits */	
+		});
 
 
 
