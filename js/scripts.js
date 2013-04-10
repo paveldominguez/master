@@ -10,11 +10,11 @@ isTouch = $jQ('html.touch').length > 0 ? true : false;
 /* Debounce Function
  * Credit: underscore.js
  */
-var debounce = (function() {
+var debounce = (function () {
     var timeout;
-    return function(func, wait, immediate) {
+    return function (func, wait, immediate) {
         var context = this, args = arguments,
-        later = function() {
+        later = function () {
             timeout = null;
             if (!immediate) func.apply(context, args);
         },
@@ -29,12 +29,14 @@ var debounce = (function() {
 /*
  * Cross Browser Placeholder
  */
-jQuery(function() {
+jQuery(function () {
     jQuery.support.placeholder = false;
     var test = document.createElement('input');
-    if('placeholder' in test) {jQuery.support.placeholder = true;}
+    if ('placeholder' in test) {
+        jQuery.support.placeholder = true;
+    }
 });
-if(!$jQ.support.placeholder) {
+if (!$jQ.support.placeholder) {
     var active = document.activeElement;
     $jQ(':text').focus(function () {
         if ($jQ(this).attr('placeholder') !== '' && $jQ(this).val() === $jQ(this).attr('placeholder')) {
@@ -48,7 +50,7 @@ if(!$jQ.support.placeholder) {
     $jQ(':text').blur();
     $jQ(active).focus();
     $jQ('form').submit(function () {
-        $jQ(this).find('.hasPlaceholder').each(function() { $jQ(this).val(''); });
+        $jQ(this).find('.hasPlaceholder').each(function () { $jQ(this).val(''); });
     });
 }
 
@@ -66,7 +68,7 @@ MLS = {
         // container for commonly used configs throughout site
     },
     common : {
-        init : function() {
+        init : function () {
             // initialize things that are used on every page
             var win = $jQ(window);
             $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
@@ -187,17 +189,17 @@ MLS = {
  */
 
 MLSUTIL = {
-    fire : function(func, funcname, args) {
+    fire : function (func, funcname, args) {
         var namespace = MLS;  // indicate your obj literal namespace here
         funcname = (funcname === undefined) ? 'init' : funcname;
         if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
             namespace[func][funcname](args);
         }
     },
-    loadEvents : function() {
+    loadEvents : function () {
         var bodyId = document.body.id;
         MLSUTIL.fire('common');
-        $jQ.each(document.body.className.split(/\s+/),function(i, classnm) {
+        $jQ.each(document.body.className.split(/\s+/), function (i, classnm) {
             MLSUTIL.fire(classnm);
             MLSUTIL.fire(classnm, bodyId);
         });

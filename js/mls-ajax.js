@@ -1,5 +1,5 @@
 MLS.ajax = {
-    sendRequest : function(url, data, success) {
+    sendRequest : function (url, data, success) {
         $jQ.ajax({
             url: url,
             data: data,
@@ -9,26 +9,27 @@ MLS.ajax = {
         });
     },
     article : {
-        init: function() {
+        init: function () {
             $jQ('.content-cta').on('click', MLS.ajax.article.getArticleContent);
             $jQ('.article-cta').hover(
-                function(){
+                function () {
                     $jQ(this).next('.article-preview-container').show();
                 },
-                function(){
-                $jQ(this).next('.article-preview-container').hide();}
+                function () {
+                    $jQ(this).next('.article-preview-container').hide();
+                }
             );
             $jQ('#article-detail .close').on('click', function () {
                 var height = $jQ('#article-detail').height();
-                $jQ('#article-detail').animate({top: '-'+height}, 300,function () {
+                $jQ('#article-detail').animate({top: '-' + height}, 300, function () {
                     $jQ('#article-modal-overlay').fadeOut();
                     $jQ('#article-detail').empty();
                 });
             });
         },
-        getArticleContent : function(e) {
+        getArticleContent : function (e) {
             e.preventDefault();
-            if($jQ(this).hasClass('article')) {
+            if ($jQ(this).hasClass('article')) {
                 MLS.ajax.sendRequest(
                     this.href,
                     { aritcleId : $jQ(this).data('article-id') },
@@ -36,15 +37,15 @@ MLS.ajax = {
                 );
             }
         },
-        displayContent : function(data) {
+        displayContent : function (data) {
             MLS.ui.updateContent('#article-content', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
         }
     },
     cart : {
-        init : function() {
+        init : function () {
             $jQ('.add-cart-cta').on('click', MLS.ajax.cart.addItem);
         },
-        addItem : function(e) {
+        addItem : function (e) {
             e.preventDefault();
             var $theForm = $jQ(this.form);
             MLS.ajax.sendRequest(
@@ -53,8 +54,8 @@ MLS.ajax = {
                 MLS.ajax.cart.addItemSuccess
             );
         },
-        addItemSuccess : function(data) {
-            if(data.hasOwnProperty('success')) {
+        addItemSuccess : function (data) {
+            if (data.hasOwnProperty('success')) {
                 $jQ('#minicart-item-list').append(data.success.responseHTML);
             }
             else {
@@ -64,35 +65,35 @@ MLS.ajax = {
         }
     },
     minicart : {
-        init : function() {
+        init : function () {
             // remove item from mini cart
         }
     },
     homepage : {
-        init : function() {
+        init : function () {
             // homepage madlib
         }
     },
-    pdpsearch : {
-        init : function() {
+    pdpSearch : {
+        init : function () {
             // pdp in-page search functionality
         }
     },
     colorPicker : {
         contentItem : null,
-        init : function() {
-            $jQ('.content-grid .content-item .colors .color a').on('click', MLS.ajax.colorPicker.updateImage);
+        init : function () {
+            $jQ('.content-grid .content-item .colors .color a').on('click', MLS.ajax.colorPicker.updateContent);
         },
-        updateImage : function(e) {
+        updateContent : function (e) {
             e.preventDefault();
             MLS.ajax.colorPicker.contenItem = $jQ(this).parent().parent().parent();
             MLS.ajax.sendRequest(
                 $jQ(this).href,
                 { color : $jQ(this).data('color'), existingImageUrl: $jQ(this).src },
-                MLS.ajax.colorPicker.updateImageSuccess
+                MLS.ajax.colorPicker.updateContentSuccess
             );
         },
-        updateImageSuccess : function(data) {
+        updateContentSuccess : function (data) {
             MLS.ui.updateContent($jQ(MLS.ajax.colorPicker.contentItem).find('.content-fig'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
         }
     }

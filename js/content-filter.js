@@ -1,10 +1,10 @@
-var contentFilter = (function() {
+var contentFilter = (function () {
     // separate front-end from business logic (below)
-    var toggleElement = function(o, remove, multi) {
+    var toggleElement = function (o, remove, multi) {
         if (multi) {
             $jQ(o).remove();
         } else {
-            $jQ(o).slideToggle('fast', function() {
+            $jQ(o).slideToggle('fast', function () {
                 if (remove) {
                     $jQ(this).remove();
                 }
@@ -15,12 +15,12 @@ var contentFilter = (function() {
     $cf = $jQ('#content-filter'),
     filterArray = null,
         pub = {
-            init: function() {
+            init: function () {
                 var $fs = $jQ('#filter-selections'),
                     $collapsible = $cf.find('.collapsible .dimension-header'),
                     $multis = $cf.find('.multi-select .facet'),
-                    $facets = $cf.find('.facet'),
-                    $removable = $fs.find('.removable');
+                    $facets = $cf.find('.facet');
+                    //$removable = $fs.find('.removable');
                 $jQ('#clear-selections').on('click', pub.resetFilter);
                 $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
 
@@ -33,7 +33,7 @@ var contentFilter = (function() {
                 $fs.on('click', '.removable', pub.removeFilter);
                 $jQ('#content-filter .facet-list .facet a').on('click', pub.processRequest);
             },
-            addFilter: function(el) {
+            addFilter: function (el) {
                 var single = $jQ(el).parents().hasClass('dimension') ? false : true;
                 var facetTitle, facetDimension, facetParent, multi;
                 if (single) {
@@ -51,22 +51,22 @@ var contentFilter = (function() {
                 //Update Filter
                 pub.updateFilter();
             },
-            clickBridge: function(e) {
+            clickBridge: function (e) {
                 e.preventDefault();
             },
-            dimensionClick: function() {
-                $jQ(this).toggleClass('active').promise().done(function(){
+            dimensionClick: function () {
+                $jQ(this).toggleClass('active').promise().done(function () {
                     toggleElement($jQ(this).next(), false);
                 });
             },
-            facetClick: function(e) {
+            facetClick: function () {
                 // this will hide the dimension containing clicked facet, or facet itself..
                 var $hide = $jQ(this).parents().hasClass('dimension') ? $jQ(this).closest('.dimension') : $jQ(this);
                 toggleElement($hide, false);
                 //add to filter
                 pub.addFilter($jQ(this));
             },
-            multiFacetClick: function() {
+            multiFacetClick: function () {
                 //if class selected
                 if ($jQ(this).hasClass('selected')) {
                     //remove selected
@@ -80,7 +80,7 @@ var contentFilter = (function() {
                     pub.addFilter($jQ(this));
                 }
             },
-            removeFilter: function(element, el, multi) {
+            removeFilter: function (element, el, multi) {
                 if ($jQ(el).length > 0) {
                     var title = $jQ(el).attr('data-facet-info');
                     var parent = $jQ(el).closest('.dimension').attr('id');
@@ -90,44 +90,67 @@ var contentFilter = (function() {
                     var hiddenDimension = $jQ(this).attr('data-facet-parent');
                     //Remove facet from selected facets
                     var isMulti = $jQ(this).attr('data-multi');
-                    if (isMulti === "true"){
-                        toggleElement(this, true, true);
+                    if (isMulti === 'true') {
+                        toggleElement(this);
                         //toggleElement($jQ('#' + hiddenDimension), false,true);
-                    }else{
+                    } else {
+                        toggleElement(this, true, true);
                         toggleElement($jQ('#' + hiddenDimension), false);
                     }
                 }
                 //Update Filter
                 pub.updateFilter();
             },
-            resetFilter: function() {
+            resetFilter: function (e) {
+                e.preventDefault();
                 //Reset filter on 'clear selection'
                 $cf.find('.facet').removeClass('selected');
-                $jQ('.removable', '#filter-selections').each(function() {
-                    //Cheating I know
-                    $jQ(this).click();
+                $jQ('.removable', '#filter-selections').each(function () {
+                    if ($jQ(this).attr('data-multi') === 'true') {
+                        $jQ(this).remove();
+                    } else {
+                        $jQ(this).click();
+                    }
                 });
                 pub.updateFilter();
             },
-            updateFilter: function() {
+            updateFilter: function () {
                 filterArray = [];
-                $jQ('.selected-facets li','#filter-selections').each(function(){
+                $jQ('.selected-facets li', '#filter-selections').each(function () {
                     var filterName = $jQ(this).attr('data-facet-dimension');
                     var filterValue = $jQ(this).attr('data-facet-title');
-                    var newFilter = {name:filterName, value:filterValue};
+                    var newFilter = { name: filterName, value: filterValue};
                     filterArray.push(newFilter);
                 });
                 pub.processRequest();
             },
-            processRequest : function() {
+            processRequest : function () {
                 MLS.ajax.sendRequest(
                     'guided-navigation.jsp',
                     {data : filterArray},
                     pub.updateGrid
                 );
             },
-            updateGrid : function(data) {
+            updateGrid : function (data) {
                 MLS.ui.updateContent('#main-column .content-grid', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
+                //Update Result Count
+                $jQ('.results-count', '.content-landing-header').text(data.resultsCount);
+                //Update content Type
+                $jQ('.results-count', '.content-landing-header').text(data.contentType);
+                //Get Current options
+                $jQ('.dimension[data-dimension]').each(function () {
+                    var dimension = $jQ(this);
+                    var dimensionName = $jQ(this).attr('data-dimension');
+                    var dimensionFacets = $jQ(this).next();
+                    if ($jQ.inArray(dimensionName, data.options) < 0) {
+                        $jQ(dimension, dimensionFacets).hide();
+                    } else {
+                        $jQ(dimension, dimensionFacets).show();
+                    }
+                });
+
+
+
             }
         };
     return pub;
