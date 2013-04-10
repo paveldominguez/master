@@ -3,8 +3,8 @@ MLS.ui = {
 	 * Grid Hover (popout)
 	 * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
 	 */
-	gridHover : function(selector, details, padding) {
-        $jQ(selector).on('mouseenter',function(e){
+	gridHover : function (selector, content, padding) {
+        $jQ(selector).on('mouseenter', function (e) {
             e.preventDefault();
             var el = $jQ(this),
             offset = el.offset(),
@@ -12,11 +12,14 @@ MLS.ui = {
             height = el.outerHeight(),
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
 
-            padding = (typeof padding !== 'undefined') ? padding : 40;
+            padding = (padding !== undefined) ? padding : 40;
 
             el.addClass('active');
-            if(typeof details !== 'undefined') {
-				$jQ('#grid-pop-out .details').html( $jQ(details).html() );
+			if (content.topBar !== undefined) {
+				$jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
+			}
+            if (content.actions !== undefined) {
+				$jQ('#grid-pop-out .details').html($jQ(content.actions).html());
 			}
 
             $jQ('#grid-pop-out').css({
@@ -24,7 +27,7 @@ MLS.ui = {
                 left: offset.left - (padding / 2),
                 width: width + padding,
                 height: height + padding + detailHeight
-            }).stop(true, true).fadeIn('fast').on('mouseleave', function() {
+            }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
 				el.removeClass('active');
                 $jQ(this).stop(true, true).fadeOut('fast');
             });

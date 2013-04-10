@@ -172,7 +172,14 @@
 			text-transform: none;
 			}
 			
-	
+		@mixin checkoutSelected {
+			font-weight: normal;
+			font-family: $fontVzwBook !important;
+			padding-top: 10px; 
+			font-size: 18px;
+			color: $cartGreyDk;
+			text-shadow: 0 0 0;
+			}
 	
 	
 	
@@ -233,7 +240,7 @@
 			}
 	
 		
-		.hide-complete.hidden, .hide-input.hidden { display: none !important; }
+		.hide-complete.hidden, .step-info-summary.hidden { display: none !important; }
 		
 		.step-info-summary {
 			position: relative;
@@ -983,14 +990,11 @@
 							width: 90px !important;
 								
 							span { 
-								font-size: 18px;
-								font-family: $fontVzwBook;
-								color: $cartGreyDk; 
+								@include checkoutSelected;
 								margin-right:45px;
 								text-transform: uppercase;
 								width: 90px !important;
 								background-position: 63px 19px;
-								padding-top:10px;
 								}
 							}/* end selector */
 						} /* end form wrap state */ 
@@ -1096,6 +1100,8 @@
 						
 						}/* end summary */
 						
+					.step-info-summary.hidden { display: none; }
+						
 					} /* end shipping method */
 					
 				#billing-info {
@@ -1108,28 +1114,25 @@
 							width: 60px; height: 36px; 
 							padding: 0; margin: 0 10px 0 0;
 							}
-						.visa { @include cart-sprite(visa-bw); }
-						.mastercard { @include cart-sprite(mastercard-bw); }
-						.amex { @include cart-sprite(amex-bw); }
-						.discover { @include cart-sprite(discover-bw); }
-						
+		
 						.card-info {
 							display: inline-block;
 							width: auto;
 													
 							li { 
 								@include checkoutContent;
-								}
-													
-													
+								}					
 							}/* end card-info ul */
 						}/* end billing card block */
 				
 					.step-info-block {
+						
 				
 						.billing-info-block {
 							@include clearfix();
+							position: relative;
 							width: 100%;
+							margin: 20px 0 0px 0;
 							
 				
 							.billing-select-block { /* tabs */
@@ -1185,12 +1188,10 @@
 									.billing-select-label {
 										color: $colorVzwRed;
 										}
-									}
+									}/* end billing option checked */
 									
 								} /* end billing select block */
-								
-							
-							
+						
 							.billing-details-block { /* tab content */
 				 				@include clearfix();
 				 				@include heroBG;
@@ -1216,7 +1217,7 @@
 				 					.instructions { 
 				 						background: transparent;
 				 						margin: 0;
-				 						padding: 10px 0 10px 0;
+				 						padding: 10px 0 20px 0;
 				 						}
 									} /* end billing-detail-content  common styles */
 							
@@ -1257,7 +1258,7 @@
 										
 											.form-item-title { 
 												display: inline-block;
-												width: 90%;
+												width: 85%;
 												float: left;
 												margin: 7px 0 0 20px;
 												}
@@ -1275,18 +1276,189 @@
 													.mastercard { @include cart-sprite(mastercard-color); }
 													.amex { @include cart-sprite(amex-color); }
 													.discover { @include cart-sprite(discover-color); }
-													
 													}
-											
-											
-											
-											
-											
 												}/* end card choice detail block */
-												
-											.card-choice-detail-block.hidden { display: none; }	
+											} /* end form-input-wrap common styles*/
 											
-											}
+										.form-input-wrap.saved-card {
+											.card-choice-detail-block.hidden { opacity: 0.5; }
+											} /* end saved card specifics */	
+											
+											
+										.form-input-wrap.new-card {
+											margin-bottom: 0px;
+										
+											.card-choice-detail-block {
+												margin:36px 0 0 0;
+												
+												.instructions { margin: 10px 0 10px 0; }
+												
+												.credit-card-info {
+													@include clearfix();
+												
+													.form-input-wrap {
+														margin-bottom:0px;
+														
+														.form-item-title { margin: 7px 0 7px 0; }
+														
+														label.error { 
+															width: 125px; 
+															left: 234px;
+															}
+														
+														
+														
+														} /* end input wrap */
+														
+													.card-list {
+														@include clearfix();
+														float: left;
+												
+														li { 
+															display: inline-block;
+															width: 60px; height: 36px;
+															float: left;
+															margin-right: 10px;
+															}
+														
+														.visa { @include cart-sprite(visa-bw); opacity: .5; }
+														.mastercard { @include cart-sprite(mastercard-bw); opacity: .5; }
+														.amex { @include cart-sprite(amex-bw); opacity: .5; }
+														.discover { @include cart-sprite(discover-bw); opacity: .5; }
+														
+														.visa.entered { @include cart-sprite(visa-color); opacity: 1; }
+														.mastercard.entered { @include cart-sprite(mastercard-color); opacity: 1; }
+														.amex.entered { @include cart-sprite(amex-color); opacity: 1;}
+														.discover.entered { @include cart-sprite(discover-color); opacity: 1; }	
+														
+														}/* end card list */
+														
+															
+													.card-security {
+														@include clearfix();
+														float: left;
+														margin-bottom: 0px; 
+														
+														.security-item { 
+															@include clearfix();
+															display: inline-block;
+															width: auto;
+															float: left;
+															position: relative;
+															padding: 15px 0 0 0;
+															margin: 10px 0 0 0;
+															
+															.form-item-title { 
+																margin:0;
+																position: absolute;
+																top: 0; left: 0; 
+																white-space: nowrap;
+																}
+															.form-input-wrap { width: auto; }
+															
+															}/* end security item common styles */
+															
+														.security-item.month {
+															width: 80px;
+															.selector { width: 80px !important;
+																span { 
+																	width: 100% !important;
+																	@include checkoutSelected;
+																	background-position: 60px 19px; 
+																	}
+																}
+															 } /* end month */
+															 
+														.security-item.slash { 
+															font-size: 20px;
+															line-height: 20px;
+															color: $cartGreyDk;
+															padding: 21px 8px 0 8px;
+															}
+															
+														.security-item.year { 
+															width: 80px;
+															.selector { width: 80px !important;
+																span { 
+																	width: 100% !important;
+																	@include checkoutSelected;
+																	background-position: 60px 19px; 
+																	}
+																}
+															} /* end year */
+															
+														.security-item.code { 
+															width: 80px;
+															margin-left: 10px; 
+															
+															.form-item-title {
+																top: -3px; 
+																
+																.checkout-dropdown {
+																	.checkout-dropdown-link {
+																		padding:0 20px 0 3px;
+																		background: url(../img/sprites/pdp/blue-more.png) 72px 4px no-repeat;
+																		} /* end dropdown link */
+																		
+																	.checkout-dropdown-panel {
+																		@include clearfix();
+																		width: 370px; height: 200px;
+																		padding:10px;
+																		top:30px; left:-104px;
+																		
+																		.code-instructions {
+																			width: 165px;
+																			height: 180px;
+																			
+																			h6 { 
+																				padding: 0 5px 0 5px; 
+																				margin: 135px 0 5px 0;
+																				font-family: $fontArial;
+																				font-size: 12px;
+																				line-height: 12px;
+																				font-weight: bold;
+																				color: $cartGreyDk;
+																				}
+																			p { 
+																				@include checkoutContent;
+																				padding: 0 5px 0 5px;
+																				}
+																			} /* end common styles */
+																		
+																		.visa { 
+																			float: left;
+																			background: url(../img/cart/visa-back.png) no-repeat;
+																			}
+																		
+																		.amex {
+																			float: right; 
+																			background: url(../img/cart/amex-back.png) no-repeat;
+																			}
+																		
+																		
+																		
+																		p { white-space: normal; }
+																		} /* end dropdown panel */
+																	} /* end dropdown */
+																} /* end form title */
+															
+															.form-input-wrap {
+																label.error { top: 9px; left: 90px; }
+																}
+															
+															#card-code { width: 80px !important; }
+															
+															} /* end code */
+															
+															
+															
+														}/* end card security */	
+													}/* end card info */
+												} /* end choice block */
+												
+											.card-choice-detail-block.hidden { display: none; }
+										
+											} /* end new-card specifics */
 										
 										.edit-saved-card {
 											@include cartButtonUp;
@@ -1306,17 +1478,93 @@
 								} /* end billing- details block */
 							
 				 		
-				 			.billing-boilerplate {   
-				 				width: 20%;
-				 				float: right;
-				 				}
+				 			.billing-boilerplate {  
+				 				display: inline-block; 
+				 				width: 25%;
+				 				position: absolute;
+				 				top: 0; right: 0;
 				 				
+				 				.list {
+				 					margin-left:20px;
+				 					
+				 					.security-item { 
+				 						display: block; 
+				 						margin: 0 0 10px 0;
+				 						
+				 						.title {
+				 							padding: 0; margin: 0;
+				 							@include actionLink;
+				 							font-size: 10px;
+				 							}
+				 						.info {
+				 							@include checkoutContent;
+				 							font-size:10px;
+				 							line-height: 12px;
+				 							margin: 0;
+				 							}
+				 						}/* end item */
+				 					
+				 					.security-item.image { margin: -15px 0 5px 0; }
+				 					
+				 					}/* end list */
+				 				
+				 				} /* end boilerplate */
+				 			
 				 			} /* end billing info block */
-						
+				 			
+				 		.step-info-summary.billing-address { 
+				 			width: 70%;
+				 			padding-top: 0px;
+				 			margin-top: 36px;  
+				 			
+				 			.bill-contact-block, .bill-address-block {
+				 				display: inline-block; width: 42.5%;
+				 				}
+				 			
+				 			
+				 			.bill-contact-block {
+				 			
+				 				.bill-name-block { 
+				 					@include clearfix();
+				 					
+				 					div { 
+				 						display: inline-block;
+				 						float: left;
+				 						margin-right: 3px;
+				 						}
+				 					} /* end bill name block */
+				 				} /* end contact block */
+				 			
+				 			.bill-address-block {
+				 				float: left;
+				 				
+				 				.bill-city-state {
+				 					@include clearfix();
+				 					
+				 					div { 
+				 						display: inline-block;
+				 						float: left;
+				 						margin-right: 3px;
+				 						}
+				 					}
+				 				} /* end address block */
+				 				
+				 			.edit-checkout-step { top: 10px; right: 0; }
+				 				
+				 				
+				 				
+				 			} /* end info-summary address only */
+				 		
+				 		.step-info-summary.billing-address.hidden { display: none; }
+				 			
+				 		.new-billing-info-form.billing-address {
+				 			padding: 0 72px 0 72px;
+				 			}
+				 		
+				 		.new-billing-info-form.hidden { display: none; }
+				 		
 						}/* end step info block */
-							
-				
-				
+					
 					} /* end billing-info - checkout step 3 */
 					
 				#confirm-order {

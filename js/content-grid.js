@@ -1,5 +1,5 @@
 var contentGrid = {
-    init : function() {
+    init : function () {
         var $contentGrid = $jQ('#main-column .content-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
@@ -8,34 +8,33 @@ var contentGrid = {
         $featuredHide = $contentItems.find('.back-to-story');
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
-        if(!isTouch) {
-            MLS.ui.gridHover($contentItems, $contentItems.find('.content-hover'), 10);
+        if (!isTouch) {
+            MLS.ui.gridHover($contentItems, {
+                topBar: $contentItems.find('.color-picker'),
+                actions: $contentItems.find('.content-hover')
+            }, 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
-            $quickviewLinks.on('click',{ '$contentGrid' : $contentGrid }, contentGrid.quickViewHandler);
+            $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
     },
-    productTileEnter : function() {
-        $jQ(this).addClass('over');
-        $jQ(this).find('.content-hover').stop(true,true).fadeIn('fast');
-        $jQ(this).find('.content-detail').stop(true,true).animate( { opacity:0 }, 'fast');
+    productTileEnter : function () {
+        $jQ(this).addClass('active');
     },
-    productTileLeave : function() {
-        $jQ(this).removeClass('over');
-        $jQ(this).find('.content-hover').fadeOut('fast');
-        $jQ(this).find('.content-detail').animate( { opacity: 1 }, 'fast');
+    productTileLeave : function () {
+        $jQ(this).removeClass('active');
     },
-    quickViewHandler : function(e) {
+    quickViewHandler : function (e) {
         var $quickView = $jQ('#quick-view-overlay'),
         $parentTile = $jQ(this).parent().parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
-        
+
         if ($parentTile.hasClass('bundle')) {
-        	 $quickView = $jQ('.quick-view-overlay.bundle')
+            $quickView = $jQ('.quick-view-overlay.bundle');
         }
-        
+
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
