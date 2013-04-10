@@ -11,7 +11,7 @@ var contentGrid = {
         if (!isTouch) {
             MLS.ui.gridHover($contentItems, {
                 topBar: $contentItems.find('.color-picker'),
-                actions: $contentItems.find('.content-hover')
+                actions: $contentItems.find('.content-details')
             }, 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
             $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
