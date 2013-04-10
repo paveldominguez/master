@@ -333,7 +333,7 @@
 				
 				<a id="ship-info-complete" class="checkout-next hide-complete" href="#">Next Step</a>
 				
-				<div class="step-info-summary hide-input hidden"><!-- hide-input (add this class to left when styled)-->
+				<div class="step-info-summary hidden">
 					
 					<div class="ship-contact">
 						<h5>Contact</h5>
@@ -458,7 +458,7 @@
 					
 				<a id="ship-method-complete" class="checkout-next hide-complete hidden" href="#">Next Step</a>
 				 	
-				 <div class="step-info-summary hide-input hidden"> <!-- add this back : hide-input -->
+				 <div class="step-info-summary hidden">
 					
 					<div class="ship-method-summary">
 						<div id="sum-shipping" class="summary">Selected Shipping Method Placeholder</div>
@@ -515,15 +515,15 @@
 				 					<ul>
 				 					
 				 						<li id="account-name-block">
-				 							<div id="account-first-name">John</div>
-				 							<div id="account-last-name">Public</div>
+				 							<div id="account-first-name">Name</div>
+				 							<div id="account-last-name">Account-Holder</div>
 				 						
 				 						</li>
-										<li id="account-address-1">40 Fulton Street</li>
+										<li id="account-address-1">40 Account Street</li>
 										<li id="account-address-2">Apt 4</li>
 							
 										<li id="account-city-state">
-											<div id="account-city">New York</div>
+											<div id="account-city">Account City</div>
 											<div id="account-state">NY</div>
 											<div id="account-zip">10038</div>
 										</li>
@@ -548,7 +548,7 @@
 												<div class="card-image mastercard">
 												</div>
 												<ul class="card-info">
-													<li id="name-on-card">John Public</li>	
+													<li id="name-on-card">Saved Name</li>	
 													<li class="last-four">(Ending in <span id="confirmed-last-four">6789</span>)</li>
 													<li class="expires">Expires <span id="confirmed-month">01</span>/<span id="confirmed-year" class="select-summary">13</span></li>
 													
@@ -562,43 +562,47 @@
 										<h5 class="form-item-title">Pay with New Card</h5>
 										<div class="card-choice-detail-block hidden">
 											
+											<div class="instructions">Please enter your card information:</div>
+											
 											<div class="credit-card-info">
 					
 												<div class="form-input-wrap">
-													<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="1234 5678 1234 5678">
 													<h5 class="form-item-title">Credit Card Number</h5>
+													<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="Your Card Number">
 												</div>
 								
 												<ul class="card-list">
 								
-													<li class="visa"><a href="#" class="card-click"></a></li>
-													<li class="mastercard"><a href="#" class="card-click"></a></li>
-													<li class="amex"><a href="#" class="card-click"></a></li>
-													<li class="discover"><a href="#" class="card-click"></a></li>
+													<li class="visa"></li>
+													<li class="mastercard"></li>
+													<li class="amex"></li>
+													<li class="discover"></li>
 								
 												</ul><!-- end card list -->
 								
 												<ul class="card-security">
-								
+													
 													<li class="security-item month">
+													<h5 class="form-item-title">Expiration Date</h5>
 														<div class="form-input-wrap">
 															<select name="ccMonth"  class="checkout-select-input" id="card-month">
-																<option value="1" selected>January</option>
-																<option value="2">February</option>
-																<option value="3">March</option>
-																<option value="4">April</option>
-																<option value="5">May</option>
-																<option value="6">June</option>
-																<option value="7">July</option>
-																<option value="8">August</option>
-																<option value="9">September</option>
-																<option value="10">October</option>
-																<option value="11">November</option>
-																<option value="12">Decemeber</option>
+																<option value="1" selected>1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
 															</select>
-															<h5 class="form-item-title">Expiration Date</h5>
 														</div>
 													</li>
+													
+													<li class="security-item slash">/</li>
 									
 													<li class="security-item year">
 														<div class="form-input-wrap">
@@ -612,29 +616,36 @@
 																<option value ="19">2019</option>
 																<option value ="20">2020</option>
 																<option value ="21">2021</option>
-															</select>
-															<h5 class="form-item-title">&nbsp;</h5>
+															</select>	
 														</div>
 													</li>
 									
 													<li class="security-item code">
-														<div class="form-input-wrap">
-															<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="123">
-															<h5 class="form-item-title">
+													
+														<h5 class="form-item-title">
 																Security Code
 																<div class="checkout-dropdown">
 																	<a href="#" class="checkout-dropdown-link">
 																		What's this?
 																	</a>
 																	<div class="checkout-dropdown-panel">
-																		<div class="pointer"></div>
-																		<p>	Nullam cursus, libero eu feugiat iaculis, nibh ante congue eros, 
-																			eu rutrum mi turpis elementum augue.
-																		</p>
+																		<div class="dropdown-pointer"></div>
+																		<div class="code-instructions visa">
+																			<h6>Visa, MasterCard & Discover</h6>
+																			<p>Three digit security code on the back of your card.</p>
+																		</div>
+																		<div class="code-instructions amex">
+																			<h6>American Express</h6>
+																			<p>Four digit security code on the front of your card.</p>
+																		</div>
 																	</div><!-- end dropdwn panel -->
 																</div><!-- end dropdown -->
 															</h5>
+															
+														<div class="form-input-wrap">
+															<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="Code">
 														</div>
+														
 													</li><!-- end security-code block -->
 								
 												</ul><!-- end security items list -->
@@ -653,58 +664,147 @@
 				 		
 				 		<div class="billing-boilerplate">
 				 		
-				 			<div class="security-block"><!-- floats right -->
-				 		
-				 				<ul class="list">
+				 			<ul class="list">
 				 			
-				 					<li class="security-item"><!-- item one -->
-				 						<img src="" title="Norton/Verisign Secure Checkout">
-				 					</li>
+				 				<li class="security-item image"><!-- item one -->
+				 					<img src="img/cart/norton-verisign.jpg" title="Norton/Verisign Secure Checkout">
+				 				</li>
 				 				
-				 					<li class="security-item"><!-- item two -->
-				 						<h4 class="title">Security</h4>
-				 						<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
-				 							ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
-				 							Sed suscipit lobortis justo, id commodo erat dapibus ac.
-				 						</p>
-				 					</li>
+				 				<li class="security-item"><!-- item two -->
+				 					<h4 class="title">Security</h4>
+				 					<p class="info">Your purchase is safe, your information is secure.
+				 					</p>
+				 				</li>
 				 				
-				 					<li class="security-item"><!-- item three -->
-				 						<h4 class="title">Privacy</h4>
-				 						<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
-				 							ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
-				 							Sed suscipit lobortis justo, id commodo erat dapibus ac.
-				 						</p>
-				 					</li>
+				 				<li class="security-item"><!-- item three -->
+				 					<h4 class="title">Privacy</h4>
+				 					<p class="info">We won't sell or share your information with anyone.
+				 					</p>
+				 				</li>
 				 				
-				 					<li class="security-item"><!-- item four -->
-				 						<h4 class="title">Easy Return Policy</h4>
-				 						<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
-				 							ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
-				 							Sed suscipit lobortis justo, id commodo erat dapibus ac.
-				 						</p>
-				 					</li>
+				 				<li class="security-item"><!-- item four -->
+				 					<h4 class="title">Easy Return Policy</h4>
+				 					<p class="info">If you are not satisfied with your purchase, you can return your merchandise for a refund
+				 					A $35 restocking fee ($70 for netbooks and tablets) will apply (excluding Hawaii).
+				 					</p>
+				 				</li>
 				 				
-				 					<li class="security-item"><!-- item five -->
-				 						<h4 class="title">Customer Guarantee</h4>
-				 						<p class="info">Nam justo elit, sodales sed consequat rhoncus, 
-				 							ultricies non erat. Duis gravida vehicula justo, semper accumsan purus blandit quis. 
-				 							Sed suscipit lobortis justo, id commodo erat dapibus ac.
-				 						</p>
-				 					</li>
+				 				<li class="security-item"><!-- item five -->
+				 					<h4 class="title">Customer Guarantee</h4>
+				 					<p class="info">Our commitment to give you the best possible service.
+				 					</p>
+				 				</li>
 			
-				 				</ul><!-- end list -->
+				 			</ul><!-- end list -->
 				 		
-				 		
-				 			</div><!-- end security block -->
 						</div><!-- end boilerplate -->
 				 	</div><!-- end billing info block -->
 
+					<div class="step-info-summary billing-address hidden">
+					
+						<div class="instructions">Billing Address</div>
+							
+						<div class="bill-contact-block">
+							<h5>Contact</h5>
+							<ul>	
+								<li class="bill-name-block">
+									<div id="bill-first-name" class="summary">Saved</div>
+									<div id="bill-last-name" class="summary">Saved-Last-Name</div>
+								</li>
+						
+						
+								<li id="bill-email" class="bill-summary">saved.card@email.com</li>
+								<li id="bill-phone" class="summary">(saved) phone-number</li>
+							</ul>
+						</div>
+					
+						<div class="bill-address-block">
+							<h5>Billing Address</h5>
+							<ul>
+							
+								<li id="copy-bill-name-block">Saved Saved-Last-Name</li>
+								<li id="bill-address-1" class="summary">1 Saved Address </li>
+								<li id="bill-address-2" class="summary">Saved Address 2</li>
+							
+								<li class="bill-city-state">
+									<div id="bill-city" class="summary">Saved City</div>
+									<div id="bill-state" class="select-summary">NY</div>
+									<div id="bill-zip" class="summary">SAVED</div>
+								</li>
+						
+							</ul>
+						</div>
+					
+						<div class="edit-checkout-step">
+							<span class="checkout">Edit</span>
+						</div>	
+				
+					</div><!-- end address only summary --> 
+				 
+					<div class="new-billing-info-form billing-address hidden">
+					
+						<div class="billing-address-block">
+				 			<p class="instructions">Please enter your billing address:</p>
+				 		
+				 			<div class="same-as-shipping">
+				 				<input name="sameAsShipping" type="checkbox" id="same-as-shipping" >
+				 				<div class="label">Same as shipping adress</div>
+				 			</div>
+				 	
+				 			<div class="form-input-wrap">
+								<h5 class="form-item-title">First Name</h5>
+								<input name="billingFirstName" type="text" class="checkout-input" placeholder="First Name">
+							</div>
+					
+							<div class="form-input-wrap">
+								<h5 class="form-item-title">Last Name</h5>
+								<input name="billingLastName" type="text" class="checkout-input" placeholder="Last Name" >
+							</div>
+
+							<div class="form-input-wrap">
+								<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
+								<input name="billingPhone" type="tel" class="checkout-input" placeholder="212-345-6789">
+							</div>
+					
+							<div class="form-input-wrap">
+								<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
+								<input name="billingAddress" type="text" class="checkout-input" placeholder="123 Main Street">
+							</div>
+					
+							<div class="form-input-wrap">
+								<h5 class="form-item-title">Address 2</h5>
+								<input name="billingAddress2" type="text" class="checkout-input" placeholder="Apt. 1">
+							</div>
+					
+							<div class="form-input-wrap">
+								<h5 class="form-item-title">City</h5>
+								<input name="billingCity" type="text" class="checkout-input" placeholder="New York">
+							</div>
+					
+							<div class="form-input-wrap state">
+								<h5 class="form-item-title">State</h5>
+								<select name="billingState" type="text" class="checkout-select-input">
+									<option value="CA" selected>CA</option>
+									<option value="CO">CO</option>
+									<option value="CT">CT</option>
+									<option value="ME">ME</option>
+									<option value="MI">MI</option>
+									<option value="NC">NC</option>
+									<option value="NJ">NJ</option>
+									<option value="NY">NY</option>
+								</select>
+							</div>
+					
+							<div class="form-input-wrap zip">
+								<h5 class="form-item-title">Zip Code</h5>
+								<input name="billingZip" type="text" class="checkout-input" placeholder="12345">
+							</div>
+	 					</div><!-- end billing-address-block --> 
+					
+					</div><!-- end new-billing-info-form -->
+				
 				</div><!-- end step-info-block -->
-				 
-				 
-				 
-				 
+				
 				 <p class="checkout-not-charge hide-complete hidden">
 				 	Your card will not be charged at this time.
 				 </p>
@@ -718,7 +818,7 @@
 				 	
 				
 				
-				<div class="step-info-summary hide-input hidden">
+				<div class="step-info-summary hidden">
 					Payment Method Summary
 				</div>
 				
