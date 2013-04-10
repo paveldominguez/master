@@ -93,9 +93,28 @@ module.exports = function (grunt) {
         },
         bless: {
             options: {
+                // compress: false,
+                // cleanup: true,
+                // force: false,
+                // imports: true,
+                // cacheBuster: true
             },
-            files: {
-                'css/styles.css': 'css/styles.css'
+            debug: {
+                files: {
+                    'css/styles.css': [
+                        'css/styles.css'
+                    ]
+                }
+            },
+            dist: {
+                options: {
+                    cacheBuster: false
+                },
+                files: {
+                    'css/styles.css': [
+                        'css/styles.css'
+                    ]
+                }
             }
         },
         compass: {
@@ -134,7 +153,7 @@ module.exports = function (grunt) {
             return grunt.task.run([
                 'compass',
                 //'optimize',
-                'bless'
+                'bless:debug'
             ]);
         }
 
