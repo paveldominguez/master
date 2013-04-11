@@ -40,10 +40,13 @@
  		$cartGreyFocus: #d9d9d9;
 						
 		@mixin cartHilight { 
-			-webkit-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
-			-moz-box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
-        	box-shadow: inset 0px 5px 12px 1px rgba(255, 255, 255, 0.7);
-			}
+		-webkit-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
+		-moz-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
+        box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
+		}
 
 		@mixin cartButtonUp { 
 			@include cartRounded;
@@ -70,14 +73,12 @@
 				font-weight: bold; 
 				padding: 14px 0 0 0px;
 				}
-				
-				
 			}
 			
 		@mixin secondaryAddCartGrey {
 			height:24px;
 			border: 0;
-			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 0px no-repeat;
 			text-transform:uppercase;
 			color: $colorVzwRed;
 			font-family : $fontArial;
@@ -91,7 +92,7 @@
 		@mixin secondaryAddCart {
 			height:24px;
 			border: 0;
-			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 0px no-repeat;
 			text-transform:uppercase;
 			color: $colorVzwRed;
 			font-family : $fontArial;
@@ -1301,9 +1302,11 @@
 														
 														.form-item-title { margin: 7px 0 7px 0; }
 														
+														input[type="text"] { width: 274px; }
+														
 														label.error { 
-															width: 125px; 
-															left: 234px;
+															width: 100px; 
+															left: 290px;
 															}
 														
 														
@@ -1318,7 +1321,7 @@
 															display: inline-block;
 															width: 60px; height: 36px;
 															float: left;
-															margin-right: 10px;
+															margin-right: 11px;
 															}
 														
 														.visa { @include cart-sprite(visa-bw); opacity: .5; }
@@ -1558,8 +1561,59 @@
 				 		.step-info-summary.billing-address.hidden { display: none; }
 				 			
 				 		.new-billing-info-form.billing-address {
-				 			padding: 0 72px 0 72px;
-				 			}
+				 			@include clearfix();
+				 			padding: 0; margin: 36px 0 0 0;
+				 			
+				 			.billing-address-block {
+				 				
+				 				.instructions { 
+				 					margin: 0 0 20px 0;
+				 					}
+				 			
+				 				.same-as-shipping {  
+				 					margin: 0 0 36px 0;
+				 					
+				 					.label {
+				 						@include checkoutContent;
+				 						background: transparent;
+				 						margin-left: 7px;
+				 						}
+				 					}/* end same as shipping */
+				 			
+				 			
+				 			
+				 			
+				 				.form-input-wrap.state {
+									width: 120px;
+									display: block;
+									float: left;
+						
+									.selector {
+										width: 90px !important;
+								
+										span { 
+											@include checkoutSelected;
+											margin-right:45px;
+											text-transform: uppercase;
+											width: 90px !important;
+											background-position: 63px 19px;
+											}
+										}/* end selector */
+									} /* end form wrap state */ 
+						
+								.form-input-wrap.zip {
+									width: 60%;
+									display: inline-block;
+									float: left;
+						
+									input { width: 254px; }		
+									}
+				 		
+				 		
+				 		
+				 			
+				 				}/* end billing-address block */
+				 			}/* end new billing-form */
 				 		
 				 		.new-billing-info-form.hidden { display: none; }
 				 		

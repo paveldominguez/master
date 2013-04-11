@@ -5,6 +5,7 @@ MLS.ui = {
 	 */
 	gridHover : function (selector, content, padding) {
         $jQ(selector).on('mouseenter', function (e) {
+            window.testE = e;
             e.preventDefault();
             var el = $jQ(this),
             offset = el.offset(),
@@ -14,7 +15,7 @@ MLS.ui = {
 
             padding = (padding !== undefined) ? padding : 40;
 
-            el.addClass('active');
+            el.addClass('active grid-hover-active');
 			if (content.topBar !== undefined) {
 				$jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
 			}
@@ -28,29 +29,29 @@ MLS.ui = {
                 width: width + padding,
                 height: height + padding + detailHeight
             }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
-				el.removeClass('active');
+                el.removeClass('active grid-hover-active');
                 $jQ(this).stop(true, true).fadeOut('fast');
             });
         });
     },
 
-	/* 
+	/*
 	 * Clickable Tabs
 	 * @element: (string) parent (containing) element
 	 */
 
-	tabs: function(element) {
+	tabs: function (element) {
 		var scope = element,
 			$contentTabs = $jQ(scope + ' > .tab-content > .tab'),
-			activeClass = "active";
+			activeClass = 'active';
 
-		$jQ(scope + ' > .tab-menu > .tab').each(function(i, el) {
-			$jQ(this).add($contentTabs[i]).attr("tab", i + 1);
+		$jQ(scope + ' > .tab-menu > .tab').each(function (i, el) {
+			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
-		$jQ(scope + ' > .tab-menu > .tab').on('click', function(e) {
+		$jQ(scope + ' > .tab-menu > .tab').on('click', function (e) {
 			e.preventDefault();
-			var tab = $jQ(this).attr("tab");
+			var tab = $jQ(this).attr('tab');
 			$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 			$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
 		});
@@ -58,27 +59,27 @@ MLS.ui = {
 		$jQ(scope + ' > .tab-menu > .tab:first-child').add(scope + ' > .tab-content > .tab:first-child').addClass(activeClass);
 	},
 
-	/* 
+	/*
 	 * Navigation Tabs
 	 * @element: (string) containing element
 	 */
-	navTabs: function(element) {
+	navTabs: function (element) {
 		var scope = element,
 			$contentTabs = $jQ(element + ' > .tab-content > .tab'),
-			activeClass = "active";
+			activeClass = 'active';
 
-		$jQ(scope + ' > .tab-menu > .tab').each(function(i, el) {
-			$jQ(this).add($contentTabs[i]).attr("tab", i + 1);
+		$jQ(scope + ' > .tab-menu > .tab').each(function ( i, el) {
+			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
 		$jQ(scope + ' > .tab-menu > .nav-item').on({
-			'mouseenter': function() {
+			'mouseenter': function () {
 				if ($jQ(this).hasClass('tab')) {
-					var tab = $jQ(this).attr("tab");
+					var tab = $jQ(this).attr('tab');
 					$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
 
-					$jQ(scope).one('mouseleave', function(e) {
+					$jQ(scope).one('mouseleave', function (e) {
 						$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 					});
 				} else if (!$jQ(this).hasClass('.tab')) {
@@ -95,7 +96,7 @@ MLS.ui = {
 			}
 		});
 	},
-	/* 
+	/*
 	 * Navigation Accordion (for mobile view)
 	 * @element: (string) containing element
 	 */
@@ -124,7 +125,7 @@ MLS.ui = {
 			}
 		});
 	},
-	/* 
+	/*
 	 * Update Content
 	 * @container: (string) containing element
 	 * @data: (string) html data
@@ -210,7 +211,7 @@ MLS.ui = {
 			var list = $jQ(element).find('.slides');
 			var itemCount = list.find('li').length;
 
-			// ... and use it to set proper width for slide container 
+			// ... and use it to set proper width for slide container
 			var listIncr = 0;
 			if (type == 'fancy' || type == 'lifestyles') {
 				listIncr = baseIncr / 2;
@@ -256,7 +257,7 @@ MLS.ui = {
 					$jQ(this).find('li').each(function(index, element) {
 						_self.lifestylePosition(element, index, increment);
 					});
-				}); // end each list 
+				}); // end each list
 			} // end 'if pdp plus' : lifestyles vzn-slide
 
 
@@ -324,7 +325,7 @@ MLS.ui = {
 				var lifestyleEndCheck = listLength + currentPosition;
 				var lifestyleIncr = Math.abs(advance) * 2;
 				//alert (lifestyleIncr); alert( lifestyleEndCheck);
-				if (lifestyleEndCheck < lifestyleIncr) { //  modify first 'prev' advance only 
+				if (lifestyleEndCheck < lifestyleIncr) { //  modify first 'prev' advance only
 
 					var leftGap = windowLength - advance;
 
@@ -366,10 +367,10 @@ MLS.ui = {
 					if (slideWindow.hasClass('simple')) { // don't mod simple
 						newPosition = endPosition;
 					} else if (slideWindow.hasClass('fancy')) {
-						newPosition = endPosition + 5; // do mod fancy 
-					} else if (slideWindow.hasClass('lifestyles')) { // do mod lifestyles 
+						newPosition = endPosition + 5; // do mod fancy
+					} else if (slideWindow.hasClass('lifestyles')) { // do mod lifestyles
 						var endModify = mod * -2;
-						newPosition = endPosition + endModify; // do mod lifestyles 
+						newPosition = endPosition + endModify; // do mod lifestyles
 					}
 
 					// move it
@@ -428,7 +429,7 @@ MLS.ui = {
 
 			if (position < 3) { // check for initial special case
 
-				if (position === 0) { // do nothing to position-0	 
+				if (position === 0) { // do nothing to position-0
 				} else { // left value for positions-1-2
 					left = 2 * incr;
 				}
@@ -463,7 +464,7 @@ MLS.ui = {
 						'top': incr + 'px'
 					});
 
-				} // do nothing until position divides by 3 again 
+				} // do nothing until position divides by 3 again
 			} // end special-case-check-then-loop
 		}, // end lifestylePosition
 		fancyPosition: function(item, position, increment) {
@@ -475,7 +476,7 @@ MLS.ui = {
 			var left = incr * position;
 			var top = 0;
 
-			// exceptions 
+			// exceptions
 			if (position === 1 || position % 5 === 1) { //left values for positions-1-6-11-16-etc
 				left = left + incr;
 			}
