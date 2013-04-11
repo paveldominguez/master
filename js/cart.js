@@ -131,6 +131,14 @@
 	 	checkCartQty();
 
 
+	// header : save cart link
+	
+		$jQ('.save-cart-link').click(function(){
+			$jQ('#save-cart-modal').fadeIn(300);
+		});
+
+
+
 	// items table : update qty message
 		$jQ('.cart-revise-qty').change(function() {
 			$jQ(this).parents('.detail-box').find('.update-msg').show().delay(3000).fadeOut(1000);
