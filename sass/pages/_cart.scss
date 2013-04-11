@@ -748,6 +748,8 @@
 	#cart-also-bought {
 		@include heroBG;
 		
+		form { margin-bottom: 0; }
+		
 		#also-bought-block {
 			width: 100%;
 			float:left;
@@ -766,6 +768,7 @@
 				.also-bought-product {
 					display:inline-block;
 					width:25%;
+					height: 108px;
 					float: left;
 					@include clearfix();
 					@include boxBrdrB;
@@ -856,14 +859,21 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+	#cart-fine-print {
+		@include heroBG;
+	
+		.section-wrap { 
+			padding: 72px 36px 72px 36px;
+			
+			p { 
+				font-size: 10px;
+				line-height: 13px;
+				font-family: $fontArial;
+				color: $cartGreyDk;
+				font-weight: bold;		
+				}	
+			}
+		}
 		
 		
 		
