@@ -34,7 +34,6 @@ MLS.home = {
 			$jQ('.tabs-content '+ tab,'.trending-products').addClass('active');
 		});
 
-
 	},
 	featuredReviews: function(){
 		//select random color for each item entry
@@ -55,10 +54,10 @@ MLS.home = {
                 slideshow: false,
                 animationSpeed: 500,
                 itemWidth: 212,
-                maxItems:4,
+                maxItems: 4,
                 itemMargin: 0
             });
-            $jQ(window).resize(function() {
+            $jQ(window).resize(function () {
                 $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.85});
             });
             $jQ('.featuredReviewSlider').flexslider({
@@ -71,37 +70,37 @@ MLS.home = {
                 animationSpeed: 500,
                 itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.875
             });
-            $jQ(window).resize(function() {
+            $jQ(window).resize(function () {
                 $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.85});
             });
 		}
 	},
 	madlib: {
 
-		init:function(){
+		init: function () {
 			//Generic Typeahead
 			$jQ('#madlib-device').typeahead({
 				name: 'devices',
 				remote: 'js/data/devices.json',
 				limit: 10
-			}).on('change keyup typeahead:selected typeahead:closed',function(e){
-				console.log($jQ(this).val());
-				if ( e.type === "typeahead:closed" ){
+			}).on('change keyup typeahead:selected typeahead:closed', function (e) {
+				//console.log($jQ(this).val());
+				if (e.type === 'typeahead:closed') {
 					$jQ(this).blur();
 				}
-				if ( e.type === "typeahead:selected" ){
+				if (e.type === 'typeahead:selected') {
 					//Fire secondary
 				}
-				if ( $jQ(this).val() === "enter device" || $jQ(this).val() === "" ){
+				if ($jQ(this).val() === 'enter device' || $jQ(this).val() === '') {
 					$jQ(this).stop().animate({
 						width: 173
-					},100);
-				}else{
-					if ($jQ(this).val().length > 3){
+					}, 100);
+				} else {
+					if ($jQ(this).val().length > 3) {
 						$jQ(this).stop().animate({
-							width: $jQ(this).val().length*17
-						},100);
-					}
+							width: $jQ(this).val().length * 17
+						}, 100);
+                    }
 				}
 			});
 		}

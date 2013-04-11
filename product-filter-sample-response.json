@@ -1,7 +1,7 @@
 {
     "success" : {
-        "responseHTML" : '<html></html>',// this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
-        "resultCount" : 296,
+        "responseHTML" : "<html></html>",// this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
+        "resultCount" : 52,
         "contentType": "guides",
         "options" : ["dimension-a"]
     },
