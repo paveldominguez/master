@@ -148,10 +148,27 @@
 	 // items table : remove item button
 	 	$jQ('.remove a').click(function(e) {
 	 		e.preventDefault();
+	 		$jQ('.confirm-remove').fadeIn(300);
+	 	});
+	 	
+	 // items table : confirm remove panel
+	 
+	 
+	 	$jQ('.cart-remove-links').find('.cancel').click(function(e) {
+	 		e.preventDefault();
+	 		$jQ(this).parents('.confirm-remove').fadeOut(300);
+	 	});
+	 	
+	 	
+	 	$jQ('.cart-remove-links').find('.remove').click(function(e) {
+	 		e.preventDefault();
 	 		$jQ(this).parents('.table-row').remove();
 	 		checkCartQty();
 	 	});
+	 
 	 	
+	 
+	 
 	 
 
 	 // sidebar : banner dropdowns
@@ -209,7 +226,7 @@
 	 			
 	 		} else {
 	 			// update header summary & label
-				$jQ('#cart-header-summary').html(inCart).html('Items');
+				$jQ('#cart-header-summary').html(inCart).next().html('Items');
 			}
 
 		}
