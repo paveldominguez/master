@@ -12,23 +12,43 @@
 		input[type="number"] { font-family: $fontArial; }
 
 
-	/* mixins form other pages - TEMP */
+	/* mixins from other pages - TEMP */
 		$highlightBg: #29a0cd;
 		$pdpAmber: #ffba62;
 		$techinfoBg : #119a70;
-
+		$cartGreySelect: #adadad;
+		
+		@mixin checkoutContent {
+			color: $cartGreyMd;
+			font-family: $fontArial;
+			font-size: 12px;
+			line-height:15px;
+			font-weight: normal;
+			text-transform: none;
+			}
+		@mixin checkoutLabel {
+			color: $cartGreyDk;
+			font-family: $fontArial;
+			font-size: 10px;
+			line-height: 10px;
+			font-weight: bold;
+			text-transform: uppercase;
+			}
 
 	/* new colors, mixins, etc */
  		$cartGreyAltWht: #edefef;
  		$cartGreyFocus: #d9d9d9;
+ 		$saleBannerBG: #36a99e;
+		$successGreen: #54b87d;
+		
 						
 		@mixin cartHilight { 
-		-webkit-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.9),
-			inset 0 -1px 3px 1px rgba(0, 0, 0, .15) ;
-		-moz-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.9),
-			inset 0 -1px 3px 1px rgba(0, 0, 0, .15) ;
-        box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.9),
-			inset 0 -1px 3px 1px rgba(0, 0, 0, .15) ;
+		-webkit-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
+		-moz-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
+        box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
 		}
 
 		@mixin cartButtonUp { 
@@ -42,15 +62,26 @@
 			font-family: $fontVzwBook;
 			cursor:pointer;
 			
-			span { color: $cartGreyDk;
+			span { color: #acacac;
 				text-shadow: 0px 1px 1px #fff; 
+				}
+				
+			span.checkout {
+				display: inline-block;
+				font-size: 14px;
+				line-height: 14px; 
+				text-transform: lowercase;
+				color: $cartGreySelect;
+				font-family: $fontArial;
+				font-weight: bold; 
+				padding: 14px 0 0 0px;
 				}
 			}
 			
 		@mixin secondaryAddCartGrey {
 			height:24px;
 			border: 0;
-			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			background: rgb(226, 230, 230) url(../img/sprites/cart/red-cart-secondary-add.png) 0 0px no-repeat;
 			text-transform:uppercase;
 			color: $colorVzwRed;
 			font-family : $fontArial;
@@ -64,7 +95,7 @@
 		@mixin secondaryAddCart {
 			height:24px;
 			border: 0;
-			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 4px no-repeat;
+			background: transparent url(../img/sprites/cart/red-cart-secondary-add.png) 0 0px no-repeat;
 			text-transform:uppercase;
 			color: $colorVzwRed;
 			font-family : $fontArial;
@@ -108,22 +139,29 @@
             box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 2px 1px rgba(0, 0, 0, 0.15);
 			}
 
-
+		@mixin cartLabel {
+				display: inline-block;
+				font-size:13px;
+				line-height:13px;
+				text-transform: uppercase;
+				color:$cartGreyMd;
+				font-family: $fontVzwBold;
+				padding-left:25px;
+				font-weight: normal;
+				margin: 0 0 10px 0;
+				}
 	
 /* Shopping Cart Styles */
   
 #shopping-cart {
 
-	/* general cart classes */
+/* general classes */
 	
-		.section-wrap { 
-			@include clearfix();
-			width:100%;
-			max-width:1024px;
-			}
-
-
-
+	.section-wrap { 
+		@include clearfix();
+		width:100%;
+		max-width:1024px;
+		}
 
 	.temp-cart-header { /* ............. TEMP page header........ */
 		width:100%;
@@ -133,8 +171,6 @@
 		z-index:5;
 		
 		#site-header { margin-top:106px; }
-		
-		
 		}
 		
 	#cart-header { /* .............................. cart header ............... */
@@ -142,8 +178,9 @@
 		/* @include boxBrdrT; in comp, changed to anchorDrop for consistency now */
 		@include boxBrdrB;
 		padding:6px 0 8px 0;
+		
 		.cart-title{
-		padding-left:30px;
+			padding-left:30px;
 			font-family: $fontVzwBold;
 			font-size:33px;
 			color:#222;
@@ -153,15 +190,27 @@
 			span {
 				font-family: $fontVzwBook;
 				color: $cartGreyDk;
-			
 				}/* end span */
+				
+			.summary {
+				display: inline-block;
+				margin-left:10px;
+				width: auto;
+				font-family: $fontVzwBook;
+				color: $cartGreyDk;
+				font-size: 18px; 
+			
+				}
+				
 			}
-		
 		}/* end header */  
-	
+		
+	/* end general classes */
 	
 	#cart-data{ /* .................................... cart data ................. */
-		padding-bottom:50px;
+		@include heroBG;
+		form { padding: 0; margin: 0; }
+		
 		/* ........................ general cart classes first .............. */
 			.desc-block { 
 				@include clearfix;
@@ -175,13 +224,7 @@
 				float:right;
 				@include boxBrdrB;
 				}
-			h5.cart-label {
-				font-size:11px;
-				text-transform: uppercase;
-				color:$cartGreyMd;
-				font-family: $fontVzwMedium;
-				padding-left:30px;
-				}
+			h5.cart-label { @include cartLabel; }
 	
 	
 	
@@ -192,17 +235,27 @@
 			width:75%; 
 			@include boxBrdrL;
 			@include boxBrdrB;
+			@include boxBrdrR;
 			
 			.table-header {
 				@include clearfix();
-				padding-top: 20px;
 				@include boxBrdrB;
+				padding-top: 30px;
+				background: #fff;
+				
+				.cart-product-image { width: 25%; }
+				.cart-product-info { width: 45%; }
+				.cart-order-details { 
+					width:20%;
+					
+					}
+				
 				
 				.sub-block { border:0; }
 				}
 			
 			
-			.table-row{
+			.table-row {
 				@include clearfix();
 				background: #fff;
 				
@@ -261,42 +314,38 @@
 								}
 							}/* end unit price */
 							
-						.remove-block {
-							position:absolute;
-							left:10px;
-							bottom:0px; 
+						.new-details {
 						
-							button { 
-								border:0px; 
-								background: transparent;
-								height:36px;
-								cursor: pointer; 
-								}
-							span { 
-								display:inline-block;
-								text-align: left;
-								width:72px;
-								@include actionLink;
-								font-size:11px;
-								text-transform:uppercase;
-								background: url(../img/sprites/cart/blue-close-x.png) 55px -1px no-repeat;
+							ul { 
+								display: block;
+								width: 100%;
+								@include clearfix();
+								margin: 36px 0 0 0;
 								
-								input { 
-									position:relative; top:-20px;  
-									cursor:pointer; 
-									opacity:0;
-									}
-								
+								.block {
+									@include clearfix();
+									display: inline-block;
+									width: auto;
+									margin: 0 3px 0 0;
+									line-height: 15px;
+									height: 18px; 
+									
+									.label, .data {
+										background: transparent;
+										@include checkoutContent;
+										display: inline-block;
+										width: auto;
+										margin: 0; padding: 0;
+										bottom: 0;
+										}
+									}/* end li */
 								}
-						
-							}/* end remove block */
-						
-						  
-						
+							} /* end new details */
+							
 						} /* end product-info */
 					
 				  	
-					.cart-order-details { 
+					.cart-qty-block { 
 						padding: 20px;
 						@include boxBrdrL;
 						height:100%;
@@ -306,140 +355,67 @@
 						float: left;
 						font-family: $fontArial;
 						
-						
-						input[type="button"], button, .button { 
-							@include cartButtonUp;
-							height:36px; 
-							}
-						
-						.detail-panel {
-							padding-top:10px;
-							width:100%;
-						
-							.detail-box { 
-								@include clearfix();
-								width: 100%;
-								margin: 0 auto 10px auto;
-							
-								.cart-label { 
-									display:inline-block;
-									float: left;
-									width:60px;
-									color: $cartGreyMd;
-									padding-left: 10px;  
-									}
-								.item-data { 
-									display:inline-block;
-									text-align:left;
-									width:60px;
-									float: right; 
-									 
-									}
-								} /* end detail box */
-								
-							.edit-cart-input { 
-								height:36px; 
-								overflow-y:hidden;
-								position: relative;
-								top:10px; 
-								
-								.edit-cart {
-									@include cartButtonUp;
-									display:block;
-									width:99%;
-									height:100%;
-									color:$cartGreyMd;
-									font-size: 16px;
-									line-height:32px;
-									position:relative;
-									
-									span { color:$cartGreyMd; }
-									
-									
-									
-									}/* end a link */
-								}/* end input div */
-								
-							
-							span.updated {
-								display:none;
-								@include cartHilight;
+						.detail-box {
+							display: block;
+							width: 100%;
+							@include clearfix();
+						 
+						 	.cart-label { 
+						 		display: inline-block;
+						 		float: left;
+						 		padding: 15px 0 0 0;
+						 		margin-right: 20px;
+						 		color: $cartGreyMd; 
+						 		}
+						 
+							.selector {
+								display: inline-block;
+								float: left;
 								@include cartButtonUp;
-								@include cartButtonShadow; 
-								border: 0px; 
-								float: right;
-								background: transparent;
-								position:absolute;
-								top: -1px; right:0px;
-								padding:0px 7px 0 7px;
-								color: $cartGreyDk; 
-								font-size:16px;
-								line-height:32px;
-								font-weight:normal; 
-								z-index: 5;
-								height:36px;
-								
-								} 
-							.update-pointer { 
-								display:none;
-								width:14px; height: 30px;
-								background: url(../img/sprites/cart/cart-button-updated-pointer.png) 0 4px no-repeat;
-								position: absolute;
-								top: 0px; left:42px;
-								z-index: 6;
-								}      
-							}/* end detail panel */
+								width: 75px !important;
+								height: 36px; 
+								padding: 0;
+	
+								span { 
+									display: inline-block;
+									font-size: 14px;
+									line-height: 14px; 
+									text-transform: lowercase;
+									color: $cartGreyDk;
+									font-family: $fontArial;
+									font-weight: bold; 
+									width: 100%;
+									padding: 14px 0 0 10px;
+									background: url(../img/sprites/pdp/grey-more.png) 50px 19px no-repeat;
+				 					}
+		
+								select { 
+									-webkit-appearance: none; 
+									width: 100%;
+			 						height: 36px; 
+			 						position:relative;
+			 						top: -24px; left:10px;
+			 						z-index: 10;
+			 						cursor: pointer;
+			 						}
+								} /* end selector */
 						
-						.edit-panel {
-							@include cartEditPanel;
-							display:none;
-							padding-top: 30px;
-							background: #fff;
-							top:-36px; left:0px;
-							width:100%;
+							} /* end detail box */
+						
+						.remove {
+							position:absolute;
+							left:20px;
+							bottom:30px;
 							
-						
-							.edit-panel-close {    
-								position:absolute;
-								top:4px; right: 16px; 
-								width:24px; height:24px;
-								background: url(../img/sprites/cart/edit-panel-close-x.png) 6px 6px no-repeat; 
-								cursor:pointer;
+							a { 
+								display: block;
+								width:72px;
+								@include actionLink;
+								font-size:11px;
+								text-transform:uppercase;
+								background: url(../img/sprites/cart/blue-close-x.png) 55px -1px no-repeat; 
 								}
-							
-							.edit-box {
-								@include clearfix();
-								width: 100%;
-								height:36px;
-								margin-bottom:20px;
-							
-								.edit-label { 
-									width:25%;
-									float:left;
-									padding-top:15px;
-									color: $cartGreyMd;
-									 }
-								
-								.selector, input[type="text"] { 
-									width: 65% !important;
-									float: right; 
-									
-									}
-								} /* end edit box */
-							
-							
-							
-							.save-cart-changes { 
-								display:block;
-								@include cartButtonUp;
-								width: 130px;
-								position:relative;
-								color: $cartGreyMd;
-								font-size:16px;
-								line-height:32px;
-								
-								 }
-							} /* end edit panel */
+							}/* end remove */
 						}/* end order details */
 					 }/*end row desc block */
 			
@@ -453,6 +429,8 @@
 						font-size:20px;
 						line-height: 24px;
 						color: $cartGreyMd;
+						font-family: $fontVzwBook;
+						font-weight: normal;
 						
 						.cents { 
 							font-size:12px;
@@ -463,7 +441,19 @@
 					} /* end sub block */
 				} /* end table row */
 				
-			.table-row:nth-of-type(2n +1) { background: $cartGreyAltWht; }
+			.table-row.empty-cart { 
+				display:none;
+				height: 157px;
+				padding: 90px 0 0 20px;
+				font-size: 30px;
+				color: $cartGreyLt;
+				font-family: $fontVzwBoldItalic;
+				font-weight: normal; 
+				letter-spacing: -1px;
+				}
+				
+			.table-row:odd { background: $cartGreyAltWht; }
+			.table-row:first-child { background: #fff; }
 			.table-row:last-child { border-bottom:0; 
 				.desc-block, .sub-block { border-bottom:0px; }
 				}
@@ -472,77 +462,210 @@
 	
 	
 		.cart-sidebar { /* ..................sidebar specific ................. */
-			@include cartBG;
-			@include boxBrdrR;
-			@include boxBrdrL;
+			@include heroBG;
 			display:inline-block;
 			float:right;
 			width:25%; 
 			
 			.special-offer-block { 
 				width:100%;
-				height:auto;
-				background: $specialOfferBlue url(../img/sprites/pdp/shipping-boxes-icon.png) 15px 20px no-repeat;
-				padding:20px; 
-				@include anchorDrop;
+				height:80px;
+				padding:18px; 
+				border-top: 1px solid #fff;
 				
 				.cart-offer-text {
-					font-family: $fontArial;
-					font-size:12px; 
-					font-weight:bold; 
+					position: relative;
+					display: inline-block;
+					width: 67%;
+					font-family: $fontVzwBookItalic;
+					font-size:18px; 
+					line-height:20px;
+					font-weight:normal; 
 					color:#fff;
-					margin:0 0 0 40px;
-					}
-				} /* end special block */
-			
-			.proceed-block { padding:20px; 
-				@include boxBrdrB;
-			
-				#cart-total-box {
-					height:60px;
-					overflow:hidden;
-					width:100%;
-					@include clearfix();
-					color: $cartGreyLt;
+					margin:0 0 0 65px;    
+					background: url(../img/sprites/pdp/wht-more.png) 108px 30px no-repeat;
+					cursor: pointer;
 					
-					.total-label { 
-						width:50%;
-						float:left;
-						text-transform: uppercase;
-						font-family: $fontVzwBold;
-						font-size:12px; 
-						line-height:72px;  
+					span {
+						font-family: $fontVzwBoldItalic;
+						font-weight:normal;
 						}
+
+					.cart-dropdown-panel {
+						display: none;
+						@include cartEditPanel;
+						position: absolute;
+						padding: 15px;
+						width: 180px;
+						top: 54px; 
+				
+						p { margin: 0;
+							font-family: $fontArial;
+							color: $cartGreyMd;
+							font-size: 11px;
+							line-height: 15px;
+							font-weight: normal;
+							}
+				
+						.cart-pointer {
+							width: 24px;
+							height: 24px;
+							@include cart-sprite(req-pointer-bg);
+							position: absolute; 
+							top: -24px;
+							left: 50%;
+							margin-left: -12px;
+							z-index: 5;
+							}
+						} /* end cart dropdown panel */
+					} /* end p.offer-text */
+				} /* end special-block common styles */
+			
+			.special-offer-block:first-child { border-top: 0px; }
+			
+			.shipping {
+				background: $saleBannerBG url(../img/cart/minicart-truck-icon.png) 18px 20px no-repeat; 
+				
+				.cart-offer-text {
+					background: url(../img/sprites/pdp/wht-more.png) 96px 32px no-repeat;
 					
-					#grand-total {
-						width:50%;
-						float: right;
-						font-size:36px; 
-						line-height:45px; 
-						letter-spacing: -1px;
-						text-align:right;
+					.cart-dropdown-panel { left: 10px; }
+					}
+				}
+			
+			.returns {
+				background: $saleBannerBG url(../img/cart/large-boxes-icon.png) 18px 20px no-repeat; 
+				
+				.cart-offer-text {
+					background: url(../img/sprites/pdp/wht-more.png) 67px 32px no-repeat;
+					
+					.cart-dropdown-panel { left: -18px; }
+					}
+				}
+			
+			
+			
+			.proceed-block { 
+				padding:20px; 
+			
+				.tax-calc { 
+					position: relative;
+					margin-bottom:20px;
+				
+					h6 {
+						@include cartLabel; 
+						margin: 0 0 10px 0;
+						padding: 0;
+						}
+						 
+					.calc-boxes {
+						@include clearfix();
+						.input-zip { 
+							width: 47.5%; 
+							float: left;
+							height: 36px;
+							
+							input {
+								@include cartLabel;
+								@include cartRounded; 
+								width: 100%;
+								height: 100%;
+								padding-top: 5px;
+								
+								}
+							}
+						.calc-button { 
+							width: 47.5%; 
+							float: right;
+							height: 36px; 
+							
+							.button {
+								@include cartButtonUp;
+								width: 100%;
+								height: 100%;
+								
+							
+								span {
+									display: block;
+									width: 100%;
+									height: 100%;
+									line-height:45px;
+									font-family: $fontArial;
+									font-weight: bold;
+									color: $cartGreySelect;
+							
+									input { 
+										-webkit-appearance: none;
+										width: 120%;
+										height: 100%;
+										opacity:0;
+										cursor: pointer;
+										position: relative;
+										top: -50px; left: -10px;
+										}
+									} /* end span */
+								} /* end button class */
+							}   
+						}/* end boxes */
 						
-						.cents{ 
-							font-size:18px;
-							position:relative;
-							top:-15px; 
+					.calc-msg { 
+						@include checkoutLabel;
+						color: $successGreen;
+						position: absolute;
+						top: 3px;
+						right: 5px;
+						display: none; }
+					} /* end tax-calc */
+					
+				.totals { 
+				
+					ul { 
+						padding: 0; 
+						margin: 0;
+				
+						li {
+							@include clearfix();
+							display: block;
+							width: 100%;
+							margin: 0 0 15px 0;
+							
+							.label {
+								@include checkoutLabel;
+								background: transparent;
+								width: 30%;
+								float: left;
+								color: $cartGreyMd; 
+								text-align: left;
+								}
+				
+							.data {
+								@include checkoutLabel;
+								width: 50%;
+								float: right;
+								text-align:right; 
+								color: $cartGreyDk;
+								font-size: 12px; 
+								}
+							}
+							
+						li.offer { display: none; }
+							
+						.cart-total {
+							.label, .data {
+								font-family: $fontVzwBook;
+								font-size: 16px;
+								color: $cartGreyDk;
+								text-transform: none;
+								letter-spacing: -1px;
+								}	
 							}
 						}
-					#grand-total:before { content:"$"; }
-					} /* end cart total box */
-			
-				.ship-tax { 
-					font-family: $fontArial;
-					color: $cartGreyLt;
-					width:100%; 
-					font-size:11px; 
-					margin-bottom:40px; 
 					}
-	
-				#checkout-box {  
-					margin:10px 0 20px 0; 
+				
+				.checkout-box {  
+					margin:10px 0 10px 0; 
 			
-					#uniform-checkout-button{
+					.button{
 						@include ctaButton;
 						width:100%; height: 78px;
 						position:relative;
@@ -575,56 +698,53 @@
 						} /* end uniform button */	
 					} /* end checkout box */	
 					
-				#keep-shopping-box {  
+				.keep-shopping-box { 
+					@include cartButtonUp; 
 					width:100%;
-			
-					#uniform-continue-shopping-button {
-						@include cartButtonUp;
-						height:36px;
-						width:100%;
-						text-align: left;
-						font-size:14px; 
-						
-						span {
-							width:100%;
-							display:inline-block;
-							padding-top:12px;
-							font-size:14px;
-			
-							#continue-shopping-button {
-							-webkit-appearance: none;
-							height:36px;
-							width:110%;
-							text-align: left;
-							font-size:14px; 
-							position:relative; left:-10px;
-							top:-25px; opacity: 0; 
-							
-								} /* end old button */
-							}/* end span */
-						} /* end uniform button */
-					}/* end keep shopping box */
-				} /* end proceed */
-				
-			#also-bought-block {
-				.header {
-					@include boxBrdrB;
-					padding:20px 0 10px 20px;
+					height: 45px;
 					
-					h3.title {
-						font-family: $fontVzwBook;
-						font-weight:normal;
-						font-size:18px;
-						color: $cartGreyMd;
-						margin:0;
+					a { 
+						display: block;
+						width: 100%;
+						height: 100%;
+						font-size: 14px; 
+						line-height:54px;
+						font-family: $fontArial;
+						font-weight: bold;
+						color: $cartGreySelect;
 						}
-					}
-				
+
+					}/* end keep shopping box */
+					
+				} /* end proceed */
+			} /* end sidebar */	
+		}/* end cart data */
+		
+	#cart-also-bought {
+		@include heroBG;
+		
+		#also-bought-block {
+			width: 100%;
+			float:left;
+			margin: 0px 0 0 0;
+			
+			.header {
+				@include boxBrdrB;
+				padding:30px 0 0px 0px;
+					
+				h3.title { @include cartLabel; }
+				}/* end also bought header */
+			
+			ul { 
+				@include clearfix();
 				
 				.also-bought-product {
-					width:100%;
+					display:inline-block;
+					width:25%;
+					float: left;
 					@include clearfix();
 					@include boxBrdrB;
+					@include boxBrdrL;
 					padding:15px 0 5px 10px;
 				
 					.product-image {
@@ -635,6 +755,7 @@
 						}
 				
 					.product-info { 
+						@include clearfix();
 						width: 66.666%;
 						float:right;
 						padding:0 5px 0px 10px; 
@@ -644,6 +765,7 @@
 							color: $cartGreyMd;
 							font-weight:normal;
 							font-size:12px;
+							margin: 0;
 							padding-bottom:10px;
 							}
 						
@@ -652,33 +774,55 @@
 							color: $cartGreyDk;
 							font-weight:bold;
 							font-size:12px; 
-							padding-bottom:10px;
 							}
 						
 						.add-also-bought {
-						
-							.span { color:transparent; } /* end span */
-								
-							.add-secondary-to-cart {
-								@include secondaryAddCartGrey;
-								position: relative; 
-								top:-18px; 
-								height:24px; width: 100%;
-								
-								} /* end actual input styles */
-								
+							float: left;
+							width: 70%;
+							height: 30px;
 							
-						 	} /* end add also bought */
-					
-					
+							.button {
+								height: 30px;
+								
+								span {
+									@include secondaryAddCart;
+								
+									.add-secondary-to-cart {
+										-webkit-appearance: none;
+										opacity: 0;
+										position: relative; 
+										top:-24px; 
+										height:30px; width: 100%;	
+										z-index: 10;
+										cursor: pointer;
+										} /* end actual input styles */
+									}/* end span */
+								}/* end button */
+							} /* end add also bought */	
 						} /* end product info */
-				
-					}
-				
-				
-				}/* end also-bought block */
-			} /* end sidebar */
-		}/* end data*/
+					} /* end also bought li */
+					
+				.also-bought-product:last-child { @include boxBrdrR; }
+					
+				}/* end ul */
+			}/* end also-bought block */	
+		}/* end also bought section */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}/* end shoppingcart */
 	
 

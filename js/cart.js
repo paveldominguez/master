@@ -122,100 +122,75 @@
 
 // Shopping Cart ......................................................................................... 
 
-	// onload : edit cart button 
-		$jQ('.edit-cart').click(function() {
-			editCart(this);
-		});
-
 	// onload : make form elements pretty 
 		$jQ(".cart-item-qty").uniform(); // edit cart text input
 	 	$jQ("select").uniform(); //all select/option instances
 	 	$jQ("input.button").uniform(); // input type="submit" per ATG spec
+	 	
+	 // onload : check if cart is empty/fill header field
+	 	checkCartQty();
+
+	 		
+	 // items table : remove item button
+	 	$jQ('.remove a').click(function(e) {
+	 		e.preventDefault();
+	 		$jQ(this).parents('.table-row').remove();
+	 		checkCartQty();
+	 	});
+	 	
+	 
+
+	 // sidebar : banner dropdowns
+	 	$jQ('.cart-offer-text').click(function() {
+	 		$jQ(this).find('.cart-dropdown-panel').toggle();
+	 	});
+	 
+	 
+	 //sidebar : tax calc submit
+	 
+	 	// validate zip code?
+	 	
+	 	// get value 
+	 	var tempValue = '24.31'; // TEMP 
+	 	
+	 	// button action
+	 		$jQ('#tax-calc-button').click(function(e) {
+	 			e.preventDefault();
+	 			
+	 			//insert value 
+	 				$jQ('#cart-tax').html(tempValue);
+	 		
+	 			// show message
+	 				$jQ('.calc-msg').show().delay(1500).fadeOut(300);
+	 		});
+	 
+	 
+	 
+	 
+	 	
+	 // FUNCTIONS : shopping cart
+	  
+	 	function checkCartQty() {
+	 	
+	 		var inCart = $jQ('.cart-table').children('.table-row').not('.empty-cart').length;
+	 		
+	 		if (inCart < 1) {
+	 			// show empty cart message & update header & label
+	 			$jQ('.empty-cart').show();
+	 			$jQ('#cart-header-summary').html(inCart).next().html('Items');
+	 			
+	 		} else if (inCart == 1) {
+	 			// update header-summary & label
+	 			$jQ('#cart-header-summary').html(inCart).next().html('Item');
+	 			
+	 		} else {
+	 			// update header summary & label
+				$jQ('#cart-header-summary').html(inCart).html('Items');
+			}
+
+		}
 
 
-// Shopping Cart Functions
-
-function editCart(button){
-	
-	var panel = $jQ(button).parents('.detail-panel').siblings('.edit-panel');
-	var current = $jQ(button).parents('.detail-panel');
-	
-	panel.fadeIn('slow');
-	panel.parents('.table-row').addClass('this-row');
-	
-	//set up close button
-	panel.find('.edit-panel-close').click(function(){
-		panel.fadeOut('slow');
-		panel.parents('.table-row').removeClass('this-row');
-	});
-	
-	// get values and populate
-	var currentQty = current.find('.qty .item-data').text();
-	var currentColor = current.find('.color .item-data').text();
-	var currentSize = current.find('.size .item-data').text();
-	
-	// qty
-	panel.find('.cart-item-qty').val(currentQty);
-	
-	//color
-	panel.find('.cart-item-color option').each(function(){ 
-		var thisOption = $jQ(this).text();
-		if ( thisOption == currentColor ){
-			//change data
-			$jQ(this).attr('selected', true);
-			//change output
-			$jQ(this).parents('.selector').find('span').text(currentColor);
-		} 
-	});
-	
-	// size
-	panel.find('.cart-item-size option').each(function(){ 
-		var thisOption = $jQ(this).text();
-		if ( thisOption == currentSize ){
-			//change form data
-			$jQ(this).attr('selected', true);
-			//change output
-			$jQ(this).parents('.selector').find('span').text(currentSize);
-		} 
-	});
-
-	
-	// update cart button
-		$jQ(panel).find('.save-cart-changes').click(function() {
-			updateCart(panel);
-		});
-	
-} // end editCart function
-
-
-function updateCart(panel){
-
-	var edit = $jQ(panel);
-
-	// get new values
-		var newQty = edit.find('.cart-item-qty').val();
-		var newColor = edit.find('.cart-item-color').find(':selected').text();
-		var newSize = edit.find('.cart-item-size').find(':selected').text();
-
-	// update static output
-		var detail = $jQ(panel).siblings('.detail-panel');
-	
-		detail.find('.qty').find('.item-data').text(newQty);
-		detail.find('.color').find('.item-data').text(newColor);
-		detail.find('.size').find('.item-data').text(newSize);
-	
-	
-	// add 'updated' status to button
-		detail.find('.updated').fadeIn('fast');
-		detail.find('.update-pointer').fadeIn('fast');
-	
-	// close edit panel
-		edit.fadeOut('slow');
-		edit.parents('.table-row').removeClass('this-row');
-		
-
-
-} // end updateCart function
 
 
 
@@ -831,6 +806,7 @@ function updateCart(panel){
 			// get saved info and populate form on this click only !!!!!!!!!!!!!!!!!!!!!!!!!!
 		});
 
+
 	// 4. billing-info-block : credit card icon selection on input
 	
 		$jQ('#card-number').on('keyup', function() { 
@@ -856,6 +832,35 @@ function updateCart(panel){
 		});
 
 
+	// 5. billing-address : same as shipping checkbox
+	
+		$jQ('#same-as-shipping').change(function(){
+		
+			//  if this is now checked, fill in fields
+		
+				// loop through summary fields
+				
+					// loop through this form and paste in
+					
+					
+					// tweak for business name and first/last difference
+		
+					
+		
+		
+		
+		
+			// otherwise, loop through and clear fields
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		});
 
 
 

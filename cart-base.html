@@ -45,17 +45,6 @@
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
-  
-  		<!-- <div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-sale">sale</li>
-  				<li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li>
-  			</ul>
-  		</div> TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS-->
-  
-  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
@@ -70,23 +59,39 @@
 
 <section id="cart-header">
 	<div class="section-wrap">
-		<h1 class="cart-title">Shopping <span>Cart</span></h1>
+		<h1 class="cart-title">
+			Shopping <span>Cart</span>
+			<div class="summary">(<span id="cart-header-summary"></span> <span>Items</span>)</div>
+		</h1>
 	</div>
 </section><!-- end cart header -->
 
 <section id="cart-data">
+
+	<form id="shopping-cart-form" name="cartForm" method="GET" ><!-- action="cart.jsp" -->
+	
 	<div class="section-wrap">
 	
 		<div class="cart-table">
 			<div class="table-header">
 				<div class="desc-block">
-					<h5 class="cart-label">Item Description</h5>
+				
+					<h5 class="cart-label cart-product-image">Item Description</h5>
+					<h5 class="cart-label cart-product-info"></h5>
+					<h5 class="cart-label cart-order-details">Quantity</h5>
+					
 				</div><!-- end desc block -->
 				
 				<div class="sub-block">
-					<h5 class="cart-label">Subtotal</h5>
+					<h5 class="cart-label">Price</h5>
 				</div><!-- end sub block -->
 			</div><!-- end table header -->
+			
+			
+			<div class="table-row empty-cart">
+				There is nothing in your cart.
+			</div>
+			
 			
 			<div class="table-row"><!-- -------------- first product --------------- -->
 				<div class="desc-block">
@@ -99,85 +104,49 @@
 						<h2>Beats by Dre Pro On-Ear Headphones</h2>
 						
 						<div class="unit-price">
-						
-							<span class="original-price">$399.99</span>
+							<span class="original-price offer">$399.99</span>
 							<span class="actual-price">$299.99</span>	
-							<span class="discount">10% off</span>
-							
+							<span class="discount offer">10% off</span>
 						</div><!-- end unit price -->
-					
-						<div class="remove-block">
-							<input class="button remove-from-cart" type="submit" title="Remove" value="Remove">
+						
+						<div class="new-details">
+							<ul>
+								<li class="size block">
+									<div class="label">
+										Size:
+									</div>
+									<div class="size data">
+										small
+									</div>,
+								</li>
+								
+								<li class="color block">
+									<div class="label">
+										&nbsp;Color:
+									</div>
+									<div class="size data">
+										black
+									</div>
+								</li>
+								
+							</ul>
 						</div>
 					</div><!-- end product info -->
 					
-					<div class="cart-order-details">
-						<div class="detail-panel">
-							
-							<div class="detail-box qty">
-								<span class="cart-label">Qty:</span>
-								<span class="item-data">1</span>
-							</div><!-- end qty detail -->
-							
-							<div class="detail-box color">
-								<span class="cart-label">Color:</span>
-								<span class="item-data">grey</span>
-							</div><!-- end qty detail -->
-							
-							
-							<div class="detail-box size">
-								<span class="cart-label">Size:</span>
-								<span class="item-data">large</span>
-							</div><!-- end qty detail -->
-					
-							<div class="edit-cart-input">
-								<a href="#" class="edit-cart"  title="Edit" >Edit
-      								<span class="updated">Updated</span>
-      								<div class="update-pointer"></div>
-      							</a>
-      						</div>
-      						<!-- end edit button -->
-      						
-						</div><!-- end detail panel -->
-						
-						<div class="edit-panel"><!-- fades in -->
-							
-							<div class="edit-panel-close"></div>
-							
-							<div class="edit-box qty">
-								<div class="edit-label">Qty:</div>
-								
-									<input type="text" name="quantity" class="cart-item-qty">
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box color">
-								<div class="edit-label">Color:</div>
-								
-									<select name="color" class="cart-item-color">
-										<option value="black">black</option>
-										<option value="grey">grey</option>
-										<option value="white">white</option>
-										<option value="blue">blue</option>
-									</select>
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box size">
-								<div class="edit-label">Size:</div>
-								
-									<select name="size" class="cart-item-size">
-										<option value="small">small</option>
-										<option value="medium">medium</option>
-										<option value="large">large</option>	
-									</select>
-								
-							</div><!-- end qty detail -->
-						
-						
-							<a class="save-cart-changes" title="Update" >Update</a>
-						
-						</div><!-- end slide in edit panel -->
+					<div class="cart-qty-block">
+						<div class="detail-box qty">
+							<span class="cart-label">Qty:</span>
+							<select name="cartQty" id="cart-revise-qty">
+								<option value="0">0</option>
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</div><!-- end qty detail -->
+
+						<div class="remove">
+							<a href="#">Remove</a>
+						</div>
 
 					</div><!-- end order-details -->
 				
@@ -189,291 +158,213 @@
 			</div><!-- end table row -->
 			
 			
-			<div class="table-row"><!-- -------------- second product --------------- -->
-				<div class="desc-block">
-				
-					<div class="cart-product-image">
-						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-					</div><!-- end product image -->
-					
-					<div class="cart-product-info">
-						<h2>Beats by Dre Pro On-Ear Headphones</h2>
-						
-						<div class="unit-price">
-						
-							<span class="original-price">$399.99</span>
-							<span class="actual-price">$299.99</span>	
-							<span class="discount">10% off</span>
-							
-						</div><!-- end unit price -->
-					
-						<div class="remove-block">
-							<input class="button remove-from-cart" type="submit" title="Remove" value="Remove">
-						</div>
-					</div><!-- end product info -->
-					
-					<div class="cart-order-details">
-						<div class="detail-panel">
-							
-							<div class="detail-box qty">
-								<span class="cart-label">Qty:</span>
-								<span class="item-data">1</span>
-							</div><!-- end qty detail -->
-							
-							<div class="detail-box color">
-								<span class="cart-label">Color:</span>
-								<span class="item-data">grey</span>
-							</div><!-- end qty detail -->
-							
-							
-							<div class="detail-box size">
-								<span class="cart-label">Size:</span>
-								<span class="item-data">large</span>
-							</div><!-- end qty detail -->
-					
-							<div class="edit-cart-input">
-								<a href="#" class="edit-cart"  title="Edit" >Edit
-      								<span class="updated">Updated</span>
-      								<div class="update-pointer"></div>
-      							</a>
-      						</div>
-      						<!-- end edit button -->
-      						
-						</div><!-- end detail panel -->
-						
-						<div class="edit-panel"><!-- fades in -->
-							
-							<div class="edit-panel-close"></div>
-							
-							<div class="edit-box qty">
-								<div class="edit-label">Qty:</div>
-								
-									<input type="text" name="quantity" class="cart-item-qty">
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box color">
-								<div class="edit-label">Color:</div>
-								
-									<select name="color" class="cart-item-color">
-										<option value="black">black</option>
-										<option value="grey">grey</option>
-										<option value="white">white</option>
-										<option value="blue">blue</option>
-									</select>
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box size">
-								<div class="edit-label">Size:</div>
-								
-									<select name="size" class="cart-item-size">
-										<option value="small">small</option>
-										<option value="medium">medium</option>
-										<option value="large">large</option>	
-									</select>
-								
-							</div><!-- end qty detail -->
-						
-						
-							<a class="save-cart-changes" title="Update" >Update</a>
-						
-						</div><!-- end slide in edit panel -->
-
-					</div><!-- end order-details -->
-				
-				</div><!-- end desc block -->
-				
-				<div class="sub-block">
-					<h4 class="subtotal">$299<span class="cents">99</span></h4>
-				</div><!-- end sub block -->
-			</div><!-- end table row -->
-			
-			
-			<div class="table-row"><!-- -------------- third product --------------- -->
-				<div class="desc-block">
-				
-					<div class="cart-product-image">
-						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-					</div><!-- end product image -->
-					
-					<div class="cart-product-info">
-						<h2>Beats by Dre Pro On-Ear Headphones</h2>
-						
-						<div class="unit-price">
-						
-							<span class="original-price">$399.99</span>
-							<span class="actual-price">$299.99</span>	
-							<span class="discount">10% off</span>
-							
-						</div><!-- end unit price -->
-					
-						<div class="remove-block">
-							<input class="button remove-from-cart" type="submit" title="Remove" value="Remove">
-						</div>
-					</div><!-- end product info -->
-					
-					<div class="cart-order-details">
-						<div class="detail-panel">
-							
-							<div class="detail-box qty">
-								<span class="cart-label">Qty:</span>
-								<span class="item-data">1</span>
-							</div><!-- end qty detail -->
-							
-							<div class="detail-box color">
-								<span class="cart-label">Color:</span>
-								<span class="item-data">grey</span>
-							</div><!-- end qty detail -->
-							
-							
-							<div class="detail-box size">
-								<span class="cart-label">Size:</span>
-								<span class="item-data">large</span>
-							</div><!-- end qty detail -->
-					
-							<div class="edit-cart-input">
-								<a href="#" class="edit-cart"  title="Edit" >Edit
-      								<span class="updated">Updated</span>
-      								<div class="update-pointer"></div>
-      							</a>
-      						</div>
-      						<!-- end edit button -->
-      						
-						</div><!-- end detail panel -->
-						
-						<div class="edit-panel"><!-- fades in -->
-							
-							<div class="edit-panel-close"></div>
-							
-							<div class="edit-box qty">
-								<div class="edit-label">Qty:</div>
-								
-									<input type="text" name="quantity" class="cart-item-qty">
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box color">
-								<div class="edit-label">Color:</div>
-								
-									<select name="color" class="cart-item-color">
-										<option value="black">black</option>
-										<option value="grey">grey</option>
-										<option value="white">white</option>
-										<option value="blue">blue</option>
-									</select>
-								
-							</div><!-- end qty detail -->
-							
-							<div class="edit-box size">
-								<div class="edit-label">Size:</div>
-								
-									<select name="size" class="cart-item-size">
-										<option value="small">small</option>
-										<option value="medium">medium</option>
-										<option value="large">large</option>	
-									</select>
-								
-							</div><!-- end qty detail -->
-						
-						
-							<a class="save-cart-changes" title="Update" >Update</a>
-						
-						</div><!-- end slide in edit panel -->
-
-					</div><!-- end order-details -->
-				
-				</div><!-- end desc block -->
-				
-				<div class="sub-block">
-					<h4 class="subtotal">$299<span class="cents">99</span></h4>
-				</div><!-- end sub block -->
-			</div><!-- end table row -->
 		</div><!-- end cart-table -->
 	
 	
 		<div class="cart-sidebar"><!-- ----------------- begin sidebar ------------- -->
 			<div class="cart-sidebar-wrap">
 			
-				<div class="special-offer-block">
-					<p class="cart-offer-text">
-						Spend $10 more and your order qualifies for NEXT DAY DELIVERY!
-					</p>
+				<div class="special-offer-block shipping">
+					<div class="cart-offer-text">
+						<span>Free Shipping</span> on All Orders!
+						<div class="cart-dropdown-panel">
+							<div class="cart-pointer"></div>
+							<p>
+								Lorem ipsum dolor sequitat nes serva dos.
+							</p>
+						</div>
+					</div>
 				</div>
 				
+				<div class="special-offer-block returns">
+					<div class="cart-offer-text">
+						<span>14 Day</span> Return <br>Policy!
+						<div class="cart-dropdown-panel">
+							<div class="cart-pointer"></div>
+							<p>
+								Lorem ipsum dolor sequitat nes serva dos.
+							</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				
 				<div class="proceed-block">
-					<div id="cart-total-box">
-						<div class="total-label">Grand Total:</div>
-						<div id="grand-total">599<span class="cents">97</span></div>	
-					</div><!-- end cart total box -->
+				
+					<div class="tax-calc">
+						<h6>Estimate Your Tax</h6>
 					
-					<div class="ship-tax"><span>*</span> Shipping and Taxes not yet calculated</div>
+						<div class="calc-boxes">
+							<div class="input-zip">
+								<input type="text" name="taxZip" id="tax-zip-code">
+							</div>
 					
-					<div id="checkout-box">
+							<div class="calc-button">
+								<input type="submit" value="calculate" id="tax-calc-button">
+							</div>
+						</div><!-- end calc boxes -->
+						
+						<div class="calc-msg">Updated</div>
+					</div>
+				
+				
+				
+				
+					<div class="totals">
+					
+						<ul>
+							<li class = "cart-subtotal" >
+								<div class="label">Sub Total:</div>
+								
+								<div class="data">
+									$<span id="cart-subtotal">399.99</span>
+								</div>
+							</li><!-- end subtotal -->
+					
+							<li class = "cart-discount offer" >
+								<div class="label">Discount:</div>
+								
+								<div class="data">
+									- $<span id="cart-discount">29.99</span>
+								</div>
+							</li><!-- end subtotal -->
+					
+							<li class = "cart-ship" >
+								<div class="label">Shipping:</div>
+								
+								<div class="data">
+									<span class="no-offer">$<span id="cart-shipping">16.95</span></span>
+									<span class="offer">FREE!</span>
+								</div>
+							</li>
+							
+							<li class = "cart-tax" >
+								<div class="label">Estimated Tax:</div>
+								
+								<div class="data">
+									$<span id="cart-tax">____</span>
+								</div>
+							</li><!-- end tax -->
+							
+							<li class = "cart-total" >
+								<div class="label">Total:</div>
+								
+								<div class="data">
+									$<span id="cart-total">399.99</span>
+								</div>
+							</li>
+						</ul>
+					</div><!-- end totals -->
+					
+					<div class ="checkout-box">
 						<input id="checkout-button" class="button" type="submit" title="Checkout" value="checkout">
 					</div><!-- end checkout box-->
 					
-					<div id="keep-shopping-box">
-						<input class="button" id="continue-shopping-button" type="submit" title="Continue Shopping" value="Continue Shopping">
+					<div class="keep-shopping-box">
+						<a href="#" title="Continue Shopping">Continue Shopping</a>
 					</div><!-- end keep shopping box -->
+					
 				</div><!-- end proceed block -->
-				
-				
-				<div id="also-bought-block">
-				
-					<div class="header">
-						<h3 class="title">Customers Also Bought</h3>
-					</div>
-					
-					<div class="also-bought-product"><!-- first product -->
-						<div class="product-image">
-							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
-						</div><!-- end image -->
-						<div class="product-info">
-							<h5 class="title">
-								Lorem Ipsum Product Name by Brand
-							</h5>
-							
-							<div class="price">
-								$29.99
-							</div>
-							
-							<div class="add-also-bought">
-      							<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
-      						</div><!-- end add-also-bought -->
-						</div><!-- end product info -->
-					</div><!-- end first product -->
-					
-					
-					<div class="also-bought-product"><!-- first product -->
-						<div class="product-image">
-							<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
-						</div><!-- end image -->
-						<div class="product-info">
-							<h5 class="title">
-								Lorem Ipsum Product Name by Brand
-							</h5>
-							
-							<div class="price">
-								$29.99
-							</div>
-							
-							<div class="add-also-bought">
-      							<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
-      						</div><!-- end add-also-bought -->
-						</div><!-- end product info -->
-					</div><!-- end first product -->
-					
-				</div><!-- end also bought block -->
+		
 			</div><!-- end sidebar wrap -->
 		</div><!-- end cart-sidebar -->
-	
-	
-	
-	
-	
 	</div><!-- end section wrap -->
+	</form><!-- end shopping-cart-form -->
 </section><!-- end cart data -->
+
+<section id="cart-also-bought">
+	<form id="shopping-cart-upsell" name="cart-form" method="GET" action="cart.jsp">
+	<div class="section-wrap">
+		<div id="also-bought-block">
+			<div class="header">
+				<h3 class="title">Customers Also Bought</h3>
+			</div>
+					
+			<ul>
+					
+				<li class="also-bought-product"><!-- first product -->
+					<div class="product-image">
+						<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+					</div><!-- end image -->
+					<div class="product-info">
+						<h5 class="title">
+							Lorem Ipsum Product Name by Brand
+						</h5>
+							
+						<div class="price">
+							$29.99
+						</div>
+							
+						<div class="add-also-bought">
+      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+      					</div><!-- end add-also-bought -->
+					</div><!-- end product info -->
+				</li><!-- end first product -->
+					
+				<li class="also-bought-product"><!-- second product -->
+					<div class="product-image">
+						<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+					</div><!-- end image -->
+					<div class="product-info">
+						<h5 class="title">
+							Lorem Ipsum Product Name by Brand
+						</h5>
+							
+						<div class="price">
+							$29.99
+						</div>
+							
+						<div class="add-also-bought">
+      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+      					</div><!-- end add-also-bought -->
+					</div><!-- end product info -->
+				</li><!-- end second product -->
+				
+				<li class="also-bought-product"><!-- third product -->
+					<div class="product-image">
+						<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+					</div><!-- end image -->
+					<div class="product-info">
+						<h5 class="title">
+							Lorem Ipsum Product Name by Brand
+						</h5>
+							
+						<div class="price">
+							$29.99
+						</div>
+							
+						<div class="add-also-bought">
+      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+      					</div><!-- end add-also-bought -->
+					</div><!-- end product info -->
+				</li><!-- end third product -->
+				
+				<li class="also-bought-product"><!-- fourth product -->
+					<div class="product-image">
+						<img src="img/cart/cart-also-product.png" title="Product Title" alt="Product Title" class="also-img" >
+					</div><!-- end image -->
+					<div class="product-info">
+						<h5 class="title">
+							Lorem Ipsum Product Name by Brand
+						</h5>
+							
+						<div class="price">
+							$29.99
+						</div>
+							
+						<div class="add-also-bought">
+      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+      					</div><!-- end add-also-bought -->
+					</div><!-- end product info -->
+				</li><!-- end fourth product -->
+				
+				
+			</ul>
+		</div><!-- end also bought block -->
+	</div><!-- end section wrap -->
+	</form><!-- end upsell form -->
+</section><!-- end also bought section -->
 
 
 
