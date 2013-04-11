@@ -105,16 +105,6 @@ module.exports = function (grunt) {
                         'css/styles.css'
                     ]
                 }
-            },
-            dist: {
-                options: {
-                    cacheBuster: false
-                },
-                files: {
-                    'css/styles.css': [
-                        'css/styles.css'
-                    ]
-                }
             }
         },
         compass: {
