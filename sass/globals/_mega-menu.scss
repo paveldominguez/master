@@ -167,15 +167,23 @@ $colorNavGridText: #333333;
                 height: 100%;
                 border: {
                     left: 1px solid $colorVzwNavBrd;
-                    right: 2px solid $colorVzwNavBrdShade;
+                    right: 1px solid $colorVzwNavBrdShade;
                 }
                 a {
                     position: relative;
                     display: table;
                     width: 100%;
                     height: 100%;
+                    .tab-bg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
                     .tab-fig {
                         display: table-cell;
+                        position: relative;
                         width: 100%;
                         padding-bottom: 75px;
                         text-align: center;
@@ -192,24 +200,10 @@ $colorNavGridText: #333333;
                         }
                     }
                 }
-                &.fashionista {
+                &.first {
                     border-left: none;
-                    background: transparent url(../img/nav/bgFashionista.jpg) top center no-repeat;
                 }
-                &.fitness {
-                    background: transparent url(../img/nav/bgFitness.jpg) top center no-repeat;
-                }
-                &.medialorem {
-                    background: transparent url(../img/nav/bgMedialorem.jpg) top center no-repeat;
-                }
-                &.traveler {
-                    background: transparent url(../img/nav/bgTraveler.jpg) top center no-repeat;
-                }
-                &.family {
-                    background: transparent url(../img/nav/bgFamily.jpg) top center no-repeat;
-                }
-                &.fun-seeker {
-                    background: transparent url(../img/nav/bgFunseeker.jpg) top center no-repeat;
+                &.last {
                     border-right: none;
                 }
             }
@@ -221,17 +215,34 @@ $colorNavGridText: #333333;
                 height: 40px;
                 background-color: $colorSubnavTabBg;
                 border-bottom: 1px solid $colorSubnavTabBrd;
-                &.last { border: none; }
+                &.active {
+                    background-color: #000;
+                }
+                &.last { 
+                    border: none;
+                }
                 a {
                     display: block;
                     line-height: 40px;
-                    padding: 0 0 0 40px;
+                    padding: 0;
                     color: $colorNavLinks;
+                    .subnav-icon { 
+                        display: block;
+                        float: left;
+                        width: 18px; 
+                        margin: 0 0 0 12px;
+                        text-align: center;
+                        img { 
+                            display: inline;
+                            vertical-align: middle;
+                        }
+                    }
+                    .category {
+                        margin-left: 12px;   
+                    }
                 }
                 &.active {
-                    &:active {
-                        background-color: $colorSubnavActiveTabBg;
-                    }
+                    background-color: $colorSubnavActiveTabBg;
                     a {
                         color: white;
 
@@ -246,57 +257,6 @@ $colorNavGridText: #333333;
                         height: 14px;
                         @include nav-sprite(subnav-active, false, 0, 0);
                     }
-                    &.photo {
-                        @include nav-sprite(subnav-ico-camera-active, false, 12px, 15px);
-                    }
-                    &.cases {
-                        @include nav-sprite(subnav-ico-case-active, false, 12px, 15px);
-                    }
-                    &.chargers {
-                        @include nav-sprite(subnav-ico-bolt-active, false, 15px, 15px);
-                    }
-                    &.health {
-                        @include nav-sprite(subnav-ico-health-active, false, 10px, 15px);
-                    }
-                    &.family {
-                        @include nav-sprite(subnav-ico-family-active, false, 10px, 10px);
-                    }
-                    &.memory {
-                        @include nav-sprite(subnav-ico-storage-active, false, 15px, 15px);
-                    }
-                    &.productivity {
-                        @include nav-sprite(subnav-ico-productivity-active, false, 15px, 15px);
-                    }
-                    &.see-all {
-                        @include nav-sprite(subnav-ico-see-all-active, false, 15px, 15px);
-                    }
-                    &.photo, &.cases, &.chargers, &.health, &.family, &.memory, &.productivity, &.see-all {
-                        background-color: $colorSubnavActiveTabBg;
-                    }
-                }
-                &.photo {
-                    @include nav-sprite(subnav-ico-camera, false, 12px, 15px);
-                }
-                &.cases {
-                    @include nav-sprite(subnav-ico-case, false, 12px, 15px);
-                }
-                &.chargers {
-                    @include nav-sprite(subnav-ico-bolt, false, 15px, 15px);
-                }
-                &.health {
-                    @include nav-sprite(subnav-ico-health, false, 10px, 15px);
-                }
-                &.family {
-                    @include nav-sprite(subnav-ico-family, false, 10px, 10px);
-                }
-                &.memory {
-                    @include nav-sprite(subnav-ico-storage, false, 15px, 15px);
-                }
-                &.productivity {
-                    @include nav-sprite(subnav-ico-productivity, false, 15px, 15px);
-                }
-                &.see-all {
-                    @include nav-sprite(subnav-ico-see-all, false, 15px, 15px);
                 }
             }
         }
