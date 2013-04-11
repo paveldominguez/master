@@ -130,7 +130,13 @@
 	 // onload : check if cart is empty/fill header field
 	 	checkCartQty();
 
-	 		
+
+	// items table : update qty message
+		$jQ('.cart-revise-qty').change(function() {
+			$jQ(this).parents('.detail-box').find('.update-msg').show().delay(3000).fadeOut(1000);
+		});
+		
+	
 	 // items table : remove item button
 	 	$jQ('.remove a').click(function(e) {
 	 		e.preventDefault();
@@ -157,11 +163,21 @@
 	 		$jQ('#tax-calc-button').click(function(e) {
 	 			e.preventDefault();
 	 			
-	 			//insert value 
+	 			//insert tax value 
 	 				$jQ('#cart-tax').html(tempValue);
+	 				
+	 			// update cart total
+	 				var cartTotal = $jQ('#cart-total').text();
+	 				
+	 				pCartTotal = parseFloat(cartTotal);
+	 				pTempValue = parseFloat(tempValue);
+	 				
+	 				
+	 				cartTotal = pCartTotal + pTempValue;
+	 				$jQ('#cart-total').text(cartTotal); 
 	 		
 	 			// show message
-	 				$jQ('.calc-msg').show().delay(1500).fadeOut(300);
+	 				$jQ('.calc-msg').show().delay(3000).fadeOut(1000);
 	 		});
 	 
 	 

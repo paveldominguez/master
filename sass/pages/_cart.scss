@@ -359,6 +359,7 @@
 							display: block;
 							width: 100%;
 							@include clearfix();
+							position: relative;
 						 
 						 	.cart-label { 
 						 		display: inline-block;
@@ -399,6 +400,16 @@
 			 						cursor: pointer;
 			 						}
 								} /* end selector */
+						
+							.update-msg { 
+								display: none;
+								@include checkoutLabel;
+								color: $successGreen;
+								position: absolute;
+								bottom: -20px; right: 10px;
+								}
+						
+						
 						
 							} /* end detail box */
 						
@@ -565,12 +576,12 @@
 							float: left;
 							height: 36px;
 							
-							input {
+							input[type="text"] {
 								@include cartLabel;
 								@include cartRounded; 
 								width: 100%;
 								height: 100%;
-								padding-top: 5px;
+								padding-top:15px;
 								
 								}
 							}
