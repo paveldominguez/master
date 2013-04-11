@@ -39,18 +39,18 @@ var contentGrid = {
         $quickView.css({
             'display' : 'block',
             'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0),
-            'height' : ( $contentTile.outerHeight() * 2 ) - 1,
-            'width' : ( e.data.$contentGrid.outerWidth() )
+            'height' : ($contentTile.outerHeight() * 2) - 1,
+            'width' : (e.data.$contentGrid.outerWidth())
         });
-        $jQ('html, body').animate( {
-            scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2 ) + ( $parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0 )
-        }, 500, function() {
+        $jQ('html, body').animate({
+            scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2) + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0)
+        }, 500, function () {
             contentGrid.initSlider();
-            setTimeout(function() { // ensure scroll is fully complete before attaching these event handlers
+            setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
                 $jQ(window).on({
                     'resize.quickView' : contentGrid.quickViewClose,
                     'scroll.quickView' : contentGrid.quickViewClose,
-                    'click.quickView' : function(e) {
+                    'click.quickView' : function (e) {
                         if ($jQ(e.target).closest($quickView).length === 0) {
                             contentGrid.quickViewClose(e);
                         }
@@ -59,7 +59,7 @@ var contentGrid = {
             }, 1);
         });
     },
-    initSlider : function() {
+    initSlider : function () {
         $jQ('#quick-view-slider').flexslider({
             animation: 'slide',
             controlNav: true,
