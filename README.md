@@ -31,7 +31,10 @@ To do this issue the following command in a command prompt window: sudo chown -R
 
 Please do the following, in order:
 
-- Install the following Ruby Gems:
+- Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation.
+
+Use the following command to perform the gem installation: 
+
 gem install sassy-math modular-scale compass zurb-foundation
 
 - Install NodeJS from here: http://nodejs.org/download/
