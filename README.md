@@ -19,7 +19,7 @@ Here are the requirements:
 Windows Users:
 
 - Install Ruby (if you don't already have it installed): http://rubyinstaller.org/
-*** Make sure the "Add Ruby executables to your PATH" option is checked. ***
+** Make sure that the "Add Ruby executables to your PATH" option is checked. **
 
 All Users:
 
@@ -31,11 +31,9 @@ To do this issue the following command in a command prompt window: sudo chown -R
 
 Please do the following, in order:
 
-- Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation.
+- Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
 
-Use the following command to perform the gem installation: 
-
-gem install sassy-math modular-scale compass zurb-foundation
+**gem install sassy-math modular-scale compass zurb-foundation**
 
 - Install NodeJS from here: http://nodejs.org/download/
 
