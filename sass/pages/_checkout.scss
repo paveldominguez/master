@@ -28,7 +28,7 @@
 
 		$specialOfferBlue: #009eb6;
 		
-		@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
+		@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 						font-size:12px;
 						font-weight:bold;
 						text-transform:capitalize;
@@ -155,23 +155,7 @@
 			background-image: -webkit-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Webkit (Chrome 11+) */ 
 			}
 	
-		@mixin checkoutLabel {
-			color: $cartGreyDk;
-			font-family: $fontArial;
-			font-size: 10px;
-			line-height: 10px;
-			font-weight: bold;
-			text-transform: uppercase;
-			}
-	
-		@mixin checkoutContent {
-			color: $cartGreyMd;
-			font-family: $fontArial;
-			font-size: 12px;
-			line-height:15px;
-			font-weight: normal;
-			text-transform: none;
-			}
+		
 			
 		@mixin checkoutSelected {
 			font-weight: normal;

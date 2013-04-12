@@ -148,7 +148,7 @@
 	 // items table : remove item button
 	 	$jQ('.remove a').click(function(e) {
 	 		e.preventDefault();
-	 		$jQ('.confirm-remove').fadeIn(300);
+	 		$jQ(this).parents('.remove').next('.confirm-remove').fadeIn(300);
 	 	});
 	 	
 	 // items table : confirm remove panel
@@ -166,10 +166,7 @@
 	 		checkCartQty();
 	 	});
 	 
-	 	
-	 
-	 
-	 
+
 
 	 // sidebar : banner dropdowns
 	 	$jQ('.cart-offer-text').click(function() {
@@ -206,37 +203,69 @@
 	 		});
 	 
 	 
+	 // save cart & too many items modal
 	 
+		$jQ('.modal-close').click(function(){
+			$jQ(this).parents('.cart-modal').fadeOut(300);
+		});
 	 
-	 	
-	 // FUNCTIONS : shopping cart
-	  
-	 	function checkCartQty() {
-	 	
-	 		var inCart = $jQ('.cart-table').children('.table-row').not('.empty-cart').length;
-	 		
-	 		if (inCart < 1) {
-	 			// show empty cart message & update header & label
-	 			$jQ('.empty-cart').show();
-	 			$jQ('#cart-header-summary').html(inCart).next().html('Items');
-	 			
-	 		} else if (inCart == 1) {
-	 			// update header-summary & label
-	 			$jQ('#cart-header-summary').html(inCart).next().html('Item');
-	 			
-	 		} else {
-	 			// update header summary & label
-				$jQ('#cart-header-summary').html(inCart).next().html('Items');
+	 	// validate save cart email 
+	 	$jQ('#save-cart-form').validate({
+	 		rules: {
+				saveCartEmail: {
+				required: true,
+				noPlaceholder: true,
+				email: true	
+				}
+			},
+			
+			messages: {
+	 			saveCartEmail: {
+	 				required: 'Please enter your email to save your cart',
+					noPlaceholder: 'Please enter a valid email',
+					email: 'Please enter a valid email'	
+	 			}
 			}
-
-		}
-
+		}); // end save cart validate
 
 
+		// dropdown panel clicks
+		$jQ('.cart-modal').find('.dropdown-link').each(function(){
+			$jQ(this).click(function(){
+				$jQ(this).next().toggle(300);
+			});
+		});
 
 
 
-// Checkout ............................................................................................
+		// save cart successful submit action
+		$jQ('#save-cart-submit').click(function(e) {
+			
+			if ($jQ('#save-cart-form').valid()) {
+				$jQ(this).parents('.modal-info-block').find('h3').html('Cart Saved!').next().html('Please check your email');
+				$jQ(this).parents('.modal-info-block').find('#save-cart-form').remove();
+			};
+			
+		}); // end save cart submit actions
+
+		
+		// back to cart  click
+		$jQ('.modal-back').click(function(){
+			$jQ(this).parents('.cart-modal').fadeOut(300);
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+// CHECKOUT ............................................................................................
 	
 	
 	
@@ -482,7 +511,6 @@
     			$jQ('#name-on-card').text( first + ' ' + last);
     		}
     	
-    	
         	// show/hide as required
         		var thisBlock = $jQ(this).parents('.checkout-step');
         	
@@ -499,9 +527,9 @@
         		scrollPgTo('#shipping-info', 20);
         	
     	}
-			
-	
-		}); // end next step click
+	}); // end next step click
+
+
 
 	
 // edit step-info after next-step validation
@@ -515,10 +543,10 @@
         		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').removeClass('hidden');
         	});
 	
-		// close this panels summary next
+		// close this panel's summary next
 			$jQ(this).parents('.step-info-summary').addClass('hidden');
 
-		// show this panels inputs & buttons
+		// show this panel's inputs & buttons
         	thisStep.find('.hide-complete').removeClass('hidden');
         	
         // last, scroll page to top of re-opened section
@@ -529,8 +557,7 @@
 	
 
 
-// validation rules & messages ( validate.js ) : full checkout sequence
-
+// validation rules & messages : full checkout sequence
 
 		$jQ('#vzn-checkout').validate({
 			rules: {
@@ -735,7 +762,7 @@
 
 
 
-// STEP 1 SPECIFICS : Residence/business form adjustment
+// CHECKOUT STEP 1 SPECIFICS : Residence/business form adjustment
 
 	$jQ('#checkout-where-to').change(function(){
 	
@@ -770,7 +797,7 @@
 
 
 
-// STEP 3 SPECIFICS in user order
+// CHECKOUT STEP 3 SPECIFICS in user order
 
 	// 1. billing-info-block :  account or card selection
 	
@@ -893,25 +920,12 @@
 		
 			// otherwise, loop through and clear fields
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		});
 
 
 
-
-
-
-
-
-
-// Sidebar : 1024+ responsive positioning
+// CHECKOUT SIDEBAR : 1024+ ONSCROLL positioning
 
 	$jQ(window).scroll(function(){
 		
@@ -957,28 +971,48 @@
 
 // FUNCTIONS ...............................................................................
 
+
+// main cart : quantity check and revise fields
+	  
+function checkCartQty() {
+	 	
+	 var inCart = $jQ('.cart-table').children('.table-row').not('.empty-cart').length;
+	 		
+	 if (inCart < 1) {
+	 // show empty cart message & update header & label
+	 	$jQ('.table-header, .proceed-block').hide();
+	 	$jQ('.empty-cart').show();
+	 	$jQ('#cart-header-summary').html(inCart).next().html('Items');	
+	 } else if (inCart == 1) {
+	 // update header-summary & label
+	 	$jQ('#cart-header-summary').html(inCart).next().html('Item');	
+	 } else {
+	 // update header summary & label
+		$jQ('#cart-header-summary').html(inCart).next().html('Items');
+	}
+} // end checkCartQty
+
+
+
+// checkout : copy text input info for summaries on 'next step' clicks
+
 function copyInputs( section, inputI, data ) {
-	
-	//alert(section); alert(inputI); alert(data);
-	//alert('yep');
+
 	$jQ('#' + section ).parents('.checkout-step').find('.summary').each(function(sumI) {
-		//alert(sumI); alert(data);
 		if (inputI == sumI ) {
-			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
 		}
 	});
 } // end copyInputs
 
 
+
+// checkout : copy select input info for summaries on 'next step' clicks
+
 function copySelects( section, inputI, data ) {
-	
-	//alert(section); alert(inputI); alert(data);
-	//alert('yep');
+
 	$jQ('#' + section ).parents('.checkout-step').find('.select-summary').each(function(sumI) {
-		//alert(sumI); alert(data);
 		if (inputI == sumI ) {
-			//alert('woot!'); alert(data);
 			$jQ(this).text(data);
 		}
 	});
@@ -986,15 +1020,17 @@ function copySelects( section, inputI, data ) {
 
 
 
+// checkout : scroll page to desired location on 'next step' clicks
+
 function scrollPgTo( where, topPad) {
-        if (topPad == undefined) {
-            topPadding = 0;
-        }
-        var moveTo = $jQ(where).offset().top - topPad;
-        $jQ('html, body').stop().animate({
-            scrollTop: moveTo
-        }, 250);
+    if (topPad == undefined) {
+        topPadding = 0;
     }
+    var moveTo = $jQ(where).offset().top - topPad;
+    $jQ('html, body').stop().animate({
+        scrollTop: moveTo
+    }, 250);
+} // end scrollPgTo
 
 
 
@@ -1014,6 +1050,9 @@ function scrollPgTo( where, topPad) {
 
 	var stndrd = document.getElementById('state-standard');
 	var sale = document.getElementById('state-sale');
+	var oos = document.getElementById('state-oos');
+	var too = document.getElementById('state-too-many');
+	
 	
 	$jQ(stndrd).click(function() {
 	
@@ -1029,7 +1068,13 @@ function scrollPgTo( where, topPad) {
 		  	// turn off sale, restore standard where req
         		$jQ('.offer').css('display', 'none');
         		$jQ('.no-offer').css('display', 'inline-block');
-       	
+        		
+        	// turn off oos
+        		$jQ('.table-row.oos').find('.cart-product-image').removeClass('oos');
+				$jQ('.table-row.oos').find('.oos-msg').hide();
+				
+			// turn off too-many-items
+       			$jQ('#too-many-modal').hide();
 	});
 	
 
@@ -1038,6 +1083,7 @@ function scrollPgTo( where, topPad) {
 		var stndrd = document.getElementById('state-standard');
 		var sale = document.getElementById('state-sale');
 		
+		
 		// change font colors for nav
 			$jQ(this).addClass('on');
 			$jQ(stndrd).removeClass('on');
@@ -1045,6 +1091,31 @@ function scrollPgTo( where, topPad) {
 		// turn on sale elements, hide standard where req
         	$jQ('.offer').css('display', 'inline-block');
         	$jQ('.no-offer').css('display', 'none');
+        	
+        
+        	
 	});
 
 
+	$jQ(oos).click(function() {
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+			
+		// toggle oos states on and off
+			$jQ('.table-row.oos').find('.cart-product-image').toggleClass('oos');
+			$jQ('.table-row.oos').find('.oos-msg').toggle();
+		
+	});
+
+
+	$jQ(too).click(function() {
+	
+		// change font colors for nav
+			$jQ(this).addClass('on');
+			$jQ(stndrd).removeClass('on');
+	
+			$jQ('#too-many-modal').toggle();
+	
+	});

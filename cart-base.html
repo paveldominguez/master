@@ -45,6 +45,18 @@
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
+  
+  	<div id="states">
+  			<ul>
+  				<li id="state-standard" class="on">standard</li>
+  				<li id="state-sale">sale</li>
+  				<li id="state-oos">out-of-stock</li>
+  				<li id="state-too-many">too many items</li>
+  			</ul>
+  		</div><!-- TEMP set of buttons to toggle states for dev -->
+  
+  
+  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
@@ -95,7 +107,17 @@
 			
 			
 			<div class="table-row empty-cart">
-				There is nothing in your cart.
+				There are no items in your cart.
+				<div class="empty-cart-continue">
+					<a href="#" title="Continue Shopping">
+						<span>Continue Shopping</span>
+					</a>
+				</div>
+				<div class="empty-cart-signin">
+					<a href="#" title="Sign-In">
+						<span>Sign In</span>
+					</a>
+				</div>
 			</div>
 			
 		<!-- PRODUCTS IN CART -->	
@@ -342,11 +364,88 @@
 
 
 <section id="save-cart-modal" class="cart-modal">
-
-	<div class="modal-info-block">Instructions</div>
-
+	<div class="modal-info-block">
+	
+		<h3 class="modal-headline">Save these items for later.</h3>
+	
+		<div class="modal-details">
+			Not ready to check out?  Just enter your email address below and we'll send you a link to quickly get back to your cart.
+		</div>
+	
+		<div class="modal-close"></div>
+		
+		<form id="save-cart-form" name="cartForm" method="GET" ><!-- action="cart.jsp" -->
+	
+			<div class="modal-input-wrap">
+				<h5 class="modal-input-title">Email</h5>
+				<input name="saveCartEmail" type="email" id="save-cart-email" placeholder="Email Address" class="hasPlaceholder" >
+			</div>
+			
+			<div class="modal-fine-print">
+				<ul>
+					<li class="save-avail">
+						<a href="#" class="dropdown-link avail">Offer Availability</a>
+						<div class="modal-dropdown">
+							<div class="dropdown-pointer"></div>
+							<p>The availability of offers saved in your shopping cart- including products, services, prices and discounts- may change at any time.</p>
+						</div>
+					</li>
+					
+					<li class="save-notify">
+						<a href="#" class="dropdown-link notify">Subscriber Notifications</a>
+						<div class="modal-dropdown">
+							<div class="dropdown-pointer"></div>
+							<p>You'll get exclusive online offers, promotions, and the latest info on our products and services.  You can unsubscribe at anytime.</p>
+						</div>
+					</li>
+					
+					<li class="save-privacy">
+						<a href="#" class="privacy-link" title="Read Our Privacy Policy">Privacy Policy</a>
+					</li>
+			
+				</ul>
+			</div>
+			
+			
+			<div class="modal-cta">
+				<input type="submit" value="Save Cart" id="save-cart-submit" name="saveCart">
+			</div>
+		</form>
+	
+	</div><!-- end block -->
 </section>
 
+<section id="too-many-modal" class="cart-modal">
+	<div class="modal-info-block">
+	
+		<h3 class="modal-headline">Sorry, our cart only holds 15 items.</h3>
+	
+		<div class="modal-details">
+			We love your business and hope you'll add this item after you check out (or remove other items) in your current cart.
+		</div>
+		
+		<div class="modal-fine-print">
+			<h5 class="headline">Questions?</h5>	
+			<div class="call">
+				<span>Call:</span>
+				<a href="#" title="Call Verizon Customer Service" class="modal-call-link">1-800-555-6789</a>
+			</div>
+			<div class="chat">
+				<a href="#" title="Chat with Verizon Customer Service" class="modal-chat-link">Chat</a>
+			</div>	
+		
+		</div>
+	
+		<div class="modal-close"></div>
+		
+		<div class="modal-cta">
+			<div class="button modal-back">
+				<span>back to cart</span>
+			</div>
+		</div>
+	
+	</div><!-- end block -->
+</section>
 
 
 
