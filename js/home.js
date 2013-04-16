@@ -1,19 +1,16 @@
 MLS.home = {
 
-	init: function() {
+	init: function () {
 
 		//Flex Slider hero
 		$jQ('#home-hero-slider').flexslider({
-			animation: "fade",
+			animation: 'fade',
 			controlNav: true,
 			animationLoop: true,
 			slideshow: true,
 			directionNav: true
 
 		});
-
-		//init vzSliders
-		MLS.ui.vzSlider.init();
 
 		//Madlib
 		MLS.home.madlib.init();
@@ -24,27 +21,29 @@ MLS.home = {
 		//Featured Reviews
 		MLS.home.featuredReviews();
 
+        MLS.ui.vzSlider.init();
+
 		//Trending Products tabs
-		$jQ('dd','#detail-tabs').on('click',function(e){
+        $jQ('dd', '#detail-tabs').on('click', function (e) {
 			e.preventDefault();
 			var tab = $jQ(this).find('a').attr('href');
-			$jQ('dd','#detail-tabs').removeClass('active');
+			$jQ('dd', '#detail-tabs').removeClass('active');
 			$jQ(this).addClass('active');
-			$jQ('.tabs-content > li','.trending-products').removeClass('active');
-			$jQ('.tabs-content '+ tab,'.trending-products').addClass('active');
+			$jQ('.tabs-content > li', '.trending-products').removeClass('active');
+			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
 		});
 
 	},
-	featuredReviews: function(){
+	featuredReviews: function () {
 		//select random color for each item entry
-		var colorArray = ['green','yellow','blue','red','purple','charcoal'];
-		$jQ('.featured-review .product-img').each(function(){
-			var color = Math.floor((Math.random()*colorArray.length)+1);
+		var colorArray = ['green', 'yellow', 'blue', 'red', 'purple', 'charcoal'];
+		$jQ('.featured-review .product-img').each(function () {
+			var color = Math.floor((Math.random() * colorArray.length) + 1);
 			$jQ(this).addClass(colorArray[color]);
 		});
 	},
-	sliders:{
-		init:function(){
+	sliders: {
+		init: function () {
             $jQ('.trending-categories .fslider').flexslider({
                 animation: 'slide',
                 controlsContainer: 'section.trending-categories .slide-nav',
@@ -103,6 +102,13 @@ MLS.home = {
                     }
 				}
 			});
+
+            $jQ('#madlib-select').customSelectMenu({
+                menuClass: 'madlib-select',
+                openedClass: 'open',
+                selectedClass: 'active',
+                selectionMadeClass: 'selected'
+            });
 		}
 	}
 };

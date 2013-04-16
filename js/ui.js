@@ -119,7 +119,7 @@ MLS.ui = {
 			}
 		});
 
-		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function() {
+		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function () {
 			if ($jQ(this).hasClass(activeClass)) {
 				$jQ(this).add('.tab').removeClass(activeClass);
 			}
@@ -130,15 +130,15 @@ MLS.ui = {
 	 * @container: (string) containing element
 	 * @data: (string) html data
 	 */
-	updateContent: function(container, data) {
+	updateContent: function (container, data) {
 		$jQ(container).html(data);
 	},
 	vzSlider: {
-		init: function() {
-			console.log("init");
+		init: function () {
+			console.log('init');
 			_self = this;
 			//Search for slide
-			$jQ('.vzn-slide').each(function() {
+			$jQ('.vzn-slide').each(function () {
 				element = $jQ(this);
 				instance = $jQ(this).attr('id');
 				increment = $jQ(this).find('li:first').width();
@@ -213,7 +213,7 @@ MLS.ui = {
 
 			// ... and use it to set proper width for slide container
 			var listIncr = 0;
-			if (type == 'fancy' || type == 'lifestyles') {
+			if (type === 'fancy' || type == 'lifestyles') {
 				listIncr = baseIncr / 2;
 
 				// add logic for end of list if last element is large product/story !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -277,6 +277,7 @@ MLS.ui = {
 				_self.slideButtons(this, endMod);
 
 				$jQ('.tabs dd a').click(function() {
+                    alert();
 					_self.slideTab(this);
 				});
 
