@@ -33,7 +33,9 @@ Please run through the following instructions, in order:
   - https://bitbucket.org/wdavidow/sapient-vzw-mobile-lifestyle-store
 
 2. Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
+
   - gem install sassy-math modular-scale compass
+  
   - gem install zurb-foundation --version "3.22" *make sure you install the way noted; running gem install zurb-foundation without the version will install zurb foundation 4.x which will not work with our project.
 
 3. Install NodeJS from here: http://nodejs.org/download/
