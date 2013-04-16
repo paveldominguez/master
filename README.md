@@ -5,10 +5,11 @@ Dev Setup
 
 We'll be using grunt to build and serve the project. Using grunt will allow us all to have the same dev environment across the board. 
 
-Here are the requirements:
+Here are the project requirements:
 
+* Git
 * Node.js (v0.8.22)
-* Ruby
+* Ruby (already installed if you're a mac user; Window users download ruby here: http://rubyinstaller.org/)
 * Grunt
 * Sass
 * Compass
@@ -16,33 +17,42 @@ Here are the requirements:
 * modular-scale
 * zurb-foundation (3.22)
 
-Windows Users:
+# Windows Users:
+  - When installing Ruby: ** Make sure that the "Add Ruby executables to your PATH" option is checked.
 
-- Install Ruby (if you don't already have it installed): http://rubyinstaller.org/
-** Make sure that the "Add Ruby executables to your PATH" option is checked. **
+# Mac Users: 
+  - As a security measure it's a good idea to change ownership on your /usr/local directory to your account. This way you can execute the scripts there without having to use the 'sudo' command. To update the permissions for this, open a terminal/command prompt window and enter: 
 
-All Users:
+  *sudo chown -R $USER /usr/local*
 
-If you're using Windows, the following steps assume that you have installed Ruby and RubyGems successfully. 
+# All Users:
 
-- For mac users: as a security measure it's a good idea to change ownership on your /usr/local directory to your account. This way you can execute the scripts there without having to use the 'sudo' command. 
+Please run through the following instructions, in order:
 
-To do this issue the following command in a command prompt window: sudo chown -R $USER /usr/local
+1. Check out the MLS codebase from the git repository: 
+  - https://bitbucket.org/wdavidow/sapient-vzw-mobile-lifestyle-store
 
-Please do the following, in order:
+2. Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
+  - gem install sassy-math modular-scale compass
+  - gem install zurb-foundation --version "3.22" *make sure you install the way noted; running gem install zurb-foundation without the version will install zurb foundation 4.x which will not work with our project.
 
-- Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
+3. Install NodeJS from here: http://nodejs.org/download/
 
-**gem install sassy-math modular-scale compass zurb-foundation**
+4. Verify that NodeJS is isntalled by opening a terminal window and type: 
+  - node –v 
+Also verify Node Package Manager by typing the following: 
+  - npm –v
+Both of these commands should return some sort of version string.
 
-- Install NodeJS from here: http://nodejs.org/download/
+5. In a command prompt window, install grunt by typing: 
+  - npm install –g grunt
 
-- After node is installed verify by opening up a command prompt window and type the following (without quotes, lowercase v): "node –v"  and also verify Node Package Manager by typing the following (without quotes, lowercase v): "npm –v" Both of these commands should return some sort of version string (not an error).
+6. Once grunt, and any dependencies, finish installing, install grunt-cli by typing: 
+  - npm install –g grunt-cli
 
-- Once you've verified that both node and npm are installed, please install grunt by opening a command prompt window and typing (without quotes): "npm install –g grunt" 
+7. In the command prompt window, change directory to the folder where you've checked out the MLS codebase and type: 
+  - npm install
+This command will install any project-related dependencies and create the node server module to run grunt/node's internal web server in your browser.
 
-- Once grunt, and any dependencies, finish installing, install grunt-cli (command line interface) by typing (without quotes): "npm install –g grunt-cli" 
-
-- Once grunt-cli is installed, please change directory to the project root and issue the following command (without quotes): "npm install" - this command will install any project-related dependencies and create the node server module to run grunt/node's internal web server.
-
-- After npm install completes, the final command to issue is (without quotes) "grunt server"
+8. After npm install completes, the final command to issue is: 
+  - grunt server
