@@ -18,22 +18,19 @@
 		$techinfoBg : #119a70;
 		$cartGreySelect: #adadad;
 		
-		@mixin checkoutContent {
-			color: $cartGreyMd;
-			font-family: $fontArial;
-			font-size: 12px;
-			line-height:15px;
-			font-weight: normal;
-			text-transform: none;
-			}
-		@mixin checkoutLabel {
-			color: $cartGreyDk;
-			font-family: $fontArial;
-			font-size: 10px;
-			line-height: 10px;
-			font-weight: bold;
-			text-transform: uppercase;
-			}
+		
+			
+		@mixin cartEditPanel {
+			@include cartRounded;
+			@include boxBrdrA;
+			background: #fff;
+			-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+            -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+            box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+			position: absolute;
+			z-index:10; top:-120px; 
+			padding:20px; 
+			}	
 
 	/* new colors, mixins, etc */
  		$cartGreyAltWht: #edefef;
@@ -114,17 +111,7 @@
             padding: 0 9px 0 9px; 
 			}
 		
-		@mixin cartEditPanel {
-			@include cartRounded;
-			@include boxBrdrA;
-			background: #fff;
-			-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
-            -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
-            box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
-			position: absolute;
-			z-index:10; top:-120px; 
-			padding:20px; 
-			}	
+			
 
 		@mixin greyCartButton {
 			@include cartRounded;
@@ -139,18 +126,13 @@
             box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 2px 1px rgba(0, 0, 0, 0.15);
 			}
 
-		@mixin cartLabel {
-				display: inline-block;
-				font-size:13px;
-				line-height:13px;
-				text-transform: uppercase;
-				color:$cartGreyMd;
-				font-family: $fontVzwBold;
-				padding-left:25px;
-				font-weight: normal;
-				margin: 0 0 10px 0;
-				}
-	
+
+		
+		
+		
+		
+		
+		
 /* Shopping Cart Styles */
   
 #shopping-cart {
@@ -295,6 +277,8 @@
 							}
 						 
 						}
+						
+					.cart-product-image.oos { opacity: 0.3; }
 					
 					.cart-product-info {
 						height:157px;
@@ -423,7 +407,13 @@
 								bottom: -20px; right: 10px;
 								}
 						
-						
+							.oos-msg {
+								display: none;
+								@include checkoutLabel;
+								color: $colorVzwRed;
+								position: absolute;
+								bottom: -30px; left: 0px;
+								}
 						
 							} /* end detail box */
 						
@@ -519,13 +509,40 @@
 				
 			.table-row.empty-cart { 
 				display:none;
-				height: 157px;
-				padding: 90px 0 0 20px;
-				font-size: 30px;
-				color: $cartGreyLt;
+				height: 159px;
+				padding: 66px 0 0 20px;
+				font-size: 24px;
+				line-height: 24px;
+				color: $cartGreyMd;
 				font-family: $fontVzwBoldItalic;
 				font-weight: normal; 
 				letter-spacing: -1px;
+				position: relative;
+				
+				div {
+					@include cartButtonUp;
+					width: 22.5%;
+					height: 45px;
+					position: absolute;
+					top: 50%; margin-top: -26px;
+					
+					a { 
+						display: block;
+						width: 100%;
+						height: 100%;
+						font-size: 16px;
+						line-height: 54px;
+						font-family: $fontArial;
+						color: $cartGreyDk;
+						font-weight: bold;
+						}
+					} /* end common button styles */
+					
+				.empty-cart-continue {left: 50%; }
+				
+				.empty-cart-signin { left: 75%; }
+					
+					
 				}
 				
 			.table-row:odd { background: $cartGreyAltWht; }
@@ -569,7 +586,7 @@
 
 					.cart-dropdown-panel {
 						display: none;
-						@include cartEditPanel;
+						@include dropdownPanel;
 						position: absolute;
 						padding: 15px;
 						width: 180px;
@@ -701,9 +718,11 @@
 				
 						li {
 							@include clearfix();
-							display: block;
+							display: inline-block;
 							width: 100%;
 							margin: 0 0 15px 0;
+							line-height:14px;
+							height: 14px;
 							
 							.label {
 								@include checkoutLabel;
@@ -721,6 +740,8 @@
 								text-align:right; 
 								color: $cartGreyDk;
 								font-size: 12px; 
+								
+								.offer { color: $colorVzwRed; }
 								}
 							}
 							
@@ -900,13 +921,219 @@
 		}
 
 	.modal-info-block { 
-		width: 500px; height: 300px;
+		@include cartRounded;
+		width: 560px; height: 400px;
 		background:#fff;
 		position: absolute;
 		top: 10%; left: 50%;
 		margin-left: -250px;
-		padding: 72px;
-		}	
+		padding: 30px 45px 45px 45px;
+		
+		.modal-headline { 
+			width: 80%;
+			padding: 0; margin: 0 0 25px 0;
+			font-family: $fontVzwBook;
+			font-size: 30px;
+			font-weight: normal;
+			color: $cartGreyDk;
+			letter-spacing: -1px;
+			}
+	
+		.modal-details {
+			padding: 0; margin: 0 0 20px 0;
+			@include checkoutContent; 
+			font-size:14px; line-height: 18px;
+			}
+		
+		.modal-close {
+			position: absolute;
+			top: 20px; right: 20px;
+			width: 52px; height: 52px;
+			border-radius: 26px;
+			background: #333 url(../img/sprites/cart/modal-close-icon.png) 16px 16px no-repeat;
+			cursor: pointer;
+			}
+		
+		.modal-input-wrap {
+			margin: 0 0 15px 0;
+		
+			.modal-input-title { 
+				@include checkoutLabel;
+				margin: 0 0 10px 0; 
+				}
+				
+			input[type="email"] { 
+				color: $cartGreyDk;
+				font-family: $fontVzwBook;
+				font-weight: normal;
+				background: #fff;
+				margin: 3px 0 5px 0; 
+				padding: 8px;
+				font-size:18px;
+				height: 36px;
+				@include cartRounded;
+				}
+				
+			input[type="email"].hasPlaceholder { 
+				color: #bbb;
+				font-family: $fontVzwLight;
+				font-weight: normal; 
+				}
+			
+			input[type="email"]:focus {
+				color: $cartGreyDk;
+				font-family: $fontVzwBook;
+				font-weight: normal; 
+				}
+				
+			label.error { 
+				@include checkoutLabel;	
+				color: $colorVzwRed;
+				}
+				
+			} /* end input wrap */
+		
+		.modal-fine-print  {
+			@include clearfix();
+			width: 100%;
+		
+			.headline {
+				display:block; width: 100%;
+				@include instruct;
+				margin:0 0 15px 0; padding: 0;
+				}
+				
+			.call, .chat { 
+				display: inline-block;
+				width: auto;
+				float: left;
+				padding: 0; margin: 0;
+				line-height: 24px;
+				
+				a {
+					@include checkoutLabel;
+					color: $actLinkBlue;
+					font-size: 12px;
+					}
+				}
+				
+			.call { 
+				@include boxBrdrR; 
+				background: url(../img/sprites/cart/call-icon.png) 0px 3px no-repeat; 
+				padding: 0 10px 0 20px;
+				
+				span { @include checkoutLabel; }
+				}
+			
+			.chat { 
+				background: url(../img/sprites/cart/chat-icon.png) 3px 0px no-repeat;
+				padding: 0 0 0 33px;
+				}	
+			
+		
+			ul {
+				@include clearfix();
+				
+				li {
+					display: inline-block;
+					float: left;
+					position: relative; 
+					padding: 0 10px 0 10px;
+					@include boxBrdrR;
+					line-height: 16px;
+					
+					a {
+						@include actionLink;
+						display: inline-block;
+						text-transform: uppercase;
+						font-size:10px;
+						}
+						
+					.dropdown-link { padding-right: 15px; }
+						
+					.modal-dropdown {
+						@include dropdownPanel;
+						width: 200px;
+						padding: 10px;
+						display: none;
+						
+						.dropdown-pointer {
+							width: 24px;
+							height: 24px;
+							@include cart-sprite(req-pointer-bg);
+							position: absolute; 
+							top: -24px;
+							left: 50%;
+							margin-left: -12px;
+							z-index: 5;
+							}
+							
+						p {
+							@include checkoutContent;
+							font-size: 10px;
+							line-height: 13px;
+							margin:0;
+							color: $cartGreyDk;
+							}
+							
+						}/* end modal dropdown */
+					}/* end common li */
+					
+				.save-avail { 
+					background: url(../img/sprites/pdp/blue-more.png) 114px 8px no-repeat;	
+						
+					.modal-dropdown { top: 32px; left : 18px; }
+					}
+					
+				.save-notify { 
+					background: url(../img/sprites/pdp/blue-more.png) 163px 8px no-repeat;	
+						
+					.modal-dropdown { top: 32px; left: 67px; }
+					}
+						
+				li:first-child { padding-left: 0px; }
+				li:last-child { border-right: 0px; }
+					
+				}/* end ul */
+			}/* end fine print */
+	
+		.modal-cta {
+			@include ctaButton;
+			width: 150px;
+			height: 55px;
+			position: absolute;
+			right: 20px; bottom:20px;
+			
+			.button {
+				display: block;
+				width: 100%;
+				height: 100%;
+			
+				span { 
+					display: inline-block;
+					width: 100%;
+					height: 100%;
+					color: #fff;
+					font-size: 18px;
+					line-height: 50px;
+					text-transform: lowercase;
+					font-family: $fontVzwMedium;
+					padding-left: 10px;
+				
+					input[type="submit"] { 
+						-webkit-appearance: none;
+						display: block;
+						width: 110%;
+						height: 100%;
+						position: relative;
+						top: -48px; left: -10px; 
+						opacity: 0;
+						cursor: pointer;
+						}
+					}
+				}
+			}/* end cta */
+		}/* end modal block */	
 		
 		
 		
