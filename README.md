@@ -29,32 +29,36 @@ Here are the project requirements:
 
 Please run through the following instructions, in order:
 
-1. Check out the MLS codebase from the git repository: 
+- Check out the MLS codebase from the git repository: 
   - https://bitbucket.org/wdavidow/sapient-vzw-mobile-lifestyle-store
 
-2. Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
+- Install the following (Ruby) Gems: compass, sassy-math, modular-scale and zurb-foundation. Use the following command to perform the gem installation: 
 
-  gem install sassy-math modular-scale compass
+  - gem install sassy-math modular-scale compass
 
-  gem install zurb-foundation --version "3.22" *make sure you install the way noted; running gem install zurb-foundation without the version will install zurb foundation 4.x which will not work with our project.
+  - gem install zurb-foundation --version "3.22" *make sure you install the way noted; running gem install zurb-foundation without the version will install zurb foundation 4.x which will not work with our project.
 
-3. Install NodeJS from here: http://nodejs.org/download/
+- Install NodeJS from here: http://nodejs.org/download/
 
-4. Verify that NodeJS is isntalled by opening a terminal window and type: 
+- Verify that NodeJS is isntalled by opening a terminal window and type: 
+  
   - node –v 
-Also verify Node Package Manager by typing the following: 
+  
+  Also verify Node Package Manager by typing the following: 
+  
   - npm –v
-Both of these commands should return some sort of version string.
+  
+  Both of these commands should return some sort of version string.
 
-5. In a command prompt window, install grunt by typing: 
+- In a command prompt window, install grunt by typing: 
   - npm install –g grunt
 
-6. Once grunt, and any dependencies, finish installing, install grunt-cli by typing: 
+- Once grunt, and any dependencies, finish installing, install grunt-cli by typing: 
   - npm install –g grunt-cli
 
-7. In the command prompt window, change directory to the folder where you've checked out the MLS codebase and type: 
+- In the command prompt window, change directory to the folder where you've checked out the MLS codebase and type: 
   - npm install
-This command will install any project-related dependencies and create the node server module to run grunt/node's internal web server in your browser.
+  This command will install any project-related dependencies and create the node server module to run grunt/node's internal web server in your browser.
 
-8. After npm install completes, the final command to issue is: 
+- After npm install completes, the final command to issue is: 
   - grunt server
