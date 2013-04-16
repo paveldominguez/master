@@ -177,7 +177,7 @@
 	
 
 	/* Temp Classes ............................. TEMP .................................. */
-		
+		.minicart-item { display: none; }
 		.temp-cart-header { /* ............. TEMP page header........ */
 			width:100%;
 			height:155px; overflow:hidden;
@@ -586,8 +586,37 @@
 						background: #e5eaea;
 			
 						/* universal minicart styles in cart.scss */
-
-        				} /* end checkout-minicart */	
+						
+						#minicart-box {
+							.empty-mini { display: none; }
+				
+							#minicart-banner-box,
+							#minicart-cart,
+							.minicart-summary { display: block; }
+							}
+						
+						
+						
+						
+							
+        				} /* end checkout-minicart */
+        				
+        			#checkout-minicart.empty {
+        				width: 33.333%;
+        				max-width: 428px;
+        			
+        				#minicart-box {
+							.empty-mini { display: block; }
+			
+							#minicart-banner-box,
+							#minicart-cart,
+							.minicart-summary { display: none; }
+			
+							}
+        			
+        				}
+        				
+        					
         			}/* end minicart block */		
 			} /* end nav overlay */
 		

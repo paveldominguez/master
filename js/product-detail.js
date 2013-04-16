@@ -1033,7 +1033,7 @@ function singleMoreLess(element) { //................. install single moreLess .
         // make the change
         $jQ(parent).css('height', parentHt ).removeClass('less').find('.see-all').removeClass('on');
         $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
-        event.preventDefault();
+        //event.preventDefault();
 
 
     } // end singleShowLess

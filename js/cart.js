@@ -6,6 +6,23 @@
 // Minicart ............................................................................................
 
 
+// TEMP demo only 
+$jQ('.minicart-demo-1 .minicart-item').each(function(){
+	if ($jQ(this).hasClass('one')) {
+	} else {
+	$jQ(this).remove();
+	}
+});
+
+$jQ('.minicart-demo-empty .minicart-item').each(function(){
+	$jQ(this).remove();
+});
+// end TEMP demo only
+
+	
+	//ONLOAD : minicart layout
+		minicartLayout();
+
 	// move to Nav Overlay on Checkout Page Only
 	$jQ('#checkout-minicart').each(function() {
 		
@@ -18,27 +35,15 @@
 			$jQ(this).html(minicartContents);
 	});
 
-
 	// show checkout minicart on hover
 	
 		$jQ('#checkout-minicart-tab, #checkout-minicart').hover(
-	
+			
 			function(){ 
 				$jQ('#checkout-minicart-tab').addClass('hover');
 				$jQ('#checkout-minicart').show();
-				
-				var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
-				var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
-		
-				if (cartCt >= bannerCt ){
-				
-					setTimeout(function(){
-						var cartHt = $jQ('#minicart-cart').height();
-						
-						cartHt = parseInt(cartHt, 10) + 90;
-						$jQ('#minicart-cart').css('height', cartHt + 'px');
-					}, 200);
-				}
+				minicartLayout();
+			
 			},
 	
 			function(){
@@ -47,34 +52,59 @@
 			}
 		);
 	
-
-
-	// initial click : extend minicart box height if required
-	$jQ('#nav-cart').one('mouseenter', function() {
+	// minicart click actions
+	
+		$jQ('.minicart-banner.ship').find('.minicart-cta').click(function(){
 		
-	
-	 	var bannerCt = $jQ('#minicart-banner-box').find('.minicart-banner').length;
-		var cartCt = $jQ('#minicart-cart').find('.minicart-item').length;
+			$jQ('#minicart-shipping-modal').show();
 		
-		if (cartCt >= bannerCt ){
-			setTimeout(function(){
-				var cartHt = $jQ('#minicart-cart').height();
-				cartHt = parseInt(cartHt, 10) + 90;
-				$jQ('#minicart-cart').css('height', cartHt + 'px');
-			}, 200);
-		}	
-	});
+		});
 	
 	
+	
+		$jQ('#minicart-box .remove').find('a').each(function(){
+			minicartEdit(this);  
+		});
+	
+	
+		$jQ('.next-items-link').click(function(e){			
+			e.preventDefault();
+			var type = "next";
+			minicartScroll(type);
+		});
+		
+		
+		$jQ('.prev-items-link').click(function(e){			
+			e.preventDefault();
+			var type = "prev";
+			minicartScroll(type);
+		});
 	
 
-	// button actions
-	
-	$jQ('.remove').find('a').each(function(){
-		minicartEdit(this);  
-	});
-	
-	
+
+
+// MINICART FUNCTIONS ......................................
+
+// check minicart contents for display variations
+	function minicartLayout(){
+		var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
+
+		if (inMini < 1) { // layout empty cart
+	 		$jQ('#nav-tab4, #checkout-minicart').addClass('empty');					 
+		} else if (inMini > 0 && inMini < 4 ) {
+			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
+			$jQ('.minicart-next').css('display', 'none');										
+		} else if (inMini > 3) {
+			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
+			$jQ('.minicart-next').addClass('on');			
+		}
+	}
+// end minicartLayout
+
+
+
+
+// minicart edit sequence
 	function minicartEdit(removeBtn){
 	
 		$jQ(removeBtn).click(function(e){ // first 'remove' click
@@ -102,13 +132,109 @@
 				$jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
 				$jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
 			
-				minicartEdit(removeBtn);
-				
+				minicartEdit(removeBtn);	
 			});
-	
 		});
+	} // end minicartEdit 
+
+
+
+
+
+function minicartScroll(type) {
+
+	if (type == "next") {
+
+	// calculate current max scroll up
+		var inMini = $jQ('#minicart-item-list').find('.minicart-item').length;
+		var maxScrollTimes = inMini / 3;
+		var maxScrollInt = parseInt(maxScrollTimes, 10);
+		var maxScrollPos = maxScrollInt * -247;
+				
+	// get current position
+		var curPos = $jQ('.minicart-item.one').attr('data-pos');
+				
+	//calculate new offset before actually moving 
+		var newPos = curPos - 247;
+				
+	// check position, move and adjust options as required
+		if (newPos > maxScrollPos) { // beginning/middle
+			
+			// move up
+				$jQ('.minicart-item').each(function(){
+					miniScrollUp(this, newPos);
+				});
+			//turn on prev
+				$jQ('.prev-items-link').addClass('on');
+			//turn on next if needed
+				$jQ('.next-items-link').removeClass('off');
+					
+		} else if (newPos == maxScrollPos) { // end
+					
+			// move up
+				$jQ('.minicart-item').each(function(){
+					miniScrollUp(this, newPos);
+				});
+			//turn off next
+				$jQ('.next-items-link').addClass('off');
+						
+		}
+
+	} else {
+
+	// get current position
+		var curPos = $jQ('.minicart-item.one').attr('data-pos');
+		var curPosParse = parseInt(curPos, 10);
+		
+	//calculate new offset before actually moving 
+		var newPos = curPosParse + 247;
+		
+	// check position, move and adjust options as required
+		if (newPos == 0) {
+			//move down
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+			//turn off prev
+			$jQ('.prev-items-link').removeClass('on');
+			//turn on next
+				$jQ('.next-items-link').removeClass('off');
 	
-	}// end define minicartEdit 
+		} else {
+		
+			//move down
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+			//turn on next
+			$jQ('.next-items-link').removeClass('off');
+		
+		}
+
+	}
+
+} // end minicart scroll 
+
+
+
+
+
+
+
+
+function miniScrollUp(element, position) {
+	$jQ(element).css({
+        '-webkit-transform': 'translate3d(0,' + position +'px,  0)',
+  		'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
+  		'-ms-transform' : 'translate3d(0,' + position +'px,  0)',
+ 		'-o-transform' : 'translate3d(0,' + position +'px,  0)',
+  		'transform' : 'translate3d(0,' + position +'px,  0)'
+  	}); // end css
+  	$jQ(element).attr('data-pos', position);
+} // end scrollUp function
+
+
+
 
 // End Minicart
 
@@ -205,8 +331,8 @@
 	 
 	 // save cart & too many items modal
 	 
-		$jQ('.modal-close').click(function(){
-			$jQ(this).parents('.cart-modal').fadeOut(300);
+		$jQ('.lightbox-close').click(function(){
+			$jQ(this).parents('.lightbox').fadeOut(300);
 		});
 	 
 	 	// validate save cart email 
@@ -230,7 +356,7 @@
 
 
 		// dropdown panel clicks
-		$jQ('.cart-modal').find('.dropdown-link').each(function(){
+		$jQ('.lightbox').find('.dropdown-link').each(function(){
 			$jQ(this).click(function(){
 				$jQ(this).next().toggle(300);
 			});
@@ -250,18 +376,10 @@
 
 		
 		// back to cart  click
-		$jQ('.modal-back').click(function(){
-			$jQ(this).parents('.cart-modal').fadeOut(300);
+		$jQ('.lightbox-back').click(function(){
+			$jQ(this).parents('.lightbox').fadeOut(300);
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 		
 
 
@@ -1052,7 +1170,9 @@ function scrollPgTo( where, topPad) {
 	var sale = document.getElementById('state-sale');
 	var oos = document.getElementById('state-oos');
 	var too = document.getElementById('state-too-many');
-	
+	var miniEmpty = document.getElementById('state-mini-empty');
+	var mini1Item = document.getElementById('state-mini-1');
+	var mini7Item = document.getElementById('state-mini-7');
 	
 	$jQ(stndrd).click(function() {
 	
@@ -1085,12 +1205,14 @@ function scrollPgTo( where, topPad) {
 		
 		
 		// change font colors for nav
-			$jQ(this).addClass('on');
+			$jQ(this).toggleClass('on');
 			$jQ(stndrd).removeClass('on');
 	
 		// turn on sale elements, hide standard where req
         	$jQ('.offer').css('display', 'inline-block');
         	$jQ('.no-offer').css('display', 'none');
+        	
+        	$jQ('.offer-toggle').toggle();
         	
         
         	
@@ -1119,3 +1241,53 @@ function scrollPgTo( where, topPad) {
 			$jQ('#too-many-modal').toggle();
 	
 	});
+	
+	
+	
+	
+	$jQ(miniEmpty).click(function() {
+		var mini1Item = document.getElementById('state-mini-1');
+		var mini7Item = document.getElementById('state-mini-7');
+		// change font colors for nav
+		$jQ(this).addClass('on');
+		$jQ(mini1Item).removeClass('on');
+		$jQ(mini7Item).removeClass('on');
+		//hide items
+		$jQ('.minicart-item').removeClass('on');
+		//check items and re-layout
+		minicartLayout();		
+	});
+	
+	
+	
+	$jQ(mini1Item).click(function() {
+		var miniEmpty = document.getElementById('state-mini-empty');
+		var mini7Item = document.getElementById('state-mini-7');
+		// change font colors for nav
+		$jQ(this).addClass('on');
+		$jQ(miniEmpty).removeClass('on');
+		$jQ(mini7Item).removeClass('on');
+		//show/hide inc fragment
+		$jQ('#single-item-inc .minicart-item').addClass('on');
+		$jQ('#multi-item-inc .minicart-item').removeClass('on');
+		//check items and re-layout	
+		minicartLayout();	
+	});
+		
+
+
+	$jQ(mini7Item).click(function() {
+		var miniEmpty = document.getElementById('state-mini-empty');
+		var mini1Item = document.getElementById('state-mini-1');
+		// change font colors for nav
+		$jQ(this).addClass('on');
+		$jQ(miniEmpty).removeClass('on');
+		$jQ(mini1Item).removeClass('on');
+		//show/hide inc fragment
+		$jQ('#single-item-inc .minicart-item').removeClass('on');
+		$jQ('#multi-item-inc .minicart-item').addClass('on');
+		//check items and re-layout	
+		minicartLayout();	
+	});
+
+
