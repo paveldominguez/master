@@ -595,7 +595,7 @@
 				@include cartBG;
 				@include boxBrdrT;
 
-				.compat {
+				.cart-compat-block {
 					@include cartBox;
 					@include cartBoxHalf;
 					position:relative; top:5px;
@@ -1650,17 +1650,10 @@
 				.beta,
 				.gamma {
 					width:100%;
-					padding-top: 50px;
 					height: 180px; }
 
-				.alpha { background: url(../img/product-detail-page/pdp-backgrounds/lifestyle-icon-alpha.png) no-repeat; }
-				.beta { background: url(../img/product-detail-page/pdp-backgrounds/lifestyle-icon-beta.png) no-repeat; }
-				.gamma { background: url(../img/product-detail-page/pdp-backgrounds/lifestyle-icon-gamma.png) no-repeat; }
-
-
-
-
-
+				.lifestyle-icon { width: 45px; height: auto; display: block; }
+				
 				}/* end lifestyle third li */
 
 			.third:last-child {

@@ -226,17 +226,6 @@ h1,h2,h3,h4,h5,h6 {
 						width: 200px;
 						padding: 10px;
 						display: none;
-						
-						.dropdown-pointer {
-							width: 24px;
-							height: 24px;
-							@include cart-sprite(req-pointer-bg);
-							position: absolute; 
-							top: -24px;
-							left: 50%;
-							margin-left: -12px;
-							z-index: 5;
-							}
 							
 						p {
 							@include checkoutContent;
@@ -278,9 +267,27 @@ h1,h2,h3,h4,h5,h6 {
 		}/* end lightbox */	
 
 
-.selector { @include greyCartSelector; }
+.selector { @include greyCartSelector; } /* uniform select-option styles*/
 
-
+.checker { /* uniform checkbox styles */
+	width:20px;
+	height:20px;
+	float: left;
+	-webkit-border-radius: 2px;
+	border: 1px solid #aaa;
+					
+	span { 
+		input[type="checkbox"] { 
+			width:20px; 
+			height: 20px; 
+			opacity: 0;
+			}
+		} /* span */
+							
+	span.checked {
+		background: url(../img/sprites/cart/checkout-checkbox-checked.png) 3px 0px no-repeat;
+		}
+	}/* end checker */
 
 
 

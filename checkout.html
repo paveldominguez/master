@@ -19,15 +19,10 @@
   <!-- Set the viewport width to device width for mobile AND set initial scale AND prevent zoom -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-
-
-
-
   <title>Checkout | Verizon MLS</title>
 
   <!-- Included CSS Files (Uncompressed) -->
   <link rel="stylesheet" href="css/flexslider.css" type="text/css">
-  <link rel="stylesheet" href="css/uniform.vzn.css" type="text/css">
 
   <!-- Included CSS Files (Compressed) -->
   <!-- <link rel="stylesheet" href="css/app.css"> -->
@@ -41,6 +36,7 @@
   <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
 
 </head>
+
 <body id="checkout-page">
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
@@ -65,36 +61,6 @@
 <!-- End Header and Nav -->
 
 <!-- Main Grid Section -->
-<section id="checkout-nav-overlay" >
-	<div class="section-wrap">
-		<div class="title">
-			<h2 class="nav-title">Gadgets & Gear</h2>
-		</div>
-		
-		<div class="checkout-links">
-			<ul>
-				<li class="help">
-					<a href="#" class="help-link" title="Need Help?">Need Help?</a>
-				</li>
-				
-				<li class="chat">
-					<a href="#" class="nav-contact-link">Chat</a>
-				</li>
-				
-				<li class="call">
-					<a href="#" class="nav-contact-link">Call</a>
-				</li>
-			</ul>
-		</div><!-- end checkout links -->
-		
-		<div class="checkout-minicart-block">
-				<div id="checkout-minicart-tab">
-				</div>
-			<div id="checkout-minicart">
-		
-	</div><!-- end section wrap -->
-</section>
-
 
 <section id="checkout-header">
 	<div class="section-wrap">
@@ -119,14 +85,14 @@
 				<form id="my-Verizon-login" method="post">
 					
 					<div class="form-input-wrap">
-						<h5 class="form-item-title">User ID or Phone Number</h5>
-						<input name="myVerizonID" type="text" class="checkout-text-input" placeholder="User ID or Phone Number">
+						<label class="form-item-title" for="vzw-user" accesskey="U" >User ID or Phone Number</label>
+						<input name="myVerizonID" type="text" id="vzw-user" class="checkout-text-input" placeholder="User ID or Phone Number" tabindex="1">
 						<a href="#" class="forgot">Forgot your User ID?</a>
 					</div>
 					
 					<div class="form-input-wrap">
-						<h5 class="form-item-title">Password</h5>
-						<input name="myVerizonPassword" type="password" class="checkout-text-input hasPlaceholder" placeholder="Password">
+						<label class="form-item-title" for="vzw-pass" accesskey="P">Password</label>
+						<input name="myVerizonPassword" type="password" id="vzw-pass" class="checkout-text-input hasPlaceholder" placeholder="Password" tabindex="3">
 						<a href="#" class="forgot">Forgot your password?</a>
 					</div>
 					
@@ -137,10 +103,9 @@
 						</div>
 				</div>
 					
-					
-					
-					
-					<input name="myVerizonLoginSubmit" type="submit" class="begin-checkout-submit" value="Sign-In" id="existing-vzn-login">
+				<div class="checkout-input-button">
+					<input name="myVerizonLoginSubmit" type="submit" class="checkout-submit" value="Sign-In" id="checkout-sign-in">
+				</div>
 					
 				</form>
 				
@@ -159,44 +124,24 @@
 				</p>
 			
 				<div class="create-login">
-					<h5 class="form-item-title">
+					<label class="form-item-title" for="create-login" accesskey="L">
 						Are you a Verizon Customer without an Account?
-					</h5>
-					<input name="create-login" value="Create a login" type="checkbox" class="create-login-checkbox" >
+					</label>
+					<input name="create-login" value="Create a login" type="checkbox" class="create-login-checkbox" id="create-login" tabindex="1">
 					<div class="checkbox-label">
 						Create a login.
 					</div>
 				</div>
+				
+				<div class="create-login-message">
+					<p class="form-instructions">
+					You'll be able to <span>register for a MyVerizon ID</span> upon completion of your order.
+				</p>
+				</div>
 			
-				<form id="create-vzn-login" method="post">
-				
-					<div class="create-login-fields">
-				
-						<div class="form-input-wrap">
-							<h5 class="form-item-title">Verizon Wireless Mobile Number</h5>
-							<input name="createLoginFromMobile" type="tel" class="checkout-text-input hasPlaceholder" placeholder="212-345-6789">
-						</div>
-						
-						<div class="form-input-wrap">
-							<h5 class="form-item-title">Password<span class="pass-req">Requirements &nbsp;&nbsp;&nbsp;</span></h5>
-							<input name="createLoginPassword" type="text" class="checkout-text-input"id="new-vzn-password" placeholder="password">
-						</div>
-						
-						<div class="form-input-wrap">
-							<h5 class="form-item-title">Verify Password</h5>
-							<input name="createLoginVerify" type="password" class="checkout-text-input hasPlaceholder" placeholder="verify password">
-						</div>
-						
-						<div id="password-requirements">
-							<div class="req-pointer"></div>
-							<p>Must be 4-12 characters long, using letters, numbers, and at least one special character.</p>
-						</div>
-					
-					</div><!-- end create login box -->
-					
-					<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Guest Checkout">
-					
-				</form>
+				<div class="checkout-input-button" id="checkout-as-guest" >
+					<div class="button"><span>Checkout as Guest</span></div>
+				</div>
 			</div><!-- end form-box -->
 		</div>
 	
@@ -210,171 +155,160 @@
 
 <section id="checkout">
 	<div class="section-wrap">
-		<form id="vzn-checkout">
 	
 		<section id="checkout-sequence">
+			<form id="vzn-checkout">
 		
-			<div id="shipping-info" class="checkout-step">
-				<div class="step-title-block">
-					<h2 class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</h2>
-					<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">4</span></h5>
-				</div>
-				
-				
-				
-				<div class="step-info-block hide-complete">
-					
-				
-					<div class="pointer"></div>
-				
-				 	<p class="instructions">All fields are required unless labeled optional.</p>
-				 	
-				 	
-				 	<div class="form-input-wrap where-to">
-						
-						<select name="checkoutWhereTo" class="checkout-select-input" id="checkout-where-to">
-							<option value="residence" selected>Ship to Residence</option>
-							<option value="business">Ship to Business</option>
-						</select>    	
+				<fieldset id="shipping-info" class="checkout-step">
+					<div class="step-title-block">
+						<legend class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</legend>
+						<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">3</span></h5>
 					</div>
-				 	
-				 	
-				 	
-				 	<div id="destination" data-removed="" >
-				 		<div class="residence-fields">
-				 			<div class="form-input-wrap">
-								<h5 class="form-item-title">First Name</h5>
-								<input name="checkoutFirstName" type="text" class="checkout-input" placeholder="First Name">
-							</div>
+				
+				
+					<div class="step-info-block hide-complete">
+						<div class="pointer"></div>
+				
+				 		<div class="form-input-wrap where-to">
+							<label for="checkout-where-to" ></label>
+							<select name="checkoutWhereTo" class="checkout-select-input" id="checkout-where-to" >
+								<option value="residence" accesskey="H" selected>Ship to Home</option>
+								<option value="business" accesskey="B">Ship to Business</option>
+							</select>    	
+						</div>
+
+				 		<div id="destination" data-removed="" >
+				 			<div class="residence-fields">
+				 				<div class="form-input-wrap">
+									<h5 class="form-item-title">First Name</h5>
+									<input name="checkoutFirstName" type="text" class="checkout-input" placeholder="First Name">
+								</div>
 					
-							<div class="form-input-wrap">
-								<h5 class="form-item-title">Last Name</h5>
-								<input name="checkoutLastName" type="text" class="checkout-input" placeholder="Last Name">
-							</div>
-						</div><!-- end residence -->
+								<div class="form-input-wrap">
+									<h5 class="form-item-title">Last Name</h5>
+									<input name="checkoutLastName" type="text" class="checkout-input" placeholder="Last Name">
+								</div>
+							</div><!-- end residence -->
 					
-						<div class="business-fields not">
-							<div class="form-input-wrap">
-								<h5 class="form-item-title">Company</h5>
-								<input name="checkoutCompany" type="text" class="checkout-input" placeholder="Company">
-							</div>
+							<div class="business-fields not">
+								<div class="form-input-wrap">
+									<h5 class="form-item-title">Company</h5>
+									<input name="checkoutCompany" type="text" class="checkout-input" placeholder="Company">
+								</div>
 					
-							<div class="form-input-wrap">
-								<h5 class="form-item-title">Attention</h5>
-								<input name="checkoutAttention" type="text" class="checkout-input" placeholder="First and Last Name">
-							</div>
-						</div><!-- end business -->
-					</div><!-- end destination -->
+								<div class="form-input-wrap">
+									<h5 class="form-item-title">Attention</h5>
+									<input name="checkoutAttention" type="text" class="checkout-input" placeholder="First and Last Name">
+								</div>
+							</div><!-- end business -->
+						</div><!-- end destination -->
 										
-					<div class="form-input-wrap">
-						<h5 class="form-item-title">Email <span class="grey">| For Order Updates</span></h5>
-						<input name="checkoutEmail" type="email" class="checkout-input hasPlaceholder" placeholder="your.name@verizon.net" > 
-					</div>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Email <span class="grey">| For Order Updates</span></h5>
+							<input name="checkoutEmail" type="email" class="checkout-input hasPlaceholder" placeholder="your.name@verizon.net" > 
+						</div>
 					
-					<div class="newsletter-signup">
-						<input name="newsletterSignUp" type="checkbox" id="newsletter-signup">
-						<h5>Sign-up for Newsletter updates<div class="checkout-dropdown">
-							<a href="#" class="checkout-dropdown-link">
-								What's in it for me?
-							</a>
-							<div class="checkout-dropdown-panel">
-								<div class="dropdown-pointer"></div>
-								<p>	Receive Verizon Wireless special offers via email.  You can remove your email address from our list at any time.  Simply click the "unsubscribe" link at the bottom of each email. <a href="#" title="Privacy Policy" class="privacy-link">Privacy Policy</a>
-								</p>
-							</div><!-- end dropdwn panel -->
-						</div><!-- end dropdown --></h5>
-					</div>
+						<div class="newsletter-signup">
+							<input name="newsletterSignUp" type="checkbox" id="newsletter-signup">
+							<h5>Sign-up for Newsletter updates<div class="checkout-dropdown">
+								<a href="#" class="checkout-dropdown-link">
+									What's in it for me?
+								</a>
+								<div class="checkout-dropdown-panel">
+									<div class="dropdown-pointer"></div>
+									<p>	Receive Verizon Wireless special offers via email.  You can remove your email address from our list at any time.  Simply click the "unsubscribe" link at the bottom of each email. <a href="#" title="Privacy Policy" class="privacy-link">Privacy Policy</a>
+									</p>
+								</div><!-- end dropdwn panel -->
+							</div><!-- end dropdown --></h5>
+						</div>
 					
-					<div class="form-input-wrap">
-						<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
-						<input name="checkoutPhone" type="tel" class="checkout-input hasPlaceholder" placeholder="212-555-1234">
-					</div>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Phone Number <span class="grey">| For Shipping Assistance</span></h5>
+							<input name="checkoutPhone" type="tel" class="checkout-input hasPlaceholder" placeholder="212-555-1234">
+						</div>
 					
-					<div class="form-input-wrap">
-						<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
-						<input name="checkoutAddress" type="text" class="checkout-input" placeholder="123 Your Street">
-					</div>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Address <span class="grey">| No P.O. Boxes</span></h5>
+							<input name="checkoutAddress" type="text" class="checkout-input" placeholder="123 Your Street">
+						</div>
 					
-					<div class="form-input-wrap">
-						<h5 class="form-item-title">Address 2</h5>
-						<input name="checkoutAddress2" type="text" class="checkout-input">
-						<label class="optional">Optional</label>
-					</div>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">Address 2</h5>
+							<input name="checkoutAddress2" type="text" class="checkout-input">
+							<label class="optional">Optional</label>
+						</div>
 					
-					<div class="form-input-wrap">
-						<h5 class="form-item-title">City</h5>
-						<input name="checkoutCity" type="text" class="checkout-input" placeholder="Your City">
-					</div>
+						<div class="form-input-wrap">
+							<h5 class="form-item-title">City</h5>
+							<input name="checkoutCity" type="text" class="checkout-input" placeholder="Your City">
+						</div>
 					
-					<div class="form-input-wrap state">
-						<h5 class="form-item-title">State</h5>
-						<select name="checkoutState" class="checkout-select-input" id="shipping-info-state" class="required">
+						<div class="form-input-wrap state">
+							<h5 class="form-item-title">State</h5>
+							<select name="checkoutState" class="checkout-select-input" id="shipping-info-state" class="required">
 							
-							<option value="CA" selected>CA</option>
-							<option value="CO">CO</option>
-							<option value="CT">CT</option>
-							<option value="ME">ME</option>
-							<option value="MI">MI</option>
-							<option value="NC">NC</option>
-							<option value="NJ">NJ</option>
-							<option value="NY">NY</option>
+								<option value="CA" selected>CA</option>
+								<option value="CO">CO</option>
+								<option value="CT">CT</option>
+								<option value="ME">ME</option>
+								<option value="MI">MI</option>
+								<option value="NC">NC</option>
+								<option value="NJ">NJ</option>
+								<option value="NY">NY</option>
 						
-						</select>    	
-					</div>
+							</select>    	
+						</div>
 					
-					<div class="form-input-wrap zip">
-						<h5 class="form-item-title">Zip Code</h5>
-						<input name="checkoutZip" type="text" class="checkout-input" placeholder="Zip Code">
-					</div>
-					
-				 	
-				 	
-				</div><!-- end info block -->
+						<div class="form-input-wrap zip">
+							<h5 class="form-item-title">Zip Code</h5>
+							<input name="checkoutZip" type="text" class="checkout-input" placeholder="Zip Code">
+						</div>
+						
+					</div><!-- end info block -->
 				
-				<a id="ship-info-complete" class="checkout-next hide-complete" href="#">Next Step</a>
+					<a id="ship-info-complete" class="checkout-next hide-complete" href="#">Next Step</a>
 				
-				<div class="step-info-summary hidden">
+					<div class="step-info-summary hidden">
 					
-					<div class="ship-contact">
-						<h5>Contact</h5>
-						<ul>
-						<!-- hidden field for scripting purposes --><div id="sum-destination" class="select-summary"></div>
+						<div class="ship-contact">
+							<h5>Contact</h5>
+							<ul>
+							<!-- hidden field for scripting purposes --><div id="sum-destination" class="select-summary"></div>
 								
-							<li id="ship-name-block">
-								<div class="sum-first-name summary"></div>
-								<div class="sum-last-name summary"></div>
-							</li>
+								<li id="ship-name-block">
+									<div class="sum-first-name summary"></div>
+									<div class="sum-last-name summary"></div>
+								</li>
 						
-						
-							<li id="sum-email" class="summary"></li>
-							<li id="sum-phone" class="summary"></li>
-						</ul>
-					</div>
+								<li id="sum-email" class="summary"></li>
+								<li id="sum-phone" class="summary"></li>
+							</ul>
+						</div>
 					
-					<div class="ship-address">
-						<h5>Shipping Address</h5>
-						<ul>
+						<div class="ship-address">
+							<h5>Shipping Address</h5>
+							<ul>
 							
-							<li id="copy-ship-name-block"></li>
-							<li id="sum-address-1" class="summary"></li>
-							<li id="sum-address-2" class="summary"></li>
+								<li id="copy-ship-name-block"></li>
+								<li id="sum-address-1" class="summary"></li>
+								<li id="sum-address-2" class="summary"></li>
 							
-							<li class="ship-city-state">
-								<div id="sum-city" class="summary"></div>
-								<div id="sum-state" class="select-summary"></div>
-								<div id="sum-zip" class="summary"></div>
-							</li>
+								<li class="ship-city-state">
+									<div id="sum-city" class="summary"></div>
+									<div id="sum-state" class="select-summary"></div>
+									<div id="sum-zip" class="summary"></div>
+								</li>
 						
-						</ul>
-					</div>
+							</ul>
+						</div>
 					
-					<div class="edit-checkout-step">
-						<span class="checkout">Edit</span>
-					</div>
+						<div class="edit-checkout-step">
+							<span class="checkout">Edit</span>
+						</div>
 				
-				</div><!-- end info summary -->
+					</div><!-- end info summary -->
 			
-			</div><!-- end checkout step 1 -->
+				</fieldset><!-- end checkout step 1 -->
 		
 		
 		
@@ -976,7 +910,7 @@
 			
 						<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
 				
-				 	</form><!-- end checkout form -->
+				 	
 				 	
 				 	<div class="checkout-disclaimers">
 				 		<ul>
@@ -1023,11 +957,9 @@
 				 			Suspendisse potenti. Pellentesque blandit auctor urna, nec vulputate ante aliquam eu.
 				 		</div>
 				 	</div>
-				 	
 				</div>
-				
-			</form><!-- end vzn-checkout -->	
-			</div><!-- end section-wrap -->
+			
+			</form><!-- end vzn-checkout -->
 		</section><!-- end checkout sequence -->
 		
 		
@@ -1161,8 +1093,9 @@
 <script type="text/javascript">
 	includeFragment('inc/footer.html');
 </script>
-
-
+<!-- TEMP- DO NOT  INCLUDE IN FINAL _ SAPIENT DEMO ONLY -->
+<script src="js/cart-DEMO.js"></script>
+	
 
 </body>
 </html>

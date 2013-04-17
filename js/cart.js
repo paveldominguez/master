@@ -1,12 +1,6 @@
+// MINICART ............................................................................................
 
-	
-	
-	
-
-// Minicart ............................................................................................
-
-
-// TEMP demo only 
+// TEMP demo only =========== PA remove this
 $jQ('.minicart-demo-1 .minicart-item').each(function(){
 	if ($jQ(this).hasClass('one')) {
 	} else {
@@ -14,229 +8,53 @@ $jQ('.minicart-demo-1 .minicart-item').each(function(){
 	}
 });
 
+
 $jQ('.minicart-demo-empty .minicart-item').each(function(){
 	$jQ(this).remove();
 });
-// end TEMP demo only
+// end PA remove ============  END TEMP demo only
+
+
+
+//ONLOAD : minicart layout
+	minicartLayout();
 
 	
-	//ONLOAD : minicart layout
-		minicartLayout();
-
-	// move to Nav Overlay on Checkout Page Only
-	$jQ('#checkout-minicart').each(function() {
-		
-		// tab
-			var minicartTab = $jQ(this).parents('#checkout-page').find('#nav-cart').html();
-			$jQ(this).siblings('#checkout-minicart-tab').html(minicartTab);
-	
-		// contents
-			var minicartContents = $jQ(this).parents('#checkout-page').find('#nav-tab4').html();
-			$jQ(this).html(minicartContents);
+// ONCLICK
+	// free shipping modal
+	$jQ('.minicart-banner.ship').find('.minicart-cta').click(function(){
+		$jQ('#minicart-shipping-modal').show();
 	});
-
-	// show checkout minicart on hover
-	
-		$jQ('#checkout-minicart-tab, #checkout-minicart').hover(
-			
-			function(){ 
-				$jQ('#checkout-minicart-tab').addClass('hover');
-				$jQ('#checkout-minicart').show();
-				minicartLayout();
-			
-			},
-	
-			function(){
-				$jQ('#checkout-minicart-tab').removeClass('hover');
-				$jQ('#checkout-minicart').hide(); 
-			}
-		);
-	
-	// minicart click actions
-	
-		$jQ('.minicart-banner.ship').find('.minicart-cta').click(function(){
-		
-			$jQ('#minicart-shipping-modal').show();
-		
-		});
 	
 	
+	// remove item
+	$jQ('#minicart-box .remove').find('a').each(function(){
+		minicartEdit(this);  
+	});
 	
-		$jQ('#minicart-box .remove').find('a').each(function(){
-			minicartEdit(this);  
-		});
 	
-	
-		$jQ('.next-items-link').click(function(e){			
-			e.preventDefault();
-			var type = "next";
-			minicartScroll(type);
-		});
+	// next 3 items
+	$jQ('.next-items-link').click(function(e){			
+		e.preventDefault();
+		var type = "next";
+		minicartScroll(type);
+	});
 		
 		
-		$jQ('.prev-items-link').click(function(e){			
-			e.preventDefault();
-			var type = "prev";
-			minicartScroll(type);
-		});
+	// prev 3 items	
+	$jQ('.prev-items-link').click(function(e){			
+		e.preventDefault();
+		var type = "prev";
+		minicartScroll(type);
+	});
 	
 
 
 
-// MINICART FUNCTIONS ......................................
-
-// check minicart contents for display variations
-	function minicartLayout(){
-		var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
-
-		if (inMini < 1) { // layout empty cart
-	 		$jQ('#nav-tab4, #checkout-minicart').addClass('empty');					 
-		} else if (inMini > 0 && inMini < 4 ) {
-			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
-			$jQ('.minicart-next').css('display', 'none');										
-		} else if (inMini > 3) {
-			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
-			$jQ('.minicart-next').addClass('on');			
-		}
-	}
-// end minicartLayout
 
 
 
 
-// minicart edit sequence
-	function minicartEdit(removeBtn){
-	
-		$jQ(removeBtn).click(function(e){ // first 'remove' click
-			e.preventDefault();
-			var block = $jQ(removeBtn).parents('.minicart-item');
-			var editBox = $jQ(removeBtn).parents('.minicart-edit');
-	
-			$jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
-			$jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block'));        
-			$jQ(block).css('background-color' , '#d6d9d9');
-			$jQ(removeBtn).addClass('yes-remove');
-		
-		
-		// second 'remove' click
-			$jQ('.yes-remove').click(function(){	
-				$jQ(block).remove();
-			});
-		
-		// cancel remove
-			$jQ('.minicart-cancel-remove').click(function(e){
-				e.preventDefault();
-	
-				$jQ('.remove-msg').remove();
-				$jQ(block).css('background-color' , '#e5eaea');
-				$jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
-				$jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
-			
-				minicartEdit(removeBtn);	
-			});
-		});
-	} // end minicartEdit 
-
-
-
-
-
-function minicartScroll(type) {
-
-	if (type == "next") {
-
-	// calculate current max scroll up
-		var inMini = $jQ('#minicart-item-list').find('.minicart-item').length;
-		var maxScrollTimes = inMini / 3;
-		var maxScrollInt = parseInt(maxScrollTimes, 10);
-		var maxScrollPos = maxScrollInt * -247;
-				
-	// get current position
-		var curPos = $jQ('.minicart-item.one').attr('data-pos');
-				
-	//calculate new offset before actually moving 
-		var newPos = curPos - 247;
-				
-	// check position, move and adjust options as required
-		if (newPos > maxScrollPos) { // beginning/middle
-			
-			// move up
-				$jQ('.minicart-item').each(function(){
-					miniScrollUp(this, newPos);
-				});
-			//turn on prev
-				$jQ('.prev-items-link').addClass('on');
-			//turn on next if needed
-				$jQ('.next-items-link').removeClass('off');
-					
-		} else if (newPos == maxScrollPos) { // end
-					
-			// move up
-				$jQ('.minicart-item').each(function(){
-					miniScrollUp(this, newPos);
-				});
-			//turn off next
-				$jQ('.next-items-link').addClass('off');
-						
-		}
-
-	} else {
-
-	// get current position
-		var curPos = $jQ('.minicart-item.one').attr('data-pos');
-		var curPosParse = parseInt(curPos, 10);
-		
-	//calculate new offset before actually moving 
-		var newPos = curPosParse + 247;
-		
-	// check position, move and adjust options as required
-		if (newPos == 0) {
-			//move down
-			$jQ('.minicart-item').each(function(){
-				miniScrollUp(this, newPos);
-			});
-			//turn off prev
-			$jQ('.prev-items-link').removeClass('on');
-			//turn on next
-				$jQ('.next-items-link').removeClass('off');
-	
-		} else {
-		
-			//move down
-			$jQ('.minicart-item').each(function(){
-				miniScrollUp(this, newPos);
-			});
-			//turn on next
-			$jQ('.next-items-link').removeClass('off');
-		
-		}
-
-	}
-
-} // end minicart scroll 
-
-
-
-
-
-
-
-
-function miniScrollUp(element, position) {
-	$jQ(element).css({
-        '-webkit-transform': 'translate3d(0,' + position +'px,  0)',
-  		'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
-  		'-ms-transform' : 'translate3d(0,' + position +'px,  0)',
- 		'-o-transform' : 'translate3d(0,' + position +'px,  0)',
-  		'transform' : 'translate3d(0,' + position +'px,  0)'
-  	}); // end css
-  	$jQ(element).attr('data-pos', position);
-} // end scrollUp function
-
-
-
-
-// End Minicart
 
 
 
@@ -385,17 +203,13 @@ function miniScrollUp(element, position) {
 
 // CHECKOUT ............................................................................................
 	
-	
-	
 	// make all instances of these inputs pretty with uniform
 		$jQ("input:submit, input:checkbox").uniform();
-		
 		
 	
 	// add these methods to validation
 	
 		// phone number format
-		
 		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
     		phone_number = phone_number.replace(/\s+/g, ""); 
 			return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
@@ -404,7 +218,6 @@ function miniScrollUp(element, position) {
 	
 	
 		// ignore placeholder text
-		
 		jQuery.validator.addMethod("noPlaceholder", function (value, element) {
 			if (value == $jQ(element).attr('placeholder')) {
 				return false;
@@ -414,16 +227,11 @@ function miniScrollUp(element, position) {
 		});
 		
 		
-		
-	
-		
-	
-	
 	
 	
 // 'Begin Checkout' Forms ............................................................
 	
-	// validation rules & messages ( validate.js ) : 'begin checkout' > sign into Verizon	
+	// 'begin checkout' : validation rules & messages for sign-in	
 		$jQ('#my-Verizon-login').validate({
 			rules: {
 				myVerizonID: {
@@ -441,87 +249,30 @@ function miniScrollUp(element, position) {
 				myVerizonID: "Please enter your User ID",
 				myVerizonPassword: {
 					required: "Please enter your password",
-					noPlaceholder: "Please enter your password",
+					noPlaceholder: "Please enter your password!",
 					minlength: "Your password must be at least 4 characters long"
 				}
 			}
 		});	
-			
-	// validation rules & messages ( validate.js )  : 'begin checkout' > create login 
-	
-		$jQ('#create-vzn-login').validate({
-		
-			rules: {
-				createLoginFromMobile: {
-					required: false,
-					noPlaceholder: true,
-					phoneUS: true,	
-				},
-				createLoginPassword: {
-					required: false,
-					noPlaceholder: true,
-					minlength: 4
-				},
-				createLoginVerify: {
-					equalTo: '#new-vzn-password'
-				}
-			},
-			
-			messages: {
-				createLoginFromMobile: {
-					required: "Please enter your Verizon Wireless number",
-					noPlaceholder: "Please enter your Verizon Wireless number",
-					phoneUS: "Please enter your Verizon Wireless number"
-					},
-				createLoginPassword: {
-					required: "Please enter a password",
-					noPlaceholder: "Please enter your own unique password",
-					minlength: "Your password must be at least 4 characters long"
-					},
-				createLoginVerify: {
-					required: 'Please re-enter your password to confirm',
-					equalTo: 'Sorry, your passwords don\'t match'
-					}
-			},
-			success: function () {
-				//alert('yeah');
-			},
-			ignore : '.ignore'
-		});	
-		
-	// 'begin checkout' : create vzn login
-		$jQ('.create-login-checkbox').change(function() {
-		
-			$jQ('.create-login-fields').toggle('fast');	
-			if ($jQ(this).is(':checked')) {
 				
-				$jQ(this).parents('.guest-checkout').find('.button').find('span').html(
-					'Register & Checkout<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Register & Checkout">'
-				);
-				
-			} else { 
-			
-				$jQ(this).parents('.guest-checkout').find('.button').find('span').html(
-					'Guest Checkout<input name="create-login-submit" type="submit" class="begin-checkout-submit" value="Guest Checkout">'
-				);
-			}
+	// 'begin checkout' : create vzn login checkbox
+		$jQ('.create-login-checkbox').change(function() { 
+			$jQ('.create-login-message').toggle('fast');		
 		});
 		
-	// 'begin checkout' : password requirements
-		$jQ('.pass-req').click(function() {
-			$jQ('#password-requirements').toggle('fast');
-		});
 
-
-	// 'begin checkout' : successful entrance to guest checkout
-		$jQ('#create-vzn-login').submit(function(e) {
+	// 'begin checkout' : signin button 
+		$jQ('#checkout-sign-in').click(function(e) {
 			e.preventDefault();
-			if ($jQ(this).valid()) {
+			var form = $jQ(this).parents('form');
+			var name = $jQ(form).find('#vzw-user').val(); // TEMP : swap for backend data: signed-in user first name
+			
+			if (form.valid()) {
+			
 				window.scrollTo(0,0);
 				$jQ('#begin-checkout').fadeOut(300);
-				$jQ('#checkout').addClass('visible');
-				$jQ('.checkout-title').text('Checkout');
-				
+				$jQ('#checkout').addClass('visible').addClass('signed-in');
+				$jQ('.checkout-title').text('Hi, ' + name + '!').addClass('main');
 				var sidebar = $jQ('.visible #checkout-sidebar');
 				var startTop = sidebar.offset().top;
 				var startLeft = sidebar.offset().left;
@@ -531,13 +282,32 @@ function miniScrollUp(element, position) {
 					'data-start-left' : startLeft,
 					'data-start-width' : startWidth
 					});
-					
-				$jQ('#checkout.visible').find('input');
-					
-			}// end guest entrance if 
+				return false;
+				} 	
 		});
 		
 	
+	// 'begin checkout' : 'checkout as guest' button
+		$jQ('#checkout-as-guest').click(function(e) {
+			e.preventDefault();
+			window.scrollTo(0,0);
+			$jQ('#begin-checkout').fadeOut(300);
+			$jQ('#checkout').addClass('visible').addClass('guest');
+			$jQ('.checkout-title').text('Checkout').addClass('main');
+				
+			var sidebar = $jQ('.visible #checkout-sidebar');
+			var startTop = sidebar.offset().top;
+			var startLeft = sidebar.offset().left;
+			var startWidth = sidebar.width();
+			sidebar.attr({
+				'data-start-top' : startTop,
+				'data-start-left' : startLeft,
+				'data-start-width' : startWidth
+				});
+		});
+		
+	
+
 	
 // Main Checkout Sequence.................................................................
 
@@ -1087,10 +857,152 @@ function miniScrollUp(element, position) {
 
 
 
-// FUNCTIONS ...............................................................................
+// FUNCTIONS .......................................................................................
+
+// MINICART function : assess contents for display variations
+	function minicartLayout(){
+		var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
+
+		if (inMini < 1) { // layout empty cart
+	 		$jQ('#nav-tab4, #checkout-minicart').addClass('empty');					 
+		} else if (inMini > 0 && inMini < 4 ) {
+			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
+			$jQ('.minicart-next').css('display', 'none');										
+		} else if (inMini > 3) {
+			$jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
+			$jQ('.minicart-next').addClass('on');			
+		}
+	}
+// end minicartLayout
 
 
-// main cart : quantity check and revise fields
+
+
+// MINICART function : edit cart sequence
+	function minicartEdit(removeBtn){
+	
+		$jQ(removeBtn).click(function(e){ // first 'remove' click
+			e.preventDefault();
+			var block = $jQ(removeBtn).parents('.minicart-item');
+			var editBox = $jQ(removeBtn).parents('.minicart-edit');
+	
+			$jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
+			$jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block'));        
+			$jQ(block).css('background-color' , '#d6d9d9');
+			$jQ(removeBtn).addClass('yes-remove');
+		
+		
+		// second 'remove' click
+			$jQ('.yes-remove').click(function(){	
+				$jQ(block).remove();
+			});
+		
+		// cancel remove
+			$jQ('.minicart-cancel-remove').click(function(e){
+				e.preventDefault();
+	
+				$jQ('.remove-msg').remove();
+				$jQ(block).css('background-color' , '#e5eaea');
+				$jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
+				$jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
+			
+				minicartEdit(removeBtn);	
+			});
+		});
+	} // end minicartEdit 
+
+
+
+
+// MINICART function: next/prev item scroll
+function minicartScroll(type) {
+
+	if (type == "next") {
+
+	// calculate current max scroll up
+		var inMini = $jQ('#minicart-item-list').find('.minicart-item').length;
+		var maxScrollTimes = inMini / 3;
+		var maxScrollInt = parseInt(maxScrollTimes, 10);
+		var maxScrollPos = maxScrollInt * -247;
+				
+	// get current position
+		var curPos = $jQ('.minicart-item.one').attr('data-pos');
+				
+	//calculate new offset before actually moving 
+		var newPos = curPos - 247;
+				
+	// check position, move and adjust options as required
+		if (newPos > maxScrollPos) { // beginning/middle
+			
+		// move up
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+		//turn on prev
+			$jQ('.prev-items-link').addClass('on');
+		//turn on next if needed
+			$jQ('.next-items-link').removeClass('off');
+					
+		} else if (newPos == maxScrollPos) { // end
+					
+		// move up
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+		//turn off next
+			$jQ('.next-items-link').addClass('off');			
+		}
+
+	} else {
+
+	// get current position
+		var curPos = $jQ('.minicart-item.one').attr('data-pos');
+		var curPosParse = parseInt(curPos, 10);
+		
+	//calculate new offset before actually moving 
+		var newPos = curPosParse + 247;
+		
+	// check position, move and adjust options as required
+		if (newPos == 0) { // beginning/middle
+			//move down
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+			//turn off prev
+			$jQ('.prev-items-link').removeClass('on');
+			//turn on next
+				$jQ('.next-items-link').removeClass('off');
+	
+		} else { // end
+		
+			//move down
+			$jQ('.minicart-item').each(function(){
+				miniScrollUp(this, newPos);
+			});
+			//turn on next
+			$jQ('.next-items-link').removeClass('off');
+		}
+	}
+} // end minicart scroll 
+
+
+function miniScrollUp(element, position) {
+	$jQ(element).css({
+        '-webkit-transform': 'translate3d(0,' + position +'px,  0)',
+  		'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
+  		'-ms-transform' : 'translate3d(0,' + position +'px,  0)',
+ 		'-o-transform' : 'translate3d(0,' + position +'px,  0)',
+  		'transform' : 'translate3d(0,' + position +'px,  0)'
+  	}); // end css
+  	$jQ(element).attr('data-pos', position);
+} // end scrollUp function
+
+
+
+
+
+
+// CART functions : quantity check and revise fields
 	  
 function checkCartQty() {
 	 	
@@ -1149,145 +1061,5 @@ function scrollPgTo( where, topPad) {
         scrollTop: moveTo
     }, 250);
 } // end scrollPgTo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ............. TEMP state toggle buttons in header .........
-
-	var stndrd = document.getElementById('state-standard');
-	var sale = document.getElementById('state-sale');
-	var oos = document.getElementById('state-oos');
-	var too = document.getElementById('state-too-many');
-	var miniEmpty = document.getElementById('state-mini-empty');
-	var mini1Item = document.getElementById('state-mini-1');
-	var mini7Item = document.getElementById('state-mini-7');
-	
-	$jQ(stndrd).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var sale = document.getElementById('state-sale');
-		
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(sale).removeClass('on');
-			
-		//turn off everything else
-	
-		  	// turn off sale, restore standard where req
-        		$jQ('.offer').css('display', 'none');
-        		$jQ('.no-offer').css('display', 'inline-block');
-        		
-        	// turn off oos
-        		$jQ('.table-row.oos').find('.cart-product-image').removeClass('oos');
-				$jQ('.table-row.oos').find('.oos-msg').hide();
-				
-			// turn off too-many-items
-       			$jQ('#too-many-modal').hide();
-	});
-	
-
-	$jQ(sale).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var sale = document.getElementById('state-sale');
-		
-		
-		// change font colors for nav
-			$jQ(this).toggleClass('on');
-			$jQ(stndrd).removeClass('on');
-	
-		// turn on sale elements, hide standard where req
-        	$jQ('.offer').css('display', 'inline-block');
-        	$jQ('.no-offer').css('display', 'none');
-        	
-        	$jQ('.offer-toggle').toggle();
-        	
-        
-        	
-	});
-
-
-	$jQ(oos).click(function() {
-	
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-			
-		// toggle oos states on and off
-			$jQ('.table-row.oos').find('.cart-product-image').toggleClass('oos');
-			$jQ('.table-row.oos').find('.oos-msg').toggle();
-		
-	});
-
-
-	$jQ(too).click(function() {
-	
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-	
-			$jQ('#too-many-modal').toggle();
-	
-	});
-	
-	
-	
-	
-	$jQ(miniEmpty).click(function() {
-		var mini1Item = document.getElementById('state-mini-1');
-		var mini7Item = document.getElementById('state-mini-7');
-		// change font colors for nav
-		$jQ(this).addClass('on');
-		$jQ(mini1Item).removeClass('on');
-		$jQ(mini7Item).removeClass('on');
-		//hide items
-		$jQ('.minicart-item').removeClass('on');
-		//check items and re-layout
-		minicartLayout();		
-	});
-	
-	
-	
-	$jQ(mini1Item).click(function() {
-		var miniEmpty = document.getElementById('state-mini-empty');
-		var mini7Item = document.getElementById('state-mini-7');
-		// change font colors for nav
-		$jQ(this).addClass('on');
-		$jQ(miniEmpty).removeClass('on');
-		$jQ(mini7Item).removeClass('on');
-		//show/hide inc fragment
-		$jQ('#single-item-inc .minicart-item').addClass('on');
-		$jQ('#multi-item-inc .minicart-item').removeClass('on');
-		//check items and re-layout	
-		minicartLayout();	
-	});
-		
-
-
-	$jQ(mini7Item).click(function() {
-		var miniEmpty = document.getElementById('state-mini-empty');
-		var mini1Item = document.getElementById('state-mini-1');
-		// change font colors for nav
-		$jQ(this).addClass('on');
-		$jQ(miniEmpty).removeClass('on');
-		$jQ(mini1Item).removeClass('on');
-		//show/hide inc fragment
-		$jQ('#single-item-inc .minicart-item').removeClass('on');
-		$jQ('#multi-item-inc .minicart-item').addClass('on');
-		//check items and re-layout	
-		minicartLayout();	
-	});
 
 
