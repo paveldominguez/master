@@ -94,7 +94,7 @@ MLS.home = {
 					$jQ(this).stop().animate({
 						width: 173
 					}, 100);
-				} else {
+				} else if ($jQ(this).val().length <= 20) {
 					if ($jQ(this).val().length > 3) {
 						$jQ(this).stop().animate({
 							width: $jQ(this).val().length * 17
