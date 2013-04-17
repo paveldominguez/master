@@ -232,7 +232,7 @@
 					</div><!-- end checkout box-->
 					
 					<div class="keep-shopping-box">
-						<a href="#" title="Continue Shopping">Continue Shopping</a>
+						<a href="#" title="Continue Shopping" class="arial">Continue Shopping</a>
 					</div><!-- end keep shopping box -->
 					
 				</div><!-- end proceed block -->
@@ -266,8 +266,8 @@
 							$29.99
 						</div>
 							
-						<div class="add-also-bought">
-      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+						<div class="secondary-add-to-cart">
+      						<input type="submit" title="Add to Cart" value="Add to Cart">
       					</div><!-- end add-also-bought -->
 					</div><!-- end product info -->
 				</li><!-- end first product -->
@@ -285,8 +285,8 @@
 							$29.99
 						</div>
 							
-						<div class="add-also-bought">
-      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+						<div class="secondary-add-to-cart">
+      						<input type="submit" title="Add to Cart" value="Add to Cart">
       					</div><!-- end add-also-bought -->
 					</div><!-- end product info -->
 				</li><!-- end second product -->
@@ -304,8 +304,8 @@
 							$29.99
 						</div>
 							
-						<div class="add-also-bought">
-      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+						<div class="secondary-add-to-cart">
+      						<input type="submit" title="Add to Cart" value="Add to Cart">
       					</div><!-- end add-also-bought -->
 					</div><!-- end product info -->
 				</li><!-- end third product -->
@@ -323,8 +323,8 @@
 							$29.99
 						</div>
 							
-						<div class="add-also-bought">
-      						<input class="button add-secondary-to-cart" type="submit" title="Add to Cart" value="Add to Cart">
+						<div class="secondary-add-to-cart">
+      						<input type="submit" title="Add to Cart" value="Add to Cart">
       					</div><!-- end add-also-bought -->
 					</div><!-- end product info -->
 				</li><!-- end fourth product -->
@@ -363,29 +363,29 @@
 
 
 
-<section id="save-cart-modal" class="cart-modal">
-	<div class="modal-info-block">
+<section id="save-cart-modal" class="lightbox">
+	<div class="lightbox-info-block">
 	
-		<h3 class="modal-headline">Save these items for later.</h3>
+		<h3 class="lightbox-headline">Save these items for later.</h3>
 	
-		<div class="modal-details">
+		<div class="lightbox-details">
 			Not ready to check out?  Just enter your email address below and we'll send you a link to quickly get back to your cart.
 		</div>
 	
-		<div class="modal-close"></div>
+		<div class="lightbox-close"></div>
 		
 		<form id="save-cart-form" name="cartForm" method="GET" ><!-- action="cart.jsp" -->
 	
-			<div class="modal-input-wrap">
-				<h5 class="modal-input-title">Email</h5>
+			<div class="lightbox-input-wrap">
+				<h5 class="lightbox-input-title">Email</h5>
 				<input name="saveCartEmail" type="email" id="save-cart-email" placeholder="Email Address" class="hasPlaceholder" >
 			</div>
 			
-			<div class="modal-fine-print">
+			<div class="lightbox-fineprint">
 				<ul>
 					<li class="save-avail">
 						<a href="#" class="dropdown-link avail">Offer Availability</a>
-						<div class="modal-dropdown">
+						<div class="lightbox-dropdown">
 							<div class="dropdown-pointer"></div>
 							<p>The availability of offers saved in your shopping cart- including products, services, prices and discounts- may change at any time.</p>
 						</div>
@@ -393,7 +393,7 @@
 					
 					<li class="save-notify">
 						<a href="#" class="dropdown-link notify">Subscriber Notifications</a>
-						<div class="modal-dropdown">
+						<div class="lightbox-dropdown">
 							<div class="dropdown-pointer"></div>
 							<p>You'll get exclusive online offers, promotions, and the latest info on our products and services.  You can unsubscribe at anytime.</p>
 						</div>
@@ -407,7 +407,7 @@
 			</div>
 			
 			
-			<div class="modal-cta">
+			<div class="lightbox-cta">
 				<input type="submit" value="Save Cart" id="save-cart-submit" name="saveCart">
 			</div>
 		</form>
@@ -415,16 +415,16 @@
 	</div><!-- end block -->
 </section>
 
-<section id="too-many-modal" class="cart-modal">
-	<div class="modal-info-block">
+<section id="too-many-modal" class="lightbox">
+	<div class="lightbox-info-block">
 	
-		<h3 class="modal-headline">Sorry, our cart only holds 15 items.</h3>
+		<h3 class="lightbox-headline">Sorry, our cart only holds 15 items.</h3>
 	
-		<div class="modal-details">
+		<div class="lightbox-details">
 			We love your business and hope you'll add this item after you check out (or remove other items) in your current cart.
 		</div>
 		
-		<div class="modal-fine-print">
+		<div class="lightbox-fineprint">
 			<h5 class="headline">Questions?</h5>	
 			<div class="call">
 				<span>Call:</span>
@@ -436,10 +436,10 @@
 		
 		</div>
 	
-		<div class="modal-close"></div>
+		<div class="lightbox-close"></div>
 		
-		<div class="modal-cta">
-			<div class="button modal-back">
+		<div class="lightbox-cta">
+			<div class="lightbox-back">
 				<span>back to cart</span>
 			</div>
 		</div>
