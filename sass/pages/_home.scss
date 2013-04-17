@@ -565,6 +565,25 @@ $btfHiliteBg : #2a2d32;
                 .carrot{
 
                 }
+                .promo-cta {
+                    clear: both;
+                    cursor: pointer;
+                    @include border-radius(3px);
+                    @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
+                    border: 1px solid #3B3F45;
+                    display: table;
+                    margin: 20px 0;
+                    width: 130px;
+                    height:43px;
+                    color: #FFF;
+                    font-size: 14px;
+                    span {
+                        display: table-cell;
+                        vertical-align: bottom;
+                        padding: 3px 5px;
+                        line-height: 40px;
+                    }
+                }
                 .product-title{
                     font-size: 18px;
                     font-family: "Verizon Apex Book";
