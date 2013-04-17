@@ -288,10 +288,10 @@
     @else if $point == tablet {
         @media (min-width: $screenSmall) and (max-width: $screenMedium - 1) { @content; }
     }
-    @else if $point == phoneLarge {
-        @media (min-width: $screenMobileSmall + 1) and (max-width: $screenSmall -1)  { @content; }
+    @else if $point == mobileLarge {
+        @media (min-width: $screenMobileSmall + 1) and (max-width: $screenSmall - 1)  { @content; }
     }
-    @else if $point == phone {
+    @else if $point == mobile {
         @media (max-width: $screenMobileSmall)  { @content; }
     }
 }
