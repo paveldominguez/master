@@ -81,7 +81,7 @@ MLS = {
             MLS.ui.navTabs('#mls-nav');
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
-            MLS.ui.tabs('#nav-tab2');
+            MLS.ui.tabs('#nav-tab2', true);
             MLS.ajax.article.init();
         },
         finalize: function() {

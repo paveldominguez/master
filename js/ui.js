@@ -40,7 +40,7 @@ MLS.ui = {
 	 * @element: (string) parent (containing) element
 	 */
 
-	tabs: function (element) {
+	tabs: function (element, hover) {
 		var scope = element,
 			$contentTabs = $jQ(scope + ' > .tab-content > .tab'),
 			activeClass = 'active';
@@ -49,8 +49,10 @@ MLS.ui = {
 			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
-		$jQ(scope + ' > .tab-menu > .tab').on('click', function (e) {
-			e.preventDefault();
+		$jQ(scope + ' > .tab-menu > .tab').on((hover ? 'mouseenter' : 'click'), function (e) {
+			if (!hover) {
+				e.preventDefault();
+			}
 			var tab = $jQ(this).attr('tab');
 			$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 			$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
@@ -68,7 +70,7 @@ MLS.ui = {
 			$contentTabs = $jQ(element + ' > .tab-content > .tab'),
 			activeClass = 'active';
 
-		$jQ(scope + ' > .tab-menu > .tab').each(function ( i, el) {
+		$jQ(scope + ' > .tab-menu > .tab').each(function (i) {
 			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
@@ -119,7 +121,7 @@ MLS.ui = {
 			}
 		});
 
-		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function() {
+		$jQ('#nav-mobile-tabs-primary .nav-actions').on('click', function () {
 			if ($jQ(this).hasClass(activeClass)) {
 				$jQ(this).add('.tab').removeClass(activeClass);
 			}
@@ -130,15 +132,15 @@ MLS.ui = {
 	 * @container: (string) containing element
 	 * @data: (string) html data
 	 */
-	updateContent: function(container, data) {
+	updateContent: function (container, data) {
 		$jQ(container).html(data);
 	},
 	vzSlider: {
-		init: function() {
-			console.log("init");
+		init: function () {
+			console.log('init');
 			_self = this;
 			//Search for slide
-			$jQ('.vzn-slide').each(function() {
+			$jQ('.vzn-slide').each(function () {
 				element = $jQ(this);
 				instance = $jQ(this).attr('id');
 				increment = $jQ(this).find('li:first').width();
@@ -213,7 +215,7 @@ MLS.ui = {
 
 			// ... and use it to set proper width for slide container
 			var listIncr = 0;
-			if (type == 'fancy' || type == 'lifestyles') {
+			if (type === 'fancy' || type == 'lifestyles') {
 				listIncr = baseIncr / 2;
 
 				// add logic for end of list if last element is large product/story !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -277,6 +279,7 @@ MLS.ui = {
 				_self.slideButtons(this, endMod);
 
 				$jQ('.tabs dd a').click(function() {
+                    alert();
 					_self.slideTab(this);
 				});
 

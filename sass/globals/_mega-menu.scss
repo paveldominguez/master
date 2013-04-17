@@ -274,9 +274,6 @@ $colorNavGridText: #333333;
                     right: 1px solid $colorSubnavGridBrd;
                     bottom: 1px solid $colorSubnavGridBrd;
                 }
-                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
-                    border-bottom: none;
-                }
                 &.cta-all {
                     display: table;
                     a {
@@ -329,12 +326,6 @@ $colorNavGridText: #333333;
                     right: 1px solid $colorSubnavGridBrd;
                     bottom: 1px solid $colorSubnavGridBrd;
                 }
-                &.item-5, &.item-10, &.item-15 {
-                    border-right: none;
-                }
-                &.item-11, &.item-12, &.item-13, &.item-14, &.item-15 {
-                    border-bottom: none;
-                }
                 a {
                     display: table-cell;
                     width: 100%; height: 100%;
@@ -346,6 +337,33 @@ $colorNavGridText: #333333;
                     &:hover {
                         img { opacity: 1; }
                     }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $screenLarge) {
+    .mls-nav {
+        .subnav-grid {
+            .nav-grid-item {
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+            }
+            .nav-grid-item {
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+            }
+        }
+        .nav-grid {
+            .nav-grid-item {
+                &.item-5, &.item-10, &.item-15 {
+                    border-right: none;
+                }
+                &.item-11, &.item-12, &.item-13, &.item-14, &.item-15 {
+                    border-bottom: none;
                 }
             }
         }
@@ -489,6 +507,13 @@ $colorNavGridText: #333333;
                         border-bottom: none;
                     }
                 }
+                .nav-grid-item {
+                    width: 50%;
+                    border: {
+                        right: 1px solid $colorSubnavGridBrd;
+                        bottom: 1px solid $colorSubnavGridBrd;
+                    }
+                }
             }
             .products {
                 padding: 0;
@@ -531,6 +556,13 @@ $colorNavGridText: #333333;
                         display: table-cell;
                         vertical-align: bottom;
                         background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
+                    }
+                }
+                &.active {
+                    > a {
+                        span {
+                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;       
+                        }
                     }
                 }
                 .accordion-content {
