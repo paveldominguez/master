@@ -11,7 +11,7 @@
 @mixin boxBrdrL { border-left: 1px solid #ccc; }
 @mixin boxBrdrA { border: 1px solid #ccc; }
 
-@mixin cartRounded { 
+@mixin cartRounded {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -39,7 +39,7 @@
 	font-weight: normal;
 	text-transform: none;
 	}
-			
+
 @mixin checkoutLabel {
 	color: $cartGreyDk;
 	font-family: $fontArial;
@@ -58,36 +58,36 @@
 	letter-spacing: -1px;
 	}
 
-@mixin actionLink { 
+@mixin actionLink {
 	font-family: $fontArial;
 	font-size:12px;
 	font-weight:bold;
 	text-transform:capitalize;
-	color: $actLinkBlue; 
+	color: $actLinkBlue;
 	}
-						
+
 @mixin dropdownPanel {
 	@include cartRounded;
 	@include boxBrdrA;
 	background: #fff;
-	-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
-    -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
-    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2); 
+	-webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
 	position: absolute;
-	z-index:10;  
-	padding:10px; 
+	z-index:10;
+	padding:10px;
 	}
-	
-@mixin ctaRedButton { 
+
+@mixin ctaRedButton {
 	@include cartRounded;
-	border:0px; 
+	border:0px;
 	background-color: $colorVzwRed;
     -webkit-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
     -moz-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
     box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
     position: relative;
-    
-    span { 
+
+    span {
     	color: #FFF;
     	letter-spacing: -1px;
     	text-shadow: -1px -1px 0.3px rgba(0, 0, 0, 0.2);
@@ -102,8 +102,8 @@
     	padding-left: 10px;
     	text-transform:lowercase;
     	}
-    	
-    input[type="submit"] { 
+
+    input[type="submit"] {
     	-webkit-appearance: none;
     	-moz-appearance: none;
     	display:block;
@@ -115,12 +115,12 @@
     	opacity: 0;
     	cursor:pointer;
     	}
-    	
+
     /* this needs fallback to image for ie8 */
     }/* end ctaRedButton */
 
 
-@mixin greyCartButton { 
+@mixin greyCartButton {
 	@include cartRounded;
 	@include boxBrdrA;
 	background: #edf1f2;
@@ -132,7 +132,7 @@
     box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5),
 			inset 0 -1px 1px 1px rgba(60, 60, 60, .1) ;
 
-	span, a { 
+	span, a {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -145,10 +145,10 @@
 		text-shadow: 0px 1px 1px #fff;
 		font-family: $fontArial;
 		font-size: 16px;
-		line-height: 16px; 
+		line-height: 16px;
 		font-weight: bold;
 		}
-		
+
 	.vzw {
 		font-family: $fontVzwMedium;
 		font-size:18px;
@@ -156,11 +156,11 @@
 		font-weight: normal;
 		letter-spacing: -1px;
 		}
-	.data { 
-		font-size: 16px; 
-		display: inline; 
-		}	
-		
+	.data {
+		font-size: 16px;
+		display: inline;
+		}
+
 	input[type="submit"] {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -171,9 +171,9 @@
 		top: 0; left: 0;
 		opacity: 0;
 		}
-		
+
 	} /* end cartGreyButton */
-    
+
 @mixin greyCartSelector {
  	@include cartRounded;
 	@include boxBrdrA;
@@ -195,23 +195,23 @@
  		height: 100%;
  		top: 0; left: 0;
  		font-size: 14px;
-		line-height: 14px; 
+		line-height: 14px;
 		text-transform: lowercase;
 		color: $cartGreyDk;
 		font-family: $fontArial;
 		font-weight: bold;
-		padding: 14px 0 0 10px; 
+		padding: 14px 0 0 10px;
 		background: url(../img/sprites/pdp/grey-more.png) 50px 19px no-repeat;
  		}
- 
- 	select { 
-		-webkit-appearance: none; 
+
+ 	select {
+		-webkit-appearance: none;
 		-moz-appearance: none;
 		-webkit-box-align: start;
 		-moz-box-align: start;
 		-box-align: start;
 		width: 100%;
-		height: 100%; 
+		height: 100%;
 		position:relative;
 		top: 0px; left: 0;
 		z-index: 10;
@@ -219,37 +219,37 @@
 		}
 
 	}/* end greyCart Selector */
-  
-  
+
+
 @mixin ctaSecondaryCart {
 	display: inline-block;
 	height:30px;
 	width: 108px;
 	position: relative;
-	
+
 	.button {
 		display: block;
 		width: 100%;
 		height: 100%;
 		position: absolute;
 		top: 0; left: 0;
-		
+
 		span {
 		display: block;
 		width: 100%;
 		height: 100%;
 		position: absolute;
 		top: 0; left: 0;
-		
+
 		padding: 9px 0 0 20px;
 		@include cart-sprite(red-cart-secondary-add, false, 2px, 8px);
 		text-transform:uppercase;
 		color: $colorVzwRed;
 		font-family : $fontArial;
-		font-size:11px; 
+		font-size:11px;
 		line-height: 11px;
-		font-weight: bold; 
-	
+		font-weight: bold;
+
 		input[type="submit"] {
 			-webkit-appearance: none;
 			-moz-appearance: none;
@@ -265,15 +265,30 @@
 		} /* end span */
 	}/* end button */
 
-} /* end ctaSecondaryCart */ 
+} /* end ctaSecondaryCart */
 
 
 
-@mixin slideSlow1 {	
+@mixin slideSlow1 {
 	-webkit-transition: all 600ms ease-in-out;
    	-moz-transition: all 600ms ease-in-out;
     -o-transition: all 600ms ease-in-out;
     -ms-transition: all 600ms ease-in-out;
     transition: all 600ms ease-in-out;
-    -webkit-backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
     }
+
+@mixin breakpoint($point) {
+    @if $point == largeDesktop {
+        @media (min-width: $screenLarge) { @content; }
+    }
+    @else if $point == desktop {
+        @media (min-width: $screenMedium) and (max-width: $screenLarge - 1) { @content; }
+    }
+    @else if $point == tablet {
+        @media (min-width: $screenSmall) and (max-width: $screenMedium - 1) { @content; }
+    }
+    @else if $point == phone {
+        @media (max-width: $screenMobileSmall)  { @content; }
+    }
+}
