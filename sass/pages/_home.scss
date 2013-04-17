@@ -563,7 +563,12 @@ $btfHiliteBg : #2a2d32;
                 height: 370px;
                 position: relative;
                 .carrot{
-
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -20px;
+                    left: -40px;
+                    display: block;
+                    @include css-triangle("left",20px,#fff);
                 }
                 .promo-cta {
                     clear: both;
