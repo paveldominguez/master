@@ -178,20 +178,17 @@ $btfHiliteBg : #2a2d32;
                 clear: both;
                 cursor: pointer;
                 @include border-radius(3px);
-                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
                 border: 1px solid #3B3F45;
                 display: table;
                 margin: 20px 0;
                 width: 130px;
-                // height: 55px;
                 height:43px;
                 color: #FFF;
-                // font-size: 18px;
                 font-size: 14px;
                 span {
                     display: table-cell;
                     vertical-align: bottom;
-                    // padding: 10px 15px;
                     padding: 3px 5px;
                     line-height: 40px;
                 }
@@ -563,7 +560,7 @@ $btfHiliteBg : #2a2d32;
                 float:left;
                 display:block;
                 border:1px solid #f8f8f8;
-                max-height: 370px;
+                height: 370px;
                 position: relative;
                 .carrot{
 
@@ -581,6 +578,8 @@ $btfHiliteBg : #2a2d32;
                     font-size:25px;
                     color:#3d4146;
                     line-height: 1.2em;
+                    @include breakpoint(tablet){font-size: 18px;}
+                    @include breakpoint(mobileLarge){font-size: 18px;}
                 }
                 .post-info{
                     font-size:12px;
