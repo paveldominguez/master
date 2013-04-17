@@ -40,7 +40,7 @@ MLS.ui = {
 	 * @element: (string) parent (containing) element
 	 */
 
-	tabs: function (element) {
+	tabs: function (element, hover) {
 		var scope = element,
 			$contentTabs = $jQ(scope + ' > .tab-content > .tab'),
 			activeClass = 'active';
@@ -49,8 +49,10 @@ MLS.ui = {
 			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
-		$jQ(scope + ' > .tab-menu > .tab').on('click', function (e) {
-			e.preventDefault();
+		$jQ(scope + ' > .tab-menu > .tab').on((hover ? 'mouseenter' : 'click'), function (e) {
+			if (!hover) {
+				e.preventDefault();
+			}
 			var tab = $jQ(this).attr('tab');
 			$jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
 			$jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
@@ -68,7 +70,7 @@ MLS.ui = {
 			$contentTabs = $jQ(element + ' > .tab-content > .tab'),
 			activeClass = 'active';
 
-		$jQ(scope + ' > .tab-menu > .tab').each(function ( i, el) {
+		$jQ(scope + ' > .tab-menu > .tab').each(function (i) {
 			$jQ(this).add($contentTabs[i]).attr('tab', i + 1);
 		});
 
