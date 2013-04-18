@@ -98,13 +98,14 @@ MLS = {
             $jQ("#sort-options").uniform();
             contentGrid.init();
             contentFilter.init();
-            MLS.ajax.cart.init();
+            MLS.ajax.cart.init(document.body);
             MLS.ajax.colorPicker.init();
         }
     },
     'content-landing-page' : {
         init : function() {
             //searchResults.styleDropDown();
+            contentGrid.init();
             contentFilter.init();
             MLS.ajax.article.init();
             //tabs
@@ -127,7 +128,7 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.ajax.cart.init();
+            MLS.ajax.cart.init(document.body);
         }
     },
     'lifestyle-landing-page' : {
@@ -141,7 +142,7 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.ajax.cart.init();
+            MLS.ajax.cart.init(document.body);
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -162,17 +163,18 @@ MLS = {
     'product-detail' : { // add -page
         init : function() {
             productDetail.init();
+            MLS.ajax.cart.init('#add-cart-box .button span');
         }
     },
-    'search-results-page' : {
-        init : function() {
-            $jQ("#sort-options").uniform();
-            contentGrid.init();
-            MLS.ajax.colorPicker.init();
-            contentFilter.init();
-            MLS.ajax.cart.init();
-        }
-    },
+    // 'search-results-page' : {
+    //     init : function() {
+    //         $jQ("#sort-options").uniform();
+    //         contentGrid.init();
+    //         MLS.ajax.colorPicker.init();
+    //         contentFilter.init();
+    //         MLS.ajax.cart.init();
+    //     }
+    // },
     'special-offers-landing-page' : {
         init : function() {
             contentFilter.init();
