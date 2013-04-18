@@ -58,7 +58,7 @@ MLS.ajax = {
         },
         addItemSuccess : function (data) {
             if (data.hasOwnProperty('success')) {
-                $jQ('#nav-cart, #mini-cart-content').addClass('active');
+                $jQ('#nav-cart, #nav-tab4').addClass('active');
                 $jQ('#minicart-item-list').append(data.success.responseHTML);
             }
             else {

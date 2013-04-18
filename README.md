@@ -15,7 +15,7 @@ Here are the project requirements:
 * Compass
 * sassy-math
 * modular-scale
-* zurb-foundation (3.22)
+* zurb-foundation (3.2.2)
 
 ## Windows Users:
   - When installing Ruby: ** Make sure that the "Add Ruby executables to your PATH" option is checked.
@@ -48,10 +48,10 @@ Use the following command to perform the gem installation:
 gem install sassy-math modular-scale compass
 ```
 
-Install Zurb Foundation v 3.22
+Install Zurb Foundation v 3.2.2
 
 ```
-gem install zurb-foundation --version "3.22" 
+gem install zurb-foundation --version "3.2.2" 
 ```
 *make sure you install the way noted; running gem install zurb-foundation without the version will install zurb foundation 4.x which will not work with our project.
 
