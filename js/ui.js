@@ -135,6 +135,43 @@ MLS.ui = {
 	updateContent: function (container, data) {
 		$jQ(container).html(data);
 	},
+	/*
+	 * Generic vertical scroll using 3dTransform, attaches new position as data atrribute
+	 * 
+	 */
+	vScroll: function(element, position) { 
+		$jQ(element).css({
+        	'-webkit-transform': 'translate3d(0,' + position +'px,  0)',
+  			'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
+  			'-ms-transform' : 'translate3d(0,' + position +'px,  0)',
+ 			'-o-transform' : 'translate3d(0,' + position +'px,  0)',
+  			'transform' : 'translate3d(0,' + position +'px,  0)'
+  		}); // end css
+  		$jQ(element).attr('data-vpos', position);
+	},
+	/*
+	 * Generic scroll page to certain point
+	 *
+	 */
+	scrollPgTo: function(whereTo, topPad) {
+    	if (topPad == undefined) {
+        	topPadding = 0;
+    	}
+    	var moveTo = $jQ(whereTo).offset().top - topPad;
+    	$jQ('html, body').stop().animate({
+        	scrollTop: moveTo
+    	}, 250);
+	},
+	/*
+	 * Generic simple accordion for options in checkout, pdp, etc
+	 *
+	 */
+	simpleAcc: function(control) {
+		// change icon
+		$jQ(control).find('.icon').toggleClass('close');
+		// open/close panel
+		$jQ(control).next('.acc-info').toggle(300);
+	},
 	vzSlider: {
 		init: function () {
 			console.log('init');
