@@ -581,16 +581,19 @@ $hdrOfferCollapsed: 55px;
 
         .new-product { @include product-listing-sprite(new-mediamaster-bg); };
         .content-item-offer {
-        	@include product-listing-sprite(plp-sale-icon);
+        /*	@include product-listing-sprite(plp-sale-icon); */
         	 height: 30px;
-        	 padding: 0 0 0 40px;
+        	 padding: 0px;
+
 
         	 span {
         	 	line-height:32px;
         	 	color: $colorVzwRed;
+				position: relative;
+				bottom: 9px
         	 	}
         	 };
-         .content-item-offer.bundle { @include product-listing-sprite(plp-bundle-icon);  }
+         .content-item-offer.bundle {  }
 
         .sale-item, .sale-featured {
         	display: none;
