@@ -367,12 +367,6 @@ var productDetail = (function() {
         }); // create zoom panel
 
 
-
-
-            
-
-
-
 	// special offers pop-ups in cart
 		if ( pdpType == "pdp-plus" ) { //TEMP 'if' until pdp templates are finalized
 	
@@ -389,13 +383,29 @@ var productDetail = (function() {
 		} // end TEMP 'if'
 
 
+	// compatibility link jump
+	
+		$jQ('#compat-jump').click(function(e){
+			e.preventDefault();
+		
+			var closedCompat = $jQ('.compat').find('a');
+			pdpTab(closedCompat);
+			scrollPgTo('#product-details', 80);
+	
+		});
+
+
+
+
+
+
+
+
+
+
 
 // ONCLICK : below the fold ..............................................................
 
-        // all tabs : active tab animation .......................
-            $jQ('.tabs a').click(function () {
-                vznActiveTabs(this);
-            });
 
 
         // desktop tabs : more/less interaction ..................
@@ -845,14 +855,12 @@ function preloadZoom(zmBlk) { //........................ preload zoom components
 
 
 function pdpTab(href) { // ...................... custom tab function ...................
-
+	
 	//remove active class from all tabs
 		$jQ(href).parents('.tabs').children().removeClass('active');
 	
 	//apply it to (this) clicked tab
 		$jQ(href).parent().addClass('active');
-
-
 
 
 	// get tab content target name
@@ -1033,7 +1041,7 @@ function singleMoreLess(element) { //................. install single moreLess .
         // make the change
         $jQ(parent).css('height', parentHt ).removeClass('less').find('.see-all').removeClass('on');
         $jQ(element).text('More').css('background', 'url(../img/sprites/pdp/blue-more.png) 0 4px no-repeat');
-        event.preventDefault();
+        //event.preventDefault();
 
 
     } // end singleShowLess
@@ -1887,7 +1895,7 @@ function vznDragImg(slide) { //............ make image draggable on zoom .......
 					
 			
 			} else {
-				alert('WTF?');
+				//alert('WTF?');
 			}// end contextual
 			
 		}, 200 );
@@ -1971,6 +1979,31 @@ function restoreImages(element){ //....restore images for zoom panel 'smaller' &
 	});
 
 }// end restoreImages
+
+
+
+
+
+
+
+function scrollPgTo( where, topPad) {
+    if (topPad == undefined) {
+        topPadding = 0;
+    }
+    var moveTo = $jQ(where).offset().top - topPad;
+    $jQ('html, body').stop().animate({
+        scrollTop: moveTo
+    }, 250);
+} // end scrollPgTo
+
+
+
+
+
+
+
+
+
 
 
 

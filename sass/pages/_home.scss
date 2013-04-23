@@ -1,6 +1,6 @@
 $colorPromoBg: #EEEEEE;
 $colorPromoFont: #6D6E71;
-$cartGreyLt: #727272; 
+$cartGreyLt: #727272;
 $cartGreyMd: #666666;
 $cartGreyDk: #3d4146;
 $controlTxt: #c5c7c7;
@@ -22,7 +22,7 @@ $fontVzwMedium: "Verizon Apex Medium";
 
 /* colors */
 
-$cartGreyLt: #727272; 
+$cartGreyLt: #727272;
 $cartGreyMd: #666666;
 $cartGreyDk: #3d4146;
 $controlTxt: #c5c7c7;
@@ -153,14 +153,14 @@ $btfHiliteBg : #2a2d32;
 
             dd.active a h2,
             dd a h2:hover { color: $colorVzwRed;} /* end active tab */
-        
+
         .tabs-content {
 
             .show { display:block !important; }
 
-            .active { display:block !important; }   
-            }       
-                    
+            .active { display:block !important; }
+            }
+
         } /* end tabbed-wrapper */
 
 
@@ -178,25 +178,22 @@ $btfHiliteBg : #2a2d32;
                 clear: both;
                 cursor: pointer;
                 @include border-radius(3px);
-                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
                 border: 1px solid #3B3F45;
                 display: table;
                 margin: 20px 0;
                 width: 130px;
-                // height: 55px;
                 height:43px;
                 color: #FFF;
-                // font-size: 18px;
                 font-size: 14px;
                 span {
                     display: table-cell;
                     vertical-align: bottom;
-                    // padding: 10px 15px;
                     padding: 3px 5px;
                     line-height: 40px;
                 }
             }
-            .slides{ 
+            .slides{
                 margin:0;
                 li{
                     display:none;
@@ -216,7 +213,7 @@ $btfHiliteBg : #2a2d32;
                                     size: 90px;
                                 }
                             }
-                            
+
                             .hero-sub{
                                 float:right;
                                 width:260px;
@@ -297,7 +294,7 @@ $btfHiliteBg : #2a2d32;
                         font-size: 14px;
                         font-family: $fontArial;
                     }
-                    
+
                 }
             }
         }
@@ -310,8 +307,8 @@ $btfHiliteBg : #2a2d32;
         .flex-direction-nav {
             float: right;
             margin: 35px 0 0;
-            li { 
-                float: left; margin-left: 15px; 
+            li {
+                float: left; margin-left: 15px;
                 .flex-prev,
                 .flex-next {
                     display: block;
@@ -342,6 +339,7 @@ $btfHiliteBg : #2a2d32;
                 input{
                     color:#bdc2c3;
                     width: 173px;
+                    max-width: 323px;
                     height: 37px;
                     background: none;
                     border: none;
@@ -358,8 +356,56 @@ $btfHiliteBg : #2a2d32;
                         font-size: 27px;
                     }
                 }
-                #uniform-madlib-select{
-                    display:inline;
+                .madlib-select{
+                    display:inline-block;
+                    position: relative;
+                    label{
+                        font-family: "Verizon Apex Bold";
+                        font-size: 29px;
+                        color:#bdc2c3;
+                        line-height: 28px;
+                        border-bottom: 1px solid #515459;
+                        padding-bottom: 7px;
+                        background: url(../img/select-carrot.png) no-repeat right;
+                        padding-right: 20px;
+                        &.open{
+                            //display: none;
+                        }
+                    }
+                    ul{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #fff;
+                        padding: 0;
+                        min-width: 235px;
+                        -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+                        -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+                        box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+                        border-radius: 2px;
+                        border-top: 1px solid #e4e5e5;
+                        border-left: 1px solid #e4e5e5;
+                        display: inline-block;
+                        z-index: 100;
+
+                        li{
+                            //margin: 0 15px;
+                            border-top: 1px solid #f8f8f8;
+                            text-align: left;
+                            font-size: 27px;
+                            font-weight: normal;
+                            font-family: "Verizon Apex Book";
+                            padding: 5px;
+                            color: #ddddde;
+                            &.active{
+                                background: #3b3e45;
+                            }
+                            &:hover{
+                                background: #3b3e45;
+                            }
+                        }
+
+                    }
                 }
                 .tt-hint{
                     display: none;
@@ -368,8 +414,8 @@ $btfHiliteBg : #2a2d32;
                     background: #fff;
                     padding: 0;
                     min-width:170px;
-                     -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2); 
-                     -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2); 
+                     -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+                     -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      border-radius: 2px;
                      border-top: 1px solid #e4e5e5;
@@ -397,7 +443,7 @@ $btfHiliteBg : #2a2d32;
                         }
                     }
                 }
-            } 
+            }
         }
         .section-wrap{max-width: 855px;}
         .content-grid{border-top:none;}
@@ -444,7 +490,7 @@ $btfHiliteBg : #2a2d32;
                         line-height: 1.2em;
                         font-weight: 600;
                         padding: 30px;
-                    }                    
+                    }
                     .icon{
                         width: 26px;
                         height:19px;
@@ -515,10 +561,34 @@ $btfHiliteBg : #2a2d32;
                 float:left;
                 display:block;
                 border:1px solid #f8f8f8;
-                max-height: 370px;
+                height: 370px;
                 position: relative;
                 .carrot{
-
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -20px;
+                    left: -40px;
+                    display: block;
+                    @include css-triangle("left",20px,#fff);
+                }
+                .promo-cta {
+                    clear: both;
+                    cursor: pointer;
+                    @include border-radius(3px);
+                    @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
+                    border: 1px solid #3B3F45;
+                    display: table;
+                    margin: 20px 0;
+                    width: 130px;
+                    height:43px;
+                    color: #FFF;
+                    font-size: 14px;
+                    span {
+                        display: table-cell;
+                        vertical-align: bottom;
+                        padding: 3px 5px;
+                        line-height: 40px;
+                    }
                 }
                 .product-title{
                     font-size: 18px;
@@ -533,6 +603,8 @@ $btfHiliteBg : #2a2d32;
                     font-size:25px;
                     color:#3d4146;
                     line-height: 1.2em;
+                    @include breakpoint(tablet){font-size: 18px;}
+                    @include breakpoint(mobileLarge){font-size: 18px;}
                 }
                 .post-info{
                     font-size:12px;
@@ -548,7 +620,7 @@ $btfHiliteBg : #2a2d32;
             margin:0;
         }
             .tabbed-wrapper {
-            
+
             .tab-scroll {
 
                 dd {
@@ -560,7 +632,7 @@ $btfHiliteBg : #2a2d32;
                 &>li{
                     display:none;
                 }
-            
+
                 #consumer-reviewsTab,
                 #questions-commentsTab { display:none; }
 
@@ -575,58 +647,58 @@ $btfHiliteBg : #2a2d32;
         padding-bottom: 20px;
         max-width: 1024px;
         width: 100%;
-        
-        .section-wrap { 
+
+        .section-wrap {
             width:100%;
             max-width:1024px; }
-        .section-header { 
-            width:861px; 
+        .section-header {
+            width:861px;
             display:block;
             margin:0 auto 0 auto;
             }
-        
+
         .lifestyles-wrapper {
             @include boxBrdrT;
             @include boxBrdrR;
             @include boxBrdrL;
             position:relative;
-            padding-left:172px; 
-            
+            padding-left:172px;
+
             .tabbed-wrapper { @include clearfix(); }
-            
+
             .tab-block { @include clearfix(); }
-        
+
             .tab-scroll {
                 width:172px;
                 position:absolute;
                 left:0; top:0;
-            
-                dd { 
+
+                dd {
                     display:block;
                     width:100%;
                     height:172px;
                     color: $cartGreyDk;
                     @include cartBG;
                     @include boxBrdrB;
-                    
-                    a { 
+
+                    a {
                         position:relative;
                         display:block;
                         width:100%;
                         height:100%;
                         padding: 115px 0 0 0;
-                        
+
                         h2 {
                             color: $cartGreyMd;
                             font-size:12px;
                             letter-spacing: -0.5px;
                             text-align:center;
-                            
+
                             }
                         h2:hover { color:$btfHiliteBg; }
-                        
+
                         }
-                    .pointer { 
+                    .pointer {
                         width: 1px; height:1px;
                         border-left:15px solid $btfHiliteBg;
                         border-top:15px solid transparent;
@@ -637,58 +709,58 @@ $btfHiliteBg : #2a2d32;
                         display: none;
                         z-index:10;
                         }
-                
+
                     } /* end dd tab each */
                 dd.active {
                     a h2, a h2:hover { color:#ffffff; }
                     }
-                .alpha-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px 30px no-repeat; }   
-                .alpha-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px -103px no-repeat; 
+                .alpha-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px 30px no-repeat; }
+                .alpha-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px -103px no-repeat;
                     .pointer { display:block; }
                     }
-                .beta-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px 35px no-repeat; } 
-                .beta-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px -108px no-repeat; 
+                .beta-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px 35px no-repeat; }
+                .beta-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px -108px no-repeat;
                     .pointer { display:block; }
                     }
-                .gamma-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px 30px no-repeat; }   
-                .gamma-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px -105px no-repeat; 
+                .gamma-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px 30px no-repeat; }
+                .gamma-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px -105px no-repeat;
                     .pointer { display:block; }
                     }
                 } /* end tab scroll */
-        
+
             .tabs-content {
                 width:auto;
                 float:left;
-                margin-bottom:0; 
-                
+                margin-bottom:0;
+
                 #lifestyles-alphaTab,
                 #lifestyles-betaTab,
-                #lifestyles-gammaTab { 
+                #lifestyles-gammaTab {
                     display:none; }
-                    
+
                 .active { display:block; }
-                
+
                 .tab-wrapper { position:relative; }
-                
-                .vzn-slide { 
+
+                .vzn-slide {
                     @include clearfix();
-                    width:850px; 
+                    width:850px;
                     height: 516px;
-                    
+
                     .slides {
                         position:absolute;
-                        height:516px; 
-                    
+                        height:516px;
+
                         .large-story {
                             height:516px;
                             width:516px;
                             padding:0;
                             font-size:0; line-height:0;
-                            
+
                             position:absolute;
                             /* @include boxBrdrL; */
                             @include boxBrdrB;
-                            
+
                             .related-stories-large {
                                 display:block;
                                 width: 94.186%; height:94.186%;
@@ -699,22 +771,22 @@ $btfHiliteBg : #2a2d32;
                                 background-size: cover !important;
                                 position:absolute; top:3%; left:3%;
                                 overflow:hidden;
-                            
+
                                 .large-story-info-box {
                                     width: 50%; height: 50%;
                                     background: #fff;
                                     position:absolute;
                                     bottom:-1px; left: 0;
                                     padding:10px 15px;
-                                        
+
                                     .large-story-cat {
-                                        font-size:10px; 
+                                        font-size:10px;
                                         font-family: $fontArial;
                                         text-transform: uppercase;
                                         color: $cartGreyMd;
                                         margin-bottom:20px;
                                         }
-                                        
+
                                     .large-story-title {
                                         font-size:17px;
                                         line-height: 23px;
@@ -726,7 +798,7 @@ $btfHiliteBg : #2a2d32;
                                         font-family: $fontVzwBook;
                                         font-weight:normal;
                                         }
-                                        
+
                                     .large-story-text {
                                         font-size: 12px;
                                         line-height: 18px;
@@ -736,57 +808,57 @@ $btfHiliteBg : #2a2d32;
                                         color: $cartGreyDk;
                                         width:90%;
                                         }
-                                            
+
                                     .large-story-link {
                                         width:100px;
                                         height:24px;
-                                        background: url(../img/sprites/pdp/blue-right.png) 75px no-repeat;                                      
+                                        background: url(../img/sprites/pdp/blue-right.png) 75px no-repeat;
                                         position:absolute;
                                         bottom:0px; left: 15px;
-                                            
+
                                         a { display:block;
                                             width: 100%; height: 100%;
-                                            @include actionLink; 
+                                            @include actionLink;
                                             line-height:24px;
                                             font-size:10px;
                                             text-transform:uppercase;
                                             }
                                         }
                                     } /* end info box */
-                                    
+
                                 .product-reveal { position:absolute;
                                         bottom:-1px; right : 0;
                                         width:45px; height: 45px;
                                         background: url(../img/product-detail-page/pdp-plus/lifestyles-large-reveal-arrow.jpg) no-repeat;
-                                        cursor:pointer; }   
-                                
-                                .related-product { 
-                                    position:absolute; 
+                                        cursor:pointer; }
+
+                                .related-product {
+                                    position:absolute;
                                     top:100%;
                                     left:100%;
                                     height:102%;
                                     width:102%;
-                                    
+
                                     background: #fff url(../img/product-detail-page/pdp-plus/lifestyles-large-related-product-background.jpg) no-repeat;
-                                    @include slideMedium;   
+                                    @include slideMedium;
                                     @include clearfix();
                                     cursor:pointer;
-                                    
-                                    .related-product-title { 
+
+                                    .related-product-title {
                                         display:block;
                                         float:right;
                                         width:70%;
-                                        text-align:left; 
+                                        text-align:left;
                                         padding:0 20px 0 0;
                                         margin:12.5% 0px 30px 0;
                                         letter-spacing:-1px;
-                                        font-size:18px; 
+                                        font-size:18px;
                                         line-height:23px;
                                         white-space: normal;
                                         font-family: $fontVzwBook;
                                         font-weight:normal;
                                         }
-                                    
+
                                     a { display:block;
                                         float:right;
                                         width:75%; height: auto;
@@ -794,14 +866,14 @@ $btfHiliteBg : #2a2d32;
                                         position:relative;
                                         cursor:pointer;
                                         z-index:10;
-                                        
-                                        img { 
+
+                                        img {
                                             display:block !important;
                                             width:75%; height:auto;
                                             height:auto;
-                                            margin:0 auto 0 auto; 
+                                            margin:0 auto 0 auto;
                                             }
-                                    
+
                                         .related-product-cta {
                                             @include actionLink;
                                             text-transform: uppercase;
@@ -818,28 +890,28 @@ $btfHiliteBg : #2a2d32;
                                     }/* end related product */
                                 } /* end related story */
                             } /* end large-story container */
-                            
+
                         .large-story:nth-of-type(1) { border-left:0px; }
-                    
-                        .small-story { 
+
+                        .small-story {
                             width: 258px;
                             height:258px;
-                            padding:15px; 
-                        
+                            padding:15px;
+
                             position:absolute;
                             @include boxBrdrR;
                             @include boxBrdrL;
-                            @include boxBrdrB; 
-                            
+                            @include boxBrdrB;
+
                             .related-stories-small {
-                            
-                                .image { 
+
+                                .image {
                                     display:block;
                                     width:226px;
-                                    height:auto; 
-                                    padding:0; margin:0; 
+                                    height:auto;
+                                    padding:0; margin:0;
                                     }
-                                .teaser { 
+                                .teaser {
                                     font-size:17px;
                                     line-height:23px;
                                     white-space:normal;
@@ -849,19 +921,19 @@ $btfHiliteBg : #2a2d32;
                                     width: 100%;
                                     position: absolute;
                                     bottom:15px;
-                                    background: url(../img/sprites/pdp/blue-right.png) 72px 10px no-repeat; 
-                                    height: 24px; 
+                                    background: url(../img/sprites/pdp/blue-right.png) 72px 10px no-repeat;
+                                    height: 24px;
                                     a {
                                         @include actionLink;
                                         text-transform: uppercase;
                                         font-size:10px;
                                         }
-                                    }           
+                                    }
                                 } /* end related story */
-                            } /* end small container */                         
-                        } /* end slides */      
+                            } /* end small container */
+                        } /* end slides */
                     } /* end vzn slide */
-        
+
                 .vzn-slide-prev { top: -30px; right:99px; left: auto; }
                 .vzn-slide-next { top: -30px; right: 54px; }
 
@@ -906,7 +978,7 @@ $btfHiliteBg : #2a2d32;
     }
 }
 
-@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
 
 }
 @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {

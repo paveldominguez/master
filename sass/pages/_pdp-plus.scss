@@ -1,76 +1,7 @@
 /* PDP-Plus CSS - builds on top of product-detail.css  */
 
 
-/* pdp-plus vars & mixins */
 
-	$fontArial: Arial, "Helvetica Neue", Helvetica, sans-serif;
-	$fontVzw: "Verizon Apex";
-	$fontVzwBook: "Verizon Apex Book";
-	$fontVzwBookItalic: "Verizon Apex Book Italic";
-	$fontVzwBold: "Verizon Apex Bold";
-	$fontVzwLight: "Verizon Apex Light";
-	$fontVzwMedium: "Verizon Apex Medium";
-	
-
-	/* reused colors */
-
- 	$cartGreyLt: #b0b0b0; 
- 	$cartGreyMd: #666666;
- 	$cartGreyDk: #3d4146;
- 	$controlTxt: #c5c7c7;
-
-	$colorVzwRed: #D00505;
- 	$actLinkBlue: #0066cc;
-
-	$specialOfferBlue: #009eb6;
-
- 	$availColorBlk: #2e2e2e;
- 	$availColorWht: #ffffff;
- 	$availColorGrey: #b1b0b0;
- 	$availColorBlue: #51b0d8;
-
-
-	/* pdp colors */
-	
-	$pdpGreyMd:	#d6dcdc;
-	$featuredBg : #27a0cc;
-	$techinfoBg : #119a70;
-	$btfHiliteBg : #2a2d32;
-	
-	/* pdp-plus colors */
-	$highlightBg: #29a0cd;
-	$pdpAmber: #ffba62;
-
-
-	/* mixins */
-
-	@mixin heroBG { background: #ebeeee; }
-	@mixin cartBG { background: #e2e6e6; }
-	/* url(../img/product-detail-page/pdp-backgrounds/cart-bg.png) repeat; } */
-	@mixin heroInset {
-		-webkit-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
-		-moz-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
-		-o-box-shadow: inset 0 0 0 0px #eceeee, inset 0px -2px 6px #ccc;
-		box-shadow: inset 0 0px 0 0px #eceeee, inset 0px -2px 6px #ccc; }
-
-	@mixin ctaButton { @include cartRounded;
-						border:0px; 
-						background-color: $colorVzwRed;
-            			color: #FFF;
-            			letter-spacing: 0px;
-            			text-shadow: -1px -1px 0.3px rgba(0, 0, 0, 0.2);
-            			-webkit-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
-            			-moz-box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
-            			box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
-            			font-family: $fontVzwBook;
-            			cursor:pointer;
-            			/* this needs fallback to image for ie8 */ }
-
-	@mixin actionLink { font-family: Arial, 'Helvetica Neue', Helvetcia, sans-serif;
-						font-size:12px;
-						font-weight:bold;
-						text-transform:capitalize;
-						color: $actLinkBlue; }
 
 	@mixin anchorDrop { -moz-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7);
 						-webkit-box-shadow:0px 3px 8px -6px rgba(119, 119, 119, 0.7);
@@ -1449,11 +1380,9 @@
 		
 		.lifestyles-wrapper {
 			@include boxBrdrT;
-			
 			@include boxBrdrL;
 			position:relative;
-			 
-			
+
 			.tabbed-wrapper { @include clearfix(); }
 			
 			.tab-block { 
@@ -1473,13 +1402,14 @@
 					color: $cartGreyDk;
 					@include cartBG;
 					@include boxBrdrB;
+					background: $pdpGreyMd;
 					
 					a { 
 						position:relative;
 						display:block;
 						width:100%;
 						height:100%;
-						padding: 115px 0 0 0;
+						padding: 20px 0 0 0;
 						
 						h2 {
 							color: $cartGreyMd;
@@ -1488,9 +1418,21 @@
 							text-align:center;
 							
 							}
-						h2:hover { color:$btfHiliteBg; }
-						
+					
+						.lifestyle-image-box {
+							display: block;
+							width: 72px; height: 72px;
+							margin: 0 auto 20px auto;
+							position: relative;
+							overflow: hidden;
+							
+        			        .lifestyle-icon {
+        			        	position: absolute; 
+        			        	top: 0; left: 0;	
+        			        	}
+        			    	}
 						}
+						
 					.pointer { 
 						width: 1px; height:1px;
 						border-left:15px solid $btfHiliteBg;
@@ -1505,20 +1447,17 @@
 				
 					} /* end dd tab each */
 				dd.active {
+					background: $btfHiliteBg;
 					a h2, a h2:hover { color:#ffffff; }
-					}
-				.alpha-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px 30px no-repeat; }	
-				.alpha-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png) 51px -103px no-repeat; 
 					.pointer { display:block; }
+					
+					.lifestyle-image-box {
+        			    .lifestyle-icon {
+        			        top: -135px;	
+        			        }
+						}
 					}
-				.beta-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px 35px no-repeat; }	
-				.beta-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-beta-icon.png) 51px -108px no-repeat; 
-					.pointer { display:block; }
-					}
-				.gamma-tab { background: $pdpGreyMd url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px 30px no-repeat; }	
-				.gamma-tab.active{ background: $btfHiliteBg url(../img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png) 51px -105px no-repeat; 
-					.pointer { display:block; }
-					}
+				
 				} /* end tab scroll */
 		
 			.tabs-content {

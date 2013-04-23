@@ -9,7 +9,9 @@ html, body {
 h1,h2,h3,h4,h5,h6 {
     font-family: $fontVzwLight;
 }
-
+*:focus {
+    outline: none;
+}
 .wrapper {
     @include clearfix();
     position: relative;
@@ -23,7 +25,7 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0 auto;
 }
 
-#site-header { 
+#site-header {
     position: relative;
     z-index: 1000 !important;
 }
@@ -50,7 +52,7 @@ h1,h2,h3,h4,h5,h6 {
     .details {
         position: absolute;
     }
-    .top-bar { 
+    .top-bar {
         top: 0;
         display: block;
     }
@@ -60,7 +62,7 @@ h1,h2,h3,h4,h5,h6 {
         height: 130px;
         display: block;
         width: 100%;
-      
+
         .name{
             font-family: arial;
             font-size:13px;
@@ -68,6 +70,237 @@ h1,h2,h3,h4,h5,h6 {
         }
     }
 }
+
+
+.lightbox { 
+		display: none;
+		background: rgba(0, 0, 0, .8);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0; top: 0;
+		z-index:1000;
+		
+		}
+
+	.lightbox-info-block { 
+		@include cartRounded;
+		width: 560px; height: 400px;
+		background:#fff;
+		position: absolute;
+		top: 10%; left: 50%;
+		margin-left: -250px;
+		padding: 30px 45px 45px 45px;
+		
+		.lightbox-headline { 
+			width: 80%;
+			padding: 0; margin: 0 0 25px 0;
+			font-family: $fontVzwBook;
+			font-size: 30px;
+			font-weight: normal;
+			color: $cartGreyDk;
+			letter-spacing: -1px;
+			
+			.bold { 
+				font-family: $fontVzwBold;
+				}
+			}
+	
+		.lightbox-details {
+			padding: 0; margin: 0 0 20px 0;
+			@include checkoutContent; 
+			font-size:14px; line-height: 18px;
+			
+			.bold { font-weight: bold; }
+			}
+		
+		.lightbox-close {
+			position: absolute;
+			top: 20px; right: 20px;
+			width: 52px; height: 52px;
+			border-radius: 26px;
+			background: #333 url(../img/sprites/cart/modal-close-icon.png) 16px 16px no-repeat;
+			cursor: pointer;
+			}
+		
+		.lightbox-input-wrap {
+			margin: 0 0 15px 0;
+		
+			.lightbox-input-title { 
+				@include checkoutLabel;
+				margin: 0 0 10px 0; 
+				}
+				
+			input[type="email"] { 
+				color: $cartGreyDk;
+				font-family: $fontVzwBook;
+				font-weight: normal;
+				background: #fff;
+				margin: 3px 0 5px 0; 
+				padding: 8px;
+				font-size:18px;
+				height: 36px;
+				@include cartRounded;
+				}
+				
+			input[type="email"].hasPlaceholder { 
+				color: #bbb;
+				font-family: $fontVzwLight;
+				font-weight: normal; 
+				}
+			
+			input[type="email"]:focus {
+				color: $cartGreyDk;
+				font-family: $fontVzwBook;
+				font-weight: normal; 
+				}
+				
+			label.error { 
+				@include checkoutLabel;	
+				color: $colorVzwRed;
+				}
+				
+			} /* end input wrap */
+		
+		.lightbox-fineprint  {
+			@include clearfix();
+			width: 100%;
+			@include checkoutLabel;
+			text-transform: none;
+			font-weight: normal;
+		
+			.headline {
+				display:block; width: 100%;
+				@include instruct;
+				margin:0 0 15px 0; padding: 0;
+				}
+				
+			.call, .chat { 
+				display: inline-block;
+				width: auto;
+				float: left;
+				padding: 0; margin: 0;
+				line-height: 24px;
+				
+				a {
+					@include checkoutLabel;
+					color: $actLinkBlue;
+					font-size: 12px;
+					}
+				}
+				
+			.call { 
+				@include boxBrdrR; 
+				background: url(../img/sprites/cart/call-icon.png) 0px 3px no-repeat; 
+				padding: 0 10px 0 20px;
+				
+				span { @include checkoutLabel; }
+				}
+			
+			.chat { 
+				background: url(../img/sprites/cart/chat-icon.png) 3px 0px no-repeat;
+				padding: 0 0 0 33px;
+				}	
+			
+		
+			ul {
+				@include clearfix();
+				
+				li {
+					display: inline-block;
+					float: left;
+					position: relative; 
+					padding: 0 10px 0 10px;
+					@include boxBrdrR;
+					line-height: 16px;
+					
+					a {
+						@include actionLink;
+						display: inline-block;
+						text-transform: uppercase;
+						font-size:10px;
+						}
+						
+					.dropdown-link { padding-right: 15px; }
+						
+					.lightbox-dropdown {
+						@include dropdownPanel;
+						width: 200px;
+						padding: 10px;
+						display: none;
+							
+						p {
+							@include checkoutContent;
+							font-size: 10px;
+							line-height: 13px;
+							margin:0;
+							color: $cartGreyDk;
+							}
+							
+						}/* end modal dropdown */
+					}/* end common li */
+					
+				.save-avail { 
+					background: url(../img/sprites/pdp/blue-more.png) 114px 8px no-repeat;	
+						
+					.lightbox-dropdown { top: 32px; left : 18px; }
+					}
+					
+				.save-notify { 
+					background: url(../img/sprites/pdp/blue-more.png) 163px 8px no-repeat;	
+						
+					.lightbox-dropdown { top: 32px; left: 67px; }
+					}
+						
+				li:first-child { padding-left: 0px; }
+				li:last-child { border-right: 0px; }
+					
+				}/* end ul */
+			}/* end fine print */
+	
+		.lightbox-cta {
+			@include ctaRedButton;
+			width: 150px;
+			height: 55px;
+			position: absolute;
+			right: 20px; bottom:20px;
+			span { padding-top: 27px; }
+			}/* end cta */
+		}/* end lightbox */	
+
+
+.selector { @include greyCartSelector; } /* uniform select-option styles*/
+
+.checker { /* uniform checkbox styles */
+	width:20px;
+	height:20px;
+	float: left;
+	-webkit-border-radius: 2px;
+	border: 1px solid #aaa;
+					
+	span { 
+		input[type="checkbox"] { 
+			width:20px; 
+			height: 20px; 
+			opacity: 0;
+			}
+		} /* span */
+							
+	span.checked {
+		background: url(../img/sprites/cart/checkout-checkbox-checked.png) 3px 0px no-repeat;
+		}
+	}/* end checker */
+
+
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
     .hide-for-large-grid { display: none; }
@@ -80,8 +313,8 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    
+
 }
 @media only screen and (max-width: $screenMobileSmall) {
-    
+
 }

@@ -21,7 +21,7 @@ $fontVzwBoldItalic: "Verizon Apex Bold Italic";
 $fontVzwLight: "Verizon Apex Light";
 $fontVzwMedium: "Verizon Apex Medium";
 
-// Color Variables
+/* Global colors */
 $colorVzwRed: #D00505;
 $colorVzwLogoBg: #B30000;
 $colorVzwNavBrd: #FFFFFF;
@@ -34,6 +34,26 @@ $colorActiveTabBg: #E5EAEA;
 $colorActiveTabBrd: #B7BBBD;
 $colorNavMobile: #3C4045;
 
+
+/* Product, cart & checkout colors */
+
+	$cartGreyLt: #b0b0b0; 
+ 	$cartGreyMd: #666666;
+ 	$cartGreyDk: #3d4146;
+ 	$cartGreySelect: #adadad;
+ 	$cartGreyAltWht: #edefef;
+ 	$cartGreyFocus: #d9d9d9;
+ 	
+ 	$actLinkBlue: #0066cc;
+ 	$successGreen: #54b87d;
+ 	
+	$featuredBg : #27a0cc;
+	$techinfoBg : #119a70;
+	$highlightBg: #29a0cd;
+	$pdpAmber: #ffba62;
+	$saleBannerBG: #36a99e;
+	
+
 // General Variables
 $globalGutter: 30px;
 
@@ -41,16 +61,21 @@ $globalGutter: 30px;
  * Global Styles
  */
 
-@import "global";
-@import "globals/mega-menu";
-@import "globals/scrollbar";
-@import "globals/article";
-
 /*
  * Mixins
  */
 
 @import "mixins";
+
+
+
+
+
+@import "global";
+@import "globals/mega-menu";
+@import "globals/scrollbar";
+@import "globals/article";
+
 
 /*
  * Page-Specific Styles

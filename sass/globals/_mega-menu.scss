@@ -197,6 +197,7 @@ $colorNavGridText: #333333;
                                 family: $fontVzwBoldItalic;
                                 size: 18px;
                             }
+                            z-index: 2;
                         }
                     }
                 }
@@ -273,9 +274,6 @@ $colorNavGridText: #333333;
                     right: 1px solid $colorSubnavGridBrd;
                     bottom: 1px solid $colorSubnavGridBrd;
                 }
-                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
-                    border-bottom: none;
-                }
                 &.cta-all {
                     display: table;
                     a {
@@ -316,9 +314,9 @@ $colorNavGridText: #333333;
                 bottom: 1px solid $colorSubnavGridBrd;
             }
         }
-        .brand-list {
+        .nav-grid {
             height: 100%;
-            .tab {
+            .nav-grid-item {
                 position: relative;
                 display: table;
                 float: left;
@@ -328,109 +326,44 @@ $colorNavGridText: #333333;
                     right: 1px solid $colorSubnavGridBrd;
                     bottom: 1px solid $colorSubnavGridBrd;
                 }
-                &.brand-5, &.brand-10, &.brand-15 {
-                    border-right: none;
-                }
-                &.brand-11, &.brand-12, &.brand-13, &.brand-14, &.brand-15 {
-                    border-bottom: none;
-                }
                 a {
                     display: table-cell;
                     width: 100%; height: 100%;
                     text-align: center;
                     vertical-align: middle;
-                    span { display: block; margin: 0 auto; text-indent: -99999px; }
-                    &.sony {
-                        span {
-                            @include nav-sprite(nav-brand-sony, false, 0, 0);
-                            width: 97px;
-                            height: 18px;
-                        }
+                    img {
+                        opacity: 0.5;
                     }
-                    &.canon {
-                        span {
-                            @include nav-sprite(nav-brand-canon, false, 0, 0);
-                            width: 94px;
-                            height: 20px;
-                        }
+                    &:hover {
+                        img { opacity: 1; }
                     }
-                    &.epson {
-                        span {
-                            @include nav-sprite(nav-brand-epson, false, 0, 0);
-                            width: 102px;
-                            height: 25px;
-                        }
-                    }
-                    &.panasonic {
-                        span {
-                            @include nav-sprite(nav-brand-panasonic, false, 0, 0);
-                            width: 125px;
-                            height: 20px;
-                        }
-                    }
-                    &.lg {
-                        span {
-                            @include nav-sprite(nav-brand-lg, false, 0, 0);
-                            width: 93px;
-                            height: 42px;
-                        }
-                    }
-                    &.samsung {
-                        span {
-                            @include nav-sprite(nav-brand-samsung, false, 0, 0);
-                            width: 95px;
-                            height: 32px;
-                        }
-                    }
-                    &.apple {
-                        span {
-                            @include nav-sprite(nav-brand-apple, false, 0, 0);
-                            width: 35px;
-                            height: 44px;
-                        }
-                    }
-                    &.microsoft {
-                        span {
-                            @include nav-sprite(nav-brand-microsoft, false, 0, 0);
-                            width: 123px;
-                            height: 26px;
-                        }
-                    }
-                    &.insignia {
-                        span {
-                            @include nav-sprite(nav-brand-insignia, false, 0, 0);
-                            width: 112px;
-                            height: 31px;
-                        }
-                    }
-                    &.intel {
-                        span {
-                            @include nav-sprite(nav-brand-intel, false, 0, 0);
-                            width: 75px;
-                            height: 50px;
-                        }
-                    }
-                    &.hp {
-                        span {
-                            @include nav-sprite(nav-brand-hp, false, 0, 0);
-                            width: 79px;
-                            height: 49px;
-                        }
-                    }
-                    &.nikon {
-                        span {
-                            @include nav-sprite(nav-brand-nikon, false, 0, 0);
-                            width: 110px;
-                            height: 30px;
-                        }
-                    }
-                    &.belkin {
-                        span {
-                            @include nav-sprite(nav-brand-belkin, false, 0, 0);
-                            width: 110px;
-                            height: 31px;
-                        }
-                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $screenLarge) {
+    .mls-nav {
+        .subnav-grid {
+            .nav-grid-item {
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+            }
+            .nav-grid-item {
+                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+            }
+        }
+        .nav-grid {
+            .nav-grid-item {
+                &.item-5, &.item-10, &.item-15 {
+                    border-right: none;
+                }
+                &.item-11, &.item-12, &.item-13, &.item-14, &.item-15 {
+                    border-bottom: none;
                 }
             }
         }
@@ -453,29 +386,21 @@ $colorNavGridText: #333333;
                             }
                         }
                     }
-                    &.medialorem {
+                    &.item-3 {
                         border-right: none;
                     }
-                    &.traveler {
+                    &.item-4 {
                         border-left: none;
                     }
-                    &.fashionista,
-                    &.fitness,
-                    &.medialorem {
+                    &.item-1,
+                    &.item-2,
+                    &.item-3 {
                         border-bottom: 1px solid $colorVzwNavBrdShade;
                     }
-                    &.traveler,
-                    &.family,
-                    &.fun-seeker { 
+                    &.item-4,
+                    &.item-5,
+                    &.item-6 { 
                         border-top: 1px solid $colorVzwNavBrd;
-                    }
-                    &.fashionista,
-                    &.fitness,
-                    &.medialorem,
-                    &.traveler,
-                    &.family,
-                    &.fun-seeker { 
-                        @include background-size(100%);
                     }
                 }
             }
@@ -535,33 +460,33 @@ $colorNavGridText: #333333;
                             }
                         }
                     }
-                    &.medialorem {
+                    &.item-3 {
                         border-top: 1px solid $colorVzwNavBrd;
                     }
-                    &.traveler {
+                    &.item-4 {
                         border-bottom: 1px solid $colorVzwNavBrdShade;
                     }
-                    &.family,
-                    &.fun-seeker {
+                    &.item-5,
+                    &.item-6 {
                         border-bottom: none; 
                     }
-                    &.fashionista,
-                    &.medialorem,
-                    &.family {
+                    &.item-1,
+                    &.item-3,
+                    &.item-5 {
                         border: {
                             left: none;
                             right: 1px solid $colorVzwNavBrdShade;
                         }
                     }
-                    &.fitness,
-                    &.traveler,
-                    &.fun-seeker {
+                    &.item-2,
+                    &.item-4,
+                    &.item-6 {
                         border-left: 1px solid $colorVzwNavBrd;
                     }
                 }
             }
             .products,
-            .brand-list {
+            .nav-grid {
                 height: 100%;
                 border: {
                     top: 1px solid $colorSubnavGridBrd;
@@ -574,12 +499,19 @@ $colorNavGridText: #333333;
                         right: 1px solid $colorSubnavGridBrd;
                         bottom: 1px solid $colorSubnavGridBrd;
                     }
-                    &.brand-5, &.brand-15 { border-right: 1px solid $colorSubnavGridBrd; }
-                    &.brand-2, &.brand-4, &.brand-6, &.brand-8, &.brand-10 {
+                    &.item-5, &.item-15 { border-right: 1px solid $colorSubnavGridBrd; }
+                    &.item-2, &.item-4, &.item-6, &.item-8, &.item-10 {
                         border-right: none;
                     }
-                    &.brand-9, &.brand-10 {
+                    &.item-9, &.item-10 {
                         border-bottom: none;
+                    }
+                }
+                .nav-grid-item {
+                    width: 50%;
+                    border: {
+                        right: 1px solid $colorSubnavGridBrd;
+                        bottom: 1px solid $colorSubnavGridBrd;
                     }
                 }
             }
@@ -589,7 +521,7 @@ $colorNavGridText: #333333;
                     float: left;
                     display: table;
                     background: #D7DCDD;
-                    &.product-9, &.product-10 {
+                    &.item-9, &.item-10 {
                         border-bottom: none;
                     }
                     a {
@@ -598,50 +530,6 @@ $colorNavGridText: #333333;
                         padding: 0 25px 0 60px;
                         text-align: left;
                         vertical-align: middle;
-                        &.photo {
-                            //@include nav-sprite(subnav-ico-camera, false, 0, 0);
-                            background: transparent url(../img/sprites/nav/subnav-ico-camera.png) 30px center no-repeat;
-                        }
-                        &.cases {
-                            //@include nav-sprite(subnav-ico-case, false, 12px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-case.png) 30px center no-repeat;
-                        }
-                        &.chargers {
-                            //@include nav-sprite(subnav-ico-bolt, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-bolt.png) 30px center no-repeat;
-                        }
-                        &.health {
-                            //@include nav-sprite(subnav-ico-health, false, 10px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-health.png) 30px center no-repeat;
-                        }
-                        &.family {
-                            //@include nav-sprite(subnav-ico-family, false, 10px, 10px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-family.png) 30px center no-repeat;
-                        }
-                        &.memory {
-                            //@include nav-sprite(subnav-ico-storage, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-storage.png) 30px center no-repeat;
-                        }
-                        &.productivity {
-                            //@include nav-sprite(subnav-ico-productivity, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-productivity.png) 30px center no-repeat;
-                        }
-                        &.travel {
-                            //@include nav-sprite(subnav-ico-travel, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-travel.png) 30px center no-repeat;
-                        }
-                        &.audio {
-                            //@include nav-sprite(subnav-ico-audio, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-audio.png) 30px center no-repeat;
-                        }
-                        &.gaming {
-                            //@include nav-sprite(subnav-ico-gaming, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-gaming.png) 30px center no-repeat;
-                        }
-                        &.see-all {
-                            //@include nav-sprite(subnav-ico-see-all, false, 15px, 15px);
-                            background: transparent url(../img/sprites/nav/subnav-ico-see-all.png) 30px center no-repeat;
-                        }
                     }
                 }
             }
@@ -668,6 +556,13 @@ $colorNavGridText: #333333;
                         display: table-cell;
                         vertical-align: bottom;
                         background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
+                    }
+                }
+                &.active {
+                    > a {
+                        span {
+                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;       
+                        }
                     }
                 }
                 .accordion-content {

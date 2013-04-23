@@ -57,14 +57,18 @@ $bgPositionPromoSmall: -85px 35px;
 }
 
 .category-list-header {
-    background: $colorCategoryListHdrBg url(../img/category-listing/hdr-dre-beats.jpg) 0 30px no-repeat;
     height: 370px;
+    overflow: hidden;
+    position: relative;
+    background-color: $colorCategoryListHdrBg;
     h1, p {
         margin: 0;
     }
     .header-info,
     .category-header-promo {
         padding: 0 $globalGutter;
+        position: relative;
+        overflow: hidden;
     }
     .header-info {
         background-color: $colorHdrInfoBg;
@@ -97,6 +101,18 @@ $bgPositionPromoSmall: -85px 35px;
     .category-header-promo {
         overflow: hidden;
         width: 100%;
+        height: 100%;
+        .category-image {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            z-index: 1;
+        }
+        .promo-header,
+        .promo-info {
+            position: relative;
+            z-index: 2;
+        }
         .promo-header {
             color: #FFF;
             font: {
@@ -643,9 +659,10 @@ $bgPositionPromoSmall: -85px 35px;
         max-width: 100%;
     }
     .category-list-header {
-        background-position: $bgPositionPromoSmall;
         .category-header-promo {
-            float: none;
+            .category-image {
+                left: -85px;
+            }
         }
     }
     .category-list-page .secondary-column {
@@ -784,11 +801,6 @@ $bgPositionPromoSmall: -85px 35px;
         display: none !important;
     }
     .category-list-header {
-        background: {
-            image: url(../img/category-listing/hdr-dre-beats-small.jpg);
-            position: -15px 35px;
-            repeat: no-repeat;
-        }
         .header-info,
         .category-header-promo {
             padding: 0 15px;
@@ -801,6 +813,10 @@ $bgPositionPromoSmall: -85px 35px;
                 font-size: 54px;
                 letter-spacing: -5px;
                 text-align: left;
+            }
+            .category-image {
+                left: auto;
+                right: -10px;
             }
             .promo-info {
                 display: table;
