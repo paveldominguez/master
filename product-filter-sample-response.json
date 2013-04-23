@@ -1,14 +1,114 @@
 {
     "success" : {
-        "responseHTML" : "<html></html>",// this response should include <li class="content-item">... fragments to replace the entire contents of the content grid */
+        "responseHTML" : "(see SUCCESS example below)", // example SUCCESS HTML below
         "resultCount" : 52,
         "contentType": "guides",
         "options" : ["dimension-a"]
     },
     "error" : {
-        "responseHTML" : // this response should include <li class="content-item"
+        "responseHTML" : "(see ERROR example below)", // example ERROR HTML below
         "resultCount" : 0,
         "contentType": "",
         "options" : {}
     }
 }
+
+
+/* example of **SUCCESS** responseHTML */
+
+/*
+    
+<li class="featured content-item">
+  <a class="content-link" href="#" title="content title">
+    <figure class="content-fig">
+      <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+    </figure>
+    <section class="content-detail">
+      <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
+      <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+      <div class="rating"><img src="img/stars-gray.png" /></div>
+    </section>
+  </a>
+  <div class="color-picker">
+    <ul class="colors">
+      <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
+        <img src="img/product-category-listing/pick-blk.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
+        <img src="img/product-category-listing/pick-gry.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
+        <img src="img/product-category-listing/pick-wht.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
+        <img src="img/product-category-listing/pick-org.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
+        <img src="img/product-category-listing/pick-ylw.png"/>
+      </a></li>
+    </ul>
+  </div>
+  <div class="content-details">
+    <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+    <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+  </div>
+</li>
+<li class="content-item">
+  <a class="content-link" href="#" title="content title">
+    <figure class="content-fig">
+      <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
+    </figure>
+    <section class="content-detail">
+      <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+      <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+      <div class="rating"><img src="img/stars-gray.png" /></div>
+    </section>
+  </a>
+  <div class="color-picker">
+    <ul class="colors">
+      <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
+        <img src="img/product-category-listing/pick-blk.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
+        <img src="img/product-category-listing/pick-gry.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
+        <img src="img/product-category-listing/pick-wht.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
+        <img src="img/product-category-listing/pick-org.png"/>
+      </a></li>
+      <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
+        <img src="img/product-category-listing/pick-ylw.png"/>
+      </a></li>
+    </ul>
+  </div>
+  <div class="content-details">
+    <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+    <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+  </div>
+</li>
+
+... (continued results) ...
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+/* example of **ERROR** responseHTML */
+
+/*
+  
+<li class="error">
+    <p>ERROR MESSAGE</p>
+</li>
+
+*/

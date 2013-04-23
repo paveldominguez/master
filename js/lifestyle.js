@@ -4,9 +4,9 @@ MLS.lifestyle = {
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
 
         //gallery
-        $jQ('#lifestyle-gallery').flexslider({
+        $jQ('#gallery-module').flexslider({
             animation: 'slide',
-            controlsContainer: '#lifestyle-gallery .slide-nav',
+            controlsContainer: '#gallery-module .slide-nav',
             animationLoop: false,
             controlNav: false,
             directionNav: true,
@@ -14,14 +14,14 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.93
         });
-        $jQ(window).resize(function() {
-            $jQ('#lifestyle-gallery').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
+        $jQ(window).resize(function () {
+            $jQ('#gallery-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
         });
 
         //guides
-        $jQ('#lifestyle-guides').flexslider({
+        $jQ('#guides-module').flexslider({
             animation: 'slide',
-            controlsContainer: '#lifestyle-guides .slide-nav',
+            controlsContainer: '#guides-module .slide-nav',
             animationLoop: true,
             controlNav: false,
             directionNav: true,
@@ -30,9 +30,9 @@ MLS.lifestyle = {
         });
 
         //user reviews
-        $jQ('#lifestyle-user-reviews').flexslider({
+        $jQ('#user-reviews-module').flexslider({
             animation: 'slide',
-            controlsContainer: '#lifestyle-user-reviews .slide-nav',
+            controlsContainer: '#user-reviews-module .slide-nav',
             animationLoop: true,
             controlNav: false,
             directionNav: true,
@@ -41,9 +41,9 @@ MLS.lifestyle = {
         });
 
         //lifestyle products
-        $jQ('#lifestyle-products').flexslider({
+        $jQ('#shop-products-module').flexslider({
             animation: 'slide',
-            controlsContainer: '#lifestyle-products .slide-nav',
+            controlsContainer: '#shop-products-module .slide-nav',
             animationLoop: false,
             controlNav: false,
             directionNav: true,
@@ -51,8 +51,8 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
-        $jQ(window).resize(function() {
-            $jQ('#lifestyle-products').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
+        $jQ(window).resize(function () {
+            $jQ('#shop-products-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
         });
     }
 };

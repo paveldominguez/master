@@ -42,10 +42,12 @@ MLS.ajax = {
         }
     },
     cart : {
-        init : function () {
-            $jQ('.add-cart-cta').on('click', MLS.ajax.cart.addItem);
+        init : function (context) {
+            $jQ(context).on('click', '.add-cart-cta', MLS.ajax.cart.addItem);
         },
         addItem : function (e) {
+            console.log('cart');
+            e.stopPropagation();
             e.preventDefault();
             var $theForm = $jQ(this.form);
             MLS.ajax.sendRequest(
@@ -56,17 +58,13 @@ MLS.ajax = {
         },
         addItemSuccess : function (data) {
             if (data.hasOwnProperty('success')) {
+                $jQ('#nav-cart, #nav-tab4').addClass('active');
                 $jQ('#minicart-item-list').append(data.success.responseHTML);
             }
             else {
                 // error, unable to add to cart
                 // display error response: .append(data.error.responseHTML);
             }
-        }
-    },
-    minicart : {
-        init : function () {
-            // remove item from mini cart
         }
     },
     homepage : {
@@ -86,7 +84,7 @@ MLS.ajax = {
         },
         updateContent : function (e) {
             e.preventDefault();
-            MLS.ajax.colorPicker.contenItem = $jQ(this).parent().parent().parent();
+            MLS.ajax.colorPicker.contenItem = $jQ(this).parent().parent().parent(); // re-work this if possible...
             MLS.ajax.sendRequest(
                 $jQ(this).href,
                 { color : $jQ(this).data('color'), existingImageUrl: $jQ(this).src },
