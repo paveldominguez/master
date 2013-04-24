@@ -1,4 +1,5 @@
 html, body {
+    background-color: #F1F1F1;
     font-family: $fontVzwBook;
     width: 100%;
     height: 100%;
@@ -21,7 +22,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #site-container {
-    max-width: $rowWidth;
+    @include box-shadow(0 0 3px 3px rgba(0, 0, 0, .2));
+    background-color: #FFF;
+    max-width: $screenLarge;
     margin: 0 auto;
 }
 
