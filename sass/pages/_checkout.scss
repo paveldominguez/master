@@ -4,6 +4,8 @@
 #checkout-page {
 	/* General/common checkout classes .............................................................*/
 		
+		#site-container { min-height: 900px; } /* addition for "Begin Checkout" panel */
+		
 		.checkout-sequence-wrap { 
 			@include clearfix();
 			position: relative;
@@ -149,7 +151,7 @@
 		input[type="text"],
 		input[type="password"], 
 		input[type="tel"], 
-		input[type="email"] { /* ..................... form input styles ....................*/
+		input[type="email"] { /* ..................... common form input styles ....................*/
 			color: $cartGreyDk;
 			font-family: $fontVzwBook;
 			font-weight: normal;
@@ -233,8 +235,157 @@
 			}/* end radio offer */
 		
 		.checkout-input-button { @include ctaBlackButton; }
-	
-
+		
+		.credit-card-info { /* ........... common credit card form styles ........................ */
+			@include clearfix();
+												
+			.form-input-wrap {
+				margin-bottom:0px;
+														
+				.form-item-title { margin: 7px 0 7px 0; }
+														
+				input[type="text"] { width: 274px; }
+														
+				label.error { 
+					width: 100px; 
+					left: 290px;
+					}
+				} /* end input wrap */
+														
+			.card-list {
+				@include clearfix();
+				float: left;
+												
+				li { 
+					display: inline-block;
+					width: 60px; height: 36px;
+					float: left;
+					margin-right: 11px;
+					}
+														
+				.visa { @include cart-sprite(visa-bw); opacity: .5; }
+				.mastercard { @include cart-sprite(mastercard-bw); opacity: .5; }
+				.amex { @include cart-sprite(amex-bw); opacity: .5; }
+				.discover { @include cart-sprite(discover-bw); opacity: .5; }
+														
+				.visa.entered { @include cart-sprite(visa-color); opacity: 1; }
+				.mastercard.entered { @include cart-sprite(mastercard-color); opacity: 1; }
+				.amex.entered { @include cart-sprite(amex-color); opacity: 1;}
+				.discover.entered { @include cart-sprite(discover-color); opacity: 1; }	
+														
+				}/* end card list */
+														
+				.card-security {
+					@include clearfix();
+					float: left;
+					margin-bottom: 0px; 
+														
+					.security-item { 
+						@include clearfix();
+						display: inline-block;
+						width: auto;
+						float: left;
+						position: relative;
+						padding: 15px 0 0 0;
+						margin: 10px 0 0 0;
+															
+						.form-item-title { 
+							margin:0;
+							position: absolute;
+							top: 0; left: 0; 
+							white-space: nowrap;
+							}
+						.form-input-wrap { width: auto; }
+															
+						}/* end security item common styles */
+															
+					.security-item.month {
+						width: 80px;
+						.selector { width: 80px !important;
+						span { 
+							width: 100% !important;
+							@include checkoutSelected; 
+							@include pdp-sprite(grey-more, false, 63px, 18px);
+							}
+						}
+					} /* end month */
+															 
+				.security-item.slash { 
+					font-size: 20px;
+					line-height: 20px;
+					color: $cartGreyDk;
+					padding: 21px 8px 0 8px;
+					}
+															
+				.security-item.year { 
+					width: 80px;
+					.selector { width: 80px !important;
+						span { 
+							width: 100% !important;
+							@include checkoutSelected; 
+							@include pdp-sprite(grey-more, false, 63px, 18px);
+							}
+						}
+					} /* end year */
+															
+				.security-item.code { 
+					width: 80px;
+					margin-left: 10px; 
+															
+					.form-item-title {
+						top: -13px; 
+						.checkout-dropdown {
+							.dropdown-link { @include pdp-sprite(blue-more, false, 76px, 14px); } 
+							.dropdown-panel {
+								@include clearfix();
+								width: 370px; height: 200px;
+								padding:10px;
+								left:-100px;
+																		
+								.code-instructions {
+									width: 165px;
+									height: 180px;
+																			
+									h6 { 
+										padding: 0 5px 0 5px; 
+										margin: 135px 0 5px 0;
+										font-family: $fontArial;
+										font-size: 12px;
+										line-height: 12px;
+										font-weight: bold;
+										color: $cartGreyDk;
+										}
+									p { 
+										@include checkoutContent;
+										padding: 0 5px 0 5px;
+										}
+									} /* end common styles */
+																		
+								.visa { 
+									float: left;
+									background: url(../img/cart/visa-back.png) no-repeat;
+									}
+																		
+								.amex {
+									float: right; 
+									background: url(../img/cart/amex-back.png) no-repeat;
+									}
+																		
+								p { white-space: normal; }
+								} /* end dropdown panel */
+							} /* end dropdown */
+						} /* end form title */
+															
+					.form-input-wrap {
+						label.error { top: 9px; left: 90px; }
+						}
+															
+					#card-code { width: 80px !important; }
+					} /* end code */
+				}/* end card security */	
+			}/* end card info */	
+		
+		
 	#checkout-header { /* Checkout Header .................................................................. */
 		
 		.section-wrap {
@@ -668,6 +819,7 @@
 						width: 100%;
 						float: left;
 						@include checkoutContent;
+						color: $cartGreyDk;
 						font-size: 10px; line-height: 10px;
 						padding: 10px 0 10px 0;
 						}
@@ -722,7 +874,7 @@
 										float: left;
 										margin: 5px 0 0 10px;
 										text-transform: uppercase;
-										font-family: $fontVzwMedium;
+										font-family: $fontVzwBold;
 										font-weight: normal;
 										color: $cartGreyDk;
 										font-size: 11px;
@@ -868,159 +1020,20 @@
 												.instructions { margin: 10px 0 10px 0; }
 												
 												.credit-card-info {
-													@include clearfix();
 												
+													
 													.form-input-wrap {
-														margin-bottom:0px;
-														
-														.form-item-title { margin: 7px 0 7px 0; }
-														
-														input[type="text"] { width: 274px; }
-														
-														label.error { 
-															width: 100px; 
-															left: 290px;
+														.form-item-title { margin: 7px 0 7px 0px; }
+														}
+													.security-item {
+														.form-item-title { 
+															margin: 0px 0 7px 0px;
+															height: 10px;
+															top: 0px; 
 															}
-														} /* end input wrap */
-														
-													.card-list {
-														@include clearfix();
-														float: left;
-												
-														li { 
-															display: inline-block;
-															width: 60px; height: 36px;
-															float: left;
-															margin-right: 11px;
-															}
-														
-														.visa { @include cart-sprite(visa-bw); opacity: .5; }
-														.mastercard { @include cart-sprite(mastercard-bw); opacity: .5; }
-														.amex { @include cart-sprite(amex-bw); opacity: .5; }
-														.discover { @include cart-sprite(discover-bw); opacity: .5; }
-														
-														.visa.entered { @include cart-sprite(visa-color); opacity: 1; }
-														.mastercard.entered { @include cart-sprite(mastercard-color); opacity: 1; }
-														.amex.entered { @include cart-sprite(amex-color); opacity: 1;}
-														.discover.entered { @include cart-sprite(discover-color); opacity: 1; }	
-														
-														}/* end card list */
-														
-															
-													.card-security {
-														@include clearfix();
-														float: left;
-														margin-bottom: 0px; 
-														
-														.security-item { 
-															@include clearfix();
-															display: inline-block;
-															width: auto;
-															float: left;
-															position: relative;
-															padding: 15px 0 0 0;
-															margin: 10px 0 0 0;
-															
-															.form-item-title { 
-																margin:0;
-																position: absolute;
-																top: 0; left: 0; 
-																white-space: nowrap;
-																}
-															.form-input-wrap { width: auto; }
-															
-															}/* end security item common styles */
-															
-														.security-item.month {
-															width: 80px;
-															.selector { width: 80px !important;
-																span { 
-																	width: 100% !important;
-																	@include checkoutSelected; 
-																	@include pdp-sprite(grey-more, false, 63px, 18px);
-																	}
-																}
-															 } /* end month */
-															 
-														.security-item.slash { 
-															font-size: 20px;
-															line-height: 20px;
-															color: $cartGreyDk;
-															padding: 21px 8px 0 8px;
-															}
-															
-														.security-item.year { 
-															width: 80px;
-															.selector { width: 80px !important;
-																span { 
-																	width: 100% !important;
-																	@include checkoutSelected; 
-																	@include pdp-sprite(grey-more, false, 63px, 18px);
-																	}
-																}
-															} /* end year */
-															
-														.security-item.code { 
-															width: 80px;
-															margin-left: 10px; 
-															
-															.form-item-title {
-																top: -13px; 
-																
-																.checkout-dropdown {
-																	.dropdown-link { @include pdp-sprite(blue-more, false, 76px, 14px); } 
-																		
-																	.dropdown-panel {
-																		@include clearfix();
-																		width: 370px; height: 200px;
-																		padding:10px;
-																		left:-104px;
-																		
-																		.code-instructions {
-																			width: 165px;
-																			height: 180px;
-																			
-																			h6 { 
-																				padding: 0 5px 0 5px; 
-																				margin: 135px 0 5px 0;
-																				font-family: $fontArial;
-																				font-size: 12px;
-																				line-height: 12px;
-																				font-weight: bold;
-																				color: $cartGreyDk;
-																				}
-																			p { 
-																				@include checkoutContent;
-																				padding: 0 5px 0 5px;
-																				}
-																			} /* end common styles */
-																		
-																		.visa { 
-																			float: left;
-																			background: url(../img/cart/visa-back.png) no-repeat;
-																			}
-																		
-																		.amex {
-																			float: right; 
-																			background: url(../img/cart/amex-back.png) no-repeat;
-																			}
-																		
-																		
-																		
-																		p { white-space: normal; }
-																		} /* end dropdown panel */
-																	} /* end dropdown */
-																} /* end form title */
-															
-															.form-input-wrap {
-																label.error { top: 9px; left: 90px; }
-																}
-															
-															#card-code { width: 80px !important; }
-															
-															} /* end code */
-														}/* end card security */	
-													}/* end card info */	
+														.form-item-title.with-link { top: -13px; }
+														}
+													}/* end cc info */
 												} /* end choice block */
 												
 											.card-choice-detail-block.hidden { display: none; }
@@ -1185,7 +1198,11 @@
 				 			
 				 			.acc-info { 
 				 				@include clearfix();
-				 				padding: 20px 0 10px 0;  
+				 				padding: 20px 0 10px 0; 
+				 				
+				 				.discount-input { @include clearfix(); } 
+				 				
+				 				.discount-success { @include clearfix(); } 
 				 				}
 				 		
 				 			.discount-success { display: none; }
@@ -1237,8 +1254,35 @@
 				 		
 				 			.gift-card-cc-block {
 				 				@include clearfix();
+				 				@include heroBG;
+				 				@include boxBrdrA;
+				 				padding: 15px; 
+				 				margin-top: 10px;
 				 				
-				 				}
+				 				.instructions { 
+				 					@include instruct;
+				 					margin: 0 0 10px 0; 
+				 					}
+				 				
+				 				.credit-card-info { 
+				 					margin-top: 10px;
+				 					float: left;  
+				 					}
+				 				
+				 				.security-item.code { 
+				
+									.checkout-dropdown {
+										.dropdown-link { @include pdp-sprite(blue-more, false, 76px, 14px); } 
+										.dropdown-panel {
+											@include clearfix();
+											width: 370px; height: 200px;
+											padding:10px;
+											left:-100px;
+				 							}
+				 						}
+				 					} /* end security item code */
+				 				
+				 				} /* end gift cc block */
 				 		
 				 		
 				 		

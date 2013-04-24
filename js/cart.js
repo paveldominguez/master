@@ -489,7 +489,11 @@ MLS.cartCheckout = (function() {
 
 function dropdownDisplay(container){  // ALL dropdown panels
 	if ($jQ('html').hasClass('no-touch')){
-		$jQ(container).find('.dropdown-link').hover(
+		var link = $jQ(container).find('.dropdown-link');
+		$jQ(link).click(function(e){
+			e.preventDefault();
+		});
+		$jQ(link).hover(
 			function() { $jQ(this).next('.dropdown-panel').stop().fadeIn(300); },
 			function() { $jQ(this).next('.dropdown-panel').delay(300).fadeOut(300); }
 		);
@@ -498,7 +502,7 @@ function dropdownDisplay(container){  // ALL dropdown panels
 			function() { $jQ(this).fadeOut(300); }
 		);
 	} else {
-		$jQ(container).find('.dropdown-link').click(function(e){
+		$jQ(link).click(function(e){
 			e.preventDefault();
 			$jQ(this).siblings('.dropdown-panel').toggle();
 		});
