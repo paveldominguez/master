@@ -47,7 +47,7 @@
 			/* @include mlsAccordion */
 			@include boxBrdrB;
 			width: 70%;
-			margin: 10px 0 20px 0;
+			margin: 10px 0 20px 0;  
 			
 			.acc-control { 
 				@include instruct;
@@ -63,7 +63,7 @@
 					height: 36px;
 					@include cart-sprite(acc-blue-plus);
 					}
-				.icon.close { @include cart-sprite(acc-blue-minus);}
+				.icon.close { @include cart-sprite(acc-blue-minus); }
 			
 				.dropdown-link { 
 					padding-left: 10px;
