@@ -1181,8 +1181,48 @@
 				 		.new-billing-info-form.hidden { display: none; }
 				 		
 				 		.checkout-discount-block {
+				 			@include clearfix();
+				 			
+				 			.acc-info { 
+				 				@include clearfix();
+				 				padding: 20px 0 10px 0;  
+				 				}
 				 		
-				 			.card1 {
+				 			.discount-success { display: none; }
+				 			label { @include checkoutLabel; }
+				 			.button {
+				 				width: 25%;
+				 				height: 36px;
+				 				float: right;
+				 				@include greyCartButton;
+				 				margin-top: 3px; 
+				 				span { 
+				 					padding-top: 14px;
+				 					
+				 					input { cursor: pointer; }
+				 					}
+				 				}
+				 				
+				 			#discount-code-input { 
+				 				width: 70%;
+				 				float: left;
+				 				}
+				 			.gift-card { 
+				 				width:45%;
+				 				float: left;
+				 				margin-right: 2.5%;
+				 				}
+				 			.gift-pin { 
+				 				width: 25%;
+				 				float: left;
+				 				margin-right: 2.5%; 
+				 				}
+				 			
+				 			.gift-card-acc {
+				 				.label-block { 
+				 					width: 100%;
+				 					@include clearfix();
+				 					}
 				 				.dropdown-link {
 				 					@include pdp-sprite(blue-more, false, 155px, 14px );
 				 					}
@@ -1195,7 +1235,10 @@
 				 					}
 				 				}
 				 		
-				 		
+				 			.gift-card-cc-block {
+				 				@include clearfix();
+				 				
+				 				}
 				 		
 				 		
 				 		
