@@ -41,17 +41,6 @@
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
-  
-  		 <div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-sale">sale</li>
-  				<!-- <li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li> -->
-  			</ul>
-  		</div><!-- TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS -->
-  
-  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
@@ -1048,9 +1037,15 @@
 			<div class="cart-sidebar-wrap">
 			
 				<div class="special-offer-block">
-					<p class="cart-offer-text">
-						Spend $10 more and your order qualifies for NEXT DAY DELIVERY!
-					</p>
+					<div class="dropdown-link">
+						<h3 class="special-offer">
+							<span class="bold">Free Shipping</span> on all orders!
+						</h3>
+					</div>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Free 2-Day Shipping when you order online Monday - Friday by 4.30pm!
+					</div>
 				</div>
 				
 				<div class="checkout-cart-summary">
@@ -1058,7 +1053,7 @@
 					<div class="checkout-accordion sidebar">
 						<div class="acc-control">
 							<span id="item-total">3</span> items in your cart
-							<div class="icon"></div>
+							<div class="icon close"></div>
 						</div><!-- end acc-control -->
 					
 						<div class="acc-info">
@@ -1076,16 +1071,17 @@
 										
 											<li>
 												<div class="price">$<span class="item-price">249.99</span></div>
-												<div class="qty">Qty: <span class="item-qty">1</span></div>
+												<div class="item-color">Black</div>
+												<div class="item-size">Medium</div>
 											</li>
 										
 											<li>
-												<div class="item-color">Black</div>
-												<div class="item-size">Medium</div>
+												<div class="qty">Quantity: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
 								</li><!-- end item 1 -->
+							
 							
 								<li class="item"><!-- item 2 -->
 									<div class="item-image">
@@ -1100,17 +1096,17 @@
 										
 											<li>
 												<div class="price">$<span class="item-price">249.99</span></div>
-												<div class="qty">Qty: <span class="item-qty">1</span></div>
+												<div class="item-color">Black</div>
+												<div class="item-size">Medium</div>
 											</li>
 										
 											<li>
-												<div class="item-color">Black</div>
-												<div class="item-size">Medium</div>
+												<div class="qty">Quantity: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
 								</li><!-- end item 2 -->
-							
+								
 								<li class="item"><!-- item 3 -->
 									<div class="item-image">
 										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Product Name">
@@ -1124,16 +1120,17 @@
 										
 											<li>
 												<div class="price">$<span class="item-price">249.99</span></div>
-												<div class="qty">Qty: <span class="item-qty">1</span></div>
+												<div class="item-color">Black</div>
+												<div class="item-size">Medium</div>
 											</li>
 										
 											<li>
-												<div class="item-color">Black</div>
-												<div class="item-size">Medium</div>
+												<div class="qty">Quantity: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
 								</li><!-- end item 3 -->
+								
 					
 							</ul>
 						</div><!-- end acc-info -->

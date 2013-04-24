@@ -35,7 +35,8 @@
 				}
 			}
 	
-		.hide-complete.hidden, .step-info-summary.hidden { display: none !important; }
+		.hide-complete.hidden { display: none !important; padding-bottom: 0px; } 
+		.step-info-summary.hidden { display: none !important; }
 		
 		fieldset { margin: 0; padding: 0; border-radius: 0; border: 0; 
 			legend { margin: 0; padding: 0; background: transparent; }
@@ -81,6 +82,7 @@
 			} /* end accordion */
 		
 		.step-info-summary { /* .......................... common info summary ................. */
+			background:#fff;
 			position: relative;
 			padding: 30px 0 20px 0;
 			@include boxBrdrT;
@@ -368,7 +370,11 @@
 	#checkout { /* Main Checkout Sequence .................................................................. */
 		display: none;
 			
-		.section-wrap { min-height:900px; }
+		.section-wrap { 
+			min-height:900px;
+			@include cartBG;
+			@include boxBrdrR; 
+			}
 			
 		form { margin: 0; }
 
@@ -383,6 +389,7 @@
 			.checkout-step { /* ................... common check out step styles .......... */
 				width: 100%;
 				height: auto;
+				background:#fff;
 			
 				.step-title-block {
 					width: 100%;
@@ -465,6 +472,7 @@
 				
 			
 			#shipping-info { /* ........................ step 1 specific styles ........ */
+				padding-bottom:36px;
 				.hide-complete { display: block; }
 										
 				.where-to { 
@@ -1240,39 +1248,62 @@
 				height: auto;
 				padding: 0; margin: 0;
 				float: left;
-				@include boxBrdrR;
-				@include boxBrdrB;
 				@include cartBG;
 				position:absolute;
 				top:0; 
 		
 				.special-offer-block { 
 					width:100%;
-					height:auto;
-					background: $specialOfferBlue url(../img/sprites/pdp/shipping-boxes-icon.png) 15px 20px no-repeat;
+					height:91px;
 					padding:20px; 
-					@include anchorDrop;
+					background: $saleBannerBG url(../img/cart/minicart-truck-icon.png) 18px 27px no-repeat;
+					cursor:pointer;
+					position: relative;
 				
-					.cart-offer-text {
-						font-family: $fontArial;
-						font-size:12px; 
-						font-weight:bold; 
+					.dropdown-link { 
+						display:block;
+						width: 100%; height: 100%;
+						position: absolute;
+						top: 0; left: 0;
+						}
+				
+					.special-offer { 
+						width: 60%;
+						font-family: $fontVzwBookItalic;
+						font-size:18px;
+						line-height:21px;
 						color:#fff;
-						margin:0 0 0 40px;
+						padding: 0;
+						margin: 18px 0 2px 80px;
+						letter-spacing: -1px;
+						background: url(../img/sprites/pdp/wht-more.png) 89px 32px no-repeat;
+							
+						.bold { font-family:$fontVzwBoldItalic; } /* end bold */
+						}/* end  h3 */			
+					.dropdown-panel { 
+						@include dropdownPanel;
+						@include checkoutContent;
+						top:70px; left:90px;
 						}
 					} /* end special block */
 					
 				.checkout-cart-summary {	
 					
-					
 					.checkout-accordion.sidebar {
 						width: 100%;
 						background: #fff;
+						margin: 0;
+						
+						.acc-control { 
+							height: 90px;
+							padding-top:57px; padding-left: 15px;
+							margin:0;
+							}
 						
 						.acc-info { 
+							display:block;
 							@include cartBG;
-							@include boxBrdrB;
-					
+							
 							.item-list {
 								display: block;
 								width: 100%;
@@ -1282,12 +1313,13 @@
 								display: block;
 								width: 100%;
 								height: 81px;
+								@include boxBrdrT;
 								@include clearfix();
 							
 									.item-image { 
 										width: 25%;
 										float: left;
-										padding:15px 0 15px 0;
+										padding:15px 0 0px 0;
 								
 										img { 
 											width: 90%;
@@ -1298,8 +1330,8 @@
 									
 									.item-info {
 										width: 75%;
-										float: right;
-										padding: 15px 0 15px 0;
+										float: left;
+										padding: 15px 0 0px 0;
 									
 										ul {
 											display: block;
@@ -1337,7 +1369,7 @@
 												.qty { 
 													display: inline-block;
 													float:left;
-													margin-left: 10px;
+													margin-left: 0px;
 													font-family: $fontArial;
 													color: $cartGreyLt;
 													font-weight: normal;
@@ -1358,7 +1390,7 @@
 													font-weight: normal;
 													font-size: 12px;
 													line-height:14px; }
-											
+												.item-color { margin-left:10px; }
 												.item-size:before { content: ", "; }
 									
 												} /* end info li */
@@ -1457,7 +1489,7 @@
 					} /* end cart summary */
 					
 				.sidebar-finish {
-					/* display:none; */
+					display:none; 
 					
 					.checkout-final { }
 	
@@ -1574,7 +1606,10 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 }/* end checkout-page */
 
 
-
+.sale-demo { /* TEMP for DEMO */
+	.offer { display: inline-block; }
+	.no-offer { display: none; }
+	}
 
 
 

@@ -1,32 +1,4 @@
 /* Shopping Cart SCSS */
-
-
-
-	/* resets */	
-	
-		/*input[type="button"],
-		button { padding:0px !important; border:0px !important; background: none; }
-		*/
-		input[type="search"],
-		input[type="list"],
-		input[type="number"] { font-family: $fontArial; }
-
-
-	
-
-	/* new colors, mixins, etc */	
-			
-		@mixin cartButtonShadow {
-			height:100%;
-			overflow-y: hidden;
-			-webkit-box-shadow: -2px 0px 4px 1px rgba(0, 0, 0, 0.25); 
-            -moz-box-shadow: -2px 0px 4px 1px rgba(0, 0, 0, 0.25); 
-            box-shadow: 0px -2px 4px 1px rgba(0, 0, 0, 0.25); 
-            padding: 0 9px 0 9px; 
-			}
-				
-		
-/* Shopping Cart Styles */
   
 #shopping-cart {
 
@@ -387,23 +359,16 @@
 				position: relative;
 				
 				div {
-					@include cartButtonUp;
+					@include greyCartButton;
 					width: 22.5%;
 					height: 45px;
 					position: absolute;
 					top: 50%; margin-top: -26px;
 					
 					a { 
-						display: block;
-						width: 100%;
-						height: 100%;
-						font-size: 16px;
-						line-height: 54px;
-						font-family: $fontArial;
-						color: $cartGreyDk;
-						font-weight: bold;
+						span { padding-top:20px; }
 						}
-					} /* end common button styles */
+					} 
 					
 				.empty-cart-continue {left: 50%; }
 				
@@ -432,52 +397,41 @@
 				height:80px;
 				padding:18px; 
 				border-top: 1px solid #fff;
+				position:relative;
+				
+				.dropdown-link {
+					display: block;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0; left: 0;
+					cursor: pointer;
+					}
+				
+				.dropdown-panel {
+						@include dropdownPanel;
+						@include checkoutContent;
+						padding: 15px;
+						width: 180px;
+						top: 70px;
+						} /* end cart dropdown panel */
 				
 				.cart-offer-text {
 					position: relative;
 					display: inline-block;
-					width: 67%;
+					width: 60%;
 					font-family: $fontVzwBookItalic;
 					font-size:18px; 
 					line-height:20px;
 					font-weight:normal; 
 					color:#fff;
-					margin:0 0 0 65px;    
+					margin:15px 0 0 85px;    
 					background: url(../img/sprites/pdp/wht-more.png) 108px 30px no-repeat;
-					cursor: pointer;
 					
 					span {
 						font-family: $fontVzwBoldItalic;
 						font-weight:normal;
 						}
-
-					.cart-dropdown-panel {
-						display: none;
-						@include dropdownPanel;
-						position: absolute;
-						padding: 15px;
-						width: 180px;
-						top: 54px; 
-				
-						p { margin: 0;
-							font-family: $fontArial;
-							color: $cartGreyMd;
-							font-size: 11px;
-							line-height: 15px;
-							font-weight: normal;
-							}
-				
-						.cart-pointer {
-							width: 24px;
-							height: 24px;
-							@include cart-sprite(req-pointer-bg);
-							position: absolute; 
-							top: -24px;
-							left: 50%;
-							margin-left: -12px;
-							z-index: 5;
-							}
-						} /* end cart dropdown panel */
 					} /* end p.offer-text */
 				} /* end special-block common styles */
 			
@@ -486,21 +440,15 @@
 			.shipping {
 				background: $saleBannerBG url(../img/cart/minicart-truck-icon.png) 18px 20px no-repeat; 
 				
-				.cart-offer-text {
-					background: url(../img/sprites/pdp/wht-more.png) 96px 32px no-repeat;
-					
-					.cart-dropdown-panel { left: 10px; }
-					}
+				.cart-offer-text { background: url(../img/sprites/pdp/wht-more.png) 96px 32px no-repeat; }
+				.dropdown-panel { left: 95px; }
 				}
 			
 			.returns {
 				background: $saleBannerBG url(../img/cart/large-boxes-icon.png) 18px 20px no-repeat; 
 				
-				.cart-offer-text {
-					background: url(../img/sprites/pdp/wht-more.png) 67px 32px no-repeat;
-					
-					.cart-dropdown-panel { left: -18px; }
-					}
+				.cart-offer-text { background: url(../img/sprites/pdp/wht-more.png) 67px 32px no-repeat; }
+				.dropdown-panel { left: 65px; }
 				}
 			
 			
@@ -530,8 +478,10 @@
 								@include cartRounded; 
 								width: 100%;
 								height: 100%;
-								padding-top:15px;
-								
+								padding:0px 0 0 8px;
+								font-family: $fontVzwBook;
+								font-size: 14px;
+								line-height: 14px;
 								}
 							}
 						.calc-button { 
@@ -589,7 +539,7 @@
 								}
 							}
 							
-						li.offer { display: none; }
+						.offer { display: none; }
 							
 						.cart-total {
 							.label, .data {
@@ -1325,9 +1275,17 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 		}/* end minicart-box */
 
 
+.sale-demo { /* TEMP for DEMO =============================  PA, REMOVE THIS ========== */
+	.offer { display: inline-block !important; }
+	.no-offer { display: none; }
+	}
+.out-of-stock {
+	.oos-msg { display: block !important; }
+	}
+.too {
+	#too-many-modal.lightbox { display: block ; }
 
-
-
+	} /* END TEMP for DEM) ============================================================ */
 
 
 
