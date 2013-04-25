@@ -96,31 +96,6 @@
             }
         }
     }
-    .flex-direction-nav {
-        float: right;
-        margin: 8px 0 0;
-        li { 
-            float: left; margin-left: 15px; 
-            .flex-prev,
-            .flex-next {
-                display: block;
-                width: 30px;
-                height: 30px;
-                text-indent: -9999px;
-                &.flex-disabled {
-                    cursor: default;
-                    opacity: 0.35;
-                }
-            }
-            .flex-prev {
-                @include pdp-sprite(btf-carousel-left, false, 0 ,0);
-            }
-            .flex-next {
-                @include pdp-sprite(btf-carousel-right, false, 0 ,0);
-            }
-        }
-    }
-
     .special-offers {
         .special-offers-slider {
             .special-offers-slide {
