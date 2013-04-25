@@ -473,7 +473,7 @@
 				 						<div class="form-input-wrap new-card">
 											<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-new-card">
 											<h5 class="form-item-title">Pay with New Card</h5>
-											<div class="card-choice-detail-block hidden">
+											<div id="core-cc-form" class="card-choice-detail-block hidden">
 											
 												<div class="instructions">Please enter your card information:</div>
 											
@@ -728,7 +728,7 @@
 							
 								<div id="discount-code-input-block" class="discount-input">
 									<label for="discount-code-input">Discount Code</label>
-									<input type="text" id="discount-code-input" tabindex="150" placeholder="Discount Code">
+									<input name="discountCode" type="text" id="discount-code-input" class="ignore" tabindex="150" placeholder="Discount Code">
 									<input type="submit" id="apply-discount-code" tabindex="155" value="apply">
 								</div>
 							
@@ -763,32 +763,35 @@
 										<label for="gift-card-1-pin" class="gift-pin">Gift Card PIN</label>
 									</div>
 									
-									<input type="text" id="gift-card-1-input" class="gift-card" tabindex="160" placeholder="Card Number">
-									<input type="text" id="gift-card-1-pin" class="gift-pin" tabindex="165" placeholder="PIN">
+									<input name="giftCard1" type="text" id="gift-card-1-input" class="gift-card ignore GCV" tabindex="160" placeholder="Card Number">
+									<input name="giftCard1Pin" type="text" id="gift-card-1-pin" class="gift-pin ignore GCV" tabindex="165" placeholder="PIN">
 									<input type="submit" id="apply-gift-card-1" tabindex="166" value="apply">
 								</div>
 							
 								<div id="gift-card-1-success-block" class="discount-success">
-									<span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-1" class="confirmed">12345</span> credited to your account: <span id="confirmed-gift-card-1-amt" class="confirmed amt">50</span>
+									<span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-1" class="confirmed">12345</span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-1-amt" class="confirmed amt">50</span></span>
 									<a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
-									<a href="#" id="add-gift-card-2" class="add-gift-card">Add another Gift Card</a>
 									
+									<div id="add-gift-card-2" class="acc-control add-gift-card">Add another Gift Card</div>
 									
-									<div id="gift-card-2-input-block" class="discount-input">
-										<div class="label-block">
-											<label for="gift-card-2-input" class="gift-card">Gift Card</label>
-											<label for="gift-card-2-pin" class="gift-pin">Gift Card PIN</label>
-										</div>
+									<div class="acc-info">
+										<div id="gift-card-2-input-block" class="discount-input">
+											<div class="label-block">
+												<label for="gift-card-2-input" class="gift-card">Gift Card</label>
+												<label for="gift-card-2-pin" class="gift-pin">Gift Card PIN</label>
+											</div>
 											
-										<input type="text" id="gift-card-2-input" class="gift-card" tabindex="170" placeholder="Card Number">
-										<input type="text" id="gift-card-2-pin" class="gift-pin" tabindex="175" placeholder="PIN">
-										<input type="submit" id="apply-gift-card-2" tabindex="176" value="apply">
+											<input name="giftCard2" type="text" id="gift-card-2-input" class="gift-card ignore" tabindex="170" placeholder="Card Number">
+											<input name="giftCard2Pin" type="text" id="gift-card-2-pin" class="gift-pin ignore" tabindex="175" placeholder="PIN">
+											<input type="submit" id="apply-gift-card-2" tabindex="176" value="apply">
+										</div>
+										<div id="gift-card-2-success-block" class="discount-success">
+											<span class="success-msg">Success!  </span>Gift card <span class="confirmed">#<span id="confirmed-gift-card-2" class="confirmed">12345</span></span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-2-amt" class="confirmed amt">25</span></span>
+											<a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
+										</div>
 									</div>
 									
-									<div id="gift-card-2-success-block" class="discount-success">
-										<span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-2" class="confirmed">12345</span> credited to your account: <span id="confirmed-gift-card-2-amt" class="confirmed amt">25</span>
-										<a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
-									</div>
+									
 								</div><!-- end card 1 success block -->
 							
 								<div class="gift-card-cc-block">
@@ -799,8 +802,8 @@
 									</div>
 									<div class="credit-card-info">
 										<div class="form-input-wrap">
-											<label class="form-item-title" for="card-number">Credit Card Number <span class="grey">| No Spaces</span></label>
-											<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="Card Number" tabindex="50">
+											<label class="form-item-title" for="card-number-gc">Credit Card Number <span class="grey">| No Spaces</span></label>
+											<input name="cardNumberGC" type="text" class="checkout-input ignore GCV" id="card-number-gc" placeholder="Card Number" tabindex="250">
 										</div>
 								
 										<ul class="card-list">
@@ -812,9 +815,9 @@
 								
 										<ul class="card-security">
 											<li class="security-item month">
-												<label class="form-item-title" for="card-month">Expiration Date</label>
+												<label class="form-item-title" for="card-month-gc">Expiration Date</label>
 												<div class="form-input-wrap">
-													<select name="ccMonth"  class="checkout-select-input" id="card-month" tabindex="51">
+													<select name="ccMonthGC"  class="checkout-select-input ignore" id="card-month-gc" tabindex="251">
 														<option value="1" selected>1</option>
 														<option value="2">2</option>
 														<option value="3">3</option>
@@ -835,7 +838,7 @@
 									
 											<li class="security-item year">
 												<div class="form-input-wrap">
-													<select name="ccYear" class="checkout-select-input" id="card-year" tabindex="52">
+													<select name="ccYearGC" class="checkout-select-input ignore" id="card-year-gc" tabindex="252">
 														<option value ="13" selected>2013</option>
 														<option value ="14">2014</option>
 														<option value ="15">2015</option>
@@ -869,7 +872,7 @@
 												</label>
 															
 												<div class="form-input-wrap">
-													<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="Code" tabindex="53">
+													<input name="ccCodeGC" type="text" class="checkout-input ignore GCV" id="card-code-gc" placeholder="Code" tabindex="253">
 												</div>
 														
 											</li><!-- end security-code block -->
@@ -1236,6 +1239,38 @@
 									$<span id="subtotal">399.99</span>
 								</div>
 							</li><!-- end subtotal -->
+							
+							<li id = "checkout-cart-employee-disc" class="discounted" >
+								<div class="label">Employee Discount:</div>
+								
+								<div class="data">
+									- $<span id="employee-discount">29.99</span>
+								</div>
+							</li><!-- end employee discount -->
+							
+							<li id = "checkout-cart-discount-code" class="discounted" >
+								<div class="label">Discount Code:</div>
+								
+								<div class="data">
+									- $<span id="discount-code-amt">19.99</span>
+								</div>
+							</li><!-- end discount code block -->
+							
+							<li id = "checkout-cart-gift-card-1" class="discounted" >
+								<div class="label">Gift Card:</div>
+								
+								<div class="data">
+									- $<span id="gift-card-1-amt">50.00</span>
+								</div>
+							</li><!-- end discount code block -->
+							
+							<li id = "checkout-cart-gift-card-2" class="discounted" >
+								<div class="label">Additional Gift Card:</div>
+								
+								<div class="data">
+									- $<span id="gift-card-2-amt">25.00</span>
+								</div>
+							</li><!-- end discount code block -->
 					
 							<li id = "checkout-cart-tax" >
 								<div class="label">

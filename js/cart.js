@@ -173,7 +173,7 @@ MLS.cartCheckout = (function() {
 		
 	// begin checkout : create vzn login checkbox
 		$jQ('.create-login-checkbox').change(function() { 
-			$jQ('.create-login-message').toggle('fast');		
+			$jQ('.create-login-message').slideToggle(300);		
 		});
 
 	// begin checkout : 'checkout as guest' button
@@ -184,7 +184,19 @@ MLS.cartCheckout = (function() {
 			enterCheckout();
 		});
 
+
+	// checkout accordions 
+	$jQ('.checkout-accordion').find('.acc-control').click(function(){
+		MLS.ui.simpleAcc(this);
+	});
 	
+	
+	// checkout sidebar special offer
+	$jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
+		dropdownDisplay(this);
+	});
+
+
 	// main checkout sequence : generic next step click
 		$jQ('.checkout-next').click(function(e) {
 			e.preventDefault();
@@ -344,7 +356,10 @@ MLS.cartCheckout = (function() {
 	
 	
 	
-	// main checkout sequence : step 2 credit card form clicks and changes
+	// main checkout sequence : step 2 billing info
+	
+
+	
 
 	$jQ('.billing-select').change(function(){ // ........ signed-in:  account or card selection
 		
@@ -411,7 +426,7 @@ MLS.cartCheckout = (function() {
 		});
 	
 	
-	$jQ('#card-number').on('keyup', function() { //.............. new card info : card icon recognition ...........
+	$jQ('#card-number, #card-number-gc').on('keyup', function() { //.............. new card info : card icon recognition ...........
 
 		if(this.value.length === 2) { 
 			
@@ -435,22 +450,74 @@ MLS.cartCheckout = (function() {
 		} 
 	});
 	
-	$jQ('.checkout-accordion').find('.acc-control').click(function(){
-		MLS.ui.simpleAcc(this);
+
+	$jQ('#apply-discount-code').click(function(e){ /* ................... apply & validate discount code .......... */
+		e.preventDefault();
+		$jQ('#vzn-checkout').validate();
+        if ($jQ('#discount-code-input').valid() == true){
+        	$jQ('#checkout-cart-discount-code').slideToggle(300); //removeClass('na');
+        	$jQ(this).parents('.discount-input').slideToggle(300); 
+			$jQ(this).parents('.discount-input').next('.discount-success').slideToggle(300);
+			return false;
+		} 
 	});
 	
 	
-	// checkout sidebar special offer
-	$jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
-		dropdownDisplay(this);
+	$jQ('#remove-discount-code').click(function(e){ /*.................... remove discount code ........................*/
+		e.preventDefault();
+		$jQ('#discount-code-input').removeClass('valid').addClass('hasPlaceholder');
+		$jQ('#checkout-cart-discount-code').slideToggle(300);
+		$jQ(this).parents('.discount-success').prev('.discount-input').slideToggle(300);	
+		$jQ(this).parents('.discount-success').slideToggle(); 
+		return false;
 	});
 	
 	
 	
+	$jQ('#apply-gift-card-1').click(function(e){ /* ........................... apply & validate gift card 1 .......... */
+		e.preventDefault();
+		$jQ('#vzn-checkout').validate();
+        if ($jQ('.GCV').valid()) {  
+        	$jQ('#checkout-cart-gift-card-1').slideToggle(300);
+        	$jQ('.gift-card-cc-block').slideToggle(300);
+        	$jQ(this).parents('.discount-input').slideToggle(); 
+			$jQ(this).parents('.discount-input').next('.discount-success').slideToggle();
+			return false;
+		} 
+	});
+	
+	$jQ('#remove-gift-card-1').click(function(e){ /* ........................... remove gift card 1 ....................... */
+		e.preventDefault();
+		$jQ('#checkout-cart-gift-card-1').removeClass('valid').addClass('hasPlaceholder');
+		$jQ('#checkout-cart-gift-card-1').slideToggle(300);
+		$jQ('.gift-card-cc-block').slideToggle(300);
+		$jQ(this).parents('.discount-success').prev('.discount-input').slideToggle();
+		$jQ(this).parents('.discount-success').slideToggle();
+		return false;
+	});
 	
 	
+	$jQ('#add-gift-card-2').click(function(){  $jQ(this).toggleClass('close'); }); /*  toggle action governed by element class */
 	
+	$jQ('#apply-gift-card-2').click(function(e){ /* ........................... apply & validate gift card 2 .......... */
+		e.preventDefault();
+		$jQ('#vzn-checkout').validate();
+        if ($jQ('#gift-card-2-input').valid() == true && $jQ('#gift-card-2-pin').valid() == true){
+        	$jQ('#checkout-cart-gift-card-2').slideToggle(300);
+        	$jQ(this).parents('.discount-input').slideToggle(); 
+			$jQ(this).parents('.discount-input').next('.discount-success').slideToggle();
+			return false;
+		}
+	});
 	
+	$jQ('#remove-gift-card-2').click(function(e){ /* ........................... remove gift card 2 ....................... */
+		e.preventDefault();
+		$jQ('#checkout-cart-gift-card-2').removeClass('valid').addClass('hasPlaceholder');
+		$jQ('#checkout-cart-gift-card-2').slideToggle(300);
+		$jQ(this).parents('.discount-success').prev('.discount-input').slideToggle();
+		$jQ(this).parents('.discount-success').slideToggle();
+		return false;
+	});
 	
 	
 	
@@ -655,6 +722,7 @@ function minicartScroll(type) { // MINICART function: next/prev items scroll
 } // end minicart scroll function
 
 
+
 function enterCheckout() { // CHECKOUT enter main sequence
 	window.scrollTo(0,0);
 	$jQ('#begin-checkout').fadeOut(300);
@@ -665,7 +733,18 @@ function enterCheckout() { // CHECKOUT enter main sequence
 		'data-start-top' : startTop,
 		'data-start-width' : startWidth
 	});
-} 	
+	
+	var checkoutType=document.getElementById('checkout'); // adjust billing input fields based on type of login
+	if ($jQ(checkoutType).hasClass('guest')){ //remove fields & show form
+			
+			$jQ('#core-cc-form').removeClass('hidden').appendTo('.billing-details-block');
+			$jQ('.billing-select-block, .billing-detail-content').remove();
+			$jQ('.new-billing-info-form').removeClass('hidden');
+			
+	} // else proceed as signedin 
+	
+	$jQ('h1.checkout-title').addClass('main'); // re-justify with checkout sequence
+} // end checkout entrance	
 
 
 
@@ -714,8 +793,7 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 			return true;
 		}
 	});
-		
-		
+			
 	
 // begin checkout : validation rules & messages	
 	$jQ('#my-Verizon-login').validate({
@@ -744,6 +822,7 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 
 //  main checkout sequence : validation rules & messages
 	$jQ('#vzn-checkout').validate({
+		ignore: '.ignore, :hidden',
 		rules: {
 			checkoutFirstName: {
 				required: true,
@@ -834,13 +913,44 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 				noPlaceholder: true
 			},
 			discountCode: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 4
 				
 			},
-			giftCardNumber: {
-				
+			giftCard1: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 8
 			},
-			discountCardPin: {
-				
+			giftCard1Pin: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 4
+			},
+			giftCard2: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 8
+			},
+			giftCard2Pin: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 4
+			},
+			cardNumberGC: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 15,
+				maxlength:  16,
+				digits: true
+			},	
+			ccCodeGC: {
+				required: false,
+				noPlaceholder: true,
+				minlength: 3,
+				maxlength:  4,
+				digits: true
 			},
 		},
 			
@@ -934,7 +1044,47 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 			billingZip: {
 				required: "Please enter your zip code",
 				noPlaceholder: "Please enter your zip code"
-			},		
+			},	
+			discountCode: {
+				required: "Please enter a valid discount code",
+				noPlaceholder: "Please enter a valid discount code",
+				minlength: "Please enter a valid discount code"
+				
+			},
+			giftCard1: {
+				required: "Please enter a valid gift card number",
+				noPlaceholder: "Please enter a valid gift card number",
+				minlength: "Please enter a valid gift card number"
+			},
+			giftCard1Pin: {
+				required: "Please enter a valid gift card PIN",
+				noPlaceholder: "Please enter a valid gift card PIN",
+				minlength: "Please enter a valid gift card PIN"
+			},
+			giftCard2: {
+				required: "Please enter a valid gift card number",
+				noPlaceholder: "Please enter a valid gift card number",
+				minlength: "Please enter a valid gift card number"
+			},
+			giftCard2Pin: {
+				required: "Please enter a valid gift card PIN",
+				noPlaceholder: "Please enter a valid gift card PIN",
+				minlength: "Please enter a valid gift card PIN"
+			},
+			cardNumberGC: {
+				required: "Please enter your card number",
+				noPlaceholder: "Please enter your card number",
+				minlength: "Please enter a valid card number",
+				maxlength:  "Please enter a valid card number",
+				digits: "Please enter a valid card number"
+			},	
+			ccCodeGC: {
+				required: "Please enter the security code on the back of your card",
+				noPlaceholder: "Please enter your security code",
+				minlength: "Please enter a valid security code",
+				maxlength:  "Please enter a valid security code",
+				digits: "Please enter a valid security code"
+			},	
 		}
 	});	
 
