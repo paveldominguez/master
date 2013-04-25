@@ -226,12 +226,12 @@ h1,h2,h3,h4,h5,h6 {
 						
 					.dropdown-link { padding-right: 15px; }
 						
-					.lightbox-dropdown {
+					.dropdown-panel {
 						@include dropdownPanel;
 						width: 200px;
 						padding: 10px;
 						display: none;
-							
+						
 						p {
 							@include checkoutContent;
 							font-size: 10px;
@@ -246,13 +246,13 @@ h1,h2,h3,h4,h5,h6 {
 				.save-avail { 
 					background: url(../img/sprites/pdp/blue-more.png) 114px 8px no-repeat;	
 						
-					.lightbox-dropdown { top: 32px; left : 18px; }
+					.dropdown-panel { top: 32px; left : 18px; }
 					}
 					
 				.save-notify { 
 					background: url(../img/sprites/pdp/blue-more.png) 163px 8px no-repeat;	
 						
-					.lightbox-dropdown { top: 32px; left: 67px; }
+					.dropdown-panel { top: 32px; left: 67px; }
 					}
 						
 				li:first-child { padding-left: 0px; }

@@ -49,8 +49,8 @@ MLS.cartCheckout = (function() {
 	 	});
 	 
 	 // sidebar : banner dropdowns
-	 	$jQ('.cart-offer-text').click(function() {
-	 		$jQ(this).find('.cart-dropdown-panel').toggle();
+	 	$jQ('.cart-sidebar').find('.special-offer-block').each(function() {
+	 		dropdownDisplay(this);
 	 	});
 	 
 	 
@@ -104,14 +104,7 @@ MLS.cartCheckout = (function() {
 	 			}
 			}
 		}); // end save cart validate
-
-
-		// dropdown panel clicks
-		$jQ('.lightbox').find('.dropdown-link').each(function(){
-			$jQ(this).click(function(){
-				$jQ(this).next().toggle(300);
-			});
-		});
+		
 
 		// save cart successful submit action
 		$jQ('#save-cart-submit').click(function(e) {
@@ -128,8 +121,11 @@ MLS.cartCheckout = (function() {
 			$jQ(this).parents('.lightbox').fadeOut(300);
 		});
 
-
-
+		// dropdowns
+		$jQ('.lightbox-fineprint').find('li').each(function(){
+			dropdownDisplay(this);
+		});
+		
 
 
 // MINICART clicks
@@ -444,7 +440,10 @@ MLS.cartCheckout = (function() {
 	});
 	
 	
-	
+	// checkout sidebar special offer
+	$jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
+		dropdownDisplay(this);
+	});
 	
 	
 	
@@ -490,7 +489,11 @@ MLS.cartCheckout = (function() {
 
 function dropdownDisplay(container){  // ALL dropdown panels
 	if ($jQ('html').hasClass('no-touch')){
-		$jQ(container).find('.dropdown-link').hover(
+		var link = $jQ(container).find('.dropdown-link');
+		$jQ(link).click(function(e){
+			e.preventDefault();
+		});
+		$jQ(link).hover(
 			function() { $jQ(this).next('.dropdown-panel').stop().fadeIn(300); },
 			function() { $jQ(this).next('.dropdown-panel').delay(300).fadeOut(300); }
 		);
@@ -499,7 +502,7 @@ function dropdownDisplay(container){  // ALL dropdown panels
 			function() { $jQ(this).fadeOut(300); }
 		);
 	} else {
-		$jQ(container).find('.dropdown-link').click(function(e){
+		$jQ(link).click(function(e){
 			e.preventDefault();
 			$jQ(this).siblings('.dropdown-panel').toggle();
 		});

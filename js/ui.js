@@ -170,7 +170,7 @@ MLS.ui = {
 		// change icon
 		$jQ(control).find('.icon').toggleClass('close');
 		// open/close panel
-		$jQ(control).next('.acc-info').toggle(300);
+		$jQ(control).next('.acc-info').slideToggle(300);
 	},
 	vzSlider: {
 		init: function () {
