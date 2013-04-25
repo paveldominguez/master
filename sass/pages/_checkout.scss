@@ -4,7 +4,7 @@
 #checkout-page {
 	/* General/common checkout classes .............................................................*/
 		
-		#site-container { min-height: 900px; } /* addition for "Begin Checkout" panel */
+		#site-container { min-height: 800px; } /* addition for "Begin Checkout" panel */
 		
 		.checkout-sequence-wrap { 
 			@include clearfix();
@@ -117,7 +117,7 @@
 		
 		 
 	
-		 .form-input-wrap { /* common input styles ........................................... */	
+		 .form-input-wrap { /* ....................... common input styles ...................................... */	
 		 	position: relative;
 		 	margin-bottom:30px; 
 		 	}
@@ -133,10 +133,15 @@
 		 	color: $colorVzwRed;
 		 	position: absolute;
 		 	bottom: 0; left: 0;
+		 	height: 20px;
+		 	overflow: hidden;
+		 	padding: 0px 0 0 15px;
+		 	@include pdp-sprite(red-left, false, 0px, 1px);
 		 	}
 		 	
 		.forgot, .privacy-link { 
 			@include actionLink;
+			font-size: 11px;
 			font-weight: normal;
 			}
 			
@@ -245,11 +250,7 @@
 				.form-item-title { margin: 7px 0 7px 0; }
 														
 				input[type="text"] { width: 274px; }
-														
-				label.error { 
-					width: 100px; 
-					left: 290px;
-					}
+													
 				} /* end input wrap */
 														
 			.card-list {
@@ -377,12 +378,18 @@
 						} /* end form title */
 															
 					.form-input-wrap {
-						label.error { top: 9px; left: 90px; }
+						label.error { width: 90px; top: 5px; left: 90px; }
 						}
 															
 					#card-code { width: 80px !important; }
 					} /* end code */
-				}/* end card security */	
+				}/* end card security */
+				
+			
+			
+				
+				
+					
 			}/* end card info */	
 		
 		
@@ -422,13 +429,13 @@
 		z-index:20;
 		top:0; left: 0%;
 		width: 100%;
-		height:570px;
+		height:475px;
 		padding-bottom: 50px;
 		background:#ffffff;   
 			
 		.section-wrap {
 			@include clearfix();
-			height:520px;
+			height:450px;
 			}
 		
 		.sign-in, .guest-checkout {
@@ -441,7 +448,7 @@
 			
 			.form-box {
 				width:65%;
-				height:450px;
+				height:420px;
 				margin:30px auto 30px auto;
 				position: relative;
 				
@@ -462,12 +469,14 @@
 					
 					span { font-weight: bold; }
 					}/* end instructions */
+					
+				.form-input-wrap { margin-bottom: 25px; }
 				
 				.form-item-title { 
 					@include checkoutLabel;
 					color: $cartGreyMd;
 					padding: 0;
-					margin: 15px 0 5px 0;
+					margin: 10px 0 5px 0;
 					} /* end form item title */
 				
 				.create-login { 
@@ -480,13 +489,16 @@
 						.form-item-title { margin-top:0px; }
 						}
 					}/* end create login box */	
-					
+				.create-login-message {
+					.form-instructions { margin-top: 0px; }
+				
+					}	
 				label.error { bottom: -5px; left: 0; padding:3px 0 3px 0;}
 				label.warning { background-color: #222; }
 				
 				 .checkout-input-button {
 				 	position: absolute;
-				 	bottom: 0; left: 0;
+				 	bottom: 35px; left: 0;
 				 	}
 				}/* end form box */
 			} /* end sign-in & guest common styles */
@@ -499,7 +511,10 @@
 				
 			label.error { @include cartBG; }
 				
-			.remember-me { @include clearfix(); }
+			.remember-me { 
+				@include clearfix();
+				margin-top: -5px; 
+				}
 			} /* end sign-in */
 		
 		.guest-checkout { 
@@ -694,9 +709,12 @@
 				.shipping-method-error { /*.............  shipping method specifics ............ */
 					display:none; 
 					position: absolute;
-					top: 0; right: 0;
+					top: 20px; right: 0;
 					@include checkoutLabel;
 					color: $colorVzwRed;
+					padding: 5px 0 0 20px;
+				 	@include pdp-sprite(red-left, false, 8px, 6px);
+				 	overflow: hidden;
 					} 
 					
 				.instructions.shipping-method {
@@ -925,7 +943,25 @@
 								margin: 0;
 								position: relative;
 								
-							
+								.card-choice-detail-block { /* guest checkout card error message */
+									.form-input-wrap {
+										label.error { 
+											overflow: hidden;
+											width: 150px; height: 24px; 
+											top: 27px; right: 0px; left: auto;
+											@include pdp-sprite(red-left, false, 0, 5px); 
+											}
+										}
+									.security-item.code {
+										label.error { 
+											width: 120px; height: 32px;
+											top: 6px; right: -130px; left: auto;
+											@include pdp-sprite(red-left, false, 0, 10px);  
+											}
+										}
+									}
+								
+								
 								.billing-detail-content {
 									width: 100%;
 				 					height: auto;
@@ -1021,9 +1057,9 @@
 												
 												.credit-card-info {
 												
-													
 													.form-input-wrap {
 														.form-item-title { margin: 7px 0 7px 0px; }
+														
 														}
 													.security-item {
 														.form-item-title { 
@@ -1032,6 +1068,8 @@
 															top: 0px; 
 															}
 														.form-item-title.with-link { top: -13px; }
+														
+														label.error { width: 100px; top: 0; left: 90px; }
 														}
 													}/* end cc info */
 												} /* end choice block */
@@ -1200,12 +1238,68 @@
 				 				@include clearfix();
 				 				padding: 20px 0 10px 0; 
 				 				
-				 				.discount-input { @include clearfix(); } 
+				 				.discount-input { 
+				 					@include clearfix();
+				 					position: relative;
+				 					
+				 					label.error { 
+				 						left: 100%;
+				 						top: 20px;
+				 						width: 200px;
+				 						height: 24px;
+				 						overflow: hidden;
+				 						color: $colorVzwRed;
+				 						padding: 5px 0 0 20px;
+				 						@include pdp-sprite(red-left, false, 8px, 10px);
+				 						}
+				 					
+				 					} 
+				 				.discount-input.done { display: none; }
 				 				
-				 				.discount-success { @include clearfix(); } 
+				 				.discount-success { 
+				 					display: none;
+				 					@include clearfix();
+				 					position: relative; 
+				 					@include checkoutContent;
+				 					font-size: 14px;
+				 					padding: 8px 0 2px 0;
+				 					margin: 15px 0 15px 0;
+				 					
+				 					.success-msg { 
+				 						display: inline-block;
+				 						padding-right: 3px;
+				 						color: $successGreen;
+				 						font-weight: bold;
+				 						}
+				 					.confirmed { 
+				 						font-weight: bold;
+				 						color: $cartGreyDk;
+				 						}
+				 					.discount-remove {
+				 						@include actionLink;
+				 						font-weight: normal;
+				 						position: absolute;
+				 						right: 0px;
+				 						}
+				 					.add-gift-card {
+				 						display: block;
+				 						width: 50%;
+				 						@include checkoutLabel;
+				 						color: $actLinkBlue;
+				 						letter-spacing: 0;
+				 						padding: 10px 0px 10px 0;
+				 						height: 32px;
+				 						overflow: hidden;
+				 						margin: 10px 0 0 0;
+				 						@include pdp-sprite(blue-more, false, 135px, 12px);
+				 						}
+				 					.add-gift-card.close {
+				 						@include pdp-sprite(blue-less, false, 135px, 12px);
+				 						}
+				 					} 
+				 				
 				 				}
 				 		
-				 			.discount-success { display: none; }
 				 			label { @include checkoutLabel; }
 				 			.button {
 				 				width: 25%;
@@ -1214,8 +1308,7 @@
 				 				@include greyCartButton;
 				 				margin-top: 3px; 
 				 				span { 
-				 					padding-top: 14px;
-				 					
+				 					padding-top: 12px;
 				 					input { cursor: pointer; }
 				 					}
 				 				}
@@ -1263,11 +1356,22 @@
 				 					@include instruct;
 				 					margin: 0 0 10px 0; 
 				 					}
-				 				
+				 		
 				 				.credit-card-info { 
-				 					margin-top: 10px;
+				 					margin-top: 20px;
 				 					float: left;  
-				 					}
+				 					
+				 					.form-input-wrap {
+										label.error { 
+											color: $colorVzwRed;
+											overflow: hidden;
+											width: 150px; height: 24px; 
+											top: 27px; right: 0px; left: auto;
+											@include pdp-sprite(red-left, false, 0, 5px); 
+											}
+										}
+										
+				 					} /* end cc info */
 				 				
 				 				.security-item.code { 
 				
@@ -1279,20 +1383,19 @@
 											padding:10px;
 											left:-100px;
 				 							}
-				 						}
+				 						} /* end dropdown */
+				 						
+				 					input[type="text"] { width: 80px; }
+				 					label.error { 
+				 							color: $colorVzwRed;
+											width: 120px; height: 32px;
+											top: 6px; right: -130px; left: auto;
+											@include pdp-sprite(red-left, false, 0, 10px);  
+											}
 				 					} /* end security item code */
 				 				
 				 				} /* end gift cc block */
-				 		
-				 		
-				 		
-				 		
-				 		
-				 		
-				 		
-				 		
-				 		
-				 		
+	
 				 			} /* end discount block */
 				 			
 				 		.checkout-not-charged { 
@@ -1327,6 +1430,9 @@
 					}
 				
 				}/* end checkout sequence */
+			
+			
+			
 			
 			
 			#checkout-sidebar { /* ........................ checkout sidebar ............. */
@@ -1491,10 +1597,10 @@
 					.totals { 
 						@include cartBG;
 					
-							ul {
-								display:block;
-								width:100%;
-								padding: 10px 0 20px 0;
+						ul {
+							display:block;
+							width:100%;
+							padding: 10px 0 20px 0;
 						
 							li { 
 								width:100%;
@@ -1527,29 +1633,15 @@
 									line-height: 20px;
 									color: $cartGreyDk;
 									padding: 0 10px 0 0;
-								
-									#subtotal { }
-									
-									#tax { }
-									
-									#shipping  { }
-									
-									#total { }
 									}
-								
+								}/* end common li */
+							
+							.offer { 
+								color: $colorVzwRed;
+								font-weight: bold;
 								}
-							
-							#checkout-cart-subtotal { }
-							
-							#checkout-cart-tax { }
-							
-							#checkout-cart-ship {
-							
-								.offer { 
-									color: $colorVzwRed;
-									font-weight: bold;
-									}
-								}
+									
+							.discounted { display: none; }
 							
 							#checkout-cart-total { 
 							
@@ -1594,6 +1686,24 @@
 		
 		#checkout.visible { display: block; }
 		
+		.guest {/* guest checkout only styles ..........................................................*/
+				.billing-details-block { 
+					@include boxBrdrT; 
+					.instructions { 
+						margin-top: 0 0 20px 0; 
+						}
+					.credit-card-info {
+						.card-security {
+							.security-item {
+						 		.form-item-title {
+						 			@include checkoutLabel;
+						 			}
+						 		}
+						 	}/* end card security */
+						 }/* end cc info */
+						
+					} 
+				}
 			
 			
 /* RESPONSIVE */	
