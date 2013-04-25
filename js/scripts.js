@@ -102,6 +102,11 @@ MLS = {
             MLS.ajax.colorPicker.init();
         }
     },
+    'cart-and-checkout': {
+    	init : function() {
+    		MLS.cartCheckout.init();
+    	}
+    },
     'content-landing-page' : {
         init : function() {
             //searchResults.styleDropDown();
@@ -180,7 +185,8 @@ MLS = {
             contentFilter.init();
             MLS.specialOffers.init();
         }
-    }
+    },
+  
 };
 
 
