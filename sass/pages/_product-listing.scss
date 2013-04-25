@@ -265,6 +265,11 @@ $hdrOfferCollapsed: 55px;
             a {
                 display: block;
                 color: $colorDarkGray;
+                .dimension-title{
+                    display: inline-block;
+                    line-height: 25px;
+                    width: 85px;
+                }
                 .action {
                     @include product-filter-sprite(prd-fltr-accordion-arrow, false, 20px, 25px);
                     padding: 25px;

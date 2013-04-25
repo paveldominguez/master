@@ -73,159 +73,134 @@ var contentGrid = {
         $sliderThumbs.attr('style','');
         contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
     },
-    setThumbnailMargins : function($sT, pos) {
+    setThumbnailMargins : function ($sT, pos) {
         var offset = pos === 'left' ? $sT.outerWidth() : $sT.outerHeight();
         $sT.css('margin-' + pos, '-' + (offset / 2) + 'px');
     },
-    quickViewClose : function(e) {
+    quickViewClose : function (e) {
         e.preventDefault();
         contentGrid.removeCloseListeners();
         var $qv = $jQ(e.data.qv);
         $qv.fadeOut('fast');
         $jQ('#quick-view-modal').fadeOut('fast');
     },
-    removeCloseListeners : function() {
+    removeCloseListeners : function () {
         $jQ(window).off('resize.quickView');
         $jQ(window).off('scroll.quickView');
         $jQ(window).off('click.quickView');
     },
-    featuredHover : function() {
-    	var rThis = $jQ(this).parent().find('.featured-item-hover').stop(true,true).fadeIn('fast'); 
+    featuredHover : function () {
+        var rThis = $jQ(this).parent().find('.featured-item-hover').stop(true, true).fadeIn('fast');
     },
-    featuredHoverOff : function() {
-    	var rThis = $jQ(this).parent().find('.featured-item-hover').stop().fadeOut('fast');
+    featuredHoverOff : function () {
+        var rThis = $jQ(this).parent().find('.featured-item-hover').stop().fadeOut('fast');
     },
-    featuredReveal : function(e) { 
-    	e.preventDefault();
-    	var rThis = $jQ(this).parent().siblings('.featured-item');
-		var rWd = rThis.width() ; 
-		var rHt = rThis.height() ;
-		var wdIncr = (rWd) * -1;
-		var htIncr = (rHt * .98) * -1; 
+    featuredReveal : function (e) {
+        e.preventDefault();
+        var rThis = $jQ(this).parent().siblings('.featured-item');
+        var rWd = rThis.width();
+        var rHt = rThis.height();
+        var wdIncr = (rWd) * -1;
+        var htIncr = (rHt * .98) * -1;
 		$jQ(rThis).css({
-		'opacity' : 1,
-		'-webkit-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
-        '-moz-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
-    	'-ms-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
-        '-o-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
-        'transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ' 
+            'opacity' : 1,
+            '-webkit-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-moz-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-ms-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-o-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            'transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) '
 
 		}); // end css
     }, // end vznReveal
-    featuredHide : function(e) { 
-    	e.preventDefault();
-    	var hThis = $jQ(this).parents('.featured-item');
-    	$jQ(hThis).css({
-		'opacity' : 0,
-		'-webkit-transform' : ' translate3d(0 ,0 , 0) ',
-        '-moz-transform' : ' translate3d(0 ,0 , 0) ',
-    	'-ms-transform' : ' translate3d(0 ,0 , 0) ',
-        '-o-transform' : ' translate3d(0 ,0 , 0) ',
-        'transform' : ' translate3d(0 ,0 , 0) ' 
-
+    featuredHide : function (e) {
+        e.preventDefault();
+        var hThis = $jQ(this).parents('.featured-item');
+        $jQ(hThis).css({
+            'opacity' : 0,
+            '-webkit-transform' : ' translate3d(0 ,0 , 0) ',
+            '-moz-transform' : ' translate3d(0 ,0 , 0) ',
+            '-ms-transform' : ' translate3d(0 ,0 , 0) ',
+            '-o-transform' : ' translate3d(0 ,0 , 0) ',
+            'transform' : ' translate3d(0 ,0 , 0) '
 		}); // end css
- 
     }// end featuredHide
 };
 
-
-
-
-
 // ............. TEMP state toggle buttons in header .........
+
+var stndrd = document.getElementById('state-standard');
+var newProd = document.getElementById('state-new-products');
+var featSale = document.getElementById('state-sale-featured');
+var itemSale = document.getElementById('state-sale-item');
+
+$jQ(stndrd).click(function () {
 
 	var stndrd = document.getElementById('state-standard');
 	var newProd = document.getElementById('state-new-products');
 	var featSale = document.getElementById('state-sale-featured');
 	var itemSale = document.getElementById('state-sale-item');
-	
-	$jQ(stndrd).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var newProd = document.getElementById('state-new-products');
-		var featSale = document.getElementById('state-sale-featured');
-		var itemSale = document.getElementById('state-sale-item');
 
-	
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(newProd).removeClass('on');
-			$jQ(featSale).removeClass('on');
-			$jQ(itemSale).removeClass('on');
-		
-		//turn off all special cases
+	// change font colors for nav
+	$jQ(this).addClass('on');
+	$jQ(newProd).removeClass('on');
+	$jQ(featSale).removeClass('on');
+	$jQ(itemSale).removeClass('on');
 
-        	$jQ('.new-product').css('display', 'none');
-        	$jQ('.sale-featured').css('display', 'none');
-			$jQ('.sale-item').css('display', 'none');
-		
-	});
-	
-	
-	
-	$jQ(newProd).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var newProd = document.getElementById('state-new-products');
-		var featSale = document.getElementById('state-sale-featured');
-		var itemSale = document.getElementById('state-sale-item');
+	//turn off all special cases
+	$jQ('.new-product').css('display', 'none');
+	$jQ('.sale-featured').css('display', 'none');
+	$jQ('.sale-item').css('display', 'none');
 
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-	
-		// turn on new product elements
-        	$jQ('.new-product').css('display', 'block');
-        	
-       
-	});
+});
 
+$jQ(newProd).click(function () {
 
-	$jQ(featSale).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var newProd = document.getElementById('state-new-products');
-		var featSale = document.getElementById('state-sale-featured');
-		var itemSale = document.getElementById('state-sale-item');
+	var stndrd = document.getElementById('state-standard');
+	var newProd = document.getElementById('state-new-products');
+	var featSale = document.getElementById('state-sale-featured');
+	var itemSale = document.getElementById('state-sale-item');
 
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
-		
-		//turn on featured sale elements & add class depending on screen width	
-		var pageWidth = document.body.clientWidth;
-		if (pageWidth < 1281) {
-			$jQ('.sale-featured.three-across').css('display', 'block').parent().addClass('sale-featured-block');
-		} else if (pageWidth > 1280) {
-			$jQ('.sale-featured.four-across').css('display', 'block').parent().addClass('sale-featured-block');
-		}
-	});
+	// change font colors for nav
+	$jQ(this).addClass('on');
+	$jQ(stndrd).removeClass('on');
 
+	// turn on new product elements
+    $jQ('.new-product').css('display', 'block');
 
+});
 
-	$jQ(itemSale).click(function() {
-	
-		var stndrd = document.getElementById('state-standard');
-		var newProd = document.getElementById('state-new-products');
-		var featSale = document.getElementById('state-sale-featured');
-		var itemSale = document.getElementById('state-sale-item');
+$jQ(featSale).click(function () {
 
-		// change font colors for nav
-			$jQ(this).addClass('on');
-			$jQ(stndrd).removeClass('on');
+	var stndrd = document.getElementById('state-standard');
+	var newProd = document.getElementById('state-new-products');
+	var featSale = document.getElementById('state-sale-featured');
+	var itemSale = document.getElementById('state-sale-item');
 
-		//turn on item sale elements & turn off hover
-			$jQ('.sale-item').css('display', 'block');
-			
-		
-        	    
-        	
-			
-			
-	}); // end TEMP state buttons 
+	// change font colors for nav
+	$jQ(this).addClass('on');
+	$jQ(stndrd).removeClass('on');
 
+	//turn on featured sale elements & add class depending on screen width
+	var pageWidth = document.body.clientWidth;
+	if (pageWidth < 1281) {
+		$jQ('.sale-featured.three-across').css('display', 'block').parent().addClass('sale-featured-block');
+	} else if (pageWidth > 1280) {
+		$jQ('.sale-featured.four-across').css('display', 'block').parent().addClass('sale-featured-block');
+	}
+});
 
+$jQ(itemSale).click(function () {
 
+	var stndrd = document.getElementById('state-standard');
+	var newProd = document.getElementById('state-new-products');
+	var featSale = document.getElementById('state-sale-featured');
+	var itemSale = document.getElementById('state-sale-item');
 
+	// change font colors for nav
+	$jQ(this).addClass('on');
+	$jQ(stndrd).removeClass('on');
 
+	//turn on item sale elements & turn off hover
+	$jQ('.sale-item').css('display', 'block');
 
+}); // end TEMP state buttons
