@@ -38,8 +38,8 @@ var contentGrid = {
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
-            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0),
-            'height' : ($contentTile.outerHeight() * 2) - 1,
+            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 20,
+            //'height' : $contentTile.outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
         $jQ('html, body').animate({
