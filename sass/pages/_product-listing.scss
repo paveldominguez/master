@@ -1626,6 +1626,18 @@ $hdrOfferCollapsed: 55px;
 	}/* end special offers */
 
 #grid-pop-out{
+    display:none;
+    position: absolute;
+    background: transparent;
+    @include box-shadow(2px 2px 7px 5px rgba(0, 0, 0, .2));
+    top: 0;
+    height: 150%;
+    z-index: 1;
+    border: 20px solid #fff;
+    .top-bar,
+    .details {
+        position: absolute;
+    }
     .top-bar{
         top: 0;
         display: block;
@@ -1669,6 +1681,7 @@ $hdrOfferCollapsed: 55px;
         }
     }
     .details {
+
             .content-message,
             .quick-view,
             .add-cart {
