@@ -1681,7 +1681,12 @@ $hdrOfferCollapsed: 55px;
         }
     }
     .details {
-
+        background: #fff;
+        bottom: -14px;
+        height: 80px;
+        display: block;
+        width: 100%;
+        border-top: 1px solid #f8f8f8;
             .content-message,
             .quick-view,
             .add-cart {
