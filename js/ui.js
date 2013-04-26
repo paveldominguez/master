@@ -5,14 +5,12 @@ MLS.ui = {
 	 */
 	gridHover : function (selector, content, padding) {
         $jQ(selector).on('mouseenter', function (e) {
-            window.testE = e;
             e.preventDefault();
             var el = $jQ(this),
             offset = el.offset(),
             width = el.outerWidth(),
             height = el.outerHeight(),
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
-
             padding = (padding !== undefined) ? padding : 40;
 
             el.addClass('active grid-hover-active');
@@ -22,7 +20,6 @@ MLS.ui = {
             if (content.actions !== undefined) {
 				$jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
 			}
-
             $jQ('#grid-pop-out').css({
                 top: offset.top - (padding / 2),
                 left: offset.left - (padding / 2),
