@@ -66,6 +66,7 @@
 @mixin actionLink {
 	font-family: $fontArial;
 	font-size:12px;
+	line-height: 15px;
 	font-weight:bold;
 	text-transform:capitalize;
 	color: $actLinkBlue;
@@ -80,7 +81,8 @@
     box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
 	position: absolute;
 	z-index:10;  
-	padding:10px; 
+	padding:10px;
+	display: none; 
 	
 	.dropdown-pointer { 
 		width: 24px;
