@@ -123,8 +123,9 @@ MLS = {
             });
         }
     },
-    'category-listing-page' : {
+    'category-landing-page' : {
         init : function() {
+            MLS.categoryLanding.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();

@@ -10,7 +10,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Verizon Wireless | Lifestyle Landing</title>
+  <title>Verizon Wireless | Category Listing</title>
 
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -26,15 +26,7 @@
   <script type="text/javascript" src="js/HANDOFF-FUNCTIONS.js"></script>
   <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
 </head>
-<body id="lifestyle-landing" class="lifestyle-landing-page">
-
-
-  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">
-    includeFragment('inc/grid-pop-out.html');
-  </script>
-  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-
+<body id="category-landing" class="category-landing-page">
   <div id="site-container">
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <script type="text/javascript">
@@ -45,52 +37,33 @@
 
   <!-- Main Grid Section -->
 
-  <section class="mls-section">
+  <section class="category-list-section">
+
+    <!-- Begin Category Header -->
+
+    <script type="text/javascript">
+      includeFragment('inc/fragments/category-header.html');
+    </script>
+
+    <!-- End Category Header -->
 
     <div class="wrapper">
+
+      <aside id="secondary-column" class="secondary-column">
+        <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+        <script type="text/javascript">  
+          includeFragment('inc/content-filter.html');
+        </script>
+        <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+      </aside>
       <!-- Begin Main Content Container -->
-      <section id="mls-single-col" class="mls-single">
-        <aside id="guided-nav" class="guided-nav">
-          <h3 class="guided-nav-heading"><strong>shop</strong> Mediamaster</h3>
-          <ul id="content-filter" class="content-filter">
-            <li class="dimension collapsible">
-              <h3 class="dimension-header">category</h3>
-              <ul class="facet-list">
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-              </ul>
-            </li>
-            <li class="dimension collapsible">
-              <h3 class="dimension-header">compatibility</h3>
-              <ul class="facet-list">
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-              </ul>
-            </li>
-          </ul>
-        </aside>
-        <!-- lifestyle image module -->
-        <article class="featured-lifestyle">
-          <header class="header">
-            <h1 class="title">mediamaster<span class="spacer"></span></h1>
-            <div id="next-lifestyle" class="next-lifestyle">
-              <strong>Next Lifestyle:</strong> <span class="name">Fashionista</span><a href="#next-lifestyle" title="Next Lifestyle: Fashionista">Next &gt;</a>
-            </div>
-            <p class="featured-copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing. Donec rhoncus elit ut massa mattis dapibus. 
-            </p>
-          </header>
-          <figure class="featured-fig">
-            <img src="img/lifestyle-landing/featured-lifestyle-fpo.jpg">
-          </figure>
-        </article>
-        <!-- end lifestyle image module -->
-        <!-- Trending Products -->
-        <article id="trending-module" class="trending-module category-section">
+      <section id="main-column" class="main-column">
+
+        
+        <!-- New Arrivals -->
+        <article id="new-arrivals-module" class="new-arrivals category-section">
           <header class="content-header">
-            <h1 class="title"><strong>Trending</strong> Products<a href="#view-all" title="View All">view all</a></h1>
+            <h1 class="title"><strong>New</strong> Products<a href="#view-all" title="View All">view all</a></h1>
             <div class="slide-nav"></div>
           </header>
           <ul class="slides">
@@ -654,545 +627,347 @@
             </li>
           </ul>
         </article> 
-        <!-- End Trending Products -->
-        <!-- story module -->
-        <article id="featured-story-module" class="featured-story">
-          <figure class="story-fig">
-            <img src="img/lifestyle-landing/story-fpo.jpg">
-          </figure>
-          <section class="story-content">
-            <h1 class="story-header">
-              <strong>Inspirational</strong> Story
-            </h1>
-            <h3 class="story-subheader">Lorem Ipsumus Amet</h3>
-            <time class="pub-date" pubdate="" datetime="2013-04-01">April 1, 2013</time>
-            <p class="copy">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation... <a href="article.jsp" data-article-id="124123123">Read More</a>
-            </p>
-            <ul class="story-tags inline-list">
-              <li class="first tag">#tag</li>
-              <li class="tag">#tag</li>
-              <li class="last tag">#tag</li>
-            </ul>
-            <div class="actions">
-              <a href="#read-story" class="button story-cta" title="Read story"><span>read</span></a>
-              <a href="#view-all" class="view-all-cta">view all</a>
+        <!-- End new arrivals -->
+
+        <section class="top-stories category-section">
+          <header class="content-header">
+            <h1 class="title"><strong>top</strong> stories</h1>
+            <div class="cta-container">
+              <a href="#" class="content-cta">see all top stories &gt;</a>
             </div>
-          </section>
-        </article>
-        <!-- end story module> -->
-        <!-- Gallery Module -->
-        <article id="gallery-module" class="gallery-module category-section">
-          <header class="content-header">
-            <h1 class="title"><strong>Mediamaster</strong> Gallery</h1>
-            <div class="slide-nav"></div>
           </header>
-          <ul class="gallery-slider slides">
-            <li class="first gallery-slide">
-              <figure class="slide-fig">
-                <img src="img/lifestyle-landing/gallery-fpo-1.jpg">
+          <form name="content-grid-2" method="post" action="#">
+          <ul class="content-grid feature-grid">
+            <!-- some items in this grid will be hidden for various screen sizes
+            please take note of classes like "show-for-small, show-for-large-up" etc... -->
+            <li class="content-item large">
+              <figure class="content-fig">
+                <img src="img/category-listing/category-large-fpo.jpg" title="fpo image">
+                
+                <img class="featured-corner hide-for-small-grid-down" alt="featured item" src="img/category-listing/img-corner.png"/>
+                
+                <div class="featured-item-hover hide-for-small-grid-down">
+                    <img src="img/category-listing/watch.png">
+                    <a href="#" title="shop this story" class="shop-this content-cta">shop this story</a>
+                </div>
+                
+                <div class="featured-item hide-for-small-grid-down">
+
+                  <div class="featured-item-detail">
+                    <h3 class="featured-item-category">fitness</h3>
+                    <div class="featured-item-info">
+                      <h5 class="featured-item-title">Motorola MOTOACTIV</h5>
+                      <p class="featured-item-desc">Fitness Tracker and MP3 Player</p>
+                      <div class="rating"><img src="img/stars.png" /> (21)</div>
+                    </div>
+                    <img src="img/category-listing/watch.png">
+                    <div class="featured-item-actions">
+                      <p class="price">$<span>249<sup>99</sup></span></p>
+                      <input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart">
+                      <a class="back-to-story content-cta">back to story</a>
+                    </div>
+                  </div><!-- end item detail -->
+                  
+                </div>
               </figure>
-              <section class="slide-content">
-                <hgroup class="slide-header">
-                  <h3>featured article</h3>
-                  <h1>inside diego's studio</h1>
-                </hgroup>
-                <p class="slide-description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-                </p>
+              
+              
+              <section class="content-detail">
+                <header class="content-detail-header">
+                  <h3 class="content-category">fitness</h3>
+                  <h1 class="content-title">lorem ipsum title</h1>
+                </header>
+                <p class="content-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" class="content-cta">read story &gt;</a>
+                <div class="related-products">
+                  <h3 class="related-products-header">
+                    <span class="count">6</span> related products
+                  </h3>
+                  <ul class="related-items">
+                    <li class="first related-item">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp1.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="related-item">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp2.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="related-item">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp3.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="related-item">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp4.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="related-item hide-for-mobile-grid">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp5.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="related-item hide-for-mobile-grid">
+                      <a href="#" title="related product title">
+                        <img src="img/category-listing/rp6.jpg" alt="related product">
+                      </a>
+                    </li>
+                    <li class="last related-item">
+                      <a href="#" title="see more">see<br>more</a>
+                    </li>
+                  </ul>
+                </div>
               </section>
             </li>
-            <li class="gallery-slide">
-              <figure class="slide-fig">
-                <img src="img/lifestyle-landing/gallery-fpo-2.jpg">
+            <li class="content-item single">
+              <figure class="content-fig">
+                <img src="img/category-listing/category-single-fpo.jpg" alt="fpo image"/>
               </figure>
-              <section class="slide-content">
-                <hgroup class="slide-header">
-                  <h3>featured article</h3>
-                  <h1>outside diego's studio</h1>
-                </hgroup>
-                <p class="slide-description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-                </p>
-              </section>
+              <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddoeiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <a href="#" class="content-cta">read story &gt;</a>
             </li>
-            <li class="gallery-slide">
-              <figure class="slide-fig">
-                <img src="img/lifestyle-landing/gallery-fpo-1.jpg">
+            <li class="content-item single hide-for-large-grid">
+              <figure class="content-fig">
+                <img src="img/category-listing/category-single-fpo.jpg" alt="fpo image"/>
               </figure>
-              <section class="slide-content">
-                <hgroup class="slide-header">
-                  <h3>featured article</h3>
-                  <h1>inside diego's studio</h1>
-                </hgroup>
-                <p class="slide-description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-                </p>
-              </section>
+              <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddoeiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <a href="#" class="content-cta">read story &gt;</a>
             </li>
-            <li class="last gallery-slide">
-              <figure class="slide-fig">
-                <img src="img/lifestyle-landing/gallery-fpo-2.jpg">
-              </figure>
-              <section class="slide-content">
-                <hgroup class="slide-header">
-                  <h3>featured article</h3>
-                  <h1>outside diego's studio</h1>
-                </hgroup>
-                <p class="slide-description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-                </p>
-              </section>
+            <li class="content-item two-wide">
+              <div class="content-wrapper">
+                <figure class="content-fig">
+                  <img src="img/category-listing/cat-denon-fpo.jpg" alt="denon fpo image"/>
+                </figure>
+                <section class="content-detail">
+                  <header class="content-detail-header">
+                    <h3 class="info">sale of the week</h3>
+                    <h1 class="title">Denon Globe Cruiser<br>On-Ear Headphones</h1>
+                  </header>
+                  <a class="content-cta">learn more &gt;</a>
+                  <ul class="price-action">
+                    <li class="content-price">
+                      <p class="price">$<span>79</span><sup>99</sup></p>
+                    </li>
+                    <li class="content-action">
+                      <input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart">
+                    </li>
+                  </ul>
+                </section>
+              </div>
             </li>
           </ul>
-        </article>
-        <!-- end gallery module -->
-        <!-- guides module -->
-        <article id="guides-module" class="guides-module category-section">
+          </form>
+        </section>
+
+        <section class="best-sellers category-section">
           <header class="content-header">
-            <h1 class="title"><strong>Guides</strong> Lorem Ipsum<a href="#view-all" title="View All">view all</a></h1>
-            <div class="slide-nav"></div>
+            <h1 class="title"><strong>best</strong> sellers</h1>
+            <div class="cta-container">
+              <a href="#" class="content-cta">see all best sellers &gt;</a>
+            </div>
           </header>
-          <ul class="guides-slider slides">
-            <li class="first guide-slide">
-              <ul class="content-grid guide-grid">
-                <li class="first content-item">
-                  <div class="wrapper slide-1">
-                    <p class="guide-copy">5 Things to know about 7.1</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-2">
-                    <p class="guide-copy">Quality audio that's waterproof</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-3">
-                    <p class="guide-copy">Best heapdhones for working</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
-                  </div>
-                </li>
-                <li class="last content-item">
-                  <div class="wrapper slide-4">
-                    <p class="guide-copy">what's hot now in audio</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
-                  </div>
-                </li>
-              </ul>
+          <!-- Begin Product Listing -->
+          <form name="content-grid-3" method="post" action="#"
+          <ul class="content-grid feature-right">
+            <!-- featured grid item -->
+            <li class="featured content-item">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
+                  <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
             </li>
-            <li class="guide-slide">
-              <ul class="content-grid guide-grid">
-                <li class="first content-item">
-                  <div class="wrapper slide-1">
-                    <p class="guide-copy">5 Things to know about 7.1</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-2">
-                    <p class="guide-copy">Quality audio that's waterproof</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-3">
-                    <p class="guide-copy">Best heapdhones for working</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
-                  </div>
-                </li>
-                <li class="last content-item">
-                  <div class="wrapper slide-4">
-                    <p class="guide-copy">what's hot now in audio</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
-                  </div>
-                </li>
-              </ul>
+            <!-- end featured grid item -->
+            <!-- grid items -->
+            <!-- some items in this grid will be hidden for various screen sizes
+            please take note of classes starting with "hide-for-large, hide-for-small," etc... -->
+            <li class="content-item">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
             </li>
-            <li class="last guide-slide">
-              <ul class="content-grid guide-grid">
-                <li class="first content-item">
-                  <div class="wrapper slide-1">
-                    <p class="guide-copy">5 Things to know about 7.1</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-2">
-                    <p class="guide-copy">Quality audio that's waterproof</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
-                  </div>
-                </li>
-                <li class="content-item">
-                  <div class="wrapper slide-3">
-                    <p class="guide-copy">Best heapdhones for working</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
-                  </div>
-                </li>
-                <li class="last content-item">
-                  <div class="wrapper slide-4">
-                    <p class="guide-copy">what's hot now in audio</p>
-                    <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
-                    <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
-                  </div>
-                </li>
-              </ul>
+            <li class="content-item hide-for-medium-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
             </li>
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+            </li>
+            <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+              <a class="content-link" href="#" title="content title">
+                <figure class="content-fig">
+                  <img alt="img/product-category-listing/pcl-beats.jpg" src="img/product-category-listing/pcl-beats.jpg"/>
+                </figure>
+                <section class="content-detail">
+                  <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                  <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                  <div class="rating"><img src="img/stars-gray.png" /></div>
+                </section>
+              </a>
+              <div class="content-hover">
+                <div class="content-message"><a href="#content-message" title="Sale!">sale 15% off</a></div>
+                <div class="color-picker">
+                  <ul class="colors">
+                    <li class="color"><a href="#pick-color" title="black">
+                      <img src="img/product-category-listing/pick-blk.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="gray">
+                      <img src="img/product-category-listing/pick-gry.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="white">
+                      <img src="img/product-category-listing/pick-wht.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="orange">
+                      <img src="img/product-category-listing/pick-org.png"/>
+                    </a></li>
+                    <li class="color"><a href="#pick-color" title="yellow">
+                      <img src="img/product-category-listing/pick-ylw.png"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <div class="quick-view"><a href="#quick-view" title="Quickview">quickview</a></div>
+                <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
+              </div>
+            </li>
+            <!-- end grid items -->
           </ul>
-        </article>
-        <!-- end guides module -->
-        <!-- user reviews -->
-        <article id="user-reviews-module" class="user-reviews-module category-section">
-          <header class="content-header">
-            <h1 class="title"><strong>User</strong> Reviews<a href="#view-all" title="View All">view all</a></h1>
-            <div class="slide-nav"></div>
-          </header>
-          <ul class="user-review-slider slides">
-            <li class="first review-slide">
-              <section class="top-review">
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review1.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-              </section>
-              <section class="bot-review">
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Amazing bass. Definitely Recommend!"
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review2.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-              </section>
-            </li>
-            <li class="review-slide">
-              <section class="top-review">
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review1.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-              </section>
-              <section class="bot-review">
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Amazing bass. Definitely Recommend!"
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review2.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-              </section>
-            </li>
-            <li class="last review-slide">
-              <section class="top-review">
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review1.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-              </section>
-              <section class="bot-review">
-                <div class="review-details">
-                  <header class="review-header">
-                    <h1 class="title">Name of Product</h1>
-                    <img src="img/stars.png"> (21)
-                  </header>
-                  <p class="copy">
-                    "Amazing bass. Definitely Recommend!"
-                  </p>
-                  <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                  <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
-                </div>
-                <div class="review-image">
-                  <figure class="review-fig">
-                    <img src="img/lifestyle-landing/user-review2.png">
-                    <span class="indicator"></span>
-                  </figure>
-                </div>
-              </section>
-            </li>
-          </ul>
-        </article>
-        <!-- end user reviews -->
-        <!-- shop products -->  
-        <article id="shop-products-module" class="shop-products-module category-section">
-          <header class="content-header">
-            <h1 class="title"><strong>Mediamaster</strong> Products<a href="#view-all" title="View All">view all</a></h1>
-            <div class="slide-nav"></div>
-          </header>
-          <ul class="products-slider slides">
-            <li class="first products-slide">
-              <ul class="product-grid">
-                <li class="grid-item featured">
-                  <section class="product">
-                    <a href="#">
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-1.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-2.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product cases">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Cases</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-3.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product headphones">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Headphones</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-4.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-5.png">
-                    </a>
-                  </section>
-                </li>
-              </ul>
-            </li>
-            <li class="products-slide">
-              <ul class="product-grid">
-                <li class="grid-item featured">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-6.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-2.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product cases">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Cases</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-3.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product headphones">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Headphones</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-4.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-5.png">
-                    </a>
-                  </section>
-                </li>
-              </ul>
-            </li>
-            <li class="last products-slide">
-              <ul class="product-grid">
-                <li class="grid-item featured">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-1.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-2.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product cases">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Cases</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-3.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item single">
-                  <section class="product headphones">
-                    <a href="#">
-                      <header class="details">
-                        <h3 class="desc">Shop All</h3>
-                        <h1 class="title">Headphones</h1>
-                      </header>
-                      <img class="product-img" src="img/lifestyle-landing/product-4.png">
-                    </a>
-                  </section>
-                </li>
-                <li class="grid-item wide">
-                  <section class="product">
-                    <a href="#">
-                      <header class="details">
-                        <h1 class="title">Lorem Ipsum 510 UC Portable Speaker</h1>
-                        <img src="img/stars.png"> (21)
-                      </header>
-                      <div class="price">
-                        <span>$</span>169<sup>99</sup>
-                      </div>
-                      <img class="product-img" src="img/lifestyle-landing/product-5.png">
-                    </a>
-                  </section>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </article>
-        <!-- End shop products -->
+          </form>
+        </section> 
+        <!-- quick view item -->
+        <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+        <script type="text/javascript">
+          includeFragment('inc/fragments/quick-view-item.html');
+        </script>
+        <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+        <!-- end quick view item -->
+
       </section>
       <!-- End Main Content Container -->
 
@@ -1209,6 +984,6 @@
     includeFragment('inc/footer.html');
   </script>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  </div> <!-- end site container -->
+  </div>
 </body>
 </html>
