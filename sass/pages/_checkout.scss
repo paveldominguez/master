@@ -86,7 +86,7 @@
 		.step-info-summary { /* .......................... common info summary ................. */
 			background:#fff;
 			position: relative;
-			padding: 30px 0 20px 0;
+			padding: 30px 0 0px 0;
 			@include boxBrdrT;
 		
 			h5 { 
@@ -138,7 +138,10 @@
 		 	padding: 0px 0 0 15px;
 		 	@include pdp-sprite(red-left, false, 0px, 1px);
 		 	}
-		 	
+		 label.error.success {
+		 	@include cart-sprite(checkout-checkbox-checked);
+		 	max-width: 15px;
+		 	}	
 		.forgot, .privacy-link { 
 			@include actionLink;
 			font-size: 11px;
@@ -695,6 +698,16 @@
 							margin-right:45px;
 							text-transform: uppercase;
 							}
+							
+						span.select-placeholder { 
+							font-family: $fontArial !important;
+							color: $cartGreyMd !important;
+							text-transform: lowercase !important;
+							padding-top: 14px !important;
+							font-size: 14px !important;
+							line-height: 14px !important;
+							font-weight: bold !important; 
+							}
 						}/* end selector */
 					} /* end form wrap state */ 
 						
@@ -813,7 +826,7 @@
 						} /* end city-state block */
 							
 					.ship-method-summary {	
-						padding:20px 0 20px 0;
+						padding:20px 0 0px 0;
 						margin: 10px 0 0 72px;	
 						.summary {
 							font-family: $fontArial;
@@ -952,6 +965,19 @@
 											@include pdp-sprite(red-left, false, 0, 5px); 
 											}
 										}
+									.security-item {
+										span.select-placeholder { 
+											font-family: $fontArial !important;
+											color: $cartGreyMd !important;
+											text-transform: lowercase !important;
+											padding-top: 14px !important;
+											font-size: 14px !important;
+											line-height: 14px !important;
+											font-weight: bold !important; 
+											}
+										}
+										
+										
 									.security-item.code {
 										label.error { 
 											width: 120px; height: 32px;
@@ -1215,6 +1241,16 @@
 											text-transform: uppercase;
 											width: 90px !important;
 											}
+											
+										span.select-placeholder { 
+											font-family: $fontArial !important;
+											color: $cartGreyMd !important;
+											text-transform: lowercase !important;
+											padding-top: 14px !important;
+											font-size: 14px !important;
+											line-height: 14px !important;
+											font-weight: bold !important; 
+											}
 										}/* end selector */
 									} /* end form wrap state */ 
 						
@@ -1372,6 +1408,18 @@
 										}
 										
 				 					} /* end cc info */
+				 				
+				 				.security-item {
+				 					span.select-placeholder { 
+										font-family: $fontArial !important;
+										color: $cartGreyMd !important;
+										text-transform: lowercase !important;
+										padding-top: 14px !important;
+										font-size: 14px !important;
+										line-height: 14px !important;
+										font-weight: bold !important; 
+										}
+				 					}
 				 				
 				 				.security-item.code { 
 				

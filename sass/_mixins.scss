@@ -167,7 +167,7 @@
 		padding-left: 10px;
 		cursor:pointer;
 		text-transform: lowercase;
-		color: $cartGreySelect;
+		color: $cartGreyMd;
 		text-shadow: 0px 1px 1px #fff;
 		font-family: $fontArial;
 		font-size: 16px;
@@ -223,11 +223,11 @@
  		font-size: 14px;
 		line-height: 14px;
 		text-transform: lowercase;
-		color: $cartGreySelect;
+		color: $cartGreyMd;
 		font-family: $fontArial;
 		font-weight: bold;
 		padding: 14px 0 0 10px; 
-		@include pdp-sprite(grey-more, false, 50px, 18px);
+		@include pdp-sprite(grey-more, false, 72px, 18px);
  		}
  
  	select { 
@@ -247,7 +247,7 @@
 
 @mixin checkoutSelected {
 	font-weight: normal;
-	font-family: $fontVzwBook !important;
+	font-family: $fontVzwBook; 
 	padding-top: 10px; 
 	font-size: 18px;
 	color: $cartGreyDk;

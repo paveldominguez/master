@@ -272,7 +272,23 @@ h1,h2,h3,h4,h5,h6 {
 		}/* end lightbox */	
 
 
-.selector { @include greyCartSelector; } /* uniform select-option styles*/
+.selector { 
+	@include greyCartSelector;
+	
+	.select-box-error { border: 2px solid $colorVzwRed; } 
+	.select-error-message { 
+		position: absolute;
+		bottom: -30px; left: 0px;
+		width: 90px;
+		padding: 0 0 0 15px;
+		@include checkoutLabel;
+		color: $colorVzwRed;
+		@include pdp-sprite(red-less, false, 0px, 5px);
+		height: 20px;
+		}
+	 } 
+.select-box-error { border: 2px solid $colorVzwRed; } /* uniform select-option styles*/
+
 
 .checker { /* uniform checkbox styles */
 	width:20px;

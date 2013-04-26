@@ -169,12 +169,12 @@
 				 			<div class="residence-fields">
 				 				<div class="form-input-wrap">
 									<label class="form-item-title" for="checkout-ship-first-name" accesskey="F">First Name</label>
-									<input name="checkoutFirstName" type="text" id="checkout-ship-first-name" class="checkout-input" placeholder="First Name" tabindex="10">
+									<input name="checkoutFirstName" type="text" id="checkout-ship-first-name" class="checkout-input SaS" placeholder="First Name" tabindex="10">
 								</div>
 					
 								<div class="form-input-wrap">
 									<label class="form-item-title" for="checkout-ship-last-name" accesskey="L">Last Name</label>
-									<input name="checkoutLastName" type="text" id="checkout-ship-last-name" class="checkout-input" placeholder="Last Name" tabindex="11">
+									<input name="checkoutLastName" type="text" id="checkout-ship-last-name" class="checkout-input SaS" placeholder="Last Name" tabindex="11">
 								</div>
 							</div><!-- end residence -->
 					
@@ -212,30 +212,30 @@
 					
 						<div class="form-input-wrap">
 							<label class="form-item-title" for="checkout-ship-phone" accesskey="P">Phone Number <span class="grey">| For Shipping Assistance</span></label>
-							<input name="checkoutPhone" type="tel" id= "checkout-ship-phone" class="checkout-input hasPlaceholder" placeholder="Phone Number" tabindex="30">
+							<input name="checkoutPhone" type="tel" id= "checkout-ship-phone" class="checkout-input hasPlaceholder SaS" placeholder="Phone Number" tabindex="30">
 						</div>
 					
 						<div class="form-input-wrap">
 							<label class="form-item-title" for="checkout-ship-address-1" accesskey="1">Address <span class="grey">| No P.O. Boxes</span></label>
-							<input name="checkoutAddress" type="text" id="checkout-ship-address-1" class="checkout-input" placeholder="Street Address" tabindex="35">
+							<input name="checkoutAddress" type="text" id="checkout-ship-address-1" class="checkout-input SaS" placeholder="Street Address" tabindex="35">
 						</div>
 					
 						<div class="form-input-wrap">
 							<label class="form-item-title" for="checkout-ship-address-2" accesskey="2">Address 2</label>
-							<input name="checkoutAddress2" type="text" id="checkout-ship-address-2" class="checkout-input" tabindex="36">
+							<input name="checkoutAddress2" type="text" id="checkout-ship-address-2" class="checkout-input SaS" tabindex="36">
 							<label class="optional">Optional</label>
 						</div>
 					
 						<div class="form-input-wrap">
 							<label class="form-item-title" for="checkout-ship-city" accesskey="Y">City</label>
-							<input name="checkoutCity" type="text" id="checkout-ship-city" class="checkout-input" placeholder="City" tabindex="40">
+							<input name="checkoutCity" type="text" id="checkout-ship-city" class="checkout-input SaS" placeholder="City" tabindex="40">
 						</div>
 					
 						<div class="form-input-wrap state">
 							<label class="form-item-title" for="checkout-ship-state">State</label>
-							<select name="checkoutState" class="checkout-select-input" id="checkout-ship-state" class="required" tabindex="41">
-							
-								<option value="CA" selected>CA</option>
+							<select name="checkoutState" class="checkout-select-input SaS" id="checkout-ship-state" tabindex="41">
+								<option value="0" disabled="disabled" selected>state</option>
+								<option value="CA">CA</option>
 								<option value="CO">CO</option>
 								<option value="CT">CT</option>
 								<option value="ME">ME</option>
@@ -249,7 +249,7 @@
 					
 						<div class="form-input-wrap zip">
 							<label class="form-item-title" for="checkout-ship-zip" accesskey="Z">Zip Code</label>
-							<input name="checkoutZip" type="text" id="checkout-ship-zip" class="checkout-input" placeholder="Zip Code" tabindex="45">
+							<input name="checkoutZip" type="text" id="checkout-ship-zip" class="checkout-input SaS" placeholder="Zip Code" tabindex="45">
 						</div>
 						
 						
@@ -481,7 +481,7 @@
 					
 													<div class="form-input-wrap">
 														<label class="form-item-title" for="card-number">Credit Card Number <span class="grey">| No Spaces</span></label>
-														<input name="cardNumber" type="text" class="checkout-input" id="card-number" placeholder="Card Number" tabindex="50">
+														<input name="cardNumber" type="text" class="checkout-input CCV" id="card-number" placeholder="Card Number" tabindex="50">
 													</div>
 								
 													<ul class="card-list">
@@ -498,8 +498,9 @@
 														<li class="security-item month">
 															<label class="form-item-title" for="card-month">Expiration Date</label>
 															<div class="form-input-wrap">
-																<select name="ccMonth"  class="checkout-select-input" id="card-month" tabindex="51">
-																	<option value="1" selected>1</option>
+																<select name="ccMonth"  class="checkout-select-input CCV" id="card-month" tabindex="51">
+																	<option value="0" disbaled="disabled" selected>month</option>
+																	<option value="1">1</option>
 																	<option value="2">2</option>
 																	<option value="3">3</option>
 																	<option value="4">4</option>
@@ -519,8 +520,9 @@
 									
 														<li class="security-item year">
 															<div class="form-input-wrap">
-																<select name="ccYear" class="checkout-select-input" id="card-year" tabindex="52">
-																	<option value ="13" selected>2013</option>
+																<select name="ccYear" class="checkout-select-input CCV" id="card-year" tabindex="52">
+																	<option value ="0" disabled="disabled" selected>year</option>
+																	<option value ="13">2013</option>
 																	<option value ="14">2014</option>
 																	<option value ="15">2015</option>
 																	<option value ="16">2016</option>
@@ -556,7 +558,7 @@
 																</label>
 															
 															<div class="form-input-wrap">
-																<input name="ccCode" type="text" class="checkout-input" id="card-code" placeholder="Code" tabindex="53">
+																<input name="ccCode" type="text" class="checkout-input CCV" id="card-code" placeholder="Code" tabindex="53">
 															</div>
 														
 														</li><!-- end security-code block -->
@@ -661,44 +663,45 @@
 				 			<p class="instructions">Please enter your billing address:</p>
 				 		
 				 			<div class="same-as-shipping">
-				 				<input name="sameAsShipping" type="checkbox" id="same-as-shipping" >
+				 				<input name="sameAsShipping" type="checkbox" id="same-as-shipping" class="check">
 				 				<div class="label">Same as shipping address</div>
 				 			</div>
 				 	
 				 			<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-first-name">First Name</label>
-								<input name="billingFirstName" type="text" id="bill-first-name" class="checkout-input" placeholder="First Name" tabindex="100">
+								<input name="billingFirstName" type="text" id="bill-first-name" class="checkout-input SaS" placeholder="First Name" tabindex="100">
 							</div>
 					
 							<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-last-name">Last Name</label>
-								<input name="billingLastName" type="text" id="bill-last-name" class="checkout-input" placeholder="Last Name" tabindex="105">
+								<input name="billingLastName" type="text" id="bill-last-name" class="checkout-input SaS" placeholder="Last Name" tabindex="105">
 							</div>
 
 							<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-phone">Phone Number</label>
-								<input name="billingPhone" type="tel" id="bill-phone" class="checkout-input hasPlaceholder" placeholder="Phone Number" tabindex="110">
+								<input name="billingPhone" type="tel" id="bill-phone" class="checkout-input hasPlaceholder SaS" placeholder="Phone Number" tabindex="110">
 							</div>
 					
 							<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-address-1">Address <span class="grey">| No P.O. Boxes</span></label>
-								<input name="billingAddress" type="text" id="bill-address-1" class="checkout-input" placeholder="Street Address" tabindex="115">
+								<input name="billingAddress" type="text" id="bill-address-1" class="checkout-input SaS" placeholder="Street Address" tabindex="115">
 							</div>
 					
 							<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-address-2" >Address 2</label>
-								<input name="billingAddress2" type="text" id="bill-address-2" class="checkout-input" placeholder="" tabindex="120">
+								<input name="billingAddress2" type="text" id="bill-address-2" class="checkout-input SaS" placeholder="" tabindex="120">
 							</div>
 					
 							<div class="form-input-wrap">
 								<label class="form-item-title" for="bill-city" >City</label>
-								<input name="billingCity" type="text" class="checkout-input" placeholder="City" tabindex="125">
+								<input name="billingCity" type="text" class="checkout-input SaS" placeholder="City" tabindex="125">
 							</div>
 					
 							<div class="form-input-wrap state">
 								<label class="form-item-title" for="bill-state" >State</label>
-								<select name="billingState" type="text" id="bill-state" class="checkout-select-input" tabindex="130">
-									<option value="CA" selected>CA</option>
+								<select name="billingState" type="text" id="bill-state" class="checkout-select-input SaS" tabindex="130">
+									<option value="0" disabled="disabled" selected>state</option>
+									<option value="CA">CA</option>
 									<option value="CO">CO</option>
 									<option value="CT">CT</option>
 									<option value="ME">ME</option>
@@ -711,7 +714,7 @@
 					
 							<div class="form-input-wrap zip">
 								<label class="form-item-title" for="bill-zip" >Zip Code</label>
-								<input name="billingZip" type="text" class="checkout-input" placeholder="Zip Code" tabindex=" 135">
+								<input name="billingZip" type="text" class="checkout-input SaS" placeholder="Zip Code" tabindex=" 135">
 							</div>
 	 					</div><!-- end billing-address-block --> 
 					
@@ -741,7 +744,7 @@
 						</div><!-- end accordion discount code -->
 							
 						<div class="checkout-accordion gift-card-acc">
-							<div class="acc-control">
+							<div id="begin-gift-card" class="acc-control">
 								Do you have a gift card?
 								<div class="icon open"></div>
 								<div class="checkout-dropdown">
@@ -817,8 +820,9 @@
 											<li class="security-item month">
 												<label class="form-item-title" for="card-month-gc">Expiration Date</label>
 												<div class="form-input-wrap">
-													<select name="ccMonthGC"  class="checkout-select-input ignore" id="card-month-gc" tabindex="251">
-														<option value="1" selected>1</option>
+													<select name="ccMonthGC"  class="checkout-select-input GCV" id="card-month-gc" tabindex="251">
+														<option value="0" disabled="disabled" selected>month</option>
+														<option value="1">1</option>
 														<option value="2">2</option>
 														<option value="3">3</option>
 														<option value="4">4</option>
@@ -838,8 +842,9 @@
 									
 											<li class="security-item year">
 												<div class="form-input-wrap">
-													<select name="ccYearGC" class="checkout-select-input ignore" id="card-year-gc" tabindex="252">
-														<option value ="13" selected>2013</option>
+													<select name="ccYearGC" class="checkout-select-input GCV" id="card-year-gc" tabindex="252">
+														<option value ="0" disabled="disabled" selected>year</option>
+														<option value ="13">2013</option>
 														<option value ="14">2014</option>
 														<option value ="15">2015</option>
 														<option value ="16">2016</option>
@@ -1326,8 +1331,7 @@
 <script type="text/javascript">
 	includeFragment('inc/footer.html');
 </script>
-<!-- TEMP- DO NOT  INCLUDE IN FINAL _ SAPIENT DEMO ONLY -->
-<script src="js/cart-DEMO.js"></script>
+
 	
 </div><!-- end site-container -->
 </body>

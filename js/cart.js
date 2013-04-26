@@ -13,9 +13,29 @@ MLS.cartCheckout = (function() {
 		
 	 // cart 
 	 	checkCartQty();
+	 	
+	 //checkout   
+	 	$jQ('.selector').find('span').addClass('select-placeholder');/* style opening selector spans like placeholders */
+		$jQ('.selector').find('select').change(function(){ /* remove placeholder and/or any error states on select */
+			$jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
+			$jQ(this).parents('.selector').removeClass('select-box-error');
+			$jQ(this).parents('.selector').find('.select-error-message').remove();
+		});
 		
-
-
+//checkout dynamic style changes
+		$jQ('[placeholder]').focus(function(){ /* lose placeholder on first focus */
+			$jQ(this).removeAttr('placeholder');
+		});
+		$jQ('input').change(function(){
+			if ($jQ(this).hasClass('error')) {
+				$jQ(this).next('label').removeClass('success');
+			}
+		});
+		
+		
+		
+		
+		
 
 // CART clicks ......................................................................................... 
 	// header : save cart link
@@ -197,138 +217,6 @@ MLS.cartCheckout = (function() {
 	});
 
 
-	// main checkout sequence : generic next step click
-		$jQ('.checkout-next').click(function(e) {
-			e.preventDefault();
-			var which = $jQ(this).attr('id');
-		
-		// clear unused fields
-			$jQ('.not').remove();
-		
-		if (which == 'ship-info-complete') { // do this for checkout step 1 only
-		// validate shipping method
-			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
-			var valid = false;
-			
-			var i = 0;
-			$jQ(radios).each(function(i) {
-			
-				if (this.checked) { 
-					//alert(i);
-					valid = true; 
-					$jQ('#no-shipping-selected').hide();
-					var shippingType = $jQ('input[name=shipRadio]:checked').siblings('label').html();
-					$jQ('#sum-shipping').html(shippingType);
-				} 
-				
-			}); // end each
-			
-			if (valid == false ) {
-				$jQ('#no-shipping-selected').show();
-				// last, scroll page to where all data is visible
-        		MLS.ui.scrollPgTo('#no-shipping-selected', 20);	
-				return false;
-			}
-			
-		} 
-			
-		var validator = $jQ("#vzn-checkout").validate(); // do this for both steps 1 & 2
-		var valid = true;
-    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input');
-    	var $selects = $jQ(this).siblings('.step-info-block').find('.checkout-select-input');
-		var section = $jQ(this).attr('id');
-		
-    	$inputs.each(function(inputI) {
-    			
-        if (!validator.element(this) && valid) {
-            	valid = false;
-        	} else {
-        		var data = $jQ(this).val();
-				copyInputs( section, inputI, data );
-        	}
-    	});
-    		
-    	$selects.each(function(slctI) {
-        	data = $jQ(this).find(':selected').text();	
-        	copySelects( section, slctI, data );	
-        });
-        
-
-    	if (valid) {
-    		//alert('valid');
-    		
-    		if (section == 'ship-info-complete') { // special case : copy name to additional field	
-    			var shipName = $jQ('#ship-name-block').html();
-    			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary');
-    			
-    		// check if home or business and adjust summary accordingly
-				var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();
-				if (nextDest == "business") {
-					$jQ('#shipping-info').find('.sum-first-name, .sum-last-name').each(function(){
-						$jQ(this).addClass('biz');
-					});
-				} // else if residence do nothing
-			
-    		}
-    		
-    		if (section == 'billing-info-complete') { // special case : copy name to out-of-sequence field 
-    			var first = $jQ('#confirmed-first-name').text();
-    			var last = $jQ('#confirmed-last-name').text();
-    			$jQ('#name-on-card').text( first + ' ' + last);
-    		}
-    	
-        	// show/hide as required
-        		var thisBlock = $jQ(this).parents('.checkout-step');
-        	
-        	// hide current block inputs & buttons
-       			thisBlock.find('.hide-complete').addClass('hidden');
-        	
-        	// show current block summary
-        		thisBlock.find('.step-info-summary').removeClass('hidden');
-        	
-        	// then open the next panel
-        		thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
-        	
-        	// last, scroll page to where all data is visible
-        		MLS.ui.scrollPgTo('#shipping-info', 7);	
-        		
-    	} else { // scroll page up to first error field
-    		$jQ('input').each(function(){
-    			if($jQ(this).hasClass('error')){
-    			var whichInput = $jQ(this).attr('id');
-    			MLS.ui.scrollPgTo('#' + whichInput +'', 40);
-    			return false;
-    			}
-    		});
-   
-    	}
-	}); // end next step click
-
-
-
-	
-	// main checkout sequence : generic edit step-info (after next-step validation)
-	$jQ('.edit-checkout-step').click(function(){
-		var thisStep = $jQ(this).parents('.checkout-step');
-		
-		// close open input & open its summary
-        	thisStep.siblings('.checkout-step').find('.hide-complete').each(function() {	
-        		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').removeClass('hidden');
-        	});
-	
-		// close this panel's summary next
-			$jQ(this).parents('.step-info-summary').addClass('hidden');
-
-		// show this panel's inputs & buttons
-        	thisStep.find('.hide-complete').removeClass('hidden');
-        	
-        // last, scroll page to top of re-opened section
-        	MLS.ui.scrollPgTo (thisStep, 7); 
-	});
-	
-	
-	
-	
 	// main checkout sequence : step 1 home/business select
 	$jQ('#checkout-where-to-ship').change(function(){
 	
@@ -425,6 +313,45 @@ MLS.cartCheckout = (function() {
 		
 		});
 	
+	$jQ('#same-as-shipping').change(function() { //.......... new card info: billing info same as shipping
+		if($jQ(this).hasClass('check')){
+			$jQ(this).removeClass('check');
+			$jQ('#shipping-info').find('.SaS').each(function(shipI){ // copy stuff
+				if ($jQ(this).hasClass('checkout-select-input')) {
+					var shipValue = $jQ(this).find(':selected').val();	
+				} else {
+					var shipValue = $jQ(this).val();
+				}
+				
+				$jQ('.billing-address-block').find('.SaS').each(function(billI){ // paste stuff
+				
+					if ( shipI == billI ) { //paste it
+						if ($jQ(this).hasClass('checkout-select-input')) {
+							$jQ(this).find('option[value=' + shipValue + ']').attr('selected', true ); 
+							$jQ(this).prev('span').text(shipValue).removeClass('select-placeholder');
+						} else {
+							$jQ(this).val(shipValue).addClass('valid');
+						}
+						return false;
+					} // otherwise keep looping
+				
+				});	
+					
+			});
+		} else { // clear all fields
+			$jQ('.billing-address-block').find('.SaS').each(function(){ 
+				if ($jQ(this).hasClass('checkout-select-input')) {
+					var defaultText = $jQ(this).find(':disabled').text();
+					$jQ(this).find(':selected').prop('selected', false ); 
+					$jQ(this).prev('span').addClass('select-placeholder').text(defaultText);  
+				} else {
+						$jQ(this).val('').removeClass('valid');
+				}	
+			});	
+			$jQ(this).addClass('check');
+		}
+		
+	});
 	
 	$jQ('#card-number, #card-number-gc').on('keyup', function() { //.............. new card info : card icon recognition ...........
 
@@ -463,7 +390,7 @@ MLS.cartCheckout = (function() {
 	});
 	
 	
-	$jQ('#remove-discount-code').click(function(e){ /*.................... remove discount code ........................*/
+	$jQ('#remove-discount-code').click(function(e){ /*.................... remove discount code ........................ */
 		e.preventDefault();
 		$jQ('#discount-code-input').removeClass('valid').addClass('hasPlaceholder');
 		$jQ('#checkout-cart-discount-code').slideToggle(300);
@@ -472,6 +399,17 @@ MLS.cartCheckout = (function() {
 		return false;
 	});
 	
+	
+	$jQ('#begin-gift-card').click(function(e){ /* .................. grab cc info and copy down if present ............ */
+		var slctVal = $jQ('#card-month-gc').find(':selected').val();
+		alert(slctVal);
+		
+		
+		$jQ('#vzn-checkout').validate();
+		if($jQ('.CCV').valid() == true) { /* copy to gift card cc form */
+			alert('woot');
+		} /* else do nothing */
+	});
 	
 	
 	$jQ('#apply-gift-card-1').click(function(e){ /* ........................... apply & validate gift card 1 .......... */
@@ -521,6 +459,158 @@ MLS.cartCheckout = (function() {
 	
 	
 	
+// NEXT STEP CLICK SEQUENCE
+	$jQ('.checkout-next').click(function(e) {
+		e.preventDefault();
+		var which = $jQ(this).attr('id');
+		
+	// IF STEP 1
+		if (which == 'ship-info-complete') { 
+			// validate shipping method radios
+				var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
+				var radioValid = false;
+				var i = 0;
+				$jQ(radios).each(function(i) {
+			
+					if (this.checked) { 
+						radioValid = true; 
+						$jQ('#no-shipping-selected').hide();
+						var shippingType = $jQ('input[name=shipRadio]:checked').siblings('label').html();
+						$jQ('#sum-shipping').html(shippingType);
+					} 
+				
+				}); // end each
+			
+				if (radioValid == false ) {
+					$jQ('#no-shipping-selected').show();
+        			MLS.ui.scrollPgTo('#no-shipping-selected', 40);	
+        			return false;
+				}
+				
+			// validate uniform.js selects
+				$jQ(this).parents('fieldset').find('.selector').each(function(){ 
+					var selectsValid = validateSelect(this);
+					if(selectsValid == false) {
+						valid = false;
+					} 
+				});	
+			} // end if step 1
+			
+			
+	// IF STEP 2
+		if (which == 'billing-info-complete') {
+		
+		// validate uniform.js selects
+			$jQ(this).parents('fieldset').find('.selector').each(function(){
+				var ignoreThese = 'GCV'; 
+				var selectsValid = validateSelect(this, ignoreThese);
+				if(selectsValid == false) {
+					valid = false;
+				} 
+			});	
+		
+		
+		
+		} // end if step 2
+		
+		
+		
+		
+		
+	// VALIDATE	
+		var valid = true;
+		
+		$jQ('.not').remove(); // clear unused fields first
+	
+		var validator = $jQ("#vzn-checkout").validate(); 
+    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input');
+    	var $selects = $jQ(this).siblings('.step-info-block').find('.checkout-select-input');
+		var section = $jQ(this).attr('id');
+		
+		
+		
+		
+		
+		
+    		$inputs.each(function(inputI) { // checks each input, copies value to summary if valid
+    			if (!validator.element(this) && valid) {
+            		valid = false; // stops copying if invalid elements
+        		} else {
+        			var data = $jQ(this).val();
+					copyInputs( section, inputI, data ); // copies inputs
+					$selects.each(function(slctI) { // copies selects, already validated above
+        				data = $jQ(this).find(':selected').val();	
+        				copySelects( section, slctI, data );	
+        			});
+        		}
+    		}); // end summary prep for standard fields
+    		
+    
+    		if (valid) {  // special case adjustments if valid
+    			if (section == 'ship-info-complete') { // step 1 special cases 	
+    				var shipName = $jQ('#ship-name-block').html();
+    				$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary'); // copy name to additional field
+    			
+    				// check if home or business and adjust summary accordingly
+					var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();
+					if (nextDest == "business") { 
+						$jQ('#shipping-info').find('.sum-first-name, .sum-last-name').each(function(){ // add classes for business names
+							$jQ(this).addClass('biz');
+						});
+						$jQ('.same-as-shipping').remove(); // remove 'same as shipping' if business
+					} // else if residence do nothing
+    			}// end if shipping special case
+    		
+    			if (section == 'billing-info-complete') { // step 2 special cases : copy name to out-of-sequence field 
+    				var first = $jQ('#confirmed-first-name').text();
+    				var last = $jQ('#confirmed-last-name').text();
+    				$jQ('#name-on-card').text( first + ' ' + last);
+    			}
+    	
+        		// show/hide inside current block
+        			var thisBlock = $jQ(this).parents('.checkout-step');
+       				thisBlock.find('.hide-complete').addClass('hidden');
+        			thisBlock.find('.step-info-summary').removeClass('hidden');
+        	
+        		// then open the next panel
+        			thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+        	
+        		// last, scroll page to where all data is visible
+        			MLS.ui.scrollPgTo('#shipping-info', 7);	
+        		
+    		} else { // if NOT valid : scroll page up to first error field
+    			$jQ('input, select').each(function(){
+    				if($jQ(this).hasClass('error')){
+    					var whichInput = $jQ(this).attr('id');
+    					MLS.ui.scrollPgTo('#' + whichInput +'', 40);
+    					return false;
+    				}
+    			});
+   
+    		}
+		}); // end next step click
+
+
+
+	
+	// main checkout sequence : generic edit step-info (after next-step validation)
+	$jQ('.edit-checkout-step').click(function(){
+		var thisStep = $jQ(this).parents('.checkout-step');
+		
+		// close open input & open its summary
+        	thisStep.siblings('.checkout-step').find('.hide-complete').each(function() {	
+        		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').removeClass('hidden');
+        	});
+	
+		// close this panel's summary next
+			$jQ(this).parents('.step-info-summary').addClass('hidden');
+
+		// show this panel's inputs & buttons
+        	thisStep.find('.hide-complete').removeClass('hidden');
+        	
+        // last, scroll page to top of re-opened section
+        	MLS.ui.scrollPgTo (thisStep, 7); 
+	});
 	
 	
 	
@@ -759,7 +849,7 @@ function copyInputs( section, inputI, data ) { // CHECKOUT copy text input info 
 
 
 
-function copySelects( section, inputI, data ) { // CHECKOUT: copy select input info for summaries on 'next step' clicks
+function copySelects( section, inputI, data ) { // CHECKOUT copy select input info for summaries on 'next step' clicks
 	$jQ('#' + section ).parents('.checkout-step').find('.select-summary').each(function(sumI) {
 		if (inputI == sumI ) {
 			$jQ(this).text(data);
@@ -768,7 +858,38 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 } // end copySelects
 
 
-
+function validateSelect(selector, ignored) { // CHECKOUT  validation/error messages for custom selects created with uniform.js
+		
+	var thisSelect = $jQ(selector).find('select');
+    if (ignored == undefined) { 
+    	var ignoredClass = 0;
+    } else {
+    	var ignoredClass = ignored;
+    }
+    
+    
+    if ($jQ(thisSelect).hasClass(ignoredClass)){
+    	var selectsValid = true; // we're not validating it 
+    } else { // we are
+    	var thisValue = $jQ(selector).find(':selected').val();
+		var selectsValid = true; // because we're optimists
+	
+		if (thisValue == 0) {
+			$jQ(selector).addClass('select-box-error'); 
+			if ($jQ(thisSelect).hasClass('error')) { //don't add multiple messages
+			} else {
+				$jQ('<div class="select-error-message">Please click to select </div>').appendTo(selector);
+			}
+			$jQ(thisSelect).addClass('error');
+			selectsValid = false;
+		} else { // remove any error states & messages & proceed through loop or if all good, onto validate.js 
+			$jQ(selector).removeClass('select-box-error');
+			$jQ(selector).find('.select-error-message').remove();
+			$jQ(thisSelect).removeClass('error');
+		}
+    }
+	return selectsValid;
+} // validate select
 
 
 
@@ -793,10 +914,16 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 			return true;
 		}
 	});
+
+
 			
 	
 // begin checkout : validation rules & messages	
 	$jQ('#my-Verizon-login').validate({
+		onfocusout: true,
+		success: function(label){
+			label.toggleClass('success')
+		},
 		rules: {
 			myVerizonID: {
 				required: true,
@@ -823,14 +950,18 @@ function copySelects( section, inputI, data ) { // CHECKOUT: copy select input i
 //  main checkout sequence : validation rules & messages
 	$jQ('#vzn-checkout').validate({
 		ignore: '.ignore, :hidden',
+		onfocusout: true,
+		success: function(label){
+			label.addClass('success').text('')
+		},
 		rules: {
 			checkoutFirstName: {
 				required: true,
-				noPlaceholder: true		
+				noPlaceholder: true,		
 			},
 			checkoutLastName: {
 				required: true,
-				noPlaceholder: true		
+				noPlaceholder: true,		
 			},
 			checkoutCompany: {
 				required: true,
