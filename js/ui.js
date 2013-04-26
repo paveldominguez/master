@@ -5,14 +5,12 @@ MLS.ui = {
 	 */
 	gridHover : function (selector, content, padding) {
         $jQ(selector).on('mouseenter', function (e) {
-            window.testE = e;
             e.preventDefault();
             var el = $jQ(this),
             offset = el.offset(),
             width = el.outerWidth(),
             height = el.outerHeight(),
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
-
             padding = (padding !== undefined) ? padding : 40;
 
             el.addClass('active grid-hover-active');
@@ -20,9 +18,8 @@ MLS.ui = {
 				$jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
 			}
             if (content.actions !== undefined) {
-				$jQ('#grid-pop-out .details').html($jQ(content.actions).html());
+				$jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
 			}
-
             $jQ('#grid-pop-out').css({
                 top: offset.top - (padding / 2),
                 left: offset.left - (padding / 2),
@@ -30,6 +27,7 @@ MLS.ui = {
                 height: height + padding + detailHeight
             }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
                 el.removeClass('active grid-hover-active');
+                $jQ('#grid-pop-out .details').empty();
                 $jQ(this).stop(true, true).fadeOut('fast');
             });
         });
@@ -137,9 +135,9 @@ MLS.ui = {
 	},
 	/*
 	 * Generic vertical scroll using 3dTransform, attaches new position as data atrribute
-	 * 
+	 *
 	 */
-	vScroll: function(element, position) { 
+	vScroll: function(element, position) {
 		$jQ(element).css({
         	'-webkit-transform': 'translate3d(0,' + position +'px,  0)',
   			'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
