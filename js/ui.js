@@ -27,6 +27,7 @@ MLS.ui = {
                 height: height + padding + detailHeight
             }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
                 el.removeClass('active grid-hover-active');
+                $jQ('#grid-pop-out .details').empty();
                 $jQ(this).stop(true, true).fadeOut('fast');
             });
         });
