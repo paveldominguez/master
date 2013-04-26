@@ -20,7 +20,7 @@ MLS.ui = {
 				$jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
 			}
             if (content.actions !== undefined) {
-				$jQ('#grid-pop-out .details').html($jQ(content.actions).html());
+				$jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
 			}
 
             $jQ('#grid-pop-out').css({
@@ -137,9 +137,9 @@ MLS.ui = {
 	},
 	/*
 	 * Generic vertical scroll using 3dTransform, attaches new position as data atrribute
-	 * 
+	 *
 	 */
-	vScroll: function(element, position) { 
+	vScroll: function(element, position) {
 		$jQ(element).css({
         	'-webkit-transform': 'translate3d(0,' + position +'px,  0)',
   			'-moz-transform' : 'translate3d(0,' + position +'px,  0)',
