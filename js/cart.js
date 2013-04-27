@@ -3,36 +3,34 @@ MLS.cartCheckout = (function() {
 // ONLOAD
 	//minicart, cart & checkout
 		$jQ("input:submit, input:checkbox, select, .cart-item-qty, .checkout-final").uniform(); // style form elements
-		$jQ('.checkout-dropdown').each(function(){
+		$jQ('.checkout-dropdown').each(function(){ // display rules for all dropdowns
 			dropdownDisplay(this);
-		}); // display rules for all dropdowns
+		}); 
 
 	//minicart
 		minicartTempContent(); // TEMP for demos, PA remove this
 		minicartLayout(); // empty state & scrolling controls
 		
 	 // cart 
-	 	checkCartQty();
+	 	checkCartQty(); // check for siplay of lightbox & empty states
 	 	
-	 //checkout   
-	 	$jQ('.selector').find('span').addClass('select-placeholder');/* style opening selector spans like placeholders */
-		$jQ('.selector').find('select').change(function(){ /* remove placeholder and/or any error states on select */
+	 // checkout 
+	 	$jQ('.selector').find('span').addClass('select-placeholder');/* improve select placeholder/message actions */
+		$jQ('.selector').find('select').change(function(){ 
 			$jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
 			$jQ(this).parents('.selector').removeClass('select-box-error');
 			$jQ(this).parents('.selector').find('.select-error-message').remove();
 		});
-		
-//checkout dynamic style changes
-		$jQ('[placeholder]').focus(function(){ /* lose placeholder on first focus */
-			$jQ(this).removeAttr('placeholder');
-		});
-		$jQ('input').change(function(){
+
+		$jQ('input').change(function(){ /* improve input message actions */
 			if ($jQ(this).hasClass('error')) {
 				$jQ(this).next('label').removeClass('success');
 			}
 		});
 		
-		
+		//$jQ('[placeholder]').focus(function(){ /* lose placeholder on first focus */
+		//	$jQ(this).removeAttr('placeholder');
+		//});
 		
 		
 		
@@ -245,10 +243,6 @@ MLS.cartCheckout = (function() {
 	
 	
 	// main checkout sequence : step 2 billing info
-	
-
-	
-
 	$jQ('.billing-select').change(function(){ // ........ signed-in:  account or card selection
 		
 		// uncheck other option & switch container styles
@@ -316,27 +310,15 @@ MLS.cartCheckout = (function() {
 	$jQ('#same-as-shipping').change(function() { //.......... new card info: billing info same as shipping
 		if($jQ(this).hasClass('check')){
 			$jQ(this).removeClass('check');
-			$jQ('#shipping-info').find('.SaS').each(function(shipI){ // copy stuff
-				if ($jQ(this).hasClass('checkout-select-input')) {
-					var shipValue = $jQ(this).find(':selected').val();	
-				} else {
-					var shipValue = $jQ(this).val();
-				}
-				
+			$jQ('#shipping-info').find('.SaS').each(function(shipI){ 
+				var shipValue = $jQ(this).val();
 				$jQ('.billing-address-block').find('.SaS').each(function(billI){ // paste stuff
-				
 					if ( shipI == billI ) { //paste it
-						if ($jQ(this).hasClass('checkout-select-input')) {
-							$jQ(this).find('option[value=' + shipValue + ']').attr('selected', true ); 
-							$jQ(this).prev('span').text(shipValue).removeClass('select-placeholder');
-						} else {
-							$jQ(this).val(shipValue).addClass('valid');
-						}
+						$jQ(this).val(shipValue).addClass('valid');
+						$jQ.uniform.update(this);
 						return false;
-					} // otherwise keep looping
-				
-				});	
-					
+					} 
+				});		
 			});
 		} else { // clear all fields
 			$jQ('.billing-address-block').find('.SaS').each(function(){ 
@@ -345,21 +327,17 @@ MLS.cartCheckout = (function() {
 					$jQ(this).find(':selected').prop('selected', false ); 
 					$jQ(this).prev('span').addClass('select-placeholder').text(defaultText);  
 				} else {
-						$jQ(this).val('').removeClass('valid');
+					$jQ(this).val('').removeClass('valid');
 				}	
 			});	
 			$jQ(this).addClass('check');
 		}
-		
 	});
 	
 	$jQ('#card-number, #card-number-gc').on('keyup', function() { //.............. new card info : card icon recognition ...........
-
 		if(this.value.length === 2) { 
-			
 			var number = this.value;
 			var cardListItem = 0;
-			
 				if (number >= 40 && number <= 49 ) {
 					cardListItem = 'visa';
 				} else if (number == 34 || number == 37) {
@@ -369,9 +347,7 @@ MLS.cartCheckout = (function() {
 				} else if ( number == 65 ) {
 					cardListItem='discover';
 				} 
-				
-				$jQ(this).parents('.form-input-wrap').next().find('.' + cardListItem).addClass('entered').siblings().removeClass('entered');
-				
+			$jQ(this).parents('.form-input-wrap').next().find('.' + cardListItem).addClass('entered').siblings().removeClass('entered');	
 		} else if(this.value == "" || this.value.length === 1) {
 				$jQ(this).parents('.form-input-wrap').next().find('li').removeClass('entered');
 		} 
@@ -401,22 +377,38 @@ MLS.cartCheckout = (function() {
 	
 	
 	$jQ('#begin-gift-card').click(function(e){ /* .................. grab cc info and copy down if present ............ */
-		var slctVal = $jQ('#card-month-gc').find(':selected').val();
-		alert(slctVal);
+ 		
+ 		var ecValid = true;
+		$jQ('#enter-card-info').find('.selector').each(function(){ // validate main cc selects first
+			var selectsValid = validateSelect(this);
+			if(selectsValid == false) {
+				ecValid = false;
+			} 
+		});
 		
-		
-		$jQ('#vzn-checkout').validate();
-		if($jQ('.CCV').valid() == true) { /* copy to gift card cc form */
-			alert('woot');
-		} /* else do nothing */
+		$jQ('#vzn-checkout').validate(); // validate the rest
+        if ($jQ('.CCV').valid() && ecValid == true ) {  
+        	copyCardInfo('CCV', 'GCV'); // copy valid card info back up to main cc form	
+		}
 	});
 	
 	
 	$jQ('#apply-gift-card-1').click(function(e){ /* ........................... apply & validate gift card 1 .......... */
 		e.preventDefault();
-		$jQ('#vzn-checkout').validate();
-        if ($jQ('.GCV').valid()) {  
-        	$jQ('#checkout-cart-gift-card-1').slideToggle(300);
+		var gcValid = true; // staying optimistic
+		
+		$jQ(this).parents('.checkout-discount-block').find('.selector').each(function(){ // validate selects first
+			var selectsValid = validateSelect(this);
+			if(selectsValid == false) {
+				gcValid = false;
+			} 
+		});
+		
+		$jQ('#vzn-checkout').validate(); // validate the rest
+        if ($jQ('.GCV').valid() && gcValid == true ) {  
+        	copyCardInfo('GCV', 'CCV'); // copy valid card info back up to main cc form
+        
+        	$jQ('#checkout-cart-gift-card-1').slideToggle(300); // hide & show
         	$jQ('.gift-card-cc-block').slideToggle(300);
         	$jQ(this).parents('.discount-input').slideToggle(); 
 			$jQ(this).parents('.discount-input').next('.discount-success').slideToggle();
@@ -429,8 +421,8 @@ MLS.cartCheckout = (function() {
 		$jQ('#checkout-cart-gift-card-1').removeClass('valid').addClass('hasPlaceholder');
 		$jQ('#checkout-cart-gift-card-1').slideToggle(300);
 		$jQ('.gift-card-cc-block').slideToggle(300);
-		$jQ(this).parents('.discount-success').prev('.discount-input').slideToggle();
-		$jQ(this).parents('.discount-success').slideToggle();
+		$jQ(this).parent('.discount-success').prev('.discount-input').slideToggle();
+		$jQ(this).parent('.discount-success').slideToggle();
 		return false;
 	});
 	
@@ -452,55 +444,48 @@ MLS.cartCheckout = (function() {
 		e.preventDefault();
 		$jQ('#checkout-cart-gift-card-2').removeClass('valid').addClass('hasPlaceholder');
 		$jQ('#checkout-cart-gift-card-2').slideToggle(300);
-		$jQ(this).parents('.discount-success').prev('.discount-input').slideToggle();
-		$jQ(this).parents('.discount-success').slideToggle();
+		$jQ(this).parent('.discount-success').prev('.discount-input').slideToggle();
+		$jQ(this).parent('.discount-success').slideToggle();
 		return false;
 	});
 	
+		
+	$jQ('.checkout-next').click(function(e) { // ............................  NEXT STEP CLICK SEQUENCE .................
 	
-	
-// NEXT STEP CLICK SEQUENCE
-	$jQ('.checkout-next').click(function(e) {
 		e.preventDefault();
 		var which = $jQ(this).attr('id');
+		var valid = true;
 		
-	// IF STEP 1
-		if (which == 'ship-info-complete') { 
-			// validate shipping method radios
-				var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
-				var radioValid = false;
-				var i = 0;
-				$jQ(radios).each(function(i) {
+		if (which == 'ship-info-complete') { // ...................... validate step 1 radio buttons .......................
+			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
+			var radioValid = false;
+			var i = 0;
+			$jQ(radios).each(function(i) {
+				if (this.checked) { 
+					radioValid = true; 
+					$jQ('#no-shipping-selected').hide();
+					var shippingType = $jQ('input[name=shipRadio]:checked').siblings('label').html();
+					$jQ('#sum-shipping').html(shippingType);
+				} 
+			}); // end each
 			
-					if (this.checked) { 
-						radioValid = true; 
-						$jQ('#no-shipping-selected').hide();
-						var shippingType = $jQ('input[name=shipRadio]:checked').siblings('label').html();
-						$jQ('#sum-shipping').html(shippingType);
-					} 
-				
-				}); // end each
+			if (radioValid == false ) {
+				$jQ('#no-shipping-selected').show();
+        		MLS.ui.scrollPgTo('#no-shipping-selected', 40);	
+        		return false;
+			}
 			
-				if (radioValid == false ) {
-					$jQ('#no-shipping-selected').show();
-        			MLS.ui.scrollPgTo('#no-shipping-selected', 40);	
-        			return false;
-				}
-				
-			// validate uniform.js selects
-				$jQ(this).parents('fieldset').find('.selector').each(function(){ 
-					var selectsValid = validateSelect(this);
-					if(selectsValid == false) {
-						valid = false;
-					} 
-				});	
-			} // end if step 1
+			$jQ(this).parents('fieldset').find('.selector').each(function(){ // ..... validate uniform.js selects .........
+				var selectsValid = validateSelect(this);
+				if(selectsValid == false) {
+					valid = false;
+				} 
+			});	
+		} // endstep 1
 			
-			
-	// IF STEP 2
-		if (which == 'billing-info-complete') {
 		
-		// validate uniform.js selects
+		if (which == 'billing-info-complete') { // ........................... validate uniform.js selects ................ 
+	
 			$jQ(this).parents('fieldset').find('.selector').each(function(){
 				var ignoreThese = 'GCV'; 
 				var selectsValid = validateSelect(this, ignoreThese);
@@ -508,9 +493,6 @@ MLS.cartCheckout = (function() {
 					valid = false;
 				} 
 			});	
-		
-		
-		
 		} // end if step 2
 		
 		
@@ -518,77 +500,66 @@ MLS.cartCheckout = (function() {
 		
 		
 	// VALIDATE	
-		var valid = true;
 		
 		$jQ('.not').remove(); // clear unused fields first
 	
 		var validator = $jQ("#vzn-checkout").validate(); 
-    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input');
-    	var $selects = $jQ(this).siblings('.step-info-block').find('.checkout-select-input');
+    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input').not('.GCV');
 		var section = $jQ(this).attr('id');
 		
-		
-		
-		
-		
-		
-    		$inputs.each(function(inputI) { // checks each input, copies value to summary if valid
+		// check if inputs are valid, prepare summaries if so
+			$inputs.each(function(inputI) { // checks each input, copies value to summary if valid
     			if (!validator.element(this) && valid) {
-            		valid = false; // stops copying if invalid elements
+            	valid = false; // stops copying if invalid elements
         		} else {
         			var data = $jQ(this).val();
-					copyInputs( section, inputI, data ); // copies inputs
-					$selects.each(function(slctI) { // copies selects, already validated above
-        				data = $jQ(this).find(':selected').val();	
-        				copySelects( section, slctI, data );	
-        			});
+					copyInputs( section, inputI, data );
         		}
-    		}); // end summary prep for standard fields
+    		}); 
     		
-    
-    		if (valid) {  // special case adjustments if valid
-    			if (section == 'ship-info-complete') { // step 1 special cases 	
-    				var shipName = $jQ('#ship-name-block').html();
-    				$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary'); // copy name to additional field
-    			
-    				// check if home or business and adjust summary accordingly
-					var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();
-					if (nextDest == "business") { 
-						$jQ('#shipping-info').find('.sum-first-name, .sum-last-name').each(function(){ // add classes for business names
-							$jQ(this).addClass('biz');
-						});
-						$jQ('.same-as-shipping').remove(); // remove 'same as shipping' if business
-					} // else if residence do nothing
-    			}// end if shipping special case
-    		
-    			if (section == 'billing-info-complete') { // step 2 special cases : copy name to out-of-sequence field 
-    				var first = $jQ('#confirmed-first-name').text();
-    				var last = $jQ('#confirmed-last-name').text();
-    				$jQ('#name-on-card').text( first + ' ' + last);
-    			}
+    	if (valid) { 
+    		if (section == 'ship-info-complete') { // .................. if valid && step 1 .......................
+    			var completed = $jQ('#shipping-info'); 
+    		// copy name to additional field in summary	
+    			var shipName = $jQ('#ship-name-block').html();
+    			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary');
+    		// check if home or business and adjust summary accordingly
+				var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();
+				if (nextDest == "business") { 
+					$jQ('#shipping-info').find('.sum-first-name, .sum-last-name').each(function(){ // add classes for 'business' summary
+						$jQ(this).addClass('biz');
+					});
+					$jQ('.same-as-shipping').remove(); // remove 'same as shipping' in step 2 if 'business' in step 1
+				} // else if residence do nothing	
+    		} // end step 1 adjustment
     	
-        		// show/hide inside current block
-        			var thisBlock = $jQ(this).parents('.checkout-step');
-       				thisBlock.find('.hide-complete').addClass('hidden');
-        			thisBlock.find('.step-info-summary').removeClass('hidden');
+    		if (section == 'billing-info-complete') { // .................. if valid && step 2 ......................
+    			var completed = $jQ('#billing-info');	
+    		// copy name to out-of-sequence field
+    			var first = $jQ('#confirmed-first-name').text();
+    			var last = $jQ('#confirmed-last-name').text();
+    			$jQ('#name-on-card').text( first + ' ' + last);			
+    		} // end step 2 adjustments
+    	
+    		var thisBlock = $jQ(this).parents('.checkout-step'); // ....... if valid : hide/show/scroll ..............
+       		thisBlock.find('.hide-complete').addClass('hidden');
+        	thisBlock.find('.step-info-summary').removeClass('hidden');
+        	thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+        	MLS.ui.scrollPgTo(completed, 7);	
         	
-        		// then open the next panel
-        			thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
-        	
-        		// last, scroll page to where all data is visible
-        			MLS.ui.scrollPgTo('#shipping-info', 7);	
         		
-    		} else { // if NOT valid : scroll page up to first error field
-    			$jQ('input, select').each(function(){
-    				if($jQ(this).hasClass('error')){
-    					var whichInput = $jQ(this).attr('id');
+    	} else { // ..........................................................if NOT valid ............................
+    			$jQ('.error').each(function(){ //'input, select'
+    				var whichInput = $jQ(this).attr('id');
+    				if (whichInput == undefined) { // do nothing
+    				} else {
     					MLS.ui.scrollPgTo('#' + whichInput +'', 40);
     					return false;
     				}
     			});
-   
     		}
-		}); // end next step click
+    		
+		}); // ........................................... END NEXT STEP .........................................................
 
 
 
@@ -642,6 +613,10 @@ MLS.cartCheckout = (function() {
 
 
 
+
+
+
+
 // FUNCTIONS .....................................................................................
 
 function dropdownDisplay(container){  // ALL dropdown panels
@@ -666,7 +641,6 @@ function dropdownDisplay(container){  // ALL dropdown panels
 	}
 }
 
-
 function checkCartQty() {  // CART setup
 	 	
 	 var inCart = $jQ('.cart-table').children('.table-row').not('.empty-cart').length;
@@ -685,12 +659,6 @@ function checkCartQty() {  // CART setup
 	}
 } // end checkCartQty
 
-
-
-
-
-
-
 function minicartLayout(){ // MINICART layout by # of items
 	var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
 	$jQ('#minicart-cart').find('.minicart-item').first().attr('data-vpos', 0);
@@ -706,8 +674,6 @@ function minicartLayout(){ // MINICART layout by # of items
 	}
 } // end minicartLayout
 
-
-
 function minicartEdit(removeBtn){ // MINICART remove/confirm remove sequence
 	$jQ(removeBtn).click(function(e){ // first 'remove' click
 		e.preventDefault();
@@ -719,9 +685,7 @@ function minicartEdit(removeBtn){ // MINICART remove/confirm remove sequence
 		$jQ(block).css('background-color' , '#d6d9d9');
 		$jQ(removeBtn).addClass('yes-remove');
 		
-		
-		// second 'remove' click
-		$jQ('.yes-remove').click(function(){	
+		$jQ('.yes-remove').click(function(){ // second 'remove' click
 			$jQ(block).remove();
 		});
 		
@@ -739,10 +703,7 @@ function minicartEdit(removeBtn){ // MINICART remove/confirm remove sequence
 	});
 } // end minicartEdit 
 
-
-
 function minicartScroll(type) { // MINICART function: next/prev items scroll
-
 	if (type == "next") {
 
 	// calculate current max scroll up
@@ -760,23 +721,18 @@ function minicartScroll(type) { // MINICART function: next/prev items scroll
 	// check position, move and adjust options as required
 		if (newPos > maxScrollPos) { // beginning/middle
 			
-		// move up
-			$jQ('.minicart-item').each(function(){
+			$jQ('.minicart-item').each(function(){ // move up
 				MLS.ui.vScroll(this, newPos);
 			});
-		//turn on prev
-			$jQ('.prev-items-link').addClass('on');
-		//turn on next if needed
-			$jQ('.next-items-link').removeClass('off');
+			$jQ('.prev-items-link').addClass('on'); //turn on prev
+			$jQ('.next-items-link').removeClass('off'); //turn on next if needed
 					
 		} else if (newPos == maxScrollPos) { // end
 					
-		// move up
-			$jQ('.minicart-item').each(function(){
+			$jQ('.minicart-item').each(function(){ // move up
 				MLS.ui.vScroll(this, newPos);
 			});
-		//turn off next
-			$jQ('.next-items-link').addClass('off');			
+			$jQ('.next-items-link').addClass('off'); //turn off next		
 		}
 
 	} else {
@@ -790,23 +746,19 @@ function minicartScroll(type) { // MINICART function: next/prev items scroll
 		
 	// check position, move and adjust options as required
 		if (newPos == 0) { // beginning/middle
-			//move down
-			$jQ('.minicart-item').each(function(){
+			
+			$jQ('.minicart-item').each(function(){ //move down
 				MLS.ui.vScroll(this, newPos);
 			});
-			//turn off prev
-				$jQ('.prev-items-link').removeClass('on');
-			//turn on next
-				$jQ('.next-items-link').removeClass('off');
+			$jQ('.prev-items-link').removeClass('on'); //turn off prev
+			$jQ('.next-items-link').removeClass('off'); //turn on next
 	
 		} else { // end
 		
-			//move down
-			$jQ('.minicart-item').each(function(){
+			$jQ('.minicart-item').each(function(){ //move down
 				MLS.ui.vScroll(this, newPos);
 			});
-			//turn on next
-			$jQ('.next-items-link').removeClass('off');
+			$jQ('.next-items-link').removeClass('off'); //turn on next
 		}
 	}
 } // end minicart scroll function
@@ -836,8 +788,6 @@ function enterCheckout() { // CHECKOUT enter main sequence
 	$jQ('h1.checkout-title').addClass('main'); // re-justify with checkout sequence
 } // end checkout entrance	
 
-
-
 function copyInputs( section, inputI, data ) { // CHECKOUT copy text input info for summaries on 'next step' clicks
 	$jQ('#' + section ).parents('.checkout-step').find('.summary').each(function(sumI) {
 		if (inputI == sumI ) {
@@ -846,17 +796,22 @@ function copyInputs( section, inputI, data ) { // CHECKOUT copy text input info 
 	});
 } // end copyInputs
 
-
-
-
-function copySelects( section, inputI, data ) { // CHECKOUT copy select input info for summaries on 'next step' clicks
-	$jQ('#' + section ).parents('.checkout-step').find('.select-summary').each(function(sumI) {
-		if (inputI == sumI ) {
-			$jQ(this).text(data);
-		}
+function copyCardInfo(fromClass, toClass) { // move valid card info on page from one fieldset to the other 
+	
+	var fromFset = $jQ('.' + fromClass).parents('.credit-card-info');
+	var toFset = $jQ('.' + toClass).parents('.credit-card-info');
+	
+	$jQ(fromFset).find('.' + fromClass).each(function(fromI){
+		thisValue = $jQ(this).val();
+		$jQ(toFset).find('.' + toClass).each(function(toI){
+			if (fromI == toI) {	
+				$jQ(this).val(thisValue).removeClass('error').removeClass('hasPlaceholder').next('label').addClass('success'); 
+				$jQ.uniform.update(this);
+				return false;	
+			}
+		});
 	});
-} // end copySelects
-
+} // end copyCardInfo
 
 function validateSelect(selector, ignored) { // CHECKOUT  validation/error messages for custom selects created with uniform.js
 		
@@ -866,7 +821,6 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
     } else {
     	var ignoredClass = ignored;
     }
-    
     
     if ($jQ(thisSelect).hasClass(ignoredClass)){
     	var selectsValid = true; // we're not validating it 
@@ -878,11 +832,11 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 			$jQ(selector).addClass('select-box-error'); 
 			if ($jQ(thisSelect).hasClass('error')) { //don't add multiple messages
 			} else {
-				$jQ('<div class="select-error-message">Please click to select </div>').appendTo(selector);
+				$jQ('<div class="select-error-message error">Please click to select </div>').appendTo(selector);
 			}
 			$jQ(thisSelect).addClass('error');
 			selectsValid = false;
-		} else { // remove any error states & messages & proceed through loop or if all good, onto validate.js 
+		} else { // remove any error states & messages & proceed 
 			$jQ(selector).removeClass('select-box-error');
 			$jQ(selector).find('.select-error-message').remove();
 			$jQ(thisSelect).removeClass('error');
@@ -906,7 +860,7 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 		return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
 	}, "Please specify a valid phone number");
 	
-	// ignore placeholder text
+	// don't validate placeholder text
 	jQuery.validator.addMethod("noPlaceholder", function (value, element) {
 		if (value == $jQ(element).attr('placeholder')) {
 			return false;
@@ -915,8 +869,24 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 		}
 	});
 
+	// improved credit card recognition
+	
+	jQuery.validator.addMethod("ccRecognize", function (value, element) {
+		relValue = value.substring(0,2);
+		if (relValue >= 40 && relValue <= 49 ) { // visa
+			return true;
+		} else if (relValue == 34 || relValue == 37) { //amex
+			return true;
+		} else if (relValue >= 50 && relValue <=55 ) { // mc
+			return true;
+		} else if (relValue == 65 ) { // discover
+			return true;
+		} else {
+			return false; 
+		}
 
-			
+	});
+
 	
 // begin checkout : validation rules & messages	
 	$jQ('#my-Verizon-login').validate({
@@ -924,6 +894,7 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 		success: function(label){
 			label.toggleClass('success')
 		},
+		ignore : '.ignore',
 		rules: {
 			myVerizonID: {
 				required: true,
@@ -1005,9 +976,8 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 			cardNumber: {
 				required: true,
 				noPlaceholder: true,
-				minlength: 15,
-				maxlength:  16,
-				digits: true
+				rangelength: [15, 16],
+				ccRecognize: true
 			},	
 			ccCode: {
 				required: true,
@@ -1072,9 +1042,8 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 			cardNumberGC: {
 				required: false,
 				noPlaceholder: true,
-				minlength: 15,
-				maxlength:  16,
-				digits: true
+				rangelength: [15, 16],
+				ccRecognize: true
 			},	
 			ccCodeGC: {
 				required: false,
@@ -1134,9 +1103,8 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 			cardNumber: {
 				required: "Please enter your card number",
 				noPlaceholder: "Please enter your card number",
-				minlength: "Please enter a valid card number",
-				maxlength:  "Please enter a valid card number",
-				digits: "Please enter a valid card number"
+				rangelength: "Please enter a valid card number",
+				ccRecognize : "Please enter a valid card number"
 			},
 			ccCode: {
 				required: "Please enter the security code on the back of your card",
@@ -1205,9 +1173,8 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 			cardNumberGC: {
 				required: "Please enter your card number",
 				noPlaceholder: "Please enter your card number",
-				minlength: "Please enter a valid card number",
-				maxlength:  "Please enter a valid card number",
-				digits: "Please enter a valid card number"
+				rangelength: "Please enter a valid card number",
+				ccRecognize : "Please enter a valid card number"
 			},	
 			ccCodeGC: {
 				required: "Please enter the security code on the back of your card",

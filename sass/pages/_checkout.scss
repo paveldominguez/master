@@ -136,7 +136,7 @@
 		 	height: 20px;
 		 	overflow: hidden;
 		 	padding: 0px 0 0 15px;
-		 	@include pdp-sprite(red-left, false, 0px, 1px);
+		 	@include cart-sprite(red-left, false, 0px, 1px);
 		 	}
 		 label.error.success {
 		 	@include cart-sprite(checkout-checkbox-checked);
@@ -726,7 +726,7 @@
 					@include checkoutLabel;
 					color: $colorVzwRed;
 					padding: 5px 0 0 20px;
-				 	@include pdp-sprite(red-left, false, 8px, 6px);
+				 	@include cart-sprite(red-left, false, 8px, 6px);
 				 	overflow: hidden;
 					} 
 					
@@ -961,9 +961,10 @@
 										label.error { 
 											overflow: hidden;
 											width: 150px; height: 24px; 
-											top: 27px; right: 0px; left: auto;
-											@include pdp-sprite(red-left, false, 0, 5px); 
+											top: 27px; left: 63%;
+											@include cart-sprite(red-left, false, 0, 5px); 
 											}
+										label.error.success { @include cart-sprite(checkout-checkbox-checked, false, 0, 5px); }
 										}
 									.security-item {
 										span.select-placeholder { 
@@ -981,9 +982,10 @@
 									.security-item.code {
 										label.error { 
 											width: 120px; height: 32px;
-											top: 6px; right: -130px; left: auto;
-											@include pdp-sprite(red-left, false, 0, 10px);  
+											top: 6px; left: 112%;
+											@include cart-sprite(red-left, false, 0, 10px);  
 											}
+										label.error.success { @include cart-sprite(checkout-checkbox-checked, false, 0, 5px); }
 										}
 									}
 								
@@ -1278,17 +1280,17 @@
 				 					@include clearfix();
 				 					position: relative;
 				 					
-				 					label.error { 
-				 						left: 100%;
+				 					label.error {  
+				 						left: 103%;
 				 						top: 20px;
 				 						width: 200px;
 				 						height: 24px;
 				 						overflow: hidden;
 				 						color: $colorVzwRed;
 				 						padding: 5px 0 0 20px;
-				 						@include pdp-sprite(red-left, false, 8px, 10px);
+				 						background: #fff url( ../img/sprites/cart/red-left.png) 8px 10px no-repeat; /* for overlapping messages */
 				 						}
-				 					
+				 					label.error.success { background: #fff url( ../img/sprites/cart/checkout-checkbox-checked.png) 8px 10px no-repeat;  /* for overlapping messages */}
 				 					} 
 				 				.discount-input.done { display: none; }
 				 				
@@ -1402,9 +1404,10 @@
 											color: $colorVzwRed;
 											overflow: hidden;
 											width: 150px; height: 24px; 
-											top: 27px; right: 0px; left: auto;
-											@include pdp-sprite(red-left, false, 0, 5px); 
+											top: 27px;  left: 63%;
+											@include cart-sprite(red-left, false, 0, 5px); 
 											}
+										label.error.success { @include cart-sprite(checkout-checkbox-checked, false, 0, 5px); }
 										}
 										
 				 					} /* end cc info */
@@ -1437,33 +1440,37 @@
 				 					label.error { 
 				 							color: $colorVzwRed;
 											width: 120px; height: 32px;
-											top: 6px; right: -130px; left: auto;
-											@include pdp-sprite(red-left, false, 0, 10px);  
+											top: 6px;left: 110%;
+											@include cart-sprite(red-left, false, 0, 10px);  
 											}
+									label.error.success { @include cart-sprite(checkout-checkbox-checked, false, 0, 5px); }
 				 					} /* end security item code */
 				 				
 				 				} /* end gift cc block */
 	
 				 			} /* end discount block */
 				 			
-				 		.checkout-not-charged { 
-				 			@include checkoutLabel;
-				 			margin: 45px 0 10px 0;
-				 			}
-				 			
-				 		.bill-info-next { margin: 10px 0 18px 0px; }
-				 			
-				 		.verified-fineprint { 
-				 			width: 70%;
-				 			color: $cartGreyDk;
-				 			margin-bottom: 45px;
-				 			}
-
 						}/* end step info block */
 					
+					.checkout-not-charged { 
+				 		@include checkoutLabel;
+				 		margin: 45px 0 10px 72px;
+				 		}
+				 			
+				 	.bill-info-next { margin: 10px 0 18px 72px; }
+				 			
+				 	.verified-fineprint { 
+				 		width: 70%;
+				 		color: $cartGreyDk;
+				 		padding-bottom: 45px;
+				 		margin-left: 72px;
+				 		float: none;
+				 		}
 					} /* end billing-info - checkout step 2 */
+				
+				
 					
-				#confirm-order {
+				#confirm-order { /* ............................ step 3 specifics ............ */
 				
 					} /* end confirm-order - checkout step 3 */
 					
@@ -1726,7 +1733,7 @@
 				
 			#checkout-sidebar.fixed {
 				position:fixed;
-				top: 20px; 
+				top: 7px; 
 				left: inherit;
 				z-index:5;
 				}	
