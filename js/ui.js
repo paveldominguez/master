@@ -4,6 +4,7 @@ MLS.ui = {
 	 * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
 	 */
 	gridHover : function (selector, content, padding) {
+
         $jQ(selector).on('mouseenter', function (e) {
             e.preventDefault();
             var el = $jQ(this),
@@ -12,24 +13,25 @@ MLS.ui = {
             height = el.outerHeight(),
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
             padding = (padding !== undefined) ? padding : 40;
-
-            el.addClass('active grid-hover-active');
-			if (content.topBar !== undefined) {
-				$jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
-			}
-            if (content.actions !== undefined) {
-				$jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
-			}
-            $jQ('#grid-pop-out').css({
-                top: offset.top - (padding / 2),
-                left: offset.left - (padding / 2),
-                width: width + padding,
-                height: height + padding + detailHeight
-            }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
-                el.removeClass('active grid-hover-active');
-                $jQ('#grid-pop-out .details').empty();
-                $jQ(this).stop(true, true).fadeOut('fast');
-            });
+            if (Response.band(920)) {
+                el.addClass('active grid-hover-active');
+                if (content.topBar !== undefined) {
+                    $jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
+                }
+                if (content.actions !== undefined) {
+                    $jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
+                }
+                $jQ('#grid-pop-out').css({
+                    top: offset.top - (padding / 2),
+                    left: offset.left - (padding / 2),
+                    width: width + padding,
+                    height: height + padding + detailHeight
+                }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
+                    el.removeClass('active grid-hover-active');
+                    $jQ('#grid-pop-out .details').empty();
+                    $jQ(this).stop(true, true).fadeOut('fast');
+                });
+            }
         });
     },
 
