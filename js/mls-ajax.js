@@ -104,5 +104,8 @@ MLS.ajax = {
             e.preventDefault();
             console.log('load all');
         }
+    },
+    gridSort: function (type) {
+        console.log('sort by ' + type);
     }
 };
