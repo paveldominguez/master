@@ -17,50 +17,6 @@ $colorLifestyleLight: #DCDEDE;
         overflow: hidden;
         .content-header {
             padding: 50px 70px;
-            .title {
-                vertical-align: baseline;
-                strong {
-                    font: {
-                        family: $fontVzwBold;
-                        weight: normal;
-                    }
-                }
-                a {
-                    color: #06C;
-                    font: {
-                        family: $fontArial;
-                        size: 10px;
-                        weight: bold;
-                    }
-                    letter-spacing: 0;
-                    margin-left: 12px;
-                    text-transform: uppercase;
-                }
-            }
-        }
-    }
-    .flex-direction-nav {
-        float: right;
-        margin: 8px 0 0;
-        li { 
-            float: left; margin-left: 15px; 
-            .flex-prev,
-            .flex-next {
-                display: block;
-                width: 30px;
-                height: 30px;
-                text-indent: -9999px;
-                &.flex-disabled {
-                    cursor: default;
-                    opacity: 0.35;
-                }
-            }
-            .flex-prev {
-                @include pdp-sprite(btf-carousel-left, false, 0 ,0);
-            }
-            .flex-next {
-                @include pdp-sprite(btf-carousel-right, false, 0 ,0);
-            }
         }
     }
 }
@@ -638,6 +594,11 @@ $colorLifestyleLight: #DCDEDE;
             }
         }
     }
+    .guides-module {
+        .content-grid .content-item {
+            width: 33.33334%;
+        }
+    }
 }
 
 @media only screen and (max-width: $screenSmall - 1) {
@@ -667,6 +628,19 @@ $colorLifestyleLight: #DCDEDE;
                 font-size: 40px;
                 letter-spacing: -3px;
             }
+        }
+    }
+    .guides-module {
+        .content-grid .content-item {
+            width: 50%;
+        }
+    }
+}
+
+@media only screen and ( max-width: $screenMobileLarge ) {
+    .guides-module {
+        .content-grid .content-item {
+            width: 100%;
         }
     }
 }

@@ -317,7 +317,9 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-
+    .hide-for-mobile {
+        display: none;
+    }
 }
 @media only screen and (max-width: $screenMobileSmall) {
 

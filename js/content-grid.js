@@ -1,6 +1,6 @@
 var contentGrid = {
     init : function () {
-        var $contentGrid = $jQ('#main-column .content-grid'),
+        var $contentGrid = $jQ('#main-column .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
         $featuredHover = $contentItems.find('.featured-corner');
@@ -9,12 +9,12 @@ var contentGrid = {
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
         if (!isTouch) {
-            MLS.ui.gridHover($contentItems, {
+            MLS.ui.gridHover($contentItems.not('.large'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
-            $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
+            $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
     },
