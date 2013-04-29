@@ -8,6 +8,10 @@ var contentGrid = {
         $featuredHide = $contentItems.find('.back-to-story');
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
+        $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
+        $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
+        contentGrid.sortHeader();
+        contentGrid.mobileFilter.init();
         if (!isTouch) {
             MLS.ui.gridHover($contentItems.not('.large'), {
                 topBar: $contentItems.find('.color-picker'),
@@ -16,6 +20,49 @@ var contentGrid = {
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
             $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
+        }
+    },
+    sortHeader: function () {
+        $jQ('li', '#sort-options').on('click', function (e) {
+            e.preventDefault();
+            var type = $jQ(this).attr('data-type');
+            //Fire Ajax
+            MLS.ajax.gridSort(type);
+            $jQ('li', '#sort-options').removeClass('active');
+            $jQ(this).addClass('active');
+        });
+    },
+    mobileFilter : {
+        init: function () {
+            //Event handler for clicks !!!D.R.Y:-(
+            $jQ('a.filter', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.filter-options-list', '#mobile-sort-filter').show();
+                }
+            });
+            $jQ('a.sort', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.sort-options-list', '#mobile-sort-filter').show();
+                }
+            });
         }
     },
     productTileEnter : function () {
@@ -38,7 +85,7 @@ var contentGrid = {
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
-            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 20,
+            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
             //'height' : $contentTile.outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
