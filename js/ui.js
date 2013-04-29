@@ -14,6 +14,7 @@ MLS.ui = {
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
             padding = (padding !== undefined) ? padding : 40;
             if (Response.band(920)) {
+                $jQ('.content-item.active').removeClass('active grid-hover active');
                 el.addClass('active grid-hover-active');
                 if (content.topBar !== undefined) {
                     $jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
