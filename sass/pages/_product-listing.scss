@@ -473,23 +473,24 @@ $hdrOfferCollapsed: 55px;
             }
         }
     }
-    h2{
-        display: inline;
-        font-size: 12px;
-        padding: 0;
-        margin: 0;
-        line-height: 12px;
-        position: absolute;
-        top: 6px;
-        left: -75px;
-        font-family: "Verizon Apex Book";
-    }
+
     .sort-options {
         position: absolute;
         bottom: 30px;
         right: 30px;
         text-align: center;
         text-transform: uppercase;
+        h2{
+            display: inline;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            line-height: 12px;
+            position: absolute;
+            top: 6px;
+            left: -75px;
+            font-family: "Verizon Apex Book";
+        }
         .inline-list {
             display: inline;
             margin: 0;
