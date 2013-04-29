@@ -10,6 +10,7 @@ var contentGrid = {
         $featuredHide.click(contentGrid.featuredHide);
         $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
         $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
+        contentGrid.sortHeader();
         if (!isTouch) {
             MLS.ui.gridHover($contentItems, {
                 topBar: $contentItems.find('.color-picker'),
@@ -19,6 +20,16 @@ var contentGrid = {
             $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
+    },
+    sortHeader: function () {
+        $jQ('li', '#sort-options').on('click', function (e) {
+            e.preventDefault();
+            var type = $jQ(this).attr('data-type');
+            //Fire Ajax
+            MLS.ajax.gridSort(type);
+            $jQ('li', '#sort-options').removeClass('active');
+            $jQ(this).addClass('active');
+        });
     },
     productTileEnter : function () {
         $jQ(this).addClass('active');
