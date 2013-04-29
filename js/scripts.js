@@ -1,7 +1,16 @@
 var $jQ = jQuery.noConflict(), // Prevent any future library conflicts
 MLS = {}, // Container for firing common and page-specic JavaScript
 MLSUTIL = {}, //
-isTouch = $jQ('html.touch').length > 0 ? true : false;
+isTouch = $jQ('html.touch').length > 0 ? true : false,
+R = this.Response;
+
+/* Response.js Hook */
+Response.create({
+    prop: 'width', // property to base tests on
+    prefix: 'r src', // custom aliased prefixes
+    breakpoints: [0, 320, 768, 1024, 1280], // custom breakpoints
+    lazy: true // enable lazyloading
+});
 
 /*
  * Global Functions
@@ -128,8 +137,9 @@ MLS = {
             });
         }
     },
-    'category-listing-page' : {
+    'category-landing-page' : {
         init : function() {
+            MLS.categoryLanding.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
