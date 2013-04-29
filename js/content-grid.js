@@ -11,6 +11,7 @@ var contentGrid = {
         $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
         $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
         contentGrid.sortHeader();
+        contentGrid.mobileFilter.init();
         if (!isTouch) {
             MLS.ui.gridHover($contentItems, {
                 topBar: $contentItems.find('.color-picker'),
@@ -30,6 +31,39 @@ var contentGrid = {
             $jQ('li', '#sort-options').removeClass('active');
             $jQ(this).addClass('active');
         });
+    },
+    mobileFilter : {
+        init: function () {
+            //Event handler for clicks !!!D.R.Y:-(
+            $jQ('a.filter', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.filter-options-list', '#mobile-sort-filter').show();
+                }
+            });
+            $jQ('a.sort', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.sort-options-list', '#mobile-sort-filter').show();
+                }
+            });
+        }
     },
     productTileEnter : function () {
         $jQ(this).addClass('active');
