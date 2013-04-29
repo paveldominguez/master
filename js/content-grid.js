@@ -8,6 +8,8 @@ var contentGrid = {
         $featuredHide = $contentItems.find('.back-to-story');
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
+        $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
+        $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
         if (!isTouch) {
             MLS.ui.gridHover($contentItems, {
                 topBar: $contentItems.find('.color-picker'),
