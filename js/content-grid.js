@@ -8,6 +8,9 @@ var contentGrid = {
         $featuredHide = $contentItems.find('.back-to-story');
         $featuredReveal.click(contentGrid.featuredReveal);
         $featuredHide.click(contentGrid.featuredHide);
+        $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
+        $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
+        contentGrid.sortHeader();
         if (!isTouch) {
             MLS.ui.gridHover($contentItems, {
                 topBar: $contentItems.find('.color-picker'),
@@ -17,6 +20,16 @@ var contentGrid = {
             $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
+    },
+    sortHeader: function () {
+        $jQ('li', '#sort-options').on('click', function (e) {
+            e.preventDefault();
+            var type = $jQ(this).attr('data-type');
+            //Fire Ajax
+            MLS.ajax.gridSort(type);
+            $jQ('li', '#sort-options').removeClass('active');
+            $jQ(this).addClass('active');
+        });
     },
     productTileEnter : function () {
         $jQ(this).addClass('active');
@@ -38,7 +51,7 @@ var contentGrid = {
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
-            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 20,
+            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
             //'height' : $contentTile.outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });

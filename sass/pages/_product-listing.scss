@@ -473,6 +473,17 @@ $hdrOfferCollapsed: 55px;
             }
         }
     }
+    h2{
+        display: inline;
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        line-height: 12px;
+        position: absolute;
+        top: 6px;
+        left: -75px;
+        font-family: "Verizon Apex Book";
+    }
     .sort-options {
         position: absolute;
         bottom: 30px;
@@ -480,6 +491,7 @@ $hdrOfferCollapsed: 55px;
         text-align: center;
         text-transform: uppercase;
         .inline-list {
+            display: inline;
             margin: 0;
             .hide-for-touch {
                 position: relative;
@@ -548,8 +560,7 @@ $hdrOfferCollapsed: 55px;
 .content-grid {
     @include clearfix();
     position: relative;
-    margin-bottom: 0;
-    padding-bottom: 100px;
+    margin-bottom: 50px;
     border: {
         top: none;
         right: none;
