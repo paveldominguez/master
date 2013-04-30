@@ -337,7 +337,9 @@ h1,h2,h3,h4,h5,h6 {
 
 
 
-
+.show-for-mobile {
+    display: none;
+}
 
 
 
@@ -353,6 +355,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
 
+}
+@media only screen and (max-width: $screenMobileLarge) {
+    .show-for-mobile {
+        display: block;
+    }
 }
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
     .hide-for-mobile {
