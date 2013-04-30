@@ -33,6 +33,44 @@ h1,h2,h3,h4,h5,h6 {
     z-index: 1000 !important;
 }
 
+#load-actions{
+    position: relative;
+    display: block;
+
+    #load-more{
+        width: 428px !important;
+        height: 55px;
+        margin: 30px auto;
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        color: #333;
+        font-family: "Verizon Apex Book";
+        padding: 15px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        background: #edf1f2;
+        -webkit-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+        -moz-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+        box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+    }
+    #load-remaining {
+        float: right;
+        text-align: left;
+        display: block;
+        color: #0066cc;
+        width: 110px;
+        font-family: Arial;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        position: absolute;
+        right: 15px;
+        top: 15px;;
+    }
+}
 #grid-pop-out{
     display:none;
     position: absolute;
@@ -315,7 +353,9 @@ h1,h2,h3,h4,h5,h6 {
 
 
 
-
+.show-for-mobile {
+    display: none;
+}
 
 
 
@@ -332,8 +372,15 @@ h1,h2,h3,h4,h5,h6 {
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
 
 }
+@media only screen and (max-width: $screenMobileLarge) {
+    .show-for-mobile {
+        display: block;
+    }
+}
 @media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-
+    .hide-for-mobile {
+        display: none;
+    }
 }
 @media only screen and (max-width: $screenMobileSmall) {
 

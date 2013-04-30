@@ -95,5 +95,18 @@ MLS.ajax = {
         updateContentSuccess : function (data) {
             MLS.ui.updateContent($jQ(MLS.ajax.colorPicker.contentItem).find('.content-fig'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
         }
+    },
+    lazyLoad : {
+        more : function (e) {
+            e.preventDefault();
+            console.log('load more');
+        },
+        remaining : function (e) {
+            e.preventDefault();
+            console.log('load all');
+        }
+    },
+    gridSort: function (type) {
+        console.log('sort by ' + type);
     }
 };

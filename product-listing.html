@@ -27,26 +27,12 @@
     includeFragment('inc/grid-pop-out.html');
   </script>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  
+
   <div id='site-container'>
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-    <div class="temp-pdp-header">
-  
-  		<div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-new-products">new products</li>
-  				<li id="state-sale-featured">featured sale</li>
-  				<li id="state-sale-item">item-sale</li>
-  			</ul>
-  		</div><!-- TEMP set of buttons to toggle states for dev -->
-  
-  
-  		<script type="text/javascript">  
+  		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
-  
-   	</div>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
   <!-- End Header and Nav -->
@@ -58,11 +44,11 @@
     <!-- Begin Product List Header -->
     <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
-    	<script type="text/javascript">  
+    	<script type="text/javascript">
       	includeFragment('inc/fragments/content-grid-header.html');
     	</script>
-   
-    
+
+
     <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
     <!-- End Product List Header -->
 
@@ -78,7 +64,7 @@
       </aside>
       <!-- End Left Column -->
 
-      <!-- Begin Main Content Container -->      
+      <!-- Begin Main Content Container -->
       <section id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
@@ -108,9 +94,13 @@
           <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
         <!-- end quick view item -->
         <!-- End Product Listing -->
-
-      </section> 
+         <div id="load-actions" class="hide-for-small">
+        <a href="#" id="load-more">load <span class='product-count'>30</span> more</a>
+        <a href="#" id="load-remaining">load remaining <span class='product-count'>268</span> products</a>
+    </div>
+      </section>
       <!-- End Main Content Container -->
+
 
     </div>
   </section>
