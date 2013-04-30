@@ -70,7 +70,7 @@ var contentGrid = {
         },
         filterPanel: function (dimension) {
             var viewportHeight = Response.viewportH();
-            $jQ('.filter-panels .panel').hide();
+            $jQ('.filter-panels .filter-panel').hide();
             $jQ('.filter-panel.' + dimension).show();
             $jQ('.filter-panels').show(function () {
                 $jQ(this).animate({height: viewportHeight});
