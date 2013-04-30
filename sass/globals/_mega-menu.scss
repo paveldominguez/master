@@ -38,16 +38,18 @@ $colorNavGridText: #333333;
         .nav-item {
             height: 45px;
             line-height: 45px;
-            padding: 0 15px;
+            padding: 0 10px;
             text-align: center;
             border: {
                 left: 1px solid white;
                 right: 1px solid white;
             }
             font: {
-                family: $fontVzwBook;
-                size: 18px;
+                family: $fontVzwMedium;
+                size: 12px;
+                weight: normal;
             }
+            text-transform: uppercase;
             &.active:not(.nav-actions) {
                 background-color: $colorActiveTabBg;
                 border: {
@@ -60,14 +62,13 @@ $colorNavGridText: #333333;
             }
         }
         .logo {
-            width: 45px;
             h1 { 
                 margin: 0;
-                text-indent: -9999px;
                 padding: 15px;
-                font-size: 18px;
-                a {
-                    background-color: #757575;
+                font: {
+                    family: $fontVzwBold;
+                    size: 14px;
+                    weight: normal;
                 }
             }
         }

@@ -148,7 +148,6 @@ MLS = {
     },
     'lifestyle-landing-page' : {
         init : function() {
-            contentFilter.init();
             MLS.lifestyle.init();
         }
     },
