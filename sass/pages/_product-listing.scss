@@ -231,7 +231,71 @@ $hdrOfferCollapsed: 55px;
         }
     }
 }
+.filter-panels{
+    display: none;
+    top: 0;
+    left: 0;
+    background: #e5eaea;
+    position:fixed;
+    height: 0;
+    width: 100%;
+    z-index: 100;
+    .close{
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: #0066cc;
+        font-family: Arial;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+    .filter-panel{
+        display: none;
+        padding: 15px;
+        .dimension-title{
+            font-size: 18px;
+            font-family: "Verizon Apex Book";
+            font-weight: normal;
+            color: #121212;
+        }
+        .dimension-list{
+            li{
+                padding-top: 25px;
+                padding-bottom: 10px;
+                margin: 0;
+                font-size: 18px;
+                font-family: "Verizon Apex Book";
+                font-weight: normal;
+                color: #666;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
+                &.last{
+                    border-bottom: 0;
+                }
+                .facet-check{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background: url(../img/mobile-checkbox.png) bottom right no-repeat;
+                    margin-right: 10px;
+                }
+                .facet-thumb,.facet-count{
+                    float: right;
+                }
+                &.selected{
 
+                    .facet-check{
+                        background: url(../img/mobile-checkbox.png) top right no-repeat;
+                    }
+
+                }
+            }
+        }
+    }
+}
 .content-filter {
     padding: 15px 30px;
     .facet,
@@ -541,7 +605,11 @@ $hdrOfferCollapsed: 55px;
                     height: 22px;
                     border-right: 1px solid white;
                     padding: 5px 15px 0 15px;
-                    a{}
+                    cursor: pointer;
+                    a{
+
+                    }
+
                 }
                 &.sort-options-list{
                     width: 790px;
