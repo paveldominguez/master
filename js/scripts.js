@@ -80,7 +80,7 @@ MLS = {
         init : function () {
             // initialize things that are used on every page
             var win = $jQ(window);
-            $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
+            $jQ(window).on('resize', function () { // this is for debugging purposes, can be removed when no longer needed
                 debounce(function() {
                     console.log('Window width: %dpx', win.width());
                 }, 300);
@@ -93,18 +93,19 @@ MLS = {
             MLS.ui.tabs('#nav-tab2', true);
             MLS.ajax.article.init();
         },
-        finalize: function() {
+        finalize: function () {
             // non priority calls go here, runs after all init functions
         }
     },
     'home-page' : {
-        init : function() {
+        init : function () {
+            contentGrid.init();
             MLS.home.init();
         }
     },
     'brand-landing-page' : {
-        init : function() {
-            $jQ("#sort-options").uniform();
+        init : function () {
+            $jQ('#sort-options').uniform();
             contentGrid.init();
             contentFilter.init();
             MLS.ajax.cart.init(document.body);
@@ -112,12 +113,12 @@ MLS = {
         }
     },
     'cart-and-checkout': {
-    	init : function() {
+    	init : function () {
     		MLS.cartCheckout.init();
     	}
     },
     'content-landing-page' : {
-        init : function() {
+        init : function () {
             //searchResults.styleDropDown();
             contentGrid.init();
             contentFilter.init();
@@ -125,20 +126,20 @@ MLS = {
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
                 var tab = $jQ(this).attr('href');
-                var type = $jQ('.tab-content-wrapper[data-tab='+tab+']').attr('data-type');
-                var results = $jQ('.tab-content-wrapper[data-tab='+tab+']').attr('data-result-count');
+                var type = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-type');
+                var results = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-result-count');
                 e.preventDefault();
                 $jQ('.category-tabs li a').parent().removeClass('active');
                 $jQ(this).parent().addClass('active');
                 $jQ('.tab-content-wrapper').removeClass('active');
-                $jQ('.tab-content-wrapper[data-tab='+tab+']').addClass('active');
+                $jQ('.tab-content-wrapper[data-tab=' + tab + ']').addClass('active');
                 $jQ('.content-landing-header .results-count').text(results);
                 $jQ('.content-landing-header .type').text(type);
             });
         }
     },
     'category-landing-page' : {
-        init : function() {
+        init : function () {
             MLS.categoryLanding.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
@@ -147,13 +148,13 @@ MLS = {
         }
     },
     'lifestyle-landing-page' : {
-        init : function() {
+        init : function () {
             contentFilter.init();
             MLS.lifestyle.init();
         }
     },
     'product-listing-page' : {
-        init : function() {
+        init : function () {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
@@ -176,7 +177,7 @@ MLS = {
         }
     },
     'product-detail' : { // add -page
-        init : function() {
+        init : function () {
             productDetail.init();
             MLS.ajax.cart.init('#add-cart-box .button span');
         }
@@ -191,12 +192,12 @@ MLS = {
     //     }
     // },
     'special-offers-landing-page' : {
-        init : function() {
+        init : function () {
             contentFilter.init();
             MLS.specialOffers.init();
         }
     },
-  
+
 };
 
 
