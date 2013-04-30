@@ -40,7 +40,6 @@ var contentGrid = {
                 if ($jQ(this).hasClass('active')) {
                     $jQ(this).removeClass('active').css({height: '45px'});
                     $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
-
                 } else {
                     $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
                     $jQ(this).addClass('active').css({height: '50px'});
@@ -54,7 +53,6 @@ var contentGrid = {
                 if ($jQ(this).hasClass('active')) {
                     $jQ(this).removeClass('active').css({height: '45px'});
                     $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
-
                 } else {
                     $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
                     $jQ(this).addClass('active').css({height: '50px'});
@@ -63,6 +61,31 @@ var contentGrid = {
                     $jQ('.sort-options-list', '#mobile-sort-filter').show();
                 }
             });
+
+            $jQ('li.filter-option', '.filter-options-list').on('click', function () {
+                var dimension = $jQ(this).attr('data-type');
+                contentGrid.mobileFilter.filterPanel(dimension);
+            });
+
+        },
+        filterPanel: function (dimension) {
+            var viewportHeight = Response.viewportH();
+            $jQ('.filter-panels .panel').hide();
+            $jQ('.filter-panel.' + dimension).show();
+            $jQ('.filter-panels').show(function () {
+                $jQ(this).animate({height: viewportHeight});
+            });
+            $jQ('.filter-panels .close').one('click', function () {
+                $jQ('.filter-panels').animate({height: 0}, function () {
+                    $jQ(this).hide();
+                });
+            });
+            $jQ('.list-option').on('click', function () {
+                $jQ(this).toggleClass('selected');
+            });
+        },
+        updateFilters: function () {
+
         }
     },
     productTileEnter : function () {
