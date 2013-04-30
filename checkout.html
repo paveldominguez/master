@@ -159,7 +159,7 @@
 						<div class="pointer"></div>
 				
 				 		<div class="form-input-wrap where-to">
-							<select name="checkoutWhereTo" class="checkout-select-input" id="checkout-where-to-ship" tabindex="1">
+							<select name="checkoutWhereTo" class="checkout-input ignore" id="checkout-where-to-ship" tabindex="1">
 								<option value="residence" accesskey="H" selected>Ship to Home</option>
 								<option value="business" accesskey="B">Ship to Business</option>
 							</select>    	
@@ -960,7 +960,7 @@
 					<legend class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</h2>
 					<h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
 				</div>
-				<div class="step-info-block hide-complete hidden">
+				<div class="step-info-block hide-complete "><!-- hidden : add it back when done-->
 				
 					<p class="instructions">
 						This is the last step before purchasing.  
@@ -985,7 +985,7 @@
 						
 										<span class="original-price offer">$399.99</span>
 										<span class="actual-price">$299.99</span>	
-										<span class="discount offer">10% off</span>
+										<span class="discount offer">10% SALE</span>
 							
 									</div><!-- end unit price -->
 					
@@ -1004,7 +1004,7 @@
 								<div class="edit-box qty">
 									<div class="edit-label">Qty:</div>
 								
-									<select  name="final-qty" class="checkout-text-input">
+									<select  name="final-qty" class="checkout-input">
 										<option>0</option>
 										<option>1</option>
 										<option>2</option>
@@ -1029,7 +1029,7 @@
 						
 										<span class="original-price offer">$399.99</span>
 										<span class="actual-price">$299.99</span>	
-										<span class="discount offer">10% off</span>
+										<span class="discount offer">10% SALE</span>
 							
 									</div><!-- end unit price -->
 					
@@ -1048,7 +1048,7 @@
 								<div class="edit-box qty">
 									<div class="edit-label">Qty:</div>
 								
-									<select  name="final-qty" class="checkout-text-input">
+									<select  name="final-qty" class="checkout-input">
 										<option>0</option>
 										<option>1</option>
 										<option>2</option>
@@ -1073,7 +1073,7 @@
 						
 										<span class="original-price offer">$399.99</span>
 										<span class="actual-price">$299.99</span>	
-										<span class="discount offer">10% off</span>
+										<span class="discount offer">10% SALE</span>
 							
 									</div><!-- end unit price -->
 					
@@ -1092,7 +1092,7 @@
 								<div class="edit-box qty">
 									<div class="edit-label">Qty:</div>
 								
-									<select  name="final-qty" class="checkout-text-input">
+									<select  name="final-qty" class="checkout-input">
 										<option>0</option>
 										<option>1</option>
 										<option>2</option>
@@ -1103,8 +1103,9 @@
 							</div><!-- end  edit panel -->
 						</div><!-- end table row -->
 			
-						<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
-				
+						<div class="checkput-place-order">
+							<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
+						</div>
 				 	
 				 	
 				 	<div class="checkout-disclaimers">

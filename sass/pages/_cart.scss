@@ -235,6 +235,8 @@
 							.selector {
 								float: left;
 								width: 75px !important;
+								
+								span { @include pdp-sprite(grey-more, false, 54px, 18px); }
 
 								} /* end selector */
 						

@@ -1518,18 +1518,203 @@
 				 		
 					} /* end billing-info - checkout step 2 */
 				
-				
-					
 				#confirm-order { /* ............................ step 3 specifics ............ */
+					.instructions { color: $cartGreyMd; }
+					.table-row {
+						width: 100%;
+						@include clearfix();
+						padding: 0 0 30px 0;
+					
+						.desc-block {
+							width: 80%;
+							float: left;
+							@include clearfix();
+							padding: 10px 0 0 0;
+							
+							.cart-product-image { 
+								width: 20%;
+								float: left;
+								
+								.cart-img { 
+									display: block;
+									width: 100%;
+									}
+								}
+							
+							.cart-product-info { 
+								width: 80%;
+								float: left;
+								padding: 0 0 0 2.5%;
+								@include clearfix();
+								
+								h2 { 
+									width: 100%;
+									padding: 0;
+									margin: 0 0 10px 0;
+									@include instruct;
+									font-size: 20px;
+									color: $cartGreyMd;
+									display: block;
+									float: left;
+									} /* end h2 */
+							
+								.unit-price {
+									display: block;
+									width: 100%;
+									float: left;
+									@include clearfix();
+									margin: 0 0 10px 0;
+										
+									span {
+										float: left;
+										width: auto;
+										margin-right: 5px;
+										@include checkoutContent;
+										font-size: 14px; 
+										 }
+										 
+									.original-price { 
+										color: $cartGreyMd;
+										text-decoration: line-through;
+										}
+									
+									.actual-price {
+										display: inline-block; 
+										color: #000;
+										font-weight:bold;
+										}
+									
+									.discount { 
+										text-transform: uppercase;
+										font-weight: bold;
+										color: $colorVzwRed;
+										} 
+									}
+									
+								.size-color {
+									display: block;
+									width: 100%;
+									float: left; 
+									@include clearfix();
+										
+									div.size {
+										display: inline-block;
+										float: left;
+										width: auto;
+										margin-right: 3px;
+										@include checkoutContent;
+										}
+									}
+								}
+							}/* end desc block */
+							
+						.edit-panel {
+							width: 20%;
+							float: right;
+							
+							.edit-box {
+								width: 100%;
+								@include clearfix();
+								margin: 20px 0 0 0;
+								
+								.edit-label {
+									display: inline-block;
+									float: left;
+									width: 20%;
+									@include checkoutContent;
+									color: $cartGreyMd;
+									font-size: 14px;
+									padding: 9px 0 0 0;
+									}
+									
+								.selector {
+									display: inline-block;
+									max-width: 70%;
+									float:right;
+									}
+								
+								} /* end edit box */
+						
+							} /* end edit panel */
+					
+						} /* end table row */
+						
+					 .checkput-place-order { 
+					 	display: block;
+					 	width: 100%;
+					 	
+					 	.button {
+					 		@include ctaRedButton;
+					 		width: 225px;
+					 		height: 78px;
+					 		
+					 		span { 
+					 			padding-top: 45px; 
+					 			}
+					 		}
+					 	}/* end place order block */
+					 
+					 
+					 .checkout-disclaimers {
+					 	width: 100%;
+					 	display: block;
+					 	margin: 30px 0 30px 0;
+					 	@include boxBrdrT;
+					 	
+					 	ul {
+					 		@include clearfix();
+					 		li {
+					 			display: inline-block;
+					 			width: 31.5%;
+					 			float: left;
+					 			margin-right: 2.5%;
+					 			
+					 			.title {
+					 				padding: 0;
+					 				margin: 0 0 15px 0; 
+					 				font-family: $fontArial;
+					 				font-size: 15px;
+					 				font-weight: bold;
+					 				color: $actLinkBlue;
+					 				}
+					 			
+					 			.content {
+					 				padding: 0 15px 0 0;
+					 				margin: 0 0 0 0; 
+					 				@include checkoutContent;
+					 				}
+					 			}
+					 		.returns { @include boxBrdrR; }
+					 		.secure { @include boxBrdrR; }
+					 		.privacy { 
+					 			float:right;
+					 			margin-right: 0;
+					 			}
+					 		}
+					 		
+					 	.checkout-footnotes { 
+					 		font-family: $fontArial;
+					 		margin: 0 0 15px 0;
+					 	
+					 		 }
+					 		
+					 		
+					 		
+					 		
+					 	 }/* end checkout disclaimers */
+						
+						
+						
+						
+						
 				
 					} /* end confirm-order - checkout step 3 */
-					
 					
 				label.error { 
 					width: auto; left: auto;
 					left: 396px; top: 32px;  
 					}
-					
+		
 				.zip {
 					label.error { width: 100%; left:276px; }
 					}

@@ -2,7 +2,7 @@
 MLS.cartCheckout = (function() {
 // ONLOAD
 	//minicart, cart & checkout
-		$jQ("input:submit, input:checkbox, select, .cart-item-qty, .checkout-final").uniform(); // style form elements
+		$jQ("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final").uniform(); // style form elements
 		$jQ('.checkout-dropdown').each(function(){ // display rules for all dropdowns
 			dropdownDisplay(this);
 		}); 
@@ -296,14 +296,8 @@ MLS.cartCheckout = (function() {
 			});
 		} else { // clear all fields
 			$jQ('.billing-address-block').find('.SaS').each(function(){ 
-				if ($jQ(this).hasClass('checkout-select-input')) {
-					var defaultText = $jQ(this).find(':disabled').text();
-					$jQ(this).find(':selected').prop('selected', false ); 
-					$jQ(this).prev('span').addClass('select-placeholder').text(defaultText);  
-				} else {
 					$jQ(this).val('').removeClass('valid');
-				}	
-			});	
+				});	
 			$jQ(this).addClass('check');
 		}
 	});
