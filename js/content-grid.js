@@ -1,6 +1,6 @@
 var contentGrid = {
     init : function () {
-        var $contentGrid = $jQ('#main-column .content-grid'),
+        var $contentGrid = $jQ('#main-column .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
         $featuredHover = $contentItems.find('.featured-corner');
@@ -13,12 +13,12 @@ var contentGrid = {
         contentGrid.sortHeader();
         contentGrid.mobileFilter.init();
         if (!isTouch) {
-            MLS.ui.gridHover($contentItems, {
+            MLS.ui.gridHover($contentItems.not('.large'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
-            $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
+            $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
     },
@@ -40,7 +40,6 @@ var contentGrid = {
                 if ($jQ(this).hasClass('active')) {
                     $jQ(this).removeClass('active').css({height: '45px'});
                     $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
-
                 } else {
                     $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
                     $jQ(this).addClass('active').css({height: '50px'});
@@ -54,7 +53,6 @@ var contentGrid = {
                 if ($jQ(this).hasClass('active')) {
                     $jQ(this).removeClass('active').css({height: '45px'});
                     $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
-
                 } else {
                     $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
                     $jQ(this).addClass('active').css({height: '50px'});
@@ -63,6 +61,37 @@ var contentGrid = {
                     $jQ('.sort-options-list', '#mobile-sort-filter').show();
                 }
             });
+
+            $jQ('li.filter-option', '.filter-options-list').on('click', function () {
+                var dimension = $jQ(this).attr('data-type');
+                contentGrid.mobileFilter.filterPanel(dimension);
+            });
+            //Toggle states for multi select
+            $jQ('.list-option', '.filter-panel .multi-select').on('click', function () {
+                $jQ(this).toggleClass('selected');
+            });
+            //Toggle states for single select
+            $jQ('.list-option', '.filter-panel .single-select').on('click', function () {
+                $jQ(this).parent('ul').find('li').removeClass('selected');
+                $jQ(this).toggleClass('selected');
+            });
+
+        },
+        filterPanel: function (dimension) {
+            var viewportHeight = Response.viewportH();
+            $jQ('.filter-panels .filter-panel').hide();
+            $jQ('.filter-panel.' + dimension).show();
+            $jQ('.filter-panels').show(function () {
+                $jQ(this).animate({height: viewportHeight});
+            });
+            $jQ('.filter-panels .close').one('click', function () {
+                $jQ('.filter-panels').animate({height: 0}, function () {
+                    $jQ(this).hide();
+                });
+            });
+        },
+        updateFilters: function () {
+
         }
     },
     productTileEnter : function () {
