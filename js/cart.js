@@ -16,8 +16,8 @@ MLS.cartCheckout = (function() {
 	 	checkCartQty(); // check for siplay of lightbox & empty states
 	 	
 	 // checkout 
-	 	$jQ('.selector').find('span').addClass('select-placeholder');/* improve select placeholder/message actions */
-		$jQ('.selector').find('select').change(function(){ 
+	 	$jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder');/* improve form select placeholder/message actions */
+		$jQ('#vzn-checkout .selector').find('select').change(function(){ 
 			$jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
 			$jQ(this).parents('.selector').removeClass('select-box-error');
 			$jQ(this).parents('.selector').find('.select-error-message').remove();
