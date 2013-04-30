@@ -71,7 +71,7 @@
 				<p class="form-instructions">
 					If you <span>have a MyVerizon login</span>, sign in for access to saved shipping and billing information.
 				</p>
-				<form id="my-Verizon-login" method="post">
+				<form id="my-Verizon-login" method="POST" action="javascript:void(0)" autocomplete="on">
 					
 					<div class="form-input-wrap">
 						<label class="form-item-title" for="vzw-user" accesskey="U" >User ID or Phone Number</label>
@@ -181,12 +181,12 @@
 							<div class="business-fields not">
 								<div class="form-input-wrap">
 									<label class="form-item-title" for="checkout-ship-company" accesskey="C">Company</label>
-									<input name="checkoutCompany" type="text" id="checkout-ship-company" class="checkout-input" placeholder="Company" tabindex="15">
+									<input name="checkoutCompany" type="text" id="checkout-ship-company" class="checkout-input not" placeholder="Company" tabindex="15">
 								</div>
 					
 								<div class="form-input-wrap">
 									<label class="form-item-title" for="checkout-ship-attn" accesskey="A">C/O</label>
-									<input name="checkoutAttention" type="text" id="checkout-ship-attn" class="checkout-input" placeholder="First and Last Name" tabindex="16">
+									<input name="checkoutAttention" type="text" id="checkout-ship-attn" class="checkout-input not" placeholder="First and Last Name" tabindex="16">
 								</div>
 							</div><!-- end business -->
 						</div><!-- end destination -->
@@ -331,9 +331,7 @@
 						<div class="ship-contact">
 							<h5>Contact</h5>
 							<ul>
-							<!-- hidden field for scripting purposes --><div id="sum-destination" class="select-summary"></div>
-								
-								<li id="ship-name-block">
+								<li id="ship-name-block" class="summary-name">
 									<div class="sum-first-name summary"></div>
 									<div class="sum-last-name summary"></div>
 								</li>
@@ -347,7 +345,7 @@
 							<h5>Shipping Address</h5>
 							<ul>
 							
-								<li id="copy-ship-name-block"></li>
+								<li id="copy-ship-name-block" class="summary-name"></li>
 								<li id="sum-address-1" class="summary"></li>
 								<li id="sum-address-2" class="summary"></li>
 							
@@ -383,7 +381,7 @@
 				 	<h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">3</span></h5>
 				 </div>
 				 
-					<div class="step-info-block hide-complete "> <!-- add back hidden -->
+					<div class="step-info-block hide-complete hidden">
 				 	
 				 		<div class="pointer"></div>
 				 	
@@ -419,14 +417,14 @@
 				 							<h5>Billing Address</h5>
 				 							<ul>
 				 					
-				 								<li id="account-name-block">
+				 								<li id="account-name-block" class="summary-name">
 				 									<div id="account-first-name">Name</div>
 				 									<div id="account-last-name">Account-Holder</div>
 				 								</li>
 												<li id="account-address-1">40 Account Street</li>
 												<li id="account-address-2">Apt 4</li>
 							
-												<li id="account-city-state">
+												<li id="account-city-state" class="ship-city-state">
 													<div id="account-city">Account City</div>
 													<div id="account-state">NY</div>
 													<div id="account-zip">10038</div>
@@ -458,12 +456,12 @@
 											<h5 class="form-item-title">Pay with Saved Card</h5>
 											<div class="card-choice-detail-block">
 												<div class="billing-card">
-													<div class="card-image mastercard">
+													<div class="card-image mastercard" data-saved-card-type="mastercard">
 													</div>
 													<ul class="card-info">
-														<li id="name-on-card">Saved Name</li>	
-														<li class="last-four">(Ending in <span id="confirmed-last-four">6789</span>)</li>
-														<li class="expires">Expires <span id="confirmed-month">01</span>/<span id="confirmed-year" class="select-summary">13</span></li>
+														<li id="saved-name-on-card" class="saved-summary">Saved Name</li>	
+														<li class="last-four">(Ending in <span id="saved-last-four" class="saved-summary copy">6789</span>)</li>
+														<li class="expires">Expires <span id="confirmed-month" class="saved-summary copy">01</span>/<span id="confirmed-year" class="saved-summary copy">13</span></li>
 													
 													</ul>
 												</div><!-- end billing-card -->
@@ -498,7 +496,7 @@
 														<li class="security-item month">
 															<label class="form-item-title" for="card-month">Expiration Date</label>
 															<div class="form-input-wrap">
-																<select name="ccMonth"  class="checkout-select-input CCV" id="card-month" tabindex="51">
+																<select name="ccMonth"  class="checkout-input CCV" id="card-month" tabindex="51">
 																	<option value="0" disabled="disabled" selected>month</option>
 																	<option value="1">1</option>
 																	<option value="2">2</option>
@@ -520,7 +518,7 @@
 									
 														<li class="security-item year">
 															<div class="form-input-wrap">
-																<select name="ccYear" class="checkout-select-input CCV" id="card-year" tabindex="52">
+																<select name="ccYear" class="checkout-input CCV" id="card-year" tabindex="52">
 																	<option value ="0" disabled="disabled" selected>year</option>
 																	<option value ="13">2013</option>
 																	<option value ="14">2014</option>
@@ -620,38 +618,38 @@
 					
 							<div class="instructions">Billing Address</div>
 							
-							<div class="bill-contact-block">
+							<div class="saved-contact-block">
 							<h5>Contact</h5>
 							<ul>	
-								<li class="bill-name-block">
-									<div id="bill-first-name" class="summary">Saved</div>
-									<div id="bill-last-name" class="summary">Saved-Last-Name</div>
+								<li class="saved-name-block">
+									<div id="saved-first-name" class="saved-summary copy">Saved-First</div>
+									<div id="saved-last-name" class="saved-summary copy">Saved-Last</div>
 								</li>
 						
 						
-								<li id="bill-email" class="bill-summary">saved.card@email.com</li>
-								<li id="bill-phone" class="summary">(saved) phone-number</li>
+								<li id="saved-email" class="saved-summary">saved.card@email.com</li>
+								<li id="saved-phone" class="saved-summary">(saved) phone-number</li>
 							</ul>
 						</div>
 					
-						<div class="bill-address-block">
+						<div class="saved-address-block">
 							<h5>Billing Address</h5>
 							<ul>
 							
-								<li id="copy-bill-name-block">Saved Saved-Last-Name</li>
-								<li id="bill-address-1" class="summary">1 Saved Address </li>
-								<li id="bill-address-2" class="summary">Saved Address 2</li>
+								<li id="saved-name-block">Saved First Saved-Last</li>
+								<li id="saved-address-1" class="saved-summary copy">1 Saved Address </li>
+								<li id="saved-address-2" class="saved-summary copy">Saved Address 2</li>
 							
-								<li class="bill-city-state">
-									<div id="bill-city" class="summary">Saved City</div>
-									<div id="bill-state" class="select-summary">NY</div>
-									<div id="bill-zip" class="summary">SAVED</div>
+								<li class="saved-city-state">
+									<div id="saved-city" class="saved-summary copy">Saved City</div>
+									<div id="saved-state" class="saved-summary copy">NY</div>
+									<div id="saved-zip" class="saved-summary copy">SAVED</div>
 								</li>
 						
 							</ul>
 						</div>
 					
-						<div class="edit-checkout-step">
+						<div id="saved-info-edit" class="edit-checkout-step">
 							<span class="checkout">Edit</span>
 						</div>	
 				
@@ -699,7 +697,7 @@
 					
 							<div class="form-input-wrap state">
 								<label class="form-item-title" for="bill-state" >State</label>
-								<select name="billingState" type="text" id="bill-state" class="checkout-select-input SaS" tabindex="130">
+								<select name="billingState" type="text" id="bill-state" class="checkout-input SaS" tabindex="130">
 									<option value="0" disabled="disabled" selected>state</option>
 									<option value="CA">CA</option>
 									<option value="CO">CO</option>
@@ -806,7 +804,7 @@
 									<fieldset id="enter-card-info-gc" class="credit-card-info">
 										<div class="form-input-wrap">
 											<label class="form-item-title" for="card-number-gc">Credit Card Number <span class="grey">| No Spaces</span></label>
-											<input name="cardNumberGC" type="text" class="checkout-input ignore GCV" id="card-number-gc" placeholder="Card Number" tabindex="250">
+											<input name="cardNumberGC" type="text" class="checkout-input not GCV" id="card-number-gc" placeholder="Card Number" tabindex="250">
 										</div>
 								
 										<ul class="card-list">
@@ -820,7 +818,7 @@
 											<li class="security-item month">
 												<label class="form-item-title" for="card-month-gc">Expiration Date</label>
 												<div class="form-input-wrap">
-													<select name="ccMonthGC"  class="checkout-select-input GCV" id="card-month-gc" tabindex="251">
+													<select name="ccMonthGC"  class="checkout-input not GCV" id="card-month-gc" tabindex="251">
 														<option value="0" disabled="disabled" selected>month</option>
 														<option value="1">1</option>
 														<option value="2">2</option>
@@ -842,7 +840,7 @@
 									
 											<li class="security-item year">
 												<div class="form-input-wrap">
-													<select name="ccYearGC" class="checkout-select-input GCV" id="card-year-gc" tabindex="252">
+													<select name="ccYearGC" class="checkout-input not GCV" id="card-year-gc" tabindex="252">
 														<option value ="0" disabled="disabled" selected>year</option>
 														<option value ="13">2013</option>
 														<option value ="14">2014</option>
@@ -877,7 +875,7 @@
 												</label>
 															
 												<div class="form-input-wrap">
-													<input name="ccCodeGC" type="text" class="checkout-input ignore GCV" id="card-code-gc" placeholder="Code" tabindex="253">
+													<input name="ccCodeGC" type="text" class="checkout-input not GCV" id="card-code-gc" placeholder="Code" tabindex="253">
 												</div>
 														
 											</li><!-- end security-code block -->
@@ -894,33 +892,40 @@
 					</div><!-- end discount block -->
 				</div><!-- end step-info-block -->
 				
-				 <p class="checkout-not-charged hide-complete">
+				 <p class="checkout-not-charged hide-complete hidden">
 				 		Your card will not be charged at this time.
 				 </p>
 				 	
-				 <a id="billing-info-complete" class="bill-info-next checkout-next hide-complete" href="#">
+				 <a id="billing-info-complete" class="bill-info-next checkout-next hide-complete hidden" href="#">
 				 	<div class="button">
 				 		<span>Next Step</span>
 				 	</div>
 				 </a>
 				 	
-				 <div class="verified-fineprint cc-small-instructions hide-complete">
+				 <div class="verified-fineprint cc-small-instructions hide-complete hidden">
 				 	If your bank participates in the Verified by Visa/MasterCard SecureCode, you may be asked to authenticate your credit card or enroll in this service on the following screen.
 				 	The State of Alabama requires that an individual signing a contractual agreement must be at least 19 years of age.
 				 </div>
 				 	
-				
 				
 				<div class="step-info-summary hidden">
 					<div class="bill-summary-card-block">
 						<h5 class="form-item-title">Card Information</h5>
 						
 						<div class="bill-summary-card">
-							<div class="card-image mastercard"></div>
+							<div class="card-image"></div>
 							<ul class="card-info">
-								<li id="name-on-card">Saved Name</li>	
-								<li class="last-four">(Ending in <span id="confirmed-last-four">6789</span>)</li>
-								<li class="expires">Expires <span id="confirmed-month">01</span>/<span id="confirmed-year" class="select-summary">13</span></li>
+								<li id="name-on-card" class="summary-name">XXX XXXXXXX</li>	
+								<li class="last-four">(Ending in <span id="confirmed-last-four" class="summary saved-sum">XXXX</span>)</li>
+								<li class="expires">
+									Expires <span id="confirmed-month" class="summary saved-sum">XX</span>/<span id="confirmed-year" class="summary saved-sum">XX</span>
+									<span class="summary" style= "display:none"></span><!-- takes security code field & hides -->
+								</li>
+								<li id="bill-card-summary-name" style="display: none; "><!-- contents copied up with js -->
+									<div class="summary saved-sum">First</div>
+									<div class="summary saved-sum">Last</div>
+								</li>
+								<li class="summary" style="display: none;"></li><!-- takes phone field & hides -->
 							</ul>
 						</div><!-- end billing-card -->
 					</div><!-- end card block -->
@@ -928,19 +933,19 @@
 					<div class="bill-summary-address-block">
 						<h5>Billing Address</h5>
 						<ul>
-							<li id="copy-bill-name-block">Saved Saved-Last-Name</li>
-							<li id="bill-address-1" class="summary">1 Saved Address </li>
-							<li id="bill-address-2" class="summary">Saved Address 2</li>
+							<li id="bill-address-summary-name" class="summary-name">XX</li>
+							<li id="bill-address-1" class="summary saved-sum">XX XXXXX XX</li>
+							<li id="bill-address-2" class="summary saved-sum">XX</li>
 							
 							<li class="bill-city-state">
-								<div id="bill-city" class="summary">Saved City</div>
-								<div id="bill-state" class="select-summary">NY</div>
-								<div id="bill-zip" class="summary">SAVED</div>
+								<div id="bill-city" class="summary saved-sum">XXXXXXX</div>
+								<div id="bill-state" class="summary saved-sum">XX</div>
+								<div id="bill-zip" class="summary saved-sum">XXXXX</div>
 							</li>
 						</ul>
 					</div><!-- address block -->
 					
-					<div class="edit-checkout-step">
+					<div class="edit-checkout-step edit-billing">
 						<span class="checkout">Edit</span>
 					</div>	
 				

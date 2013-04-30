@@ -1,10 +1,11 @@
 MLS.ajax = {
-    sendRequest : function (url, data, success) {
+    sendRequest : function (url, data, success, error) {
         $jQ.ajax({
             url: url,
             data: data,
             cache : false,
             success : success,
+            error : error,
             dataType: 'json'
         });
     },
@@ -32,7 +33,7 @@ MLS.ajax = {
             if ($jQ(this).hasClass('article')) {
                 MLS.ajax.sendRequest(
                     this.href,
-                    { aritcleId : $jQ(this).data('article-id') },
+                    { articleId : $jQ(this).data('article-id') },
                     MLS.ajax.article.displayContent
                 );
             }

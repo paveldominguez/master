@@ -759,41 +759,34 @@
         		</div>
         	</div><!-- end banner box -->
         	
-        	<div id="minicart-cart">
+        	
+        	<form id="minicart-form" method="POST" action="mini-cart-remove.jsp">
+        		<div id="minicart-cart">
+        			<ul id="minicart-item-list">
         		
-        		<ul id="minicart-item-list">
-        		
-        			
-<!-- PRODUCTS IN CART -->	
-<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-        		<script type="text/javascript">
-          			includeFragment('inc/fragments/items-in-minicart.html');
-        		</script>
-        	<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-<!-- END PRODUCTS IN CART -->
+					<!-- PRODUCTS IN CART -->	
+					<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+        				<script type="text/javascript">
+          				includeFragment('inc/fragments/items-in-minicart.html');
+        				</script>
+        			<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+					<!-- END PRODUCTS IN CART -->
 				
-        			
-        		</ul>
-        		
-        	</div><!-- end minicart-cart -->	
+        			</ul>
+        		</div><!-- end minicart-cart -->	
         	
-        	<div class="minicart-summary">
-        	
+        		<div class="minicart-summary">
         			<div class="minicart-next">
         				<a href="#" class="prev-items-link">Last <span id="next-item-count">3</span> Items</a>
         				<a href="#" class="next-items-link">Next <span id="next-item-count">3</span> Items</a>
         			</div>
 
-        	
         			<div class="minicart-total">
-        			
-        				
         				<div class="actual-sub">
         					$<span id="minicart-subtotal">309.98</span>
         				</div>
         				<span class="label">Subtotal:</span>
         			</div><!-- end total -->
-        		
         		
         			<div class="minicart-buttons">
         				<div class="view-cart">
@@ -805,9 +798,8 @@
         					<input class="button add-cart-cta" type="submit" title="Checkout" value="Checkout">
         				</div>
         			</div><!-- end buttons -->
-        			
         		</div><!-- end minicart summary -->
-        				
+        	</form>		
         </div><!-- end minicart-box -->
       </li>
     </ul>

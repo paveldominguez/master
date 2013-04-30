@@ -113,11 +113,26 @@
 				right: 9%; 
 				span { padding-top: 14px; }
 				}	
+			.card-image, .card-info {
+				display: inline-block;
+				width: auto;
+				float: left;
+				}
+			.summary-name,
+			.ship-city-state {
+				@include clearfix();
+				div { 
+					display: inline-block;
+					width: auto;
+					margin-right:3px;
+					float: left;
+					}
+				}
 			}/* end common info summary styles */
 		
 		 
 	
-		 .form-input-wrap { /* ....................... common input styles ...................................... */	
+		 .form-input-wrap { /* ....................... common input wrapper styles ...................................... */	
 		 	position: relative;
 		 	margin-bottom:30px; 
 		 	}
@@ -142,6 +157,7 @@
 		 	@include cart-sprite(checkout-checkbox-checked);
 		 	max-width: 15px;
 		 	}	
+		 #uniform-checkout-ship-state label.error.success { display: none !important; }
 		.forgot, .privacy-link { 
 			@include actionLink;
 			font-size: 11px;
@@ -159,7 +175,7 @@
 		input[type="text"],
 		input[type="password"], 
 		input[type="tel"], 
-		input[type="email"] { /* ..................... common form input styles ....................*/
+		input[type="email"] { /* ..................... common  input styles ....................*/
 			color: $cartGreyDk;
 			font-family: $fontVzwBook;
 			font-weight: normal;
@@ -513,6 +529,7 @@
 			@include boxBrdrL;
 				
 			label.error { @include cartBG; }
+			label.error.success { background: transparent; }
 				
 			.remember-me { 
 				@include clearfix();
@@ -800,16 +817,7 @@
 							 	
 					#sum-destination { display: none; }
 						
-					#ship-name-block, #copy-ship-name-block {
-						@include clearfix();
-							
-						.sum-first-name, .sum-last-name {
-							display: inline-block;
-							width: auto;
-							margin-right:3px;
-							float: left;
-							}
-							
+					.summary-name {
 						.sum-first-name.biz,
 						.sum-last-name.biz { float: none; display: block; width: 100%;}
 						.sum-last-name.biz:before { content: "c/o "; }
@@ -837,10 +845,7 @@
 							.checkout-dropdown { display: none !important; }
 							}
 						}
-					}/* end step 1 info summary */	
-						
-				.step-info-summary.hidden { display: none; }
-					
+					}/* end step 1 info summary */		
 				} /* end shipping info specifics */
 				
 					
@@ -1163,16 +1168,18 @@
 				 			width: 70%;
 				 			padding-top: 0px;
 				 			margin: 36px 0 36px 0; 
-				 			border-top: 0px !important;  
+				 			border-top: 0px !important; 
+				 			@include clearfix(); 
 				 			
-				 			.bill-contact-block, .bill-address-block {
-				 				display: inline-block; width: 37.5%;
+				 			.saved-contact-block, .saved-address-block {
+				 				display: inline-block; 
+				 				width: 37.5%;
+				 				float: left;
 				 				}
 				 			
 				 			
-				 			.bill-contact-block {
-				 			
-				 				.bill-name-block { 
+				 			.saved-contact-block {
+				 				.saved-name-block { 
 				 					@include clearfix();
 				 					
 				 					div { 
@@ -1180,14 +1187,14 @@
 				 						float: left;
 				 						margin-right: 3px;
 				 						}
-				 					} /* end bill name block */
+				 					} /* end saved name block */
 				 				} /* end contact block */
 				 			
-				 			.bill-address-block {
+				 			.saved-address-block {
 				 				float: left;
 				 				margin-right: 20px; 
 				 				
-				 				.bill-city-state {
+				 				.saved-city-state {    
 				 					@include clearfix();
 				 					
 				 					div { 
@@ -1466,6 +1473,49 @@
 				 		margin-left: 72px;
 				 		float: none;
 				 		}
+				 		
+				 	.step-info-summary {
+				 		@include clearfix();
+				 		padding-bottom: 30px;
+				 		
+				 		.bill-summary-card-block, 
+				 		.bill-summary-address-block { 
+				 			@include clearfix();
+				 			float: left;
+				 			padding-left: 72px; 
+				 			width: 37.5%;
+				 			}
+				 		.bill-summary-card {
+				 			@include clearfix();
+				 			width: 100%;
+				 			height: 100%;
+				 			
+				 			.card-image { margin-top:3px;
+				 				width: 80px; height: 36px;
+				 				float: left;  
+				 				}
+							.visa { @include cart-sprite(visa-color); }
+							.mastercard { @include cart-sprite(mastercard-color); }
+							.amex { @include cart-sprite(amex-color); }
+							.discover { @include cart-sprite(discover-color); }
+				 			}
+				 		.bill-summary-address-block {
+				 			.bill-city-state { @include clearfix(); 
+				 				.summary { 
+				 					display: inline-block;
+				 					width: auto;
+				 					float: left; 
+				 					margin-right: 3px; 
+				 					}
+				 				
+				 				}
+				 			
+				 			}
+				 	
+				 		}
+				 		
+				 		
+				 		
 					} /* end billing-info - checkout step 2 */
 				
 				

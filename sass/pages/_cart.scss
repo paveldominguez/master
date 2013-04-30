@@ -959,15 +959,17 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 				position:relative;
 				height:78px;
 				width: 100%;
+				overflow: hidden;
 					 
 				.item-image-block {
 					 width: 25%;
 					 max-width:82px;
+					 max-height: 78px;
 					 position: absolute;
 					 left:0px; top: 2px;
 					 			
 					 .minicart-item-image {
-					 	width:75%;
+					 	width:70%;
 					 	margin: 10px auto 10px 5px;
 					 	}
 					 }
@@ -1068,7 +1070,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 					 	font-family: $fontArial;
 					 	color: $cartGreyDk;
 					 	font-size:12px;
-					 	font-family: 16px;
+					 	line-height: 16px;  
 					 	position: absolute;
 					 	top: 0; left: 0;
 						background: #d6d9d9;

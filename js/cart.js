@@ -9,6 +9,7 @@ MLS.cartCheckout = (function() {
 
 	//minicart
 		minicartTempContent(); // TEMP for demos, PA remove this
+		$jQ('#minicart-cart').find('.minicart-item').first().attr('data-vpos', 0); //ONLOAD only
 		minicartLayout(); // empty state & scrolling controls
 		
 	 // cart 
@@ -22,18 +23,6 @@ MLS.cartCheckout = (function() {
 			$jQ(this).parents('.selector').find('.select-error-message').remove();
 		});
 
-		$jQ('input').change(function(){ /* improve input message actions */
-			if ($jQ(this).hasClass('error')) {
-				$jQ(this).next('label').removeClass('success');
-			}
-		});
-		
-		//$jQ('[placeholder]').focus(function(){ /* lose placeholder on first focus */
-		//	$jQ(this).removeAttr('placeholder');
-		//});
-		
-		
-		
 
 // CART clicks ......................................................................................... 
 	// header : save cart link
@@ -61,7 +50,7 @@ MLS.cartCheckout = (function() {
 	 	
 	 	
 	 	$jQ('.cart-remove-links').find('.remove').click(function(e) {
-	 		e.preventDefault();
+	 		//e.preventDefault();
 	 		$jQ(this).parents('.table-row').remove();
 	 		checkCartQty();
 	 	});
@@ -153,11 +142,10 @@ MLS.cartCheckout = (function() {
 	});
 	
 	
-	// remove item
+	// remove item - client side manipulation
 	$jQ('#minicart-box .remove').find('a').each(function(){
 		minicartEdit(this);  
 	});
-	
 	
 	// next 3 items
 	$jQ('.next-items-link').click(function(e){			
@@ -217,30 +205,16 @@ MLS.cartCheckout = (function() {
 
 	// main checkout sequence : step 1 home/business select
 	$jQ('#checkout-where-to-ship').change(function(){
-	
-		// check if option has already been changed by user & if so, connect toggling loop
-		var replace = $jQ('#destination').attr('data-removed');
-		if (replace != "") {
-			$jQ('<div class="replaced not"></div>').appendTo('#destination').html(replace);
-		} 
-		
-		// first change what shows
-			$jQ(this).parents('.step-info-block').find('#destination').children().each(function(){
-		
-				if ( $jQ(this).hasClass('not') ) {
-					$jQ(this).removeClass('not');
-				} else {
-					$jQ(this).addClass('not');
-				}
-			})
-		
-		// then remove/replace elements as needed
-			var removed = $jQ('#destination').find('.not').html();
-			$jQ('#destination').find('.not').remove();
-			$jQ('#destination').attr('data-removed', removed);
+		$jQ(this).parents('.step-info-block').find('#destination').children().each(function(){
+			if ( $jQ(this).hasClass('not') ) {
+				$jQ(this).removeClass('not');
+				$jQ(this).find('.checkout-input').removeClass('not');
+			} else {
+				$jQ(this).addClass('not');
+				$jQ(this).find('.checkout-input').addClass('not');
+			}
+		})
 	});
-	
-	
 	
 	// main checkout sequence : step 2 billing info
 	$jQ('.billing-select').change(function(){ // ........ signed-in:  account or card selection
@@ -302,10 +276,10 @@ MLS.cartCheckout = (function() {
 			$jQ('.billing-address').each(function(){
 				$jQ(this).toggleClass('hidden');
 			});
-			
-		// get saved info and populate form on this click only !!!!!!!!!!!!!!!!!!!!!!!!!!
-		
 		});
+	
+	
+	
 	
 	$jQ('#same-as-shipping').change(function() { //.......... new card info: billing info same as shipping
 		if($jQ(this).hasClass('check')){
@@ -334,6 +308,13 @@ MLS.cartCheckout = (function() {
 		}
 	});
 	
+
+	
+	$jQ('#saved-info-edit').click(function(){ // ................. edit saved billing information information .........
+		$jQ(this).parents('.billing-address').slideToggle(300).next('.billing-address').slideToggle(300);
+	});
+	
+	
 	$jQ('#card-number, #card-number-gc').on('keyup', function() { //.............. new card info : card icon recognition ...........
 		if(this.value.length === 2) { 
 			var number = this.value;
@@ -347,7 +328,8 @@ MLS.cartCheckout = (function() {
 				} else if ( number == 65 ) {
 					cardListItem='discover';
 				} 
-			$jQ(this).parents('.form-input-wrap').next().find('.' + cardListItem).addClass('entered').siblings().removeClass('entered');	
+			$jQ(this).parents('.form-input-wrap').next().find('.' + cardListItem).addClass('entered').siblings().removeClass('entered');
+			$jQ('.bill-summary-card').find('.card-image').addClass(cardListItem);	
 		} else if(this.value == "" || this.value.length === 1) {
 				$jQ(this).parents('.form-input-wrap').next().find('li').removeClass('entered');
 		} 
@@ -388,7 +370,7 @@ MLS.cartCheckout = (function() {
 		
 		$jQ('#vzn-checkout').validate(); // validate the rest
         if ($jQ('.CCV').valid() && ecValid == true ) {  
-        	copyCardInfo('CCV', 'GCV'); // copy valid card info back up to main cc form	
+        	copyCardInfo('CCV', 'GCV'); // copy valid card info down
 		}
 	});
 	
@@ -453,11 +435,14 @@ MLS.cartCheckout = (function() {
 	$jQ('.checkout-next').click(function(e) { // ............................  NEXT STEP CLICK SEQUENCE .................
 	
 		e.preventDefault();
+		$jQ(this).parents('.checkout-step').find('label.error').each(function(){
+			$jQ(this).hide().removeClass('success'); // reset all error & success messages on next step click
+		}); 
 		var which = $jQ(this).attr('id');
 		var valid = true;
 		
-		if (which == 'ship-info-complete') { // ...................... validate step 1 radio buttons .......................
-			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input');
+		if (which == 'ship-info-complete') { // ............................. STEP 1 PRE VALIDATE ...............................
+			var radios = $jQ(this).siblings('.step-info-block').find('.checkout-radio-input'); // ... validate step 1 radio buttons ...
 			var radioValid = false;
 			var i = 0;
 			$jQ(radios).each(function(i) {
@@ -484,27 +469,34 @@ MLS.cartCheckout = (function() {
 		} // endstep 1
 			
 		
-		if (which == 'billing-info-complete') { // ........................... validate uniform.js selects ................ 
-	
-			$jQ(this).parents('fieldset').find('.selector').each(function(){
-				var ignoreThese = 'GCV'; 
-				var selectsValid = validateSelect(this, ignoreThese);
-				if(selectsValid == false) {
-					valid = false;
-				} 
-			});	
+		if (which == 'billing-info-complete') {// ........................... STEP 2 PRE VALIDATE..................................
+		var signedinBranch = 'new';
+		var seq = document.getElementById('checkout');
+		
+			if ($jQ(seq).hasClass('signed-in')){ // check for saved info
+				if ($jQ('#bill-to-account').is(':checked') || $jQ('#choose-saved-card').is(':checked')) { // saved info, no validation required
+					signedinBranch = 'saved';
+					$jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').addClass('not');
+					$jQ('.step-info-summary.billing-address').addClass('hidden');
+				}  
+			} else { // else validate new card info
+		
+				$jQ(this).parents('fieldset').find('.selector').each(function(){ // ........ validate uniform.js selects .......... 
+					var ignoreThese = 'GCV'; 
+					var selectsValid = validateSelect(this, ignoreThese);
+					if(selectsValid == false) {
+						valid = false;
+					} 
+				});	
+			}
+			
 		} // end if step 2
-		
-		
-		
 		
 		
 	// VALIDATE	
 		
-		$jQ('.not').remove(); // clear unused fields first
-	
 		var validator = $jQ("#vzn-checkout").validate(); 
-    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input').not('.GCV');
+    	var $inputs = $jQ(this).siblings('.step-info-block').find('.checkout-input').not('.not');
 		var section = $jQ(this).attr('id');
 		
 		// check if inputs are valid, prepare summaries if so
@@ -514,17 +506,17 @@ MLS.cartCheckout = (function() {
         		} else {
         			var data = $jQ(this).val();
 					copyInputs( section, inputI, data );
+					setTimeout(function(){
+					}, 50);
         		}
     		}); 
     		
     	if (valid) { 
-    		if (section == 'ship-info-complete') { // .................. if valid && step 1 .......................
+    		if (section == 'ship-info-complete'){ // .................. STEP 1 POST VALIDATE .......................
     			var completed = $jQ('#shipping-info'); 
-    		// copy name to additional field in summary	
-    			var shipName = $jQ('#ship-name-block').html();
-    			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary');
-    		// check if home or business and adjust summary accordingly
-				var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();
+    			var shipName = $jQ('#ship-name-block').html();  
+    			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary'); // copy name to additional field in summary
+				var nextDest = $jQ('#checkout-where-to-ship').find('option:selected').val();  // check if home or business and adjust summary accordingly
 				if (nextDest == "business") { 
 					$jQ('#shipping-info').find('.sum-first-name, .sum-last-name').each(function(){ // add classes for 'business' summary
 						$jQ(this).addClass('biz');
@@ -533,12 +525,49 @@ MLS.cartCheckout = (function() {
 				} // else if residence do nothing	
     		} // end step 1 adjustment
     	
-    		if (section == 'billing-info-complete') { // .................. if valid && step 2 ......................
-    			var completed = $jQ('#billing-info');	
-    		// copy name to out-of-sequence field
-    			var first = $jQ('#confirmed-first-name').text();
-    			var last = $jQ('#confirmed-last-name').text();
-    			$jQ('#name-on-card').text( first + ' ' + last);			
+    		if (section == 'billing-info-complete'){ // .................. STEP 2 POST VALIDATE ......................
+    			var completed = $jQ('#billing-info');
+    			
+    			if (signedinBranch == 'saved'){ // copy saved info to final summary
+    			
+    				if ($jQ('#bill-to-account').is(':checked')) {
+    					var accountAddress = $jQ('.account-billing-address').clone();  // copy account html block
+    					var accountContact = $jQ('.account-contact').clone();
+    					$jQ('.bill-summary-card-block').html(accountAddress);
+    					$jQ('.bill-summary-address-block').html(accountContact);
+    				
+    				} else if ($jQ('#choose-saved-card').is(':checked')) {
+    				
+    					var $inputs = $jQ('.saved-summary.copy'); /* loop through and get saved info */
+						$inputs.each(function(savedI) { 
+    						var data = $jQ(this).text();
+    						
+							$jQ(completed).find('.summary.saved-sum').each(function(sumI){
+								if (savedI == sumI){
+									$jQ(this).text(data);
+								}
+							});
+        				});
+        				var savedName = $jQ('#bill-card-summary-name').html(); /* copy name into two fields */
+    					$jQ('#name-on-card').html(savedName).find('.saved-sum').removeClass('saved-sum');
+    					$jQ('#bill-address-summary-name').html(savedName).find('.saved-sum').removeClass('saved-sum');	
+    					
+    					var cardType = $jQ('.card-choice-block .card-image').attr('data-saved-card-type'); /* data for card icon */
+    					$jQ(completed).find('.step-info-summary .card-image').addClass(cardType);	
+    				}
+    				
+    			} else if (signedinBranch == 'new'){ // copy new info to section summary
+    			
+    				var billName = $jQ('#bill-card-summary-name').html();
+    				$jQ('#name-on-card').html(billName);
+    				$jQ('#bill-address-summary-name').html(billName);
+    					
+    				var lastFour = $jQ('#confirmed-last-four').text();
+    				lastFour = lastFour.substr(lastFour.length - 4);	
+    				$jQ('#confirmed-last-four').html(lastFour);
+    				
+    			}
+    			
     		} // end step 2 adjustments
     	
     		var thisBlock = $jQ(this).parents('.checkout-step'); // ....... if valid : hide/show/scroll ..............
@@ -562,10 +591,8 @@ MLS.cartCheckout = (function() {
 		}); // ........................................... END NEXT STEP .........................................................
 
 
-
-	
 	// main checkout sequence : generic edit step-info (after next-step validation)
-	$jQ('.edit-checkout-step').click(function(){
+	$jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){
 		var thisStep = $jQ(this).parents('.checkout-step');
 		
 		// close open input & open its summary
@@ -575,7 +602,17 @@ MLS.cartCheckout = (function() {
 	
 		// close this panel's summary next
 			$jQ(this).parents('.step-info-summary').addClass('hidden');
-
+			
+			
+		// if step 2
+			if ($jQ(this).hasClass('edit-billing')) {	
+				$jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not');
+			
+				if ($jQ('#bill-to-account').is(':checked')){ // hide billing summary for pay with account
+					$jQ(this).parents('.checkout-step').find('.step-info-summary.billing-address').addClass('hidden');
+				}
+			}	
+		
 		// show this panel's inputs & buttons
         	thisStep.find('.hide-complete').removeClass('hidden');
         	
@@ -661,8 +698,7 @@ function checkCartQty() {  // CART setup
 
 function minicartLayout(){ // MINICART layout by # of items
 	var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
-	$jQ('#minicart-cart').find('.minicart-item').first().attr('data-vpos', 0);
-
+	
 	if (inMini < 1) { // layout empty cart
 	 	$jQ('#nav-tab4, #checkout-minicart').addClass('empty');					 
 	} else if (inMini > 0 && inMini < 4 ) {
@@ -680,21 +716,27 @@ function minicartEdit(removeBtn){ // MINICART remove/confirm remove sequence
 		var block = $jQ(removeBtn).parents('.minicart-item');
 		var editBox = $jQ(removeBtn).parents('.minicart-edit');
 	
-		$jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
-		$jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block'));        
 		$jQ(block).css('background-color' , '#d6d9d9');
+		$jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
+		$jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block')); 
 		$jQ(removeBtn).addClass('yes-remove');
 		
-		$jQ('.yes-remove').click(function(){ // second 'remove' click
-			$jQ(block).remove();
+		// confirm remove item from cart ................. 
+		$jQ('.yes-remove').click(function(){ 
+			var itemID = $jQ(this).parents('.minicart-item').attr('id');
+			MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
+				$jQ('#nav-cart .count').html(data.success.cartCount);
+				$jQ(element).remove();
+			});
+			//minicartLayout();
 		});
 		
 		// cancel remove
 		$jQ('.minicart-cancel-remove').click(function(e){
 			e.preventDefault();
 	
-			$jQ('.remove-msg').remove();
-			$jQ(block).css('background-color' , '#e5eaea');
+			//$jQ(this).parents('.minicart-item').find('.remove-msg').remove();
+			$jQ(block).css('background-color' , '#e5eaea').find('.remove-msg').remove();
 			$jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
 			$jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
 			
@@ -702,6 +744,7 @@ function minicartEdit(removeBtn){ // MINICART remove/confirm remove sequence
 		});
 	});
 } // end minicartEdit 
+
 
 function minicartScroll(type) { // MINICART function: next/prev items scroll
 	if (type == "next") {
@@ -789,9 +832,11 @@ function enterCheckout() { // CHECKOUT enter main sequence
 } // end checkout entrance	
 
 function copyInputs( section, inputI, data ) { // CHECKOUT copy text input info for summaries on 'next step' clicks
+
 	$jQ('#' + section ).parents('.checkout-step').find('.summary').each(function(sumI) {
 		if (inputI == sumI ) {
 			$jQ(this).text(data);
+			
 		}
 	});
 } // end copyInputs
@@ -894,7 +939,7 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 		success: function(label){
 			label.toggleClass('success')
 		},
-		ignore : '.ignore',
+		ignore : '.ignore, :hidden, .not',
 		rules: {
 			myVerizonID: {
 				required: true,
@@ -923,8 +968,9 @@ function validateSelect(selector, ignored) { // CHECKOUT  validation/error messa
 		ignore: '.ignore, :hidden',
 		onfocusout: true,
 		success: function(label){
-			label.addClass('success').text('')
+			label.addClass('success').text('');
 		},
+		focusCleanup: true,
 		rules: {
 			checkoutFirstName: {
 				required: true,
@@ -1219,17 +1265,7 @@ function minicartTempContent () { // TEMP demo only =========== PA remove this
 } // END TEMP demo only ======================================================
 
  
-// TEMP for  MINI CART TESTING..............................................................
 
-	$jQ('.view-cart').find('a').click(function(){
-		alert('view cart clicked');
-	});
-	
-	$jQ('.checkout').find('input').click(function(){
-		alert('checkout clicked');
-	});
-
- // END TEMP FOR MINI CART===================
  
  
  
