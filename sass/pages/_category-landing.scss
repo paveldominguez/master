@@ -32,7 +32,9 @@ $bgPositionPromoSmall: -85px 35px;
             		cursor:pointer;
             		/* this needs fallback to image for ie8 */ }
 
-
+.category-landing-page .main-column {
+    padding-bottom: 150px;
+}
 
 .price { 
     margin: 0;
@@ -162,7 +164,7 @@ $bgPositionPromoSmall: -85px 35px;
 .category-section {
     .content-header {
         display: table;
-        padding: 0 ($globalGutter / 2);
+        padding: 25px 35px;
         width: 100%;
         height: 80px;
         padding-bottom: 15px;
@@ -180,8 +182,23 @@ $bgPositionPromoSmall: -85px 35px;
             }
             letter-spacing: -2px;
             text-transform: capitalize;
+            vertical-align: baseline;
             strong {
-                font-weight: bold;
+                font: {
+                    family: $fontVzwBold;
+                    weight: normal;
+                }
+            }
+            a{
+                color: #06C;
+                font: {
+                    family: $fontArial;
+                    size: 10px;
+                    weight: bold;
+                }
+                letter-spacing: 0;
+                margin-left: 12px;
+                text-transform: uppercase;
             }
         }
         .cta-container {
@@ -191,10 +208,36 @@ $bgPositionPromoSmall: -85px 35px;
             }
         }
     }
+    .flex-direction-nav {
+        float: right;
+        margin: 8px 0 0;
+        li { 
+            float: left; margin-left: 15px; 
+            .flex-prev,
+            .flex-next {
+                display: block;
+                width: 30px;
+                height: 30px;
+                text-indent: -9999px;
+                &.flex-disabled {
+                    cursor: default;
+                    opacity: 0.35;
+                }
+            }
+            .flex-prev {
+                @include pdp-sprite(btf-carousel-left, false, 0 ,0);
+            }
+            .flex-next {
+                @include pdp-sprite(btf-carousel-right, false, 0 ,0);
+            }
+        }
+    }
     .content-grid {
         clear: right;
         overflow: hidden; 
+        margin-left: 0;
         border-top: 1px solid #CCC;
+        padding-bottom: 0;
         &.feature-grid {
             .content-item {
                 &.large {
@@ -483,121 +526,7 @@ $bgPositionPromoSmall: -85px 35px;
                     	
 
                     	}
-                }
-                &.single {
-                    @include column(3);
-                    padding: 15px;
-                    .content-fig {
-                        margin: 0;
-                        img { 
-                            max-width: 225px; 
-                            width: 225px;
-                        }
-                    }
-                    .copy {
-                        @include clearfix();
-                        height: 50px;
-                        width: 100%;
-                        font: {
-                            family: $fontVzwBook;
-                            size: 18px;
-                        }
-                        line-height: 25px;
-                        margin-bottom: 11px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                }
-                &.two-wide {
-                    @include column(6);
-                    padding: 15px;
-                    .content-wrapper {
-                        position: relative;
-                        overflow: hidden;
-                        padding: 15px;
-                        background-color: #E8E8E8;
-                        .content-fig {
-                            margin: 0;
-                            float: left;
-                            img {
-                                max-width: 200px;
-                            }
-                        }
-                        .content-detail {
-                            margin-left: 200px;
-                            width: auto;
-                            .content-detail-header {
-                                .info {
-                                    margin-top: 0;
-                                    font: {
-                                        family: $fontVzwBold;
-                                        size: 12px;
-                                        weight: normal;
-                                    }
-                                    text-transform: uppercase;
-                                }
-                                .title {
-                                    font: {
-                                        family: $fontVzwBook;
-                                        size: 18px;
-                                        weight: normal;
-                                    }
-                                    line-height: 22px;
-                                    text-transform: capitalize;
-                                }
-                            }
-                            .price-action {
-                                margin: 40px 50px 0 0;
-                                display: table;
-                                li { 
-                                    display: table-cell;
-                                    vertical-align: bottom;
-                                }
-                                .content-price {
-                                    padding-right: 15px;
-                                    .price { 
-                                        font: {
-                                            size: 32px;
-                                            weight: normal;
-                                        }
-                                        line-height: 32px;
-                                    }
-                                }
-                                .content-action {      
-                                    div.button {
-                                        @include add-cart-cta();
-                                        display: table;
-                                        position: relative;
-                                        overflow: hidden;
-                                        float: right;
-                                        width: 105px;
-                                        height: 40px;
-                                        span,
-                                        span .add-cart-cta {
-                                            width: 105px;
-                                            height: 40px;
-                                        }
-                                        span {
-                                            display: table-cell;
-                                            padding: 0 0 5px 5px;
-                                            vertical-align: bottom;
-                                            input[type="submit"] {
-                                                -webkit-appearance: none;
-                                            }
-                                            .add-cart-cta {
-                                                border: none;
-                                                cursor: pointer;
-                                                display: block;
-                                                position: absolute;
-                                                top: 0; left: 0;
-                                                opacity: 0;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                
                 }
             }
         }
@@ -608,6 +537,12 @@ $bgPositionPromoSmall: -85px 35px;
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: $screenLarge) {
+    .hide-for-large-down {
+        display: none !important;
     }
 }
 
@@ -643,6 +578,12 @@ $bgPositionPromoSmall: -85px 35px;
                         @include column(8);
                     }
                 }
+            }
+        }
+        &.guides-module,
+        &.best-sellers {
+            .content-grid .content-item {
+                width: 33.33334%;
             }
         }
     }
@@ -712,6 +653,31 @@ $bgPositionPromoSmall: -85px 35px;
                 }
             }
         }
+        &.guides-module {
+            .content-grid .content-item {
+                width: 50%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: $screenSmall - 1) {
+    .category-section {
+        .content-header {
+            .title {
+                display: table;
+                width: 100%;
+                height: 100%;
+                a {
+                    display: table-cell;
+                    height: 100%;
+                    text-align: right;
+                    vertical-align: bottom;
+                }
+            }
+        }
+        .slide-nav {
+            display: none;
+        }    
     }
 }
 
@@ -794,7 +760,11 @@ $bgPositionPromoSmall: -85px 35px;
         }
     }
 }
-
+@media only screen and (max-width: $screenMobileLarge) {
+    .hide-for-mobile {
+        display: none !important;
+    }
+}
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
     .hide-for-mobile-grid,
     .hide-for-small-grid-down {
