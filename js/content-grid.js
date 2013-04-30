@@ -66,6 +66,15 @@ var contentGrid = {
                 var dimension = $jQ(this).attr('data-type');
                 contentGrid.mobileFilter.filterPanel(dimension);
             });
+            //Toggle states for multi select
+            $jQ('.list-option', '.filter-panel .multi-select').on('click', function () {
+                $jQ(this).toggleClass('selected');
+            });
+            //Toggle states for single select
+            $jQ('.list-option', '.filter-panel .single-select').on('click', function () {
+                $jQ(this).parent('ul').find('li').removeClass('selected');
+                $jQ(this).toggleClass('selected');
+            });
 
         },
         filterPanel: function (dimension) {
@@ -79,9 +88,6 @@ var contentGrid = {
                 $jQ('.filter-panels').animate({height: 0}, function () {
                     $jQ(this).hide();
                 });
-            });
-            $jQ('.list-option').on('click', function () {
-                $jQ(this).toggleClass('selected');
             });
         },
         updateFilters: function () {
@@ -100,20 +106,18 @@ var contentGrid = {
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
-
         if ($parentTile.hasClass('bundle')) {
             $quickView = $jQ('.quick-view-overlay.bundle');
         }
-
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
             'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
-            //'height' : $contentTile.outerHeight() * 2,
+            'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
         $jQ('html, body').animate({
-            scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2) + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0)
+            scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
         }, 500, function () {
             contentGrid.initSlider();
             setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
