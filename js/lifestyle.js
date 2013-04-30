@@ -1,7 +1,18 @@
 MLS.lifestyle = {
-    init : function() {
+    init : function () {
         var contentItem = '.product-board-slide .content-item';
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
+
+        //trending
+        $jQ('#trending-module').flexslider({
+            animation: 'slide',
+            controlsContainer: '#trending-module .slide-nav',
+            animationLoop: true,
+            controlNav: false,
+            directionNav: true,
+            slideshow: false,
+            animationSpeed: 500
+        });
 
         //gallery
         $jQ('#gallery-module').flexslider({
