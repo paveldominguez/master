@@ -283,11 +283,32 @@ $hdrOfferCollapsed: 55px;
                     background: url(../img/mobile-checkbox.png) bottom right no-repeat;
                     margin-right: 10px;
                 }
-                .facet-thumb,.facet-count{
+                .facet-thumb,.facet-count,.facet-color{
                     float: right;
                 }
+                .facet-color{
+                    width: 40px;
+                    height: 40px;
+                    display: block;
+                    margin-top: -12px;
+                    &.red{
+                        background: red;
+                    }
+                    &.orange{
+                        background: orange;
+                    }
+                    &.purple{
+                        background: purple;
+                    }
+                    &.green{
+                        background: green;
+                    }
+                    &.white{
+                        background: white;
+                    }
+                }
                 &.selected{
-
+                    font-weight: bold;
                     .facet-check{
                         background: url(../img/mobile-checkbox.png) top right no-repeat;
                     }
