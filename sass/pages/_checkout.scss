@@ -1544,7 +1544,7 @@
 							.cart-product-info { 
 								width: 80%;
 								float: left;
-								padding: 0 0 0 2.5%;
+								padding: 15px 0 0 2.5%;
 								@include clearfix();
 								
 								h2 { 
@@ -1597,13 +1597,15 @@
 									float: left; 
 									@include clearfix();
 										
-									div.size {
+									.size, .color {
 										display: inline-block;
 										float: left;
 										width: auto;
 										margin-right: 3px;
 										@include checkoutContent;
 										}
+									.size:after { content: ', '; }
+										
 									}
 								}
 							}/* end desc block */
@@ -1624,7 +1626,7 @@
 									@include checkoutContent;
 									color: $cartGreyMd;
 									font-size: 14px;
-									padding: 9px 0 0 0;
+									padding: 15px 0 0 0;
 									}
 									
 								.selector {
@@ -1642,6 +1644,7 @@
 					 .checkput-place-order { 
 					 	display: block;
 					 	width: 100%;
+					 	margin: 30px 0 0 0;
 					 	
 					 	.button {
 					 		@include ctaRedButton;
@@ -1663,6 +1666,7 @@
 					 	
 					 	ul {
 					 		@include clearfix();
+					 		margin: 0 0 36px 0;
 					 		li {
 					 			display: inline-block;
 					 			width: 31.5%;
@@ -1670,10 +1674,10 @@
 					 			margin-right: 2.5%;
 					 			
 					 			.title {
-					 				padding: 0;
-					 				margin: 0 0 15px 0; 
+					 				padding: 15px 0 0 0;
+					 				margin: 0 0 10px 0; 
 					 				font-family: $fontArial;
-					 				font-size: 15px;
+					 				font-size: 14px;
 					 				font-weight: bold;
 					 				color: $actLinkBlue;
 					 				}
@@ -1695,19 +1699,11 @@
 					 	.checkout-footnotes { 
 					 		font-family: $fontArial;
 					 		margin: 0 0 15px 0;
-					 	
-					 		 }
-					 		
-					 		
-					 		
-					 		
+					 		font-size: 10px; 
+					 		line-height: 13px; 
+					 		color: $cartGreyDk;
+					 		}	
 					 	 }/* end checkout disclaimers */
-						
-						
-						
-						
-						
-				
 					} /* end confirm-order - checkout step 3 */
 					
 				label.error { 
@@ -1891,6 +1887,7 @@
 							display:block;
 							width:100%;
 							padding: 10px 0 20px 0;
+							margin: 0;
 						
 							li { 
 								width:100%;
@@ -1958,12 +1955,19 @@
 					} /* end cart summary */
 					
 				.sidebar-finish {
+					padding: 30px 0 0 0;
+					@include boxBrdrT;
 					display:none; 
 					
-					.checkout-final { }
-	
+					.button { 
+						@include ctaRedButton;
+						width: 90%;
+						margin: 0 auto 0 auto;
+						height: 78px; 
+						span { padding-top: 45px; }
+						}
 					}
-					
+				.sidebar-finish.on { display: block; }
 				}/* end checkout-sidebar */
 				
 			#checkout-sidebar.fixed {

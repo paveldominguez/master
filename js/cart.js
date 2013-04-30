@@ -62,7 +62,7 @@ MLS.cartCheckout = (function() {
 	 
 	 
 	 //sidebar : tax calc submit
-	 	// validate zip code
+	 	// validate zip code -- NEED TO DO THIS WHEN FEATURE MADE LIVE!!!!!!!
 	 	
 	 	// get value 
 	 		var tempValue = '24.31'; // TEMP 
@@ -216,7 +216,7 @@ MLS.cartCheckout = (function() {
 		})
 	});
 	
-	// main checkout sequence : step 2 billing info
+	// main checkout sequence : step 2 billing info choices
 	$jQ('.billing-select').change(function(){ // ........ signed-in:  account or card selection
 		
 		// uncheck other option & switch container styles
@@ -467,6 +467,14 @@ MLS.cartCheckout = (function() {
 		var signedinBranch = 'new';
 		var seq = document.getElementById('checkout');
 		
+			//setTimeout(function(){ 
+				if($jQ('.billing-complete').is(':not(.blank)')){ // not the first time through 
+			//		alert('emptying');
+					$jQ('#name-on-card').empty();
+    				$jQ('#bill-address-summary-name').empty();
+				} 
+			//}, 25);
+		
 			if ($jQ(seq).hasClass('signed-in')){ // check for saved info
 				if ($jQ('#bill-to-account').is(':checked') || $jQ('#choose-saved-card').is(':checked')) { // saved info, no validation required
 					signedinBranch = 'saved';
@@ -503,10 +511,11 @@ MLS.cartCheckout = (function() {
 					setTimeout(function(){
 					}, 50);
         		}
+        		//alert(inputI); alert(data);
     		}); 
     		
     	if (valid) { 
-    		if (section == 'ship-info-complete'){ // .................. STEP 1 POST VALIDATE .......................
+    		if (section == 'ship-info-complete'){ // .................. STEP 1 POST VALIDATE BRANCH .......................
     			var completed = $jQ('#shipping-info'); 
     			var shipName = $jQ('#ship-name-block').html();  
     			$jQ('#copy-ship-name-block').html(shipName).find('.summary').removeClass('summary'); // copy name to additional field in summary
@@ -517,9 +526,26 @@ MLS.cartCheckout = (function() {
 					});
 					$jQ('.same-as-shipping').remove(); // remove 'same as shipping' in step 2 if 'business' in step 1
 				} // else if residence do nothing	
-    		} // end step 1 adjustment
+				
+				
+				var thisBlock = $jQ(this).parents('.checkout-step'); // ....... if valid : hide/show/scroll ..............
+       			thisBlock.find('.hide-complete').addClass('hidden');
+        		thisBlock.find('.step-info-summary').removeClass('hidden');
+        		
+        		var step2Complete = thisBlock.next('.checkout-step').find('.billing-complete'); // which part of step 2 to open
+        		if ($jQ(step2Complete).hasClass('blank')){
+        			thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');// open step 2 form
+        		 } else {
+        		 	$jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
+        		 
+        		 }
+        		MLS.ui.scrollPgTo(completed, 7);	
+				
+    		} // end step 1 branch
+    		
+    		
     	
-    		if (section == 'billing-info-complete'){ // .................. STEP 2 POST VALIDATE ......................
+    		if (section == 'billing-info-complete'){ // .................. STEP 2 POST VALIDATE BRANCH......................
     			var completed = $jQ('#billing-info');
     			
     			if (signedinBranch == 'saved'){ // copy saved info to final summary
@@ -553,8 +579,8 @@ MLS.cartCheckout = (function() {
     			} else if (signedinBranch == 'new'){ // copy new info to section summary
     			
     				var billName = $jQ('#bill-card-summary-name').html();
-    				$jQ('#name-on-card').html(billName);
-    				$jQ('#bill-address-summary-name').html(billName);
+    				$jQ('#name-on-card').html(billName).find('.saved-sum').removeClass('saved-sum');
+    				$jQ('#bill-address-summary-name').html(billName).find('.saved-sum').removeClass('saved-sum');
     					
     				var lastFour = $jQ('#confirmed-last-four').text();
     				lastFour = lastFour.substr(lastFour.length - 4);	
@@ -562,16 +588,25 @@ MLS.cartCheckout = (function() {
     				
     			}
     			
-    		} // end step 2 adjustments
+    			$jQ('.sidebar-finish').addClass('on'); // reveal red CTA in sidebar
+    			$jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none'); // close side bar acc
+    			
+    			var thisBlock = $jQ(this).parents('.checkout-step'); // ....... if valid : hide/show/scroll ..............
+       			thisBlock.find('.hide-complete').addClass('hidden');
+        		thisBlock.find('.step-info-summary').removeClass('hidden');
+        		thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+        		MLS.ui.scrollPgTo(completed, 7);
+        				
+    			setTimeout(function(){
+    				$jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
+    			}, 300);
+    			
+    		} // end step 2 branch
     	
-    		var thisBlock = $jQ(this).parents('.checkout-step'); // ....... if valid : hide/show/scroll ..............
-       		thisBlock.find('.hide-complete').addClass('hidden');
-        	thisBlock.find('.step-info-summary').removeClass('hidden');
-        	thisBlock.next('.checkout-step').find('.hide-complete').removeClass('hidden');
-        	MLS.ui.scrollPgTo(completed, 7);	
+    		
         	
         		
-    	} else { // ..........................................................if NOT valid ............................
+    	} else { // ..........................................................if NOT valid .......................................
     			$jQ('.error').each(function(){ //'input, select'
     				var whichInput = $jQ(this).attr('id');
     				if (whichInput == undefined) { // do nothing
@@ -582,16 +617,15 @@ MLS.cartCheckout = (function() {
     			});
     		}
     		
-		}); // ........................................... END NEXT STEP .........................................................
+		}); // ........................................... END NEXT STEP ............................................................
 
 
-	// main checkout sequence : generic edit step-info (after next-step validation)
-	$jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){
+	$jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){ //... EDIT VALIDATED INFO BUTTON (after next-step click)....
 		var thisStep = $jQ(this).parents('.checkout-step');
 		
 		// close open input & open its summary
         	thisStep.siblings('.checkout-step').find('.hide-complete').each(function() {	
-        		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').removeClass('hidden');
+        		$jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').not('.blank').removeClass('hidden');
         	});
 	
 		// close this panel's summary next
@@ -600,11 +634,16 @@ MLS.cartCheckout = (function() {
 			
 		// if step 2
 			if ($jQ(this).hasClass('edit-billing')) {	
-				$jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not');
+				$jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not'); // make fields validate-able again
 			
-				if ($jQ('#bill-to-account').is(':checked')){ // hide billing summary for pay with account
+				$jQ('.new-billing-info-form').addClass('hidden'); // hide form so edit button in summary works
+			
+				$jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
+    			$jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
+			
+				if ($jQ('#bill-to-account').is(':checked')){ // IF account hide billing summary for pay with account
 					$jQ(this).parents('.checkout-step').find('.step-info-summary.billing-address').addClass('hidden');
-				}
+				}	
 			}	
 		
 		// show this panel's inputs & buttons
