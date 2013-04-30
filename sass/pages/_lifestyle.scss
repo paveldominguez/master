@@ -251,7 +251,7 @@ $colorLifestyleLight: #DCDEDE;
     }
     .guides-slider {
         .guide-slide {
-            .guide-grid {
+                &.content-item,
                 .content-item {
                     .wrapper {
                         position: relative;
@@ -302,7 +302,7 @@ $colorLifestyleLight: #DCDEDE;
                         background-color: #D60000;
                     }
                 }
-            }
+            
         }
     }
 }
