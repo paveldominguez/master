@@ -66,6 +66,15 @@ var contentGrid = {
                 var dimension = $jQ(this).attr('data-type');
                 contentGrid.mobileFilter.filterPanel(dimension);
             });
+            //Toggle states for multi select
+            $jQ('.list-option', '.filter-panel .multi-select').on('click', function () {
+                $jQ(this).toggleClass('selected');
+            });
+            //Toggle states for single select
+            $jQ('.list-option', '.filter-panel .single-select').on('click', function () {
+                $jQ(this).parent('ul').find('li').removeClass('selected');
+                $jQ(this).toggleClass('selected');
+            });
 
         },
         filterPanel: function (dimension) {
@@ -79,9 +88,6 @@ var contentGrid = {
                 $jQ('.filter-panels').animate({height: 0}, function () {
                     $jQ(this).hide();
                 });
-            });
-            $jQ('.list-option').on('click', function () {
-                $jQ(this).toggleClass('selected');
             });
         },
         updateFilters: function () {
