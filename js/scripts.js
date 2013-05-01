@@ -190,7 +190,7 @@ MLS = {
     //     }
     // },
     'special-offers-landing-page' : {
-        init : function () {
+        init : function() {
             contentFilter.init();
             MLS.specialOffers.init();
         }
