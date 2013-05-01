@@ -17,10 +17,10 @@ MLS.ui = {
                 $jQ('.content-item.active').removeClass('active grid-hover active');
                 el.addClass('active grid-hover-active');
                 if (content.topBar !== undefined) {
-                    $jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
+                    $jQ('#grid-pop-out .top-bar').html($jQ(this).find('.color-picker').html());
                 }
                 if (content.actions !== undefined) {
-                    $jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
+                    $jQ('#grid-pop-out .details').html($jQ(this).find('.content-details').contents().clone(true));
                 }
                 $jQ('#grid-pop-out').css({
                     top: offset.top - (padding / 2),

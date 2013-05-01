@@ -1,6 +1,6 @@
 var contentGrid = {
     init : function () {
-        var $contentGrid = $jQ('#main-column .content-grid'),
+        var $contentGrid = $jQ('#main-column .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
         $featuredHover = $contentItems.find('.featured-corner');
@@ -11,13 +11,14 @@ var contentGrid = {
         $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
         $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
         contentGrid.sortHeader();
+        contentGrid.mobileFilter.init();
         if (!isTouch) {
-            MLS.ui.gridHover($contentItems, {
+            MLS.ui.gridHover($contentItems.not('.large'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
-            $quickviewLinks.on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
+            $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
     },
@@ -31,6 +32,68 @@ var contentGrid = {
             $jQ(this).addClass('active');
         });
     },
+    mobileFilter : {
+        init: function () {
+            //Event handler for clicks !!!D.R.Y:-(
+            $jQ('a.filter', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.filter-options-list', '#mobile-sort-filter').show();
+                }
+            });
+            $jQ('a.sort', '#mobile-sort-filter').on('click', function (e) {
+                e.preventDefault();
+                if ($jQ(this).hasClass('active')) {
+                    $jQ(this).removeClass('active').css({height: '45px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideUp(200);
+                } else {
+                    $jQ('.dropdown-cta', '#mobile-sort-filter').not(this).removeClass('active').css({height: '45px'});
+                    $jQ(this).addClass('active').css({height: '50px'});
+                    $jQ('.dropdown-menu', '#mobile-sort-filter').slideDown(200);
+                    $jQ('.submenu-list', '#mobile-sort-filter').hide();
+                    $jQ('.sort-options-list', '#mobile-sort-filter').show();
+                }
+            });
+
+            $jQ('li.filter-option', '.filter-options-list').on('click', function () {
+                var dimension = $jQ(this).attr('data-type');
+                contentGrid.mobileFilter.filterPanel(dimension);
+            });
+            //Toggle states for multi select
+            $jQ('.list-option', '.filter-panel .multi-select').on('click', function () {
+                $jQ(this).toggleClass('selected');
+            });
+            //Toggle states for single select
+            $jQ('.list-option', '.filter-panel .single-select').on('click', function () {
+                $jQ(this).parent('ul').find('li').removeClass('selected');
+                $jQ(this).toggleClass('selected');
+            });
+
+        },
+        filterPanel: function (dimension) {
+            var viewportHeight = Response.viewportH();
+            $jQ('.filter-panels .filter-panel').hide();
+            $jQ('.filter-panel.' + dimension).show();
+            $jQ('.filter-panels').show(function () {
+                $jQ(this).animate({height: viewportHeight});
+            });
+            $jQ('.filter-panels .close').one('click', function () {
+                $jQ('.filter-panels').animate({height: 0}, function () {
+                    $jQ(this).hide();
+                });
+            });
+        },
+        updateFilters: function () {
+
+        }
+    },
     productTileEnter : function () {
         $jQ(this).addClass('active');
     },
@@ -43,20 +106,18 @@ var contentGrid = {
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
-
         if ($parentTile.hasClass('bundle')) {
             $quickView = $jQ('.quick-view-overlay.bundle');
         }
-
         $jQ('#quick-view-modal').fadeIn('fast');
         $quickView.css({
             'display' : 'block',
             'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
-            //'height' : $contentTile.outerHeight() * 2,
+            'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
         $jQ('html, body').animate({
-            scrollTop : $cTposition.top + ($contentTile.outerHeight() / 2) + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0)
+            scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
         }, 500, function () {
             contentGrid.initSlider();
             setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers

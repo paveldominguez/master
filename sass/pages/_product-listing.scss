@@ -231,7 +231,93 @@ $hdrOfferCollapsed: 55px;
         }
     }
 }
+.filter-panels{
+    display: none;
+    top: 0;
+    left: 0;
+    background: #e5eaea;
+    position:fixed;
+    height: 0;
+    width: 100%;
+    z-index: 1000;
+    .close{
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: #0066cc;
+        font-family: Arial;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+    .filter-panel{
+        display: none;
+        padding: 15px;
+        .dimension-title{
+            font-size: 18px;
+            font-family: "Verizon Apex Book";
+            font-weight: normal;
+            color: #121212;
+        }
+        .dimension-list{
+            li{
+                padding-top: 25px;
+                padding-bottom: 10px;
+                margin: 0;
+                font-size: 18px;
+                font-family: "Verizon Apex Book";
+                font-weight: normal;
+                color: #666;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
+                cursor: pointer;
+                &.last{
+                    border-bottom: 0;
+                }
+                .facet-check{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background: url(../img/mobile-checkbox.png) bottom right no-repeat;
+                    margin-right: 10px;
+                }
+                .facet-thumb,.facet-count,.facet-color{
+                    float: right;
+                }
+                .facet-color{
+                    width: 40px;
+                    height: 40px;
+                    display: block;
+                    margin-top: -12px;
+                    &.red{
+                        background: red;
+                    }
+                    &.orange{
+                        background: orange;
+                    }
+                    &.purple{
+                        background: purple;
+                    }
+                    &.green{
+                        background: green;
+                    }
+                    &.white{
+                        background: white;
+                    }
+                }
+                &.selected{
+                    font-weight: bold;
+                    .facet-check{
+                        background: url(../img/mobile-checkbox.png) top right no-repeat;
+                    }
 
+                }
+            }
+        }
+    }
+}
 .content-filter {
     padding: 15px 30px;
     .facet,
@@ -473,16 +559,88 @@ $hdrOfferCollapsed: 55px;
             }
         }
     }
-    h2{
-        display: inline;
-        font-size: 12px;
-        padding: 0;
-        margin: 0;
-        line-height: 12px;
-        position: absolute;
-        top: 6px;
-        left: -75px;
-        font-family: "Verizon Apex Book";
+    .mobile-sort-filter{
+
+        display: block;
+        width: 100%;
+        min-height: 60px;
+        text-align: right;
+        padding-right: 0px;
+        margin-top: -60px;
+        @include breakpoint(desktop){
+            display: none;
+        }
+        .dropdown-cta{
+            position: relative;
+            width: 69px;
+            height: 45px;
+            margin-right: 10px;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            font-size: 10px;
+            font-family: Arial;
+            font-weight: bold;
+            padding: 15px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background: #edf1f2;
+            float: right;
+            -webkit-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+            -moz-box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+            box-shadow: inset 0px 5px 4px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px 1px rgba(60, 60, 60, 0.1);
+            span{
+                position: absolute;
+                top: 25px;
+                left: 10px;
+            }
+            &.active{
+                background: url(../img/mobile_filter_bg.jpg);
+                border-bottom: 0;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+        }
+        .dropdown-menu{
+            display:none;
+            background: url(../img/mobile_filter_bg.jpg);
+            height:50px;
+            clear: both;
+            overflow: scroll;
+            background-position: 0px 50px;
+            .submenu-list{
+                display: table;
+                padding-top: 10px;
+                li{
+                    display: table-cell;
+                    text-align: center;
+                    font-size: 12px;
+                    font-family: "Verizon Apex Medium";
+                    text-transform: uppercase;
+                    line-height: 12px;
+                    height: 22px;
+                    border-right: 1px solid white;
+                    padding: 5px 15px 0 15px;
+                    cursor: pointer;
+                    a{
+
+                    }
+
+                }
+                &.sort-options-list{
+                    width: 790px;
+                }
+                &.filter-options-list{
+                    width: 600px;
+                }
+            }
+        }
     }
     .sort-options {
         position: absolute;
@@ -490,6 +648,17 @@ $hdrOfferCollapsed: 55px;
         right: 30px;
         text-align: center;
         text-transform: uppercase;
+        h2{
+            display: inline;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            line-height: 12px;
+            position: absolute;
+            top: 6px;
+            left: -75px;
+            font-family: "Verizon Apex Book";
+        }
         .inline-list {
             display: inline;
             margin: 0;
