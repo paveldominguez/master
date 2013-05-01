@@ -116,6 +116,7 @@ var contentGrid = {
             'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
+        $quickView.attr('scroll',$jQ(window).scrollTop());
         $jQ('html, body').animate({
             scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
         }, 500, function () {
@@ -152,11 +153,13 @@ var contentGrid = {
         $sT.css('margin-' + pos, '-' + (offset / 2) + 'px');
     },
     quickViewClose : function (e) {
-        e.preventDefault();
-        contentGrid.removeCloseListeners();
-        var $qv = $jQ(e.data.qv);
-        $qv.fadeOut('fast');
-        $jQ('#quick-view-modal').fadeOut('fast');
+        if (Math.abs(parseFloat($jQ('#quick-view-overlay').attr('scroll')) - parseFloat($jQ(window).scrollTop())) > 500 || e.type === 'click') {
+            e.preventDefault();
+            contentGrid.removeCloseListeners();
+            var $qv = $jQ(e.data.qv);
+            $qv.fadeOut('fast');
+            $jQ('#quick-view-modal').fadeOut('fast');
+        }
     },
     removeCloseListeners : function () {
         $jQ(window).off('resize.quickView');
