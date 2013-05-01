@@ -80,7 +80,7 @@ MLS = {
         init : function () {
             // initialize things that are used on every page
             var win = $jQ(window);
-            $jQ(window).on('resize', function () { // this is for debugging purposes, can be removed when no longer needed
+            $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
                 debounce(function() {
                     console.log('Window width: %dpx', win.width());
                 }, 300);
@@ -98,8 +98,7 @@ MLS = {
         }
     },
     'home-page' : {
-        init : function () {
-            contentGrid.init();
+        init : function() {
             MLS.home.init();
         }
     },
@@ -148,8 +147,7 @@ MLS = {
         }
     },
     'lifestyle-landing-page' : {
-        init : function () {
-            contentFilter.init();
+        init : function() {
             MLS.lifestyle.init();
         }
     },

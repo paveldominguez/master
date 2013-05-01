@@ -50,23 +50,45 @@
     <div class="wrapper">
       <!-- Begin Main Content Container -->
       <section id="mls-single-col" class="mls-single">
-        <aside id="guided-nav" class="guided-nav">
-          <h3 class="guided-nav-heading"><strong>shop</strong> Mediamaster</h3>
+        <aside id="lifestyle-nav" class="guided-nav hide-for-small hide-for-mobile">
+          <h3 class="guided-nav-heading"><strong>Shop</strong> Mediamaster</h3>
           <ul id="content-filter" class="content-filter">
-            <li class="dimension collapsible">
-              <h3 class="dimension-header">category</h3>
+            <li class="dimension collapsible first">
+              <h3 class="dimension-header">categories<span class="marker"></span></h3>
               <ul class="facet-list">
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
+                <li class="facet">
+                  <a href="#">facet
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="#">
+                    facet
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="#">
+                    facet
+                  </a>
+                </li>
               </ul>
             </li>
-            <li class="dimension collapsible">
-              <h3 class="dimension-header">compatibility</h3>
+            <li class="dimension collapsible last">
+              <h3 class="dimension-header">compatibility<span class="marker"></span></h3>
               <ul class="facet-list">
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
-                <li class="facet">facet</li>
+                <li class="facet">
+                  <a href="#">facet
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="#">
+                    facet
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="#">
+                    facet
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -79,7 +101,8 @@
               <strong>Next Lifestyle:</strong> <span class="name">Fashionista</span><a href="#next-lifestyle" title="Next Lifestyle: Fashionista">Next &gt;</a>
             </div>
             <p class="featured-copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing. Donec rhoncus elit ut massa mattis dapibus. 
+              <span class="marker"></span>
+              Get inspired and learn how to get the most out of your media. Explore our products, stories, and guides for Mediamasters. 
             </p>
           </header>
           <figure class="featured-fig">
@@ -87,6 +110,66 @@
           </figure>
         </article>
         <!-- end lifestyle image module -->
+        <!-- shop music and audio module -->
+        <article id="music-audio-module" class="shop-module category-section show-for-small show-for-mobile">
+          <header class="content-header">
+            <h1 class="title"><strong>Shop</strong> Mediamaster</h1>
+          </header>
+          <ul class="categories">
+            <li class="first category">
+              <a href="#" title="category name">
+              <h3 class="category-name">
+                Headphones
+              </h3>
+              <figure class="category-fig">
+                <img src="img/category-listing/music-audio-fpo.png" alt="category name">
+              </figure>
+              </a>
+            </li>
+            <li class="category">
+              <a href="#" title="category name">
+              <h3 class="category-name">
+                Headsets
+              </h3>
+              <figure class="category-fig">
+                <img src="img/category-listing/music-audio-fpo.png" alt="category name">
+              </figure>
+              </a>
+            </li>
+            <li class="category">
+              <a href="#" title="category name">
+              <h3 class="category-name">
+                Lorem Ipsum
+              </h3>
+              <figure class="category-fig">
+                <img src="img/category-listing/music-audio-fpo.png" alt="category name">
+              </figure>
+              </a>
+            </li>
+            <li class="category">
+              <a href="#" title="category name">
+              <h3 class="category-name">
+                Instruments &amp; Monitors
+              </h3>
+              <figure class="category-fig">
+                <img src="img/category-listing/music-audio-fpo.png" alt="category name">
+              </figure>
+              </a>
+            </li>
+            <li class="last category">
+              <a href="#" title="category name">
+              <h3 class="category-name">
+                Instruments &amp; Monitors
+              </h3>
+              <figure class="category-fig">
+                <img src="img/category-listing/music-audio-fpo.png" alt="category name">
+              </figure>
+              </a>
+            </li>
+          </ul>
+        </article>
+        <!-- end shop music and audio module -->
+
         <!-- Trending Products -->
         <article id="trending-module" class="trending-module category-section">
           <header class="content-header">
@@ -137,7 +220,7 @@
                   <!-- grid items -->
                   <!-- some items in this grid will be hidden for various screen sizes
                   please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                  <li class="content-item">
+                  <li class="content-item hide-for-mobile">
                     <a class="content-link" href="#" title="content title">
                       <figure class="content-fig">
                         <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -323,7 +406,7 @@
                   <!-- grid items -->
                   <!-- some items in this grid will be hidden for various screen sizes
                   please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                  <li class="content-item">
+                  <li class="content-item hide-for-mobile">
                     <a class="content-link" href="#" title="content title">
                       <figure class="content-fig">
                         <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -509,7 +592,7 @@
                   <!-- grid items -->
                   <!-- some items in this grid will be hidden for various screen sizes
                   please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                  <li class="content-item">
+                  <li class="content-item hide-for-mobile">
                     <a class="content-link" href="#" title="content title">
                       <figure class="content-fig">
                         <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -656,33 +739,74 @@
         </article> 
         <!-- End Trending Products -->
         <!-- story module -->
-        <article id="featured-story-module" class="featured-story">
-          <figure class="story-fig">
-            <img src="img/lifestyle-landing/story-fpo.jpg">
-          </figure>
-          <section class="story-content">
-            <h1 class="story-header">
-              <strong>Inspirational</strong> Story
-            </h1>
-            <h3 class="story-subheader">Lorem Ipsumus Amet</h3>
-            <time class="pub-date" pubdate="" datetime="2013-04-01">April 1, 2013</time>
-            <p class="copy">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation... <a href="article.jsp" data-article-id="124123123">Read More</a>
-            </p>
-            <ul class="story-tags inline-list">
-              <li class="first tag">#tag</li>
-              <li class="tag">#tag</li>
-              <li class="last tag">#tag</li>
-            </ul>
-            <div class="actions">
-              <a href="#read-story" class="button story-cta" title="Read story"><span>read</span></a>
-              <a href="#view-all" class="view-all-cta">view all</a>
-            </div>
-          </section>
+        <article id="featured-story-module" class="featured-story-module category-section">
+          <header class="content-header">
+            <h1 class="title"><strong>Stories</strong><a href="#see-all" title="See All">see all</a></h1>
+            <div class="slide-nav"></div>
+          </header>
+          <ul class="story-slider slides">
+            <li class="first slide">
+              <section class="story">
+                <figure class="story-fig">
+                  <img src="img/lifestyle-landing/story-fpo.jpg">
+                </figure>
+                <div class="story-content">
+                  <header class="story-header">
+                    <time class="pub-date" pubdate="" datetime="2013-04-01">April 1, 2013</time>
+                    <h1>Lorem Ipsum Dolor</h1>
+                  </header>
+                  <p class="copy">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation... 
+                  </p>
+                  <div class="actions">
+                    <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                  </div>
+                </div>
+              </section>
+            </li>
+            <li class="slide">
+              <section class="story">
+                <figure class="story-fig">
+                  <img src="img/lifestyle-landing/story-fpo.jpg">
+                </figure>
+                <div class="story-content">
+                  <header class="story-header">
+                    <time class="pub-date" pubdate="" datetime="2013-04-01">April 1, 2013</time>
+                    <h1>Lorem Ipsum Dolor</h1>
+                  </header>
+                  <p class="copy">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation... 
+                  </p>
+                  <div class="actions">
+                    <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                  </div>
+                </div>
+              </section>
+            </li>
+            <li class="last slide">
+              <section class="story">
+                <figure class="story-fig">
+                  <img src="img/lifestyle-landing/story-fpo.jpg">
+                </figure>
+                <div class="story-content">
+                  <header class="story-header">
+                    <time class="pub-date" pubdate="" datetime="2013-04-01">April 1, 2013</time>
+                    <h1>Lorem Ipsum Dolor</h1>
+                  </header>
+                  <p class="copy">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation... 
+                  </p>
+                  <div class="actions">
+                    <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                  </div>
+                </div>
+              </section>
+            </li>
+          </ul>
         </article>
         <!-- end story module> -->
         <!-- Gallery Module -->
-        <article id="gallery-module" class="gallery-module category-section">
+        <article id="gallery-module" class="gallery-module category-section hide-for-small hide-for-mobile">
           <header class="content-header">
             <h1 class="title"><strong>Mediamaster</strong> Gallery</h1>
             <div class="slide-nav"></div>
@@ -748,7 +872,7 @@
         </article>
         <!-- end gallery module -->
         <!-- guides module -->
-        <article id="guides-module" class="guides-module category-section">
+        <article id="guides-module" class="guides-module category-section hide-for-small hide-for-mobile">
           <header class="content-header">
             <h1 class="title"><strong>Guides</strong> Lorem Ipsum<a href="#view-all" title="View All">view all</a></h1>
             <div class="slide-nav"></div>
@@ -770,14 +894,14 @@
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                   </div>
                 </li>
-                <li class="content-item hide-for-small">
+                <li class="content-item hide-for-medium-down">
                   <div class="wrapper slide-3">
                     <p class="guide-copy">Best heapdhones for working</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                   </div>
                 </li>
-                <li class="last content-item hide-for-medium-down">
+                <li class="last content-item hide-for-large-down">
                   <div class="wrapper slide-4">
                     <p class="guide-copy">what's hot now in audio</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
@@ -802,14 +926,14 @@
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                   </div>
                 </li>
-                <li class="content-item hide-for-small">
+                <li class="content-item hide-for-medium-down">
                   <div class="wrapper slide-3">
                     <p class="guide-copy">Best heapdhones for working</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                   </div>
                 </li>
-                <li class="last content-item hide-for-medium-down">
+                <li class="last content-item hide-for-large-down">
                   <div class="wrapper slide-4">
                     <p class="guide-copy">what's hot now in audio</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
@@ -834,14 +958,14 @@
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                   </div>
                 </li>
-                <li class="content-item hide-for-small">
+                <li class="content-item hide-for-medium-down">
                   <div class="wrapper slide-3">
                     <p class="guide-copy">Best heapdhones for working</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
                     <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                   </div>
                 </li>
-                <li class="last content-item hide-for-medium-down">
+                <li class="last content-item hide-for-large-down">
                   <div class="wrapper slide-4">
                     <p class="guide-copy">what's hot now in audio</p>
                     <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
@@ -854,7 +978,7 @@
         </article>
         <!-- end guides module -->
         <!-- user reviews -->
-        <article id="user-reviews-module" class="user-reviews-module category-section">
+        <article id="user-reviews-module" class="user-reviews-module category-section hide-for-small hide-for-mobile">
           <header class="content-header">
             <h1 class="title"><strong>User</strong> Reviews<a href="#view-all" title="View All">view all</a></h1>
             <div class="slide-nav"></div>
@@ -984,7 +1108,7 @@
         </article>
         <!-- end user reviews -->
         <!-- shop products -->  
-        <article id="shop-products-module" class="shop-products-module category-section">
+        <article id="shop-products-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
           <header class="content-header">
             <h1 class="title"><strong>Mediamaster</strong> Products<a href="#view-all" title="View All">view all</a></h1>
             <div class="slide-nav"></div>
