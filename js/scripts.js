@@ -186,6 +186,11 @@ MLS = {
             MLS.specialOffers.init();
         }
     },
+    '404-page' : {
+        init : function() {
+            MLS.page404.init();
+        }
+    },    
   
 };
 

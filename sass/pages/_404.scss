@@ -1,0 +1,92 @@
+
+/* Colors */
+$color404Gray: #333;
+
+html, body {
+	background-color: $colorVzwNavBrd;
+}
+#div-breadcrumb {
+	max-width: 925px;
+	margin: 15px auto 0 auto;
+	#sec-breadcrumb {
+		width: 100%;
+		#back {
+			padding: 15px 0 0 15px;
+			text-transform: uppercase;
+			font: bold 10px $fontArial;
+		}
+	}
+}
+
+#div-404-container {
+	padding: 15px;
+	margin: 0 auto;
+	max-width: 891px;
+
+	#sec-404[role="main"] {
+		width: 100%;
+		margin: 0 0 130px 0;
+		padding: 0;
+		.p-404 {
+			text-align: left;
+			color: $color404Gray;
+			font: normal 56px $fontVzwLight;
+		}
+	}
+	#simple-carousel {
+		clear: both;
+		.hdr-carousel {
+			.h2-carousel {
+				float: left;
+				font: normal 32px/35px $fontVzwBook;
+				letter-spacing: -.08em;
+				text-transform: capitalize;
+				strong {
+					font-family: $fontVzwBold;
+				}
+			}
+			.div-carousel-links {
+				.carousel-more {
+					float: left;
+					padding: 35px 0 0 15px;
+					text-transform: uppercase;
+					font: bold 10px $fontArial;
+				}
+				.ul-carousel-buttons {
+					width: 64px;
+					float: right;
+					padding: 27px 0 0 0;
+					margin: 0 5px 0 0;
+					.a-prev, .a-next {
+						text-indent: -9999px;
+						display: block;
+						background-image: url('../img/sprites/404/btns-carousel.png');
+						width: 26px;
+						height: 25px;
+						float: left;
+					}		
+					.a-prev {
+						background-position: 0 0;
+					}
+					.a-next {
+						background-position: -38px 0;
+						margin: 0 0 0 12px;
+					}
+				}
+			}
+		}
+		.tabbed-wrapper {
+			overflow: hidden;
+		}
+	}
+}	
+
+
+@media only screen and (max-width: $screenMobileSmall) {
+	#sec-404[role="main"] {
+		margin: 0 0 60px 0;
+		.p-404 {
+			font: normal 32px $fontVzwBook !important;
+		}
+	}		
+}
