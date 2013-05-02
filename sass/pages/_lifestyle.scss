@@ -6,11 +6,56 @@ $colorLifestyleLight: #DCDEDE;
         margin: 0;
     }
     .guided-nav {
+        @include box-shadow(3px 3px 11px rgba(50, 50, 50, 0.65));
+        background-color: #FFF;
         width: 255px;
         position: absolute;
-        top: 427px;
+        top: 300px;
         left: 0;
-        z-index: 100;
+        z-index: 1000;
+        .guided-nav-heading {
+            margin: 0;
+            padding: 15px 25px 25px;
+            background-color: #3C4046;
+            color: #FFF;
+            font: {
+                family: $fontVzwBook;
+                size: 18px;
+                weight: normal;
+            }
+        }
+        .content-filter {
+            margin: 0;
+            padding: 0 25px;
+            .dimension {
+                .dimension-header { 
+                    cursor: pointer; 
+                    padding: 15px 0 25px;
+                    line-height: 1em;
+                    border-bottom: none;
+                    .marker { 
+                        display: block;
+                        float: right;
+                        width: 8px; height: 6px;
+                        @include ui-sprite(drop-down, false, 0, 0);
+                    }
+                    &.active {
+                        .marker {
+                            @include ui-sprite(drop-down-active, false, 0, 0);
+                        }
+                    }
+                }
+                border-bottom: 1px solid #DCDEDE;
+                &.last { 
+                    border-bottom: none;
+                }
+            }
+            .facet {
+                line-height: 1em;
+                padding: 10px 15px 20px;
+            }
+            .facet-list { display: none; }
+        }
     }
     .category-section {
         clear: both;
@@ -103,54 +148,60 @@ $colorLifestyleLight: #DCDEDE;
             size: 14px;
         }
         line-height: 18px;
+        .marker { display: none; }
     }
 }
-.featured-story {
+.featured-story-module {
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid $colorLifestyleLight;
+    .story {
+        overflow: hidden;
+        padding: 15px;
+        border: 1px solid $colorLifestyleLight;
+        border-left: none;
+    }
     .story-fig,
     .story-content {
+        position: relative;
         float: left;
+        width: 50%;
     }
     .story-fig {
-        width: 58%;
         img {
             width: 100%;
             max-width: 100%;
         }
     }
     .story-content {
-        width: 42%;
         .story-header,
-        .story-subheader,
-        .pub-date,
         .copy,
-        .story-tags,
         .actions {
-            padding: {
-                left: 70px;
-                right: 70px;
-            }
+            padding: 0 35px;
         }
         .story-header{
-            border-bottom: 1px solid $colorLifestyleLight;
             margin: 0 0 20px 0;
-            padding: {
-                top: 90px;
-                bottom: 8px;
+            .pub-date {
+                margin: 0;
+                padding: 0;
+                vertical-align: top;
+                font: {
+                    family: $fontArial;
+                    size: 10px;
+                    weight: bold;
+                }
+                text-transform: uppercase;
             }
-            font: {
-                family: $fontVzwBook;
-                size: 32px;
-                weight: normal;
+            h1 {
+                font: {
+                    family: $fontVzwBook;
+                    size: 32px;
+                    weight: normal;
+                }
             }
             strong {
                 font-family: $fontVzwBold;
             }
         }
-        .story-subheader,
-        .pub-date,
         .copy {
             font: {
                 family: $fontVzwBook;
@@ -158,18 +209,9 @@ $colorLifestyleLight: #DCDEDE;
                 weight: normal;
             }
         }
-        .story-subheader {
-            margin: 0;
-        }
-        .copy {
-            margin: 20px 0;
-            font-size: 14px;
-        }
         .actions {
-            position: absolute;
-            bottom: 50px;
-            right: 0;
-            width: 42%;
+            width: 100%;
+            overflow: hidden;
             .story-cta {
                 float: left;
                 clear: both;
@@ -179,7 +221,7 @@ $colorLifestyleLight: #DCDEDE;
                 border: 1px solid $colorLifestyleGray;
                 display: table;
                 margin: 0;
-                width: 105px;
+                width: 70%;
                 height: 55px;
                 color: #FFF;
                 font-size: 18px;
@@ -576,7 +618,7 @@ $colorLifestyleLight: #DCDEDE;
     }
 }
 
-@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+@media only screen and (max-width: $screenMedium - 1) {
     .featured-lifestyle {
         .featured-fig {
         }
@@ -599,9 +641,28 @@ $colorLifestyleLight: #DCDEDE;
             width: 33.33334%;
         }
     }
+    .featured-story-module {
+        .story-content {
+            .story-header,
+            .copy,
+            .actions {
+                padding: 0 20px;
+            }
+            .copy {
+                font: {
+                    family: $fontArial;
+                    size: 14px;
+                    weight: normal;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: $screenSmall - 1) {
+    .lifestyle-landing-page .category-section .content-header {
+        padding: 25px 35px;
+    }
     .featured-lifestyle {
         .featured-fig {
         }
@@ -618,11 +679,25 @@ $colorLifestyleLight: #DCDEDE;
                 position: absolute;
                 top: auto; bottom: 0; left: 0;
                 margin: 0;
-                padding: 15px;
+                padding: 30px;
                 width: 100%;
                 height: 45%;
-                background-color: $colorLifestyleGray; 
+                background-color: #2A2D32; 
                 color: #FFF;
+                font: {
+                    family: $fontVzwBookItalic;
+                    size: 18px;
+                    weight: normal;
+                }
+                line-height: 1.25em;
+                .marker {
+                    display: block;
+                    position: absolute;
+                    left: 30px; top: -15px;
+                    width: 31px;
+                    height: 31px;
+                    background: transparent url(../img/lifestyle-landing/lifestyle-marker.png) top left no-repeat;
+                }
             }
             .title {
                 font-size: 40px;
@@ -633,6 +708,32 @@ $colorLifestyleLight: #DCDEDE;
     .guides-module {
         .content-grid .content-item {
             width: 50%;
+        }
+    }
+    .featured-story-module {
+        margin-bottom: 50px;
+        .story-slider {
+            margin-left: 0;
+            .slide .story { padding: 0 0 30px 0; }
+        }
+        .story-fig,
+        .story-content {
+            float: none;
+            width: 100%;
+            .story-header,
+            .copy,
+            .actions { 
+                padding: 0 30px;
+            }
+            .story-header {
+                padding-top: 30px;
+                h1 {
+                    font-size: 18px;
+                }
+            }
+            .copy {
+                font-size: 12px;
+            }
         }
     }
 }
