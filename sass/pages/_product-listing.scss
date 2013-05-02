@@ -532,8 +532,18 @@ $hdrOfferCollapsed: 55px;
     .content-grid-heading {
         @include clearfix();
         float: left;
+        .content-grid-parent-category {
+            font:{
+                family: $fontVzwBold;
+                size: 12px;
+                weight: normal;
+            }
+            color: #666;
+            margin-bottom: 5px;
+            margin-left: 6px;
+        }
         .content-grid-category {
-            font: {;
+            font: {
                 family: $fontVzwLight;
                 size: $sizeHeaderFont;
                 weight: normal;
