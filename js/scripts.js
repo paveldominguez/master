@@ -151,6 +151,7 @@ MLS = {
     'lifestyle-landing-page' : {
         init : function() {
             MLS.lifestyle.init();
+            contentGrid.init();
         }
     },
     'product-listing-page' : {
