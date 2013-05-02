@@ -142,9 +142,7 @@
 							}
 						 
 						}
-						
-					.cart-product-image.oos { opacity: 0.3; }
-					
+			
 					.cart-product-info {
 						height:157px;
 						position:relative;
@@ -248,7 +246,7 @@
 								bottom: -20px; right: 10px;
 								}
 						
-							.oos-msg {
+							.oos-msg, .expired-item-msg {
 								display: none;
 								@include checkoutLabel;
 								color: $colorVzwRed;
@@ -1284,7 +1282,13 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 	.no-offer { display: none; }
 	}
 .out-of-stock {
+	.table-row.oos .cart-product-image { opacity: 0.3; }
 	.oos-msg { display: block !important; }
+	}
+.expired-item {
+	.table-row.expired .cart-product-image { opacity: 0.3; }
+	.expired-item-msg { display: block !important; }
+	
 	}
 .too {
 	#too-many-modal.lightbox { display: block ; }

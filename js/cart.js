@@ -1,30 +1,68 @@
 
 MLS.cartCheckout = (function() {
-// ONLOAD
-	//minicart, cart & checkout
+
+// ............................................ ONLOAD ....................................
+
+		checkoutSidebarScroll(pgWidth); // set scrolling
+		smallScreenContent(); // prepare small device content
+
+		var pgWidth = document.body.clientWidth; // get page width 
+
+	// minicart, cart & checkout : uniform.js
 		$jQ("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final").uniform(); // style form elements
-		$jQ('.checkout-dropdown').each(function(){ // display rules for all dropdowns
+		$jQ('.checkout-dropdown').each(function(){ // display rules for inline dropdowns
+			dropdownDisplay(this);
+		}); 
+		
+		$jQ('.special-offer-block').each(function(){ // display rules for offer dropdowns
 			dropdownDisplay(this);
 		}); 
 
-	//minicart
+	// minicart only
 		minicartTempContent(); // TEMP for demos, PA remove this
-		$jQ('#minicart-cart').find('.minicart-item').first().attr('data-vpos', 0); //ONLOAD only
+		$jQ('#minicart-cart').find('.minicart-item').attr('data-vpos', 0); // for item scrolling
 		minicartLayout(); // empty state & scrolling controls
 		
-	 // cart 
-	 	checkCartQty(); // check for siplay of lightbox & empty states
+	 // cart only 
+	 	checkCartQty(); // empty states, scroll controls, any new conditionals
 	 	
-	 // checkout 
-	 	$jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder');/* improve form select placeholder/message actions */
-		$jQ('#vzn-checkout .selector').find('select').change(function(){ 
+	 // checkout only
+	 	$jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder'); // enhance initial uniform.js select style 
+		$jQ('#vzn-checkout .selector').find('select').change(function(){ // enhance uniform.js select performance
 			$jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
 			$jQ(this).parents('.selector').removeClass('select-box-error');
 			$jQ(this).parents('.selector').find('.select-error-message').remove();
 		});
 
+		
+		
+//............................................  END ONLOAD ..................................
 
-// CART clicks ......................................................................................... 
+
+
+
+
+
+
+
+$jQ(window).resize(function(){ //...................... ON RESIZE ............................
+	var resizePgWidth = document.body.clientWidth;
+	
+	checkoutSidebarScroll(resizePgWidth);
+
+	
+}); // ..............................................  END ON RESIZE .........................
+
+
+
+
+
+
+
+
+
+
+// CART clicks ...........................................................................
 	// header : save cart link
 		$jQ('.save-cart-link').click(function(){
 			$jQ('#save-cart-modal').fadeIn(300);
@@ -52,6 +90,7 @@ MLS.cartCheckout = (function() {
 	 	$jQ('.cart-remove-links').find('.remove').click(function(e) {
 	 		//e.preventDefault();
 	 		$jQ(this).parents('.table-row').remove();
+	 		$jQ('#shopping-cart-form').submit();
 	 		checkCartQty();
 	 	});
 	 
@@ -65,27 +104,27 @@ MLS.cartCheckout = (function() {
 	 	// validate zip code -- NEED TO DO THIS WHEN FEATURE MADE LIVE!!!!!!!
 	 	
 	 	// get value 
-	 		var tempValue = '24.31'; // TEMP 
+	 	//	var tempValue = '24.31'; // TEMP 
 	 	
 	 	// button action
-	 		$jQ('#tax-calc-button').click(function(e) {
-	 			e.preventDefault();
+	 	//	$jQ('#tax-calc-button').click(function(e) {
+	 	//		e.preventDefault();
 	 			
 	 			//insert tax value 
-	 				$jQ('#cart-tax').html(tempValue);
+	 	//			$jQ('#cart-tax').html(tempValue);
 	 				
 	 			// update cart total
 	 				var cartTotal = $jQ('#cart-total').text();
+	 	//			
+	 	//			pCartTotal = parseFloat(cartTotal);
+	 	//			pTempValue = parseFloat(tempValue);
 	 				
-	 				pCartTotal = parseFloat(cartTotal);
-	 				pTempValue = parseFloat(tempValue);
-	 				
-	 				cartTotal = pCartTotal + pTempValue;
-	 				$jQ('#cart-total').text(cartTotal); 
+	 	//			cartTotal = pCartTotal + pTempValue;
+	 	//			$jQ('#cart-total').text(cartTotal); 
 	 		
 	 			// show message
-	 				$jQ('.calc-msg').show().delay(3000).fadeOut(1000);
-	 		});
+	 	//			$jQ('.calc-msg').show().delay(3000).fadeOut(1000);
+	 	//	});
 	 
 	 // lightbox modals
 	 
@@ -541,7 +580,7 @@ MLS.cartCheckout = (function() {
         		 }
         		MLS.ui.scrollPgTo(completed, 7);	
 				
-    		} // end step 1 branch
+    		} // end step 1 valid branch
     		
     		
     	
@@ -600,13 +639,10 @@ MLS.cartCheckout = (function() {
     			setTimeout(function(){
     				$jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
     			}, 300);
-    			
-    		} // end step 2 branch
     	
-    		
-        	
-        		
-    	} else { // ..........................................................if NOT valid .......................................
+    		} // end step 2 valid branch
+     		
+    	} else { // .......................................................... IF NOT VALID .......................................
     			$jQ('.error').each(function(){ //'input, select'
     				var whichInput = $jQ(this).attr('id');
     				if (whichInput == undefined) { // do nothing
@@ -618,6 +654,7 @@ MLS.cartCheckout = (function() {
     		}
     		
 		}); // ........................................... END NEXT STEP ............................................................
+
 
 
 	$jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){ //... EDIT VALIDATED INFO BUTTON (after next-step click)....
@@ -651,35 +688,15 @@ MLS.cartCheckout = (function() {
         	
         // last, scroll page to top of re-opened section
         	MLS.ui.scrollPgTo (thisStep, 7); 
-	});
+	}); //.................................................. END EDIT VALIDATED ............................
 	
 	
-	
-	
-	
-	
-	
-// CHECKOUT SCROLL
-	$jQ(window).scroll(function(){ // side bar floating position
-		
-		if($jQ('#checkout').hasClass('visible')) {
-			
-			var scrollPos = $jQ(this).scrollTop();	
-			var sidebar = $jQ('.visible #checkout-sidebar')
-			var startTop = sidebar.attr('data-start-top');
-			var startWidth = sidebar.attr('data-start-width');
-				
-			if ( scrollPos >= startTop ) {
-				sidebar.addClass('fixed').css({
-					'width': startWidth + 'px'
-				});
-			} else {
-				sidebar.removeClass('fixed').css({
-					'width' : '25%'
-				});
-			} // end 'if sidebar position'
-		} // end 'if checkout visible '	
-	});
+
+
+
+
+
+
 
 
 
@@ -689,6 +706,42 @@ MLS.cartCheckout = (function() {
 
 // FUNCTIONS .....................................................................................
 
+
+function checkoutSidebarScroll (pgWidth) {
+	if (pgWidth > 959){ 
+		$jQ(window).scroll(function(){
+			if($jQ('#checkout').hasClass('visible')) {
+				var scrollPos = $jQ(this).scrollTop();	
+				var sidebar = $jQ('.visible #checkout-sidebar')
+				var startTop = sidebar.attr('data-start-top');
+				
+				if ( scrollPos >= startTop ) {
+					sidebar.addClass('fixed');
+				} else {
+					sidebar.removeClass('fixed');
+				} // end 'if position'
+			} // end 'if visible '
+		});	
+	} // end 'if desktop'
+} // end function sidebar scroll
+
+
+function smallScreenContent(){
+	// top
+ 	$jQ('#checkout .checkout-accordion.sidebar').clone().appendTo('#mobile-checkout-summary');
+ 	$jQ('#mobile-checkout-summary .checkout-accordion.sidebar .item-color').each(function(){
+ 		var newDiv = $jQ(this).next('.item-size');
+ 		$jQ(this).appendTo(newDiv);
+ 	});
+ 	
+ 	// bottom
+ 	$jQ('#checkout .special-offer-block').clone().appendTo('#mobile-checkout-offers');	
+ 	$jQ('#checkout .sidebar-finish').clone().appendTo('#mobile-checkout-place-cta');
+ 	$jQ('#checkout .totals').clone().appendTo('#mobile-checkout-totals');
+ 	$jQ('#checkout .checkout-disclaimers').clone().appendTo('#mobile-checkout-disclaimers');
+ 		
+} // end small screen content
+
 function dropdownDisplay(container){  // ALL dropdown panels
 	if ($jQ('html').hasClass('no-touch')){
 		var link = $jQ(container).find('.dropdown-link');
@@ -696,7 +749,7 @@ function dropdownDisplay(container){  // ALL dropdown panels
 			e.preventDefault();
 		});
 		$jQ(link).hover(
-			function() { $jQ(this).next('.dropdown-panel').stop().fadeIn(300); },
+			function() { $jQ(this).next('.dropdown-panel').fadeIn(300); },
 			function() { $jQ(this).next('.dropdown-panel').delay(300).fadeOut(300); }
 		);
 		$jQ('.dropdown-panel').hover(
@@ -841,15 +894,18 @@ function minicartScroll(type) { // MINICART function: next/prev items scroll
 
 
 
-function enterCheckout() { // CHECKOUT enter main sequence
+function enterCheckout(pgWidth) { // CHECKOUT enter main sequence
 	window.scrollTo(0,0);
 	$jQ('#begin-checkout').fadeOut(300);
 	var sidebar = $jQ('.visible #checkout-sidebar');
 	var startTop = sidebar.offset().top;
-	var startWidth = sidebar.width();
+	
+	var pgWidth = document.body.clientWidth; // get page width for single case desktop resize
+	if (pgWidth < 960) { 
+		startTop= 302;
+	}
 	sidebar.attr({
-		'data-start-top' : startTop,
-		'data-start-width' : startWidth
+		'data-start-top' : startTop,	
 	});
 	
 	var checkoutType=document.getElementById('checkout'); // adjust billing input fields based on type of login

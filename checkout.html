@@ -140,7 +140,8 @@
 	</div><!-- end section wrap -->
 </section><!-- end begin checkout -->
 
-
+<section id="mobile-checkout-summary">
+</section>
 
 <section id="checkout">
 	<div class="section-wrap">
@@ -1161,17 +1162,31 @@
 		
 			<div class="cart-sidebar-wrap">
 			
-				<div class="special-offer-block">
-					<div class="dropdown-link">
+				<div class="special-offer-block returns">
+					<a href="#" class="dropdown-link">
+						<h3 class="special-offer">
+							<span class="bold">14 Day</span> Return Policy!
+						</h3>
+					</a>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Not happy with you order? Return in 14 days for a full refund!
+					</div>
+				</div>
+				
+				<div class="special-offer-block shipping">
+					<a href="#" class="dropdown-link">
 						<h3 class="special-offer">
 							<span class="bold">Free Shipping</span> on all orders!
 						</h3>
-					</div>
+					</a>
 					<div class="dropdown-panel">
 						<div class="dropdown-pointer"></div>
 						Free 2-Day Shipping when you order online Monday - Friday by 4.30pm!
 					</div>
 				</div>
+				
+				
 				
 				<div class="checkout-cart-summary">
 				
@@ -1190,18 +1205,18 @@
 						
 									<div class="item-info">
 										<ul>
-											<li>
+											<li class="title">
 												<div class="item-title">Beats by Dre - Wireless On-Ear Pro Headphones</div>
 											</li>
 										
-											<li>
+											<li class="details">
 												<div class="price">$<span class="item-price">249.99</span></div>
 												<div class="item-color">Black</div>
 												<div class="item-size">Medium</div>
 											</li>
 										
-											<li>
-												<div class="qty">Quantity: <span class="item-qty">1</span></div>
+											<li class="qty">
+												<div class="qty">Qty: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
@@ -1215,18 +1230,18 @@
 						
 									<div class="item-info">
 										<ul>
-											<li>
+											<li class="title">
 												<div class="item-title">Beats by Dre - Wireless On-Ear Pro Headphones</div>
 											</li>
 										
-											<li>
+											<li class="details">
 												<div class="price">$<span class="item-price">249.99</span></div>
 												<div class="item-color">Black</div>
 												<div class="item-size">Medium</div>
 											</li>
 										
-											<li>
-												<div class="qty">Quantity: <span class="item-qty">1</span></div>
+											<li class="qty">
+												<div class="qty">Qty: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
@@ -1239,18 +1254,18 @@
 						
 									<div class="item-info">
 										<ul>
-											<li>
+											<li class="title">
 												<div class="item-title">Beats by Dre - Wireless On-Ear Pro Headphones</div>
 											</li>
 										
-											<li>
+											<li class="details">
 												<div class="price">$<span class="item-price">249.99</span></div>
 												<div class="item-color">Black</div>
 												<div class="item-size">Medium</div>
 											</li>
 										
-											<li>
-												<div class="qty">Quantity: <span class="item-qty">1</span></div>
+											<li class="qty">
+												<div class="qty">Qty: <span class="item-qty">1</span></div>
 											</li>	
 										</ul>
 									</div>
@@ -1259,6 +1274,16 @@
 					
 							</ul>
 						</div><!-- end acc-info -->
+						
+						<div class="mobile-subtotal">
+							<span class="label">
+								Subtotal:
+							</span>
+							<span class="data">
+								$<span id="mobi-subtotal">425.00</span>
+							</span>
+						</div>
+						
 					</div><!-- end sidebar accordion -->
 					
 					<div class="totals">
@@ -1304,16 +1329,6 @@
 								</div>
 							</li><!-- end discount code block -->
 					
-							<li id = "checkout-cart-tax" >
-								<div class="label">
-									Estimated Tax
-								</div>
-								
-								<div class="data">
-									$<span id="tax">24.31</span>
-								</div>
-							</li><!-- end tax -->
-							
 							<li id = "checkout-cart-ship" >
 								<div class="label">
 									Shipping & Handling
@@ -1325,9 +1340,29 @@
 								</div>
 							</li>
 							
+							<li id = "checkout-cart-state-tax" >
+								<div class="label">
+									<span id="state-tax-id">NY</span> State Tax
+								</div>
+								
+								<div class="data">
+									$<span id="state-tax-amt">29.27</span>
+								</div>
+							</li><!-- end tax -->
+							
+							<li id = "checkout-cart-local-tax" >
+								<div class="label">
+									<span id="local-tax-id">NY</span> Local Tax
+								</div>
+								
+								<div class="data">
+									$<span id="local-tax-amt">7.92</span>
+								</div>
+							</li><!-- end tax -->
+							
 							<li id = "checkout-cart-total" >
 								<div class="label">
-									Grand Total
+									Total
 								</div>
 								
 								<div class="data">
@@ -1342,7 +1377,17 @@
 				</div>
 				
 			</div><!-- end sidebar wrap -->
-		</section><!-- end checkout sidebar -->	
+		</section><!-- end checkout sidebar -->
+		
+		<section class="mobile-checkout-finish">
+			<div id="mobile-checkout-offers"></div>
+			<div class="mobile-checkout-total-place">
+				<div id="mobile-checkout-place-cta"></div>
+				<div id="mobile-checkout-totals"></div>
+			</div>
+			<div id="mobile-checkout-disclaimers"></div>
+		</section>
+			
 	</div><!-- end section wrap -->	
 </section><!-- end checkout -->
 
