@@ -63,10 +63,19 @@ if (!$jQ.support.placeholder) {
     });
 }
 
-/*
- * Page Specific Functionality
- */
-
+function toggleNavHelp() {
+    var navHelp = $jQ('#nav-help'),
+    needHelp = navHelp.find('.need-help'),
+    opts = navHelp.find('.help-options-container');
+    if (R.viewportW() < 1024 && R.viewportW() >= 768) {
+        needHelp.on('click', function () {
+            opts.fadeToggle('fast');
+        });
+    } else {
+        needHelp.off('click');
+        opts.attr('style', '');
+    }
+}
 
 /*
  * Enable and Fire Page Specific Functionality
@@ -80,12 +89,13 @@ MLS = {
         init : function () {
             // initialize things that are used on every page
             var win = $jQ(window);
-            $jQ(window).on('resize', function() { // this is for debugging purposes, can be removed when no longer needed
-                debounce(function() {
-                    console.log('Window width: %dpx', win.width());
+            win.on('load, resize', function () { // this is for debugging purposes, can be removed when no longer needed
+                debounce(function () {
+                    toggleNavHelp();
+                    console.log('Window width: %dpx', win.width());// DEBUG FOR MEDIA QUERIES, WILL NOT BE IN FINAL JS
                 }, 300);
+
             });
-            // END - FOR DEBUGGING MEDIA QUERIES, WILL NOT BE IN FINAL JS
             // iniitialize site nav tabs
             MLS.ui.navTabs('#mls-nav');
             MLS.ui.navTabs('#mls-nav-mobile');
