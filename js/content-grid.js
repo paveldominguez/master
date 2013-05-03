@@ -1,6 +1,6 @@
 var contentGrid = {
     init : function () {
-        var $contentGrid = $jQ('#main-column .content-grid').not('.guide-grid'),
+        var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
         $featuredHover = $contentItems.find('.featured-corner');
