@@ -63,10 +63,7 @@ if (!$jQ.support.placeholder) {
     });
 }
 
-function toggleNavHelp() {
-    var navHelp = $jQ('#nav-help'),
-    needHelp = navHelp.find('.need-help'),
-    opts = navHelp.find('.help-options-container');
+function navHelpHandler(needHelp, opts) {
     if (R.viewportW() < 1024 && R.viewportW() >= 768) {
         needHelp.on('click', function () {
             opts.fadeToggle('fast');
@@ -89,26 +86,31 @@ MLS = {
         init : function () {
             // initialize things that are used on every page
             var win = $jQ(window);
-            win.on('load, resize', function () { // this is for debugging purposes, can be removed when no longer needed
-                debounce(function () {
-                    toggleNavHelp();
-                    console.log('Window width: %dpx', win.width());// DEBUG FOR MEDIA QUERIES, WILL NOT BE IN FINAL JS
-                }, 300);
-
-            });
             // iniitialize site nav tabs
             MLS.ui.navTabs('#mls-nav');
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
             MLS.ajax.article.init();
+
+            var navHelp = $jQ('#nav-help'),
+            needHelp = navHelp.find('.need-help'),
+            opts = navHelp.find('.help-options-container');
+            navHelpHandler(needHelp, opts);
+
+            win.on('resize', function () { // this is for debugging purposes, can be removed when no longer needed
+                debounce(function () {
+                    navHelpHandler(needHelp, opts);
+                    console.log('Window width: %dpx', win.width());// DEBUG FOR MEDIA QUERIES, WILL NOT BE IN FINAL JS
+                }, 300);
+            });
         },
         finalize: function () {
             // non priority calls go here, runs after all init functions
         }
     },
     'home-page' : {
-        init : function() {
+        init : function () {
             MLS.home.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
