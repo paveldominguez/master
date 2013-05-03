@@ -195,6 +195,11 @@ MLS = {
         init : function () {
             contentFilter.init();
             MLS.specialOffers.init();
+            contentGrid.init();
+            MLS.ajax.colorPicker.init();
+            contentFilter.init();
+            MLS.ajax.cart.init(document.body);
+
         }
     },
 

@@ -1,4 +1,4 @@
-/* special offers mixins etc (copide from product-listing.scss)  */
+/* special offers mixins etc (copied from product-listing.scss)  */
 
 @mixin add-cart-cta {
     @include border-radius(3px);
@@ -354,6 +354,8 @@
 	}
 
 
+
+
     .special-offers {
         .special-offers-slider {
             .special-offers-slide {
@@ -406,4 +408,75 @@
             }
         }
     }
+
+}
+
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+		.special-offers-landing-page {
+			.bundle-deals {
+				.flex-viewport {
+					margin-right: 0px;
+				}
+				.quick-view-item {
+					width: 100%;
+					float: left;
+				#quick-view-slider-bundle {
+					img {
+						margin: 10% auto 0% auto;
+					}
+				}
+			}
+			.quick-view-details {
+				width: 50%;
+				.column.pricing {
+					width: 50%;
+					float: right;
+					right: 10px;
+					margin-top: 40px;
+					margin-bottom: 20px;
+				}
+				.column.add-cart {
+					width: 50%;
+				}
+			}
+		} 
+	}
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+		.special-offers-landing-page {
+			.bundle-deals {
+				.flex-viewport {
+					margin-right: 0px;
+				}
+				.quick-view-item {
+					width: 100%;
+					float: left;
+				#quick-view-slider-bundle {
+					img {
+						margin: 10% auto 0% auto;
+					}
+				}
+			}
+			.quick-view-details {
+				width: 90%;
+				padding: 0 20px 0 0;
+				.bundle-details {
+					margin-bottom: 20px;
+				}
+				.column.pricing {
+					position: relative;
+					bottom: 0;
+					width: auto !important;
+					float: none;
+				}
+				.column.add-cart {
+					position: relative;
+					width: auto !important;
+				}
+			}
+		} 
+	}
+	
 }
