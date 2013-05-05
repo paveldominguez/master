@@ -1446,7 +1446,307 @@
 					} /* end slider item */
 				} /* end li */
 			} /* end ul.slides */
-		} /* end similar-products-class wrapper
+		} /* end similar-products-class wrapper */
+
+
+
+
+/*---------------  RELATED STORIES SLIDER - SITEWIDE COMMON STYLES------------------- */
+
+.related-wrapper {
+		@include boxBrdrT;
+		@include boxBrdrL;
+		position:relative;
+
+		.tabbed-wrapper { @include clearfix(); }
+			
+		.tab-block { 
+			padding-left:172px;
+			@include clearfix();
+			overflow:hidden; 
+			}
+		
+		.tab-scroll {
+			width:172px;
+			position:absolute;
+			left:0; top:0;
+			
+			dd { 
+				display:block;
+				width:100%;
+				height:172px;
+				color: $cartGreyDk;
+				@include cartBG;
+				@include boxBrdrB;
+				background: $pdpGreyMd;
+					
+				a { 
+					position:relative;
+					display:block;
+					width:100%;
+					height:100%;
+					padding: 20px 0 0 0;
+						
+					h2 {
+						color: $cartGreyMd;
+						font-size:12px;
+						letter-spacing: -0.5px;
+						text-align:center;
+						}
+					
+					.lifestyle-image-box {
+						display: block;
+						width: 72px; height: 72px;
+						margin: 0 auto 20px auto;
+						position: relative;
+						overflow: hidden;
+							
+        			    .lifestyle-icon {
+        			        position: absolute; 
+        			        top: 0; left: 0;	
+        			        }
+        			    }
+					}
+						
+				.pointer { 
+					width: 1px; height:1px;
+					border-left:15px solid $btfHiliteBg;
+					border-top:15px solid transparent;
+					border-bottom:15px solid transparent;
+					position:absolute;
+					left:99%; top:50%;
+					margin-top:-15px;
+					display: none;
+					z-index:10;
+					}
+				
+				} /* end dd tab each */
+			dd.active {
+				background: $btfHiliteBg;
+				a h2, a h2:hover { color:#ffffff; }
+				.pointer { display:block; }
+					
+				.lifestyle-image-box {
+        			.lifestyle-icon {
+        			    top: -135px;	
+        			    }
+					}
+				}
+			} /* end tab scroll */
+		
+		.tabs-content {
+			width:100%;
+			height: 516px;
+			float:left;
+			margin-bottom:0; 
+			@include boxBrdrR;
+				
+			#lifestyles-alphaTab,
+			#lifestyles-betaTab,
+			#lifestyles-gammaTab { display:none; }
+					
+			.active { display:block !important; }
+				
+			.tab-wrapper { position:relative; }
+				
+			.vzn-slide { 
+				@include clearfix();
+					
+				height: 516px;
+				.flex-viewport { height: 516px; }	
+				.slides {
+					height:516px; 
+					
+					.large-story {
+						height:516px;
+						width:516px;
+						padding:0;
+						font-size:0; line-height:0;
+						@include boxBrdrB;
+							
+						.related-stories-large {
+							display:block;
+							width: 94.186%; height:94.186%;
+							margin:0; padding:0;
+							background: url(../img/product-detail-page/pdp-plus/lifestyles-large-1.png) no-repeat;
+							-webkit-background-size: cover !important;
+  							-moz-background-size: cover !important;
+  							background-size: cover !important;
+  							overflow:hidden;
+  							position:relative;
+							
+							.large-story-info-box {
+								width: 50%; height: 50%;
+								background: #fff;
+								position:absolute;
+								bottom:-1px; left: 0;
+								padding:10px 15px;
+										
+								.large-story-cat {
+									font-size:10px; 
+									font-family: $fontArial;
+									text-transform: uppercase;
+									color: $cartGreyMd;
+									margin-bottom:20px;
+									}
+										
+								.large-story-title {
+									font-size:17px;
+									line-height: 23px;
+									width:80%;
+									white-space: normal;
+									letter-spacing: -1px;
+									margin-bottom:15px;
+									color: $cartGreyDk;
+									font-family: $fontVzwBook;
+									font-weight:normal;
+									}
+										
+								.large-story-text {
+									font-size: 12px;
+									line-height: 18px;
+									font-family: $fontArial;
+									margin:0;
+									white-space: normal;
+									color: $cartGreyDk;
+									width:90%;
+									}
+											
+								.large-story-link {
+									width:100px;
+									height:24px;
+									background: url(../img/sprites/pdp/blue-right.png) 75px no-repeat;										
+									position:absolute;
+									bottom:0px; left: 15px;
+											
+									a { display:block;
+										width: 100%; height: 100%;
+										@include actionLink; 
+										line-height:24px;
+										font-size:10px;
+										text-transform:uppercase;
+										}
+									}
+								} /* end info box */
+							.product-reveal { position:absolute;
+									bottom:-1px; right : 0;
+									width:45px; height: 45px;
+									background: url(../img/product-detail-page/pdp-plus/lifestyles-large-reveal-arrow.jpg) no-repeat;
+									cursor:pointer; }	
+								
+							.related-product { 
+								position:absolute; 
+								top:100%;
+								left:100%;
+								height:102%;
+								width:102%;
+									
+								background: #fff url(../img/product-detail-page/pdp-plus/lifestyles-large-related-product-background.jpg) no-repeat;
+								@include slideMedium;	
+								@include clearfix();
+								cursor:pointer;
+									
+								.related-product-title { 
+									display:block;
+									float:right;
+									width:70%;
+									text-align:left; 
+									padding:0 20px 0 0;
+									margin:12.5% 0px 30px 0;
+									letter-spacing:-1px;
+									font-size:18px; 
+									line-height:23px;
+									white-space: normal;
+									font-family: $fontVzwBook;
+									font-weight:normal;
+									}
+									
+								a { display:block;
+									float:right;
+									width:75%; height: auto;
+									padding:0 0px 60px 0;
+									position:relative;
+									cursor:pointer;
+									z-index:10;
+										
+									img { 
+										display:block !important;
+										width:75%; height:auto;
+										height:auto;
+										margin:0 auto 0 auto; 
+										}
+									
+									.related-product-cta {
+										@include actionLink;
+										text-transform: uppercase;
+										font-size: 10px;
+										height:24px;
+										width: 100%;
+										line-height:24px;
+										position: absolute;
+										bottom:0;
+										left: 25px;
+										background:url(../img/sprites/pdp/blue-right.png) 270px 8px no-repeat;
+										}
+ 									} /* end enclosing a */
+								 }/* end related product */
+							} /* end related story */
+						} /* end large-story container */
+							
+					.large-story:nth-of-type(1) { border-left:0px; }
+					
+					.small-story { 
+						max-width: 258px;
+						height:258px;
+						padding:15px; 
+						margin-bottom:258px;
+						@include boxBrdrR;
+						@include boxBrdrL;
+						@include boxBrdrB; 
+							
+						.related-stories-small {
+							
+							.image { 
+								display:block;
+								width:226px;
+								height:auto; 
+								padding:0; margin:0; 
+								}
+							.teaser { 
+								font-size:17px;
+								line-height:23px;
+								white-space:normal;
+								letter-spacing: -1px;
+								}
+							.read-story {
+								width: 100%;
+								position: absolute;
+								bottom:15px;
+								background: url(../img/sprites/pdp/blue-right.png) 72px 10px no-repeat; 
+								height: 24px; 
+								a {
+									@include actionLink;
+									text-transform: uppercase;
+									font-size:10px;
+									}
+								}			
+							} /* end related story */
+						} /* end small container */
+						
+					
+						
+													
+					} /* end slides */		
+				} /* end vzn slide */
+
+			} /* end tabs content ul */
+		} /* end related wrapper */
+
+
+
+
+
+
 
 
 
