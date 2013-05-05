@@ -3,7 +3,7 @@ var productDetail = (function() {
 var pub = {
     init : function() {
 
-// ONLOAD ............................................................................
+// ONLOAD : common, hero & zoom ..............................................................
 
 	$jQ(".product-detail select").uniform(); // make selects pretty ...................
 	
@@ -63,10 +63,51 @@ var pub = {
     });
      
      
-	$jQ('.tabs dd a').click(function(){ // activate tabs 
-		pdpTab(this);
-	});
-      
+     
+     
+     
+     
+     
+  // ONLOAD : below the fold .............................................................  
+     
+    $jQ('#pdp-similar-products-module').flexslider({  // similar products slider install......
+        animation: 'slide',
+        controlsContainer: '#pdp-similar-products-module .slide-nav',
+        animationLoop: false,
+        controlNav: false,
+        directionNav: true,
+        slideshow: false,
+        animationSpeed: 500,
+        itemWidth: 215
+    });
+    
+
+    $jQ('#pdp-others-bought-module').flexslider({  // lifestyle products slider install ......
+        animation: 'slide',
+        controlsContainer: '#pdp-others-bought-module .slide-nav',
+        animationLoop: false,
+        controlNav: false,
+        directionNav: true,
+        slideshow: false,
+        animationSpeed: 500,
+        itemWidth: $jQ(window).outerWidth() * 0.85
+    });
+    
+    
+    $jQ(window).resize(function () {
+        $jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
+        
+    });
+
+
+
+
+
+
+
+
+
+
 
 
 // HERO & ZOOM CLICKS .....................................................................................
@@ -104,7 +145,9 @@ var pub = {
 
 // BELOW THE FOLD CLICKS .....................................................................................
 
-  
+  	$jQ('.tabs dd a').click(function(){ // activate tabs 
+		pdpTab(this);
+	});
 
 
 

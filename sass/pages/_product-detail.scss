@@ -944,14 +944,11 @@
 					} /* end tabs content */
 				} /* end tab block */
 			} /* end tabbed wrapper : section specific styles */
+
 	
+	/* ------ COMMON PRODUCT DETAILS STYLES-------- */
 	
-	
-	
-	
-	/* ------ COMMON TAB STYLES-------- */
-	
-		.tabbed-wrapper {
+		.tabbed-wrapper { /* tab styles */
 			@include clearfix();
 			width:100%;
 			dd {
@@ -1008,6 +1005,7 @@
 
 
 	#similar-products { /*---------------  SIMILAR PRODUCTS ------------------- */
+		/* global styles for this slider at bottom of this doc */
 		} /* end similar products */
 
 
@@ -1018,7 +1016,9 @@
 
 
 	#others-bought { /*------------------ OTHERS BOUGHT --------------- */
-		} /* end product details */
+	
+			
+		} /* end others bought  */
 	
 	
 	
@@ -1043,6 +1043,17 @@
 				}/* end zoom block */
 			}/* end pdp hero */
 	
+		#similar-products {
+			.similar-products-module {
+				ul.slides { 
+					li { width: 20%; }
+					}
+				}
+			} /* end similar product section */
+	
+	
+	
+	
 		}/* end 1280 & up */
 
 
@@ -1056,19 +1067,52 @@
 				width: 30%;
 				}
 			}/* end pdp hero */
+			
+		
+			
+			
+			
 		} /* end 1132 and up */
 
 
-	@media only screen and (min-width: 959px) and (max-width: 131px ) { /* 960 - 1131 */
+	@media only screen and (min-width: 959px) and (max-width: 1131px ) { /* 960 - 1131 */
 		#pdp-hero { 
 			#carousel-block {
 				width: 66.666%;
 				}
 			#cart-block {
 				width: 33.333%;
-				}
+				}	
 			}/* end pdp hero */
 		} /* end 960 - 1131 */
+		
+		
+		
+		
+	@media only screen and (max-width: 1080px ) { /* below 1080 */
+	
+		#similar-products {
+			.similar-products-module {
+				ul.slides { 
+					li {
+						.simple-slider-item {
+							.simple-image { width:100%; }
+							}
+						}
+					}
+				}
+			} /* end similar products section */	
+			
+	
+	} /* END below 1080 */
+		
+		
+		
+		
+		
+		
+		
+		
 
 
 	@media only screen and (max-width: 959px ) { /* below 959 */
@@ -1105,8 +1149,14 @@
 						}/* end zoom-focus */	
 					}
 				}/* end zoom block */
-				
-			}/* end pdp hero */
+			}/* end pdp hero */	
+			
+
+			
+			
+			
+			
+			
 		} /* end below 959 */
 
 
@@ -1139,6 +1189,15 @@
 				}/* end zoom block */
 				
 			}/* end pdp hero */
+			
+		
+			
+			
+			
+			
+			
+			
+			
 		} /* end below 850 - hero-slider only */
 
 
@@ -1314,7 +1373,90 @@
 
 
 
-/* ========================================= TEMP CSS for DEMO pages ===================== */
+
+/*---------------  SIMILAR PRODUCTS SLIDER - SITEWIDE COMMON STYLES------------------- */
+	.similar-products-module.category-section {
+		width: 83.333%;
+		margin: 0 auto 0 auto;
+
+		.content-header { padding-left: 0px; }
+		.flex-viewport { 
+			@include boxBrdrR;
+			@include boxBrdrT;
+			@include boxBrdrB; 
+			}
+		ul.slides { 
+			margin: 0 auto 0 auto;
+			overflow:hidden;
+			height:215px;
+
+			li {
+				display: inline-block; float: left;
+				max-width: 215px;
+				min-width: 215px; 
+				height: 215px; 
+
+				.simple-slider-item {
+					@include boxBrdrL;
+					padding:0 10% 0 10%;
+					width:100%; height: 100%;
+					position:relative;
+
+					.simple-image {
+						width:75%; /* for full width, change with media query to 100% below 1280 */
+						margin: auto;	
+						img {
+							width:100%;
+							height:auto;
+							}
+						} /* end simple-image */
+					.product-title {
+						width:80%;
+						font-family: $fontArial;
+						font-size:12px;
+						color: $cartGreyLt;
+						font-weight: normal;
+						white-space: nowrap;
+						margin: 0px;
+						overflow: hidden;
+						position: absolute;
+						bottom: 15%; left: 10%;
+						} /* end h3 */
+
+					.simple-price {
+						font-family: $fontArial;
+						font-size:12px;
+						color: $cartGreyDk;
+						font-weight: bold;
+						position: absolute;
+						bottom:5%; left: 10%;
+						} /* end price */
+
+					.simple-ratings {
+						width:25%;
+						position:absolute;
+						bottom:5%; right: 10%;
+
+						img {
+							width:100%;
+							height: auto;
+							}
+						}/* end ratings */
+
+					} /* end slider item */
+				} /* end li */
+			} /* end ul.slides */
+		} /* end similar-products-class wrapper
+
+
+
+
+
+
+
+
+
+/* ========================================= TEMP / EXAMPLE CSS for DEMO pages ===================== */
 
 .product-detail.DEMO-sale {
 	.offer { display: inline-block !important; }
