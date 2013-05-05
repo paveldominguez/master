@@ -5,6 +5,7 @@ $colorLifestyleLight: #DCDEDE;
     .content-grid {
         margin: 0;
     }
+    #main-column { margin-left: 0; }
     .guided-nav {
         @include box-shadow(3px 3px 11px rgba(50, 50, 50, 0.65));
         background-color: #FFF;
