@@ -490,7 +490,7 @@ $colorNavGridText: #333333;
         }
     }
 }
-@media only screen and (max-width: $screenSmall) {
+@media only screen and (max-width: $screenSmall - 1) {
     #site-header {
         .left { float: left; }
         .right { float: right; }
