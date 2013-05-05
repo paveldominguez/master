@@ -49,7 +49,7 @@ html {
                             .content-item {
                                 padding: 0;
                                 border: none;                          
-                                .content-item-wrap{
+                                .content-item-wrap {
                                     padding: 15px;
                                     border: 1px solid $colorBdrGray;
                                     border-width: 0 0 1px 1px;
@@ -82,7 +82,19 @@ html {
                     }
                 }
             }  
-        }      
+        } 
+        #grid-pop-out {
+            .details {
+                .quick-view {
+                    margin: 0;
+                    padding: 20px 0px 0 0;
+                }
+                .add-cart {
+                    margin: 0;
+                    padding: 0;
+                }
+            }    
+        }     
     }
 }
 
@@ -154,5 +166,5 @@ html {
                 }
             }
         }
-    }    
+    }
 }
