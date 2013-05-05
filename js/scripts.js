@@ -195,12 +195,13 @@ MLS = {
             MLS.specialOffers.init();
         }
     },
-    '404-page' : {
+    'fourofour-page' : {
         init : function() {
             MLS.page404.init();
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
         }
-    },    
+    }
   
 };
 
