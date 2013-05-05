@@ -192,12 +192,18 @@ MLS = {
     //     }
     // },
     'special-offers-landing-page' : {
-        init : function () {
+        init : function() {
             contentFilter.init();
             MLS.specialOffers.init();
         }
     },
-
+    '404-page' : {
+        init : function() {
+            MLS.page404.init();
+            contentGrid.init();
+        }
+    },    
+  
 };
 
 
