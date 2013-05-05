@@ -33,6 +33,9 @@ MLS.home = {
 			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
 		});
 
+        contentGrid.init();
+        MLS.ajax.colorPicker.init();
+
 	},
 	featuredReviews: function () {
 		//select random color for each item entry
