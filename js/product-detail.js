@@ -1,215 +1,338 @@
 var productDetail = (function() {
 
-    var pub = {
-        init : function() {
+var pub = {
+    init : function() {
 
+// ONLOAD ............................................................................
+
+	$jQ(".product-detail select").uniform(); // make selects pretty ...................
+	
+	var prepSmall = new pdpMobileContent(); // create mobile elements
+	
+	var pgWidth = document.body.clientWidth;
+	var heroThumbs = window.document.getElementById('thumbs');
+    var zoomThumbs = window.document.getElementById('zoom-thumbs');
+    	
+    $jQ(heroThumbs).flexslider({ // hero : flexslider install ........................
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        itemWidth: 45,
+        itemMargin: 10,
+        asNavFor: '#focus'
+    });
+
+    $jQ('#focus').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        sync: "#thumbs"
+    });
+     
+   	
+    $jQ(zoomThumbs).flexslider({ // zoom : flexslider install .......................
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        itemWidth: 45,
+        itemMargin: 10,
+        asNavFor: '#zoom-focus'
+    });
+
+    $jQ('#zoom-focus').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        sync: "#zoom-thumbs"
+    });
+     
+    var heroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider 
+    var zoomThumbDisplay = new thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
+     
+     
+    $jQ('.pdp-banner-shipping').each(function(){ // set dropdown display actions for offer banners
+     	MLS.ui.dropdownDisplay(this);
+    });
+     
+	$jQ('.pdp-cart-shipping-item').each(function(){ // set dropdown display actions for shipping offers
+     	MLS.ui.dropdownDisplay(this);
+    });
+     
+     
+	$jQ('.tabs dd a').click(function(){ // activate tabs 
+		pdpTab(this);
+	});
+      
+
+
+// HERO & ZOOM CLICKS .....................................................................................
+
+    $jQ('#view-scale, #carousel-zoom, #view-360, #toggle-scale, #toggle-view-360').on('click', function(){ // create contextual zoom panels 
+    	var which = $jQ(this).attr('id');
+    	var thisPanel = new createZoomPanel(which);
+    }); 
+	
+	$jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options 
+        // panel itself already exists if this is clicked
+    }); 
+
+	$jQ(' ').click(function(e){ // cart header reviews click to tab
+     	e.preventDefault();
+       	alert('click to tab, coming soon');
+     });
+     
+    $jQ(' ').click(function(e){ // cart compatibility, click to tab
+     	e.preventDefault();
+     	alert('click to tab, coming soon');
+     });
+        	
+     $jQ(' ').click(function(e){ // cart size select, custom select
+     	e.preventDefault();
+     	alert('slide in size selector, coming soon');
+     });    
+	
+	$jQ(' ').click(function(e){ // cart color select, custom select
+     	e.preventDefault();
+     	alert('slide in color selector, coming soon');
+     });
+
+
+
+// BELOW THE FOLD CLICKS .....................................................................................
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RESIZING ...................................................................................
+
+	$jQ(window).resize(function(){
+		var pgWidth = document.body.clientWidth;
+		var heroThumbs = window.document.getElementById('thumbs');
+    	var zoomThumbs = window.document.getElementById('zoom-thumbs');
 		
-// ONLOAD for js: universal vars for contextual/dynamic layouts
-        var pgWidth = document.body.clientWidth;
-        var pdpType = $jQ('body').attr('id');
-        var hero = document.getElementById('pdp-hero');
-        var heroThumbs = window.document.getElementById('thumbs');
-        var heroFocus = window.document.getElementById('focus');
-        var heroCart = window.document.getElementById('cart-block');
-        var heroCrsl = window.document.getElementById('carousel-block');
-        var zoomBtn = window.document.getElementById('carousel-zoom');
-        var zoomBlock = window.document.getElementById('zoom-block');
+		var resizeHeroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider 
+    	var resizeZoomThumbDisplay = new thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
+	
+	});
+
+
+
+
+	
+//  OBJECTS ....................................................................................
+    
+    function pdpMobileContent() { // copies loaded data into mobile only elements
+    	$jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header');
+    	$jQ('.pdp-cart-shipping').clone().appendTo('#pdp-mobile-form-shipping');
+    	
+    	//var deskForm = document.getElementById('pdp-add-to-cart');
+    	var deskForm = $jQ('#pdp-add-to-cart');
+    	deskForm.find('.size-select-box').clone().appendTo('#pdp-mobile-form-size');
+    	deskForm.find('.color-select-box').clone().appendTo('#pdp-mobile-form-color');
+    	deskForm.find('.price-block').clone().appendTo('#pdp-mobile-form-price');
+    	deskForm.find('.add-cart-box').clone().appendTo('#pdp-mobile-form-submit');
+    
+    	
+    	} // end pdpMobileContent
+    
+    function thumbDisplay(parent, context) { // ........carousel thumbs ..........
+    	// do the math and store as data
+    		var countThmb = $jQ(parent).find('.slides').find('li').length;
+        	var thmbWd = (countThmb * 55);
+        	var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
+        	var thmbMgnLft = (totalWd / -2);
+        	$jQ(parent).css('width', totalWd + 'px').attr('data-center', thmbMgnLft );
+
+        // only apply in desktop presentation
+            if ( context > 959 ) {
+            	$jQ(parent).css({
+            		'left': '50%',
+            		'right': 'auto',
+            		'margin-left': thmbMgnLft +'px'
+            	});
+            } else {
+            	$jQ(parent).css({
+            		'left': 'auto',
+            		'right': '15px',
+            		'margin-left': '0px',
+            	});
+            }
+    	}// end thumbDisplay
+    	
+  
+    	
+    function createZoomPanel(which) { // ..... create zoom panel ..........
+    
+		var zoomBlock = window.document.getElementById('zoom-block');
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
         var zoomFocus = window.document.getElementById('zoom-focus');
         var zoomSlides = window.document.getElementById('zoom-slides');
-        var zoomThmbs = window.document.getElementById('zoom-thumbs');
-        var zoomClrs = window.document.getElementById('zoom-color-select');
-        var zoomClose = window.document.getElementById('zoom-close');
+        var pgWd = document.body.clientWidth;
+        var pgHt = document.body.clientHeight;
+		
+    	// create panel width & offset to match current dimensions
+        	var hSize = (pgWd + 15); //scroll bar width in Chrome, generate dynamically
+        	var hOffset = (hSize * -1);
+
+    	// new var for contextual layout differences
+        	var crslWd = hSize;  // landscape
+        	var lstOff = 0;    // landscape
+
+        	if ( pgHt >= pgWd ) { crslWd = pgWd; } // limit slide width and increment to screen width if portrait
+
+    	// set element dimensions & starting positions
+       		$jQ(zoomBlock).css({ 'left': hOffset + 'px' }).attr('data-h-return', hOffset);  //block
 
 
-
-// ONLOAD hero : flexslider install ..........................................................
-
-        $jQ(heroThumbs).flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: true,
-            slideshow: false,
-            itemWidth: 45,
-            itemMargin: 10,
-            asNavFor: '#focus'
-        });
-
-        $jQ(heroFocus).flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: true,
-            slideshow: false,
-            sync: "#thumbs"
-        });
-        
-        
-        // handle extras for pdp-plus absolute positioned expanded images
-        	if ( pdpType == 'pdp-plus' ) {
-        		setTimeout(function(){
-        			$jQ(heroFocus).find('li').each(function(){
-        				var liWd = $jQ(this).width();
-        				$jQ(this).css('height', liWd);
-        				$jQ(this).find('img').each(function(){
-        				
-        					if ( pgWidth >767 && pgWidth < 960 ) { 
-        						var xCrd = $jQ(this).attr('data-portrait-x');
-        						var yCrd = $jQ(this).attr('data-portrait-y');
-        					
-        					
-        					} else if ( pgWidth > 959 ) {     				
-        						var xCrd = $jQ(this).attr('data-xcoord');
-        						var yCrd = $jQ(this).attr('data-ycoord');
-        					} // else TEMP ignore coords for 320 layout
-        					
-        					if ( pgWidth > 1279 ) { 
-        						var parsedY = parseInt(yCrd, 10);
-        						yCrd = parsedY + 75; 
-        					} // build out this logic with more example photography
-        				
-        					$jQ(this).css({
-        						'right' : xCrd + 'px',
-        						'bottom' : yCrd + 'px'
-        					});
-        				}); // find img
-        			}); // find li
-        		}, 200 );
-        	} // end pdp type
-        
-		// make zoom panel vzn-slide instead
-        	$jQ(zoomFocus).removeClass('flexslider').addClass('vzn-slide');
-
-
-
-
-// ONLOAD hero : responsive layout adjustments........................................
-
-        // hero onload : force hero layout > 960+
-            if (pgWidth > 959) {
-                setTimeout(function() {
-                    var heroHt = $jQ(heroCrsl).height();
-                    //alert(heroHt);
-                    heroCart.style.height = heroHt + 'px';
-
-
-                }, 200);
-            } // end if
-
-    	
-
-        // hero onload : set hero nav width & store margin for centering > 768+
-                var countThmb = $jQ('#thumbs .slides').find('li').length;
-                var thmbWd = (countThmb * 55);
-                var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
-                var thmbMgnLft = (totalWd / -2);
-                heroThumbs.style.width = totalWd + 'px';
-                $jQ(heroThumbs).attr('data-center', thmbMgnLft );
-
-
-        // hero onload : center carousel thumbs
-            if ( pgWidth > 959 ) {
-                var cntrThmb = $jQ(heroThumbs).attr('data-center');
-                heroThumbs.style.marginLeft = cntrThmb + 'px';
-            }
-
-// ONLOAD hero : preload zoom panel components ...............................................
-    preloadZoom(zoomBlock);
-
-
-// ONLOAD both : make form elements pretty...................................................
-    $jQ("select").uniform();
-
-
-
-// ONLOAD both : install vzn-sliders .........................................................
-
-    // find each instance of 'vzn-slide' & apply class/functions
-    	$jQ('.vzn-slide').each(function(){
-    	
-    		
-        	element = $jQ(this);
-        	instance =  $jQ(this).attr('id');
-        	increment = $jQ(this).find('li:first').width();
-			
-        	if ( instance.indexOf('simple') > -1 ) {
-            	$jQ(this).addClass('simple');
-            	var type = 'simple';
-            	vznSlideInstall(element,type, increment);
-        	} else if ( instance.indexOf('fancy') > -1 ) {
-            	$jQ(this).addClass('fancy');
-            	var type = 'fancy';
-            	vznSlideInstall(element,type, increment);
-        	}  else if ( instance.indexOf('lifestyles') > -1 ) {
-            	$jQ(this).addClass('lifestyles');
-            	var type = 'lifestyles';
-            	vznSlideInstall(element,type, increment);
-        	} else if ( instance.indexOf('zoom') > -1 ) {
-        		// skip this
-        	}
-        	
-        	
-    	});
-
-
-	// vzn-slide 'others also bought' : layout
-			var fncyList = $jQ('.fancy').find('.slides');
-			
-			$jQ(fncyList).each(function() {
-				var increment = $jQ(this).find('li:first').width();
-				$jQ(this).find('li').each(function(index, element) {
-					fancyPosition(element, index, increment);
-				});
-			});	
-	
-
-	// vzn-slide 'pdp lifestyles' : layout
-			if ( pdpType == "pdp-plus" ) {
-			 	var lsList = $jQ('#lifestyles').find('.slides');
-			 	
-			 	$jQ(lsList).each(function(){
-			 		var increment = $jQ(this).find('li:first').width();
-			 		$jQ(this).find('li').each(function(index, element) {	
-			 			lifestylePosition(element, index, increment);
-			 		});
-			 	}); // end each list 
-			} // end 'if pdp plus' : lifestyles vzn-slide
-			
+		// select context 
+			if(which == undefined || which == "carousel-zoom"){
+				// do nothing extra
+			} else if(which == "view-scale"){
+				$jQ(zoomBlock).find("#zoom-scale-content").toggle(); 
+				$jQ(zoomFocus).toggleClass('hide-slides');
+			} else if(which == "view-360"){
+				$jQ(zoomBlock).find("#zoom-view-360-content").toggle();
+				$jQ(zoomFocus).toggleClass('hide-slides'); 
+			} else if(which == "toggle-scale"){
+				$jQ(zoomBlock).find("#zoom-scale-content").toggle(); 
+				$jQ(zoomFocus).toggleClass('hide-slides');
+				return false; // panel already exists
+			} else if(which == "toggle-view-360"){
+				$jQ(zoomBlock).find("#zoom-view-360-content").toggle(); 
+				$jQ(zoomFocus).toggleClass('hide-slides');
+				return false; //panel already exists
+			}
 		
 			
-	// vzn-slide nav button : "on" .......................
-        $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
-        	// create modifier for lifestyles slider based on actual number of items
-        	if ($jQ(this).siblings('.vzn-slide').hasClass('lifestyles')) {
-        		//alert('yes');
-        		var lstLngth = $jQ(this).siblings('.vzn-slide').find('.slides').attr('data-length');
-        		var thisIncr = $jQ(this).attr('data-incr');
-        		var endMod = lstLngth/thisIncr;
-        		//alert(lstLngth); alert(thisIncr);
+        MLS.ui.hSlide(zoomBlock, hSize); // slide in panel
+		setTimeout(function() { // hide vertical scroll after
+                $jQ('html, body').addClass('body-zoom');
+            }, 750);
+
+       	setTimeout(function() {  // fade in controls
+                $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls, .vzn-slide-prev, .vzn-slide-next').fadeIn('slow');
+            }, 500);
+ 		$jQ('#zoom-close').click(closeZoomPanel); // close zoom panel
+ 		} // end create zoom panel
+
+
+    function closeZoomPanel() { // .................. zoom panel 'close'.................
+		var zoomBlock = window.document.getElementById('zoom-block');
+        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
+        var zoomFocus = window.document.getElementById('zoom-focus');
+        var currentSld =  window.document.getElementById('current-zoom-slide');
         
-        	} else {
-        	
-        		var endMod = 0;
-        	
-        	}
-        	
-        	
-            vznSlideButtons(this, endMod);
-        });
+    	setTimeout(function() { // fade out controls
+            $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeOut('slow');
+        }, 250);
 
-    // vzn-slide nav button : "off"
-        $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function(){
-            return false;
-        });
+    	$jQ('html, body').removeClass('body-zoom'); //restore vertical scroll
+
+    	var sldReturn = $jQ(zoomBlock).attr('data-h-return'); // slide out panel
+        MLS.ui.hSlide(zoomBlock, sldReturn);
+
+		setTimeout(function(){ // restore current image if required & close xtra states
+    		if ($jQ(currentSld).hasClass('zoomed')) {
+    			var currentWin = $jQ(zoomCrsl).height();
+            	smallerView(currentSld, currentWin);
+    			}
+    			$jQ('.zoom-content').css('display','none');
+    			$jQ(zoomFocus).removeClass('hide-slides');
+    		}, 500);
+    	
+        	$jQ(window).trigger('resize'); //snap
+		} // end set closeZoomPanel	
+    	
+
+
+	function vznActiveTabs(element) { //..............vzn-active tabs ............
+    	$jQ(element).parent().siblings().find('.vzn-active').css('width','0px');
+    	$jQ(element).parent().find('.vzn-active').css('width', '100%');
+		} // end active tab animation
+
+
+	function pdpTab(href) { // ............. product details tab function .........
+		
+		$jQ(href).parents('.tabs').children().removeClass('active'); //remove active class from all tabs
+		$jQ(href).parent().addClass('active'); //apply it to (this) clicked tab
+
+		// get tab content target name
+			var rawName = $jQ(href).attr('href');
+			var tabName = rawName.substring(1);
+			var contentName = (tabName + 'Tab');
+		
+		// remove active class from all tab content, find the right one and reapply
+			contentList = $jQ(href).parents('.tab-block').find('.tabs-content');
+			$jQ(contentList).children().removeClass('active').each(function(){
+				var thisID = $jQ(this).attr('id');
+				if ( thisID == contentName ) {
+					$jQ(this).addClass('active');
+					return false;
+				}
+			});
+		} // end tab function
 
 
 
 
 
-// ONLOAD below the fold : install custom tab function :P ....................................
 
-	$jQ('.tabs dd a').click(function(){
-		pdpTab(this);
-	});
+// ........................... END OBJECTS ..............................................
+
+
+
+        
+    } // end init
+}; // end pub var
+return pub;
+}());
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
 	
 
 
@@ -360,11 +483,6 @@ var productDetail = (function() {
 
 
 
-    // create contextual zoom panel ..........................
-        $jQ(zoomBtn).click(function () {
-            createZoomPanel();
-           
-        }); // create zoom panel
 
 
 	// special offers pop-ups in cart
@@ -721,7 +839,7 @@ var productDetail = (function() {
 		
 /* ====================================================================================
 ============================= PDP+ 320 REMODEL ========================================
-======================================================================================= */
+======================================================================================= 
 
 if ( pdpType == "pdp-plus" && pgWidth < 768) {	
 		
@@ -785,102 +903,12 @@ if ( pdpType == "pdp-plus" && pgWidth < 768) {
 
 /* ===================================================================================
 =============================== DEFINE FUNCTIONS =====================================
-==================================================================================== */
+==================================================================================== 
 
 
 
 
-function vznActiveThumbs(element) { //....................... vzn-active thumbs ..........
-    $jQ(element).siblings().find('.vzn-active').css('width','0px');
-    $jQ(element).find('.vzn-active').css('width', '100%');
-}
 
-
-function vznActiveTabs(element) { //......................... vzn-active tabs ............
-    $jQ(element).parent().siblings().find('.vzn-active').css('width','0px');
-    $jQ(element).parent().find('.vzn-active').css('width', '100%');
-}
-
-
-
-function preloadZoom(zmBlk) { //........................ preload zoom components .......
-    // create anchor bar
-        $jQ('.anchor-bar').clone().appendTo(zmBlk); //clone & insert current anchor bar
-        $jQ('#zoom-block .anchor-bar').css({
-            'top': '0px',
-            'display': 'block',
-            'position': 'absolute'
-        }).removeAttr('id');
-
-	// create zoom thumb nav
-		$jQ('<div id="vzn-zoom-thumbs"><ul id="zoom-thumb-list"></ul></div>').appendTo('#zoom-carousel-block');
-
-		$jQ('#zoom-slides').find('li').each(function(index){ // create items
-			var count = index + 1;// edit zero-based count
-			var thumbURL = $jQ(this).attr('data-thumb'); // get thumb
-			$jQ('<li><img src="' + thumbURL + '"></li>').appendTo('#zoom-thumb-list').addClass('' + count + '');
-			$jQ(this).addClass('' + count + '');
-	
-		});  // end loop of product images
-
-		
-	
-	// now edit the list	
-		var itemCount = parseInt($jQ('#zoom-thumb-list').find('li:last').attr('class'), 10);
-		var listWidth = (itemCount * 55) - 10 ;
-		var listMargin = listWidth / -2;
-    
-    	$jQ('#vzn-zoom-thumbs').css({
-    		'width' : listWidth + 'px',
-    		'margin-left' : listMargin + 'px'
-    	});
-    	
-   	// insert thumb animation element			
-   		$jQ('<div class="vzn-active"></div>').appendTo('#zoom-thumb-list li'); 
-    
-    
-    // active thumb animation & slider congruence..............................
-        $jQ('#vzn-zoom-thumbs').find('li').click(function(){
-        	vznThumbNav(this);
-            vznActiveThumbs(this);
-        });
-
-	// set up first item in list
-		$jQ('#zoom-thumb-list').find('li:first').addClass('active');
-
-
-} // end preload zoom
-
-
-
-
-function pdpTab(href) { // ...................... custom tab function ...................
-	
-	//remove active class from all tabs
-		$jQ(href).parents('.tabs').children().removeClass('active');
-	
-	//apply it to (this) clicked tab
-		$jQ(href).parent().addClass('active');
-
-
-	// get tab content target name
-		var rawName = $jQ(href).attr('href');
-		var tabName = rawName.substring(1);
-		var contentName = (tabName + 'Tab');
-		
-	
-	// remove active class from all tab content, find the right one and reapply
-		contentList = $jQ(href).parents('.tab-block').find('.tabs-content');
-		$jQ(contentList).children().removeClass('active').each(function(){
-			var thisID = $jQ(this).attr('id');
-			if ( thisID == contentName ) {
-				$jQ(this).addClass('active');
-				return false;
-			}
-		
-		});
-
-} // end tab function
 
 
 
@@ -1050,130 +1078,6 @@ function singleMoreLess(element) { //................. install single moreLess .
 
 
 
-function createZoomPanel() { // ............................ create zoom panel ..........
-	//alert('yes');
-    // reselect these
-        var zoomBlock = window.document.getElementById('zoom-block');
-        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
-        var zoomFocus = window.document.getElementById('zoom-focus');
-        var zoomSlides = window.document.getElementById('zoom-slides');
-
-    // get current page dimensions
-        var pgWd = document.body.clientWidth;
-        var pgHt = document.body.clientHeight;
-		
-
-    // create panel width & offset to match current dimensions
-        var hSize = (pgWd + 15); //scroll bar width in Chrome, generate dynamically
-        var hOffset = (hSize * -1);
-
-    // new var for contextual layout differences
-        var crslWd = hSize;  // landscape
-        var lstOff = 0;    // landscape
-
-    // // limit slide width and increment to screen width if portrait
-        if ( pgHt >= pgWd ) { crslWd = pgWd; } 
-
-    // set element dimensions & starting positions
-        //block
-        $jQ(zoomBlock).css({ 'left': hOffset + 'px' }).attr('data-h-return', hOffset);
-
-
-        //slide
-        $jQ(zoomSlides).find('li').css({
-            'width' : crslWd + 'px',
-            'height': pgHt + 'px' });
-            
-        // set 'current' on first slide
-        $jQ(zoomSlides).find('li:first').attr('id', 'current-zoom-slide');
-
-
-        // slide image
-        $jQ(zoomSlides).find('li').find('img').each(function(){
-            var imgHt = $jQ(this).height();
-            var imgMgn = (imgHt / -2);
-            this.style.marginTop = imgMgn + 'px';
-            this.style.marginLeft = imgMgn + 'px';
-        });
-
-
-		// slide list
-		var ulMgnTop = $jQ(zoomSlides).find('li:first').height() / -2;
-		
-		
-		
-		
-        $jQ(zoomSlides).css({
-            'left' : lstOff + 'px',
-            'top': '50%',
-            'margin-top' : ulMgnTop + 'px',
-            
-            
-             });
-
-
-		// extra mods for portrait
-        if ( pgHt >= pgWd ) {
-            $jQ(zoomSlides).find('li').find('img').css({  // increase image size
-            	'width' : '100%',
-            	'margin-left' : '-50%',
-            	'margin-top' : '-50%'
-            });
-        } // end if portrait
-
-
-
-
-		// install vzn-slide
-			var type = 'zoom';
-			$jQ(zoomFocus).addClass('zoom');    	
-			vznSlideInstall(zoomFocus, type, crslWd);
-
-		// activate next,prev buttons
-		 $jQ(zoomBlock).find('.vzn-slide-prev, .vzn-slide-next').click(function() {
-        	var endMod = 0;
-            vznSlideButtons(this, endMod);
-        });
-
-    	// set off state
-         $jQ(zoomBlock).find('.vzn-slide-prev, .vzn-slide-next').click(function() {
-            return false;
-        });
-
-
-        // slide in panel
-            hSlide(zoomBlock, hSize);
-
-
-        // hide vertical scroll after
-            setTimeout(function() {
-                $jQ('html, body').addClass('body-zoom');
-            }, 750);
-
-        // fade in controls
-            setTimeout(function() {
-                $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls, .vzn-slide-prev, .vzn-slide-next').fadeIn('slow');
-            }, 500);
-
-        // ONCLICK : 'bigger' click on fixed button & initial current slide
-            $jQ('#zoom-controls .bigger, #current-zoom-slide').click(function(){ 
-                var currentSld = window.document.getElementById('current-zoom-slide');
-                biggerView(currentSld);
-            });
-
-
-        // ONCLICK : 'smaller'
-            $jQ('#zoom-controls .smaller').click(function(){
-            	var currentSld = window.document.getElementById('current-zoom-slide');
-            	var currentWin = $jQ(zoomCrsl).height();
-                smallerView(currentSld, currentWin);
-            });
-
-        // ONCLICK : 'close'
-            $jQ(zoomClose).click(closeZoomPanel);
-
-
- } // end create zoom panel
 
 
 
@@ -1671,15 +1575,7 @@ function getMulti(type) { //........ responsive multipliers for vznSlide .......
 
 
 
-function hSlide(element,hValue) { //....... horiz move only .............
-    $jQ(element).css({
-        '-webkit-transform': 'translate3d(' + hValue + 'px, 0, 0)',
-  		'-moz-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
-  		'-ms-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
- 		'-o-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
-  		'transform' : 'translate3d(' + hValue + 'px, 0, 0)'
-  	}); // end css
-} // end hSlide function
+
 
 
 function zSlide(element,hValue, vValue) { //....... horiz/vert move .............
@@ -2142,14 +2038,228 @@ $jQ('.temp-wrap h2').text(tempProdName);
 
 
 
-        }
-    };
-    return pub;
-}());
 
 
 
+/*
+// ONLOAD for js: universal vars for contextual/dynamic layouts
+         
+        var pdpType = $jQ('body').attr('id'); 
+        var hero = document.getElementById('pdp-hero');
+        var heroThumbs = window.document.getElementById('thumbs');
+        var heroFocus = window.document.getElementById('focus');
+        var heroCart = window.document.getElementById('cart-block');
+        var heroCrsl = window.document.getElementById('carousel-block');
+        var zoomBtn = window.document.getElementById('carousel-zoom');
+        var zoomBlock = window.document.getElementById('zoom-block');
+        var zoomCrsl = window.document.getElementById('zoom-carousel-block');
+        var zoomFocus = window.document.getElementById('zoom-focus');
+        var zoomThmbs = window.document.getElementById('zoom-thumbs');
+        var zoomSlides = window.document.getElementById('zoom-slides');
+        
+        var zoomClrs = window.document.getElementById('zoom-color-select');
+        var zoomClose = window.document.getElementById('zoom-close');
+        
+====================================        
+        
+  // handle extras for pdp-plus absolute positioned expanded images
+        	if ( pdpType == 'pdp-plus' ) {
+        		setTimeout(function(){
+        			$jQ(heroFocus).find('li').each(function(){
+        				var liWd = $jQ(this).width();
+        				$jQ(this).css('height', liWd);
+        				$jQ(this).find('img').each(function(){
+        				
+        					if ( pgWidth >767 && pgWidth < 960 ) { 
+        						var xCrd = $jQ(this).attr('data-portrait-x');
+        						var yCrd = $jQ(this).attr('data-portrait-y');
+        					
+        					
+        					} else if ( pgWidth > 959 ) {     				
+        						var xCrd = $jQ(this).attr('data-xcoord');
+        						var yCrd = $jQ(this).attr('data-ycoord');
+        					} // else TEMP ignore coords for 320 layout
+        					
+        					if ( pgWidth > 1279 ) { 
+        						var parsedY = parseInt(yCrd, 10);
+        						yCrd = parsedY + 75; 
+        					} // build out this logic with more example photography
+        				
+        					$jQ(this).css({
+        						'right' : xCrd + 'px',
+        						'bottom' : yCrd + 'px'
+        					});
+        				}); // find img
+        			}); // find li
+        		}, 200 );
+        	} // end pdp type      
+        
+        
+ ========================================       
+        
+        
+                
+        
+		
 
+
+
+==========================================
+        
+        
+        // ONLOAD both : install vzn-sliders .........................................................
+
+    // find each instance of 'vzn-slide' & apply class/functions
+    	$jQ('.vzn-slide').each(function(){
+    	
+    		
+        	element = $jQ(this);
+        	instance =  $jQ(this).attr('id');
+        	increment = $jQ(this).find('li:first').width();
+			
+        	if ( instance.indexOf('simple') > -1 ) {
+            	$jQ(this).addClass('simple');
+            	var type = 'simple';
+            	vznSlideInstall(element,type, increment);
+        	} else if ( instance.indexOf('fancy') > -1 ) {
+            	$jQ(this).addClass('fancy');
+            	var type = 'fancy';
+            	vznSlideInstall(element,type, increment);
+        	}  else if ( instance.indexOf('lifestyles') > -1 ) {
+            	$jQ(this).addClass('lifestyles');
+            	var type = 'lifestyles';
+            	vznSlideInstall(element,type, increment);
+        	} else if ( instance.indexOf('zoom') > -1 ) {
+        		// skip this
+        	}
+        	
+        	
+    	});
+
+
+	// vzn-slide 'others also bought' : layout
+			var fncyList = $jQ('.fancy').find('.slides');
+			
+			$jQ(fncyList).each(function() {
+				var increment = $jQ(this).find('li:first').width();
+				$jQ(this).find('li').each(function(index, element) {
+					fancyPosition(element, index, increment);
+				});
+			});	
+	
+
+	// vzn-slide 'pdp lifestyles' : layout
+			if ( pdpType == "pdp-plus" ) {
+			 	var lsList = $jQ('#lifestyles').find('.slides');
+			 	
+			 	$jQ(lsList).each(function(){
+			 		var increment = $jQ(this).find('li:first').width();
+			 		$jQ(this).find('li').each(function(index, element) {	
+			 			lifestylePosition(element, index, increment);
+			 		});
+			 	}); // end each list 
+			} // end 'if pdp plus' : lifestyles vzn-slide
+			
+		
+			
+	// vzn-slide nav button : "on" .......................
+        $jQ('.vzn-slide-prev, .vzn-slide-next').click(function() {
+        	// create modifier for lifestyles slider based on actual number of items
+        	if ($jQ(this).siblings('.vzn-slide').hasClass('lifestyles')) {
+        		//alert('yes');
+        		var lstLngth = $jQ(this).siblings('.vzn-slide').find('.slides').attr('data-length');
+        		var thisIncr = $jQ(this).attr('data-incr');
+        		var endMod = lstLngth/thisIncr;
+        		//alert(lstLngth); alert(thisIncr);
+        
+        	} else {
+        	
+        		var endMod = 0;
+        	
+        	}
+        	
+        	
+            vznSlideButtons(this, endMod);
+        });
+
+    // vzn-slide nav button : "off"
+        $jQ('.vzn-slide-prev.off, .vzn-slide-next.off').click(function(){
+            return false;
+        });
+
+
+========================================================================================
+        
+        var zoomContents = new preloadZoom(zoomBlock);  // preload zoom panel components	
+    function preloadZoom(zmBlk) { 
+    // create anchor bar
+        $jQ('.anchor-bar').clone().appendTo(zmBlk); //clone & insert current anchor bar
+        $jQ('#zoom-block .anchor-bar').css({
+            'top': '0px',
+            'display': 'block',
+            'position': 'absolute'
+        }).removeAttr('id');
+
+	// create zoom thumb nav
+		$jQ('<div id="vzn-zoom-thumbs"><ul id="zoom-thumb-list"></ul></div>').appendTo('#zoom-carousel-block');
+
+		$jQ('#zoom-slides').find('li').each(function(index){ // create items
+			var count = index + 1;// edit zero-based count
+			var thumbURL = $jQ(this).attr('data-thumb'); // get thumb
+			$jQ('<li><img src="' + thumbURL + '"></li>').appendTo('#zoom-thumb-list').addClass('' + count + '');
+			$jQ(this).addClass('' + count + '');
+	
+		});  // end loop of product images
+
+		
+	
+	// now edit the list	
+		var itemCount = parseInt($jQ('#zoom-thumb-list').find('li:last').attr('class'), 10);
+		var listWidth = (itemCount * 55) - 10 ;
+		var listMargin = listWidth / -2;
+    
+    	$jQ('#vzn-zoom-thumbs').css({
+    		'width' : listWidth + 'px',
+    		'margin-left' : listMargin + 'px'
+    	});
+    	
+   	// insert thumb animation element			
+   		$jQ('<div class="vzn-active"></div>').appendTo('#zoom-thumb-list li'); 
+    
+    
+    // active thumb animation & slider congruence..............................
+        $jQ('#vzn-zoom-thumbs').find('li').click(function(){
+        	vznThumbNav(this);
+            vznActiveThumbs(this);
+        });
+
+	// set up first item in list
+		$jQ('#zoom-thumb-list').find('li:first').addClass('active');
+
+
+} // end preload zoom
+  
+        
+      ===================================================
+      
+      /* ONCLICK : 'bigger' click on fixed button & initial current slide
+            $jQ('#zoom-controls .bigger, #current-zoom-slide').click(function(){ 
+                var currentSld = window.document.getElementById('current-zoom-slide');
+                biggerView(currentSld);
+            });
+
+        // ONCLICK : 'smaller'
+            $jQ('#zoom-controls .smaller').click(function(){
+            	var currentSld = window.document.getElementById('current-zoom-slide');
+            	var currentWin = $jQ(zoomCrsl).height();
+                smallerView(currentSld, currentWin);
+            });
+        
+        
+        
+        
+
+*/
 
 
 

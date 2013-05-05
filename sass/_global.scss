@@ -312,17 +312,14 @@ h1,h2,h3,h4,h5,h6 {
 
 .selector { 
 	@include greyCartSelector;
-	
 	.select-box-error { border: 2px solid $colorVzwRed; } 
 	.select-error-message { 
 		position: absolute;
 		bottom: -30px; left: 0px;
-		width: 90px;
 		padding: 0 0 0 0; /* 15px; */
 		@include checkoutLabel;
 		color: $colorVzwRed;
-		/* @include pdp-sprite(red-less, false, 0px, 5px); */
-		height: 20px;
+		height: 20px; /* ugh */
 		}
 	 } 
 .select-box-error { border: 2px solid $colorVzwRed; } /* uniform select-option styles*/
@@ -385,3 +382,25 @@ h1,h2,h3,h4,h5,h6 {
 @media only screen and (max-width: $screenMobileSmall) {
 
 }
+
+
+
+/* ================ TEMP HEADER : PA REMOVE THIS =============== */
+
+.temp-pdp-header { 
+	width:100%;
+	height:150px; 
+	background: url(../img/cart/three-row-nav-bg.png) 0 0px repeat-x; 
+	padding-top: 105px; 
+	position:relative;
+	z-index:50;
+	}
+	
+@media only screen and (max-width: 719px) {
+	.temp-pdp-header { 
+		padding-top:45px;  height: 90px;
+		background: url(../img/cart/three-row-nav-bg.png) 0 -60px repeat-x;
+		 }
+}
+
+/* ===================== END TEMP HEADER ====================== */

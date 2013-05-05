@@ -140,16 +140,30 @@ MLS.ui = {
      * Generic vertical scroll using 3dTransform, attaches new position as data atrribute
      *
      */
-    vScroll: function(element, position) {
+    vScroll: function(element, vValue) {
         $jQ(element).css({
-            '-webkit-transform': 'translate3d(0,' + position +'px,  0)',
-            '-moz-transform' : 'translate3d(0,' + position +'px,  0)',
-            '-ms-transform' : 'translate3d(0,' + position +'px,  0)',
-            '-o-transform' : 'translate3d(0,' + position +'px,  0)',
-            'transform' : 'translate3d(0,' + position +'px,  0)'
+            '-webkit-transform': 'translate3d(0,' + vValue +'px,  0)',
+            '-moz-transform' : 'translate3d(0,' + vValue +'px,  0)',
+            '-ms-transform' : 'translate3d(0,' + vValue +'px,  0)',
+            '-o-transform' : 'translate3d(0,' + vValue +'px,  0)',
+            'transform' : 'translate3d(0,' + vValue +'px,  0)'
         }); // end css
         $jQ(element).attr('data-vpos', position);
     },
+    
+    /*
+     * Generic horizontal slide action using 3dTransform
+     *
+     */
+    hSlide:  function (element,hValue) { 
+    	$jQ(element).css({
+        	'-webkit-transform': 'translate3d(' + hValue + 'px, 0, 0)',
+  			'-moz-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+  			'-ms-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+ 			'-o-transform' : 'translate3d(' + hValue + 'px, 0, 0)',
+  			'transform' : 'translate3d(' + hValue + 'px, 0, 0)'
+  		}); // end css
+	}, 
     /*
      * Generic scroll page to certain point
      *
@@ -173,6 +187,36 @@ MLS.ui = {
         // open/close panel
         $jQ(control).next('.acc-info').slideToggle(300);
     },
+    /* 
+     * Generic dropdown display:
+     *  no-touch : hover
+     * 	touch : touch
+     */
+    dropdownDisplay: function(container){  
+		if ($jQ('html').hasClass('no-touch')){
+			var link = $jQ(container).find('.dropdown-link');
+			$jQ(link).click(function(e){
+				e.preventDefault();
+			});
+			$jQ(link).hover(
+				function() { 
+					$jQ(this).parents('section').find('.dropdown-panel').fadeOut(25);
+					$jQ(this).next('.dropdown-panel').fadeIn(200); 
+				},
+				function() { $jQ(this).next('.dropdown-panel').delay(200).fadeOut(200); }
+			);
+			$jQ('.dropdown-panel').hover(
+				function() { $jQ(this).stop().show(); },
+				function() { $jQ(this).fadeOut(300); }
+			);
+		} else {
+			$jQ(link).click(function(e){
+				e.preventDefault();
+				$jQ(this).siblings('.dropdown-panel').toggle();
+			});
+		}
+	},
+
     vzSlider: {
         init: function () {
             console.log('init');

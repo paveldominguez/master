@@ -553,7 +553,7 @@
 						}
 					}
 				
-				.checkout-box {  
+				.checkout-box { 
 					margin:10px 0 10px 0; 
 			
 					.button{
@@ -649,7 +649,7 @@
 								height: 30px;
 								
 								span {
-									@include secondaryAddCart;
+									@include ctaSecondaryCart;
 								
 									.add-secondary-to-cart {
 										-webkit-appearance: none;
