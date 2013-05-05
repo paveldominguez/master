@@ -25,7 +25,7 @@ h1,h2,h3,h4,h5,h6 {
     @include box-shadow(0 0 3px 3px rgba(0, 0, 0, .2));
     background-color: #FFF;
     max-width: $screenLarge;
-    margin: 0 auto 36px auto;
+    margin: 0 auto;
 }
 
 #site-header {
@@ -310,20 +310,7 @@ h1,h2,h3,h4,h5,h6 {
 		}/* end lightbox */
 
 
-.selector { 
-	@include greyCartSelector;
-	.select-box-error { border: 2px solid $colorVzwRed; } 
-	.select-error-message { 
-		position: absolute;
-		bottom: -30px; left: 0px;
-		padding: 0 0 0 0; /* 15px; */
-		@include checkoutLabel;
-		color: $colorVzwRed;
-		height: 20px; /* ugh */
-		}
-	 } 
-.select-box-error { border: 2px solid $colorVzwRed; } /* uniform select-option styles*/
-
+.selector { @include greyCartSelector; } /* uniform select-option styles*/
 
 .checker { /* uniform checkbox styles */
 	width:20px;
@@ -354,7 +341,95 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 }
 
+#complex-item-modal-overlay{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
 
+#complex-item-modal{
+    background: #fff;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    margin-left: -333px;
+    width: 665px;
+    padding: 40px;
+    z-index: 10000;
+    top: 25%;
+
+    h1{
+        font-family: "Verizon Apex Book";
+        color: #3d4146;
+        font-size: 32px;
+        font-weight: normal;
+        padding-bottom: 25px;
+    }
+    .close-btn{
+        display: block;
+        width: 50px;
+        height: 50px;
+        background: url(../img/article/close.png);
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    .product-image{
+        float: left;
+        img{}
+    }
+    .info{
+        width: 335px;
+        float:right;
+        min-height: 200px;
+    }
+    .actions{
+        width: 335px;
+        float: right;
+        a.contextual-link{
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 10px;
+            color: #0066cc;
+            text-transform: uppercase;
+            position: relative;
+            top: 12px;
+        }
+        a.checkout-link{
+            @include add-cart-cta();
+            display: table;
+            position: relative;
+            overflow: hidden;
+            float: right;
+            width: 50%;
+            height: 50px;
+            span,
+            span .add-cart-cta {
+                width: 105px;
+                height: 40px;
+            }
+            span {
+                display: table-cell;
+                padding: 0 0 5px 5px;
+                vertical-align: bottom;
+                input[type="submit"] {
+                    -webkit-appearance: none;
+                }
+                .add-cart-cta {
+                    border: none;
+                    cursor: pointer;
+                    display: block;
+                    position: absolute;
+                    top: 0; left: 0;
+                    opacity: 0;
+                }
+            }
+        }
+
+    }
+}
 
 
 
@@ -383,24 +458,3 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 
-
-
-/* ================ TEMP HEADER : PA REMOVE THIS =============== */
-
-.temp-pdp-header { 
-	width:100%;
-	height:150px; 
-	background: url(../img/cart/three-row-nav-bg.png) 0 0px repeat-x; 
-	padding-top: 105px; 
-	position:relative;
-	z-index:50;
-	}
-	
-@media only screen and (max-width: 719px) {
-	.temp-pdp-header { 
-		padding-top:45px;  height: 90px;
-		background: url(../img/cart/three-row-nav-bg.png) 0 -60px repeat-x;
-		 }
-}
-
-/* ===================== END TEMP HEADER ====================== */
