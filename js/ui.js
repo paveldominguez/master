@@ -4,7 +4,6 @@ MLS.ui = {
      * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
      */
     gridHover : function (selector, content, padding) {
-
         $jQ(selector).on('mouseenter', function (e) {
             e.preventDefault();
             var el = $jQ(this),
