@@ -92,6 +92,7 @@ MLS = {
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
             MLS.ajax.article.init();
+            MLS.ui.complexItem.init();
         },
         finalize: function () {
             // non priority calls go here, runs after all init functions
