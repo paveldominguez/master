@@ -1,4 +1,20 @@
 MLS.ui = {
+
+    complexItem: {
+        init: function () {
+            $jQ('.close-btn', '#complex-item-modal').on('click', MLS.ui.complexItem.close);
+        },
+        open: function () {
+            $jQ('#complex-item-modal-overlay').show(300, function () {
+                $jQ('#complex-item-modal').show(200);
+            });
+        },
+        close: function () {
+            $jQ('#complex-item-modal').fadeOut(300, function () {
+                $jQ('#complex-item-modal-overlay').fadeOut(200);
+            });
+        }
+    },
     /*
      * Grid Hover (popout)
      * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
