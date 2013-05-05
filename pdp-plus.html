@@ -27,7 +27,7 @@
 
   <!-- Included CSS Files (Uncompressed) -->
   <link rel="stylesheet" href="css/flexslider.css" type="text/css">
-   <link rel="stylesheet" href="css/uniform.vzn.css" type="text/css">
+ 
 
   <!-- Included CSS Files (Compressed) -->
   <!-- <link rel="stylesheet" href="css/app.css"> -->
@@ -42,60 +42,47 @@
 
 </head>
 
-<body id="pdp-plus" class="product-detail">
+<body id="pdp" class="product-detail"><!-- class="product-detail DEMO-signed-in DEMO-sale" -->
+	<div id='site-container'>
 
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
-  
-  		<div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-sale">sale</li>
-  				<li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li>
-  			</ul>
-  		</div><!-- TEMP set of buttons to toggle states for dev -->
-  
-  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
   </div><!-- end temp header -->
 <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
-  <!-- End Header and Nav -->
+<!-- BODY -->
 
-  <!-- Main Grid Section -->
 
-<section id="pdp-hero"><!--  ======================= BEGIN PDP HERO =============== -->
-<div class="section-wrap">
+<section id="pdp-hero"><!-- HERO -->
+	<div id="carousel-block">
+	
+		<div id="pdp-mobile-cart-header"></div><!-- insert content for mobile here -->
+		
+		<div id="carousel">
+			<div id="focus" class="flexslider"><!-- slides -->
+      			<ul class="slides">
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-175" data-ycoord="-70" data-portrait-x="-130"  data-portrait-y="-80">
+      				</li>
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-2.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-100" data-ycoord="-90" data-portrait-x="-60"  data-portrait-y="-100">
+      				</li>
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-3.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-375" data-ycoord="-225" data-portrait-x="-50"  data-portrait-y="-165">
+      				</li>
+      			</ul>
+      		</div><!-- end flexslider/focus images-->
 
-	<div class="crsl-offer-box offer">
-    	<h4 class="offer-amt">10<span class="offer-unit">%</span></h4>
-    	<span class="offer-off">Off</span>
-    </div><!-- end crsl offer box -->
+			<div class="view-to-scale"> <!-- hide scale control -->
+      			<a href="#" id="view-scale" class="view-to-scale-link zoom-xtras-control">View to Scale</a>
+      		</div>
 
-    <div id="carousel-block">
-
-      	<div id="carousel">
-
-      			<div id="focus" class="flexslider"><!-- focus images -->
-      				<ul class="slides">
-      					<li>
-      						<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-175" data-ycoord="-70" data-portrait-x="-130"  data-portrait-y="-80">
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-plus/dre-beats-2.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-100" data-ycoord="-90" data-portrait-x="-60"  data-portrait-y="-100">
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-plus/dre-beats-3.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-375" data-ycoord="-225" data-portrait-x="-50"  data-portrait-y="-165">
-      					</li>
-      				</ul>
-      			</div><!-- end flexslider/focus images-->
-
-      			<div class="thumb-wrap">
-      			<div id="thumbs" class="flexslider"><!-- thumbnail image nav -->
+      		<div class="thumb-wrap">
+      			<div id="thumbs" class="flexslider"><!-- thumbnails -->
       				<ul class="slides">
       					<li>
       						<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
@@ -110,190 +97,224 @@
       						<div class="vzn-active"></div>
       					</li>
       				</ul>
-      					
-      					<div id="carousel-zoom"></div>
-      					<div id="view-360"><a class="view-360-link"></a></div>
-      					
-      			</div><!-- end #thumbs nav images-->
-        		</div><!-- end thumb-wrap -->
+      			
+      				<div id="carousel-zoom" class="zoom-xtras-control"></div><!-- zoom panel -->
+      				<div class="view-360-box"><a id="view-360" class="zoom-xtras-control"></a></div>
+      				
+      			</div><!-- end #thumbs .flexslider-->
+        	</div><!-- end thumb-wrap -->	
       	</div><!-- end carousel -->
-
       	
-
-
-
-
-
-    </div><!-- end carousel-block  -->
-
-
-    <div id="cart-block">
-
-      	<header class="header">
-
-          	<div class="brand">Beats by Dre</div>
-
-
-            <h1 class="product-title">Wireless On-Ear Headphones with Control Talk</h1>
-
-        	<ul id="review-block" class="inline-list">
-        		<li>
-          			<div class="ratings"></div>
-          		</li>
-          		<li class="reviews">
-          			<a href="#" class="review-link" title="See reviews for this item." >(47)</a>
-          		</li>
-        	</ul><!-- end reviewBlock -->
-
-
-
-
-
-        </header>
-
-
-        <div id="cart-details">
-
-            <div class="pdp-plus-ship-block">
-				<div class="pdp-plus-ship">
-					<ul class="ship-details offer">
-					    <li class="sale offer">10% Off Until 1/25
-					        <div class="offer-more-icon"></div><!-- end offer pop -->
-					   
-					        <div class="pdp-offer-pop">
-					        	<div class="pointer"></div>
-					            <div class="offer-box">
-					            	<div class="offer-close"></div>
-					                <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
-					                <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
-					                <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-					            </div><!-- end offer-box -->
-							</div><!-- end offer pop -->		        
-					    </li>
-						<li class="ship offer">Free 3-5 Ground Shipping
-						    <div class="offer-more-icon"></div><!-- end offer more icon -->
-					   
-					        <div class="pdp-offer-pop">
-					        	<div class="pointer"></div>
-					            <div class="offer-box">
-					            	<div class="offer-close"></div>
-					                <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
-					                <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
-					                <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-					            </div><!-- end offer-box -->
-					        </div><!-- end offer pop -->
-					    </li>
-					    
-					</ul><!-- end offer ul -->
-					<ul  class="ship-details">
-					    <li class="ship no-offer">Free 3-5 Ground Shipping</li>
-						<li class="return-policy">14 Day Free Returns</li>
-						<li class="rcv-by">Receive by 1/31</li>
-						<!-- <a href="#" class="compat-link" title="Check compatibility of this item.">Check compatibility</a> -->
-						<a href="#" id="compat-jump" class="compat-link" title="Check compatibility of this item.">Check compatibility</a>
-					
+      	<div class="crsl-offer-box offer">
+    		<h4 class="offer-amt">10<span class="offer-unit">%</span></h4>
+    		<span class="offer-off">Off</span>
+   		</div><!-- end crsl offer box -->
+      	
+      	<div class="hero-breadcrumbs">
+      		<a href="#" id="pdp-breadcrumb" class="breadcrumb-link" title="Back to Previous Page">Last Page</a>
+      	</div>
+      	
+      	
+	</div><!-- end carousel block -->
 	
-					</ul><!-- end no-offer ul -->
+	
+	<div id="cart-block">
+		<div class="light">
+			<header id="pdp-cart-header">
+				<div class="pdp-banner-shipping ">
+					<a href="#" class="dropdown-link">
+						<span class="bold">Free Shipping</span> on all orders!
+					</a>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Lorem ipsum dolor sequitat nes serva dos.
+					</div>
+				</div>
 
-				</div><!-- end pdp-ship -->
-		    </div>  <!--  end pdp-plus- -ship-block -->
+				<div class="brand-sku">
+					<div id="product-brand-field" class="brand">Beats by Dre</div>
+					<div id="product-sku-field" class="sku">SKU #768324</div>
+				</div>
+					
+				<h1 class="product-title">Wireless On-Ear Headphones with Control Talk</h1>
+				<ul id="review-block" class="inline-list">
+        			<li>
+          				<div class="ratings"></div>
+          			</li>
+          			<li class="reviews">
+          				<a href="#" id="pdp-cart-review-count" class="review-link" title="See reviews for this item." >(47)</a>
+          			</li>
+        		</ul><!-- end reviewBlock -->
+			</header>
 
+            <div class="pdp-cart-shipping">
+            	<ul class="ship-details offer">
+					<li class="pdp-cart-shipping-item discount offer">
+						<a href="#" class="dropdown-link ">10% Off Until 1/25</a>
+					    <div class="dropdown-panel">
+					        <div class="dropdown-pointer"></div>
+					        <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
+					        <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
+					        <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+						</div><!-- end dropdown-panel -->		        
+					</li>
+					<li class="pdp-cart-shipping-item shipping offer">
+						<a href="#" class="dropdown-link">Free 3-5 Ground Shipping</a>
+					    <div class="dropdown-panel">
+					        <div class="dropdown-pointer"></div>
+					        <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
+					        <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
+					        <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+					    </div><!-- end dropdown panel -->
+					</li>
+				</ul><!-- end offer ul -->
+				<ul  class="ship-details">
+					<li class="pdp-cart-shipping-item ship no-offer">Free 3-5 Ground Shipping</li>
+					<li class="pdp-cart-shipping-item return-policy">14 Day Free Returns</li>
+					<li class="pdp-cart-shipping-item rcv-by">Receive by 1/31</li>
+				</ul><!-- end no-offer ul -->
+	
+				<div class="pdp-cart-compat guest">
+					<a href="#" class="compat-link guest" title="Check compatibility of this item.">Check compatibility</a>
+				</div>
+				
+				<div class="pdp-cart-compat signed-in">
+					<ul class="pdp-cart-compat-list">
+						<li id="signed-in-device-1" class="compat-icon compatible">
+							<div class="image">Image</div>
+							<div class="data">Data</div>
+						</li>
+						<li id="signed-in-device-2" class="compat-icon not-compatible">
+							<div class="image">Image</div>
+							<div class="data">Data</div>
+						</li>
+						<li class="compat-link-box">
+							<a href="#" class="compat-link signed" title="Check compatibility of this item.">Check compatibility</a>
+						</li>
+					</ul>
+				</div> <!-- end signed in compat box -->
+				
+			</div><!-- end pdp-cart-shipping -->
+		</div><!-- end light -->
 
-        	<div class="color-stock-block">
-                <div class="color-select-box">
-                	<div class="swatch"></div>
-                    <select name="color-select" class="color-select">
-                    	
-                        <option value="">Select Color</option>
-                        <option value="black">Black</option>
-                        <option value="grey">Grey</option>
-                        <option value="white">White</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                    <!--<input type="list" id="color-select" placeholder = "Select Color"> -->
-        		</div>
+        <div class="dark">
+        
+        	<form id="pdp-add-to-cart" method="" action="" >
+        		<fieldset id="pdp-add-left" class="pdp-add-float left-panel" >
+        			
+        			<div class="size-select-box">
+                    	<select id="pdp-size-select" name="size-select" class="size-select">
+                        	<option value="" disabled selected>Size</option>
+                        	<option value="1">Small</option>
+                        	<option value="2">Medium</option>
+                        	<option value="3">Large</option>
+                        	<option value="4">X Large</option>
+                    	</select>
+        			</div>
+					
+        			<div class="price-block">
+						<div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
+        				<div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></div>
+					</div><!-- end priceBlock -->
+        
+        		</fieldset><!-- end left -->
+        		
+        		<fieldset id="pdp-add-right" class="pdp-add-float right-panel" >
+        
+					<div class="color-select-box">
+                		<div class="swatch"></div>
+                    	<select id="pdp-color-select" name="color-select" class="color-select">
+                    		<option value="" disabled selected>Color</option>
+                        	<option value="black">Black</option>
+                        	<option value="grey">Grey</option>
+                        	<option value="white">White</option>
+                        	<option value="dark blue">Dark Blue</option>
+                        	<option value="light blue">Light Blue</option>
+                        	<option value="Purple">Purple</option>
+                        	<option value="dark red">Dark Red</option>
+                        	<option value="light red">Light Red</option>
+                        	<option value="dark green">Dark Green</option>
+                        	<option value="light green">Light Green</option>
+                        	<option value="orange">Orange</option>
+                        	<option value="yellow">Yellow</option>
+                    	</select>
+        			</div>
 
-
-                <div class="size-select-box">
-                    <select name="size-select" class="size-select">
-                        <option value="1">Select Size</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                    </select>
-        		    <!-- <input type="list" id="size-select" placeholder = "Select Size"> -->
-        		</div>
-
-        	</div> <!-- end color-stock-block -->
-
-
-        	<div class="price-add">
-        		<div id="price-block">
-
-					<div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg. <span>&nbsp;$299.99&nbsp;</span></div>
-        			<div class="actual-price">$249<span>99</span></div>
-
-        		</div><!-- end priceBlock -->
-
-
-      			<div id="add-cart-box">
-      			
+				<div class="add-cart-box">
       				<div class="OOS product">
-      					<p>Sorry, this product is out of stock.
-      					</p>
+      					<p>Sorry, this product is out of stock.</p>
+      				</div>
+					<div class="expired product">
+      					<p>Sorry, this product is no longer available.</p>
       				</div>
       			
-      				<div class="OOS color">
-      					<p>Sorry, thiscolor is out of stock. Try another color. 
-      					</p>
+      				<div class="pdp-cart-red-cta-box">
+      					<input id="pdp-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
+      				</div>
+      				
+      				<div class="no-cta-button">
+      					<span class="OOS button-text">coming soon</span>
+      					<span class="expired button-text">no longer available</span>
       				</div>
       			
-      			
-      			
-      			
-      			
-      				<input class="button add-cart-cta" type="submit" title="Add to Cart" value= "Add to Cart">
       			</div><!-- end add-cart -->
 
-      			<div id="anchor-trigger"></div>
-       	    </div><!-- end price-add -->
-
-
-
-
-
+				
+        		</fieldset><!-- end right -->
+        		
+        		<section id="pdp-mobile-form-box"><!-- insert mobile cart info here -->
+        		
+        			<fieldset id="pdp-mobile-form-color-size" class="mobile-fieldset ">
+        				<div id="pdp-mobile-form-size" class="mobile-left form-float color-size"></div>
+        				<div id="pdp-mobile-form-color" class="mobile-right form-float color-size"></div>
+        			</fieldset>
+        			
+        			<fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
+        				
+        			<fieldset id="pdp-mobile-form-cta" class="mobile-fieldset">
+        				<div id="pdp-mobile-form-price" class="mobile-left form-float cta"></div>
+        				<div id="pdp-mobile-form-submit" class="mobile-right form-float cta"></div>
+        			</fieldset>
+        			
+        			<div id="pdp-mobile-social"></div>
+        			
+        		</section><!-- end mobile add to cart form box -->
+        		
+        		<div id="pdp-cart-color-slide">
+        			<ul class="pdp-cart-slide-colors">
+        				<li class="color-chip black"></li>
+        				<li class="color-chip grey"></li>
+        				<li class="color-chip white"></li>
+        				<li class="color-chip red"></li>
+        			</ul>
+        		</div>
+        </form>
 
 
 			<div class="social-block">
-
 				<div class="pdp-social-left">
-
 					<ul class="inline-list">
 						<li class="social want">
 							<div class="icon"></div>
 							<div class="count">9824</div>
 							<a href="#" class="click" title="Want this!"></a>
-						</li>
+							/li>
 
 						<li class="social email">
 							<div class="icon"></div>
 							<div class="count">206</div>
-							<a href="#" class="click" title="Email this!"></a></li>
+							<a href="#" class="click" title="Email this!"></a>
+						</li>
 
 						<li class="social facebook">
 							<div class="icon"></div>
 							<div class="count">11396</div>
 							<a href="#" class="click" title="Like this!"></a>
 						</li>
-
-
 					</ul>
-
 				</div><!-- end social-left -->
 
 				<div class="pdp-social-right">
-
 					<ul class="inline-list">
 						<li class="social twitter">
 							<div class="icon"></div>
@@ -312,38 +333,55 @@
 							<div class="count">792</div>
 							<a href="#" class="click" title="Pin this!"></a>
 						</li>
-
 					</ul>
-
 				</div><!-- end social-right -->
-
-			</div> <!--  end social-block -->
-
-        </div>
-
-	</div> <!-- end cartBlock -->
-
-
+			</div> <!--  end social-block -->	
+		</div><!-- end dark -->
+	</div><!-- end cart-block -->
+	
 	<div id="zoom-block">
 	    <div class="zoom-wrap" />
 	        <div id="zoom-carousel-block">
-
-      			<div id="zoom-focus" class="flexslider"><!-- focus images -->
+	        
+	        	<div id="zoom-focus" class="flexslider"><!-- slide content -->
       				<ul id="zoom-slides" class="slides">
-      					<li data-thumb="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png">
+      					<li>
       						<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
-      					<li data-thumb="img/product-detail-page/pdp-plus/dre-beats-2-thumb.png">
+      					<li>
       						<img src="img/product-detail-page/pdp-plus/dre-beats-2.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
-      					<li data-thumb="img/product-detail-page/pdp-plus/dre-beats-3-thumb.png">
+      					<li>
       						<img src="img/product-detail-page/pdp-plus/dre-beats-3.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
       				</ul>
-
-      			</div><!-- end flexslider/focus images-->
-
-      	    </div><!-- end zoom-carousel-block -->
+      			</div>
+      			
+	        	<div class="hide-scale"> <!-- hide scale control -->
+      					<a href="#" id="toggle-scale" class="view-scale-link  zoom-xtras-control">View to Scale</a>
+      			</div>	
+      	
+				<div class="thumb-wrap">
+					<div id="zoom-thumbs" class="flexslider"><!-- thumbnail control -->
+						<ul class="slides">
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-2-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-3-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      					</ul>
+      					<div id="toggle-view-360"><a href="#" class="view-360-link zoom-extras-control"></a></div> <!-- 360 view control -->
+      					<div id="zoom-carousel-zoom"></div><!-- zooming control -->
+      				</div>
+      			</div><!-- end thumb-wrap -->	
+      		</div><!-- end zoom-carousel-block -->
 
 		    <div id="zoom-close" title="Back to item details">
 		        Close
@@ -354,42 +392,30 @@
 			    <div class="border"></div>
 			    <div class="smaller" title="Zoom out" ></div>
 		    </div>
+		    
+		    <div id="zoom-scale-content" class="zoom-content">
+		    	<div class="scale-box">
+		    		<h1>Scale</h1>
+		    	</div>
+		    </div>
+		    
+		    <div id="zoom-view-360-content" class="zoom-content">
+		    	<div class="view-360-box">
+		    		<h1>view 360</h1>
+		    	</div>
+		    </div>
+		    
 		</div><!-- end zoom-wrap -->
 	</div><!-- end zoom-block -->
-</div><!-- end section-wrap -->
-
-</section> <!-- ================================ END PDP HERO ===================== -->
-
+	
+</section><!-- end hero section -->
 
 
-
-<section id="product-details"><!-- ============= BEGIN PRODUCT DETAILS ============ -->
-<div class="section-wrap">
-
-    
-
-  	<div class="tabbed-wrapper">
+<section id="product-details"><!-- DETAIL TABS -->
+	
+	<div class="tabbed-wrapper">
   		<div class="tab-block">
-  		
-  			<div id="detail-hero-image-box">
-  				<img src="img/product-detail-page/pdp-plus/detail-hero-bg.png" title="Beats by Dre On-Ear Headphones" data-xcoord="125" data-ycoord="-90" >
-			
-        		<div id="detail-hotspot" data-xcoord="140" data-ycoord="495"></div>
-        			<div id="hotspot-pop-box">
-        				<div class="hotspot-close"></div>
-        				<div class="pointer"></div>
-        				<div id="hotspot-content">
-        					<h4>Lorem ipsum title</h4>
-        					<p>Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque erat fringilla porttitor. Praesent sit amet felis tellus, in semper ante. Nunc et dictum erat. Pellentesque quis odio tortor. </p>
-        				</div><!-- end content -->
-        			</div><!-- end pop-box -->
-        		
-    		</div>
-  		
 
-  		
-  		
-  		
 			<div class="tab-scroll">
       			<dl id="detail-tabs" class="tabs">
 
@@ -401,23 +427,22 @@
         				<a href="#features" title="See item features." ><h2>Features</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
-        			<dd class="specs" >
-        				<a href="#specs" title="See technical specifications for this item."><h2>Tech Specs</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        			<dd class="compat" >
-        				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
         			<dd class="reviews" >
       					<a href="#consumer-reviews" title="Reviews" ><h2>Reviews</h2></a>
       					<div class="vzn-active"></div>
       				</dd>
+      				<dd class="compat" >
+        				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
+        				<div class="vzn-active"></div>
+        			</dd>
+        			<dd class="specs" >
+        				<a href="#specs" title="See technical specifications for this item."><h2>Tech Specs</h2></a>
+        				<div class="vzn-active"></div>
+        			</dd>
         			<dd class="questions" >
         				<a href="#questions-comments" title="Questions & Answers" ><h2>Question & Answers</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
-
 
         		</dl>
 			</div><!-- end tab scroll -->
@@ -427,18 +452,27 @@
 
 				<li id="overviewTab" class="active"><!----- OVERVIEW TAB -------->
 					<div class="tab-wrapper">
+					
+						<div class="more-less-block">
+							<div class="two-thirds left">
+						    
+							    	<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA, a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that  houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.   Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.
+							    	</p>
+								
+							</div><!-- end overview-text -->
 
-						<div class="overview-text two-thirds">
-						    <div class="tab-inner">
-							    <p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA, a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that  houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.   Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.
-							    </p>
+							<div id="overview-bv-include" class="third right">
+								<img src="img/product-detail-page/pdp-backgrounds/pdp-overview-bv-temp.jpg " title="Bazaar Voice snippet">
 							</div>
-						</div><!-- end overview-text -->
+							
+							<div class="more-less">
+								<a href="#" class="more-less-link" title="show more">more</a>
+							</div>	
+						</div><!-- end more-less-block -->
 
-						<div class="you-need third right">
-						    <div class="tab-inner">
-							    <h3>This product requires these accessories:</h3>
-							    <ul class="you-need-items">
+						<div class="pdp-bundles-block">
+							    <h3>Save on bundles for this product!</h3>
+							    <ul class="bundle-items">
 
 								<li class="item">
 								<a href="#" class="product-link" title="view this item">
@@ -482,14 +516,9 @@
         						</a>
 								</li>
 							    </ul><!-- end you need ul  -->
-							    <div class="you-need-msg">(Items available at checkout)</div>
-							</div><!-- end tab-inner -->
-						</div><!-- end you need div  -->
-
-					<div class="more-less">
-						<a href="#" class="more-less-link" title="show more">more</a>
-					</div>
-
+							    <div class="pdp-bundles-msg">(Items available at checkout)</div>
+							    
+						</div><!-- pdp bundles block -->
 					</div><!-- end overview tab-wrapper -->
 				</li><!-- end overview tab content -->
 
@@ -802,2089 +831,72 @@
 
         </div><!-- end tab-block -->
 	</div><!-- end tabbed-wrapper -->
-</div><!-- end section-wrap -->
-
-
-<div class="section-wrap wrap-320">
-	<div id="overview-320">
-		
-		<div class="section-header">
-			<h2 class="section-title">Overview</h2>
-		</div>
-		
-		<div class="content-320">
-		
-			<div id="lifestyles-320">
-				<h2>Lifestyles</h2>
-				<div class="lifestyles-content">
-					<ul class="swipe-320">
-			
-						<li class="alpha">Alpha Lifestyle</li>
-						<li class="beta">Beta Lifestyle</li>
-						<li class="gamma">Gamma Lifestyle</li>
-			
-					</ul>
-				</div>
-			</div>
 	
-			<div id="accessories-320">
-				<h2>Accessories</h2>
-				<div class="accessory-frame">
-					<ul class="accessory-content"></ul>
-				</div>
-			</div>
-			
-		</div><!-- end 320 content -->
-	</div> <!-- end overview -->
-</div><!-- end 320 section-wrap -->
+</section><!-- end detail tabs section -->
 
 
 
 
 
-</section><!-- ============================ END DETAILS SECTION ================= -->
 
 
 
-<section id="btf-hero-right"><!-- ========== BEGIN BTF HERO RIGHT SECTION ============= -->
-    <div class="section-wrap">
-		<div class="btf-hero-wrapper">
 
-		    <div class="btf-hero-image hero-right">
-		        <img src="img/product-detail-page/pdp-plus/btf-hero-right.jpg" title="Beats by Dre On-Ear Headphones" data-320-adjust="-15">
-		        <div id="btf-hero-data-1" class="btf-hero-data">
-		        	<div class="image">	
-		        	</div>
-		        	<div class="headline">Headline</div>
-		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
-		        </div>
-		        <div id="btf-hero-data-2" class="btf-hero-data">
-		        	<div class="image"></div>
-		        	<div class="headline">Headline</div>
-		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
-		        </div>
-		    </div><!-- end image -->
+<section id="similar-products"><!-- SIMILAR PRODUCTS -->
+	<article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section">
+        <header class="content-header">
+        	<h1 class="title"><strong>Similar</strong> Products</h1>
+            <div class="slide-nav"></div>
+        </header>
+        	<script>
+    			includeFragment("inc/fragments/similar-products-module.html");
+    		</script>  
+    </article>
+</section><!-- end similar products section -->
 
-		    <div class="btf-hero-icon hero-left">
-		        <h4 class="icon-title">Premium Sound</h4>
-		    </div><!-- end icon -->
 
-		    <div class="btf-hero-text-box hero-left">
-		        <h3 class="hero-text-title">Incredibly Clear Sound</h3>
-		       <p class="hero-text">Suspendisse volutpat condimentum metus bibendum tincidunt. Proin ligula nunc, egestas sed luctus sed, ornare non odio. Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris. Quisque pellentesque, tellus nec elementum.</p>
 
 
-		        <div class="tab-pointer hero-left">
-		        </div>
-		    </div><!-- end text -->
 
-        </div><!-- end hero wrapper -->
-        
-        
-        
-    </div><!-- end section-wrap -->
-</section><!-- ============================ END BTF HERO RIGHT ================= -->
 
 
 
+<section id="related"><!-- RELATED STORIES & GUIDES -->
+	<article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <header class="content-header">
+        	<h1 class="title"><strong>Related</strong> Stories & Guides</h1>
+            <div class="slide-nav"></div>
+         </header> 
+        <script>
+    		includeFragment("inc/fragments/related-stories-module.html");
+    	</script>
+    </article>
+</section><!-- end related stories & guides section -->
 
 
 
 
+<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
+	<article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <header class="content-header">
+        	<h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
+            <div class="slide-nav"></div>
+        </header>
+        <script>
+    		includeFragment("inc/fragments/shop-product-module.html");
+    	</script>
+    </article>
+</section><!-- end others also bought section -->
 
 
 
+<!-- FOOTER -->
+<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+	<script type="text/javascript">
+    	includeFragment('inc/footer.html');
+	</script>
+<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
-<section id="btf-hero-left"><!-- ========== BEGIN BTF HERO LEFT SECTION ============= -->
-    <div class="section-wrap">
-		<div class="btf-hero-wrapper">
-
-		    <div class="btf-hero-image hero-left">
-		        	<img src="img/product-detail-page/pdp-plus/btf-hero-left.jpg" title="Beats by Dre On-Ear Headphones" data-320-adjust="5">
-		        	
-		        <div id="btf-hero-data-3" class="btf-hero-data">
-		        	<div class="image">
-		        		<img src="img/product-detail-page/pdp-plus/btf-hero-plugs.png" title="Lorem ipsum">
-		        	</div>
-		        	<div class="headline">Headline</div>
-		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
-		        </div>
-		        <div id="btf-hero-data-4" class="btf-hero-data">
-		        	<div class="image">
-		        		<img src="img/product-detail-page/pdp-plus/btf-hero-bluetooth-icon.png" title="Lorem ipsum">
-		        	</div>
-		        	<div class="headline">Headline</div>
-		        	<div class="text">Lorem ipsum dolor sit amet, con secteteur adlipisicing elit.</div>
-		        </div>
-		    </div><!-- end image -->
-
-		    <div class="btf-hero-icon hero-right">
-		        <h4 class="icon-title">Wireless Connectivity</h4>
-		    </div><!-- end icon -->
-
-		    <div class="btf-hero-text-box hero-right">
-		        <h3 class="hero-text-title">
-		        Pair Your Headphones with any Bluetooth-Enabled Device</h3>
-		        <p class="hero-text">Suspendisse volutpat condimentum metus bibendum tincidunt. Proin ligula nunc, egestas sed luctus sed, ornare non odio. Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris. Quisque pellentesque, tellus nec elementum.</p>
-
-		        <div class="tab-pointer hero-right">
-		        </div>
-		    </div><!-- end text -->
-		    
-			<div id="btf-320-hero-data-frame">
-				<div id="btf-320-data-slider"></div>
-			</div>
-			
-        </div><!-- end hero wrapper -->
-    </div><!-- end section-wrap -->
-    
-    
-    
-</section><!-- ============================ END BTF HERO LEFT ================= -->
-
-
-
-
-<section id="pdp-plus-highlights"><!------------- BEGIN PDP+ HIGHLIGHTS SECTION ----->
-<div class="section-wrap">
-
-	<div class="section-header">
-		<h2 class="section-title">Highlights</h2>
-	</div>
-
-	<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="pdp-plus-highlight-tabs" class="tabs">
-      				<dd class="app-tab active" >
-      					<a href="#app-highlight" title="Similar items" ><h2>App Enabled</h2></a>
-      					<div class="pointer"></div>
-      				</dd>
-      				<dd class="data-tab" >
-        				<a href="#data-highlight" title="Others also bought" ><h2>Data Plan Required</h2></a>
-        				<div class="pointer"></div>
-        			</dd>
-        			<dd class="wifi-tab" >
-        				<a href="#wifi-highlight" title="Works with" ><h2>Wifi Enabled</h2></a>
-        				<div class="pointer"></div>
-        			</dd>
-        			<dd class="smart-tab" >
-        				<a href="#smart-highlight" title="Works with" ><h2>Smart Accessory</h2></a>
-        				<div class="pointer"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
-
-
-      		<ul class="tabs-content">
-
-        		<li id="app-highlightTab" class="active"><!------- APP HIGHLIGHT TAB ------->
-        			<div class="tab-wrapper">
-        			
-        			<div class="feature-box">
-        				<div class="feature-title">
-        					<h3>Try these Apps</h3>
-        				</div>
-        				
-        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. 
-        				</div>
-        				
-        				<div class="feature-list">
-        					<ul>
-        						<li class="feature-item">
-        							<h4>Facebook</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Yelp</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Foursquare</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        					</ul>
-        				</div><!-- end feature list -->
-        			</div><!-- end feature-box -->
-        			
-        			
-        			
-        			
-        			
-        			
-        			
-        			</div>
-        		</li>
-        		<li id="data-highlightTab" ><!------- DATA HIGHLIGHT TAB ------->
-        			<div class="tab-wrapper">
-        			
-        			<div class="feature-box">
-        				<div class="feature-title">
-        					<h3>Data Plan Required</h3>
-        				</div>
-        				
-        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. 
-        				</div>
-        				
-        				<div class="feature-list">
-        					<ul>
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        					</ul>
-        				</div><!-- end feature list -->
-        			</div><!-- end feature-box -->
-        			
-        			
-        			
-        			
-        			
-        			</div>
-        		</li>
-        		<li id="wifi-highlightTab" ><!------- WIFI HIGHLIGHT TAB ------->
-        			<div class="tab-wrapper">
-        			
-        			<div class="feature-box">
-        				<div class="feature-title">
-        					<h3>WiFi Enabled</h3>
-        				</div>
-        				
-        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien. 
-        				</div>
-        				
-        				<div class="feature-list">
-        					<ul>
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Lotsa lorem ipsum ...</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        					</ul>
-        				</div><!-- end feature list -->
-        			</div><!-- end feature-box -->
-        			
-        			
-        			
-        			
-        			
-        			
-        			
-        			</div>
-        		</li>
-        		<li id="smart-highlightTab" ><!------- SMART ACCESSORY HIGHLIGHT TAB ------->
-        			<div class="tab-wrapper">
-        			
-        			<div class="feature-box">
-        				<div class="feature-title">
-        					<h3>Smart Accessory</h3>
-        				</div>
-        				
-        				<div class="plain-text">Vivamus sit amet neque nibh, sit amet vestibulum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc erat nulla, varius a porttitor eget, iaculis non mauris. Proin nulla sem, rhoncus id viverra at, lobortis quis sapien.  
-        				</div>
-        				
-        				<div class="feature-list">
-        					<ul>
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        						
-        						<li class="feature-item">
-        							<h4>Feature Name</h4>
-        							<p>Aliquam erat diam, viverra et dignissim id, molestie ac augue. Proin eget varius mauris.</p>
-        							<a href="#" class="learn-more-link" title="Learn More">
-        								Learn more
-        							</a>
-        						</li>
-        					</ul>
-        				</div><!-- end feature list -->
-        			</div><!-- end feature-box -->
-        			
-        			
-        			
-        			
-        			</div>
-        		</li>
-
-
-            </ul><!-- end tabs content ul -->
-        </div><!-- end tabbed block -->
-    </div><!-- end tabbed wrapper -->
-
-
-
-
-    <div class="highlight-stats-box">
-        <ul class="stats-list">
-            <li class="highlight-stat">
-                <div class="stat-header">
-                    <h5>Battery</h5>
-                </div><!-- end stat header -->
-                <div class="stat">
-                    <span class="stat-value">9</span>
-                    <span class="stat-unit">hrs</span>
-                </div><!-- end stat unit -->
-            </li>
-            <li class="highlight-stat">
-                <div class="stat-header">
-                    <h5>Standby</h5>
-                </div><!-- end stat header -->
-                <div class="stat">
-                    <span class="stat-value">100</span>
-                    <span class="stat-unit">hrs</span>
-                </div><!-- end stat unit -->
-            </li>
-            <li class="highlight-stat">
-                <div class="stat-header">
-                    <h5>Connectivity</h5>
-                </div><!-- end stat header -->
-                <div class="stat">
-                    <span class="stat-value">36</span>
-                    <span class="stat-unit">ft</span>
-                </div><!-- end stat unit -->
-            </li>
-            <li class="highlight-stat">
-                <div class="stat-header">
-                    <h5>Weight</h5>
-                </div><!-- end stat header -->
-                <div class="stat">
-                    <span class="stat-value">.21</span>
-                    <span class="stat-unit">kg</span>
-                </div><!-- end stat unit -->
-            </li>
-        </ul><!-- end stats list -->
-    </div><!-- end stats box -->
-
-
-</div><!-- end section wrapper -->
-
-</section><!-- ============================ END PDP+ HIGHLIGHTS SECTION  ===========  -->
-
-
-<section id="tabs-320">
-<div class="section-wrap wrap-320">
-
-	<div class="features-320">
-		<div class="section-header">
-			<h2 class="section-title">Features</h2>
-		</div>
-		<div class="content-320">
-			XXX
-		</div>
-	</div> <!-- end features -->
-	
-	<div class="specs-320">
-		<div class="section-header">
-			<h2 class="section-title">Tech Specs</h2>
-		</div>
-		<div class="content-320">
-			XXX
-		</div>
-	</div> <!-- end tech specs -->
-	
-	<div class="compat-320">
-		<div class="section-header">
-			<h2 class="section-title">Compatibility</h2>
-		</div>
-		<div class="content-320">
-			XXX
-		</div>
-	</div> <!-- end compatibility -->
-	
-	<div class="reviews-320">
-		<div class="section-header">
-			<h2 class="section-title">Reviews</h2>
-		</div>
-		<div class="content-320">
-			XXX
-		</div>
-	</div> <!-- end reviews -->
-	
-	<div class="questions-320">
-		<div class="section-header">
-			<h2 class="section-title">Questions & Answers</h2>
-		</div>
-		<div class="content-320">
-			XXX
-		</div>
-	</div> <!-- end questions -->
-	
-	
-</div><!-- end 320 section-wrap -->
-</section><!-- end 320 tabs -->
-
-
-
-<section id="similar-products"><!------------- BEGIN SIMILAR PRODUCTS SECTION ----->
-	<div class="section-wrap">
-
-	<div class="section-header">
-		<h2 class="section-title">Similar Products</h2>
-	</div>
-	
-	<div class="plus-slider-wrap">
-		<div id="simple-similar-slider" class="vzn-slide" >
-			<ul class="slides">
-								<li><a href="#" title="view this item1" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item2" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item3" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item4" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item5" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item6" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item7" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-								
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-				</ul>
-			</div><!-- simple-similar-slider -->
-		</div><!-- end slider wrap -->
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END SIMILAR PRODUCTS SECTION -------->
-
-
-
-
-<section id="lifestyles"><!-- ============== LIFESTYLES SECTION ============= -->
-	<div class="section-wrap">
-	
-	<div class="section-header">
-		<h2 class="section-title">Lifestyles</h2>
-	</div>
-
-
-		<div class="lifestyles-wrapper">
-
-		    <div class="tabbed-wrapper">
-  		        <div class="tab-block">
-			        <div class="tab-scroll">
-      			        <dl id="lifestyles-tabs" class="tabs">
-      				        <dd class="alpha-tab active" >
-      					          <a href="#lifestyles-alpha" title="Alpha Lifestyle" >
-      					          	<div class="lifestyle-image-box">
-      					          		<img src="img/product-detail-page/pdp-plus/lifestyles-alpha-icon.png" id="lifestyle-alpha" class="lifestyle-icon" title="Alpha Lifestyle">
-      					          	</div>
-      					          	<h2>Alpha Lifestyle</h2>
-      					          </a>
-      					          <div class="pointer"></div>
-      				        </dd>
-
-
-        			        <dd class="beta-tab" >
-        			        	<a href="#lifestyles-beta" title="Beta Lifestyle" >
-        			        		<div class="lifestyle-image-box">
-        			        			<img src="img/product-detail-page/pdp-plus/lifestyles-beta-icon.png" id="lifestyle-beta" class="lifestyle-icon" title="Alpha Lifestyle">
-        				        	</div>
-        				        	<h2>Beta Lifestyle</h2>
-        				        </a>
-        				        <div class="pointer"></div>
-        			        </dd>
-
-        			        <dd class="gamma-tab" >
-        				        <a href="#lifestyles-gamma" title="Gamma Lifestyle" >
-        				        	<div class="lifestyle-image-box">
-        				        		<img src="img/product-detail-page/pdp-plus/lifestyles-gamma-icon.png" id="lifestyle-gamma" class="lifestyle-icon" title="Alpha Lifestyle">
-        				        	</div>
-        				        	<h2>Gamma Lifestyle</h2>
-        				        </a>
-        				        <div class="pointer"></div>
-        			        </dd>
-
-        		        </dl>
-			        </div><!-- end tab scroll -->
-
-
-      		        <ul class="tabs-content">
-
-        		        <li id="lifestyles-alphaTab" class="active"><!------- ALPHA STORY TAB ------>
-        			        <div class="tab-wrapper">
-
-        			            <div id="lifestyles-alpha-slider" class="vzn-slide">
-							        <ul class="slides">
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-						
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->  
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Alpha Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Alpha suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Alpha ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        
-							        </ul>
-						        </div><!-- end slider -->
-        			        </div><!-- tab-wrapper -->
-        		        </li><!-- end alpha stories -->
-
-
-        		        <li id="lifestyles-betaTab"><!------- BETA HIGHLIGHT TAB ------->
-        			        <div class="tab-wrapper">
-        			            <div id="lifestyles-beta-slider" class="vzn-slide">
-							        <ul class="slides">
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Beta Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Beta suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-		
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Beta Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Beta suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								   		<li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Beta Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Beta suspendisse consequat lacinia sapien a placerat. Pellentesque vel massa felis. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Beta ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->     								        
-							        </ul>
-						        </div><!-- end slider -->
-        			        </div><!-- end tab-wrapper -->
-        		        </li><!-- end beta stories -->
-
-        		        <li id="lifestyles-gammaTab"><!------- GAMMA HIGHLIGHT TAB ------->
-        			        <div class="tab-wrapper">
-        			            <div id="lifestyles-gamma-slider" class="vzn-slide">
-							        <ul class="slides">
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Gamma Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Gamma suspendisse consequat lacinia sapien a placerat. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Gamma Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Gamma suspendisse consequat lacinia sapien a placerat. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Gamma Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Gamma suspendisse consequat lacinia sapien a placerat. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								         <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Gamma Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Gamma suspendisse consequat lacinia sapien a placerat. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="large-story">
-									        <div class="related-stories-large">
-									        
-										        <div class="large-story-info-box">
-											        <h5 class="large-story-cat">Audiophile</h5>
-											        <h3 class="large-story-title">Gamma Ipsum Dolor Sit</h3>
-											        <p class="large-story-text">Gamma suspendisse consequat lacinia sapien a placerat. Sed accumsan vulputate nisi sit amet tincidunt. Cras nec lorem purus, sed tempor est.</p>
-										        	<div class="large-story-link"><a href="#" title="Related Lifestyle Story">Read Story</a></div>
-										        </div>
-
-										        <div class="product-reveal"></div>
-										        
-										        <div class="related-product">
-										            <h4 class="related-product-title">Related Product with a Title Long Enough to Take up Two Lines</h4>
-										            <a href="#" title="view this item" class="product-link">
-											            <img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Related Product Title" alt="Related Product Title">
-											            <div class="related-product-cta">More about these <span class="product-title">Awesome Blue Headphones</span></div>
-											        </a>
-										        </div>
-											
-									        </div><!-- end related stories large -->
-								        </li>
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-													<img src="img/product-detail-page/pdp-plus/lifestyles-small-top-1.jpg" title="Lifestyles Story">
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-								        
-								        <li class="small-story">
-								        	<div class="related-stories-small">
-												<div class="image">
-														<img src="img/product-detail-page/pdp-plus/lifestyles-small-bottom-1.jpg" title="Lifestyles Story">
-												
-												</div>
-												<div class="teaser">Gamma ipsum dolor sit amet, consectrtur adipisicing ...</div>
-												<div class="read-story"><a href="#" class="read-story-link" title="Read this story">Read Story</a></div>		        	
-								        	</div>
-								        </li> <!-- end related stories small -->
-							        </ul>
-						        </div><!-- end slider -->
-        			        </div><!-- end tab-wrapper -->
-        		        </li><!-- end gamma stories -->
-
-
-                     </ul><!-- end tabs content ul -->
-                 </div><!-- end tabbed block -->
-            </div><!-- end tabbed wrapper -->
-
-		</div><!-- related stories wrapper -->
-	</div><!-- end section-wrap -->
-</section><!-- ============================ END LIFESTYLES SECTION  ===========  -->
-
-
-
-
-
-
-<section class="fancy-product-grid"><!------------- BEGIN OTHERS BOUGHT SECTION ----->
-	<div class="section-wrap">
-	
-	<div class="section-header">
-		<h2 class="section-title">Others Also Bought</h2>
-	</div>
-
-
-	<div id="fancy-others-slider" class="vzn-slide">
-		<ul class="slides">
-		
-			<li class="large-item">
-				<a href="#" title="view this item1" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-						</div>
-						<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-						<div class="fancy-price">
-							$499<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 1 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item2" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 2 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category3" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Headphones</h3>
-					</div><!-- end fancy item 3 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item4" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-						</div>
-						<h3 class="product-title">iSound Boomerang Speaker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 4 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category5" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Speakers</h3>
-					</div><!-- end fancy item 5 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item6" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-						</div>
-						<h3 class="product-title">Fitbit Activity Tracker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 6 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item7" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-						</div>
-						<h3 class="product-title">Awesome In-Ear Headphones</h3>
-						<div class="fancy-price">
-							$139<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 7-->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category8" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Cases</h3>
-					</div><!-- end fancy item 8 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item9" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 9 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category10" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Smartphones</h3>
-					</div><!-- end fancy item 10 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item11" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-						</div>
-						<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-						<div class="fancy-price">
-							$499<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 11 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item12" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 12 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category13" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="JShop All Headphones">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Headphones</h3>
-					</div><!-- end fancy item 13 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item14" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-						</div>
-						<h3 class="product-title">iSound Boomerang Speaker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 14 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category15" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Speakers</h3>
-					</div><!-- end fancy item 15 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item16" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-						</div>
-						<h3 class="product-title">Fitbit Activity Tracker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 16 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item17" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-						</div>
-						<h3 class="product-title">Awesome In-Ear Headphones</h3>
-						<div class="fancy-price">
-							$139<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 17-->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category18" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Cases</h3>
-					</div><!-- end fancy item 18 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item19" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 19 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category20" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Smartphones</h3>
-					</div><!-- end fancy item 20 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item1" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-						</div>
-						<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-						<div class="fancy-price">
-							$499<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 1 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item2" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 2 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category3" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Headphones</h3>
-					</div><!-- end fancy item 3 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item4" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-						</div>
-						<h3 class="product-title">iSound Boomerang Speaker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 4 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category5" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Speakers</h3>
-					</div><!-- end fancy item 5 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item6" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-						</div>
-						<h3 class="product-title">Fitbit Activity Tracker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 6 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item7" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-						</div>
-						<h3 class="product-title">Awesome In-Ear Headphones</h3>
-						<div class="fancy-price">
-							$139<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 7-->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category8" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Cases</h3>
-					</div><!-- end fancy item 8 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item9" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 9 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category10" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Smartphones</h3>
-					</div><!-- end fancy item 10 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item11" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-						</div>
-						<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-						<div class="fancy-price">
-							$499<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 11 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item12" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 12 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category13" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="JShop All Headphones">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Headphones</h3>
-					</div><!-- end fancy item 13 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item14" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-						</div>
-						<h3 class="product-title">iSound Boomerang Speaker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 14 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category15" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Speakers</h3>
-					</div><!-- end fancy item 15 - category -->
-				</a>
-			</li>
-
-			<li class="large-item">
-				<a href="#" title="view this item16" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-						</div>
-						<h3 class="product-title">Fitbit Activity Tracker</h3>
-						<div class="fancy-price">
-							$79<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 16 -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item17" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-						</div>
-						<h3 class="product-title">Awesome In-Ear Headphones</h3>
-						<div class="fancy-price">
-							$139<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 17-->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category18" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Cases</h3>
-					</div><!-- end fancy item 18 - category -->
-				</a>
-			</li>
-
-			<li class="small-item">
-				<a href="#" title="view this item19" class="product-link">
-					<div class="fancy-slider-item">
-						<div class="fancy-image">
-							<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-						</div>
-						<h3 class="product-title">Jawbone Up Wristband</h3>
-						<div class="fancy-price">
-							$159<span>99</span>
-						</div>
-						<div class="fancy-ratings">
-							<img src="img/sprites/pdp/stars-temp.png" >
-						</div>
-					</div><!-- end fancy item 19 -->
-				</a>
-			</li>
-
-			<li class="category">
-				<a href="#" title="view all in this category20" class="product-link">
-					<div class="fancy-slider-cat">
-						<div class="fancy-cat-image">
-							<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-						</div>
-						<h4>Shop All</h4>
-						<h3 class="product-title">Smartphones</h3>
-					</div><!-- end fancy item 20 - category -->
-				</a>
-			</li>
-								
-			
-
-		</ul>
-	</div><!-- end fancy-others-slider-->
-
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END FANCY CAROUSEL SECTION -------->
-
-  <!-- End Grid Section -->
-  
-  
-
-<div id="btf-anchor" class="anchor-bar">
-	<ul>
-	
-		<li class="product">
-			<div class="anchor-thumb">
-				<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" class="product-thumb" title="Product Name">
-			</div>
-			<h2 class="anchor-title">Wireless On-Ear Headphones | Beats by Dre</h2>
-		</li>
-	
-
-		<li class="anchor-shipping">
-			<p>Free 3-5 Ground Shipping On All Orders</p>
-		</li>
-		<li class="anchor-cart">
-			<div class="price">$249<span>99</span></div>
-			<div class="cart-box">
-				<input class="button add-cart-cta" type="button" title="Add to Cart" value="Add to Cart" >
-			</div>
-		</li>
-	</ul>
-</div><!-- End floating anchor bar -->
-
-  <!-- Footer -->
-
-  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <div style="height:72px"></div>
-  <script type="text/javascript">
-    includeFragment('inc/footer.html');
-  </script>
-  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-
-
-
+	</div><!-- end site container -->
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
     "success" : {
-        "responseHTML" : "(see SUCCESS sample below)" // example SUCCESS HTML below
+         "responseHTML" : "(see SUCCESS sample below)" // example SUCCESS HTML below
     },
     "error" : {
         "responseHTML" : "(see ERROR sample below)" // example ERROR HTML below

@@ -112,8 +112,6 @@ MLS = {
     'home-page' : {
         init : function () {
             MLS.home.init();
-            contentGrid.init();
-            MLS.ajax.colorPicker.init();
         }
     },
     'brand-landing-page' : {
@@ -208,14 +206,20 @@ MLS = {
         init : function() {
             contentFilter.init();
             MLS.specialOffers.init();
+            contentGrid.init();
+            MLS.ajax.colorPicker.init();
+            contentFilter.init();
+            MLS.ajax.cart.init(document.body);
+
         }
     },
-    '404-page' : {
+    'fourofour-page' : {
         init : function() {
             MLS.page404.init();
             contentGrid.init();
+            MLS.ajax.colorPicker.init();
         }
-    },    
+    }
   
 };
 

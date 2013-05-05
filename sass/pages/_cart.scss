@@ -142,9 +142,7 @@
 							}
 						 
 						}
-						
-					.cart-product-image.oos { opacity: 0.3; }
-					
+			
 					.cart-product-info {
 						height:157px;
 						position:relative;
@@ -235,6 +233,8 @@
 							.selector {
 								float: left;
 								width: 75px !important;
+								
+								span { @include pdp-sprite(grey-more, false, 54px, 18px); }
 
 								} /* end selector */
 						
@@ -246,7 +246,7 @@
 								bottom: -20px; right: 10px;
 								}
 						
-							.oos-msg {
+							.oos-msg, .expired-item-msg {
 								display: none;
 								@include checkoutLabel;
 								color: $colorVzwRed;
@@ -553,7 +553,7 @@
 						}
 					}
 				
-				.checkout-box {  
+				.checkout-box { 
 					margin:10px 0 10px 0; 
 			
 					.button{
@@ -649,7 +649,7 @@
 								height: 30px;
 								
 								span {
-									@include secondaryAddCart;
+									@include ctaSecondaryCart;
 								
 									.add-secondary-to-cart {
 										-webkit-appearance: none;
@@ -959,15 +959,17 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 				position:relative;
 				height:78px;
 				width: 100%;
+				overflow: hidden;
 					 
 				.item-image-block {
 					 width: 25%;
 					 max-width:82px;
+					 max-height: 78px;
 					 position: absolute;
 					 left:0px; top: 2px;
 					 			
 					 .minicart-item-image {
-					 	width:75%;
+					 	width:70%;
 					 	margin: 10px auto 10px 5px;
 					 	}
 					 }
@@ -1068,7 +1070,7 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 					 	font-family: $fontArial;
 					 	color: $cartGreyDk;
 					 	font-size:12px;
-					 	font-family: 16px;
+					 	line-height: 16px;  
 					 	position: absolute;
 					 	top: 0; left: 0;
 						background: #d6d9d9;
@@ -1280,7 +1282,13 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 	.no-offer { display: none; }
 	}
 .out-of-stock {
+	.table-row.oos .cart-product-image { opacity: 0.3; }
 	.oos-msg { display: block !important; }
+	}
+.expired-item {
+	.table-row.expired .cart-product-image { opacity: 0.3; }
+	.expired-item-msg { display: block !important; }
+	
 	}
 .too {
 	#too-many-modal.lightbox { display: block ; }
