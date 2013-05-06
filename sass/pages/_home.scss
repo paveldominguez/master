@@ -106,7 +106,6 @@ $btfHiliteBg : #2a2d32;
         padding-bottom: 100px;
     }
     .content-grid .content-item {
-            //width:25%;
             .content-fig img{
                 max-width:115px;
             }
@@ -447,10 +446,9 @@ $btfHiliteBg : #2a2d32;
                 }
             }
         }
-        .section-wrap{max-width: 855px;}
+        .section-wrap{max-width: 1024px;margin: 0 auto;}
         .content-grid{border-top:none;}
         .content-grid .content-item {
-            //width:25%;
             .content-fig img{
                 max-width:115px;
             }
@@ -458,7 +456,7 @@ $btfHiliteBg : #2a2d32;
     }
 
     .mobile-community,.lifestyles,.featured-reviews,.trending-products,.trending-categories{
-        .section-wrap{max-width:855px;}
+        .section-wrap{max-width:1024px;margin: 0 auto;}
     }
 
     .mobile-community{
@@ -649,6 +647,7 @@ $btfHiliteBg : #2a2d32;
         padding-bottom: 20px;
         max-width: 1024px;
         width: 100%;
+        overflow: hidden;
 
         .section-wrap {
             width:100%;
