@@ -208,15 +208,18 @@ MLS = {
     'special-offers-landing-page' : {
         init : function() {
             contentFilter.init();
+            contentGrid.init();
             MLS.specialOffers.init();
+            MLS.ajax.colorPicker.init();
+            MLS.ajax.cart.init(document.body);
         }
     },
-    '404-page' : {
+    'fourofour-page' : {
         init : function() {
             MLS.page404.init();
             contentGrid.init();
         }
-    },    
+    }
   
 };
 
