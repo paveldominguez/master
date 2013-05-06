@@ -92,6 +92,7 @@ MLS = {
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
             MLS.ajax.article.init();
+            MLS.ui.complexItem.init();
 
             var navHelp = $jQ('#nav-help'),
             needHelp = navHelp.find('.need-help'),
@@ -207,14 +208,16 @@ MLS = {
     'special-offers-landing-page' : {
         init : function() {
             contentFilter.init();
+            contentGrid.init();
             MLS.specialOffers.init();
+            MLS.ajax.colorPicker.init();
+            MLS.ajax.cart.init(document.body);
         }
     },
     'fourofour-page' : {
         init : function() {
             MLS.page404.init();
             contentGrid.init();
-            MLS.ajax.colorPicker.init();
         }
     }
   

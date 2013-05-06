@@ -22,7 +22,7 @@ $social-spacing: 50px;
 @import "sprites/social/*.png";
 @include all-social-sprites;
 
-$pdp-spacing: 15px;
+$pdp-spacing: 50px;
 @import "sprites/pdp/*.png";
 @include all-pdp-sprites;
 
@@ -30,6 +30,6 @@ $ui-spacing: 50px;
 @import "sprites/ui/*.png";
 @include all-ui-sprites;
 
-$cart-spacing: 15px;
+$cart-spacing: 50px;
 @import "sprites/cart/*.png";
 @include all-cart-sprites;

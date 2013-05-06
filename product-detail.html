@@ -27,7 +27,7 @@
 
   <!-- Included CSS Files (Uncompressed) -->
   <link rel="stylesheet" href="css/flexslider.css" type="text/css">
-  <link rel="stylesheet" href="css/uniform.vzn.css" type="text/css">
+ 
 
   <!-- Included CSS Files (Compressed) -->
   <!-- <link rel="stylesheet" href="css/app.css"> -->
@@ -42,230 +42,284 @@
 
 </head>
 
-<body id="pdp" class="product-detail">
+<body id="pdp" class="product-detail"><!-- class="product-detail DEMO-signed-in DEMO-sale"
+	<div id='site-container'>
 
 
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
-  
-  		<!-- <div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-sale">sale</li>
-  				<li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li>
-  			</ul>
-  		</div> TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS-->
-  
-  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
   </div><!-- end temp header -->
 <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
-  <!-- End Header and Nav -->
+<!-- BODY -->
 
-  <!-- Main Grid Section -->
 
-<section id="pdp-hero"><!--  ======================= BEGIN PDP HERO =============== -->
-<div class="section-wrap">
+<section id="pdp-hero"><!-- HERO -->
+	<div id="carousel-block">
+	
+		<div id="pdp-mobile-cart-header"></div><!-- insert content for mobile here -->
+		
+		<div id="carousel">
+			<div id="focus" class="flexslider"><!-- slides -->
+      			<ul class="slides">
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-175" data-ycoord="-70" data-portrait-x="-130"  data-portrait-y="-80">
+      				</li>
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-2.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-100" data-ycoord="-90" data-portrait-x="-60"  data-portrait-y="-100">
+      				</li>
+      				<li>
+      					<img src="img/product-detail-page/pdp-plus/dre-beats-3.png" title="Beats by Dre - On-Ear Wireless Headphones" data-xcoord="-375" data-ycoord="-225" data-portrait-x="-50"  data-portrait-y="-165">
+      				</li>
+      			</ul>
+      		</div><!-- end flexslider/focus images-->
 
-    <div id="carousel-block">
-        <div class="shipping-offers">
-      			<p class="offer-text">Free 3-5 Ground Shipping on All Orders</p>
-      	</div>
+			<div class="view-to-scale"> <!-- hide scale control -->
+      			<a href="#" id="view-scale" class="view-to-scale-link zoom-xtras-control">View to Scale</a>
+      		</div>
 
-      	<div id="carousel">
-
-      			<div id="focus" class="flexslider"><!-- focus images -->
+      		<div class="thumb-wrap">
+      			<div id="thumbs" class="flexslider"><!-- thumbnails -->
       				<ul class="slides">
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia - Front View" >
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia - Right View" >
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia - Back View" >
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia - Left View" >
-      					</li>
-      				</ul>
-      			</div><!-- end flexslider/focus images-->
-
-      			<div class="thumb-wrap">
-      			<div id="thumbs" class="flexslider"><!-- thumbnail image nav -->
-      				<ul class="slides">
-      					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-2-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       						<div class="vzn-active"></div>
       					</li>
       					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia" >
-      						<div class="vzn-active"></div>
-      					</li>
-      					<li>
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia" >
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-3-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       						<div class="vzn-active"></div>
       					</li>
       				</ul>
-      						
-      				<div id="carousel-zoom"></div>
-      				<div id="view-360"><a class="view-360-link"></a></div>
       			
-      			</div><!-- end #thumbs nav images-->
-        		</div><!-- end thumb-wrap -->
+      				<div id="carousel-zoom" class="zoom-xtras-control"></div><!-- zoom panel -->
+      				<div class="view-360-box"><a id="view-360" class="zoom-xtras-control"></a></div>
+      				
+      			</div><!-- end #thumbs .flexslider-->
+        	</div><!-- end thumb-wrap -->	
       	</div><!-- end carousel -->
-    </div><!-- end carousel-block  -->
-
-
-    <div id="cart-block">
-
-    	<div class="shipping-offers">
-      			<p class="offer-text">Free 3-5 Ground Shipping on All Orders</p>
+      	
+      	<div class="crsl-offer-box offer">
+    		<h4 class="offer-amt">10<span class="offer-unit">%</span></h4>
+    		<span class="offer-off">Off</span>
+   		</div><!-- end crsl offer box -->
+      	
+      	<div class="hero-breadcrumbs">
+      		<a href="#" id="pdp-breadcrumb" class="breadcrumb-link" title="Back to Previous Page">Last Page</a>
       	</div>
+      	
+      	
+	</div><!-- end carousel block -->
+	
+	
+	<div id="cart-block">
+		<div class="light">
+			<header id="pdp-cart-header">
+				<div class="pdp-banner-shipping ">
+					<a href="#" class="dropdown-link">
+						<span class="bold">Free Shipping</span> on all orders!
+					</a>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Lorem ipsum dolor sequitat nes serva dos.
+					</div>
+				</div>
 
+				<div class="brand-sku">
+					<div id="product-brand-field" class="brand">Beats by Dre</div>
+					<div id="product-sku-field" class="sku">SKU #768324</div>
+				</div>
+					
+				<h1 class="product-title">Wireless On-Ear Headphones with Control Talk</h1>
+				<ul id="review-block" class="inline-list">
+        			<li>
+          				<div class="ratings"></div>
+          			</li>
+          			<li class="reviews">
+          				<a href="#" id="pdp-cart-review-count" class="review-link" title="See reviews for this item." >(47)</a>
+          			</li>
+        		</ul><!-- end reviewBlock -->
+			</header>
 
-      	<header class="header">
+            <div class="pdp-cart-shipping">
+            	<ul class="ship-details offer">
+					<li class="pdp-cart-shipping-item discount offer">
+						<a href="#" class="dropdown-link ">10% Off Until 1/25</a>
+					    <div class="dropdown-panel">
+					        <div class="dropdown-pointer"></div>
+					        <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
+					        <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
+					        <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+						</div><!-- end dropdown-panel -->		        
+					</li>
+					<li class="pdp-cart-shipping-item shipping offer">
+						<a href="#" class="dropdown-link">Free 3-5 Ground Shipping</a>
+					    <div class="dropdown-panel">
+					        <div class="dropdown-pointer"></div>
+					        <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
+					        <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
+					        <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
+					    </div><!-- end dropdown panel -->
+					</li>
+				</ul><!-- end offer ul -->
+				<ul  class="ship-details">
+					<li class="pdp-cart-shipping-item ship no-offer">Free 3-5 Ground Shipping</li>
+					<li class="pdp-cart-shipping-item return-policy">14 Day Free Returns</li>
+					<li class="pdp-cart-shipping-item rcv-by">Receive by 1/31</li>
+				</ul><!-- end no-offer ul -->
+	
+				<div class="pdp-cart-compat guest">
+					<a href="#" class="compat-link guest" title="Check compatibility of this item.">Check compatibility</a>
+				</div>
+				
+				<div class="pdp-cart-compat signed-in">
+					<ul class="pdp-cart-compat-list">
+						<li id="signed-in-device-1" class="compat-icon compatible">
+							<div class="image">Image</div>
+							<div class="data">Data</div>
+						</li>
+						<li id="signed-in-device-2" class="compat-icon not-compatible">
+							<div class="image">Image</div>
+							<div class="data">Data</div>
+						</li>
+						<li class="compat-link-box">
+							<a href="#" class="compat-link signed" title="Check compatibility of this item.">Check compatibility</a>
+						</li>
+					</ul>
+				</div> <!-- end signed in compat box -->
+				
+			</div><!-- end pdp-cart-shipping -->
+		</div><!-- end light -->
 
-          	<div class="brand">
-          		<!-- <div class="brand-color"></div> little square with brand color -->
-          		NOKIA
-          	</div>
+        <div class="dark">
+        
+        	<form id="pdp-add-to-cart" method="" action="" >
+        		<fieldset id="pdp-add-left" class="pdp-add-float left-panel" >
+        			
+        			<div class="size-select-box">
+                    	<select id="pdp-size-select" name="size-select" class="size-select">
+                        	<option value="" disabled selected>Size</option>
+                        	<option value="1">Small</option>
+                        	<option value="2">Medium</option>
+                        	<option value="3">Large</option>
+                        	<option value="4">X Large</option>
+                    	</select>
+        			</div>
+					
+        			<div class="price-block">
+						<div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
+        				<div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></div>
+					</div><!-- end priceBlock -->
+        
+        		</fieldset><!-- end left -->
+        		
+        		<fieldset id="pdp-add-right" class="pdp-add-float right-panel" >
+        
+					<div class="color-select-box">
+                		<div class="swatch"></div>
+                    	<select id="pdp-color-select" name="color-select" class="color-select">
+                    		<option value="" disabled selected>Color</option>
+                        	<option value="black">Black</option>
+                        	<option value="grey">Grey</option>
+                        	<option value="white">White</option>
+                        	<option value="dark blue">Dark Blue</option>
+                        	<option value="light blue">Light Blue</option>
+                        	<option value="Purple">Purple</option>
+                        	<option value="dark red">Dark Red</option>
+                        	<option value="light red">Light Red</option>
+                        	<option value="dark green">Dark Green</option>
+                        	<option value="light green">Light Green</option>
+                        	<option value="orange">Orange</option>
+                        	<option value="yellow">Yellow</option>
+                    	</select>
+        			</div>
 
-
-            <h1 class="product-title">PowerUp Wireless Speaker</h1>
-
-        	<ul id="review-block" class="inline-list">
-        		<li>
-          			<div class="ratings"></div>
-          		</li>
-          		<li class="reviews">
-          			<a href="#" class="review-link" title="See reviews for this item." >(47)</a>
-          		</li>
-        	</ul><!-- end reviewBlock -->
-
-
-
-
-
-        </header>
-
-
-        <div id="cart-details">
-
-        	<div class="price-add">
-        		<div id="price-block">
-
-					<div class="original-price">Reg. <span>&nbsp;$299.99&nbsp;</span></div>
-        			<div class="actual-price">$249<span>99</span></div>
-
-        		</div><!-- end priceBlock -->
-
-
-      			<div id="add-cart-box">
-      				<input class="button add-cart-cta" type="submit" title="Add to Cart" value= "Add to Cart">
+				<div class="add-cart-box">
+      				<div class="OOS product">
+      					<p>Sorry, this product is out of stock.</p>
+      				</div>
+					<div class="expired product">
+      					<p>Sorry, this product is no longer available.</p>
+      				</div>
+      			
+      				<div class="pdp-cart-red-cta-box">
+      					<input id="pdp-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
+      				</div>
+      				
+      				<div class="no-cta-button">
+      					<span class="OOS button-text">coming soon</span>
+      					<span class="expired button-text">no longer available</span>
+      				</div>
+      			
       			</div><!-- end add-cart -->
 
-      			<div id="anchor-trigger"></div>
-       	</div><!-- end price-add -->
-
-
-
-        	<div class="color-stock-block">
-
-
-        		<div class="color-select-box">
-        			<div class="swatch"></div>
-                	<select name="color-select" class="color-select">
-                    	<option value="">Select Color</option>
-                    	<option value="black">Black</option>
-                    	<option value="grey">Grey</option>
-                    	<option value="white">White</option>
-                    	<option value="blue">Blue</option>
-                	</select> <!--<input type="list" id="color-select" placeholder = "Select Color"> -->
+				
+        		</fieldset><!-- end right -->
+        		
+        		<section id="pdp-mobile-form-box"><!-- insert mobile cart info here -->
+        		
+        			<fieldset id="pdp-mobile-form-color-size" class="mobile-fieldset ">
+        				<div id="pdp-mobile-form-size" class="mobile-left form-float color-size"></div>
+        				<div id="pdp-mobile-form-color" class="mobile-right form-float color-size"></div>
+        			</fieldset>
+        			
+        			<fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
+        				
+        			<fieldset id="pdp-mobile-form-cta" class="mobile-fieldset">
+        				<div id="pdp-mobile-form-price" class="mobile-left form-float cta"></div>
+        				<div id="pdp-mobile-form-submit" class="mobile-right form-float cta"></div>
+        			</fieldset>
+        			
+        			<div id="pdp-mobile-social"></div>
+        			
+        		</section><!-- end mobile add to cart form box -->
+        		
+        		<div id="pdp-cart-color-slide">
+        			<ul class="pdp-cart-slide-colors">
+        				<li class="color-chip black"></li>
+        				<li class="color-chip grey"></li>
+        				<li class="color-chip white"></li>
+        				<li class="color-chip red"></li>
+        			</ul>
         		</div>
+        </form>
 
-                <div class="size-select-box">
-                    <select name="size-select" class="size-select">
-                        <option value="1">Select Size</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                    </select> <!-- <input type="list" id="size-select" placeholder = "Select Size"> -->
-        		</div>
-
-        	</div> <!-- end color-stock-block -->
-
-			<div class="compat-ship-block">
-
-				<div class="pdp-ship">
-
-					<ul class="ship-details">
-						<li class="cost">Free Shipping</li>
-						<li class="avail">Online Only</li>
-						<li class="rcv-by">Receive by 1/31</li>
-					</ul>
-
-				</div><!-- end pdp-ship -->
-
-				<div class="cart-compat-block">
-
-					<div class="devices">
-
-					</div>
-
-					<div class="check">
-						<a href="#" id="compat-jump" class="link" title="Check compatibility of this item.">Check compatibility</a>
-					</div>
-
-				</div><!-- end cart-compat-block -->
-
-
-
-			</div>  <!--  end compat-ship-block -->
 
 			<div class="social-block">
-
 				<div class="pdp-social-left">
-
 					<ul class="inline-list">
 						<li class="social want">
 							<div class="icon"></div>
 							<div class="count">9824</div>
 							<a href="#" class="click" title="Want this!"></a>
-						</li>
+							/li>
 
 						<li class="social email">
 							<div class="icon"></div>
 							<div class="count">206</div>
-							<a href="#" class="click" title="Email this!"></a></li>
+							<a href="#" class="click" title="Email this!"></a>
+						</li>
 
 						<li class="social facebook">
 							<div class="icon"></div>
 							<div class="count">11396</div>
 							<a href="#" class="click" title="Like this!"></a>
 						</li>
-
-
 					</ul>
-
 				</div><!-- end social-left -->
 
 				<div class="pdp-social-right">
-
 					<ul class="inline-list">
 						<li class="social twitter">
 							<div class="icon"></div>
 							<div class="count">9360</div>
-							<a href="#" class="click" title="Tweet this!" ></a>
+							<a href="#" class="click" title="Tweet this!"" ></a>
 						</li>
 
 						<li class="social gplus">
@@ -279,41 +333,55 @@
 							<div class="count">792</div>
 							<a href="#" class="click" title="Pin this!"></a>
 						</li>
-
 					</ul>
-
 				</div><!-- end social-right -->
-
-			</div> <!--  end social-block -->
-
-        </div>
-
-	</div> <!-- end cartBlock -->
-
-
+			</div> <!--  end social-block -->	
+		</div><!-- end dark -->
+	</div><!-- end cart-block -->
+	
 	<div id="zoom-block">
 	    <div class="zoom-wrap" />
 	        <div id="zoom-carousel-block">
-
-      			<div id="zoom-focus" class="flexslider"><!-- focus images -->
+	        
+	        	<div id="zoom-focus" class="flexslider"><!-- slide content -->
       				<ul id="zoom-slides" class="slides">
-      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" title="PowerUp Wireless Speaker by Nokia - Front View" >
+      					<li>
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
-      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png">
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker2.png" title="PowerUp Wireless Speaker by Nokia - Right View" >
+      					<li>
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-2.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
-      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png">
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker3.png" title="PowerUp Wireless Speaker by Nokia - Back View" >
-      					</li>
-      					<li data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png">
-      						<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker4.png" title="PowerUp Wireless Speaker by Nokia - Left View" >
+      					<li>
+      						<img src="img/product-detail-page/pdp-plus/dre-beats-3.png" title="Beats by Dre - On-Ear Wireless Headphones" >
       					</li>
       				</ul>
-
-      			</div><!-- end flexslider/focus images-->
-
-      	    </div><!-- end zoom-carousel-block -->
+      			</div>
+      			
+	        	<div class="hide-scale"> <!-- hide scale control -->
+      					<a href="#" id="toggle-scale" class="view-scale-link  zoom-xtras-control">View to Scale</a>
+      			</div>	
+      	
+				<div class="thumb-wrap">
+					<div id="zoom-thumbs" class="flexslider"><!-- thumbnail control -->
+						<ul class="slides">
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-2-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      						<li>
+      							<img src="img/product-detail-page/pdp-plus/dre-beats-3-thumb.png" title="Beats by Dre - On-Ear Wireless Headphones" >
+      							<div class="vzn-active"></div>
+      						</li>
+      					</ul>
+      					<div id="toggle-view-360"><a href="#" class="view-360-link zoom-extras-control"></a></div> <!-- 360 view control -->
+      					<div id="zoom-carousel-zoom"></div><!-- zooming control -->
+      				</div>
+      			</div><!-- end thumb-wrap -->	
+      		</div><!-- end zoom-carousel-block -->
 
 		    <div id="zoom-close" title="Back to item details">
 		        Close
@@ -324,20 +392,30 @@
 			    <div class="border"></div>
 			    <div class="smaller" title="Zoom out" ></div>
 		    </div>
+		    
+		    <div id="zoom-scale-content" class="zoom-content">
+		    	<div class="scale-box">
+		    		<h1>Scale</h1>
+		    	</div>
+		    </div>
+		    
+		    <div id="zoom-view-360-content" class="zoom-content">
+		    	<div class="view-360-box">
+		    		<h1>view 360</h1>
+		    	</div>
+		    </div>
+		    
 		</div><!-- end zoom-wrap -->
 	</div><!-- end zoom-block -->
-</div><!-- end section-wrap -->
-
-</section> <!-- ================================ END PDP HERO ===================== -->
-
+	
+</section><!-- end hero section -->
 
 
-
-<section id="product-details"><!-- ============= BEGIN PRODUCT DETAILS ============ -->
-<div class="section-wrap">
-
-  	<div class="tabbed-wrapper">
+<section id="product-details"><!-- DETAIL TABS -->
+	
+	<div class="tabbed-wrapper">
   		<div class="tab-block">
+
 			<div class="tab-scroll">
       			<dl id="detail-tabs" class="tabs">
 
@@ -349,19 +427,23 @@
         				<a href="#features" title="See item features." ><h2>Features</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
+        			<dd class="reviews" >
+      					<a href="#consumer-reviews" title="Reviews" ><h2>Reviews</h2></a>
+      					<div class="vzn-active"></div>
+      				</dd>
+      				<dd class="compat" >
+        				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
+        				<div class="vzn-active"></div>
+        			</dd>
         			<dd class="specs" >
         				<a href="#specs" title="See technical specifications for this item."><h2>Tech Specs</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
-        			<dd class="compat" >
-        				<a href="#compat" title="Check compatibility of this item."><h2>Compatibility</h2></a>
+        			<dd class="questions" >
+        				<a href="#questions-comments" title="Questions & Answers" ><h2>Question & Answers</h2></a>
         				<div class="vzn-active"></div>
         			</dd>
 
-        			<dd class="details " ><!-- for PDP lite page only -->
-      					<a href="#details" title="See item details." ><h2>Details<h2></a>
-      					<div class="vzn-active"></div>
-      				</dd>
         		</dl>
 			</div><!-- end tab scroll -->
 
@@ -370,18 +452,27 @@
 
 				<li id="overviewTab" class="active"><!----- OVERVIEW TAB -------->
 					<div class="tab-wrapper">
+					
+						<div class="more-less-block">
+							<div class="two-thirds left">
+						    
+							    	<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA, a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that  houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.   Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.
+							    	</p>
+								
+							</div><!-- end overview-text -->
 
-						<div class="overview-text two-thirds">
-						    <div class="tab-inner">
-							    <p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA, a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that  houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.   Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone lets you just tap-to-pair and you're ready to send music from your phone to the JBL® PowerUp.
-							    </p>
+							<div id="overview-bv-include" class="third right">
+								<img src="img/product-detail-page/pdp-backgrounds/pdp-overview-bv-temp.jpg " title="Bazaar Voice snippet">
 							</div>
-						</div><!-- end overview-text -->
+							
+							<div class="more-less">
+								<a href="#" class="more-less-link" title="show more">more</a>
+							</div>	
+						</div><!-- end more-less-block -->
 
-						<div class="you-need third right">
-						    <div class="tab-inner">
-							    <h3>You'll Need These</h3>
-							    <ul class="you-need-items">
+						<div class="pdp-bundles-block">
+							    <h3>Save on bundles for this product!</h3>
+							    <ul class="bundle-items">
 
 								<li class="item">
 								<a href="#" class="product-link" title="view this item">
@@ -392,7 +483,7 @@
         								<h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
         								<div class="price">$189.99</div>
-        								<div class="cta"></div>
+        								<input class="button add-cart-cta" type="button" value="Add to Cart" title="Add to Cart">
         							</div>
         						</a>
 								</li>
@@ -406,13 +497,13 @@
         								<h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
         								<div class="price">$189.99</div>
-        								<div class="cta"></div>
+        								<input class="button add-cart-cta" type="button" value="Add to Cart" title="Add to Cart">
         							</div>
         						</a>
 								</li>
 
 								<li class="item">
-								<a href="#" class="product-title" title="see this item">
+								<a href="#" class="product-link" title="see this item">
 									<div class="product-image">
         									<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
 									</div>
@@ -420,19 +511,14 @@
         								<h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
         								<div class="ratings"></div>
         								<div class="price">$189.99</div>
-        								<div class="cta"></div>
+        								<input class="button add-cart-cta" type="button" value="Add to Cart" title="Add to Cart">
         							</div>
         						</a>
 								</li>
 							    </ul><!-- end you need ul  -->
-							    <div class="you-need-msg">(Items available at checkout)</div>
-							</div><!-- end tab-inner -->
-						</div><!-- end you need div  -->
-
-					<div class="more-less">
-						<a href="#" class="more-less-link" title="show more">more</a>
-					</div>
-
+							    <div class="pdp-bundles-msg">(Items available at checkout)</div>
+							    
+						</div><!-- pdp bundles block -->
 					</div><!-- end overview tab-wrapper -->
 				</li><!-- end overview tab content -->
 
@@ -467,54 +553,7 @@
 							</div><!-- end tab-inner -->
         				</div><!-- end details center -->
 
-        				<div class="third right">
-                            <div class="tab-inner">
-								<ul class="features">
-									<li class="smart">
-										<div class="image">
-											<h5 class="feature">Smart Accessory</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-
-										</div>
-									</li>
-									<li class="app">
-										<div class="image">
-											<h5 class="feature">App Enabled</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-									<li class="data">
-										<div class="image">
-											<h5 class="feature">Data Plan Needed</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-									<li class="wifi">
-										<div class="image">
-											<h5 class="feature">WiFi Enabled</h5>
-										</div>
-										<div class="hover-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-												<span class="close"></span>
-											</p>
-										</div>
-									</li>
-								</ul>
-                            </div><!-- end tab-inner -->
-        				</div><!-- end details right -->
-
+        				
         				<div class="more-less">
 							<a href="#" class="more-less-link" title="show more">more</a>
 						</div>
@@ -595,6 +634,7 @@
 
         		<li id="compatTab"><!--------------- COMPATIBILITY TAB ---------->
         			<div class="tab-wrapper">
+
         				<div class="compat-sort">
                             <div class="tab-inner">
         					    <ul class="sorting-elements">
@@ -764,1513 +804,99 @@
         		    </div><!-- end compat wrapper -->
         	    </li><!-- end compatibility tab-content -->
 
-        	    <li id="detailsTab" ><!------- DETAILS TAB FOR LITE PAGE------->
+        	    <li id="consumer-reviewsTab"><!------- CONSUMER REVIEW TAB ------->
         			<div class="tab-wrapper">
-        				<div class="third left">
-							<h3>Overview</h3>
-        					<p>Get the JBL® PowerUp Wireless Charging Speaker for NOKIA,  a home stereo speaker station that showcases legendary JBL® acoustics within a minimalistic, yet bold NOKIA design that houses “invisible until needed” technology like Qi wireless battery charging and NFC pairing. Get great sound, great design along with Bluetooth® and Qi wireless freedom for your smartphone. Simplified Bluetooth® pairing using your NFC enabled smartphone …
-        					</p>
-        				</div><!-- end details left -->
-
-        				<div class="third center">
-							<h3>Features</h3>
-							<ul class="details-list">
-								<li>Wireless charging speaker</li>
-								<li>Legendary JBL® sound and complete wireless freedom </li>
-								<li>Wirelessly charge compatible device on top of the speaker</li>
-								<li></li>
-								<li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
-							</ul>
-        				</div><!-- end details center -->
-
-        				<div class="third right">
-							<h3>Tech Specs</h3>
-							<ul class="specs-list">
-								<li>
-									<div class="specs-label">Weight</div>
-									<div class="specs-data">0.36</div>
-								</li>
-								<li>
-									<div class="specs-label">Height</div>
-									<div class="specs-data">45.2</div>
-								</li>
-								<li>
-									<div class="specs-label">Length</div>
-									<div class="specs-data">196.45</div>
-								</li>
-							</ul>
-        				</div><!-- end details right -->
-
-					<div class="more-less">
-						<a href="#" class="more-less-link" title="show more">more</a>
+        				<div class="tab-inner">
+							<img class="temp-image" src="img/product-detail-page/temp-reviews.jpg" title="Consumer Reviews" style="height:1341px;" >
+						</div>
+						<div class="more-less">
+						    <a href="#" class="more-less-link" title="show more">more</a>
+					    </div>
 					</div>
+				</li>
 
-        			</div><!-- end details tab-wrapper -->
-        		</li><!-- end details tab content , always hidden for now-->
-
-
-
-
-
-
-
+				<li id="questions-commentsTab" ><!------- QUESTIONS-ANSWERS TAB ------->
+        			<div class="tab-wrapper">
+        				<div class="tab-inner">
+							<img class="temp-image" src="img/product-detail-page/temp-questions.jpg" title="Questions & Comments" style="height:1087px;">
+						</div>
+						<div class="more-less">
+						    <a href="#" class="more-less-link" title="show more">more</a>
+					    </div>
+					</div>
+				</li>
 
 
       	    </ul><!-- end tab-content -->
 
         </div><!-- end tab-block -->
 	</div><!-- end tabbed-wrapper -->
-</div><!-- end section-wrap -->
+	
+</section><!-- end detail tabs section -->
 
 
 
-</section><!-- ============================ END DETAILS SECTION ================= -->
 
 
-<section id="lifestyle"><!-- ============== BEGIN LIFESTYLE SECTION ============= -->
-	<div class="section-wrap">
-		<div class="lifestyle-wrapper">
-			<ul class="lifestyle-list">
-				<li class="third">
-					<div class="alpha">
-					
-						<img src="img/product-detail-page/pdp-backgrounds/lifestyle-icon-alpha.png" id="lifestyle-alpha" class="lifestyle-icon" title="Alpha Lifestyle">
-						<h2>Lifestyle Alpha</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-						</p>
-					</div>
-				</li>
-				<li class="third">
-					<div class="beta">
-						<img src="img/product-detail-page/pdp-backgrounds/lifestyle-icon-beta.png" id="lifestyle-beta" class="lifestyle-icon" title="Beta Lifestyle">
-						<h2>Lifestyle Beta</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-						</p>
-					</div>
-				</li>
-				<li class="third">
-					<div class="gamma">
-						<img src="img/product-detail-page/pdp-backgrounds/lifestyle-icon-gamma.png" id="lifestyle-gamma" class="lifestyle-icon" title="Gamma Lifestyle">
-						<h2>Lifestyle Gamma</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-						</p>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div><!-- end section-wrap -->
-</section><!-- ============================ END LIFESTYLE SECTION  ===========  -->
 
 
 
 
+<section id="similar-products"><!-- SIMILAR PRODUCTS -->
+	<article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section">
+        <header class="content-header">
+        	<h1 class="title"><strong>Similar</strong> Products</h1>
+            <div class="slide-nav"></div>
+        </header>
+        	<script>
+    			includeFragment("inc/fragments/similar-products-module.html");
+    		</script>  
+    </article>
+</section><!-- end similar products section -->
 
 
 
 
 
-<section id="simple-carousel"><!------------- BEGIN SIMPLE CAROUSEL SECTION ----->
-	<div class="section-wrap">
 
-	<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="simple-carousel-tabs" class="tabs">
-      				<dd class="similar active" >
-      					<a href="#simple-similar" title="Similar items" ><h2>Similar</h2></a>
-      					<div class="vzn-active"></div>
-      				</dd>
-        			<dd class="others" >
-        				<a href="#simple-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        			<dd class="works" >
-        				<a href="#simple-works" title="Works with" ><h2>Works With</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
 
 
-      		<ul class="tabs-content">
+<section id="related"><!-- RELATED STORIES & GUIDES -->
+	<article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <header class="content-header">
+        	<h1 class="title"><strong>Related</strong> Stories & Guides</h1>
+            <div class="slide-nav"></div>
+         </header> 
+        <script>
+    		includeFragment("inc/fragments/related-stories-module.html");
+    	</script>
+    </article>
+</section><!-- end related stories & guides section -->
 
-        		<li id="simple-similarTab" class="active"><!------- SIMPLE SIMILAR TAB ------->
-        			<div class="tab-wrapper">
 
-						<div id="simple-similar-slider" class="vzn-slide" >
-							<ul class="slides">
-								<li><a href="#" title="view this item1" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
 
-								<li><a href="#" title="view this item2" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
 
-								<li><a href="#" title="view this item3" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
+<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
+	<article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <header class="content-header">
+        	<h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
+            <div class="slide-nav"></div>
+        </header>
+        <script>
+    		includeFragment("inc/fragments/shop-product-module.html");
+    	</script>
+    </article>
+</section><!-- end others also bought section -->
 
-								<li><a href="#" title="view this item4" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
 
-								<li><a href="#" title="view this item5" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
 
-								<li><a href="#" title="view this item6" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
+<!-- FOOTER -->
+<!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+	<script type="text/javascript">
+    	includeFragment('inc/footer.html');
+	</script>
+<!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 
-								<li><a href="#" title="view this item7" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-
-        			</div><!-- end details tab-wrapper -->
-        		</li><!-- end simple similar tab content -->
-
-
-
-				<li id="simple-othersTab"><!----- SIMPLE OTHERS TAB -------->
-					<div class="tab-wrapper">
-
-						<div id="simple-others-slider" class="vzn-slide" >
-							<ul class="slides">
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-					</div><!-- end overview tab-wrapper -->
-				</li><!-- end simple others tab content -->
-
-
-
-        		<li id="simple-worksTab"><!------------ SIMPLE WORKS TAB ---------------->
-					<div class="tab-wrapper">
-
-						<div id="simple-works-slider" class="vzn-slide">
-							<ul class="slides">
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="simple-price">
-											$159.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="simple-price">
-											$79.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="simple-price">
-											$499.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-
-								<li><a href="#" title="view this item" class="product-link">
-									<div class="simple-slider-item">
-										<div class="simple-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="simple-price">
-											$139.99
-										</div>
-										<div class="simple-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end simple item -->
-								</a></li>
-							</ul>
-						</div><!-- simple-similar-slider -->
-
-
-
-					</div><!-- end features tab-wrapper -->
-				</li><!-- end simple works tab content -->
-
-      		</ul><!-- end tab-content -->
-
-    	</div><!-- end tab-block -->
-	</div><!-- end tabbed wrapper -->
-
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END SIMPLE CAROUSEL SECTION -------->
-
-
-
-<section id="product-reviews"><!------------- BEGIN PRODUCT REVIEWS ---------------->
-	<div class="section-wrap">
-
-		<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="review-tabs" class="tabs">
-      				<dd class="reviews active" >
-      					<a href="#consumer-reviews" title="Consumer Reviews" >Consumer Reviews</a>
-      					<div class="vzn-active"></div>
-      				</dd>
-        			<dd class="questions" >
-        				<a href="#questions-comments" title="Questions & Comments" >Question & Comments</a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
-
-
-      		<ul class="tabs-content">
-
-        		<li id="consumer-reviewsTab" class="active"><!------- CONSUMER REVIEW TAB ------->
-        			<div class="tab-wrapper">
-						<img class="temp-image" src="img/product-detail-page/temp-reviews.jpg" title="Consumer Reviews" >
-					</div>
-				</li>
-
-				<li id="questions-commentsTab" ><!------- QUESTIONS-COMMENTS TAB ------->
-        			<div class="tab-wrapper">
-						<img class="temp-image" src="img/product-detail-page/temp-questions.jpg" title="Questions & Comments" >
-					</div>
-				</li>
-		</div><!-- end tabbed wrapper -->
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END PRODUCT REVIEWS  ----------------->
-
-
-
-<section id="splash-banner"><!------------- BEGIN SPLASH BANNER ---------------->
-	<div class="section-wrap">
-		<img class="banner" src="img/product-detail-page/btf-splash.jpg" title="Splash Banner">
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END SPLASH BANNER  ----------------->
-
-
-
-<section id="fancy-carousel"><!------------- BEGIN FANCY CAROUSEL SECTION ----->
-	<div class="section-wrap">
-
-	<div class="tabbed-wrapper">
-  		<div class="tab-block">
-			<div class="tab-scroll">
-      			<dl id="fancy-carousel-tabs" class="tabs">
-      				<dd class="similar active" >
-      					<a href="#fancy-similar" title="Similar items" ><h2>Similar</h2></a>
-      					<div class="vzn-active"></div>
-      				</dd>
-        			<dd class="others" >
-        				<a href="#fancy-others" title="Others also bought" ><h2>Others Also Bought</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        			<dd class="works" >
-        				<a href="#fancy-works" title="Works with" ><h2>Works With</h2></a>
-        				<div class="vzn-active"></div>
-        			</dd>
-        		</dl>
-			</div><!-- end tab scroll -->
-
-
-      		<ul class="tabs-content">
-
-        		<li id="fancy-similarTab" class="active"><!------- FANCY SIMILAR TAB ------->
-        			<div class="tab-wrapper">
-
-						<div id="fancy-similar-slider" class="vzn-slide">
-							<ul class="slides">
-								<li class="large-item"><a href="#" title="view this item1" class="product-link">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 1 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item2" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 2 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category3" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-									</div><!-- end fancy item 3 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item4" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 4 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category5" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 5 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item6" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 6 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item7" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 7-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category8" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-									</div><!-- end fancy item 8 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item9" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 9 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category10" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 10 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item11" class="product-link">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 11 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item12" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 12 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category13" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="JShop All Headphones">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-									</div><!-- end fancy item 13 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item14" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 14 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category15" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 15 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item16" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 16 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item17" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 17-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category18" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-									</div><!-- end fancy item 18 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item19" class="product-link">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 19 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category20" class="product-link">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 20 - category -->
-								</a></li>
-							</ul>
-						</div><!-- end fancy-similar slider -->
-
-        			</div><!-- end details tab-wrapper -->
-        		</li><!-- end fancy similar tab content -->
-
-
-
-				<li id="fancy-othersTab"><!----- FANCY OTHERS TAB -------->
-					<div class="tab-wrapper">
-
-						<div id="fancy-others-slider" class="vzn-slide">
-							<ul class="slides">
-								<li class="large-item"><a href="#" title="view this item1">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 1 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item2">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 2 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category3">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 3 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item4">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-
-									</div><!-- end fancy item 4 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category5">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-
-									</div><!-- end fancy item 5 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item6">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 6 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item7">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 7-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category8">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-									</div><!-- end fancy item 8 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item9">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 9 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category10">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 10 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item11">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 11 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item12">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 12 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category13">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-									</div><!-- end fancy item 13 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item14">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 14 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category15">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 15 - category -->
-								</a></li>
-
-								
-							</ul>
-						</div><!-- end fancy-others-slider-->
-
-					</div><!-- end overview tab-wrapper -->
-				</li><!-- end fancy others tab content -->
-
-
-
-        		<li id="fancy-worksTab"><!------------ FANCY WORKS TAB ---------------->
-					<div class="tab-wrapper">
-
-						<div id="fancy-works-slider" class="vzn-slide">
-							<ul class="slides">
-								<li class="large-item"><a href="#" title="view this item1">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-
-									</div><!-- end fancy item 1 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item2">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 2 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category3">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-
-									</div><!-- end fancy item 3 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item4">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">>iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 4 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category5">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-
-									</div><!-- end fancy item 5 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item6">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 6 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item7">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 7-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category8">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 8 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item9">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 9 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category10">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 10 - category -->
-								</a></li>
-
-																<li class="large-item"><a href="#" title="view this item11">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 11 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item12">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 12 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category13">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-									</div><!-- end fancy item 13 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item14">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3>iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 14 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category15">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 15 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item16">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 16 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item17">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 17-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category18">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-									</div><!-- end fancy item 18 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item19">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 19 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category20">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 20 - category -->
-								</a></li>
-								
-								<li class="large-item"><a href="#" title="view this item1">
-									<div class="fancy-slider-item">
-
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/blue-headphones.png" title="Awesome In-Ear Headphones">
-										</div>
-										<h3 class="product-title">Awesome In-Ear Headphones</h3>
-										<div class="fancy-price">
-											$139<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-
-									</div><!-- end fancy item 1 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item2">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" title="Denon Globe Cruiser On-Ear Headphones">
-										</div>
-										<h3 class="product-title">Denon Globe Cruiser On-Ear Headphones</h3>
-										<div class="fancy-price">
-											$499<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-
-									</div><!-- end fancy item 2 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category3">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-cases.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Cases</h3>
-
-									</div><!-- end fancy item 3 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item4">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/boomerang.png" title="iSound Boomerang Speaker">
-										</div>
-										<h3 class="product-title">>iSound Boomerang Speaker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 4 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category5">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-headphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Headphones</h3>
-
-									</div><!-- end fancy item 5 - category -->
-								</a></li>
-
-								<li class="large-item"><a href="#" title="view this item6">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/fitbit.png" title="Fitbit Activity Tracker">
-										</div>
-										<h3 class="product-title">Fitbit Activity Tracker</h3>
-										<div class="fancy-price">
-											$79<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 6 -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item7">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 7-->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category8">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-speakers.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Speakers</h3>
-									</div><!-- end fancy item 8 - category -->
-								</a></li>
-
-								<li class="small-item"><a href="#" title="view this item9">
-									<div class="fancy-slider-item">
-										<div class="fancy-image">
-											<img src="img/product-detail-page/pdp-products/btf/jawbone.png" title="Jawbone Up Wristband">
-										</div>
-										<h3 class="product-title">Jawbone Up Wristband</h3>
-										<div class="fancy-price">
-											$159<span>99</span>
-										</div>
-										<div class="fancy-ratings">
-											<img src="img/sprites/pdp/stars-temp.png" >
-										</div>
-									</div><!-- end fancy item 9 -->
-								</a></li>
-
-								<li class="category"><a href="#" title="view all in this category10">
-									<div class="fancy-slider-cat">
-										<div class="fancy-cat-image">
-											<img src="img/product-detail-page/pdp-products/btf/shop-smartphones.png" title="Jawbone Up Wristband">
-										</div>
-										<h4>Shop All</h4>
-										<h3 class="product-title">Smartphones</h3>
-									</div><!-- end fancy item 10 - category -->
-								</a></li>
-								
-								
-								
-								
-								
-								
-							</ul>
-						</div><!-- end fancy-works-slider-->
-
-					</div><!-- end features tab-wrapper -->
-				</li><!-- end fancy works tab content -->
-
-      		</ul><!-- end tab-content -->
-
-    	</div><!-- end tab-block -->
-	</div><!-- end tabbed wrapper -->
-
-	</div><!-- end section-wrap -->
-</section><!--------------------------------- END FANCY CAROUSEL SECTION -------->
-
-  <!-- End Grid Section -->
-
-<div id="btf-anchor" class="anchor-bar">
-	<ul>
-		<li class="product">
-			<div class="anchor-thumb">
-				<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" title="Product Name">
-			</div>
-			<h2 class="anchor-title">PowerUp Wireless Speaker</h2>
-		</li>
-		<li class="anchor-shipping">
-			<p>Free 3-5 Ground Shipping On All Orders</p>
-		</li>
-		<li class="anchor-cart">
-			<div class="price">$249<span>99</span></div>
-			<div class="cart-box">
-				<input class="button add-cart-cta" type="button" title="Add to Cart" value="Add to Cart">
-      			
-			</div>
-		</li>
-	</ul>
-</div><!-- End floating anchor bar -->
-
-  <!-- Footer -->
-
-  <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">
-    includeFragment('inc/footer.html');
-  </script>
-  <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-
-
-
+	</div><!-- end site container -->
 </body>
 </html>

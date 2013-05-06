@@ -16,12 +16,18 @@
 @mixin boxBrdrL { border-left: 1px solid #ccc; }
 @mixin boxBrdrA { border: 1px solid #ccc; }
 
-@mixin cartRounded { 
+@mixin cartRounded {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	}
 
+@mixin anchorDrop { 
+	-webkit-box-shadow:0px 3px 8px -6px rgba(119, 119, 119, 0.7);
+	-moz-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7);
+	-o-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7);
+	box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7); 
+}
 
 @mixin cartLabel {
 	display: inline-block;
@@ -80,26 +86,26 @@
     -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2);
 	position: absolute;
-	z-index:10;  
+	z-index:10;
 	padding:10px;
-	display: none; 
-	
-	.dropdown-pointer { 
+	display: none;
+
+	.dropdown-pointer {
 		width: 24px;
 		height: 24px;
 		@include cart-sprite(req-pointer-bg);
-		position: absolute; 
+		position: absolute;
 		top: -24px;
 		left: 50%;
 		margin-left: -12px;
 		z-index: 5;
 		}
-		
-	p { 
+
+	p {
 		@include checkoutContent;
 		font-size: 11px; line-height: 14px;
 		margin: 0;
-		
+
 		.privacy-link { font-size: 11px; line-height: 14px; }
 		}
 	}
@@ -226,12 +232,12 @@
 		color: $cartGreySelect;
 		font-family: $fontArial;
 		font-weight: bold;
-		padding: 14px 0 0 10px; 
+		padding: 14px 0 0 10px;
 		@include pdp-sprite(grey-more, false, 50px, 18px);
  		}
- 
- 	select { 
-		-webkit-appearance: none; 
+
+ 	select {
+		-webkit-appearance: none;
 		appearance: none;
 		-webkit-box-align: start;
 		-moz-box-align: start;
@@ -242,13 +248,14 @@
 		top: 0px; left: 0;
 		z-index: 10;
 		cursor: pointer;
+		opacity: 0;
 		}
 	}/* end greyCart Selector */
 
 @mixin checkoutSelected {
 	font-weight: normal;
 	font-family: $fontVzwBook !important;
-	padding-top: 10px; 
+	padding-top: 10px;
 	font-size: 18px;
 	color: $cartGreyDk;
 	text-shadow: 0 0 0;
@@ -257,8 +264,8 @@
 
 
 
-  
-  
+
+
 @mixin ctaSecondaryCart {
 	display: inline-block;
 	height:30px;
@@ -278,16 +285,16 @@
 			height: 100%;
 			position: absolute;
 			top: 0; left: 0;
-		
+
 			padding: 9px 0 0 20px;
 			@include cart-sprite(red-cart-secondary-add, false, 2px, 8px);
 			text-transform:uppercase;
 			color: $colorVzwRed;
 			font-family : $fontArial;
-			font-size:11px; 
+			font-size:11px;
 			line-height: 11px;
-			font-weight: bold; 
-	
+			font-weight: bold;
+
 			input[type="submit"] {
 				-webkit-appearance: none;
 				appearance: none;
@@ -302,7 +309,7 @@
 				} /* end input */
 			} /* end span */
 		}/* end button */
-	} /* end ctaSecondaryCart */ 
+	} /* end ctaSecondaryCart */
 
 
 @mixin ctaBlackButton {
@@ -311,12 +318,12 @@
 	position: relative;
 	width: 216px;
 	height: 50px;
-	background-image: -ms-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* IE10 Consumer Preview */
 	background-image: -moz-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Mozilla Firefox */
-	background-image: -o-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Opera */ 
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.2, #6B6B6B), color-stop(1, #292929)); /* Webkit (Safari/Chrome 10) */ 
-	background-image: -webkit-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Webkit (Chrome 11+) */ 
-	
+	background-image: -o-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Opera */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.2, #6B6B6B), color-stop(1, #292929)); /* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-linear-gradient(top, #6B6B6B 20%, #292929 100%); /* Webkit (Chrome 11+) */
+
 	.button {
 		width: 100%; height: 100%;
 		position: absolute;
@@ -341,25 +348,95 @@
 		 		top: 0; left: 0;
 		 		opacity: 0;
 		 		cursor:pointer;
-		 		} /* end input */	
-		 	}/* end span */ 
+		 		} /* end input */
+		 	}/* end span */
 		}/* end button */
 	}/* end ctaBlackButton */
 
 
 
-	
-	
-	
-	
-	
+
+/* mixins for mobile slideshows */
+
+@mixin simpleSwipeFrame { width:100%; overflow:auto;}
+@mixin simpleSwipeList { 	
+	width:auto;
+	float:left;
+	margin-right: -999em;
+	white-space:nowrap; 
+	}	
 
 
 
 
 /* mixins for transform3d transitions */
 
+@mixin accordion {	
+	-webkit-transition: height 300ms ease-out;
+   	-moz-transition: height 300ms ease-out;
+    -o-transition: height 300ms ease-out;
+    -ms-transition: height 300ms ease-out;
+    transition: height 300ms ease-out; 
+    }
+
+@mixin slideFast {	
+	-webkit-transition: 300ms ease-in-out;
+   	-moz-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out; 
+    }
+
+@mixin slideMedium {
+	-webkit-transition: 450ms ease-in-out;
+   	-moz-transition: 450ms ease-in-out;
+    -o-transition: 450ms ease-in-out;
+    -ms-transition: 450ms ease-in-out;
+    transition: 450ms ease-in-out; 
+    }
+
 @mixin slideSlow1 {	
+	-webkit-transition: 600ms ease-in-out;
+   	-moz-transition: 600ms ease-in-out;
+    -o-transition: 600ms ease-in-out;
+    -ms-transition: 600ms ease-in-out;
+    transition: 600ms ease-in-out; 
+    }
+
+@mixin slideSlow2 {	
+	-webkit-transition: 750ms ease-in-out;
+   	-moz-transition: 750ms ease-in-out;
+    -o-transition: 750ms ease-in-out;
+    -ms-transition: 750ms ease-in-out;
+    transition: 750ms ease-in-out; 
+    }
+    					
+@mixin crslFade {	
+	-webkit-transition: opacity 500ms ease-in-out;
+   	-moz-transition: opacity 500ms ease-in-out;
+    -o-transition: opacity 500ms ease-in-out;
+    -ms-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out; 
+    }
+
+@mixin zoomBlockTop	{
+	-webkit-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+   	-moz-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    -o-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    -ms-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    transition: left 750ms ease-in-out, top 0s ease 0.5s; 
+    }
+
+
+
+
+
+
+
+
+/* mixins for transform3d transitions */
+
+@mixin slideSlow1 {
 	-webkit-transition: all 600ms ease-in-out;
    	-moz-transition: all 600ms ease-in-out;
     -o-transition: all 600ms ease-in-out;
@@ -410,4 +487,22 @@
         @return "transparent";
     }
 
+}
+
+@mixin add-cart-cta {
+    @include border-radius(3px);
+    @include box-shadow(
+        // horizontal offset | vertical offset |  blur | zoom/distance | color
+      inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), // top internal shadow
+      inset 0 -1px 4px 1px rgba(164, 0, 0, 1) // bottom internal shadow
+    ); // this needs fallback to image for ie8
+    background-color: $colorVzwRed;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    font: {
+        family: $fontVzwBook;
+        size: 14px;
+        weight: normal;
+    }
 }

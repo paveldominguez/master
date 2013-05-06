@@ -45,7 +45,7 @@
 <div id='site-container'>
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <div class="temp-pdp-header">
-  		<script type="text/javascript">
+		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
   </div><!-- end temp header -->
@@ -123,33 +123,31 @@
 			<div class="cart-sidebar-wrap">
 			
 				<div class="special-offer-block shipping">
-					<div class="cart-offer-text">
-						<span>Free Shipping</span> on All Orders!
-						<div class="cart-dropdown-panel">
-							<div class="cart-pointer"></div>
-							<p>
-								Lorem ipsum dolor sequitat nes serva dos.
-							</p>
+					<div class="dropdown-link">
+						<div class="cart-offer-text">
+							<span>Free Shipping</span> on All Orders!
 						</div>
+					</div>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Lorem ipsum dolor sequitat nes serva dos.
 					</div>
 				</div>
 				
 				<div class="special-offer-block returns">
-					<div class="cart-offer-text">
-						<span>14 Day</span> Return <br>Policy!
-						<div class="cart-dropdown-panel">
-							<div class="cart-pointer"></div>
-							<p>
-								Lorem ipsum dolor sequitat nes serva dos.
-							</p>
+					<div class="dropdown-link">
+						<div class="cart-offer-text">
+							<span>14 Day</span> Return <br>Policy!
 						</div>
+					</div>
+					<div class="dropdown-panel">
+						<div class="dropdown-pointer"></div>
+						Lorem ipsum dolor sequitat nes serva dos.
 					</div>
 				</div>
 				
-				
-				
 				<div class="proceed-block">
-				
+					<!-- TAX CALCULATOR - SAVE FOR LATER BATCH 
 					<div class="tax-calc">
 						<h6>Estimate Your Tax</h6>
 					
@@ -161,11 +159,10 @@
 							<div class="calc-button">
 								<input type="submit" value="calculate" id="tax-calc-button">
 							</div>
-						</div><!-- end calc boxes -->
+						</div>
 						
 						<div class="calc-msg">Updated</div>
-					</div>
-				
+					</div> -->
 				
 				
 				
@@ -328,7 +325,7 @@
 <section id="cart-fine-print">
 	<div class="section-wrap">
 
-	<p class="preorders">**** Pre-orders will ship when item becomes available.  We reserve the right to limit pre-order quantities.</p>
+	<p class="preorders">**** Pre-orders will ship when item(s) becomes available.  We reserve the right to limit pre-order quantities.</p>
 	
 	<p class="sales-tax">* Total Due Today does not include taxes, which will be added upon confirmation of your shipping address.  
 		In California, sales tax is calculated on the full retail price of the device, not any discounted price you may actually pay.
@@ -373,7 +370,7 @@
 				<ul>
 					<li class="save-avail">
 						<a href="#" class="dropdown-link avail">Offer Availability</a>
-						<div class="lightbox-dropdown">
+						<div class="dropdown-panel">
 							<div class="dropdown-pointer"></div>
 							<p>The availability of offers saved in your shopping cart- including products, services, prices and discounts- may change at any time.</p>
 						</div>
@@ -381,7 +378,7 @@
 					
 					<li class="save-notify">
 						<a href="#" class="dropdown-link notify">Subscriber Notifications</a>
-						<div class="lightbox-dropdown">
+						<div class="dropdown-panel">
 							<div class="dropdown-pointer"></div>
 							<p>You'll get exclusive online offers, promotions, and the latest info on our products and services.  You can unsubscribe at anytime.</p>
 						</div>
@@ -445,6 +442,6 @@
 </script>
 
 
-</div><!-- end site container -->
+</div><!-- end site-container -->
 </body>
 </html>
