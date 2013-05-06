@@ -22,6 +22,12 @@
 	border-radius: 3px;
 	}
 
+@mixin anchorDrop { 
+	-webkit-box-shadow:0px 3px 8px -6px rgba(119, 119, 119, 0.7);
+	-moz-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7);
+	-o-box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7);
+	box-shadow:0px 6px 8px -6px rgba(119, 119, 119, 0.7); 
+}
 
 @mixin cartLabel {
 	display: inline-block;
@@ -242,6 +248,7 @@
 		top: 0px; left: 0;
 		z-index: 10;
 		cursor: pointer;
+		opacity: 0;
 		}
 	}/* end greyCart Selector */
 
@@ -349,6 +356,76 @@
 
 
 
+/* mixins for mobile slideshows */
+
+@mixin simpleSwipeFrame { width:100%; overflow:auto;}
+@mixin simpleSwipeList { 	
+	width:auto;
+	float:left;
+	margin-right: -999em;
+	white-space:nowrap; 
+	}	
+
+
+
+
+/* mixins for transform3d transitions */
+
+@mixin accordion {	
+	-webkit-transition: height 300ms ease-out;
+   	-moz-transition: height 300ms ease-out;
+    -o-transition: height 300ms ease-out;
+    -ms-transition: height 300ms ease-out;
+    transition: height 300ms ease-out; 
+    }
+
+@mixin slideFast {	
+	-webkit-transition: 300ms ease-in-out;
+   	-moz-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out; 
+    }
+
+@mixin slideMedium {
+	-webkit-transition: 450ms ease-in-out;
+   	-moz-transition: 450ms ease-in-out;
+    -o-transition: 450ms ease-in-out;
+    -ms-transition: 450ms ease-in-out;
+    transition: 450ms ease-in-out; 
+    }
+
+@mixin slideSlow1 {	
+	-webkit-transition: 600ms ease-in-out;
+   	-moz-transition: 600ms ease-in-out;
+    -o-transition: 600ms ease-in-out;
+    -ms-transition: 600ms ease-in-out;
+    transition: 600ms ease-in-out; 
+    }
+
+@mixin slideSlow2 {	
+	-webkit-transition: 750ms ease-in-out;
+   	-moz-transition: 750ms ease-in-out;
+    -o-transition: 750ms ease-in-out;
+    -ms-transition: 750ms ease-in-out;
+    transition: 750ms ease-in-out; 
+    }
+    					
+@mixin crslFade {	
+	-webkit-transition: opacity 500ms ease-in-out;
+   	-moz-transition: opacity 500ms ease-in-out;
+    -o-transition: opacity 500ms ease-in-out;
+    -ms-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out; 
+    }
+
+@mixin zoomBlockTop	{
+	-webkit-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+   	-moz-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    -o-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    -ms-transition: left 750ms ease-in-out, top 0s ease 0.5s;
+    transition: left 750ms ease-in-out, top 0s ease 0.5s; 
+    }
 
 
 
