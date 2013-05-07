@@ -5,14 +5,14 @@ var pub = {
 
 // ONLOAD : common, hero & zoom ..............................................................
 
-	$jQ(".product-detail select").uniform(); // make selects pretty ...................
-	
+	$jQ(".product-detail select, #pdp-add-to-cart, .secondary-add-cart").uniform(); // make selects pretty ...................
+
 	var prepSmall = new pdpMobileContent(); // create mobile elements
-	
+
 	var pgWidth = document.body.clientWidth;
 	var heroThumbs = window.document.getElementById('thumbs');
     var zoomThumbs = window.document.getElementById('zoom-thumbs');
-    	
+
     $jQ(heroThumbs).flexslider({ // hero : flexslider install ........................
         animation: "slide",
         controlNav: false,
@@ -30,8 +30,8 @@ var pub = {
         slideshow: false,
         sync: "#thumbs"
     });
-     
-   	
+
+
     $jQ(zoomThumbs).flexslider({ // zoom : flexslider install .......................
         animation: "slide",
         controlNav: false,
@@ -49,27 +49,41 @@ var pub = {
         slideshow: false,
         sync: "#zoom-thumbs"
     });
-     
-    var heroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider 
+
+    var heroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
     var zoomThumbDisplay = new thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
-     
-     
+
+
     $jQ('.pdp-banner-shipping').each(function(){ // set dropdown display actions for offer banners
      	MLS.ui.dropdownDisplay(this);
     });
-     
+
 	$jQ('.pdp-cart-shipping-item').each(function(){ // set dropdown display actions for shipping offers
      	MLS.ui.dropdownDisplay(this);
     });
-     
-     
-     
-     
-     
-     
-     
-  // ONLOAD : below the fold .............................................................  
-     
+
+
+// work up bundles/lightbox fucntion
+
+$jQ('.pdp-bundle-block .secondary-add-cart').click(function(e){
+    e.preventDefault;
+    lightbox(this);
+
+    //$jQ(this).parents('.product-detail').find('#pdp-bundle-modal-block').fadeIn(300);
+
+}); // end click bundle click
+
+
+
+
+
+
+
+
+
+
+  // ONLOAD : below the fold .............................................................
+
     $jQ('#pdp-similar-products-module').flexslider({  // similar products slider install......
         animation: 'slide',
         controlsContainer: '#pdp-similar-products-module .slide-nav',
@@ -80,9 +94,9 @@ var pub = {
         animationSpeed: 500,
         itemWidth: 215
     });
-    
-    
- 
+
+
+
     	$jQ('#lifestyles-alpha-slider').flexslider({  // related stories products slider installs ......
         	animation: 'slide',
         	controlsContainer: '#pdp-related-stories-module .slide-nav',
@@ -93,7 +107,7 @@ var pub = {
         	animationSpeed: 500,
         	itemWidth: 516
     	});
-  
+
    		/* $jQ('#lifestyles-beta-slider').flexslider({  // related stories products slider installs ......
         	animation: 'slide',
         	controlsContainer: '#pdp-related-stories-module .slide-nav',
@@ -104,7 +118,7 @@ var pub = {
         	animationSpeed: 500,
         	itemWidth: 516
    		});
-  
+
     	$jQ('#lifestyles-gamma-slider').flexslider({  // related stories products slider installs ......
         	animation: 'slide',
         	controlsContainer: '#pdp-related-stories-module .slide-nav',
@@ -115,10 +129,10 @@ var pub = {
         	animationSpeed: 500,
         	itemWidth: 516
     	}); */
-    
-    
-    
-    
+
+
+
+
 
     $jQ('#pdp-others-bought-module').flexslider({  // lifestyle products slider install ......
         animation: 'slide',
@@ -130,11 +144,11 @@ var pub = {
         animationSpeed: 500,
         itemWidth: $jQ(window).outerWidth() * 0.85
     });
-    
-    
+
+
     $jQ(window).resize(function () {
         $jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
-        
+
     });
 
 
@@ -150,30 +164,30 @@ var pub = {
 
 // HERO & ZOOM CLICKS .....................................................................................
 
-    $jQ('#view-scale, #carousel-zoom, #view-360, #toggle-scale, #toggle-view-360').on('click', function(){ // create contextual zoom panels 
+    $jQ('#view-scale, #carousel-zoom, #view-360, #toggle-scale, #toggle-view-360').on('click', function(){ // create contextual zoom panels
     	var which = $jQ(this).attr('id');
     	var thisPanel = new createZoomPanel(which);
-    }); 
-	
-	$jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options 
+    });
+
+	$jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
         // panel itself already exists if this is clicked
-    }); 
+    });
 
 	$jQ(' ').click(function(e){ // cart header reviews click to tab
      	e.preventDefault();
        	alert('click to tab, coming soon');
      });
-     
+
     $jQ(' ').click(function(e){ // cart compatibility, click to tab
      	e.preventDefault();
      	alert('click to tab, coming soon');
      });
-        	
+
      $jQ(' ').click(function(e){ // cart size select, custom select
      	e.preventDefault();
      	alert('slide in size selector, coming soon');
-     });    
-	
+     });
+
 	$jQ(' ').click(function(e){ // cart color select, custom select
      	e.preventDefault();
      	alert('slide in color selector, coming soon');
@@ -183,7 +197,7 @@ var pub = {
 
 // BELOW THE FOLD CLICKS .....................................................................................
 
-  	$jQ('.tabs dd a').click(function(){ // activate tabs 
+  	$jQ('.tabs dd a').click(function(){ // activate tabs
 		pdpTab(this);
 	});
 
@@ -212,32 +226,32 @@ var pub = {
 		var pgWidth = document.body.clientWidth;
 		var heroThumbs = window.document.getElementById('thumbs');
     	var zoomThumbs = window.document.getElementById('zoom-thumbs');
-		
-		var resizeHeroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider 
+
+		var resizeHeroThumbDisplay = new thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
     	var resizeZoomThumbDisplay = new thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
-	
+
 	});
 
 
 
 
-	
+
 //  OBJECTS ....................................................................................
-    
+
     function pdpMobileContent() { // copies loaded data into mobile only elements
     	$jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header');
     	$jQ('.pdp-cart-shipping').clone().appendTo('#pdp-mobile-form-shipping');
-    	
+
     	//var deskForm = document.getElementById('pdp-add-to-cart');
     	var deskForm = $jQ('#pdp-add-to-cart');
     	deskForm.find('.size-select-box').clone().appendTo('#pdp-mobile-form-size');
     	deskForm.find('.color-select-box').clone().appendTo('#pdp-mobile-form-color');
     	deskForm.find('.price-block').clone().appendTo('#pdp-mobile-form-price');
     	deskForm.find('.add-cart-box').clone().appendTo('#pdp-mobile-form-submit');
-    
-    	
+
+
     	} // end pdpMobileContent
-    
+
     function thumbDisplay(parent, context) { // ........carousel thumbs ..........
     	// do the math and store as data
     		var countThmb = $jQ(parent).find('.slides').find('li').length;
@@ -261,18 +275,18 @@ var pub = {
             	});
             }
     	}// end thumbDisplay
-    	
-  
-    	
+
+
+
     function createZoomPanel(which) { // ..... create zoom panel ..........
-    
+
 		var zoomBlock = window.document.getElementById('zoom-block');
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
         var zoomFocus = window.document.getElementById('zoom-focus');
         var zoomSlides = window.document.getElementById('zoom-slides');
         var pgWd = document.body.clientWidth;
         var pgHt = document.body.clientHeight;
-		
+
     	// create panel width & offset to match current dimensions
         	var hSize = (pgWd + 15); //scroll bar width in Chrome, generate dynamically
         	var hOffset = (hSize * -1);
@@ -287,26 +301,26 @@ var pub = {
        		$jQ(zoomBlock).css({ 'left': hOffset + 'px' }).attr('data-h-return', hOffset);  //block
 
 
-		// select context 
+		// select context
 			if(which == undefined || which == "carousel-zoom"){
 				// do nothing extra
 			} else if(which == "view-scale"){
-				$jQ(zoomBlock).find("#zoom-scale-content").toggle(); 
+				$jQ(zoomBlock).find("#zoom-scale-content").toggle();
 				$jQ(zoomFocus).toggleClass('hide-slides');
 			} else if(which == "view-360"){
 				$jQ(zoomBlock).find("#zoom-view-360-content").toggle();
-				$jQ(zoomFocus).toggleClass('hide-slides'); 
+				$jQ(zoomFocus).toggleClass('hide-slides');
 			} else if(which == "toggle-scale"){
-				$jQ(zoomBlock).find("#zoom-scale-content").toggle(); 
+				$jQ(zoomBlock).find("#zoom-scale-content").toggle();
 				$jQ(zoomFocus).toggleClass('hide-slides');
 				return false; // panel already exists
 			} else if(which == "toggle-view-360"){
-				$jQ(zoomBlock).find("#zoom-view-360-content").toggle(); 
+				$jQ(zoomBlock).find("#zoom-view-360-content").toggle();
 				$jQ(zoomFocus).toggleClass('hide-slides');
 				return false; //panel already exists
 			}
-		
-			
+
+
         MLS.ui.hSlide(zoomBlock, hSize); // slide in panel
 		setTimeout(function() { // hide vertical scroll after
                 $jQ('html, body').addClass('body-zoom');
@@ -324,7 +338,7 @@ var pub = {
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
         var zoomFocus = window.document.getElementById('zoom-focus');
         var currentSld =  window.document.getElementById('current-zoom-slide');
-        
+
     	setTimeout(function() { // fade out controls
             $jQ('#zoom-block .center-block, #zoom-close, #zoom-controls').fadeOut('slow');
         }, 250);
@@ -342,10 +356,10 @@ var pub = {
     			$jQ('.zoom-content').css('display','none');
     			$jQ(zoomFocus).removeClass('hide-slides');
     		}, 500);
-    	
+
         	$jQ(window).trigger('resize'); //snap
-		} // end set closeZoomPanel	
-    	
+		} // end set closeZoomPanel
+
 
 
 	function vznActiveTabs(element) { //..............vzn-active tabs ............
@@ -355,7 +369,7 @@ var pub = {
 
 
 	function pdpTab(href) { // ............. product details tab function .........
-		
+
 		$jQ(href).parents('.tabs').children().removeClass('active'); //remove active class from all tabs
 		$jQ(href).parent().addClass('active'); //apply it to (this) clicked tab
 
@@ -363,7 +377,7 @@ var pub = {
 			var rawName = $jQ(href).attr('href');
 			var tabName = rawName.substring(1);
 			var contentName = (tabName + 'Tab');
-		
+
 		// remove active class from all tab content, find the right one and reapply
 			contentList = $jQ(href).parents('.tab-block').find('.tabs-content');
 			$jQ(contentList).children().removeClass('active').each(function(){
@@ -376,7 +390,15 @@ var pub = {
 		} // end tab function
 
 
+    function lightbox(clicked){
+        var thisModal = $jQ(clicked).parents('.product-detail').find('.lightbox');
+        $jQ(thisModal).fadeIn(300); // fade in
 
+        $jQ(thisModal).find('.lightbox-close').click(function(){ // close click
+            $jQ(thisModal).fadeOut(300); // fade out
+        });
+
+    }
 
 
 
@@ -384,9 +406,9 @@ var pub = {
 
 
 
-        
+
     } // end init
 }; // end pub var
 return pub;
 }());
-      
+

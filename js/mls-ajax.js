@@ -59,6 +59,12 @@ MLS.ajax = {
         },
         addItemSuccess : function (data) {
             if (data.hasOwnProperty('success')) {
+                if(data.success.itemExists) {
+                    //ignore html & update minicart qty
+
+                }
+
+
                 $jQ('#nav-cart, #nav-tab4').addClass('active');
                 $jQ('#minicart-item-list').append(data.success.responseHTML);
             }
