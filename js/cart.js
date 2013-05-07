@@ -306,11 +306,12 @@ MLS.cartCheckout = {
             $jQ(removeBtn).addClass('yes-remove');
 
             $jQ('.yes-remove').click(function(){ // confirm remove item from cart .................
-                var itemID = $jQ(this).parents('.minicart-item').attr('id');
-                MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
-                    $jQ('#nav-cart .count').html(data.success.cartCount);
-                    $jQ(element).remove();
-                });
+                //var itemID = $jQ(this).parents('.minicart-item').attr('id');
+                //MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
+                //    $jQ('#nav-cart .count').html(data.success.cartCount);
+                    $jQ(this).parents('.minicart-item').remove();
+                //});
+                MLS.cartCheckout.minicartLayout();
             });
 
             $jQ('.minicart-cancel-remove').click(function(e){ // cancel remove
@@ -321,6 +322,7 @@ MLS.cartCheckout = {
 
                 minicartEdit(removeBtn); // reset button functions
             });
+
         });
     },
     minicartScroll : function(type) { // MINICART  scroll minicart items .............................................................
