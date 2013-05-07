@@ -826,7 +826,7 @@
 
                 .tabs-content {
                     height: auto;
-                    overflow: hidden;
+                    /* overflow: hidden; */
 
                     #overviewTab,
                     #featuresTab,
@@ -846,6 +846,7 @@
                                 @include clearfix();
                                 position:relative;
                                 padding-bottom:36px;
+                                overflow: hidden;
 
                                 .two-thirds.left {
                                     width: 75%;
@@ -865,6 +866,9 @@
                                     width: 25%;
                                     height: auto;
                                     float: left;
+                                    img { // TEMP for placeholder
+                                        min-width: 250px;
+                                        }
                                     } /* end right */
 
                                 .more-less {
@@ -873,19 +877,34 @@
                                     position: absolute;
                                     bottom: 0; left: 0;
                                     padding: 0px 0 0 0;
+                                    @include clearfix();
                                     .more-less-link {
                                         display:block;
-                                        width: 100%; height: 100%;
+                                        float: left;
+                                        width: 144px;; height: 100%;
                                         padding-top:12px;
                                         vertical-align: middle;
                                         @include checkoutLabel;
                                         color: $actLinkBlue;
+                                        @include pdp-sprite(blue-less, false, 34px, 13px);
                                         }
                                     }
                                 }/* end more-less block */
 
                             .more-less-block.bound {
-                                /* max-height: something */
+                                    max-height: 280px;
+                                .more-less {
+                                    .more-less-link {
+                                        display: block;
+                                        @include pdp-sprite(blue-more, false, 34px, 13px);
+                                        }
+                                    }
+                                }
+
+                            .more-less-block.fixed {
+                                .more-less {
+                                    .more-less-link { display: none; }
+                                    }
                                 }
 
                             .pdp-bundle-block {

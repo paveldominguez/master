@@ -152,7 +152,19 @@ $jQ('.pdp-bundle-block .secondary-add-cart').click(function(e){
     });
 
 
+    $jQ('.more-less-block').each(function(){
+        if($jQ(this).hasClass('bound')) {
 
+            $jQ(this).removeClass('bound'); // remove class and test height: auto
+            var fullHt = $jQ(this).height();
+
+            if(fullHt > 280) {
+                $jQ(this).addClass('bound'); // put class & link back
+            } else {
+                $jQ(this).addClass('fixed');
+            }
+        }
+    });
 
 
 
@@ -202,7 +214,11 @@ $jQ('.pdp-bundle-block .secondary-add-cart').click(function(e){
 	});
 
 
+    $jQ('.more-less-link').click(function(e){
 
+        moreLess(this);
+        e.preventDefault();
+    })
 
 
 
@@ -400,7 +416,21 @@ $jQ('.pdp-bundle-block .secondary-add-cart').click(function(e){
 
     }
 
+    function moreLess(clicked){
 
+       $jQ(clicked).parents().find('.more-less-block').toggleClass('bound');
+
+
+        //if($jQ(block).hasClass('bound')) {
+        //    $jQ(this).removeClass('bound');
+        //} else { }
+
+
+
+
+
+
+    }
 
 // ........................... END OBJECTS ..............................................
 
