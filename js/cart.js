@@ -1165,28 +1165,3 @@ MLS.cartCheckout = {
 
 
 
-// SAVE FOR FUTURE IMPLEMENTATION sidebar : tax calc submit
-        // validate zip code -- NEED TO DO THIS WHEN FEATURE MADE LIVE!!!!!!!
-
-        // get value
-        //  var tempValue = '24.31'; // TEMP
-
-        // button action
-        //  $jQ('#tax-calc-button').click(function(e) {
-        //      e.preventDefault();
-
-                //insert tax value
-        //          $jQ('#cart-tax').html(tempValue);
-
-                // update cart total
-        //          var cartTotal = $jQ('#cart-total').text();
-        //
-        //          pCartTotal = parseFloat(cartTotal);
-        //          pTempValue = parseFloat(tempValue);
-
-        //          cartTotal = pCartTotal + pTempValue;
-        //          $jQ('#cart-total').text(cartTotal);
-
-                // show message
-        //          $jQ('.calc-msg').show().delay(3000).fadeOut(1000);
-        //  });
