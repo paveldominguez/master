@@ -249,8 +249,8 @@ MLS.ui = {
     },
     /*
      * Generic dropdown display:
-     *  no-touch : hover
-     * 	touch : touch
+     *  no-touch : hover and no click
+     * 	touch : touch/click and no hover
      */
     dropdownDisplay: function(container){
 		if ($jQ('html').hasClass('no-touch')){
@@ -276,7 +276,30 @@ MLS.ui = {
 			});
 		}
 	},
+    /*
+     *  Lightbox activation for modal states using HTML pattern
+     *  established in cart-base.html & CSS in _global.scss
+     *
+     */
+    lightbox : function (clicked){
+        var thisModal = $jQ(clicked).attr('data-modal-id');
+        $jQ(thisModal).fadeIn(300); // fade in
 
+        $jQ(thisModal).find('.lightbox-close').click(function(){ // close click
+            $jQ(thisModal).fadeOut(300); // fade out
+        });
+
+    },
+    moreLessBlock : function(){
+        $jQ('.more-less-block').each(function(){
+            var thisHeight = $jQ(this).height();
+            if (thisHeight > 280) { // turn on more/less button
+                $jQ(this).addClass('bound').removeClass('fixed');
+            } else { // turn off more/less button
+                $jQ(this).addClass('fixed').removeClass('bound');
+            }
+        });
+    },
     vzSlider: {
         init: function () {
             console.log('init');

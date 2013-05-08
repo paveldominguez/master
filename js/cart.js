@@ -53,22 +53,11 @@ MLS.cartCheckout = {
 
 
 
-    // COMMON EVENTS ....................................................................................
-
-    // lightbox modals
-        $jQ('.lightbox-close').click(function(){
-            $jQ(this).parents('.lightbox').fadeOut(300);
-        });
-
-    // ....................................................................... END COMMON EVENTS
-
-
-
     // CART EVENTS ...........................................................................
 
         // header : save cart link
         $jQ('.save-cart-link').click(function(){
-            $jQ('#save-cart-modal').fadeIn(300);
+            MLS.ui.lightbox(this);
         });
 
         // items table : update qty message
@@ -108,7 +97,7 @@ MLS.cartCheckout = {
             };
         }); // end save cart submit actions
 
-        // cart modals: back to cart click
+        // page specific cart modals: back to cart click
         $jQ('.lightbox-back').click(function(){
             $jQ(this).parents('.lightbox').fadeOut(300);
         });
@@ -306,11 +295,12 @@ MLS.cartCheckout = {
             $jQ(removeBtn).addClass('yes-remove');
 
             $jQ('.yes-remove').click(function(){ // confirm remove item from cart .................
-                var itemID = $jQ(this).parents('.minicart-item').attr('id');
-                MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
-                    $jQ('#nav-cart .count').html(data.success.cartCount);
-                    $jQ(element).remove();
-                });
+                //var itemID = $jQ(this).parents('.minicart-item').attr('id');
+                //MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
+                //    $jQ('#nav-cart .count').html(data.success.cartCount);
+                    $jQ(this).parents('.minicart-item').remove();
+                //});
+                MLS.cartCheckout.minicartLayout();
             });
 
             $jQ('.minicart-cancel-remove').click(function(e){ // cancel remove
@@ -321,6 +311,7 @@ MLS.cartCheckout = {
 
                 minicartEdit(removeBtn); // reset button functions
             });
+
         });
     },
     minicartScroll : function(type) { // MINICART  scroll minicart items .............................................................
@@ -1165,28 +1156,3 @@ MLS.cartCheckout = {
 
 
 
-// SAVE FOR FUTURE IMPLEMENTATION sidebar : tax calc submit
-        // validate zip code -- NEED TO DO THIS WHEN FEATURE MADE LIVE!!!!!!!
-
-        // get value
-        //  var tempValue = '24.31'; // TEMP
-
-        // button action
-        //  $jQ('#tax-calc-button').click(function(e) {
-        //      e.preventDefault();
-
-                //insert tax value
-        //          $jQ('#cart-tax').html(tempValue);
-
-                // update cart total
-        //          var cartTotal = $jQ('#cart-total').text();
-        //
-        //          pCartTotal = parseFloat(cartTotal);
-        //          pTempValue = parseFloat(tempValue);
-
-        //          cartTotal = pCartTotal + pTempValue;
-        //          $jQ('#cart-total').text(cartTotal);
-
-                // show message
-        //          $jQ('.calc-msg').show().delay(3000).fadeOut(1000);
-        //  });
