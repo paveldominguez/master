@@ -53,22 +53,11 @@ MLS.cartCheckout = {
 
 
 
-    // COMMON EVENTS ....................................................................................
-
-    // lightbox modals
-        $jQ('.lightbox-close').click(function(){
-            $jQ(this).parents('.lightbox').fadeOut(300);
-        });
-
-    // ....................................................................... END COMMON EVENTS
-
-
-
     // CART EVENTS ...........................................................................
 
         // header : save cart link
         $jQ('.save-cart-link').click(function(){
-            $jQ('#save-cart-modal').fadeIn(300);
+            MLS.ui.lightbox(this);
         });
 
         // items table : update qty message
@@ -108,7 +97,7 @@ MLS.cartCheckout = {
             };
         }); // end save cart submit actions
 
-        // cart modals: back to cart click
+        // page specific cart modals: back to cart click
         $jQ('.lightbox-back').click(function(){
             $jQ(this).parents('.lightbox').fadeOut(300);
         });
