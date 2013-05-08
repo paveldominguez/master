@@ -102,8 +102,13 @@ var contentGrid = {
         $jQ(this).removeClass('active');
     },
     quickViewHandler : function (e) {
+        var pid = $jQ(e.currentTarget).find('a').attr('data-pid');
+        var el = $jQ(e.currentTarget);
+        MLS.ajax.quickView.init(pid, el);
+    },
+    quickViewShow: function (e) {
         var $quickView = $jQ('#quick-view-overlay'),
-        $parentTile = $jQ(this).parent().parent(),
+        $parentTile = $jQ(e).parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
@@ -115,7 +120,7 @@ var contentGrid = {
             'display' : 'block',
             'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
             'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
-            'width' : (e.data.$contentGrid.outerWidth())
+            'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth()
         });
         $quickView.attr('scroll', $jQ(window).scrollTop());
         $jQ('html, body').animate({
@@ -149,7 +154,6 @@ var contentGrid = {
             controlsContainer: '.slider-controls',
             slideshow: false,
             start: function (slider) {
-                console.log('added');
                 $jQ('.flex-control-thumbs li', '#quick-view-overlay').append('<div class="decoration"></div>');
                 var controls = $jQ('.flex-control-thumbs li', '#quick-view-overlay');
                 var activeControl = controls[slider.currentSlide];
