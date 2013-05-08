@@ -25,7 +25,7 @@ html {
             padding: 0 0 150px 0;
             #message-module {
                 width: 100%;
-                margin-bottom: 110px;
+                margin-bottom: 80px;
                 padding: 0;
                 .message {
                     text-align: left;
@@ -99,9 +99,9 @@ html {
             #main-column {
                 padding: 0 0 100px 0px;
                 #message-module {
-                    margin-bottom: 40px;
+                    margin-bottom: 15px;
                     .message {
-                        font: normal 32px $fontVzwBook;
+                        font: normal 32px/35px $fontVzwBook;
                     }
                 }
             }
@@ -143,59 +143,57 @@ html {
     }
 }
 
- /* Similar Products | ToDo: Move to global stylesheet */
-.content-items {
-    form {
-        margin: 0;
-    }
+/* Unable to tag #grid-pop-out with .similar-products-module since it's outside .similar-products-module.*/
+/* Tagged with page id to reduce scope. Those pages that need the item hover need to copy the code below */
+#fourofour {
+    #grid-pop-out {
+        .details {
+            .quick-view {
+                margin: 0;
+                padding: 20px 0 0 0;
+            }
+            .add-cart {
+                margin: 0;
+                padding: 0;
+            }
+        }    
+    }   
 }
- 
-.category-section {
+
+ /* Similar Products | ToDo: Move to global stylesheet */
+.similar-products-module.category-section {
     .content-header {
-        .title {
+        h1.title {
             a {
                 display: inline;
             }
         }
     }    
-    .content-grid {
-        border: 0;
-        .content-item {
-            border: 0;
-            padding: 0;
+    .content-items {
+        form {
             margin: 0;
         }
     }
-}
-
-#grid-pop-out {
-    .details {
-        .quick-view {
-            margin: 0;
-            padding: 20px 0 0 0;
-        }
-        .add-cart {
-            margin: 0;
-            padding: 0;
-        }
-    }    
-}   
-
-.similar-products-module.category-section {
-    ul.slides {
-        li {
-            .simple-slider-item {
-                padding: 10%;
-                .simple-detail {
-                    .simple-price {
-                        .sale {
-                            font-weight: normal;
-                            text-decoration: line-through;
-                            color: #727272;
-                            padding: 0 0 0 5px;
-                            display: inline-block;
-                        }
-                    }    
+    .flex-viewport {
+        .content-grid {
+            border: 0;
+            .content-item {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                .simple-slider-item {
+                    padding: 10%;
+                    .simple-detail {
+                        .simple-price {
+                            .sale {
+                                font-weight: normal;
+                                text-decoration: line-through;
+                                color: #727272;
+                                padding: 0 0 0 5px;
+                                display: inline-block;
+                            }
+                        }    
+                    }
                 }
             }
         }
@@ -203,7 +201,7 @@ html {
 }
  
 @media only screen and (max-width: $screenSmall) {
-    .category-section {
+    .similar-products-module.category-section {
         .content-header {
             padding: 25px 2px 10px 2px;
             height: auto;
