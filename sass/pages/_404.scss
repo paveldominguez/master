@@ -151,6 +151,13 @@ html {
 }
  
 .category-section {
+    .content-header {
+        .title {
+            a {
+                display: inline;
+            }
+        }
+    }    
     .content-grid {
         border: 0;
         .content-item {
@@ -160,12 +167,36 @@ html {
         }
     }
 }
- 
+
+#grid-pop-out {
+    .details {
+        .quick-view {
+            margin: 0;
+            padding: 20px 0 0 0;
+        }
+        .add-cart {
+            margin: 0;
+            padding: 0;
+        }
+    }    
+}   
+
 .similar-products-module.category-section {
     ul.slides {
         li {
             .simple-slider-item {
                 padding: 10%;
+                .simple-detail {
+                    .simple-price {
+                        .sale {
+                            font-weight: normal;
+                            text-decoration: line-through;
+                            color: #727272;
+                            padding: 0 0 0 5px;
+                            display: inline-block;
+                        }
+                    }    
+                }
             }
         }
     }
