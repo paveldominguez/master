@@ -133,6 +133,12 @@ var contentGrid = {
                 }, { 'qv' : $quickView });
             }, 1);
         });
+        $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
+            var colorTitle = $jQ(this).find('a').attr('title');
+            $jQ('#product-colors .color').removeClass('active');
+            $jQ(this).addClass('active');
+            $jQ('.color-info .color-option', '#quick-view-overlay').text(colorTitle);
+        });
     },
     initSlider : function () {
         $jQ('#quick-view-slider').flexslider({
