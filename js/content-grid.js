@@ -1,5 +1,6 @@
 var contentGrid = {
     init : function () {
+        $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
         var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
@@ -116,7 +117,7 @@ var contentGrid = {
             'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
             'width' : (e.data.$contentGrid.outerWidth())
         });
-        $quickView.attr('scroll',$jQ(window).scrollTop());
+        $quickView.attr('scroll', $jQ(window).scrollTop());
         $jQ('html, body').animate({
             scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
         }, 500, function () {
@@ -143,16 +144,30 @@ var contentGrid = {
     initSlider : function () {
         $jQ('#quick-view-slider').flexslider({
             animation: 'slide',
-            controlNav: true,
+            controlNav: 'thumbnails',
             directionNav: false,
-            controlsContainer: '#slider-controls',
-            manualControls : '.flex-control-thumbs li',
-            slideshow: false
+            controlsContainer: '.slider-controls',
+            slideshow: false,
+            start: function (slider) {
+                console.log('added');
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').append('<div class="decoration"></div>');
+                var controls = $jQ('.flex-control-thumbs li', '#quick-view-overlay');
+                var activeControl = controls[slider.currentSlide];
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').removeClass('flex-active');
+                $jQ(activeControl).addClass('flex-active');
+                var $sliderThumbs = $jQ('.flex-control-thumbs', '#quick-view-overlay');
+                var $sliderWidth = $jQ('.flex-control-thumbs', '#quick-view-overlay').width();
+                $sliderThumbs.css('margin-left', '-' + $sliderWidth / 2 + 'px').css('display', 'block');
+            },
+            after: function (slider) {
+                var controls = $jQ('.flex-control-thumbs li', '#quick-view-overlay');
+                var activeControl = controls[slider.currentSlide];
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').removeClass('flex-active');
+                $jQ(activeControl).addClass('flex-active');
+            }
         });
-
-        var $sliderThumbs = $jQ('#slider-controls .flex-control-thumbs');
-        $sliderThumbs.attr('style','');
-        contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
+        var $sliderThumbs = $jQ('.slider-controls .flex-control-thumbs');
+        //contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
     },
     setThumbnailMargins : function ($sT, pos) {
         var offset = pos === 'left' ? $sT.outerWidth() : $sT.outerHeight();
