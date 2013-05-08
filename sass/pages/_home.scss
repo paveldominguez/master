@@ -222,6 +222,16 @@ $btfHiliteBg : #2a2d32;
                                 float:right;
                                 width:260px;
                                 .hero-copy{
+                                    .bullet{
+                                        background: #fff;
+                                        width: 20px;
+                                        height: 10px;
+                                        display: block;
+                                        position: absolute;
+                                        top: 12px;
+                                        left: -30px;
+                                    }
+                                    position: relative;
                                     color:#fff;
                                     font: {
                                         family: $fontVzwBookItalic;
