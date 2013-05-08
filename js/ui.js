@@ -1,5 +1,50 @@
 MLS.ui = {
 
+    /*
+     * Social Share - Handle clicking of social share toolbar
+     *
+     */
+    socialShare : {
+        init: function () {
+            var $socialList = $jQ('#social-share-module').find('.social-list'),
+            $socialItems = $socialList.find('.social-item'),
+            $overlay,
+            $scope,
+            listWidth,
+            overlayWidth;
+
+            //$socialItems.find('.overlay').css('display', 'none');
+
+            $socialItems.on('click', function (e) {
+                e.preventDefault();
+                $scope = $jQ(this);
+                if ($scope.hasClass('email')) {
+                    console.log('email modal');
+                } else {
+                    $overlay = $scope.find('.overlay'),
+                    listWidth = $socialList.outerWidth();
+
+                    $socialItems.find('.social-link').show();
+                    $socialItems.find('.overlay').hide();
+
+                    $overlay.show();
+                    overlayWidth = $overlay.outerWidth() + 25;
+                    $scope.find('.social-link').hide();
+
+                    $scope.animate({
+                        width: overlayWidth
+                    }, { duration: 'fast', queue: false });
+
+                    //console.log((listWidth - overlayWidth) / ($socialItems.length - 1));
+
+                    $socialItems.not($scope).animate({
+                        width: (listWidth - overlayWidth) / ($socialItems.length - 1)
+                    }, { duration: 'fast', queue: false });
+                }
+            });
+        }
+    },
+
     complexItem: {
         init: function () {
             $jQ('.close-btn', '#complex-item-modal').on('click', MLS.ui.complexItem.close);
