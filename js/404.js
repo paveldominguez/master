@@ -1,5 +1,6 @@
 MLS.page404 = {
     init : function() {
+        $jQ(".add-cart-cta").uniform();
         var backElem = $jQ('#back');
         backElem.click(function(e){
             history.back();
