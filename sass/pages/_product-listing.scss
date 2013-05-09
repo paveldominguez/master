@@ -1211,11 +1211,33 @@ $hdrOfferCollapsed: 55px;
 
     .quick-view-details {
         @include column(3);
-        margin-top: 80px;
+        margin-top: 40px;
         border-top: 1px solid #C5CACA;
         .column {
             float: none;
         }
+        #review-block {
+            padding-left:0px;
+
+            .ratings {
+                @include pdp-sprite(stars-temp);
+                width:75px; height:13px;
+                margin-top:5px;
+                }
+
+            .reviews {
+                margin-left:5px;
+                line-height:14px;
+
+                a.review-link {
+                    font-family: $fontArial;
+                    font-size: 12px;
+                    color: $actLinkBlue;
+                    margin-top:6px;
+                    font-weight: bold;
+                    }
+                 }
+            }
         .product-header {
             .product-name {
                 color: $colorQuickViewTitle;
@@ -1242,7 +1264,7 @@ $hdrOfferCollapsed: 55px;
             }
         }
         .product-color {
-            margin-top: 50px;
+            margin: 30px 0 10px 0;
             .color-info {
                 color: $colorMediumGray;
                 font: {
@@ -1258,15 +1280,56 @@ $hdrOfferCollapsed: 55px;
                 margin: 0;
                 padding: 0;
                 .color {
-                    margin: 0;
+                    position: relative;
+                    margin: 0 8px 0 0;
+                    height: 45px;
+                    width: 50px;
+                    padding: 2px;
                     a {
+
                         display: block;
                         img {
-                            width: 55px;
-                            height: 36px;
+                            width: 100%;
+                            height: 100%;
                         }
                     }
+                    span.active-check{
+                        display: none;
+                    }
+                    &.active{
+                        border: 2px solid #a0a1a1;
+                        span.active-check{
+                            background: url(../img/active-check.png) no-repeat;
+                            display: block;
+                            position: absolute;
+                            bottom: 5px;
+                            left: 5px;
+                            width: 17px;
+                            height: 14px;
+                        }
+                    }
+
                 }
+
+            }
+
+        }
+        .size-select-box{
+            .selector span {
+                position: absolute;
+                width: 247px !important;
+                height: 100%;
+                top: 0;
+                left: 0;
+                font-size: 12px;
+                line-height: 12px;
+                text-transform: lowercase;
+                color: #333;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                font-weight: bold;
+                padding: 14px 0 0 10px;
+                background-position-x: 225px;
+                background-position-y: -3175px;
             }
         }
         .product-pricing {
@@ -1293,30 +1356,30 @@ $hdrOfferCollapsed: 55px;
             margin-top: 20px;
 
             .button {
-            	@include add-cart-cta;
+            	@include ctaRedButton;
             	width: 100%;
-                height: 55px;
+                height: 43px;
                 margin-bottom: 10px;
 
             	span {
             		display: block;
             		width: 100%;
             		height: 100%;
-            		padding: 25px 0 5px 15px;
+            		padding: 22px 0 5px 15px;
             		text-transform: lowercase;
             		position: relative;
 
             		font: {
-            			family: $fontVzwMedium;
-                    	size: 18px;
-                    	weight: normal;
+            			family: Arial;
+                    	size: 14px;
+                    	weight: bold;
                     	}
             		}
 
             	input {
             		display: block;
             		width: 100%;
-            		height: 55px;
+            		height: 43px;
             		position:absolute;
             		top: 0; left: 0;
             		-webkit-appearance: none;
@@ -1330,21 +1393,21 @@ $hdrOfferCollapsed: 55px;
 
             .product-details {
             	display: block;
-            	@include cartButtonUp;
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
                 text-transform: lowercase;
                 width: 100%;
-                height: 55px;
-
+                height: 43px;
+                border-radius: 3px;
                 font: {
-                    family: $fontVzwMedium;
-                    size: 18px;
-                    weight: normal;
-
+                    family: Arial;
+                    size: 14px;
+                    weight: bold;
                 	}
                 span {
                 	display:block;
-                    padding: 25px 0 5px 0px;
-                    color: $cartGreyDk;
+                    padding: 22px 0 5px 15px;
+                    color: #fff;
+
                     }
             	}/* end details */
 
@@ -1368,6 +1431,7 @@ $hdrOfferCollapsed: 55px;
         position: absolute;
         left: 50%;
         bottom: 0;
+        display: none;
         li {
             position: relative;
             cursor: pointer;
@@ -1950,13 +2014,13 @@ $hdrOfferCollapsed: 55px;
             }
             .quick-view {
                 bottom: 0;
-                left: 0;
+                left: -15px;
                 width: 50%;
                 background-color: #FFF;
                 a {
                     color: $colorQuickViewLink;
                     font: {
-                        family: $fontVzwMedium;
+                        family: "Verizon Apex Book";
                         size: 14px;
                     }
                     text-transform: lowercase;
@@ -1964,12 +2028,12 @@ $hdrOfferCollapsed: 55px;
             }
             .add-cart {
                 bottom: 0;
-                right: 0;
+                right: -15px;
                 width: 50%;
                 padding: 15px;
                 background-color: #FFF;
                 div.button {
-                    @include add-cart-cta();
+                    @include ctaRedButton;
                     display: table;
                     position: relative;
                     overflow: hidden;
@@ -1983,8 +2047,14 @@ $hdrOfferCollapsed: 55px;
                     }
                     span {
                         display: table-cell;
-                        padding: 0 0 5px 5px;
-                        vertical-align: bottom;
+                        padding: 18px 0 5px 7px;
+                        font-family: Arial;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: #fff;
+                        letter-spacing: normal;
+                        bottom: 0;
+                        text-transform: lowercase;
                         input[type="submit"] {
                             -webkit-appearance: none;
                         }

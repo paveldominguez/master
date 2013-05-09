@@ -257,7 +257,6 @@ MLS.ui = {
     },
     vzSlider: {
         init: function () {
-            console.log('init');
             _self = this;
             //Search for slide
             $jQ('.vzn-slide').each(function () {
@@ -283,7 +282,6 @@ MLS.ui = {
 
         },
         initSlider: function(element, type, increment) {
-            console.log("initSlider");
             _self = this;
             //  first assemble these contextual values
             var multi, mod;
@@ -356,7 +354,6 @@ MLS.ui = {
             _self.bindEvents();
         },
         bindEvents: function() {
-            console.log("bindEvents");
             _self = this;
 
             // vzn-slide 'others also bought' : layout
@@ -406,7 +403,6 @@ MLS.ui = {
             });
         },
         slideButtons: function() {
-            console.log("slideButtons");
             _self = this;
             // select these
             var tabWrap = $jQ(element).parent();
