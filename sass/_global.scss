@@ -431,7 +431,84 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
+#share-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99998;
+}
+#share-modal-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    @include border-radius(3px);
+    background: #FFF;
+    width: 550px;
+    height: 360px;
+    padding: 20px 35px;
+    .share-title {
+        margin: 0;
+        font: {
+            family: $fontVzwBook;
+            weight: normal;
+        }
+        &.message {
+            margin-top: 30px;
+        }
+    }
+    .close-overlay {
+        position: absolute;
+        top: 20px; right: 35px;
+        display: block;
+        width: 32px;
+        height: 31px;
+        @include social-sprite(close, false, 0, 0);
+    }
+    .overlay-content {
+        .share-fig, .share-modal {
+            float: left;
+        }
+        .share-fig {
+            width: 35%;
+            img {
+                width: 150px;
+            }
+            figcaption {
+                font: {
+                    family: $fontArial;
+                    size: 12px;
+                }
+            }
+        }
+        .share-modal {
+            margin-top: 20px;
+            width: 65%;
+            .fieldwrapper {
+                margin-bottom: 30px;
+                label {
+                    display: block;
+                    text-transform: uppercase;
+                    margin-bottom: 5px;
+                    color: #3C4043;
+                    font-size: 12px;
+                }
+            }
+            .button {
+                @include ctaRedButton;
+                float: right;
+                width: 125px;
+                height: 50px;
+                span {
+                    padding-top: 22px;
+                }
+            }
+        }
+    }
 
+}
 .social-share-module {
     .social-list {
         display: table;
@@ -450,6 +527,9 @@ h1,h2,h3,h4,h5,h6 {
             &.last {
                 border-right: none;
             }
+            &.pinterest.active {
+                min-width: 107px;
+            }
             .social-link {
                 display: block;
                 position: relative;
@@ -465,7 +545,6 @@ h1,h2,h3,h4,h5,h6 {
                 }
             }
             .overlay {
-                display: none;
                 margin: 0 10px;
                 .fb_iframe_widget > span,
                 .fb_iframe_widget > span > iframe {
@@ -511,6 +590,29 @@ h1,h2,h3,h4,h5,h6 {
 }
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
 
+}
+@media only screen and (max-width: $screenSmall - 1) {
+    #share-modal-display {
+        width: 300px;
+        height: auto;
+        overflow: hidden;
+        .overlay-content {
+            .share-fig, .share-modal {
+                float: none;
+                width: 100%;
+            }
+            .share-fig {
+                margin: 0 auto;
+                text-align: center;
+            }
+            .share-modal {
+                .button {
+                    float: none;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 @media only screen and (max-width: $screenMobileLarge) {
     .show-for-mobile {
