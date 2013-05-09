@@ -143,24 +143,7 @@ html {
     }
 }
 
-/* Unable to tag #grid-pop-out with .similar-products-module since it's outside .similar-products-module.*/
-/* Tagged with page id to reduce scope. Those pages that need the item hover need to copy the code below */
-#fourofour {
-    #grid-pop-out {
-        .details {
-            .quick-view {
-                margin: 0;
-                padding: 20px 0 0 0;
-            }
-            .add-cart {
-                margin: 0;
-                padding: 0;
-            }
-        }    
-    }   
-}
-
- /* Similar Products | ToDo: Move to global stylesheet */
+/* Similar Products | ToDo: Move to global stylesheet */
 .similar-products-module.category-section {
     .content-header {
         h1.title {
