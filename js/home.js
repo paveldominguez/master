@@ -34,7 +34,7 @@ MLS.home = {
 			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
 		});
 
-        contentGrid.init();
+        contentGrid.init(true);
         MLS.ajax.colorPicker.init();
 
 	},

@@ -113,8 +113,6 @@ MLS = {
     'home-page' : {
         init : function () {
             MLS.home.init();
-            contentGrid.init();
-            MLS.ajax.colorPicker.init();
         }
     },
     'brand-landing-page' : {
