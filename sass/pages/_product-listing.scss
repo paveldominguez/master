@@ -414,17 +414,18 @@ $hdrOfferCollapsed: 55px;
                     };
                     text-indent: -9999px;
                     padding: 0;
-                    &.black { background-color: #000; }
-                    &.gray { background-color: #b1b0b0; }
-                    &.white { background-color: #FFF; }
-                    &.yellow { background-color: #fabb00; }
-                    &.red { background-color: #d01900; }
-                    &.purple { background-color: #6a48b8; }
-                    &.blue { background-color: #51b0d8; }
-                    &.green { background-color: #18a24f; }
                     a {
-                        display: block;
+                        display: block !important;
                         background-image:none !important;
+                        width: 100% !important;
+                        height: 100% !important;
+                        display: inline-block !important;
+                        padding-left: 0 !important;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                        }
                     }
 
                     &.selected{
