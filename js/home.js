@@ -8,7 +8,8 @@ MLS.home = {
 			controlNav: true,
 			animationLoop: true,
 			slideshow: true,
-			directionNav: true
+			directionNav: true,
+            slideshowSpeed: 7000
 
 		});
 
@@ -33,7 +34,7 @@ MLS.home = {
 			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
 		});
 
-        contentGrid.init();
+        contentGrid.init(true);
         MLS.ajax.colorPicker.init();
 
 	},
