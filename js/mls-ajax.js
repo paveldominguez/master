@@ -114,5 +114,20 @@ MLS.ajax = {
     },
     gridSort: function (type) {
         console.log('sort by ' + type);
+    },
+    quickView: {
+        init: function (pid, el) {
+            //For demo purposes content is already loaded
+            contentGrid.quickViewShow(el);
+            MLS.ajax.sendRequest(
+                this.href,
+                { productID : pid },
+                MLS.ajax.quickView.update()
+            );
+        },
+        update: function (data) {
+            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
+            //contentGrid.quickViewShow();
+        }
     }
 };

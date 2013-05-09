@@ -2,7 +2,7 @@ var productDetail = (function() {
 
 var pub = {
     init : function() {
-
+        console.log("sdfsdssf");
 // ONLOAD : common, hero & zoom ..............................................................
 
 	$jQ(".product-detail select, #pdp-add-to-cart, .secondary-add-cart").uniform(); // make selects pretty ...................

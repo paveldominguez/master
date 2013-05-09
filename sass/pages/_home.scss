@@ -171,7 +171,7 @@ $btfHiliteBg : #2a2d32;
 
 
     .home-hero {
-        max-height: 400px;
+        max-height: 314px;
         max-width: 1400px;
         overflow: hidden;
         #home-hero-slider{
@@ -200,6 +200,9 @@ $btfHiliteBg : #2a2d32;
                     display:none;
                     max-height: 319px;
                     &.alt{
+                        .banner{
+                            width:100%;
+                        }
                         .hero-info{
                             width:530px;
                             padding: 40px 20px 0 0;
@@ -219,6 +222,16 @@ $btfHiliteBg : #2a2d32;
                                 float:right;
                                 width:260px;
                                 .hero-copy{
+                                    .bullet{
+                                        background: #fff;
+                                        width: 20px;
+                                        height: 10px;
+                                        display: block;
+                                        position: absolute;
+                                        top: 12px;
+                                        left: -30px;
+                                    }
+                                    position: relative;
                                     color:#fff;
                                     font: {
                                         family: $fontVzwBookItalic;

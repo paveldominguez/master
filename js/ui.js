@@ -204,8 +204,8 @@ MLS.ui = {
     },
     /*
      * Generic dropdown display:
-     *  no-touch : hover
-     * 	touch : touch
+     *  no-touch : hover and no click
+     * 	touch : touch/click and no hover
      */
     dropdownDisplay: function(container){
 		if ($jQ('html').hasClass('no-touch')){
@@ -231,10 +231,32 @@ MLS.ui = {
 			});
 		}
 	},
+    /*
+     *  Lightbox activation for modal states using HTML pattern
+     *  established in cart-base.html & CSS in _global.scss
+     *
+     */
+    lightbox : function (clicked){
+        var thisModal = $jQ(clicked).attr('data-modal-id');
+        $jQ(thisModal).fadeIn(300); // fade in
 
+        $jQ(thisModal).find('.lightbox-close').click(function(){ // close click
+            $jQ(thisModal).fadeOut(300); // fade out
+        });
+
+    },
+    moreLessBlock : function(){
+        $jQ('.more-less-block').each(function(){
+            var thisHeight = $jQ(this).height();
+            if (thisHeight > 280) { // turn on more/less button
+                $jQ(this).addClass('bound').removeClass('fixed');
+            } else { // turn off more/less button
+                $jQ(this).addClass('fixed').removeClass('bound');
+            }
+        });
+    },
     vzSlider: {
         init: function () {
-            console.log('init');
             _self = this;
             //Search for slide
             $jQ('.vzn-slide').each(function () {
@@ -260,7 +282,6 @@ MLS.ui = {
 
         },
         initSlider: function(element, type, increment) {
-            console.log("initSlider");
             _self = this;
             //  first assemble these contextual values
             var multi, mod;
@@ -333,7 +354,6 @@ MLS.ui = {
             _self.bindEvents();
         },
         bindEvents: function() {
-            console.log("bindEvents");
             _self = this;
 
             // vzn-slide 'others also bought' : layout
@@ -383,7 +403,6 @@ MLS.ui = {
             });
         },
         slideButtons: function() {
-            console.log("slideButtons");
             _self = this;
             // select these
             var tabWrap = $jQ(element).parent();

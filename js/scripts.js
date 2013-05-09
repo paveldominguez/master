@@ -192,7 +192,7 @@ MLS = {
     },
     'product-detail' : { // add -page
         init : function () {
-            productDetail.init();
+            MLS.productDetail.init();
             MLS.ajax.cart.init('#add-cart-box .button span');
         }
     },
