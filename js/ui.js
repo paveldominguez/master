@@ -249,9 +249,9 @@ MLS.ui = {
         $jQ('.more-less-block').each(function(){
             var thisHeight = $jQ(this).height();
             if (thisHeight > 280) { // turn on more/less button
-                $jQ(this).addClass('bound').removeClass('fixed');
+                $jQ(this).addClass('bound').removeClass('not-bound');
             } else { // turn off more/less button
-                $jQ(this).addClass('fixed').removeClass('bound');
+                $jQ(this).addClass('not-bound').removeClass('bound');
             }
         });
     },
