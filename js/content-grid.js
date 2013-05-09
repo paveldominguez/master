@@ -1,5 +1,7 @@
 var contentGrid = {
-    init : function () {
+    freeForm : false,
+    init : function (freeForm) {
+        contentGrid.freeForm = freeForm ? true : false;
         $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
         var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
@@ -107,6 +109,7 @@ var contentGrid = {
         MLS.ajax.quickView.init(pid, el);
     },
     quickViewShow: function (e) {
+        console.log(e);
         var $quickView = $jQ('#quick-view-overlay'),
         $parentTile = $jQ(e).parent().parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
@@ -116,29 +119,62 @@ var contentGrid = {
             $quickView = $jQ('.quick-view-overlay.bundle');
         }
         $jQ('#quick-view-modal').fadeIn('fast');
-        $quickView.css({
-            'display' : 'block',
-            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
-            'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
-            'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth()
-        });
-        $quickView.attr('scroll', $jQ(window).scrollTop());
-        $jQ('html, body').animate({
-            scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
-        }, 500, function () {
+        if (contentGrid.freeForm) {
+            $quickView.css({
+                'display' : 'block',
+                'top' : '50%',
+                'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
+                'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth(),
+                'left' : '50%',
+                'marginLeft' : '-' + $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth() / 2 + 'px',
+                'position' : 'fixed',
+                'min-height' : 530,
+                'margin-top' : '-265px'
+
+            });
+            $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
+                var colorTitle = $jQ(this).find('a').attr('title');
+                $jQ('#product-colors .color').removeClass('active');
+                $jQ(this).addClass('active');
+                $jQ('.color-info .color-option', '#quick-view-overlay').text(colorTitle);
+            });
             contentGrid.initSlider();
             setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
-                $jQ(window).on({
-                    'resize.quickView' : contentGrid.quickViewClose,
-                    'scroll.quickView' : contentGrid.quickViewClose,
-                    'click.quickView' : function (e) {
-                        if ($jQ(e.target).closest($quickView).length === 0) {
-                            contentGrid.quickViewClose(e);
+                    $jQ(window).on({
+                        'resize.quickView' : contentGrid.quickViewClose,
+                        'scroll.quickView' : contentGrid.quickViewClose,
+                        'click.quickView' : function (e) {
+                            if ($jQ(e.target).closest($quickView).length === 0) {
+                                contentGrid.quickViewClose(e);
+                            }
                         }
-                    }
-                }, { 'qv' : $quickView });
-            }, 1);
-        });
+                    }, { 'qv' : $quickView });
+                }, 1);
+        } else {
+            $quickView.css({
+                'display' : 'block',
+                'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
+                'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
+                'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth()
+            });
+            $quickView.attr('scroll', $jQ(window).scrollTop());
+            $jQ('html, body').animate({
+                scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
+            }, 500, function () {
+                contentGrid.initSlider();
+                setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
+                    $jQ(window).on({
+                        'resize.quickView' : contentGrid.quickViewClose,
+                        'scroll.quickView' : contentGrid.quickViewClose,
+                        'click.quickView' : function (e) {
+                            if ($jQ(e.target).closest($quickView).length === 0) {
+                                contentGrid.quickViewClose(e);
+                            }
+                        }
+                    }, { 'qv' : $quickView });
+                }, 1);
+            });
+        }
         $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
             var colorTitle = $jQ(this).find('a').attr('title');
             $jQ('#product-colors .color').removeClass('active');
