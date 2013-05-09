@@ -187,6 +187,8 @@ $btfHiliteBg : #2a2d32;
                 height:43px;
                 color: #FFF;
                 font-size: 14px;
+                font-family: Arial;
+                font-weight: bold;
                 span {
                     display: table-cell;
                     vertical-align: bottom;
@@ -198,7 +200,10 @@ $btfHiliteBg : #2a2d32;
                 margin:0;
                 li{
                     display:none;
-                    max-height: 319px;
+                    max-height: 320px;
+                    @include breakpoint(tablet){
+                        height: 320px;
+                    }
                     &.alt{
                         .banner{
                             width:100%;
@@ -208,13 +213,18 @@ $btfHiliteBg : #2a2d32;
                             padding: 40px 20px 0 0;
                             padding-right:20px;
                             padding-top:40px;
-
                             background:transparent;
+                            @include breakpoint(tablet){
+                                text-align: right;
+                            }
                             h1{
                                 color:#fff;
                                 font: {
                                     family: $fontVzwBoldItalic;
                                     size: 90px;
+                                }
+                                @include breakpoint(tablet){
+                                    font-size: 70px;
                                 }
                             }
 
@@ -231,6 +241,9 @@ $btfHiliteBg : #2a2d32;
                                         top: 12px;
                                         left: -30px;
                                     }
+                                    @include breakpoint(tablet){
+                                        text-align: left;
+                                    }
                                     position: relative;
                                     color:#fff;
                                     font: {
@@ -241,6 +254,9 @@ $btfHiliteBg : #2a2d32;
                             }
                         }
                     }
+                    .banner{
+                        height: 100%;
+                    }
                 }
             }
             .product-hero{
@@ -250,6 +266,14 @@ $btfHiliteBg : #2a2d32;
                 width: 66%;
                 height: 100%;
                 padding: 50px 0 0 90px;
+                @include breakpoint(tablet){
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 50%;
+                    height: 93%;
+                    padding: 105px 0 0 33px;
+                }
                 img{
                     display: inline-block;
                     float: left;
@@ -266,6 +290,18 @@ $btfHiliteBg : #2a2d32;
                     line-height: 70px;
                     padding-left: 30px;
                     padding-top: 30px;
+                    @include breakpoint(tablet){
+                        color: #fff;
+                        font-size: 56px;
+                        display: inline-block;
+                        float: left;
+                        text-align: left;
+                        font-family: "Verizon Apex Extra Bold Italic";
+                        width: 60%;
+                        line-height: 42px;
+                        padding-left: 19px;
+                        padding-top: 17px;
+                    }
                 }
             }
             .hero-info {
@@ -277,6 +313,10 @@ $btfHiliteBg : #2a2d32;
                 top: 0;
                 max-height: 500px;
                 padding: 40px 18px 18px 18px;
+                @include breakpoint(tablet){
+                    width: 45%;
+                    padding: 15px 18px 18px 18px;
+                }
                 .carrot{
                     position: absolute;
                     left: -24px;
@@ -300,6 +340,9 @@ $btfHiliteBg : #2a2d32;
                         sup{
                             position: relative;
                             top: 3px;
+                        }
+                        @include breakpoint(tablet){
+                            font-size: 32px;
                         }
                     }
                 .hero-copy {

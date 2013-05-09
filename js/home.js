@@ -8,7 +8,8 @@ MLS.home = {
 			controlNav: true,
 			animationLoop: true,
 			slideshow: true,
-			directionNav: true
+			directionNav: true,
+            slideshowSpeed: 10000
 
 		});
 
