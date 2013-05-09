@@ -320,6 +320,7 @@ $hdrOfferCollapsed: 55px;
 }
 .content-filter {
     padding: 15px 30px;
+    #clear-selections { display: none; }
     .facet,
     .dimension-header {
         position: relative;
