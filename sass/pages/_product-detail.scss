@@ -691,7 +691,6 @@
 
 		/* ----- PDP HERO COMMON STYLES --------- */
 
-
 		#pdp-cart-header { /* ---------header ----- */
 			width:100%; height: auto;
 			position: absolute;
@@ -846,6 +845,7 @@
                                 @include clearfix();
                                 position:relative;
                                 padding-bottom:36px;
+                                overflow: hidden;
 
                                 .two-thirds.left {
                                     width: 75%;
@@ -880,12 +880,22 @@
                                         vertical-align: middle;
                                         @include checkoutLabel;
                                         color: $actLinkBlue;
+                                        @include pdp-sprite(blue-less, false, 40px, 13px);
                                         }
                                     }
                                 }/* end more-less block */
 
                             .more-less-block.bound {
-                                /* max-height: something */
+                                max-height: 280px;
+                                .more-less {
+                                    .more-less-link { @include pdp-sprite(blue-more, false, 40px, 13px);}
+                                    }
+                                }
+
+                            .more-less-block.fixed {
+                                .more-less {
+                                    .more-less-link { display: none; }
+                                    }
                                 }
 
                             .pdp-bundle-block {
