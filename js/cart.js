@@ -660,10 +660,12 @@ MLS.cartCheckout = {
                 }
             } // end if step 2 prevalidate
 
-            var validator = $jQ("#vzn-checkout").validate(); // VALIDATE
+            $jQ("#vzn-checkout").validate(); // VALIDATE
+            var formValid = $jQ("#vzn-checkout").valid();
+
             var completed;
 
-            if (valid && validator) {
+            if (valid && formValid) {
 
                 if (which == 'ship-info-complete'){ // STEP 1 postvalidate
                     completed = $jQ('#shipping-info'); // hide/show/scroll ..............
