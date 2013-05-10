@@ -548,8 +548,8 @@ h1,h2,h3,h4,h5,h6 {
                 margin: 0 10px;
                 .fb_iframe_widget > span,
                 .fb_iframe_widget > span > iframe {
-                    width: 80px !important;
-                    height: 20px !important;
+                    min-width: 80px !important;
+                    min-height: 20px !important;
                 }
             }
             &.email a .icon {
@@ -577,6 +577,19 @@ h1,h2,h3,h4,h5,h6 {
             &.pinterest a .icon {
                 @include social-sprite(pinterest, false, 0, 0);
             }
+        }
+    }
+}
+
+.lt-ie9 {
+    #share-modal-overlay {
+        background: transparent url(../img/ie8-modal-bg.png) top left repeat;
+    }
+    .social-share-module .social-list .social-item {
+        .fb_iframe_widget > span,
+        .fb_iframe_widget > span > iframe {
+            width: 80px !important;
+            min-height: 20px !important;
         }
     }
 }

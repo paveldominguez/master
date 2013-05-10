@@ -6,18 +6,26 @@ MLS.ui = {
      */
     socialShare : {
         init: function () {
-            var $socialList = $jQ('#social-share-module').find('.social-list'),
+            var $socialList = $jQ('.social-share-module').find('.social-list'),
             $socialItems = $socialList.find('.social-item'),
+            $socialItemsWithContext,
             $overlay,
             $scope,
             listWidth,
             overlayWidth;
 
-            function socialItemReset() {
+            function socialItemReset($context) {
                 //$socialItems.animate({ width: '20%' }, { duration: 'medium', queue: false });
-                $socialItems.removeClass('active');
-                $socialItems.find('.overlay').hide();
-                $socialItems.find('.social-link').show();
+                console.log($context);
+                if ($context !== undefined) {
+                    $context.removeClass('active');
+                    $context.find('.overlay').hide();
+                    $context.find('.social-link').show();
+                } else {
+                    $socialItems.removeClass('active');
+                    $socialItems.find('.overlay').hide();
+                    $socialItems.find('.social-link').show();
+                }
             }
 
             function modalClose() {
@@ -30,8 +38,9 @@ MLS.ui = {
             $socialItems.not('.active').on('click', function (e) {
                 e.preventDefault();
                 $scope = $jQ(this);
+                $socialItemsWithContext = $scope.parents('.social-list').find('.social-item');
 
-                socialItemReset();
+                socialItemReset($socialItemsWithContext);
                 $scope.addClass('active');
 
                 if ($scope.hasClass('email')) {
@@ -42,7 +51,7 @@ MLS.ui = {
                         $jQ(document.body).append('<div id="share-modal-display"/>');
                     }
 
-                    $socialItems.stop(false, false).animate({ width: '20%' }, { duration: 'medium', queue: false });
+                    $socialItemsWithContext.stop(false, false).animate({ width: '20%' }, { duration: 'medium', queue: false });
                     $jQ('#share-modal-overlay, #share-modal-display').fadeIn('medium', function () {
                         $jQ('#share-modal-overlay').one('click', function () {
                             modalClose();
@@ -86,7 +95,7 @@ MLS.ui = {
                     });
                 } else {
                     $overlay = $scope.find('.overlay'),
-                    listWidth = $socialList.outerWidth();
+                    listWidth = $socialItemsWithContext.parents('.social-list').outerWidth();
 
                     overlayWidth = $overlay.outerWidth();
                     $overlay.css('width', 0).show();
@@ -100,8 +109,8 @@ MLS.ui = {
                         width: overlayWidth
                     }, { duration: 'medium', queue: false });
 
-                    $socialItems.not($scope).stop(false, false).animate({
-                        width: (listWidth - overlayWidth) / ($socialItems.length - 1)
+                    $socialItemsWithContext.stop(false, false).animate({
+                        width: (listWidth - overlayWidth) / ($socialItemsWithContext.length - 1)
                     }, { duration: 'medium', queue: false });
                 }
             });
