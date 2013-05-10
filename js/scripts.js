@@ -135,6 +135,7 @@ MLS = {
             contentGrid.init();
             contentFilter.init();
             MLS.ajax.article.init();
+            MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
                 var tab = $jQ(this).attr('href');
