@@ -950,49 +950,19 @@
 						}/* end radio input wrap */
 					} /* end shipping radios */
 
-				.step-info-summary {
-					@include clearfix();
-
-					.ship-contact, .ship-address {
-						display:inline-block;
-						width: 25%;
-						min-height: 72px;
-						margin-left: 72px;
-						 }
-					.ship-contact #ship-name-block { display: none; }
-					.ship-address { float: left; }
-
-					#sum-destination { display: none; }
-
-					.summary-name {
-						.sum-first-name.biz,
-						.sum-last-name.biz { float: none; display: block; width: 100%;}
-						.sum-last-name.biz:before { content: "c/o "; }
-						} /* end name blocks */
-
-					.ship-city-state {
-						@include clearfix();
-
-						div {
-							display: inline-block;
-							width: auto;
-							margin-right: 3px;
-							}
-						} /* end city-state block */
-
-					.ship-method-summary {
-						padding:20px 0 0px 0;
-						margin: 10px 0 0 72px;
-						.summary {
-							font-family: $fontArial;
-							font-size: 13px;
-							line-height:16px;
-							color: $cartGreyMd;
-							.ship-price { font-weight: bold; }
-							.checkout-dropdown { display: none !important; }
-							}
+                .ship-method-summary {
+					padding:20px 0 0px 0;
+					margin: 10px 0 0 72px;
+					.sum {
+						font-family: $fontArial;
+						font-size: 13px;
+						line-height:16px;
+						color: $cartGreyMd;
+						.ship-price { font-weight: bold; }
+						.checkout-dropdown { display: none !important; }
 						}
-					}/* end step 1 info summary */
+					}
+
 				} /* end shipping info specifics */
 
 
@@ -1359,6 +1329,11 @@
 
 
 				 			} /* end info-summary address only */
+
+                        .step-info-summary.billing-address {
+                            .summary-address { margin-left: 0; }
+                            }
+
 
 				 		.step-info-summary.billing-address.hidden { display: none; }
 
@@ -2026,6 +2001,41 @@
 
 					}
 				}
+
+/* COMMON ACROSS SECTIONS */
+
+                .step-info-summary {
+                    @include clearfix();
+
+                    .summary-contact, .summary-address {
+                        display:inline-block;
+                        width: 25%;
+                        min-height: 72px;
+                        margin-left: 72px;
+                         }
+                    .summary-address { float: left; }
+
+                    #sum-destination { display: none; }
+
+                    .summary-contact {
+                        .first-name.biz,
+                        .last-name.biz { float: none; display: block; width: 100%;}
+                        .last-name.biz:before { content: "c/o "; }
+                        } /* end name blocks */
+
+                    .sum-inline-block {
+                        @include clearfix();
+
+                        div {
+                            display: inline-block;
+                            width: auto;
+                            margin-right: 3px;
+                            }
+                        } /* end inline block */
+                    }/* end info summary styles*/
+
+
+
 
 
 /* RESPONSIVE */
