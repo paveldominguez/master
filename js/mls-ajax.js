@@ -44,10 +44,9 @@ MLS.ajax = {
     },
     cart : {
         init : function (context) {
-            $jQ(context).on('click', '.add-cart-cta', MLS.ajax.cart.addItem);
+            $jQ('.add-cart-cta').on('click', context, MLS.ajax.cart.addItem);
         },
         addItem : function (e) {
-            console.log('cart');
             e.stopPropagation();
             e.preventDefault();
             var $theForm = $jQ(this.form);
