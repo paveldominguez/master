@@ -2,6 +2,7 @@ MLS.categoryLanding = {
     init : function () {
         //new arrivals
         $jQ('#new-arrivals-module').flexslider({
+            useCSS: false,
             animation: 'slide',
             controlsContainer: '#new-arrivals-module .slide-nav',
             animationLoop: true,
@@ -49,6 +50,7 @@ MLS.categoryLanding = {
 
         //best sellers
         $jQ('#best-sellers-module').flexslider({
+            useCSS: false,
             animation: 'slide',
             controlsContainer: '#best-sellers-module .slide-nav',
             animationLoop: true,
