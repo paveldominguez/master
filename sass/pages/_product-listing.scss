@@ -442,13 +442,23 @@ $hdrOfferCollapsed: 55px;
                 .facet {
                     padding: 0;
                     a {
-                        padding-left: 40px;
-                        @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                        padding-left: 0px;
+                        line-height: 22px;
+                        span.state{
+                            display: inline-block;
+                            @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                            height: 40px;
+                            width: 40px;
+                            position: relative;
+                            top: 9px;
+                        }
                     }
                     &.selected {
                         a {
-                            @include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
                             color: #000;
+                            span.state{
+                                @include product-filter-sprite(prd-fltr-chkbox-sel, false, 10px, 16px);
+                            }
                         }
                     }
                 }
