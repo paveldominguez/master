@@ -683,8 +683,31 @@
 				position:absolute;
 				top: 15%; left: 10%;
 				@include heroBG;
-				background: yellow;
+				.scale-item-left {
+					float: left;
+					width: 50%;
+					height: 100%;
+					img {
+						max-width: 100%;
+						display: block;
+						margin: auto;
+					}
 				}
+				.scale-item-right {
+					float: left;
+					width: 50%;
+					height: 100%;
+					img {
+						max-width: 100%;
+						display: block;
+						margin: auto;
+					}
+				}
+			}
+			#zoom-scale-content .selector {
+				width: 250px !important;
+				float: right;
+			}
 				
 				
 			}/* end zoom-block -----END ZOOM ----- */	
