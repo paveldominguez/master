@@ -416,23 +416,16 @@ MLS.cartCheckout = {
         $jQ('#checkout .checkout-disclaimers').clone().appendTo('#mobile-checkout-disclaimers');
     },
     stepTwoSequence : function() { // CHECKOUT card & billing choices...............................................................
-        $jQ('.billing-select').change(function(){ // signed-in account or card selection
-            $jQ(this).parents('.billing-option').addClass('checked').siblings().find('span').removeClass('checked').find('.billing-select').prop(
-            'checked', false).parents('.billing-option').removeClass('checked'); // uncheck other option & switch container styles
-            $jQ('.billing-details-block').find('.billing-detail-content.hidden').removeClass('hidden').siblings().addClass('hidden'); // hide unchecked content / reveal checked
+        $jQ('.billing-option', '#billing-info').on('click', function() {
+            var $context = $jQ(this),
+            $billingOpts = $context.siblings(),
+            $billingOptsInfo = $jQ('.billing-detail-content', '#billing-info .billing-info-block');
 
-            // enforce proper show/hide of billing address info/form below billing-info block
-            if($jQ(this).parents('.billing-option').hasClass('bill-account')){ // hide both on any 'account' click '
-                $jQ('.step-info-summary.billing-address').addClass('hidden');
-                $jQ('.new-billing-info-form').addClass('hidden');
-            } else  { // decide which to show on any 'card' click
-                var currentCardChoice = $jQ('input[name=cardChoice]:checked').attr('id');
-                if (currentCardChoice == 'choose-saved-card') {
-                    $jQ('.step-info-summary.billing-address').removeClass('hidden');
-                } else {
-                    $jQ('.new-billing-info-form').removeClass('hidden');
-                }
-            }
+            $billingOpts.removeClass('checked').find('span').removeClass('checked');
+            $context.addClass('checked').find('span').addClass('checked');
+
+            $billingOptsInfo.hide();
+            $jQ($billingOptsInfo[$context.index()]).show();
         });
 
         $jQ('input[name=cardChoice]').change(function(){ //signed-in new card or saved card
