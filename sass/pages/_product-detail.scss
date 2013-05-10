@@ -1789,6 +1789,7 @@
                 @include cartBG;
                 @include boxBrdrB;
                 background: $pdpGreyMd;
+                position: relative;
 
                 a {
                     position:relative;
@@ -1869,28 +1870,38 @@
 
                     .large-story {
                         height:516px;
-                        width:516px;
-                        padding:0;
+                        width:516px; min-width: 516px; max-width: 516px;
+                        padding:15px; margin: 0;
                         font-size:0; line-height:0;
                         @include boxBrdrB;
+                        position: relative;
 
                         .related-stories-large {
                             display:block;
-                            width: 94.186%; height:94.186%;
-                            margin:0; padding:0;
-                            background: url(../img/product-detail-page/pdp-plus/lifestyles-large-1.png) no-repeat;
-                            -webkit-background-size: cover !important;
-                            -moz-background-size: cover !important;
-                            background-size: cover !important;
+                            width: 486px; height: 486px;
+                            padding:0; margin: 0;
+                            background: #999;
                             overflow:hidden;
                             position:relative;
+
+
+                            .large-story-img {
+                                display: block;
+                                position: absolute;
+                                top: 0; left: 0;
+                                width: 486px; height: 486px;
+                                z-index: 1;
+
+                                }
+
 
                             .large-story-info-box {
                                 width: 50%; height: 50%;
                                 background: #fff;
                                 position:absolute;
-                                bottom:-1px; left: 0;
+                                bottom:0px; left: 0;
                                 padding:10px 15px;
+                                z-index:5;
 
                                 .large-story-cat {
                                     font-size:10px;
@@ -1939,22 +1950,31 @@
                                     }
                                 } /* end info box */
                             .product-reveal { position:absolute;
-                                    bottom:-1px; right : 0;
+                                    bottom:0px; right : 0;
                                     width:45px; height: 45px;
                                     background: url(../img/product-detail-page/pdp-plus/lifestyles-large-reveal-arrow.jpg) no-repeat;
-                                    cursor:pointer; }
+                                    cursor:pointer;
+                                    z-index: 5; }
 
                             .related-product {
                                 position:absolute;
                                 top:100%;
                                 left:100%;
-                                height:102%;
-                                width:102%;
-
-                                background: #fff url(../img/product-detail-page/pdp-plus/lifestyles-large-related-product-background.jpg) no-repeat;
+                                height:100%;
+                                width:100%;
+                                z-index:10;
+                                background: #fff;
                                 @include slideMedium;
                                 @include clearfix();
                                 cursor:pointer;
+
+                                .close-related {
+                                    width: 144px; height: 144px;
+                                     background: #fff url(../img/product-detail-page/pdp-plus/lifestyles-large-related-product-background.jpg) no-repeat;
+                                     position: absolute;
+                                     left: 0; top: 0;
+                                     z-index: 15;
+                                    }
 
                                 .related-product-title {
                                     display:block;
@@ -1977,7 +1997,7 @@
                                     padding:0 0px 60px 0;
                                     position:relative;
                                     cursor:pointer;
-                                    z-index:10;
+                                    z-index:20;
 
                                     img {
                                         display:block !important;
@@ -2006,16 +2026,19 @@
                     .large-story:nth-of-type(1) { border-left:0px; }
 
                     .small-story {
+                        width: 258px;
                         max-width: 258px;
-                        height:258px;
+                        height:516px;
                         padding:15px;
-                        margin-bottom:258px;
                         @include boxBrdrR;
                         @include boxBrdrL;
                         @include boxBrdrB;
+                        position: relative;
 
                         .related-stories-small {
-
+                            width: 228px; height: 228px;
+                            position: absolute;
+                            top: 15px; left: 15px;
                             .image {
                                 display:block;
                                 width:226px;
@@ -2042,6 +2065,19 @@
                                 }
                             } /* end related story */
                         } /* end small container */
+
+                    .small-story.adjusted {
+                        position: absolute;
+                        bottom: 0; left: 0;
+                        height: 258px;
+                        border: 0;
+                        @include boxBrdrT;
+                        .read-story {
+                                width: 100%;
+                                position: absolute;
+                                bottom:15px;
+                            }
+                        }
 
                     } /* end slides */
                 } /* end vzn slide */
