@@ -676,7 +676,13 @@ $btfHiliteBg : #2a2d32;
             margin:0;
         }
             .tabbed-wrapper {
-
+                position: relative;
+                .flex-direction-nav{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    margin: 0;
+                }
             .tab-scroll {
 
                 dd {
