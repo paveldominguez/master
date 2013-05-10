@@ -140,6 +140,11 @@ MLS.cartCheckout = {
 
 
 
+    // CHECKOUT SIGN IN
+        MLS.cartCheckout.beginCheckoutEvents(); // signin page
+
+
+
     // CHECKOUT EVENTS ........................................................................
 
          // checkout accordions
@@ -152,8 +157,6 @@ MLS.cartCheckout = {
         $jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
             MLS.ui.dropdownDisplay(this);
         });
-
-        MLS.cartCheckout.beginCheckoutEvents(); // signin page
 
         $jQ('#checkout-where-to-ship').change(function(){ // main checkout sequence : step 1, home/business select
             $jQ(this).parents('.step-info-block').find('#destination').children().each(function(){
@@ -372,10 +375,7 @@ MLS.cartCheckout = {
             var form = $jQ(this).parents('form');
             $jQ(form).validate();
             if (form.valid()) {
-                var name = $jQ(form).find('#vzw-user').val(); // TEMP : swap for backend data: signed-in user first name
-                $jQ('#checkout').addClass('visible').addClass('signed-in');
-                $jQ('.checkout-title').text('Hi, ' + name + '!');
-                MLS.cartCheckout.enterCheckout();
+                alert('Welcome, signed-in guest!');
                 return false;
             }
         });
@@ -383,33 +383,6 @@ MLS.cartCheckout = {
         $jQ('.create-login-checkbox').change(function() { // begin checkout : create vzn login checkbox
             $jQ('.create-login-message').slideToggle(300);
         });
-
-        $jQ('#checkout-as-guest').click(function(e) { // begin checkout : 'checkout as guest' button
-            e.preventDefault();
-            $jQ('#checkout').addClass('visible').addClass('guest');
-            $jQ('.checkout-title').text('Checkout');
-            MLS.cartCheckout.enterCheckout();
-        });
-    },
-    enterCheckout : function(pgWidth) { // CHECKOUT enter main sequence .......................................................
-        window.scrollTo(0,0);
-        $jQ('#begin-checkout').fadeOut(300);
-        var sidebar = $jQ('.visible #checkout-sidebar');
-        var startTop = sidebar.offset().top;
-        var pgWidth = document.body.clientWidth; // get page width for single case desktop resize
-        if (pgWidth < 960) {
-            startTop= 302;
-        }
-        sidebar.attr({
-            'data-start-top' : startTop,
-        });
-        var checkoutType=document.getElementById('checkout'); // adjust billing input fields based on type of login ...........
-        if ($jQ(checkoutType).hasClass('guest')){ //remove fields & show form
-            $jQ('#core-cc-form').removeClass('hidden').appendTo('.billing-details-block');
-            $jQ('.billing-select-block, .billing-detail-content').remove();
-            $jQ('.new-billing-info-form').removeClass('hidden');
-        } // else proceed as signedin
-        $jQ('h1.checkout-title').addClass('main'); // re-justify with checkout sequence
     },
     checkoutSidebarScroll : function(pgWidth) { // CHECKOUT floating sidebar ..................................................
         if (pgWidth > 959){
