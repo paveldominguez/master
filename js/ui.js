@@ -1,5 +1,113 @@
 MLS.ui = {
 
+    /*
+     * Social Share - Handle clicking of social share toolbar
+     *
+     */
+    socialShare : {
+        init: function () {
+            var $socialList = $jQ('#social-share-module').find('.social-list'),
+            $socialItems = $socialList.find('.social-item'),
+            $overlay,
+            $scope,
+            listWidth,
+            overlayWidth;
+
+            function socialItemReset() {
+                //$socialItems.animate({ width: '20%' }, { duration: 'medium', queue: false });
+                $socialItems.removeClass('active');
+                $socialItems.find('.overlay').hide();
+                $socialItems.find('.social-link').show();
+            }
+
+            function modalClose() {
+                $jQ('#share-modal-overlay, #share-modal-display').fadeOut('medium');
+                $jQ(document).off('keyup.social');
+            }
+            //$socialItems.find('.overlay').css('display', 'none');
+
+            socialItemReset();
+            $socialItems.not('.active').on('click', function (e) {
+                e.preventDefault();
+                $scope = $jQ(this);
+
+                socialItemReset();
+                $scope.addClass('active');
+
+                if ($scope.hasClass('email')) {
+                    if ($jQ('#share-modal-overlay').length <= 0) {
+                        $jQ(document.body).append('<div id="share-modal-overlay"/>');
+                    }
+                    if ($jQ('#share-modal-display').length <= 0) {
+                        $jQ(document.body).append('<div id="share-modal-display"/>');
+                    }
+
+                    $socialItems.stop(false, false).animate({ width: '20%' }, { duration: 'medium', queue: false });
+                    $jQ('#share-modal-overlay, #share-modal-display').fadeIn('medium', function () {
+                        $jQ('#share-modal-overlay').one('click', function () {
+                            modalClose();
+                        });
+                        $jQ('#share-modal-display').one('click', '.close-overlay', function (e) {
+                            e.preventDefault();
+                            modalClose();
+                        });
+                        $jQ(document).on('keyup.social', function (e) {
+                            if (e.keyCode === 27) { // 27 == esc key
+                                modalClose();
+                            }
+                        });
+                    });
+
+                    $jQ('#share-modal-display').css({
+                        top: ($jQ(window).height() / 2 - $jQ('#share-modal-display').height() / 2) + $jQ(document).scrollTop(),
+                        left: ($jQ(window).width() / 2 - $jQ('#share-modal-display').width() / 2)
+                    });
+                    var $shareModalDisplay = $jQ('#share-modal-display');
+                    $shareModalDisplay.html('<h3 class="share-title">Share This Item</h3><a href="#" id="close-social-overlay" class="close-overlay"></a><div class="overlay-content"><figure class="share-fig"><img src="img/product-detail-page/pdp-plus/dre-beats-1.png"><figcaption>Lorem Ipsum Descriptum</figcaption></figure><form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-example.json"><div class="fieldwrapper"><label for="share-email">Your Email</label><input id="share-email" name="share-email" type="email" class="share-field"></div><div class="fieldwrapper"><label for="share-recipient">Recipient Email</label><input id="share-recipient" name="share-recipient" type="email" class="share-field"></div><input type="submit" id="share-submit" class="button share-cta"></form></div>');
+                    $jQ('#share-submit').uniform();
+                    $jQ('#share-modal').on('submit', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var $theForm = $jQ(this.form);
+                        MLS.ajax.sendRequest(
+                            $theForm.attr('action'),
+                            $theForm.serialize(),
+                            function (d) {
+                                if (data.hasOwnProperty('success')) {
+                                    $shareModalDisplay.html(d.success.responseHTML);
+                                } else {
+                                    $shareModalDisplay.html(d.error.responseHTML);
+                                }
+                            },
+                            function (d) {
+                                $shareModalDisplay.html('<h3 class="share-title message">There was a problem sharing. Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay">');
+                            }
+                        );
+                    });
+                } else {
+                    $overlay = $scope.find('.overlay'),
+                    listWidth = $socialList.outerWidth();
+
+                    overlayWidth = $overlay.outerWidth();
+                    $overlay.css('width', 0).show();
+                    $scope.find('.social-link').hide();
+
+                    $overlay.stop(false, false).animate({
+                        width: overlayWidth
+                    }, { duration: 'medium', queue: false });
+
+                    $scope.stop(false, false).animate({
+                        width: overlayWidth
+                    }, { duration: 'medium', queue: false });
+
+                    $socialItems.not($scope).stop(false, false).animate({
+                        width: (listWidth - overlayWidth) / ($socialItems.length - 1)
+                    }, { duration: 'medium', queue: false });
+                }
+            });
+        }
+    },
+
     complexItem: {
         init: function () {
             $jQ('.close-btn', '#complex-item-modal').on('click', MLS.ui.complexItem.close);
@@ -204,8 +312,8 @@ MLS.ui = {
     },
     /*
      * Generic dropdown display:
-     *  no-touch : hover
-     * 	touch : touch
+     *  no-touch : hover and no click
+     * 	touch : touch/click and no hover
      */
     dropdownDisplay: function(container){
 		if ($jQ('html').hasClass('no-touch')){
@@ -231,10 +339,32 @@ MLS.ui = {
 			});
 		}
 	},
+    /*
+     *  Lightbox activation for modal states using HTML pattern
+     *  established in cart-base.html & CSS in _global.scss
+     *
+     */
+    lightbox : function (clicked){
+        var thisModal = $jQ(clicked).attr('data-modal-id');
+        $jQ(thisModal).fadeIn(300); // fade in
 
+        $jQ(thisModal).find('.lightbox-close').click(function(){ // close click
+            $jQ(thisModal).fadeOut(300); // fade out
+        });
+
+    },
+    moreLessBlock : function(){
+        $jQ('.more-less-block').each(function(){
+            var thisHeight = $jQ(this).height();
+            if (thisHeight > 280) { // turn on more/less button
+                $jQ(this).addClass('bound').removeClass('not-bound');
+            } else { // turn off more/less button
+                $jQ(this).addClass('not-bound').removeClass('bound');
+            }
+        });
+    },
     vzSlider: {
         init: function () {
-            console.log('init');
             _self = this;
             //Search for slide
             $jQ('.vzn-slide').each(function () {
@@ -260,7 +390,6 @@ MLS.ui = {
 
         },
         initSlider: function(element, type, increment) {
-            console.log("initSlider");
             _self = this;
             //  first assemble these contextual values
             var multi, mod;
@@ -333,7 +462,6 @@ MLS.ui = {
             _self.bindEvents();
         },
         bindEvents: function() {
-            console.log("bindEvents");
             _self = this;
 
             // vzn-slide 'others also bought' : layout
@@ -383,7 +511,6 @@ MLS.ui = {
             });
         },
         slideButtons: function() {
-            console.log("slideButtons");
             _self = this;
             // select these
             var tabWrap = $jQ(element).parent();

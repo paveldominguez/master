@@ -13,39 +13,22 @@
             <!-- main carousel slider -->
             <div id="quick-view-slider" class="slider">
                 <ul class="slides">
-                    <li class="first slide">
+                    <li class="first slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                         <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                     </li>
-                    <li class="slide">
+                    <li class="slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                         <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                     </li>
-                    <li class="slide">
+                    <li class="slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                         <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                     </li>
-                    <li class="last slide">
+                    <li class="last slide" data-thumb="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                         <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
                     </li>
                 </ul>
             </div>
-            <div id="slider-controls">
-                <ol class="flex-control-thumbs">
-                    <li>
-                        <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-                        <div class="decoration"></div>
-                    </li>
-                    <li>
-                        <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-                        <div class="decoration"></div>
-                    </li>
-                    <li>
-                        <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-                        <div class="decoration"></div>
-                    </li>
-                    <li>
-                        <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png">
-                        <div class="decoration"></div>
-                    </li>
-                </ol>
+            <div class="slider-controls">
+
             </div>
             <!-- end main carousel slider -->
         </section>
@@ -59,40 +42,64 @@
                     <div class="product-rating"></div>
                     <!-- end product rating -->
                 </header> <!-- end quick view header-->
-                <div class="rating"><img src="img/stars-gray.png" /> (23)</div>
+                <ul id="review-block" class="inline-list">
+                    <li>
+                        <div class="ratings"></div>
+                    </li>
+                    <li class="reviews">
+                        <a href="#" id="pdp-cart-review-count" class="review-link" title="See reviews for this item.">(47)</a>
+                    </li>
+                </ul>
                 <div class="product-color"> <!-- color selector -->
-                    <div class="color-info"><span class="color-label">Selected Color:</span> <span class="color-option">Black</span> (<span class="stock-msg">9 in stock</span>)</div>
+                    <div class="color-info"><span class="color-label"><span class="color-option">Black</span></div>
                     <ul id="product-colors" class="product-colors inline-list">
                         <li class="color black active">
+                            <span class="active-check"></span>
                             <a href="#select-color" class="action" title="black">
                                 <img src="img/product-category-listing/pick-blk.png"/>
                             </a>
                         </li>
                         <li class="color grey">
+                            <span class="active-check"></span>
                             <a href="#select-color" class="action" title="grey">
                                 <img src="img/product-category-listing/pick-gry.png"/>
                             </a>
                         </li>
                         <li class="color white">
+                            <span class="active-check"></span>
                             <a href="#select-color" class="action" title="white">
                                 <img src="img/product-category-listing/pick-wht.png"/>
                             </a>
                         </li>
                         <li class="color blue">
+                            <span class="active-check"></span>
                             <a href="#select-color" class="action" title="yellow">
                                 <img src="img/product-category-listing/pick-ylw.png"/>
                             </a>
                         </li>
                     </ul>
                 </div> <!-- end color selector -->
+                <div class="size-select-box">
+                    <div class="selector" id="uniform-pdp-size-select" style="width: 146px;"><span style="width: 144px; -webkit-user-select: none;">Size</span>
+                        <select name="size-select" class="size-select">
+                            <option value="" disabled="" selected="">Size</option>
+                            <option value="1">Small</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Large</option>
+                            <option value="4">X Large</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="column">
                 <div class="product-pricing">
-                    <div class="sale">Reg.$<span>299.99</span></div>
+                    <!-- <div class="sale">Reg.$<span>299.99</span></div> -->
                     <div class="price">$<span>249<sup>99</sup></span></div>
                 </div>
                 <div class="product-actions">
-                    <input class="add-cart-cta product-action" type="submit" title="Add to Cart" value="Add to Cart">
+                    <div class="pdp-cart-red-cta-box">
+                        <input id="pdp-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
+                    </div>
                     <a class="product-details product-action" href="#" title="See Details"><span>See Details</span></a>
                 </div>
             </div>

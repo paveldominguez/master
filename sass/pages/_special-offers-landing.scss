@@ -595,6 +595,9 @@ $bgPositionPromoSmall: -85px 35px;
     float: left;
     margin: 50px 0 0 75px;
 }
+
+
+
 .promo-content {
     float: right;
     width: 305px;
@@ -662,6 +665,41 @@ $bgPositionPromoSmall: -85px 35px;
             }
         }
     }
+	span.caret {
+		margin-left: 25px;
+		margin-bottom: -2px;
+		height: 16px;
+		width: 31px;
+		background: url(../img/special-offers-landing/hero-mobile-caret.png);
+	}
+
+	.mobile-details {
+		height: 130px;
+		background-color: #2a2d32;
+		p.mobile-copy {
+			color: #ffffff;
+			margin: 0 30px;
+			padding: 30px 0 0 0;
+			font: {
+				family: $fontVzwBookItalic;
+				size: 16px;
+			}
+		}
+		p.mobile-cta {
+			color: #ffffff;
+			text-transform: uppercase;
+			margin: 10px 0 0 30px;
+			font:  {
+				family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+				weight: bold;
+				size: 10px;
+			}
+			span {
+				background: url(../img/sprites/pdp/wht-right.png) no-repeat right center;
+				padding-right: 10px;
+			}
+		}
+	}
 }
 
 .bundle-deals {
@@ -883,7 +921,7 @@ $bgPositionPromoSmall: -85px 35px;
               }
           }
       }
-  }
+}
 
 
 /*bundle deals responsive styles */
@@ -968,14 +1006,21 @@ $bgPositionPromoSmall: -85px 35px;
 @media only screen and (max-width: 768px) and (min-width: 320px) {
 	.promo-fig {
 	    float: left;
-	    margin: 20px 10% 0px 10%;
+	    margin: 20px 15% 0px 15%;
 	}
 	.promo-content {
 		float: left;
 		width: 100%;
+		.caret {
+			display: block;
+		}
+		.mobile-details {
+			display: block;
+		}
 		.promo-copy {
 			text-align: center;
 			margin-top: 0px;
+			margin-bottom: 10px;
 			font: {
 				family: $fontVzwBoldItalic;
 	            size: 48px;
@@ -1075,6 +1120,7 @@ $bgPositionPromoSmall: -85px 35px;
 }
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+
     .category-section {
         .content-grid {
             &.feature-grid {
@@ -1118,7 +1164,8 @@ $bgPositionPromoSmall: -85px 35px;
 }
 
 @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
-    .hide-for-small-grid-down {
+
+	.hide-for-small-grid-down {
         display: none !important;
     }
     .category-list-page #secondary-column {
@@ -1292,6 +1339,16 @@ $bgPositionPromoSmall: -85px 35px;
     .hide-for-mobile {
         display: none !important;
     }
+	.special-offers {
+		.flex-viewport {
+			margin-left: -35px;
+		}
+	}
+	.bundle-deals {
+		.flex-viewport {
+			margin-left: -35px;
+		}
+	}
     .category-section {
         .slides,
         > ul {

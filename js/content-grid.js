@@ -1,5 +1,8 @@
 var contentGrid = {
-    init : function () {
+    freeForm : false,
+    init : function (freeForm) {
+        contentGrid.freeForm = freeForm ? true : false;
+        $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
         var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
@@ -101,8 +104,14 @@ var contentGrid = {
         $jQ(this).removeClass('active');
     },
     quickViewHandler : function (e) {
+        var pid = $jQ(e.currentTarget).find('a').attr('data-pid');
+        var el = $jQ(e.currentTarget);
+        MLS.ajax.quickView.init(pid, el);
+    },
+    quickViewShow: function (e) {
+        console.log(e);
         var $quickView = $jQ('#quick-view-overlay'),
-        $parentTile = $jQ(this).parent().parent(),
+        $parentTile = $jQ(e).parent().parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
         $cTposition = $contentTile.position(),
         $closeQv = $jQ('#close-quick-view').on('click', { qv : $quickView }, contentGrid.quickViewClose);
@@ -110,43 +119,95 @@ var contentGrid = {
             $quickView = $jQ('.quick-view-overlay.bundle');
         }
         $jQ('#quick-view-modal').fadeIn('fast');
-        $quickView.css({
-            'display' : 'block',
-            'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
-            'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
-            'width' : (e.data.$contentGrid.outerWidth())
-        });
-        $quickView.attr('scroll',$jQ(window).scrollTop());
-        $jQ('html, body').animate({
-            scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
-        }, 500, function () {
+        if (contentGrid.freeForm) {
+            $quickView.css({
+                'display' : 'block',
+                'top' : '50%',
+                'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
+                'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth(),
+                'left' : '50%',
+                'marginLeft' : '-' + $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth() / 2 + 'px',
+                'position' : 'fixed',
+                'min-height' : 530,
+                'margin-top' : '-265px'
+
+            });
+            $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
+                var colorTitle = $jQ(this).find('a').attr('title');
+                $jQ('#product-colors .color').removeClass('active');
+                $jQ(this).addClass('active');
+                $jQ('.color-info .color-option', '#quick-view-overlay').text(colorTitle);
+            });
             contentGrid.initSlider();
             setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
-                $jQ(window).on({
-                    'resize.quickView' : contentGrid.quickViewClose,
-                    'scroll.quickView' : contentGrid.quickViewClose,
-                    'click.quickView' : function (e) {
-                        if ($jQ(e.target).closest($quickView).length === 0) {
-                            contentGrid.quickViewClose(e);
+                    $jQ(window).on({
+                        'resize.quickView' : contentGrid.quickViewClose,
+                        'scroll.quickView' : contentGrid.quickViewClose,
+                        'click.quickView' : function (e) {
+                            if ($jQ(e.target).closest($quickView).length === 0) {
+                                contentGrid.quickViewClose(e);
+                            }
                         }
-                    }
-                }, { 'qv' : $quickView });
-            }, 1);
+                    }, { 'qv' : $quickView });
+                }, 1);
+        } else {
+            $quickView.css({
+                'display' : 'block',
+                'top' : $cTposition.top + ($parentTile.hasClass('featured') ? $parentTile.outerHeight() : 0) + 15,
+                'height' : $jQ('.content-item').not('.featured').outerHeight() * 2,
+                'width' : $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid').outerWidth()
+            });
+            $quickView.attr('scroll', $jQ(window).scrollTop());
+            $jQ('html, body').animate({
+                scrollTop : $cTposition.top + $contentTile.outerHeight() + 200
+            }, 500, function () {
+                contentGrid.initSlider();
+                setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
+                    $jQ(window).on({
+                        'resize.quickView' : contentGrid.quickViewClose,
+                        'scroll.quickView' : contentGrid.quickViewClose,
+                        'click.quickView' : function (e) {
+                            if ($jQ(e.target).closest($quickView).length === 0) {
+                                contentGrid.quickViewClose(e);
+                            }
+                        }
+                    }, { 'qv' : $quickView });
+                }, 1);
+            });
+        }
+        $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
+            var colorTitle = $jQ(this).find('a').attr('title');
+            $jQ('#product-colors .color').removeClass('active');
+            $jQ(this).addClass('active');
+            $jQ('.color-info .color-option', '#quick-view-overlay').text(colorTitle);
         });
     },
     initSlider : function () {
         $jQ('#quick-view-slider').flexslider({
             animation: 'slide',
-            controlNav: true,
+            controlNav: 'thumbnails',
             directionNav: false,
-            controlsContainer: '#slider-controls',
-            manualControls : '.flex-control-thumbs li',
-            slideshow: false
+            controlsContainer: '.slider-controls',
+            slideshow: false,
+            start: function (slider) {
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').append('<div class="decoration"></div>');
+                var controls = $jQ('.flex-control-thumbs li', '#quick-view-overlay');
+                var activeControl = controls[slider.currentSlide];
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').removeClass('flex-active');
+                $jQ(activeControl).addClass('flex-active');
+                var $sliderThumbs = $jQ('.flex-control-thumbs', '#quick-view-overlay');
+                var $sliderWidth = $jQ('.flex-control-thumbs', '#quick-view-overlay').width();
+                $sliderThumbs.css('margin-left', '-' + $sliderWidth / 2 + 'px').css('display', 'block');
+            },
+            after: function (slider) {
+                var controls = $jQ('.flex-control-thumbs li', '#quick-view-overlay');
+                var activeControl = controls[slider.currentSlide];
+                $jQ('.flex-control-thumbs li', '#quick-view-overlay').removeClass('flex-active');
+                $jQ(activeControl).addClass('flex-active');
+            }
         });
-
-        var $sliderThumbs = $jQ('#slider-controls .flex-control-thumbs');
-        $sliderThumbs.attr('style','');
-        contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
+        var $sliderThumbs = $jQ('.slider-controls .flex-control-thumbs');
+        //contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
     },
     setThumbnailMargins : function ($sT, pos) {
         var offset = pos === 'left' ? $sT.outerWidth() : $sT.outerHeight();
