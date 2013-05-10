@@ -162,8 +162,8 @@
 		 	@include cart-sprite(checkout-checkbox-checked);
 		 	max-width: 15px;
 		 	}
-		  #uniform-checkout-ship-state label.error,
-		 #uniform-checkout-ship-state label.error.success { display: none !important; }
+		  /* #uniform-checkout-ship-state label.error,
+		 #uniform-checkout-ship-state label.error.success { display: none !important; } */
 		.forgot, .privacy-link {
 			@include actionLink;
 			font-size: 11px;
@@ -327,7 +327,7 @@
 
 					.security-item.month {
 						width: 80px;
-						.selector { width: 80px !important;
+						.selector { min-width: 80px !important;
 						span {
 							width: 100% !important;
 							@include checkoutSelected;
@@ -345,7 +345,7 @@
 
 				.security-item.year {
 					width: 80px;
-					.selector { width: 80px !important;
+					.selector { min-width: 80px !important;
 						span {
 							width: 100% !important;
 							@include checkoutSelected;
@@ -692,8 +692,6 @@
 
 
 	#checkout { /* Main Checkout Sequence .................................................................. */
-		display: none;
-
 		.section-wrap {
 			min-height:900px;
 			@include cartBG;
@@ -786,12 +784,20 @@
 						} /* end input wrap */
 					} /* end info block */
 
-				.checkout-next {
+
+
+
+
+
+
+
+
+				.next-step-button-box {
 					@include ctaBlackButton;
-					display:block;
 					width: 170px;
 					height: 50px;
 					margin: 10px 0 36px 72px;
+                    .span { padding-top:30px; }
 					}
 				} /* end common checkout-step */
 
@@ -853,6 +859,7 @@
 							@include checkoutSelected;
 							margin-right:45px;
 							text-transform: uppercase;
+                            @include pdp-sprite(grey-more, false, 70px, 18px);
 							}
 
 						span.select-placeholder {
@@ -863,6 +870,7 @@
 							font-size: 14px !important;
 							line-height: 14px !important;
 							font-weight: bold !important;
+
 							}
 						}/* end selector */
 					} /* end form wrap state */
@@ -942,49 +950,19 @@
 						}/* end radio input wrap */
 					} /* end shipping radios */
 
-				.step-info-summary {
-					@include clearfix();
-
-					.ship-contact, .ship-address {
-						display:inline-block;
-						width: 25%;
-						min-height: 72px;
-						margin-left: 72px;
-						 }
-					.ship-contact #ship-name-block { display: none; }
-					.ship-address { float: left; }
-
-					#sum-destination { display: none; }
-
-					.summary-name {
-						.sum-first-name.biz,
-						.sum-last-name.biz { float: none; display: block; width: 100%;}
-						.sum-last-name.biz:before { content: "c/o "; }
-						} /* end name blocks */
-
-					.ship-city-state {
-						@include clearfix();
-
-						div {
-							display: inline-block;
-							width: auto;
-							margin-right: 3px;
-							}
-						} /* end city-state block */
-
-					.ship-method-summary {
-						padding:20px 0 0px 0;
-						margin: 10px 0 0 72px;
-						.summary {
-							font-family: $fontArial;
-							font-size: 13px;
-							line-height:16px;
-							color: $cartGreyMd;
-							.ship-price { font-weight: bold; }
-							.checkout-dropdown { display: none !important; }
-							}
+                .ship-method-summary {
+					padding:20px 0 0px 0;
+					margin: 10px 0 0 72px;
+					.sum {
+						font-family: $fontArial;
+						font-size: 13px;
+						line-height:16px;
+						color: $cartGreyMd;
+						.ship-price { font-weight: bold; }
+						.checkout-dropdown { display: none !important; }
 						}
-					}/* end step 1 info summary */
+					}
+
 				} /* end shipping info specifics */
 
 
@@ -1122,6 +1100,8 @@
 											}
 										}
 
+                                    .security-item.month label.error.success,
+                                    .security-item.year label.error.success { display: none; }
 
 									.security-item.code {
 										label.error {
@@ -1240,7 +1220,7 @@
 															top: 0px;
 															}
 														.form-item-title.with-link { top: -13px; }
-
+                                                        .selector { min-width: 80px; }
 														label.error { width: 100px; top: 0; left: 90px; }
 														}
 													}/* end cc info */
@@ -1350,6 +1330,11 @@
 
 				 			} /* end info-summary address only */
 
+                        .step-info-summary.billing-address {
+                            .summary-address { margin-left: 0; }
+                            }
+
+
 				 		.step-info-summary.billing-address.hidden { display: none; }
 
 				 		.new-billing-info-form.billing-address {
@@ -1381,13 +1366,14 @@
 									float: left;
 
 									.selector {
-										width: 90px !important;
+                                        width: 90px !important;
 
 										span {
 											@include checkoutSelected;
 											margin-right:45px;
 											text-transform: uppercase;
 											width: 90px !important;
+                                            @include pdp-sprite(grey-more, false, 72px, 18px );
 											}
 
 										span.select-placeholder {
@@ -1802,9 +1788,20 @@
 					left: 396px; top: 32px;
 					}
 
+                .state {
+                    label.error {
+                        width: 100%; top: auto;
+                        left:0px; bottom:-35px;
+                        padding-left: 0px;
+                        background: none;
+                        }
+                    }
+
 				.zip {
 					label.error { width: 100%; left:276px; }
 					}
+
+                .selector.error-style { border: 2px solid $colorVzwRed; }
 
 				}/* end checkout sequence */
 
@@ -2004,6 +2001,41 @@
 
 					}
 				}
+
+/* COMMON ACROSS SECTIONS */
+
+                .step-info-summary {
+                    @include clearfix();
+
+                    .summary-contact, .summary-address {
+                        display:inline-block;
+                        width: 25%;
+                        min-height: 72px;
+                        margin-left: 72px;
+                         }
+                    .summary-address { float: left; }
+
+                    #sum-destination { display: none; }
+
+                    .summary-contact {
+                        .first-name.biz,
+                        .last-name.biz { float: none; display: block; width: 100%;}
+                        .last-name.biz:before { content: "c/o "; }
+                        } /* end name blocks */
+
+                    .sum-inline-block {
+                        @include clearfix();
+
+                        div {
+                            display: inline-block;
+                            width: auto;
+                            margin-right: 3px;
+                            }
+                        } /* end inline block */
+                    }/* end info summary styles*/
+
+
+
 
 
 /* RESPONSIVE */

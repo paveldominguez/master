@@ -113,8 +113,6 @@ MLS = {
     'home-page' : {
         init : function () {
             MLS.home.init();
-            contentGrid.init();
-            MLS.ajax.colorPicker.init();
         }
     },
     'brand-landing-page' : {
@@ -137,6 +135,7 @@ MLS = {
             contentGrid.init();
             contentFilter.init();
             MLS.ajax.article.init();
+            MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
                 var tab = $jQ(this).attr('href');
@@ -192,6 +191,7 @@ MLS = {
     },
     'product-detail' : { // add -page
         init : function () {
+            MLS.ui.socialShare.init();
             MLS.productDetail.init();
             MLS.ajax.cart.init('#add-cart-box .button span');
         }

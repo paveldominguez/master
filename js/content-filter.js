@@ -116,10 +116,22 @@ var contentFilter = (function () {
             },
             updateFilter: function () {
                 filterArray = [];
-                $jQ('.selected-facets li', '#filter-selections').each(function () {
-                    var filterName = $jQ(this).attr('data-facet-dimension');
-                    var filterValue = $jQ(this).attr('data-facet-title');
-                    var newFilter = { name: filterName, value: filterValue};
+                var $selections = $jQ('.selected-facets li', '#filter-selections'),
+                $clearSelections = $jQ('#clear-selections'),
+                filterName,
+                filterValue,
+                newFilter;
+
+                if ($selections.length > 0) {
+                    $clearSelections.show();
+                } else {
+                    $clearSelections.hide();
+                }
+
+                $selections.each(function () {
+                    filterName = $jQ(this).attr('data-facet-dimension');
+                    filterValue = $jQ(this).attr('data-facet-title');
+                    newFilter = { name: filterName, value: filterValue};
                     filterArray.push(newFilter);
                 });
                 pub.processRequest();
