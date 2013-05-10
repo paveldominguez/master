@@ -36,6 +36,23 @@ $bgPositionPromoSmall: -85px 35px;
     padding-bottom: 150px;
 }
 
+#grid-pop-out {
+    .top-bar {
+        ul {
+            li {
+                margin-left: 2px;
+                img {
+                    width: 17px;
+                    height: 17px;
+                }
+            }
+            li:hover {
+                border: none;
+            }
+        }   
+    }    
+}
+
 .price { 
     margin: 0;
     font: {
