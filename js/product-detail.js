@@ -3,7 +3,6 @@ MLS.productDetail = (function() {
 var pub = {
     init : function() {
 
-
         // ONLOAD page-wide ..........................................................................................
         $jQ(".product-detail select, #pdp-add-to-cart-submit, .secondary-add-cart").uniform(); // make selects pretty
 
