@@ -269,6 +269,10 @@
                     height: 45px;
                     position: absolute;
                     top: 0px; right: 0px;
+                    span {
+                        padding-top:18px;
+                        @include pdp-sprite(grey-more, false, 100px, 24px);
+                        }
                     }
 
                 .color-select-box {
@@ -277,6 +281,10 @@
                     height: 45px;
                     position: absolute;
                     top: 0px; left: 0;
+                    span {
+                        padding-top:18px;
+                        @include pdp-sprite(grey-more, false, 130px, 24px);
+                        }
                     .selector { min-width: 100%; }
                     } /* end color select box */
 

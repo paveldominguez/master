@@ -53,7 +53,7 @@
 
 <section id="checkout-header">
 	<div class="section-wrap">
-		<h1 class="checkout-title">Begin Checkout</span></h1>
+		<h1 class="checkout-title">Begin Checkout</h1>
 		<div class="cart-link">
 			<a href="cart-base.html" title="Back to Cart">Back to Cart</a>
 		</div>
@@ -90,11 +90,11 @@
 						<div class="checkbox-label">
 							Remember Me (<a href="#" title="Read Our Privacy Policy" class="privacy-link">Privacy Policy</a>)
 						</div>
-				</div>
+				    </div>
 
-				<div class="checkout-input-button">
-					<input name="myVerizonLoginSubmit" type="submit" class="checkout-submit" value="Sign-In" id="checkout-sign-in">
-				</div>
+				    <div class="checkout-input-button">
+					   <input name="myVerizonLoginSubmit" type="submit" class="checkout-submit" value="Sign-In" id="checkout-sign-in">
+				    </div>
 
 				</form>
 
@@ -150,10 +150,10 @@
 			<form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
 
 				<fieldset id="shipping-info" class="checkout-step">
-					<div class="step-title-block">
-						<legend class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</legend>
+					<legend class="step-title-block">
+						<div class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</div>
 						<h5 class="step-number">Step <span class="bold">1</span> of <span class="bold">3</span></h5>
-					</div>
+					</legend>
 
 
 					<div class="step-info-block hide-complete">
@@ -199,7 +199,8 @@
 
 						<div class="newsletter-signup">
 							<input name="newsletterSignUp" type="checkbox" id="checkout-newsletter-signup" tabindex="20">
-							<label class="newsletter" for="checkout-newsletter-signup" accesskey="N">Sign-up for Newsletter updates<div class="checkout-dropdown">
+							<label class="newsletter" for="checkout-newsletter-signup" accesskey="N">Sign-up for Newsletter updates</label>
+                            <div class="checkout-dropdown">
 								<a href="#" class="dropdown-link">
 									What's in it for me?
 								</a>
@@ -208,7 +209,7 @@
 									<p>	Receive Verizon Wireless special offers via email.  You can remove your email address from our list at any time.  Simply click the "unsubscribe" link at the bottom of each email. <a href="#" title="Privacy Policy" class="privacy-link">Privacy Policy</a>
 									</p>
 								</div><!-- end dropdwn panel -->
-							</div><!-- end dropdown --></h5>
+							</div><!-- end dropdown -->
 						</div>
 
 						<div class="form-input-wrap">
@@ -290,20 +291,19 @@
 										<span class="ship-price">
 											Regularly $6.99
 										</span>
-
-										<div class="checkout-dropdown">
-											<a href="#" class="dropdown-link">
-												See Special Offers
-											</a>
-											<div class="dropdown-panel">
-												<div class="dropdown-pointer"></div>
-												<p>	Great news! Your order qualified for an additional discount that has already been applied to your total.
-												</p>
-											</div><!-- end dropdwn panel -->
-										</div><!-- end dropdown -->
 									</span>
 									<span class="ship-price no-offer">$6.99</span>
 								</label>
+                                <div class="checkout-dropdown">
+                                    <a href="#" class="dropdown-link">
+                                        See Special Offers
+                                    </a>
+                                    <div class="dropdown-panel">
+                                        <div class="dropdown-pointer"></div>
+                                        <p> Great news! Your order qualified for an additional discount that has already been applied to your total.
+                                        </p>
+                                    </div><!-- end dropdwn panel -->
+                                </div><!-- end dropdown -->
 							</div>
 
 							<div class="form-input-wrap">
@@ -324,9 +324,12 @@
 
 					</div><!-- end info block -->
 
-					<a id="ship-info-complete" class="checkout-next hide-complete" href="#">
+					<!-- <a id="ship-info-complete" class="checkout-next hide-complete" href="#">
 						<div class="button"><span>Next Step</span></div>
-					</a>
+					</a> -->
+                    <div class="hide-complete next-step-button-box">
+                        <input type="button" id="ship-info-complete" class="next-step-input" value="next step">
+                    </div>
 
 					<div class="step-info-summary hidden">
 
@@ -378,18 +381,14 @@
 
 
 				<fieldset id="billing-info" class="checkout-step"><!-- begin checkout step 2 -->
-					<div class="step-title-block">
-				 	<legend class="step-title"><span class="bold">2<span class="sep"> | </span>Billing</span> Information</h2>
-				 	<h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">3</span></h5>
-				 </div>
+					<legend class="step-title-block">
+				 	  <div class="step-title"><span class="bold">2<span class="sep"> | </span>Billing</span> Information</div>
+				 	  <h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">3</span></h5>
+				    </legend>
 
 					<div class="step-info-block hide-complete hidden">
-
 				 		<div class="pointer"></div>
-
 				 		<div class="billing-info-block">
-
-
 				 			<div class="billing-select-block"><!-- tabs -->
 
 				 				<div class="bill-account billing-option checked">
@@ -418,7 +417,6 @@
 				 						<div class="account-billing-address">
 				 							<h5>Billing Address</h5>
 				 							<ul>
-
 				 								<li id="account-name-block" class="summary-name">
 				 									<div id="account-first-name">Name</div>
 				 									<div id="account-last-name">Account-Holder</div>
@@ -463,7 +461,7 @@
 													<ul class="card-info">
 														<li id="saved-name-on-card" class="saved-summary">Saved Name</li>
 														<li class="last-four">(Ending in <span id="saved-last-four" class="saved-summary copy">6789</span>)</li>
-														<li class="expires">Expires <span id="confirmed-month" class="saved-summary copy">01</span>/<span id="confirmed-year" class="saved-summary copy">13</span></li>
+														<li class="expires">Expires <span id="confirm-month" class="saved-summary copy">01</span>/<span id="confirm-year" class="saved-summary copy">13</span></li>
 
 													</ul>
 												</div><!-- end billing-card -->
@@ -474,9 +472,7 @@
 											<input name="cardChoice" type="radio" class="checkout-radio-input" id="choose-new-card">
 											<h5 class="form-item-title">Pay with New Card</h5>
 											<div id="core-cc-form" class="card-choice-detail-block hidden">
-
 												<div class="instructions">Please enter your card information:</div>
-
 												<fieldset id="enter-card-info" class="credit-card-info">
 
 													<div class="form-input-wrap">
@@ -485,16 +481,13 @@
 													</div>
 
 													<ul class="card-list">
-
 														<li class="visa"></li>
 														<li class="mastercard"></li>
 														<li class="amex"></li>
 														<li class="discover"></li>
-
 													</ul><!-- end card list -->
 
 													<ul class="card-security">
-
 														<li class="security-item month">
 															<label class="form-item-title" for="card-month">Expiration Date</label>
 															<div class="form-input-wrap">
@@ -538,24 +531,23 @@
 														<li class="security-item code">
 
 															<label class="form-item-title with-link" for="card-code">
-																	Security Code
-																	<div class="checkout-dropdown">
-																		<a href="#" class="dropdown-link">
-																			What's this?
-																		</a>
-																		<div class="dropdown-panel">
-																			<div class="dropdown-pointer"></div>
-																			<div class="code-instructions visa">
-																				<h6>Visa, MasterCard & Discover</h6>
-																				<p>Three digit security code on the back of your card.</p>
-																			</div>
-																			<div class="code-instructions amex">
-																				<h6>American Express</h6>
-																				<p>Four digit security code on the front of your card.</p>
-																			</div>
-																		</div><!-- end dropdwn panel -->
-																	</div><!-- end dropdown -->
-																</label>
+																Security Code
+                                                            </label>
+															<div class="checkout-dropdown">
+																<a href="#" class="dropdown-link">What's this?</a>
+                                                                <div class="dropdown-panel">
+																    <div class="dropdown-pointer"></div>
+																	<div class="code-instructions visa">
+																		<h6>Visa, MasterCard & Discover</h6>
+																		<p>Three digit security code on the back of your card.</p>
+																	</div>
+																	<div class="code-instructions amex">
+																	   <h6>American Express</h6>
+																		<p>Four digit security code on the front of your card.</p>
+																	</div>
+																</div><!-- end dropdwn panel -->
+															</div><!-- end dropdown -->
+
 
 															<div class="form-input-wrap">
 																<input name="ccCode" type="text" class="checkout-input CCV" id="card-code" placeholder="Code" tabindex="53">
@@ -569,13 +561,9 @@
 												</fieldset> <!-- end credit card info -->
 											</div> <!-- end card-choice-detail-block for new card -->
 										</div><!-- form-input-wrap new card-->
-
 										<div class="edit-saved-card"><span class="checkout">Edit</span></div>
-
 				 					</div><!-- end card choice block -->
-
 				 				</div><!-- end details card -->
-
 				 			</div><!-- end billing-details-block -->
 
 				 			<div class="billing-boilerplate">
@@ -583,7 +571,7 @@
 				 				<ul class="list">
 
 				 					<li class="security-item image"><!-- item one -->
-				 						<img src="img/cart/norton-verisign.jpg" title="Norton/Verisign Secure Checkout">
+				 						<img src="img/cart/norton-verisign.jpg" alt="Norton/Verisign Secure Checkout">
 				 					</li>
 
 				 					<li class="security-item"><!-- item two -->
@@ -617,174 +605,164 @@
 				 		</div><!-- end billing info block -->
 
 						<div class="step-info-summary billing-address hidden">
-
 							<div class="instructions">Billing Address</div>
-
 							<div class="saved-contact-block">
-							<h5>Contact</h5>
-							<ul>
-								<li class="saved-name-block">
-									<div id="saved-first-name" class="saved-summary copy">Saved-First</div>
-									<div id="saved-last-name" class="saved-summary copy">Saved-Last</div>
-								</li>
+                                <h5>Contact</h5>
+                                <ul>
+								    <li class="saved-name-block">
+									   <div id="saved-first-name" class="saved-summary copy">Saved-First</div>
+									   <div id="saved-last-name" class="saved-summary copy">Saved-Last</div>
+								    </li>
 
+								    <li id="saved-email" class="saved-summary">saved.card@email.com</li>
+								    <li id="saved-phone" class="saved-summary">(saved) phone-number</li>
+                                </ul>
+                            </div>
 
-								<li id="saved-email" class="saved-summary">saved.card@email.com</li>
-								<li id="saved-phone" class="saved-summary">(saved) phone-number</li>
-							</ul>
-						</div>
+                            <div class="saved-address-block">
+                                <h5>Billing Address</h5>
+                                <ul>
+                                    <li id="saved-name-block">Saved First Saved-Last</li>
+								    <li id="saved-address-1" class="saved-summary copy">1 Saved Address </li>
+								    <li id="saved-address-2" class="saved-summary copy">Saved Address 2</li>
 
-						<div class="saved-address-block">
-							<h5>Billing Address</h5>
-							<ul>
+								    <li class="saved-city-state">
+									   <div id="saved-city" class="saved-summary copy">Saved City</div>
+									   <div id="saved-state" class="saved-summary copy">NY</div>
+									   <div id="saved-zip" class="saved-summary copy">SAVED</div>
+								    </li>
+                                </ul>
+                            </div>
 
-								<li id="saved-name-block">Saved First Saved-Last</li>
-								<li id="saved-address-1" class="saved-summary copy">1 Saved Address </li>
-								<li id="saved-address-2" class="saved-summary copy">Saved Address 2</li>
+                            <div id="saved-info-edit" class="edit-checkout-step">
+                                <span class="checkout">Edit</span>
+                            </div>
 
-								<li class="saved-city-state">
-									<div id="saved-city" class="saved-summary copy">Saved City</div>
-									<div id="saved-state" class="saved-summary copy">NY</div>
-									<div id="saved-zip" class="saved-summary copy">SAVED</div>
-								</li>
+                        </div><!-- end address only summary -->
 
-							</ul>
-						</div>
+                        <div class="new-billing-info-form billing-address hidden">
 
-						<div id="saved-info-edit" class="edit-checkout-step">
-							<span class="checkout">Edit</span>
-						</div>
+						  <div class="billing-address-block">
+				 			    <p class="instructions">Please enter your billing address:</p>
 
-					</div><!-- end address only summary -->
+				 			    <div class="same-as-shipping">
+				 				   <input name="sameAsShipping" type="checkbox" id="same-as-shipping" class="check">
+				 				   <div class="label">Same as shipping address</div>
+				 			    </div>
 
-					<div class="new-billing-info-form billing-address hidden">
+				 			    <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-first-name">First Name</label>
+								    <input name="billingFirstName" type="text" id="bill-first-name" class="checkout-input SaS" placeholder="First Name" tabindex="100">
+                                </div>
 
-						<div class="billing-address-block">
-				 			<p class="instructions">Please enter your billing address:</p>
+                                <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-last-name">Last Name</label>
+								    <input name="billingLastName" type="text" id="bill-last-name" class="checkout-input SaS" placeholder="Last Name" tabindex="105">
+                                </div>
 
-				 			<div class="same-as-shipping">
-				 				<input name="sameAsShipping" type="checkbox" id="same-as-shipping" class="check">
-				 				<div class="label">Same as shipping address</div>
-				 			</div>
+                                <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-phone">Phone Number</label>
+								    <input name="billingPhone" type="text" id="bill-phone" class="checkout-input hasPlaceholder SaS" placeholder="Phone Number" tabindex="110">
+                                </div>
 
-				 			<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-first-name">First Name</label>
-								<input name="billingFirstName" type="text" id="bill-first-name" class="checkout-input SaS" placeholder="First Name" tabindex="100">
-							</div>
+                                <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-address-1">Address <span class="grey">| No P.O. Boxes</span></label>
+								    <input name="billingAddress" type="text" id="bill-address-1" class="checkout-input SaS" placeholder="Street Address" tabindex="115">
+                                </div>
 
-							<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-last-name">Last Name</label>
-								<input name="billingLastName" type="text" id="bill-last-name" class="checkout-input SaS" placeholder="Last Name" tabindex="105">
-							</div>
+                                <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-address-2" >Address 2</label>
+								    <input name="billingAddress2" type="text" id="bill-address-2" class="checkout-input SaS" placeholder="" tabindex="120">
+                                </div>
 
-							<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-phone">Phone Number</label>
-								<input name="billingPhone" type="text" id="bill-phone" class="checkout-input hasPlaceholder SaS" placeholder="Phone Number" tabindex="110">
-							</div>
+                                <div class="form-input-wrap">
+								    <label class="form-item-title" for="bill-city" >City</label>
+								    <input name="billingCity" type="text" class="checkout-input SaS" placeholder="City" tabindex="125">
+                                </div>
 
-							<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-address-1">Address <span class="grey">| No P.O. Boxes</span></label>
-								<input name="billingAddress" type="text" id="bill-address-1" class="checkout-input SaS" placeholder="Street Address" tabindex="115">
-							</div>
+                                <div class="form-input-wrap state">
+								    <label class="form-item-title" for="bill-state" >State</label>
+								    <select name="billingState" id="bill-state" class="checkout-input SaS" tabindex="130">
+									   <option value="0" disabled="disabled" selected>state</option>
+									   <option value="CA">CA</option>
+									   <option value="CO">CO</option>
+									   <option value="CT">CT</option>
+									   <option value="ME">ME</option>
+									   <option value="MI">MI</option>
+									   <option value="NC">NC</option>
+									   <option value="NJ">NJ</option>
+									   <option value="NY">NY</option>
+								    </select>
+                                </div>
 
-							<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-address-2" >Address 2</label>
-								<input name="billingAddress2" type="text" id="bill-address-2" class="checkout-input SaS" placeholder="" tabindex="120">
-							</div>
+                                <div class="form-input-wrap zip">
+								    <label class="form-item-title" for="bill-zip" >Zip Code</label>
+								    <input name="billingZip" type="text" class="checkout-input SaS" placeholder="Zip Code" tabindex="135">
+                                </div>
+                            </div><!-- end billing-address-block -->
+                        </div><!-- end new-billing-info-form -->
 
-							<div class="form-input-wrap">
-								<label class="form-item-title" for="bill-city" >City</label>
-								<input name="billingCity" type="text" class="checkout-input SaS" placeholder="City" tabindex="125">
-							</div>
+                        <div class="checkout-discount-block">
+                            <div class="checkout-accordion discount-code">
+				                <div class="acc-control">
+								    Do you have a discount code?
+								    <div class="icon open"></div>
+                                </div>
+                                <div class="acc-info">
+								    <div id="discount-code-input-block" class="discount-input">
+									   <label for="discount-code-input">Discount Code</label>
+									   <input name="discountCode" type="text" id="discount-code-input" class="ignore" tabindex="150" placeholder="Discount Code">
+									   <input type="submit" id="apply-discount-code" tabindex="155" value="apply">
+								    </div>
 
-							<div class="form-input-wrap state">
-								<label class="form-item-title" for="bill-state" >State</label>
-								<select name="billingState" type="text" id="bill-state" class="checkout-input SaS" tabindex="130">
-									<option value="0" disabled="disabled" selected>state</option>
-									<option value="CA">CA</option>
-									<option value="CO">CO</option>
-									<option value="CT">CT</option>
-									<option value="ME">ME</option>
-									<option value="MI">MI</option>
-									<option value="NC">NC</option>
-									<option value="NJ">NJ</option>
-									<option value="NY">NY</option>
-								</select>
-							</div>
+								    <div id="discount-code-success-block" class="discount-success">
+									   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+									   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+								    </div>
+                                </div>
+                            </div><!-- end accordion discount code -->
 
-							<div class="form-input-wrap zip">
-								<label class="form-item-title" for="bill-zip" >Zip Code</label>
-								<input name="billingZip" type="text" class="checkout-input SaS" placeholder="Zip Code" tabindex=" 135">
-							</div>
-	 					</div><!-- end billing-address-block -->
+                            <div class="checkout-accordion gift-card-acc">
+                                <div id="begin-gift-card" class="acc-control">
+								    Do you have a gift card?
+								    <div class="icon open"></div>
+								    <div class="checkout-dropdown">
+									   <a href="#" class="dropdown-link">
+										  Where can I find the PIN?
+									   </a>
+									   <div class="dropdown-panel">
+										  <div class="dropdown-pointer"></div>
+										  <img src="img/cart/giftcard-dropdown.jpg" alt="giftcards">
+									   </div><!-- end dropdown panel -->
+								    </div><!-- end checkout dropdown -->
+                                </div><!-- end acc control -->
 
-					</div><!-- end new-billing-info-form -->
+                                <div class="acc-info">
+								    <div id="gift-card-1-input-block" class="discount-input">
+                                        <div class="label-block">
+                                            <label for="gift-card-1-input" class="gift-card">Gift Card</label>
+                                            <label for="gift-card-1-pin" class="gift-pin">Gift Card PIN</label>
+									   </div>
 
-					<div class="checkout-discount-block">
+									   <input name="giftCard1" type="text" id="gift-card-1-input" class="gift-card ignore GCV" tabindex="160" placeholder="Card Number">
+									   <input name="giftCard1Pin" type="text" id="gift-card-1-pin" class="gift-pin ignore GCV" tabindex="165" placeholder="PIN">
+									   <input type="submit" id="apply-gift-card-1" tabindex="166" value="apply">
+								    </div>
 
-						<div class="checkout-accordion discount-code">
-							<div class="acc-control">
-								Do you have a discount code?
-								<div class="icon open"></div>
-							</div>
-							<div class="acc-info">
+								    <div id="gift-card-1-success-block" class="discount-success">
+									   <span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-1" class="confirmed">12345</span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-1-amt" class="confirmed amt">50</span></span>
+									   <a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
 
-								<div id="discount-code-input-block" class="discount-input">
-									<label for="discount-code-input">Discount Code</label>
-									<input name="discountCode" type="text" id="discount-code-input" class="ignore" tabindex="150" placeholder="Discount Code">
-									<input type="submit" id="apply-discount-code" tabindex="155" value="apply">
-								</div>
+									   <div id="add-gift-card-2" class="acc-control add-gift-card">Add another Gift Card</div>
 
-								<div id="discount-code-success-block" class="discount-success">
-									<span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
-									<a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
-								</div>
+									   <div class="acc-info">
+                                            <div id="gift-card-2-input-block" class="discount-input">
+                                                <div class="label-block">
+												    <label for="gift-card-2-input" class="gift-card">Gift Card</label>
+												    <label for="gift-card-2-pin" class="gift-pin">Gift Card PIN</label>
+                                                </div>
 
-							</div>
-						</div><!-- end accordion discount code -->
-
-						<div class="checkout-accordion gift-card-acc">
-							<div id="begin-gift-card" class="acc-control">
-								Do you have a gift card?
-								<div class="icon open"></div>
-								<div class="checkout-dropdown">
-									<a href="#" class="dropdown-link">
-										Where can I find the PIN?
-									</a>
-									<div class="dropdown-panel">
-										<div class="dropdown-pointer"></div>
-										<img src="img/cart/giftcard-dropdown.jpg">
-									</div><!-- end dropdown panel -->
-								</div><!-- end checkout dropdown -->
-							</div><!-- end acc control -->
-
-							<div class="acc-info">
-
-								<div id="gift-card-1-input-block" class="discount-input">
-									<div class="label-block">
-										<label for="gift-card-1-input" class="gift-card">Gift Card</label>
-										<label for="gift-card-1-pin" class="gift-pin">Gift Card PIN</label>
-									</div>
-
-									<input name="giftCard1" type="text" id="gift-card-1-input" class="gift-card ignore GCV" tabindex="160" placeholder="Card Number">
-									<input name="giftCard1Pin" type="text" id="gift-card-1-pin" class="gift-pin ignore GCV" tabindex="165" placeholder="PIN">
-									<input type="submit" id="apply-gift-card-1" tabindex="166" value="apply">
-								</div>
-
-								<div id="gift-card-1-success-block" class="discount-success">
-									<span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-1" class="confirmed">12345</span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-1-amt" class="confirmed amt">50</span></span>
-									<a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
-
-									<div id="add-gift-card-2" class="acc-control add-gift-card">Add another Gift Card</div>
-
-									<div class="acc-info">
-										<div id="gift-card-2-input-block" class="discount-input">
-											<div class="label-block">
-												<label for="gift-card-2-input" class="gift-card">Gift Card</label>
-												<label for="gift-card-2-pin" class="gift-pin">Gift Card PIN</label>
-											</div>
-
-											<input name="giftCard2" type="text" id="gift-card-2-input" class="gift-card ignore" tabindex="170" placeholder="Card Number">
+                                                <input name="giftCard2" type="text" id="gift-card-2-input" class="gift-card ignore" tabindex="170" placeholder="Card Number">
 											<input name="giftCard2Pin" type="text" id="gift-card-2-pin" class="gift-pin ignore" tabindex="175" placeholder="PIN">
 											<input type="submit" id="apply-gift-card-2" tabindex="176" value="apply">
 										</div>
@@ -792,10 +770,8 @@
 											<span class="success-msg">Success!  </span>Gift card <span class="confirmed">#<span id="confirmed-gift-card-2" class="confirmed">12345</span></span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-2-amt" class="confirmed amt">25</span></span>
 											<a href="#" id="remove-gift-card-2" class="discount-remove">Remove</a>
 										</div>
-									</div>
-
-
-								</div><!-- end card 2 success block -->
+									</div><!-- end card 1 success block -->
+								</div><!-- end acc-info -->
 
 								<div class="gift-card-cc-block">
 									<p class="instructions">Please enter your card information:</p>
@@ -860,120 +836,156 @@
 											<li class="security-item code">
 												<label class="form-item-title" for="card-code">
 													Security Code
-													<div class="checkout-dropdown">
-														<a href="#" class="dropdown-link">What's this?</a>
-														<div class="dropdown-panel">
-															<div class="dropdown-pointer"></div>
-															<div class="code-instructions visa">
-																<h6>Visa, MasterCard & Discover</h6>
-																<p>Three digit security code on the back of your card.</p>
-															</div>
-															<div class="code-instructions amex">
-																<h6>American Express</h6>
-																<p>Four digit security code on the front of your card.</p>
-															</div>
-														</div><!-- end dropdwn panel -->
-													</div><!-- end dropdown -->
 												</label>
+                                                <div class="checkout-dropdown">
+													<a href="#" class="dropdown-link">What's this?</a>
+													<div class="dropdown-panel">
+														<div class="dropdown-pointer"></div>
+														<div class="code-instructions visa">
+															<h6>Visa, MasterCard & Discover</h6>
+															<p>Three digit security code on the back of your card.</p>
+														</div>
+														<div class="code-instructions amex">
+															<h6>American Express</h6>
+															<p>Four digit security code on the front of your card.</p>
+														</div>
+													</div><!-- end dropdwn panel -->
+												</div><!-- end dropdown -->
 
 												<div class="form-input-wrap">
 													<input name="ccCodeGC" type="text" class="checkout-input not GCV" id="card-code-gc" placeholder="Code" tabindex="253">
 												</div>
-
 											</li><!-- end security-code block -->
 										</ul><!-- end security items list -->
 										<div class="cc-small-instructions">
 											To save this card, sign into My Verizon and edit your billing information.
 										</div>
-									</fieldset> <!-- end credit card info -->
-								</div><!-- end gift card cc block -->
 
-							</div><!-- end acc info for gift card -->
-						</div><!-- end accordion gift cards -->
+                                    </fieldset> <!-- end credit card info -->
 
-					</div><!-- end discount block -->
-				</div><!-- end step-info-block -->
+								    </div><!-- end gift card cc block -->
+							 </div><!-- end acc info for gift card -->
+						  </div><!-- end accordion gift cards -->
+					   </div><!-- end discount block -->
+				    </div><!-- end step-info-block -->
 
-				 <p class="checkout-not-charged hide-complete hidden">
-				 		Your card will not be charged at this time.
-				 </p>
+				    <p class="checkout-not-charged hide-complete hidden">Your card will not be charged at this time.</p>
 
-				 <a id="billing-info-complete" class="bill-info-next checkout-next hide-complete hidden" href="#">
-				 	<div class="button">
-				 		<span>Next Step</span>
-				 	</div>
-				 </a>
-
-				 <div class="verified-fineprint cc-small-instructions hide-complete hidden">
-				 	If your bank participates in the Verified by Visa/MasterCard SecureCode, you may be asked to authenticate your credit card or enroll in this service on the following screen.
-				 	The State of Alabama requires that an individual signing a contractual agreement must be at least 19 years of age.
-				 </div>
+                    <div class="hide-complete next-step-button-box hidden">
+                        <input type="button" id="billing-info-complete" class="next-step-input" value="next step">
+                    </div>
 
 
-				<div class="step-info-summary billing-complete blank hidden">
-					<div class="bill-summary-card-block">
-						<h5 class="form-item-title">Card Information</h5>
-
-						<div class="bill-summary-card">
-							<div class="card-image"></div>
-							<ul class="card-info">
-								<li id="name-on-card" class="summary-name">XXX XXXXXXX</li>
-								<li class="last-four">(Ending in <span id="confirmed-last-four" class="summary saved-sum">XXXX</span>)</li>
-								<li class="expires">
-									Expires <span id="confirmed-month" class="summary saved-sum">XX</span>/<span id="confirmed-year" class="summary saved-sum">XX</span>
-									<span class="summary" style= "display:none"></span><!-- takes security code field & hides -->
-								</li>
-								<li id="bill-card-summary-name" style="display: none; "><!-- contents copied up with js -->
-									<div class="summary saved-sum">First</div>
-									<div class="summary saved-sum">Last</div>
-								</li>
-								<li class="summary" style="display: none;"></li><!-- takes phone field & hides -->
-							</ul>
-						</div><!-- end billing-card -->
-					</div><!-- end card block -->
-
-					<div class="bill-summary-address-block">
-						<h5>Billing Address</h5>
-						<ul>
-							<li id="bill-address-summary-name" class="summary-name">XX</li>
-							<li id="bill-address-1" class="summary saved-sum">XX XXXXX XX</li>
-							<li id="bill-address-2" class="summary saved-sum">XX</li>
-
-							<li class="bill-city-state">
-								<div id="bill-city" class="summary saved-sum">XXXXXXX</div>
-								<div id="bill-state" class="summary saved-sum">XX</div>
-								<div id="bill-zip" class="summary saved-sum">XXXXX</div>
-							</li>
-						</ul>
-					</div><!-- address block -->
-
-					<div class="edit-checkout-step edit-billing">
-						<span class="checkout">Edit</span>
-					</div>
-
-				</div><!-- end step 2 final summary -->
+				    <div class="verified-fineprint cc-small-instructions hide-complete hidden">
+				 	  If your bank participates in the Verified by Visa/MasterCard SecureCode, you may be asked to authenticate your credit card or enroll in this service on the following     screen.
+				 	  The State of Alabama requires that an individual signing a contractual agreement must be at least 19 years of age.
+				    </div>
 
 
-			</fieldset><!-- end checkout step 2 -->
+				    <div class="step-info-summary billing-complete blank hidden">
+                        <div class="bill-summary-card-block">
+                            <h5 class="form-item-title">Card Information</h5>
+                            <div class="bill-summary-card">
+                                <div class="card-image"></div>
+                                <ul class="card-info">
+								    <li id="name-on-card" class="summary-name">XXX XXXXXXX</li>
+								    <li class="last-four">(Ending in <span id="confirmed-last-four" class="summary saved-sum">XXXX</span>)</li>
+								    <li class="expires">
+									   Expires <span id="confirmed-month" class="summary saved-sum">XX</span>/<span id="confirmed-year" class="summary saved-sum">XX</span>
+									   <span class="summary" style= "display:none"></span><!-- takes security code field & hides -->
+								    </li>
+								    <li id="bill-card-summary-name" style="display: none; "><!-- contents copied up with js -->
+									   <div class="summary saved-sum">First</div>
+									   <div class="summary saved-sum">Last</div>
+								    </li>
+								    <li class="summary" style="display: none;"></li><!-- takes phone field & hides -->
+                                </ul>
+                            </div><!-- end billing-card -->
+					   </div><!-- end card block -->
+
+					   <div class="bill-summary-address-block">
+						  <h5>Billing Address</h5>
+						  <ul>
+				                <li id="bill-summary-address-name" class="summary-name">XX</li>
+                                <li id="bill-summary-address-1" class="summary saved-sum">XX XXXXX XX</li>
+                                <li id="bill-summary-address-2" class="summary saved-sum">XX</li>
+
+							     <li class="bill-summarycity-state">
+								    <div id="bill-summary-city" class="summary saved-sum">XXXXXXX</div>
+								    <div id="bill-summary-state" class="summary saved-sum">XX</div>
+								    <div id="bill-summary-zip" class="summary saved-sum">XXXXX</div>
+							     </li>
+						  </ul>
+					   </div><!-- address block -->
+
+					   <div class="edit-checkout-step edit-billing">
+						  <span class="checkout">Edit</span>
+					   </div>
+				    </div><!-- end step 2 final summary -->
+                </fieldset><!-- end checkout step 2 -->
 
 
-			<fieldset id="confirm-order" class="checkout-step"><!-- begin checkout step 3 -->
-				<div class="step-title-block">
-					<legend class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</h2>
-					<h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
-				</div>
-				<div class="step-info-block hide-complete hidden">
+                <fieldset id="confirm-order" class="checkout-step"><!-- begin checkout step 3 -->
+				    <legend class="step-title-block">
+					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</div>
+					   <h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
+				    </legend>
+				    <div class="step-info-block hide-complete hidden">
 
-					<p class="instructions">
-						This is the last step before purchasing.
-						Please review your order, make your final edits and click 'Place Your Order' when ready.
-						These items will require a signature for delivery:
-					</p>
+					   <p class="instructions">
+						  This is the last step before purchasing.
+						  Please review your order, make your final edits and click 'Place Your Order' when ready.
+						  These items will require a signature for delivery:
+					   </p>
 
 
-					<div class="final-cart-table">
+					   <div class="final-cart-table">
 
-						<div class="table-row"><!-- -------------- first product in cart --------------- -->
+						      <div class="table-row"><!-- first product in cart -->
+							         <div class="desc-block">
+
+								<div class="cart-product-image">
+									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								</div><!-- end product image -->
+
+								<div class="cart-product-info">
+									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+
+									<div class="unit-price">
+
+										<span class="original-price offer">$399.99</span>
+										<span class="actual-price">$299.99</span>
+										<span class="discount offer">10% SALE</span>
+
+									</div><!-- end unit price -->
+
+									<div class="size-color">
+
+										<div class="size">Size: <span class="data">Place</span></div>
+										<div class="color">Color: <span class="data">Holder</span></div>
+
+									</div>
+								</div><!-- end crt-product-info -->
+							</div><!-- end desc block -->
+
+
+							<div class="edit-panel">
+
+								<div class="edit-box qty">
+									<div class="edit-label">Qty:</div>
+
+									<select  name="final-qty" class="checkout-input">
+										<option>0</option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+
+								</div><!-- end qty detail -->
+							</div><!-- end  edit panel -->
+						</div><!-- end table row -->
+
+						<div class="table-row"><!-- second product in cart -->
 							<div class="desc-block">
 
 								<div class="cart-product-image">
@@ -1017,51 +1029,7 @@
 							</div><!-- end  edit panel -->
 						</div><!-- end table row -->
 
-						<div class="table-row"><!-- -------------- second product in cart --------------- -->
-							<div class="desc-block">
-
-								<div class="cart-product-image">
-									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-								</div><!-- end product image -->
-
-								<div class="cart-product-info">
-									<h2>Beats by Dre Pro On-Ear Headphones</h2>
-
-									<div class="unit-price">
-
-										<span class="original-price offer">$399.99</span>
-										<span class="actual-price">$299.99</span>
-										<span class="discount offer">10% SALE</span>
-
-									</div><!-- end unit price -->
-
-									<div class="size-color">
-
-										<div class="size">Size: <span class="data">Place</span></div>
-										<div class="color">Color: <span class="data">Holder</span></div>
-
-									</div>
-								</div><!-- end crt-product-info -->
-							</div><!-- end desc block -->
-
-
-							<div class="edit-panel">
-
-								<div class="edit-box qty">
-									<div class="edit-label">Qty:</div>
-
-									<select  name="final-qty" class="checkout-input">
-										<option>0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select>
-
-								</div><!-- end qty detail -->
-							</div><!-- end  edit panel -->
-						</div><!-- end table row -->
-
-						<div class="table-row"><!-- -------------- third product in cart --------------- -->
+						<div class="table-row"><!-- third product in cart -->
 							<div class="desc-block">
 
 								<div class="cart-product-image">
@@ -1106,9 +1074,9 @@
 						</div><!-- end table row -->
 
 						<div class="checkput-place-order">
-							<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
+							<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order">
 						</div>
-
+                    </div><!-- end cart table -->
 
 				 	<div class="checkout-disclaimers">
 				 		<ul>
@@ -1152,9 +1120,10 @@
 							We apologize for any inconvenience this may cause you.
 				 		</div>
 				 	</div><!-- end disclaimers -->
-				</fieldset><!--  end step 3 -->
+				</div>
+                </fieldset><!--  end step 3 -->
 
-			</form><!-- end vzn-checkout -->
+            </form><!-- end vzn-checkout -->
 		</section><!-- end checkout sequence -->
 
 

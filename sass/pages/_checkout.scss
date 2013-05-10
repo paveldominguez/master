@@ -162,8 +162,8 @@
 		 	@include cart-sprite(checkout-checkbox-checked);
 		 	max-width: 15px;
 		 	}
-		  #uniform-checkout-ship-state label.error,
-		 #uniform-checkout-ship-state label.error.success { display: none !important; }
+		  /* #uniform-checkout-ship-state label.error,
+		 #uniform-checkout-ship-state label.error.success { display: none !important; } */
 		.forgot, .privacy-link {
 			@include actionLink;
 			font-size: 11px;
@@ -327,7 +327,7 @@
 
 					.security-item.month {
 						width: 80px;
-						.selector { width: 80px !important;
+						.selector { min-width: 80px !important;
 						span {
 							width: 100% !important;
 							@include checkoutSelected;
@@ -345,7 +345,7 @@
 
 				.security-item.year {
 					width: 80px;
-					.selector { width: 80px !important;
+					.selector { min-width: 80px !important;
 						span {
 							width: 100% !important;
 							@include checkoutSelected;
@@ -786,12 +786,20 @@
 						} /* end input wrap */
 					} /* end info block */
 
-				.checkout-next {
+
+
+
+
+
+
+
+
+				.next-step-button-box {
 					@include ctaBlackButton;
-					display:block;
 					width: 170px;
 					height: 50px;
 					margin: 10px 0 36px 72px;
+                    .span { padding-top:30px; }
 					}
 				} /* end common checkout-step */
 
@@ -853,6 +861,7 @@
 							@include checkoutSelected;
 							margin-right:45px;
 							text-transform: uppercase;
+                            @include pdp-sprite(grey-more, false, 70px, 18px);
 							}
 
 						span.select-placeholder {
@@ -863,6 +872,7 @@
 							font-size: 14px !important;
 							line-height: 14px !important;
 							font-weight: bold !important;
+
 							}
 						}/* end selector */
 					} /* end form wrap state */
@@ -1122,6 +1132,8 @@
 											}
 										}
 
+                                    .security-item.month label.error.success,
+                                    .security-item.year label.error.success { display: none; }
 
 									.security-item.code {
 										label.error {
@@ -1240,7 +1252,7 @@
 															top: 0px;
 															}
 														.form-item-title.with-link { top: -13px; }
-
+                                                        .selector { min-width: 80px; }
 														label.error { width: 100px; top: 0; left: 90px; }
 														}
 													}/* end cc info */
@@ -1381,13 +1393,14 @@
 									float: left;
 
 									.selector {
-										width: 90px !important;
+                                        width: 90px !important;
 
 										span {
 											@include checkoutSelected;
 											margin-right:45px;
 											text-transform: uppercase;
 											width: 90px !important;
+                                            @include pdp-sprite(grey-more, false, 72px, 18px );
 											}
 
 										span.select-placeholder {
@@ -1802,9 +1815,20 @@
 					left: 396px; top: 32px;
 					}
 
+                .state {
+                    label.error {
+                        width: 100%; top: auto;
+                        left:0px; bottom:-35px;
+                        padding-left: 0px;
+                        background: none;
+                        }
+                    }
+
 				.zip {
 					label.error { width: 100%; left:276px; }
 					}
+
+                .selector.error-style { border: 2px solid $colorVzwRed; }
 
 				}/* end checkout sequence */
 
