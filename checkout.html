@@ -246,50 +246,42 @@
 
 					</div><!-- end info block -->
 
-					<!-- <a id="ship-info-complete" class="checkout-next hide-complete" href="#">
-						<div class="button"><span>Next Step</span></div>
-					</a> -->
                     <div class="hide-complete next-step-button-box">
-                        <input type="button" id="ship-info-complete" class="next-step-input" value="next step">
+                        <input type="submit" id="ship-info-complete" class="next-step-input" value="next step">
                     </div>
 
 					<div class="step-info-summary hidden">
-
-						<div class="ship-contact">
+						<div class="summary-contact">
 							<h5>Contact</h5>
 							<ul>
-								<li id="ship-name-block" class="summary-name">
-									<div class="sum-first-name summary"></div>
-									<div class="sum-last-name summary"></div>
+								<li class="sum-inline-block">
+									<div id="ship-sum-first" class="first-name sum">First</div>
+									<div id="ship-sum-last" class="last-name sum">Last</div>
 								</li>
 
-								<li id="sum-email" class="summary"></li>
-								<li id="sum-phone" class="summary"></li>
+								<li id="ship-sum-email" class="email sum">email@provider.com</li>
+								<li id="ship-sum-phone" class="email sum">(212) 555-1212</li>
 							</ul>
 						</div>
 
-						<div class="ship-address">
+						<div class="summary-address">
 							<h5>Shipping Address</h5>
 							<ul>
-
-								<li id="copy-ship-name-block" class="summary-name"></li>
-								<li id="sum-address-1" class="summary"></li>
-								<li id="sum-address-2" class="summary"></li>
-
-								<li class="ship-city-state">
-									<div id="sum-city" class="summary"></div>
-									<div id="sum-state" class="summary"></div><!-- select- -->
-									<div id="sum-zip" class="summary"></div>
+                                <li id="ship-add-1" class="address sum">14 First Street</li>
+                                <li id="ship-add-2" class="address sum">Apt 4</li>
+								<li class="sum-inline-block">
+									<div id="ship-sum-city" class="city sum">City</div>
+									<div id="ship-sum-state" class="state sum">ST</div><!-- select- -->
+									<div id="ship-sum-zip" class="zip sum">12345</div>
 								</li>
 
 							</ul>
 						</div>
 
 						<div class="ship-method-summary">
-						<h5>Shipping Method</h5>
-							<div id="sum-shipping" class="summary">Selected Shipping Method Placeholder</div>
+                            <h5>Shipping Method</h5>
+							<div id="ship-sum-method" class="sum">Selected Shipping Method Placeholder</div>
 						</div>
-
 
 
 						<div class="edit-checkout-step">
@@ -297,6 +289,40 @@
 						</div>
 
 					</div><!-- end info summary -->
+
+
+                    <section id="checkout-1-server-error" class="lightbox">
+                        <div class="lightbox-info-block">
+
+                            <h3 class="lightbox-headline">Insert Step 1 Error Headline Here</h3>
+
+                            <div class="lightbox-details">
+                                Insert details about the error and instructions to help them resolve.
+                            </div>
+
+                            <div class="lightbox-fineprint">
+                                <h5 class="headline">Questions?</h5>
+                                <div class="call">
+                                    <span>Call:</span>
+                                    <a href="#" title="Call Verizon Customer Service" class="modal-call-link">1-800-555-6789</a>
+                                </div>
+                                <div class="chat">
+                                    <a href="#" title="Chat with Verizon Customer Service" class="modal-chat-link">Chat</a>
+                                </div>
+                            </div>
+
+                            <div class="lightbox-close"></div>
+
+                            <div class="lightbox-cta">
+                                <div class="lightbox-back">
+                                    <span>back to cart</span>
+                                </div>
+                            </div>
+
+                        </div><!-- end block -->
+                    </section>
+
+
 
 				</fieldset><!-- end checkout step 1 -->
 
@@ -483,7 +509,6 @@
 												</fieldset> <!-- end credit card info -->
 											</div> <!-- end card-choice-detail-block for new card -->
 										</div><!-- form-input-wrap new card-->
-										<div class="edit-saved-card"><span class="checkout">Edit</span></div>
 				 					</div><!-- end card choice block -->
 				 				</div><!-- end details card -->
 				 			</div><!-- end billing-details-block -->
@@ -528,38 +553,36 @@
 
 						<div class="step-info-summary billing-address hidden">
 							<div class="instructions">Billing Address</div>
-							<div class="saved-contact-block">
-                                <h5>Contact</h5>
+							<div class="summary-contact">
+                                <h5>Shipping Contact</h5>
                                 <ul>
-								    <li class="saved-name-block">
-									   <div id="saved-first-name" class="saved-summary copy">Saved-First</div>
-									   <div id="saved-last-name" class="saved-summary copy">Saved-Last</div>
-								    </li>
+                                    <li class="sum-inline-block">
+                                        <div id="saved-sum-first" class="first-name sum">First</div>
+                                        <div id="saved-sum-last" class="last-name sum">Last</div>
+                                    </li>
 
-								    <li id="saved-email" class="saved-summary">saved.card@email.com</li>
-								    <li id="saved-phone" class="saved-summary">(saved) phone-number</li>
+                                    <li id="saved-sum-email" class="email sum">email@provider.com</li>
+                                    <li id="saved-sum-phone" class="email sum">(212) 555-1212</li>
                                 </ul>
                             </div>
 
-                            <div class="saved-address-block">
-                                <h5>Billing Address</h5>
+                            <div class="summary-address">
+                                <h5>Shipping Address</h5>
                                 <ul>
-                                    <li id="saved-name-block">Saved First Saved-Last</li>
-								    <li id="saved-address-1" class="saved-summary copy">1 Saved Address </li>
-								    <li id="saved-address-2" class="saved-summary copy">Saved Address 2</li>
+                                    <li id="saved-add-1" class="address sum">14 First Street</li>
+                                    <li id="saved-add-2" class="address sum">Apt 4</li>
+                                    <li class="sum-inline-block">
+                                        <div id="saved-sum-city" class="city sum">City</div>
+                                        <div id="saved-sum-state" class="state sum">ST</div><!-- select- -->
+                                        <div id="saved-sum-zip" class="zip sum">12345</div>
+                                    </li>
 
-								    <li class="saved-city-state">
-									   <div id="saved-city" class="saved-summary copy">Saved City</div>
-									   <div id="saved-state" class="saved-summary copy">NY</div>
-									   <div id="saved-zip" class="saved-summary copy">SAVED</div>
-								    </li>
                                 </ul>
                             </div>
 
                             <div id="saved-info-edit" class="edit-checkout-step">
                                 <span class="checkout">Edit</span>
                             </div>
-
                         </div><!-- end address only summary -->
 
                         <div class="new-billing-info-form billing-address hidden">
@@ -599,7 +622,7 @@
 
                                 <div class="form-input-wrap">
 								    <label class="form-item-title" for="bill-city" >City</label>
-								    <input name="billingCity" type="text" class="checkout-input SaS" placeholder="City" tabindex="125">
+								    <input name="billingCity" type="text" id="bill-city" class="checkout-input SaS" placeholder="City" tabindex="125">
                                 </div>
 
                                 <div class="form-input-wrap state">
@@ -619,7 +642,7 @@
 
                                 <div class="form-input-wrap zip">
 								    <label class="form-item-title" for="bill-zip" >Zip Code</label>
-								    <input name="billingZip" type="text" class="checkout-input SaS" placeholder="Zip Code" tabindex="135">
+								    <input name="billingZip" type="text" id="bill-zip"class="checkout-input SaS" placeholder="Zip Code" tabindex="135">
                                 </div>
                             </div><!-- end billing-address-block -->
                         </div><!-- end new-billing-info-form -->
@@ -794,7 +817,7 @@
 				    <p class="checkout-not-charged hide-complete hidden">Your card will not be charged at this time.</p>
 
                     <div class="hide-complete next-step-button-box hidden">
-                        <input type="button" id="billing-info-complete" class="next-step-input" value="next step">
+                        <input type="submit" id="billing-info-complete" class="next-step-input" value="next step">
                     </div>
 
 
@@ -810,17 +833,11 @@
                             <div class="bill-summary-card">
                                 <div class="card-image"></div>
                                 <ul class="card-info">
-								    <li id="name-on-card" class="summary-name">XXX XXXXXXX</li>
+								    <li id="name-on-card" class="summary-name">First Last</li>
 								    <li class="last-four">(Ending in <span id="confirmed-last-four" class="summary saved-sum">XXXX</span>)</li>
 								    <li class="expires">
 									   Expires <span id="confirmed-month" class="summary saved-sum">XX</span>/<span id="confirmed-year" class="summary saved-sum">XX</span>
-									   <span class="summary" style= "display:none"></span><!-- takes security code field & hides -->
 								    </li>
-								    <li id="bill-card-summary-name" style="display: none; "><!-- contents copied up with js -->
-									   <div class="summary saved-sum">First</div>
-									   <div class="summary saved-sum">Last</div>
-								    </li>
-								    <li class="summary" style="display: none;"></li><!-- takes phone field & hides -->
                                 </ul>
                             </div><!-- end billing-card -->
 					   </div><!-- end card block -->
@@ -828,14 +845,17 @@
 					   <div class="bill-summary-address-block">
 						  <h5>Billing Address</h5>
 						  <ul>
-				                <li id="bill-summary-address-name" class="summary-name">XX</li>
-                                <li id="bill-summary-address-1" class="summary saved-sum">XX XXXXX XX</li>
-                                <li id="bill-summary-address-2" class="summary saved-sum">XX</li>
+				                <li id="bill-sum-add-name" class="sum-inline-block name">
+                                    <div id="bill-sum-first" class="sum first-name">First</div>
+                                    <div id="bill-sum-last" class="sum first-name">Last</div>
+                                </li>
+                                <li id="bill-sum-add-1" class="sum address">14 First Street</li>
+                                <li id="bill-sum-add-2" class="sum address">Apt 4</li>
 
-							     <li class="bill-summarycity-state">
-								    <div id="bill-summary-city" class="summary saved-sum">XXXXXXX</div>
-								    <div id="bill-summary-state" class="summary saved-sum">XX</div>
-								    <div id="bill-summary-zip" class="summary saved-sum">XXXXX</div>
+							     <li class="sum-inline-block city-state">
+								    <div id="bill-sum-city" class="sum city">City</div>
+								    <div id="bill-sum-state" class="sum state">ST</div>
+								    <div id="bill-sum-zip" class="sum zip">10038</div>
 							     </li>
 						  </ul>
 					   </div><!-- address block -->
@@ -844,6 +864,37 @@
 						  <span class="checkout">Edit</span>
 					   </div>
 				    </div><!-- end step 2 final summary -->
+
+                    <section id="checkout-2-server-error" class="lightbox">
+                        <div class="lightbox-info-block">
+
+                            <h3 class="lightbox-headline">Insert Step 2 Error Headline Here</h3>
+
+                            <div class="lightbox-details">
+                                Insert details about the error and instructions to help them resolve.
+                            </div>
+
+                            <div class="lightbox-fineprint">
+                                <h5 class="headline">Questions?</h5>
+                                <div class="call">
+                                    <span>Call:</span>
+                                    <a href="#" title="Call Verizon Customer Service" class="modal-call-link">1-800-555-6789</a>
+                                </div>
+                                <div class="chat">
+                                    <a href="#" title="Chat with Verizon Customer Service" class="modal-chat-link">Chat</a>
+                                </div>
+                            </div>
+
+                            <div class="lightbox-close"></div>
+
+                            <div class="lightbox-cta">
+                                <div class="lightbox-back">
+                                    <span>back to cart</span>
+                                </div>
+                            </div>
+
+                        </div><!-- end block -->
+                    </section>
                 </fieldset><!-- end checkout step 2 -->
 
 
@@ -852,6 +903,7 @@
 					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</div>
 					   <h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
 				    </legend>
+
 				    <div class="step-info-block hide-complete hidden">
 
 					   <p class="instructions">
@@ -862,193 +914,196 @@
 
 
 					   <div class="final-cart-table">
-
 						      <div class="table-row"><!-- first product in cart -->
 							         <div class="desc-block">
 
-								<div class="cart-product-image">
-									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-								</div><!-- end product image -->
+								        <div class="cart-product-image">
+									       <img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								        </div><!-- end product image -->
 
-								<div class="cart-product-info">
-									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+								        <div class="cart-product-info">
+									           <h2>Beats by Dre Pro On-Ear Headphones</h2>
+                                               <div class="unit-price">
+                                                    <span class="original-price offer">$399.99</span>
+                                                    <span class="actual-price">$299.99</span>
+                                                    <span class="discount offer">10% SALE</span>
+                                                </div><!-- end unit price -->
+                                                <div class="size-color">
+										              <div class="size">Size: <span class="data">Place</span></div>
+										              <div class="color">Color: <span class="data">Holder</span></div>
+                                                </div>
+								        </div><!-- end crt-product-info -->
+                                    </div><!-- end desc block -->
 
-									<div class="unit-price">
+                                    <div class="edit-panel">
+                                        <div class="edit-box qty">
+                                            <div class="edit-label">Qty:</div>
 
-										<span class="original-price offer">$399.99</span>
-										<span class="actual-price">$299.99</span>
-										<span class="discount offer">10% SALE</span>
+									       <select  name="final-qty" class="checkout-input">
+										      <option>0</option>
+										      <option>1</option>
+										      <option>2</option>
+										      <option>3</option>
+									       </select>
+                                       </div><!-- end edit-box -->
+                                   </div><!-- end  edit panel -->
+						      </div><!-- end table row -->
 
-									</div><!-- end unit price -->
+						      <div class="table-row"><!-- second product in cart -->
+                                    <div class="desc-block">
+                                        <div class="cart-product-image">
+									       <img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								        </div><!-- end product image -->
 
-									<div class="size-color">
+								        <div class="cart-product-info">
+									       <h2>Beats by Dre Pro On-Ear Headphones</h2>
 
-										<div class="size">Size: <span class="data">Place</span></div>
-										<div class="color">Color: <span class="data">Holder</span></div>
+                                            <div class="unit-price">
+                                                <span class="original-price offer">$399.99</span>
+                                                <span class="actual-price">$299.99</span>
+                                                <span class="discount offer">10% SALE</span>
+                                            </div><!-- end unit price -->
+                                            <div class="size-color">
+                                                <div class="size">Size: <span class="data">Place</span></div>
+                                                <div class="color">Color: <span class="data">Holder</span></div>
+                                            </div>
+								        </div><!-- end crt-product-info -->
+							         </div><!-- end desc block -->
 
-									</div>
-								</div><!-- end crt-product-info -->
-							</div><!-- end desc block -->
+                                     <div class="edit-panel">
+                                        <div class="edit-box qty">
+									       <div class="edit-label">Qty:</div>
 
+									       <select  name="final-qty" class="checkout-input">
+										      <option>0</option>
+										      <option>1</option>
+										      <option>2</option>
+										      <option>3</option>
+									       </select>
 
-							<div class="edit-panel">
+								        </div><!-- end qty detail -->
+							         </div><!-- end  edit panel -->
+                            </div><!-- end table row -->
 
-								<div class="edit-box qty">
-									<div class="edit-label">Qty:</div>
+                            <div class="table-row"><!-- third product in cart -->
+							     <div class="desc-block">
 
-									<select  name="final-qty" class="checkout-input">
-										<option>0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select>
+								    <div class="cart-product-image">
+									   <img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+								    </div><!-- end product image -->
 
-								</div><!-- end qty detail -->
-							</div><!-- end  edit panel -->
-						</div><!-- end table row -->
+								    <div class="cart-product-info">
+									   <h2>Beats by Dre Pro On-Ear Headphones</h2>
 
-						<div class="table-row"><!-- second product in cart -->
-							<div class="desc-block">
+									   <div class="unit-price">
+										  <span class="original-price offer">$399.99</span>
+										  <span class="actual-price">$299.99</span>
+										  <span class="discount offer">10% SALE</span>
+									   </div><!-- end unit price -->
 
-								<div class="cart-product-image">
-									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-								</div><!-- end product image -->
+									   <div class="size-color">
+                                            <div class="size">Size: <span class="data">Place</span></div>
+                                            <div class="color">Color: <span class="data">Holder</span></div>
+                                        </div>
+								    </div><!-- end crt-product-info -->
+							     </div><!-- end desc block -->
 
-								<div class="cart-product-info">
-									<h2>Beats by Dre Pro On-Ear Headphones</h2>
+                                 <div class="edit-panel">
+                                    <div class="edit-box qty">
+									   <div class="edit-label">Qty:</div>
 
-									<div class="unit-price">
+									   <select  name="final-qty" class="checkout-input">
+										  <option>0</option>
+										      <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+									   </select>
+                                    </div><!-- end qty detail -->
+							     </div><!-- end  edit panel -->
+                            </div><!-- end table row -->
 
-										<span class="original-price offer">$399.99</span>
-										<span class="actual-price">$299.99</span>
-										<span class="discount offer">10% SALE</span>
+                            <div class="checkout-place-order">
+							 <input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order">
+                            </div>
+                        </div><!-- end cart table -->
 
-									</div><!-- end unit price -->
-
-									<div class="size-color">
-
-										<div class="size">Size: <span class="data">Place</span></div>
-										<div class="color">Color: <span class="data">Holder</span></div>
-
-									</div>
-								</div><!-- end crt-product-info -->
-							</div><!-- end desc block -->
-
-
-							<div class="edit-panel">
-
-								<div class="edit-box qty">
-									<div class="edit-label">Qty:</div>
-
-									<select  name="final-qty" class="checkout-input">
-										<option>0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select>
-
-								</div><!-- end qty detail -->
-							</div><!-- end  edit panel -->
-						</div><!-- end table row -->
-
-						<div class="table-row"><!-- third product in cart -->
-							<div class="desc-block">
-
-								<div class="cart-product-image">
-									<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
-								</div><!-- end product image -->
-
-								<div class="cart-product-info">
-									<h2>Beats by Dre Pro On-Ear Headphones</h2>
-
-									<div class="unit-price">
-
-										<span class="original-price offer">$399.99</span>
-										<span class="actual-price">$299.99</span>
-										<span class="discount offer">10% SALE</span>
-
-									</div><!-- end unit price -->
-
-									<div class="size-color">
-
-										<div class="size">Size: <span class="data">Place</span></div>
-										<div class="color">Color: <span class="data">Holder</span></div>
-
-									</div>
-								</div><!-- end crt-product-info -->
-							</div><!-- end desc block -->
-
-
-							<div class="edit-panel">
-
-								<div class="edit-box qty">
-									<div class="edit-label">Qty:</div>
-
-									<select  name="final-qty" class="checkout-input">
-										<option>0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select>
-
-								</div><!-- end qty detail -->
-							</div><!-- end  edit panel -->
-						</div><!-- end table row -->
-
-						<div class="checkput-place-order">
-							<input name="placeOrder" type="submit" class="checkout-final" value="Place Your Order">
-						</div>
-                    </div><!-- end cart table -->
-
-				 	<div class="checkout-disclaimers">
-				 		<ul>
-				 			<li class="disclaimer returns">
-				 				<div class="title">Our Return Policy</div>
-				 				<p class="content">
+                        <div class="checkout-disclaimers">
+				 		     <ul>
+				 			    <li class="disclaimer returns">
+				 				   <div class="title">Our Return Policy</div>
+				 				   <p class="content">
 				 					If you are not satisfied with your device, you may return it for a full refund.
-				 				</p>
-				 			</li>
+				 				   </p>
+				 			    </li>
 
-				 			<li class="disclaimer secure">
-				 				<div class="title">Secure Purchasing</div>
-				 				<p class="content">
-				 					When you submit an order with Verizon Wireless, your information is safe and secure.
-				 				</p>
-				 			</li>
+				 			    <li class="disclaimer secure">
+				 				   <div class="title">Secure Purchasing</div>
+				 				   <p class="content">
+				 					  When you submit an order with Verizon Wireless, your information is safe and secure.
+				 				   </p>
+				 			    </li>
 
-				 			<li class="disclaimer privacy">
-				 				<div class="title">Our Privacy Policy</div>
-				 				<p class="content">
-				 					We are committed to maintaining privacy protection for you.
-				 				</p>
-				 			</li>
-				 		</ul>
+				 			    <li class="disclaimer privacy">
+				 				   <div class="title">Our Privacy Policy</div>
+				 				   <p class="content">
+				 					  We are committed to maintaining privacy protection for you.
+				 				   </p>
+				 			    </li>
+				 		     </ul>
 
-				 		<div class="checkout-footnotes">
-				 			**** Pre-orders will ship when item(s) becomes available.  We reserve the right to limit pre-order quantities.
-				 		</div>
-				 		<div class="checkout-footnotes">
-				 			* Total Due Today does not include taxes, which will be added upon confirmation of your shipping address.
-							In California, sales tax is calculated on the full retail price of the device, not any discounted price you may actually pay.
-							In Massachusetts and Nevada, sales tax is calculated on the VZW cost of the device.
-							Also during the credit check process, a deposit may be added to the total amount due.
-							Pre-orders will be charges to your credit card when the items are actually shipped.
-				 		</div>
-				 		<div class="checkout-footnotes">
-				 			Verizon Wireless makes every reasonable effort to ensure the accuracy of the information found on our web site.
-							Unfortunately, on occasion, typographical errors, inaccuracies and omissions may occur.
-							In the event that a listed price is incorrect due to a typographical error, inaccuracy or omission, Verizon Wireless reserves the right to refuse or cancel the order you placed, even if the order has already been confirmed and your credit card charged.
-							If your card has been charged, Verizon Wireless will refund the entire charged amount to the card you used.
-							We apologize for any inconvenience this may cause you.
-				 		</div>
-				 	</div><!-- end disclaimers -->
-				</div>
+				 		     <div class="checkout-footnotes">
+				 			    **** Pre-orders will ship when item(s) becomes available.  We reserve the right to limit pre-order quantities.
+				 		     </div>
+				 		     <div class="checkout-footnotes">
+				 			    * Total Due Today does not include taxes, which will be added upon confirmation of your shipping address.
+							     In California, sales tax is calculated on the full retail price of the device, not any discounted price you may actually pay.
+							     In Massachusetts and Nevada, sales tax is calculated on the VZW cost of the device.
+							     Also during the credit check process, a deposit may be added to the total amount due.
+							     Pre-orders will be charges to your credit card when the items are actually shipped.
+				 		     </div>
+				 		     <div class="checkout-footnotes">
+				 			        Verizon Wireless makes every reasonable effort to ensure the accuracy of the information found on our web site.
+							     Unfortunately, on occasion, typographical errors, inaccuracies and omissions may occur.
+							     In the event that a listed price is incorrect due to a typographical error, inaccuracy or omission, Verizon Wireless reserves
+                                the right to refuse or cancel the order you placed, even if the order has already been confirmed and your credit card charged.
+							     If your card has been charged, Verizon Wireless will refund the entire charged amount to the card you used.
+							     We apologize for any inconvenience this may cause you.
+				 		     </div>
+                         </div><!-- end disclaimers -->
+                    </div><!-- end info block -->
+
+                    <section id="checkout-3-server-error" class="lightbox">
+                        <div class="lightbox-info-block">
+                            <h3 class="lightbox-headline">Insert Step 3 Error Headline Here</h3>
+
+                            <div class="lightbox-details">
+                                Insert details about the error and instructions to help them resolve.
+                            </div>
+
+                            <div class="lightbox-fineprint">
+                                <h5 class="headline">Questions?</h5>
+                                <div class="call">
+                                    <span>Call:</span>
+                                    <a href="#" title="Call Verizon Customer Service" class="modal-call-link">1-800-555-6789</a>
+                                </div>
+                                <div class="chat">
+                                    <a href="#" title="Chat with Verizon Customer Service" class="modal-chat-link">Chat</a>
+                                </div>
+                            </div>
+
+                            <div class="lightbox-close"></div>
+
+                            <div class="lightbox-cta">
+                                <div class="lightbox-back">
+                                    <span>back to cart</span>
+                                </div>
+                            </div>
+                        </div><!-- end block -->
+                    </section>
+
                 </fieldset><!--  end step 3 -->
-
             </form><!-- end vzn-checkout -->
 		</section><!-- end checkout sequence -->
-
-
 
 		<section id="checkout-sidebar">
 
@@ -1092,7 +1147,7 @@
 							<ul class="item-list">
 								<li class="item"><!-- item 1 -->
 									<div class="item-image">
-										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Product Name">
+										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" alt="Product Name">
 									</div>
 
 									<div class="item-info">
@@ -1117,7 +1172,7 @@
 
 								<li class="item"><!-- item 2 -->
 									<div class="item-image">
-										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Product Name">
+										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" alt="Product Name">
 									</div>
 
 									<div class="item-info">
@@ -1141,7 +1196,7 @@
 
 								<li class="item"><!-- item 3 -->
 									<div class="item-image">
-										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" title="Product Name">
+										<img src="img/product-detail-page/pdp-plus/dre-beats-1-thumb.png" alt="Product Name">
 									</div>
 
 									<div class="item-info">
@@ -1265,7 +1320,7 @@
 					</div><!-- end totals -->
 				</div><!-- end checkout-cart-summary -->
 				<div class="sidebar-finish">
-					<input name="sidebarPlaceOrder" type="submit" class="checkout-final" value="Place Your Order" action="checkout-success.html">
+					<input name="sidebarPlaceOrder" type="submit" class="checkout-final" value="Place Your Order" >
 				</div>
 
 			</div><!-- end sidebar wrap -->
