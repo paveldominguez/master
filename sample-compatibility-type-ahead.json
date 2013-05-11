@@ -1,0 +1,8 @@
+{
+    "success" : {
+        "responseHTML" : "<li><span>Samsung</span></li><li><span>Android</span></li><li><span>iPhone</span></li><li><span>HTC</span></li><li><span>L</span></li><li><span>Palm</span></li>"
+    },
+    "error" : {
+        "responseHTML" : "<li>ERROR HTML</li>"
+    }
+}

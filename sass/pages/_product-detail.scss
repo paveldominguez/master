@@ -877,13 +877,159 @@
 
 
 
-    #product-details { /*--------------- PRODUCT DETAILS --------------------- */
+    /*--------------- PRODUCT DETAILS --------------------- */
+    #product-details {
 
-        .tabbed-wrapper {
+            .my-devices{
+                > h4{
+                    @include clearfix();
+                    font-size:17px;
+                    border-top:1px solid #ddd;
+                    margin:20px 0 0 0;
+                    padding:10px 0 0 0;
+                    color:#222;
+                }
+                ul{
+                    @include clearfix();
+                    margin:24px 0 36px 0;
+                    li{
+                        float:left;
+                        .product-image{
+                            float:left;
+                            margin: 0 10px 0 0;
+                        }
+                        .product-info{
+                            h5{
+                                font-size: 11px;
+                                font-family: $fontArial;
+                                font-weight:400;
+                                line-height:16px;
+                                padding-top: 4px;
+                                margin:0;
+                                padding:4px 0 0 0;
+                                color:#222;
+                            }
+                            span{
+                                font-size:10px;
+                                font-weight:700;
+                                display:block;
+                            }
+                            .not-compatible{
+                                color: #d9030f;
+                            }
+                            .compatible{
+                                color:#36C17D;
+                            }
+                        }
+                    }
+                }
+            }
+            .tabbed-wrapper {
             width: 100%;
             margin-top: 60px;
             height: auto;
-            position: relative; /* for features tab graphic box */
+            position: relative;
+            .compat-results{
+                padding:30px 0 0 0;
+            }
+            .tab-inner{
+                @include clearfix();
+                @include boxBrdrT;
+                padding:10px 0;
+            }
+            .read-more{
+            	cursor:pointer;
+            	color:$actLinkBlue;
+            	text-transform: uppercase;
+            	font-family: $fontArial;
+            	font-size:10px;
+            	font-weight:700;
+        		@include pdp-sprite(blue-more, false, 58px, 5px);
+
+            	.more{
+
+            	}
+            	.less{
+            		display: none;
+            	}
+            }
+            .toggle{
+            	@include pdp-sprite(blue-less, false, 54px, 5px);
+            	.less{
+            		display:block;
+            	}
+            	.more{
+            		display:none;
+            	}
+            }
+
+            #returned-items{
+                @include clearfix();
+                margin:0;
+                li{
+                    float:left;
+                    width: 33%;
+                    height:84px;
+                    a{
+                        display:block;
+                        height:100%;
+                        width:100%;
+                    }
+                    .product-image{
+                        float: left;
+                        width:60px;
+                    }
+                    .product-info{
+                        margin: 0 0 0 10px;
+                        padding: 5px 0 0 0;
+                        width:210px;
+                        h5{
+                            font-size: 12px;
+                            font-family: $fontArial;
+                            font-weight:400;
+                            line-height:16px;
+                        }
+                    }
+                }
+            }
+
+            .sorting-elements{
+                margin:0;
+                li{
+                    float:right;
+                    height:46px;
+                    width:22%;
+                    margin-right: 10px;
+                }
+                .selector{
+                    height: 100%;
+                    display:block;
+                    position:relative;
+                    span{
+                        position: relative;
+                        display:block;
+                        padding:22px 0 0 10px;
+                        font-size:13px;
+                    }
+                }
+                .summary{
+                    width:22%;
+                    margin-right:30px;
+                    padding-top: 4px;
+                    float:left;
+                }
+                .search{width:25%;}
+                .brand{}
+                .device{margin:0;}
+                #total-items{
+                    font-size:17px;
+                }
+                #detail-search-box{
+                    @include border-radius(3px);
+                    height:100%;
+                    padding:10px 0 0 10px;
+                }
+            }
 
             .tab-block {
                 width: 83.3333%;
