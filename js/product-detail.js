@@ -3,7 +3,6 @@ MLS.productDetail = (function() {
 var pub = {
     init : function() {
 
-
         // ONLOAD page-wide ..........................................................................................
         $jQ(".product-detail select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
 
@@ -156,7 +155,7 @@ var pub = {
 
 
         // BELOW THE FOLD EVENTS .....................................................................................
-        $jQ('#detail-tabs dd a').click(function(){ // tabs
+        $jQ('#detail-tabs dd a').click(function(){ // product detail tabs
             MLS.productDetail.pdpTab(this);
             MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
         });
@@ -180,8 +179,8 @@ var pub = {
         });
 
 
-        $jQ('#pdp-feature-tabs dd a').click(function(){ // tabs
-            MLS.productDetail.pdpTab(this, '#pdp-feature-tabs');
+        $jQ('#pdp-feature-tabs dd a').click(function(){ // tabbed graphic box in features-tab
+            MLS.productDetail.pdpTab(this);
         });
 
 
@@ -189,16 +188,92 @@ var pub = {
 
 
 
-        $jQ('#lifestyles-alpha-slider').flexslider({  // related stories products slider installs make these on & off with click
+// RELATED STORIES MODULE SEQUENCE
+
+         $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){ // modify layout before init flexslider
+             if ( i%2 > 0) { // adjust
+                var previous = $jQ(this).prev('li.small-story')
+                $jQ(this).addClass('adjusted').appendTo(previous);
+            } // else do nothing
+        });
+
+
+        $jQ('#lifestyles-alpha-slider').flexslider({ // init alpha related stories products slider onload
             animation: 'slide',
-            controlsContainer: '#pdp-related-stories-module .slide-nav',
-            animationLoop: false,
+            controlsContainer: '#nav-alpha',
+            animationLoop: true,
             controlNav: false,
             directionNav: true,
             slideshow: false,
             animationSpeed: 500,
-            itemWidth: 516
+            itemWidth: 387
+
         });
+
+
+
+        $jQ('#pdp-related-stories-module dd a').click(function(){ // related stories tab clicks
+            MLS.productDetail.pdpTab(this); // PDP tab function
+
+            var whichClick = $jQ(this).attr('id'); // identify current tab
+            var whichClickArray = whichClick.split('-');
+            whichClick = whichClickArray[2];
+
+            var navs = $jQ(this).parents('section').find('.slide-nav');
+            $jQ(navs).hide();
+            $jQ(navs).each(function(){ // toggle slider nav
+                var whichNav = $jQ(this).attr('id');
+                var whichNavArray = whichNav.split('-');
+                whichNav = whichNavArray[1];
+                if (whichClick == whichNav) {
+                    $jQ(this).show();
+                    return false;
+                }
+            });
+        });
+
+
+
+        $jQ('#lifestyles-tab-beta').one('click', function(){ // init beta related stories products slider on first tab click
+            $jQ('#lifestyles-beta-slider').flexslider({
+                animation: 'slide',
+                controlsContainer: '#nav-beta',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: 516
+            });
+        });
+
+        $jQ('#lifestyles-tab-gamma').one('click', function(){ // init gamma related stories products slider on first tab click
+            $jQ('#lifestyles-gamma-slider').flexslider({
+                animation: 'slide',
+                controlsContainer: '#nav-gamma',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: 516
+            });
+        });
+
+
+        $jQ('.product-reveal').click(function(){
+            var showThis = $jQ(this).next('.related-product');
+            MLS.productDetail.vznReveal(showThis, 486, 486);
+        });
+
+        $jQ('.close-related').click(function(){
+            var hideThis = $jQ(this).parents('.related-product');
+            MLS.productDetail.vznHide(hideThis);
+        });
+
+// END RELATED STORIES ........................
+
+
         // .................................................................... END BELOW THE FOLD EVENTS & INIT
     },
     pdpMobileContent:  function () { // copies loaded data into mobile only elements .................. BEGIN FUNCTIONS .................
@@ -325,7 +400,28 @@ var pub = {
                 return false;
             }
        });
-    }
+    },
+    vznReveal : function(element, ht, wd) { // reveal element from bottom right, goes with vznHide .......................................
+        var wdIncr = (wd) * -1;
+        var htIncr = (ht) * -1;
+
+        $jQ(element).css({
+            '-webkit-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-moz-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-ms-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            '-o-transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) ',
+            'transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) '
+        });
+    },
+    vznHide : function(element) { // ...... hide element from top left, goes with vznReveal
+        $jQ(element).css({
+            '-webkit-transform' : ' translate3d(0, 0, 0)',
+            '-moz-transform' : ' translate3d(0, 0, 0)',
+            '-ms-transform' : ' translate3d(0, 0, 0)',
+            '-o-transform' : ' translate3d(0, 0, 0)',
+            'transform' : ' translate3d(0, 0, 0)'
+        }); // end css
+    } // end vznHide
 }; // end pub var
 return pub;
 }());
