@@ -5,7 +5,7 @@ var pub = {
 
 
         // ONLOAD page-wide ..........................................................................................
-        $jQ(".product-detail select, #pdp-add-to-cart-submit, .secondary-add-cart").uniform(); // make selects pretty
+        $jQ(".product-detail select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
 
        var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
 
@@ -89,8 +89,20 @@ var pub = {
         });
         // ...................................................................................... END ONLOAD
 
-
-
+        // ONSCROLL : introduce anchor bar when user is below the fold.............................
+        if ($jQ(window).width() > 719) {
+            $jQ(window).scroll(function() {
+                if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
+                    $jQ('#btf-anchor').addClass('show-anchor');
+                    $jQ('#mls-nav').addClass('fixed-nav');
+                }    
+                else {
+                    $jQ('#btf-anchor').removeClass('show-anchor');
+                    $jQ('#mls-nav').removeClass('fixed-nav');
+                }    
+            });
+        }
+ 
 
         // ON RESIZE..............................................................................................
         $jQ(window).resize(function () {

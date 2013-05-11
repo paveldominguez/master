@@ -1445,9 +1445,10 @@
         } /* end below 850 - hero-slider only */
 
 
-
-
     @media only screen and (max-width: 719px ) { /* below 719 */
+        .fixed-nav {
+            display: none;
+        }
         #pdp-hero {
             height: auto;
             #pdp-mobile-cart-header {
@@ -1626,8 +1627,10 @@
                 }
             }
         }
-
-        } /* end below 719  */
+        .show-anchor {
+            display: none;
+        } 
+    } /* end below 719  */
 
 
     /* ------------------ general/common classes ------------------- */
@@ -2161,18 +2164,68 @@
                 }
 
 
+#btf-anchor.anchor-bar {
+    padding: 5px 20px;
+    background-color: #fff;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
+    .anchor-thumb {
+        float: left;
+        margin-right: 20px;
+        img {
+            width: 65px;
+            height: 65px;
+        }
+    }
+    h2.anchor-title {
+        float: left;
+        color: #666;
+        font: normal 20px $fontVzwBook;
+        margin: 15px 15px 0 0;
+    }
+    dl {
+        float: left;
+        color: #666;
+        margin: 21px 0 0 0;
+        padding: 0;
+        dt {
+            display: inline;
+            font: normal 10px $fontArial;
+        }
+        dd {
+            display: inline;
+            font: normal 10px $fontArial;
+        }
+    }
+    .anchor-add-cart {
+        float: right;
+        @include ctaRedButton;
+        width: 145px; 
+        height: 38px;
+        margin: 13px 0 0 15px;
+        span { 
+            margin: 0;
+            padding-top: 11px; 
+            font-size: 16px;
+        } 
+    }    
+}
 
+.show-anchor {
+    position: fixed;
+    top: 45px;
+    z-index: 9998;
+}    
 
-
-
-
-
-
-
-
-
-
-
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    z-index: 9999;
+} 
 
 
 /* ============================== TEMP / EXAMPLE CSS for DEMO pages ===================== */
