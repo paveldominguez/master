@@ -2,9 +2,13 @@ MLS.productDetail = (function() {
 
 var pub = {
     init : function() {
+        this.showMoreDevices();
+        this.compatibleTypeAhead();
+        this.compatibleDropDowns();
+        this.selectCompatibleProducts();
 
         // ONLOAD page-wide ..........................................................................................
-        $jQ(".product-detail select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
+        $jQ("#pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
 
        var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
 
@@ -421,7 +425,76 @@ var pub = {
             '-o-transform' : ' translate3d(0, 0, 0)',
             'transform' : ' translate3d(0, 0, 0)'
         }); // end css
-    } // end vznHide
+    },
+    // end vznHide
+    /* begin Compatibility Tab Functionality */
+    showMoreDevices : function(){
+        var baselineNode = $jQ('#compatTab'),
+        clickNode = baselineNode.find('.read-more'),
+        scrollNode = baselineNode.find('.device-scroll');
+        scrollNode.tinyscrollbar({ sizethumb: 65 });
+        
+        clickNode.click(function(){
+            $jQ(this).toggleClass('toggle');
+            scrollNode.toggleClass('scroll');
+            scrollNode.tinyscrollbar_update();
+        });
+    },
+    /* end Compatibility Tab Functionality */
+    
+    /* begin Uniform drop downs */
+    compatibleDropDowns : function(){
+        $jQ('#detail-brand-select, #detail-device-select').uniform();
+    },
+    /* begin Uniform drop downs */
+    
+    /* begin Compatible Device AJAX/JSON */
+    selectCompatibleProducts : function(){
+        var itemsTotal = $jQ('#total-items > span'),
+                returnedItems = $jQ('#returned-items');
+
+        $jQ('#detail-brand-select, #detail-device-select').change(function(){
+            var selectType = $jQ(this).data('type'),
+            selectID =  $jQ(this).val(),
+            formSubmit = $jQ(this).closest('form').attr('action');
+
+            MLS.ajax.sendRequest(
+                formSubmit,
+                {
+                    type : selectType,
+                    typeID : selectID
+                },
+                function(data){
+                    returnedItems.html(data.success.responseHTML);
+                    returnedItems.closest('.device-scroll').tinyscrollbar_update();
+                    itemsTotal.html(data.success.count);
+                }
+            );
+        });
+    },
+    /* end Compatible Device AJAX/JSON */
+    
+    /* begin Compatible Device type ahead */
+    compatibleTypeAhead : function(){
+        var searchInput = $jQ('#detail-search-box'),
+        typeAheadList = searchInput.parent().find('.type-ahead');
+        processingPage = searchInput.data('actionpage');
+
+        searchInput.keyup(function(){
+            var keyword = $jQ(this).val();
+
+            MLS.ajax.sendRequest(
+                processingPage,
+                {
+                    keyword : keyword
+                },
+                function(data){
+                    
+                }
+            );
+        });
+    }
+    /* begin Compatible Device type ahead */
 }; // end pub var
 return pub;
 }());
