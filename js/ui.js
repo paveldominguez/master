@@ -16,7 +16,7 @@ MLS.ui = {
 
             function socialItemReset($context) {
                 //$socialItems.animate({ width: '20%' }, { duration: 'medium', queue: false });
-                console.log($context);
+                //console.log($context);
                 if ($context !== undefined) {
                     $context.removeClass('active');
                     $context.find('.overlay').hide();
