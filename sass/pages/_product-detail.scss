@@ -584,12 +584,12 @@
                 }
 
             #zoom-close {
-                @include pdp-sprite(zoom-close, false, 150px, 35px);
-                width:180px;
-                height:90px;
+                @include pdp-sprite(zoom-close, false, 63px, 0px);
+                width:90px;
+                height:72px;
                 display:none;
                 position:absolute;
-                top:45px; right:25px;
+                top:20px; right:20px;
                 cursor: pointer;
                 color: $cartGreyMd;
                 text-transform:uppercase;
@@ -597,8 +597,9 @@
                 line-height:30px;
                 font-family:$fontArial;
                 font-weight:bold;
-                text-align:right;
-                padding: 35px 45px 0 0;
+                text-align:left;
+                padding: 0px 20px 0 0;
+                z-index: 100;
                 } /* end zoom close */
 
             #zoom-controls {
@@ -684,46 +685,69 @@
                 .hide-scale {
                     position: absolute;
                     bottom: 20px; left: 20px;
+                    z-index: 120;
                     }
                 .thumb-wrap {
                     height: 72px;
                     position: absolute;
                     bottom: 0px;
                     width: 100%;
+                    z-index: 110;
                     #zoom-thumbs {
+                        top: 15px;
                         position: absolute;
-
+                        z-index: 120;
+                        .slides {
+                            li {
+                                height: 60px;
+                                position:relative;
+                                .vzn-active {
+                                    @include slideFast;
+                                    display:block;
+                                    width:0px; height:1px;
+                                    border-bottom: 2px solid $colorVzwRed;
+                                    position:absolute;
+                                    bottom:10px;
+                                    } /* end active div */
+                                }
+                            li.flex-active-slide {
+                                .vzn-active { width: 100%; }
+                                }
+                            }
                         #toggle-view-360 {
                             position : absolute;
                             right: 0px;
                             width: 45px; height: 60px;
                             @include pdp-sprite(view-360-icon);
-
                             }
                          }
-                    .flex-viewport { width: 100%; }
-
-                    }
+                    } /* end thumb wrap */
 
                 .flex-direction-nav {
-                        position: absolute;
-                        top: 9000px;
+                    position: absolute;
+                    top: 9000px;
+                    display: none;
+                    ul {
                         display: none;
-                        ul {
-                            display: none;
-                            li { display : none; }
-                            }
+                        li { display : none; }
                         }
-
+                    }
                 }/* end zoom-carousel-block */
 
                 .zoom-content {
                     display: none;
                     width: 80%;
-                    height: 66.666%;
+                    height: 75%;
                     position:absolute;
-                    top: 15%; left: 10%;
+                    top: 7.5%; left: 10%;
                     @include heroBG;
+
+
+                    .scale-box {
+                        @include clearfix();
+                        width: 100%;
+                        height: 100%;
+                        }
                     .scale-item-left {
                         float: left;
                         width: 50%;
@@ -732,23 +756,31 @@
                             max-width: 100%;
                             display: block;
                             margin: auto;
+                            }
                         }
-                    }
                     .scale-item-right {
                         float: left;
                         width: 50%;
                         height: 100%;
+                        position: relative;
                         img {
                             max-width: 100%;
                             display: block;
                             margin: auto;
+                            }
+                        .select-block {
+                            width: 200px !important;
+                            position: absolute;
+                            bottom: 0; left: 50%;
+                            margin-left: -100px;
+                            height: 45px;
+                            .selector {
+                                span { @include pdp-sprite(grey-more, false, 180px, 18px); }
+                                }
+                            }
                         }
-                    }
-                }
-                #zoom-scale-content .selector {
-                    width: 250px !important;
-                    float: right;
-                }
+                    } /* end zoom content */
+
 
 
 
@@ -1392,6 +1424,9 @@
                             }
                         }/* end zoom-focus */
                     }/* end zoom-carousel-block */
+                    .zoom-content {
+                        height: 66.666%;
+                        top: 5%; }
                 }/* end zoom block */
             }/* end pdp hero */
 
@@ -1427,6 +1462,7 @@
         } /* end 1132 and up */
 
 
+
     @media only screen and (min-width: 959px) and (max-width: 1131px ) { /* 960 - 1131 */
         #pdp-hero {
             #carousel-block {
@@ -1435,7 +1471,9 @@
             #cart-block {
                 width: 33.333%;
                 }
+
             }/* end pdp hero */
+
 
         #product-details {
             .tabbed-wrapper {
@@ -2344,7 +2382,7 @@
 
 
 
-/*---------------  MORE/LESS COMMON STYLES------------------- */
+/*---------------  MORE/LESS STYLES------------------- */
 
     .more-less-block {
         @include clearfix();
@@ -2384,7 +2422,8 @@
 
 
 
-                /* MODAL BUNDLE STYLES */
+/* ------------ BUNDLE MODAL STYLES -------------- */
+
 #pdp-bundle-modal-block {
     .lightbox-info-block {
        width: 770px;
@@ -2627,7 +2666,7 @@
 }
 
 
-
+.product-detail.body-zoom { overflow: hidden; }
 
 
 

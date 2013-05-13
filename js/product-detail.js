@@ -8,7 +8,7 @@ var pub = {
         this.selectCompatibleProducts();
 
         // ONLOAD page-wide ..........................................................................................
-        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
+        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison").uniform(); // make selects pretty
 
        var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
 
@@ -49,7 +49,7 @@ var pub = {
         $jQ(zoomThumbs).flexslider({ // zoom : flexslider install
             animation: "slide",
             controlNav: false,
-            animationLoop: true,
+            animationLoop: false,
             slideshow: false,
             itemWidth: 45,
             itemMargin: 10,
@@ -58,7 +58,7 @@ var pub = {
         $jQ('#zoom-focus').flexslider({
             animation: "slide",
             controlNav: false,
-            animationLoop: true,
+            animationLoop: false,
             slideshow: false,
             sync: "#zoom-thumbs"
         });
@@ -98,14 +98,14 @@ var pub = {
                 if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
                     $jQ('#btf-anchor').addClass('show-anchor');
                     $jQ('#mls-nav').addClass('fixed-nav');
-                }    
+                }
                 else {
                     $jQ('#btf-anchor').removeClass('show-anchor');
                     $jQ('#mls-nav').removeClass('fixed-nav');
-                }    
+                }
             });
         }
- 
+
 
         // ON RESIZE..............................................................................................
         $jQ(window).resize(function () {
@@ -383,10 +383,6 @@ var pub = {
         }, 500);
         $jQ(window).trigger('resize'); //snap
     },
-    vznActiveTabs : function (element) { // vzn-active tabs .........................................................................
-        $jQ(element).parent().siblings().find('.vzn-active').css('width','0px');
-        $jQ(element).parent().find('.vzn-active').css('width', '100%');
-    },
     pdpTab: function(href) { // product details tab function .........................................................................
        $jQ(href).parents('.tabs').first().children().removeClass('active'); //remove active class from all sister tabs
        $jQ(href).parent().addClass('active'); //apply it to (this) clicked tab
@@ -433,7 +429,7 @@ var pub = {
         clickNode = baselineNode.find('.read-more'),
         scrollNode = baselineNode.find('.device-scroll');
         scrollNode.tinyscrollbar({ sizethumb: 65 });
-        
+
         clickNode.click(function(){
             $jQ(this).toggleClass('toggle');
             scrollNode.toggleClass('scroll');
@@ -441,13 +437,13 @@ var pub = {
         });
     },
     /* end Compatibility Tab Functionality */
-    
+
     /* begin Uniform drop downs */
     compatibleDropDowns : function(){
         $jQ('#detail-brand-select, #detail-device-select').uniform();
     },
     /* begin Uniform drop downs */
-    
+
     /* begin Compatible Device AJAX/JSON */
     selectCompatibleProducts : function(){
         var itemsTotal = $jQ('#total-items > span'),
@@ -473,7 +469,7 @@ var pub = {
         });
     },
     /* end Compatible Device AJAX/JSON */
-    
+
     /* begin Compatible Device type ahead */
     compatibleTypeAhead : function(){
         var searchInput = $jQ('#detail-search-box'),
@@ -489,7 +485,7 @@ var pub = {
                     keyword : keyword
                 },
                 function(data){
-                    
+
                 }
             );
         });
