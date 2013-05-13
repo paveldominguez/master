@@ -120,7 +120,7 @@ MLS = {
             $jQ('#sort-options').uniform();
             contentGrid.init();
             contentFilter.init();
-            MLS.ajax.cart.init(document.body);
+            MLS.miniCart.init();
             MLS.ajax.colorPicker.init();
         }
     },
@@ -157,7 +157,7 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.ajax.cart.init(document.body);
+            MLS.miniCart.init();
         }
     },
     'lifestyle-landing-page' : {
@@ -171,7 +171,7 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.ajax.cart.init(document.body);
+            MLS.miniCart.init();
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -193,7 +193,7 @@ MLS = {
         init : function () {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
-            MLS.ajax.cart.init('#add-cart-box .button span');
+            MLS.miniCart.init();
         }
     },
     // 'search-results-page' : {
@@ -211,7 +211,7 @@ MLS = {
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
-            MLS.ajax.cart.init(document.body);
+            MLS.miniCart.init();
         }
     },
     'fourofour-page' : {
