@@ -682,10 +682,33 @@
                 #zoom-focus.hide-slides { opacity: 0; }
 
 
-                .hide-scale {
+               .hide-scale {
                     position: absolute;
                     bottom: 20px; left: 20px;
                     z-index: 120;
+                     width: auto;
+                    padding: 5px 10px 5px 10px;
+                     background: #f1f1f1;
+                    @include boxBrdrA;
+                    @include cartRounded;
+
+                    .view-scale-link {
+                        font-family: $fontArial;
+                        font-weight: bold;
+                        color: $cartGreyMd;
+                        font-size: 12px;
+                        line-height: 12px;
+                        text-transform: lowercase;
+                        }
+                    }
+
+                .hide-scale.hide-action {
+                    @include ctaBlackButton;
+                    width: auto; height: auto;
+                    position: absolute;
+                    .view-scale-link {
+                        color: #fff;
+                        }
                     }
                 .thumb-wrap {
                     height: 72px;
@@ -701,6 +724,7 @@
                             li {
                                 height: 60px;
                                 position:relative;
+                                cursor: pointer;
                                 .vzn-active {
                                     @include slideFast;
                                     display:block;
@@ -890,7 +914,7 @@
             padding: 5px 10px 5px 10px;
             background: #f1f1f1;
             @include boxBrdrA;
-            @cartRounded;
+            @include cartRounded;
             z-index: 40;
 
             .view-to-scale-link {
@@ -1425,7 +1449,6 @@
                         }/* end zoom-focus */
                     }/* end zoom-carousel-block */
                     .zoom-content {
-                        height: 66.666%;
                         top: 5%; }
                 }/* end zoom block */
             }/* end pdp hero */
@@ -1437,9 +1460,6 @@
                     }
                 }
             } /* end similar product section */
-
-
-
 
         }/* end 1280 & up */
 

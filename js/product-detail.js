@@ -146,10 +146,32 @@ var pub = {
           alert('slide in color selector, coming soon');
         });
 
-        $jQ('#view-scale, #carousel-zoom, #view-360, #toggle-scale, #toggle-view-360').on('click', function(){ // create contextual zoom panels
+        $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
             var which = $jQ(this).attr('id');
             var thisPanel = new MLS.productDetail.createZoomPanel(which);
         });
+
+        $jQ('#view-scale').click(function(){
+            $jQ('#toggle-scale').text('Hide Scale').parent().toggleClass('hide-action');
+            $jQ('#zoom-thumbs').toggle();
+        });
+
+        $jQ('#toggle-scale').on('click', function(){
+            // toggle scale content
+            $jQ('#zoom-block').find("#zoom-scale-content").toggle();
+            $jQ('#zoom-thumbs').toggle();
+            $jQ('#zoom-focus').toggleClass('hide-slides');
+            //toggle link class and text
+            if ($jQ(this).parent().hasClass('hide-action')) {
+                $jQ(this).text('View to Scale').parent().removeClass('hide-action');
+            } else {
+                 $jQ(this).text('Hide Scale').parent().addClass('hide-action');
+            }
+
+
+        });
+
+
 
         $jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
             // panel itself already exists if this is clicked
@@ -378,8 +400,10 @@ var pub = {
               var currentWin = $jQ(zoomCrsl).height();
                 smallerView(currentSld, currentWin);
            }
-           $jQ('.zoom-content').css('display','none');
-           $jQ(zoomFocus).removeClass('hide-slides');
+           $jQ('#toggle-scale').text('View to Scale').parent().removeClass('hide-action'); // reset scale toggle
+           $jQ('.zoom-content').css('display','none'); // hide all extras
+           $jQ('#zoom-thumbs').css('display', 'block'); // restore thumbs if hidden
+           $jQ(zoomFocus).removeClass('hide-slides'); // restore slides if hidden
         }, 500);
         $jQ(window).trigger('resize'); //snap
     },
