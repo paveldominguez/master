@@ -138,7 +138,8 @@ var contentFilter = (function () {
             },
             processRequest : function () {
                 MLS.ajax.sendRequest(
-                    'guided-navigation.jsp',
+                    // 'guided-navigation.jsp',
+                    'data/product-listing.json',
                     {data : filterArray},
                     pub.updateGrid
                 );
