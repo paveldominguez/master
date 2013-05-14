@@ -117,9 +117,10 @@ MLS.contentFilter = (function () {
                 }
             },
 
-            compabilitySelect: function (e) {
+            compabilitySelect: function () {
                 var $elem = $jQ(this),
-                    href = $elem.find('option:selected').attr('value');
+                    href = $elem.find('option:selected').attr('value'),
+                    params;
 
                 // update hash
                 window.location.hash = href;
@@ -199,12 +200,12 @@ MLS.contentFilter = (function () {
                 if (data.hasOwnProperty('success')) {
                     // update results...
                     MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
-                    contentGrid.init(); // reload contentGrid
+                    contentGrid.reInit(); // reload contentGrid
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
                     // ... and filters
                     $cf.replaceWith(data.success.filtersHTML);
-                    pub.init();
+                    pub.reInit();
                 } else {
                     MLS.ui.updateContent('#main-column .content-grid', data.error.responseHTML);
                 }
