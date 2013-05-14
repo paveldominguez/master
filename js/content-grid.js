@@ -16,7 +16,7 @@ var contentGrid = {
         contentGrid.sortHeader();
         contentGrid.mobileFilter.init();
         if (!isTouch) {
-            MLS.ui.gridHover($contentItems.not('.large'), {
+            MLS.ui.gridHover($contentItems.not('.large, .no-hover'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);

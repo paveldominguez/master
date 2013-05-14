@@ -63,6 +63,27 @@ MLS.cartCheckout = {
         // items table : update qty message
         $jQ('.cart-revise-qty').change(function() {
             $jQ(this).parents('.detail-box').find('.update-msg').show().delay(3000).fadeOut(1000);
+
+            /* EXAMPLE AJAX CALL
+
+            var productID = get ID of current item
+            var newQty = get changed qty
+            MLS.ajax.sendRequest(
+                "atg-url.jsp",
+                { 'productID' : productID,
+                    'quantity' : newQty
+                },
+                function(data){
+                    // data from server success/error response
+                },
+                function(data){
+                    // catch ajax error
+                }
+                ),
+                function(){
+                    // callback to update page, ie: cart
+                }
+            ); */
         });
 
         // items table : remove item button
@@ -80,7 +101,27 @@ MLS.cartCheckout = {
         $jQ('.cart-remove-links').find('.remove').click(function(e) { // panel: remove
             //e.preventDefault();
             $jQ(this).parents('.table-row').remove();
-            $jQ('#shopping-cart-form').submit();
+
+            /* EXAMPLE AJAX CALL
+
+            var productID = get ID of current item
+            var newQty = get changed qty
+            MLS.ajax.sendRequest(
+                "atg-url.jsp",
+                { 'productID' : productID,
+                    'quantity' : newQty
+                },
+                function(data){
+                    // data from server success/error response
+                },
+                function(data){
+                    // catch ajax error
+                }
+                ),
+                function(){
+                    // callback to update page, ie: cart
+                }
+            ); */
             MLS.checkoutCart.checkCartQty();
         });
 
