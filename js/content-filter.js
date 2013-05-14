@@ -22,7 +22,14 @@ MLS.contentFilter = (function () {
                 // add data attributes to facets
                 for (var i = 0; i < $facets.length; i++) {
                     var $facet = $jQ($facets[i]),
-                        url = $facet.find('a').attr('href');
+                        url = $facet.find('a').attr('href'),
+                        params = url.match(/\?(.*)[&|&amp;](.*)/);
+
+                    // set data attributes
+                    $facet
+                        .attr('data-n', params[1].split('=')[1])
+                        .attr('data-nr', params[2].split('=')[1]);
+
                 }
 
 
@@ -117,8 +124,8 @@ MLS.contentFilter = (function () {
             processRequest : function (e) {
                 e.preventDefault();
 
-                var href = $jQ(this).find('a').attr('href'),
-                    filterArray = [];
+                var $elem = $jQ(this),
+                    href = $elem.find('a').attr('href');
 
                 // update hash
                 window.location.hash = href;
@@ -126,7 +133,10 @@ MLS.contentFilter = (function () {
                 // make request
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.PRODUCT_LISTING,
-                    {data : filterArray},
+                    {
+                        'N': $elem.attr('data-n'),
+                        'Nr': $elem.attr('data-nr')
+                    },
                     pub.updateResults
                 );
             },
