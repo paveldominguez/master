@@ -199,8 +199,14 @@
 
         <div class="dark">
 
-            <form id="pdp-add-to-cart" >
-                <fieldset id="pdp-add-left" class="pdp-add-float left-panel" >
+            <form id="pdp-add-to-cart" class="pdp-form-box">
+                <fieldset class="pdp-size-color">
+
+                    <div class="color-info"><span class="color-label"><span class="color-option">Black</span></div>
+
+                    <div class="product-color"> <!-- color selector -->
+                        <script>includeFragment('inc/fragments/color-choices-5.html');</script>
+                    </div> <!-- end color selector -->
 
                     <div class="size-select-box">
                         <select id="pdp-size-select" name="size-select" class="size-select">
@@ -212,53 +218,52 @@
                         </select>
                     </div>
 
-                    <div class="price-block">
-                        <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
-                        <div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></span></div>
-                    </div><!-- end priceBlock -->
-
-                </fieldset><!-- end left -->
-
-                <fieldset id="pdp-add-right" class="pdp-add-float right-panel" >
-
-                    <div class="color-select-box">
+                     <div class="color-select-box">
                         <div class="swatch"></div>
                         <select id="pdp-color-select" name="color-select" class="color-select">
                             <option value="" disabled selected>Color</option>
                             <option value="black">Black</option>
                             <option value="grey">Grey</option>
                             <option value="white">White</option>
-                            <option value="dark blue">Dark Blue</option>
-                            <option value="light blue">Light Blue</option>
-                            <option value="Purple">Purple</option>
-                            <option value="dark red">Dark Red</option>
-                            <option value="light red">Light Red</option>
-                            <option value="dark green">Dark Green</option>
-                            <option value="light green">Light Green</option>
-                            <option value="orange">Orange</option>
+                            <option value="red">Red</option>
                             <option value="yellow">Yellow</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="orange">Orange</option>
+                            <option value="purple">Purple</option>
+                             <option value="pink">Pink</option>
                         </select>
-                    </div>
+                    </div><!-- end color select -->
 
-                <div class="add-cart-box">
-                    <div class="OOS product">
-                        <p>Sorry, this product is out of stock.</p>
-                    </div>
-                    <div class="expired product">
-                        <p>Sorry, this product is no longer available.</p>
-                    </div>
+                </fieldset><!-- end size-color -->
 
-                    <div class="pdp-cart-red-cta-box">
-                        <input id="pdp-add-to-cart-submit" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
-                    </div>
 
-                    <div class="no-cta-button">
-                        <span class="OOS button-text">coming soon</span>
-                        <span class="expired button-text">no longer available</span>
-                    </div>
+                <fieldset class="pdp-price-cta" >
 
-                </div><!-- end add-cart -->
+                    <div class="price-block">
+                        <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
+                        <div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></span></div>
+                    </div><!-- end priceBlock -->
 
+
+                    <div class="add-cart-box">
+                        <div class="OOS product">
+                            <p>Sorry, this product is out of stock.</p>
+                        </div>
+                        <div class="expired product">
+                            <p>Sorry, this product is no longer available.</p>
+                        </div>
+
+                        <div class="pdp-cart-red-cta-box">
+                            <input id="pdp-add-to-cart-submit" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
+                        </div>
+
+                        <div class="no-cta-button">
+                            <span class="OOS button-text">coming soon</span>
+                            <span class="expired button-text">no longer available</span>
+                        </div>
+
+                    </div><!-- end add-cart -->
 
                 </fieldset><!-- end right -->
 
@@ -279,16 +284,7 @@
                     <div id="pdp-mobile-social"></div>
 
                 </section><!-- end mobile add to cart form box -->
-
-                <div id="pdp-cart-color-slide">
-                    <ul class="pdp-cart-slide-colors">
-                        <li class="color-chip black"></li>
-                        <li class="color-chip grey"></li>
-                        <li class="color-chip white"></li>
-                        <li class="color-chip red"></li>
-                    </ul>
-                </div>
-        </form>
+            </form>
 
 
             <div class="social-block">
