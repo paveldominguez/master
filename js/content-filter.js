@@ -124,7 +124,7 @@ MLS.contentFilter = (function () {
                 // update hash
                 window.location.hash = href;
 
-                params = pub.getParamsFromUrl(href);
+                params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
             },
 
@@ -138,7 +138,7 @@ MLS.contentFilter = (function () {
                 // update hash
                 window.location.hash = href;
 
-                params = pub.getParamsFromUrl(href);
+                params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
             },
 
@@ -164,22 +164,6 @@ MLS.contentFilter = (function () {
                 e.preventDefault();
                 window.location.hash = '';
                 pub.processRequest(params);
-            },
-
-            getParamsFromUrl: function (href) {
-                var queryParams = [],
-                    params = {},
-                    param,
-                    j = 0;
-                // make params based on the url located in the a[href]
-                queryParams = href.split('?')[1].split('&');
-
-                for (j = 0; j < queryParams.length; j++) {
-                    param = queryParams[j].split('=');
-                    params[param[0]] = param[1];
-                }
-
-                return params;
             },
 
 
@@ -209,11 +193,17 @@ MLS.contentFilter = (function () {
                 if (data.hasOwnProperty('success')) {
                     // update results...
                     MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
-                    contentGrid.reInit(); // reload contentGrid
+
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
                     // ... and filters
                     $cf.replaceWith(data.success.filtersHTML);
+
+                    // ... and even the sort by
+                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
+                    contentGrid.reInit();
+
+                    contentGrid.reInit(); // reload contentGrid
                     pub.reInit();
                 } else {
                     MLS.ui.updateContent('#main-column .content-grid', data.error.responseHTML);
