@@ -14,8 +14,16 @@ MLS.contentFilter = (function () {
                     $collapsible = $cf.find('.collapsible'),
                     $facets = $cf.find('.facet');
 
-                // collapase all but first dimension
+                // collapse all but first dimension
                 $collapsible.find('.facet-list').slideToggle('slow');
+
+
+
+                // add data attributes to facets
+                for (var i = 0; i < $facets.length; i++) {
+                    var $facet = $jQ($facets[i]),
+                        url = $facet.find('a').attr('href');
+                }
 
 
 
@@ -33,14 +41,39 @@ MLS.contentFilter = (function () {
                 $facets.on('click', pub.processRequest);
 
                 // remove filter
-                $fs.on('click', '.removable', pub.processRequest);
+                $fs.find('a').on('click', pub.removeFilter);
 
-                // load filtered data
-                // $jQ('#content-filter .facet-list .facet a').on('click', pub.processRequest);
             },
 
             /*-----  End of Init  ------*/
 
+            finalize: function () {
+                $cf = $jQ('#content-filter');
+                var $fs = $jQ('#filter-selections'),
+                    $collapsible = $cf.find('.collapsible'),
+                    $facets = $cf.find('.facet');
+
+                 /*==========  bind click events  ==========*/
+
+                // reset all
+                $jQ('#clear-selections').unbind('click', pub.resetFilter);
+
+                // dimension (expansion/collapse)
+                $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
+
+                // handle clicks on multi-facet
+                // $facets.not('.multi').on('click', pub.facetClick);
+                // $multis.on('click', pub.multiFacetClick);
+                $facets.unbind('click', pub.processRequest);
+
+                // remove filter
+                $fs.find('a').unbind('click', pub.removeFilter);
+            },
+
+            reInit: function () {
+                MLS.contentFilter.finalize();
+                MLS.contentFilter.init();
+            },
 
 
             /*=======================================
@@ -59,6 +92,24 @@ MLS.contentFilter = (function () {
 
 
 
+
+            /*=============================================
+            =            Remove selected facet            =
+            =============================================*/
+
+            removeFilter: function (e) {
+                e.preventDefault();
+                window.location.hash = '';
+                pub.processRequest(e);
+            },
+
+
+            /*-----  End of Remove selected facet  ------*/
+
+
+
+
+
             /*=======================================
             =            process request            =
             =======================================*/
@@ -66,12 +117,11 @@ MLS.contentFilter = (function () {
             processRequest : function (e) {
                 e.preventDefault();
 
-                var name = $jQ(this).attr('data-facet-dimension'),
-                    value = $jQ(this).attr('data-facet-info'),
-                    filterArray = [name, value];
+                var href = $jQ(this).find('a').attr('href'),
+                    filterArray = [];
 
                 // update hash
-                MLS.hash.update(name, value);
+                window.location.hash = href;
 
                 // make request
                 MLS.ajax.sendRequest(
@@ -102,9 +152,11 @@ MLS.contentFilter = (function () {
                     MLS.ui.updateContent('#main-column .content-grid', data.error.responseHTML);
                 }
 
-            }
+            },
 
             /*-----  End of update grid  ------*/
+
+
 
         };
     return pub;

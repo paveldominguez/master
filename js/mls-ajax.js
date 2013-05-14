@@ -3,7 +3,12 @@ MLS.ajax = {
         ADD_TO_CART: "/services/add_to_cart.json",
         REMOVE_FROM_CART: "/services/add_to_cart.json",
         GET_CART: "/services/add_to_cart.json",
-        PRODUCT_LISTING: "/services/product-listing.json"
+
+        // Products
+        PRODUCT_LISTING: "/services/product-listing.json",
+        PRODUCT_LOAD_MORE: "/services/product-listing.json",
+        PRODUCT_LOAD_ALL: "/services/product-listing.json",
+        PRODUCT_SORT: "/services/product-listing.json"
     },
 
     sendRequest : function (url, data, success, error) {
@@ -86,20 +91,21 @@ MLS.ajax = {
         }
     },
 
-    lazyLoad : {
-        more : function (e) {
-            e.preventDefault();
-            console.log('load more');
-        },
-        remaining : function (e) {
-            e.preventDefault();
-            console.log('load all');
-        }
-    },
+    // this is now in the content-grid.js
+    // lazyLoad : {
+    //     more : function (e) {
+    //         e.preventDefault();
+    //         console.log('load more');
+    //     },
+    //     remaining : function (e) {
+    //         e.preventDefault();
+    //         console.log('load all');
+    //     }
+    // },
 
-    gridSort: function (type) {
-        console.log('sort by ' + type);
-    },
+    // gridSort: function (type) {
+    //     console.log('sort by ' + type);
+    // },
 
     quickView: {
         init: function (pid, el) {
