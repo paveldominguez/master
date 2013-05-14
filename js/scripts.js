@@ -139,10 +139,12 @@ MLS = {
             MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
-                var tab = $jQ(this).attr('href');
-                var type = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-type');
-                var results = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-result-count');
-                e.preventDefault();
+                var tab = $jQ(this).attr('href'),
+                    type = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-type'),
+                    results = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-result-count');
+
+                // e.preventDefault();
+
                 $jQ('.category-tabs li a').parent().removeClass('active');
                 $jQ(this).parent().addClass('active');
                 $jQ('.tab-content-wrapper').removeClass('active');
