@@ -29,10 +29,10 @@ module.exports = function (grunt) {
                     'inc/**/*.html',
                     '*.html',
                     'css/*.css',
-                    'js/**/*js',
+                    'js/**/*.js',
                     'img/**/*.{png,jpg,jpeg,webp}'
                 ],
-                tasks: ['livereload']
+                tasks: ['concat:dist']
             }
         },
         concat: {
@@ -175,7 +175,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', 'Build task, 3 options: debug, dist, qa', function (target) {
         grunt.task.run(['clean']);
 
-        if (target === 'debug' || target === undefined) {
+        if (target === 'debug') {
             return grunt.task.run([
                 'compass',
                 'concat:dist',
@@ -186,29 +186,24 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('optimize', 'Internal task used by `build` task', function (target) {
-        if (target === 'debug' || target === 'qa' || target === 'livereload' || target === undefined) {
+        if (target === 'debug' || target === 'qa') {
             return grunt.task.run([
-                //'includereplace',
-                //'concat',
-                //'bless'
-                //'imagemin',
-                //'rig',
-
+                'compass',
+                'concat:dist',
+                'bless:debug'
             ]);
         }
 
         if (target === 'dist') {
             return grunt.task.run([
-                //'concat',
-                //'imagemin',
-                //'rig',
-                'bless'
+                'concat:dist',
+                'bless:debug'
             ]);
         }
     });
 
     grunt.registerTask('server', 'Launch node server; 3 options: debug, dist, qa', function (target) {
-        if (target === 'debug' || target === undefined) {
+        if (target === 'debug') {
             return grunt.task.run([
                 'build:debug',
                 'livereload-start',
@@ -238,4 +233,9 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'open:wiki'
     ]);
+    // grunt.registerTask('livereload', [
+    //     'compass',
+    //     'concat:dist',
+    //     'bless:debug'
+    // ]);
 };
