@@ -1,5 +1,6 @@
 /* Product Detail SCSS ----- */
 
+$cartGreyPdp: #333;
 
 .product-detail {
 
@@ -2410,31 +2411,35 @@
             width: 33.333%;
             float: left;
             padding: 0 20px 0 0;
-            h1 { font-size: 20px; }
+            h1 { font-size: 20px; color:#3d4146; }
             p { font-size: 11px; }
             .bundle-details {
+                color: $cartGreyPdp;
                 p {
                     font-family: Arial, Helvetica, sans-serif;
                     line-height: 14px;
+                    margin-bottom: 13px;
                     }
                 ul#bundle-pieces {
                     list-style-type: disc;
-                    list-style-position: inside;
+                    margin-left: 15px;
                     li {
                         font-family: Arial, Helvetica, sans-serif;
                         font-size: 11px;
-                        line-height: 14px;
+                        line-height: 16px;
+                        margin-bottom: 2px;
                         }
                     }
                 }/* end details */
             .product-shipping {
                 padding-bottom: 50px;
-                border-bottom: 1px solid #a9a9a9;
+                @include boxBrdrB;
                 span {
-                    background: url(../img/sprites/pdp/shipping-truck-gray.png) no-repeat center left;
-                    padding-left: 32px;
-                    color: #a9a9a9;
+                    background: url(../img/sprites/pdp/shipping-truck-gray.png) no-repeat left 6px;
+                    padding: 0 0 3px 32px;
+                    color: $colorNavAccountLinks;
                     font-family: $fontVzwMedium;
+                    font-size: 14px;
                     }
                 }
 
@@ -2455,61 +2460,30 @@
                 margin: 2px 0 0 0;
                 padding: 0;
                 .sale {
-                    font-size: 11px;
+                    @include checkoutContent;
+                    margin-bottom: 2px;
                     span { text-decoration: line-through; }
                     }
-                .price { font-size: 22px; }
+                .price { font-size: 24px; color: $cartGreyPdp; }
                 }
             .value-add {
                 width: 50%;
                 float: right;
-                padding: 0px 5px 0 0;
-                font-family: $fontArial;
-                font-size: 12px;
-                line-height: 14px;
+                padding: 0 5px 0 0;
+                font: bold 12px/14px $fontArial;
                 color: $colorVzwRed;
-                font-weight: bold;
-                }
-
+            }
             .product-actions {
-                margin-top: 20px;
-
-                .button {
-                    @include ctaRedButton;
-                    width: 100%;
-                    height: 55px;
-                    margin-bottom: 10px;
-                    padding: 25px 120px 0 0;
-                    text-transform: lowercase;
-
-                    span {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        padding: 25px 0 5px 15px;
-                        text-transform: lowercase;
-                        position: relative;
-
-                        font: {
-                            family: $fontVzwMedium;
-                            size: 18px;
-                            weight: normal;
-                            }
-                        }
-
-                    input {
-                        display: block;
-                        width: 100%;
-                        height: 55px;
-                        position:absolute;
-                        top: 0;
-                        left: 0;
-                        -webkit-appearance: none;
-                        opacity: 0;
-                        cursor: pointer;
-                        }
-                    }/* end button */
-                }/* end actions */
+                @include ctaRedButton;
+                width: 201px;
+                height: 48px;
+                span {
+                    margin: 0;
+                    padding-top: 23px;
+                    font-size: 15px;
+                    letter-spacing: -.1em;
+                }
+            }/* end actions */
         }/* end details */
 
     .quick-view-item {
@@ -2565,10 +2539,10 @@
 
 #btf-anchor.anchor-bar {
     padding: 5px 20px;
-    background-color: #fff;
+    background-color: $colorVzwNavBrd;
     width: 100%;
     overflow: hidden;
-    border: 1px solid #ccc;
+    @include boxBrdrA;
     border-width: 1px 0;
     .anchor-thumb {
         float: left;
@@ -2580,13 +2554,13 @@
     }
     h2.anchor-title {
         float: left;
-       color: #666;
+        color: $cartGreyMd;
         font: normal 20px $fontVzwBook;
         margin: 15px 15px 0 0;
     }
     dl {
         float: left;
-        color: #666;
+        color: $cartGreyMd;
         margin: 21px 0 0 0;
         padding: 0;
         dt {
@@ -2615,24 +2589,57 @@
 .show-anchor {
     position: fixed;
     top: 45px;
-    z-index: 9998;
+    z-index: 998;
 }
 
 .fixed-nav {
     position: fixed;
     top: 0;
-    background-color: #fff;
+    background-color: $colorVzwNavBrd;
     width: 100%;
-    z-index: 9999;
+    z-index: 999;
 }
 
-
-
-
-
-
-
-
+#social-email-overlay {
+    .lightbox-info-block {
+        width: 500px;
+        height: 340px;
+        .lightbox-content {
+            overflow: hidden;
+            .lightbox-fig {
+                float: left;
+                width: 33%;
+                img {
+                    width: 120px;
+                    height: 120px;
+                }
+                figcaption {
+                    @include checkoutContent;
+                    /*color: $cartGreyDk;*/
+                }
+            }
+            .lightbox-email-modal {
+                float: right;
+                .lightbox-input-wrap {
+                    margin-bottom: 25px;
+                    label {
+                        @include checkoutLabel;
+                        margin-bottom: 5px;
+                    }
+                }
+                .lightbox-cta {
+                    bottom: 50px; 
+                    right: 45px;
+                    width: 132px;
+                    height: 43px;
+                    span {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }   
+    } 
+}   
 
 /* ============================== TEMP / EXAMPLE CSS for DEMO pages ===================== */
 

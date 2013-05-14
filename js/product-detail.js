@@ -8,7 +8,7 @@ var pub = {
         this.selectCompatibleProducts();
 
         // ONLOAD page-wide ..........................................................................................
-        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart").uniform(); // make selects pretty
+        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #product-add-to-cart, #lightbox-email-send").uniform(); // make selects pretty
 
        var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
 
@@ -156,6 +156,12 @@ var pub = {
         });
         // ..................................................................................... END HERO & ZOOM EVENTS
 
+        
+        // SOCIAL .....................................................................................
+        $jQ('.social-item.email .social-link').click(function(e){ // Email overlay
+            e.preventDefault;
+            MLS.ui.lightbox(this);
+        });
 
 
         // BELOW THE FOLD EVENTS .....................................................................................
@@ -173,7 +179,6 @@ var pub = {
             }
             e.preventDefault();
             $jQ(block).toggleClass('bound');
-
         });
 
 

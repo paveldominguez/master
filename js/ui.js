@@ -4,6 +4,7 @@ MLS.ui = {
      * Social Share - Handle clicking of social share toolbar
      *
      */
+
     socialShare : {
         init: function () {
             var $socialList = $jQ('.social-share-module').find('.social-list'),
@@ -43,8 +44,8 @@ MLS.ui = {
                 socialItemReset($socialItemsWithContext);
                 $scope.addClass('active');
 
-                if ($scope.hasClass('email')) {
-                    if ($jQ('#share-modal-overlay').length <= 0) {
+                if ($scope.hasClass('email')) { /* Using lightbox instead */
+                    /*if ($jQ('#share-modal-overlay').length <= 0) {
                         $jQ(document.body).append('<div id="share-modal-overlay"/>');
                     }
                     if ($jQ('#share-modal-display').length <= 0) {
@@ -92,7 +93,7 @@ MLS.ui = {
                                 $shareModalDisplay.html('<h3 class="share-title message">There was a problem sharing. Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay">');
                             }
                         );
-                    });
+                    });*/
                 } else {
                     $overlay = $scope.find('.overlay'),
                     listWidth = $socialItemsWithContext.parents('.social-list').outerWidth();
