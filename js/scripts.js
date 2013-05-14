@@ -91,7 +91,7 @@ MLS = {
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
-            MLS.ajax.article.init();
+            //MLS.ajax.article.init();
             MLS.ui.complexItem.init();
 
             var navHelp = $jQ('#nav-help'),
@@ -135,8 +135,18 @@ MLS = {
             //searchResults.styleDropDown();
             contentGrid.init();
             contentFilter.init();
-            MLS.ajax.article.init();
+            //MLS.ajax.article.init();
             MLS.ui.socialShare.init();
+
+            //readstories
+            MLS.readStory.init();
+
+
+
+
+
+
+
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
                 var tab = $jQ(this).attr('href'),
