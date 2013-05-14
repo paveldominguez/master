@@ -152,6 +152,11 @@ MLS = {
                 $jQ('.content-landing-header .results-count').text(results);
                 $jQ('.content-landing-header .type').text(type);
             });
+
+            if (document.location.hash != "")
+            {
+                $jQ('.category-tabs li a[href*=' + document.location.hash.substr(1) + ']').click();
+            }
         }
     },
     'category-landing-page' : {
