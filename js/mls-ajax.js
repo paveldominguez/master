@@ -7,7 +7,9 @@ MLS.ajax = {
         REMOVE_FROM_MINICART: "/services/add_to_cart.json",
         GET_MINICART: "/services/add_to_cart.json",
         GET_CART: "/services/cart.json",
-        ARTICLE: "/services/article.json"
+        ARTICLE: "/services/article.json",
+        HOMEPAGE_PRODUCTS: "/services/homepage.json",
+        SEARCH_DEVICES: "/services/devices.json"
     },
 
     init: function() {
