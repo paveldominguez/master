@@ -1,11 +1,41 @@
 MLS.ajax = {
+    starded: false,
+
     endpoints: {
-        ADD_TO_CART: "/services/add_to_cart.json",
-        REMOVE_FROM_CART: "/services/add_to_cart.json",
-        GET_CART: "/services/add_to_cart.json"
+        ADD_TO_MINICART: "/services/add_to_cart.json",
+        UPDATE_MINICART: "/services/add_to_cart.json",
+        REMOVE_FROM_MINICART: "/services/add_to_cart.json",
+        GET_MINICART: "/services/add_to_cart.json",
+        GET_CART: "/services/cart.json",
+        ARTICLE: "/services/article.json"
+    },
+
+    init: function() {
+        if (!this.started)
+        {
+            var $loadingModal = null;
+            $jQ(document).ajaxStart(function() {
+                if ($loadingModal == null)
+                {
+                    $loadingModal = MLS.modal.open("<img src='/img/ajax-loader.gif' alt='loading...' />", true);
+                }
+            });
+
+            $jQ(document).ajaxStop(function() {
+                if ($loadingModal != null)
+                {
+                    MLS.modal.close($loadingModal);
+                    $loadingModal = null;
+                }
+            });
+
+            this.started = true;
+        }
     },
 
     sendRequest : function (url, data, success, error) {
+        this.init();
+
         $jQ.ajax({
             url: url,
             data: data,

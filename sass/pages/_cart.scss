@@ -1,9 +1,13 @@
 /* Shopping Cart SCSS */
 
 #shopping-cart {
+	/* no mini-cart on the cart page */
+	#nav-cart
+	{
+		display: none;
+	}
 
-/* general classes */
-
+	/* general classes */
 	.section-wrap {
 		@include clearfix();
 		width:100%;
