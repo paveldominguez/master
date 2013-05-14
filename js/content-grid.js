@@ -4,17 +4,14 @@ var contentGrid = {
         contentGrid.freeForm = freeForm ? true : false;
         $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
         var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
-        $contentItems = $contentGrid.find('.content-item'),
-        $quickviewLinks = $contentItems.find('.quick-view');
-        $featuredHover = $contentItems.find('.featured-corner');
-        $featuredReveal = $contentItems.find('.shop-this');
-        $featuredHide = $contentItems.find('.back-to-story');
-        $featuredReveal.click(contentGrid.featuredReveal);
-        $featuredHide.click(contentGrid.featuredHide);
-        $jQ('#load-more').click(MLS.ajax.lazyLoad.more);
-        $jQ('#load-remaining').click(MLS.ajax.lazyLoad.remaining);
-        contentGrid.sortHeader();
+            $contentItems = $contentGrid.find('.content-item'),
+            $quickviewLinks = $contentItems.find('.quick-view'),
+            $featuredHover = $contentItems.find('.featured-corner'),
+            $featuredReveal = $contentItems.find('.shop-this'),
+            $featuredHide = $contentItems.find('.back-to-story');
+
         contentGrid.mobileFilter.init();
+
         if (!isTouch) {
             MLS.ui.gridHover($contentItems.not('.large'), {
                 topBar: $contentItems.find('.color-picker'),
@@ -24,17 +21,154 @@ var contentGrid = {
             $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
         }
+
+        /*===================================
+        =            Event Binds            =
+        ===================================*/
+
+        // reveals and hide...
+        $featuredReveal.on('click', contentGrid.featuredReveal);
+        $featuredHide.on('click', contentGrid.featuredHide);
+
+        // Load more...
+        $jQ('#load-more').on('click', contentGrid.loadMore);
+        $jQ('#load-remaining').on('click', contentGrid.loadAll);
+
+        // sorts
+        $jQ('#sort-options').find('li').on('click', contentGrid.sortHeader);
+
+
+        /*-----  End of Event Binds  ------*/
+
+
+
     },
-    sortHeader: function () {
-        $jQ('li', '#sort-options').on('click', function (e) {
-            e.preventDefault();
-            var type = $jQ(this).attr('data-type');
-            //Fire Ajax
-            MLS.ajax.gridSort(type);
-            $jQ('li', '#sort-options').removeClass('active');
-            $jQ(this).addClass('active');
-        });
+
+    finalize: function (freeForm) {
+
+        contentGrid.freeForm = freeForm ? true : false;
+        $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
+        var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
+            $contentItems = $contentGrid.find('.content-item'),
+            $featuredReveal = $contentItems.find('.shop-this'),
+            $featuredHide = $contentItems.find('.back-to-story');
+
+        /*===================================
+        =            Event Unbinds          =
+        ===================================*/
+
+        // reveals and hide...
+        $featuredReveal.unbind('click', contentGrid.featuredReveal);
+        $featuredHide.unbind('click', contentGrid.featuredHide);
+
+        // Load more...
+        $jQ('#load-more').unbind('click', contentGrid.loadMore);
+        $jQ('#load-remaining').unbind('click', contentGrid.loadAll);
+
+        // sorts
+        $jQ('#sort-options').find('li').unbind('click', contentGrid.sortHeader);
+
+
+        /*-----  End of Event Unbinds ----*/
     },
+
+    reInit: function () {
+        contentGrid.finalize();
+        contentGrid.init();
+    },
+
+    loadMore: function (e) {
+        e.preventDefault();
+        // Params...
+        var params = {
+            starting: $jQ('#load-more').attr('data-offset') // starting point
+        };
+
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.PRODUCT_LOAD_MORE,
+            params,
+            function (data) {
+                if (data.hasOwnProperty('success')) {
+
+                    // append results
+                    $jQ('#main-column .content-grid').append(data.success.responseHTML);
+                    contentGrid.reInit();
+
+                    // If there's more results to load
+                    if (typeof data.success.more !== 'undefined' && data.success.more.count !== '0') {
+
+                        // update data-offset
+                        $jQ('#load-more').attr('data-offset', data.success.more.offset)
+                            // update button "load %loadManyMore count" button
+                            .find('.product-count').text(data.success.more.count);
+
+                        // update "load remaining %remainingCount products" link
+                        $jQ('#load-remaining').find('.product-count').text(data.success.more.remainingCount);
+
+                        $jQ('#load-more').show();
+
+                    } else { // hide buttons is there's no more
+                        $jQ('#load-more').hide();
+                    }
+                }
+            }
+        );
+    },
+
+
+    loadAll: function (e) {
+        e.preventDefault();
+        // Params...
+        // Bring all results if we don't pass any offset
+        var params = {
+            // starting: $jQ('#load-more').attr('data-offset') // starting point
+        };
+
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.PRODUCT_LOAD_MORE,
+            params,
+            function (data) {
+                if (data.hasOwnProperty('success')) {
+
+                    // append results
+                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
+                    contentGrid.reInit();
+
+                    $jQ('#load-remaining').hide();
+                    $jQ('#load-more').hide();
+
+                }
+            }
+        );
+    },
+
+
+    sortHeader: function (e) {
+
+        var $elem = $jQ(this),
+            type = $jQ(this).attr('data-type'),
+            $sortOptions = $jQ('#sort-options');
+
+        //Fire Ajax
+
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.PRODUCT_SORT,
+            {'sortBy': type},
+            function (data) {
+                if (data.hasOwnProperty('success')) {
+                    $sortOptions.find('li').removeClass('active');
+                    $elem.addClass('active');
+                    //
+                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
+                    contentGrid.reInit();
+                }
+            }
+        );
+
+
+    },
+
+
     mobileFilter : {
         init: function () {
             //Event handler for clicks !!!D.R.Y:-(
