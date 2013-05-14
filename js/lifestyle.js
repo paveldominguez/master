@@ -35,7 +35,7 @@ MLS.lifestyle = {
         var contentItem = '.product-board-slide .content-item';
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
 
-        $jQ('#lifestyle-nav').find('.collapsible .dimension-header').on('click', function () {
+        noglobal || $jQ('#lifestyle-nav').find('.collapsible .dimension-header').on('click', function () {
             $jQ(this).next().slideToggle('fast');
             $jQ(this).toggleClass('active');
         });
@@ -62,7 +62,7 @@ MLS.lifestyle = {
             itemWidth: $jQ(window).outerWidth() * 0.93
         });
 
-        noglobal && $jQ(window).resize(function () {
+        noglobal || $jQ(window).resize(function () {
             $jQ('#featured-story-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
         });
 
@@ -78,7 +78,7 @@ MLS.lifestyle = {
             itemWidth: $jQ(window).outerWidth() * 0.93
         });
 
-        noglobal && $jQ(window).resize(function () {
+        noglobal || $jQ(window).resize(function () {
             $jQ('#gallery-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
         });
 
@@ -115,7 +115,7 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
-        noglobal && $jQ(window).resize(function () {
+        noglobal || $jQ(window).resize(function () {
             $jQ('#shop-products-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
         });
     }
