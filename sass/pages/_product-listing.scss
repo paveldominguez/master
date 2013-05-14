@@ -439,18 +439,26 @@ $hdrOfferCollapsed: 55px;
 
             }
             &.multi-select {
+                padding-bottom: 10px;
                 .facet {
                     padding: 0;
                     a {
                         padding-left: 0px;
                         line-height: 22px;
-                        span.state{
-                            display: inline-block;
-                            @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
-                            height: 40px;
-                            width: 40px;
-                            position: relative;
-                            top: 9px;
+                        .facet-wrapper {
+                            overflow: hidden;
+                            span.state{
+                                display: block;
+                                float: left;
+                                @include product-filter-sprite(prd-fltr-chkbox, false, 10px, 16px);
+                                height: 40px;
+                                width: 40px;
+                            }
+                            span.facet-name-count {
+                                overflow: hidden;
+                                display: block;
+                                padding-top: 14px;
+                        }
                         }
                     }
                     &.selected {
@@ -468,6 +476,8 @@ $hdrOfferCollapsed: 55px;
                 a {
                     @include product-filter-sprite(prd-fltr-icon, false, 10px, 15px);
                     margin: 0;
+                    line-height: 21px;
+                    padding-top: 15px;
                 }
             }
         }
