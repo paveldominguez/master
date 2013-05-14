@@ -1573,181 +1573,217 @@
 
 
 /* ------ PDP COMMON CLASSES : BUNDLE MODAL -------------- */
-    #pdp-bundle-modal-block {
-        .lightbox-info-block {
-            width: 770px;
-            height: 500px;
-            margin-left: -380px;
-            background-color: #ebeeee;
-            }
-        .quick-view-item {
-            width: 66.666%;
-            float: left;
-            margin-left: 0px;
-            margin-top: -30px;
-            #quick-view-slider.bundle {
-                img {
-                    display: block;
-                    width: auto;
-                    margin: 10% auto 10% auto;
-                    }
+#pdp-bundle-modal-block {
+    .lightbox-info-block {
+       width: 770px;
+       height: 500px;
+       margin-left: -380px;
+       background-color: #ebeeee;
+    }
+    .quick-view-item {
+        width: 66.666%;
+        float: left;
+        margin-left: 0px;
+        margin-top: -30px;
+        #quick-view-slider.bundle {
+            img {
+                display: block;
+                width: auto;
+                margin: 10% auto 10% auto;
                 }
-            }/* end item */
-
-        .quick-view-details {
-            width: 33.333%;
-            float: left;
-            padding: 0 20px 0 0;
-            h1 { font-size: 20px; }
-            p { font-size: 11px; }
-            .bundle-details {
-                p {
-                    font-family: Arial, Helvetica, sans-serif;
-                    line-height: 14px;
-                    }
-                ul#bundle-pieces {
-                    list-style-type: disc;
-                    list-style-position: inside;
-                    li {
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 11px;
-                        line-height: 14px;
-                        }
-                    }
-                }/* end bundle-details */
-            .product-shipping {
-                padding-bottom: 50px;
-                border-bottom: 1px solid #a9a9a9;
-                span {
-                    background: url(../img/sprites/pdp/shipping-truck-gray.png) no-repeat center left;
-                    padding-left: 32px;
-                    color: #a9a9a9;
-                    font-family: $fontVzwMedium;
-                    }
-                }
-
-            .column.pricing {
-                position: absolute;
-                bottom: 100px;
-                width: 25%;
-                 }
-            .column.add-cart {
-                position: absolute;
-                bottom: 25px;
-                width: 33.333%;
-                padding-right: 45px;
-                }
-            .product-pricing {
-                float: left;
-                width: 40%;
-                margin: 2px 0 0 0;
-                padding: 0;
-                .sale {
-                    font-size: 11px;
-                    span { text-decoration: line-through; }
-                    }
-                .price { font-size: 22px; }
-                }
-            .value-add {
-                width: 50%;
-                float: right;
-                padding: 0px 5px 0 0;
-                font-family: $fontArial;
-                font-size: 12px;
+        }/* end item */
+    }
+ 
+    .quick-view-details {
+        width: 33.333%;
+        float: left;
+        padding: 0 20px 0 0;
+        h1 { font-size: 20px; color:#3d4146; }
+        p { font-size: 11px; }
+        .bundle-details {
+            color: $cartGreyDk;
+            p {
+                font-family: Arial, Helvetica, sans-serif;
                 line-height: 14px;
-                color: $colorVzwRed;
-                font-weight: bold;
+                margin-bottom: 13px;
+            }
+            ul#bundle-pieces {
+                list-style-type: disc;
+                margin-left: 15px;
+                li {
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 11px;
+                    line-height: 16px;
+                    margin-bottom: 2px;
                 }
-
-            .product-actions {
-                margin-top: 20px;
-
-                .button {
-                    @include ctaRedButton;
-                    width: 100%;
-                    height: 55px;
-                    margin-bottom: 10px;
-                    padding: 25px 120px 0 0;
-                    text-transform: lowercase;
-
-                    span {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        padding: 25px 0 5px 15px;
-                        text-transform: lowercase;
-                        position: relative;
-
-                        font: {
-                            family: $fontVzwMedium;
-                            size: 18px;
-                            weight: normal;
-                            }
-                        }
-
-                    input {
-                        display: block;
-                        width: 100%;
-                        height: 55px;
-                        position:absolute;
-                        top: 0;
-                        left: 0;
-                        -webkit-appearance: none;
-                        opacity: 0;
-                        cursor: pointer;
-                        }
-                    }/* end button */
-                }/* end actions */
-            }/* end details */
-
-        .quick-view-item {
-            .offer-box {
+            }
+        }/* end details */
+        .product-shipping {
+            padding-bottom: 50px;
+            @include boxBrdrB;
+            span {
+                background: url(../img/sprites/pdp/shipping-truck-gray.png) no-repeat left 6px;
+                padding: 0 0 3px 32px;
+                color: $colorNavAccountLinks;
+                font-family: $fontVzwMedium;
+                font-size: 14px;
+            }
+        }
+        .column.pricing {
+            position: absolute;
+            bottom: 100px;
+            width: 25%;
+        }
+        .column.add-cart {
+            position: absolute;
+            bottom: 25px;
+            width: 33.333%;
+            padding-right: 45px;
+        }
+        .product-pricing {
+            float: left;
+            width: 40%;
+            margin: 2px 0 0 0;
+            padding: 0;
+            .sale {
+                @include checkoutContent;
+                margin-bottom: 2px;
+                span { text-decoration: line-through; }
+                }
+            .price { font-size: 24px; color: $cartGreyDk; }
+        }
+        .value-add {
+            width: 50%;
+            float: right;
+            padding: 0 5px 0 0;
+            font: bold 12px/14px $fontArial;
+            color: $colorVzwRed;
+        }
+        .product-actions {
+            @include ctaRedButton;
+            width: 201px;
+            height: 48px;
+            span {
+                margin: 0;
+                padding-top: 23px;
+                font-size: 15px;
+                letter-spacing: -.1em;
+            }
+        }/* end actions */
+    }/* end details */
+ 
+    .quick-view-item {
+        .offer-box {
+            position:absolute;
+            top:40px;
+            left:40px;
+            z-index:20;
+            list-style-type: none;
+            width:120px;
+            height:120px;
+            -webkit-border-radius: 60px;
+            -moz-border-radius: 60px;
+            -ms-border-radius: 60px;
+            -o-border-radius: 60px;
+            border-radius: 60px;
+            background: $colorVzwRed;
+            .offer-amt {
+                color:#fff;
+                font-size:54px;
+                line-height:54px;
+                font-family: $fontVzwMedium;
+                letter-spacing: -5px;
+                margin:25px 0 0 18px;
+            } /* end amt */
+            .offer-unit{
+                display:inline-block;
+                font-size:30px;
+                line-height: 30px;
+                font-family: $fontVzwBook;
+                font-weight:normal;
                 position:absolute;
-                top:40px;
-                left:40px;
-                z-index:20;
-                list-style-type: none;
-                width:120px;
-                height:120px;
-                -webkit-border-radius: 60px;
-                -moz-border-radius: 60px;
-                -ms-border-radius: 60px;
-                -o-border-radius: 60px;
-                border-radius: 60px;
-                background: $colorVzwRed;
+                top:31px; right: 20px;
+                color:#fff;
+            }/* end unit */
+            .offer-off {
+                color:#fff;
+                font-size:13px;
+                line-height: 13px;
+                text-transform: uppercase;
+                font-family: $fontVzwBold;
+                position:absolute;
+                right:23px; bottom:39px;
+                font-weight:bold;
+                letter-spacing: -1px;
+            } /* end off text */
+        }/* end offer box */
+    } /* end item */
+}/* end modal block */
+ 
+ 
+#btf-anchor.anchor-bar {
+    padding: 5px 20px;
+    background-color: $colorVzwNavBrd;
+    width: 100%;
+    overflow: hidden;
+    @include boxBrdrA;
+    border-width: 1px 0;
+    .anchor-thumb {
+        float: left;
+        margin-right: 20px;
+        img {
+            width: 65px;
+            height: 65px;
+        }
+    }
+    h2.anchor-title {
+        float: left;
+        color: $cartGreyMd;
+        font: normal 20px $fontVzwBook;
+        margin: 15px 15px 0 0;
+    }
+    dl {
+        float: left;
+        color: $cartGreyMd;
+        margin: 21px 0 0 0;
+        padding: 0;
+        dt {
+            display: inline;
+            font: normal 10px $fontArial;
+        }
+        dd {
+            display: inline;
+            font: normal 10px $fontArial;
+        }
+    }
+    .anchor-add-cart {
+        float: right;
+        @include ctaRedButton;
+        width: 145px;
+        height: 38px;
+        margin: 13px 0 0 15px;
+        span {
+            margin: 0;
+            padding-top: 11px;
+            font-size: 16px;
+        }
+    }
+} /* end anchor bar */
+ 
+.show-anchor {
+    position: fixed;
+    top: 45px;
+    z-index: 998;
+}
+ 
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    background-color: $colorVzwNavBrd;
+    width: 100%;
+    z-index: 999;
+}
 
-                .offer-amt {
-                    color:#fff;
-                    font-size:54px;
-                    line-height:54px;
-                    font-family: $fontVzwMedium;
-                    letter-spacing: -5px;
-                    margin:25px 0 0 18px;
-                    } /* end amt */
-                .offer-unit{
-                    display:inline-block;
-                    font-size:30px;
-                    line-height: 30px;
-                    font-family: $fontVzwBook;
-                    font-weight:normal;
-                    position:absolute;
-                    top:31px; right: 20px;
-                    color:#fff;
-                    }/* end unit */
-                .offer-off {
-                    color:#fff;
-                    font-size:13px;
-                    line-height: 13px;
-                    text-transform: uppercase;
-                    font-family: $fontVzwBold;
-                    position:absolute;
-                    right:23px; bottom:39px;
-                    font-weight:bold;
-                    letter-spacing: -1px;
-                    } /* end off text */
-                }/* end offer box */
-            } /* end item */
-        }/* end modal block */
 
 /* ------- PDP COMMON CLASSES : MOBILE ACCORDION STYLES ------------ */
     .pdp-accordion {
@@ -2583,27 +2619,62 @@
                 @include checkoutLabel;
                 color: $actLinkBlue;
                 @include pdp-sprite(blue-less, false, 40px, 13px);
-                }
             }
-        }/* end more-less block    */
+        }
+    }/* end more-less block    */
 
     .more-less-block.bound {
         max-height: 280px;
         .more-less {
             .more-less-link { @include pdp-sprite(blue-more, false, 40px, 13px); }
-            }
         }
+    }
 
     .more-less-block.not-bound {
         .more-less {
             .more-less-link { display: none; }
-            }
         }
+    }
 
-
-
-
-
+#social-email-overlay {
+    .lightbox-info-block {
+        width: 500px;
+        height: 340px;
+        .lightbox-content {
+            overflow: hidden;
+            .lightbox-fig {
+                float: left;
+                width: 33%;
+                img {
+                    width: 120px;
+                    height: 120px;
+                }
+                figcaption {
+                    @include checkoutContent;
+                }
+            }
+            .lightbox-email-modal {
+                float: right;
+                .lightbox-input-wrap {
+                    margin-bottom: 25px;
+                    label {
+                        @include checkoutLabel;
+                        margin-bottom: 5px;
+                    }
+                }
+                .lightbox-cta {
+                    bottom: 50px; 
+                    right: 45px;
+                    width: 132px;
+                    height: 43px;
+                    span {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }   
+    } 
+} /* end social email overlay */ 
 
 /* ============================== TEMP / EXAMPLE CSS for DEMO pages ===================== */
 

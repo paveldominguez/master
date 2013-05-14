@@ -8,7 +8,7 @@ var pub = {
         this.selectCompatibleProducts();
 
         // ONLOAD page-wide ..........................................................................................
-        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison").uniform(); // make selects pretty
+        $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison, #product-add-to-cart").uniform(); // make selects pretty
 
        var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
 

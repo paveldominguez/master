@@ -919,7 +919,7 @@
 
                   <div class="column add-cart">
                       <div class="product-actions">
-                          <input class="button add-cart-cta product-action" type="submit" title="Add to Cart" value="Add to Cart">
+                          <input id="product-add-to-cart" class="add-cart-cta" type="submit" title="Add Bundle to Cart" value="Add Bundle to Cart">
                       </div>
                   </div>
               </section>
@@ -958,19 +958,49 @@
     </div><!-- end block -->
 </section>
 
+  <!--Begin: Share Email Lightbox-->
+<section id="social-email-overlay" class="lightbox">
+        <div class="lightbox-info-block">
+        <div class="lightbox-close"></div>
+        <h3 class="lightbox-headline">Share this Item</h3>
+<div class="lightbox-content">
+    <figure class="lightbox-fig">
+        <img src="img/product-detail-page/pdp-plus/dre-beats-1.png">
+        <figcaption>Lorem Ipsum Descriptum</figcaption>
+    </figure>
+    <form id="lightbox-email-modal" name="lightbox-email-modal" class="lightbox-email-modal" method="post" action="social-share-example.json">
+        <div class="lightbox-input-wrap">
+            <label for="lightbox-input-title">Your Email</label>
+            <input id="lightbox-your-email" name="lightbox-your-email" type="email" class="lightbox-your-email" placeholder="Email Address" value="" />
+        </div>
+        <div class="lightbox-input-wrap">
+            <label for="lightbox-input-title">Recipient Email</label>
+            <input id="lightbox-recipient-email" name="lightbox-recipient-email" type="email" class="lightbox-recipient-email" placeholder="Email Address" value="" />
+        </div>
+        <div class="lightbox-cta">
+            <input type="submit" id="lightbox-email-send" class="" value="Send" title="Send" />
+        </div>
+    </form>
+</div>    
+</div>
+</section>
+<!--End: Share Email Lightbox-->
+
 <!--Begin Floating anchor bar -->
 <div id="btf-anchor" class="anchor-bar">
+<form action="" method="POST" id="anchorBarForm" name="anchorBarForm">
 <div class="anchor-thumb">
-<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" title="Product Name">
+<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" id="anchor-product-thumb" title="Product Name">
 </div>
-<h2 class="anchor-title"><span class="brand">Belkin</span> AC Charger with Swivel Plug</h2>
+<h2 class="anchor-title"><span id="anchor-product-brand" class="brand">Belkin</span> <span id="anchor-product-name">AC Charger with Swivel Plug</span></h2>
 <dl>
     <dt>Size:</dt>
-    <dd>small,</dd>
+    <dd id="anchor-product-size">small,</dd>
     <dt>Color:</dt>
-    <dd>black</dd>
+    <dd id="anchor-product-color">black</dd>
 </dl>
 <div class="anchor-add-cart"><input id="anchor-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart"></div>
+</form>
 </div><!-- End Floating anchor bar -->
 
 
