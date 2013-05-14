@@ -10,8 +10,6 @@ var contentGrid = {
             $featuredReveal = $contentItems.find('.shop-this'),
             $featuredHide = $contentItems.find('.back-to-story');
 
-
-        contentGrid.sortHeader();
         contentGrid.mobileFilter.init();
 
         if (!isTouch) {
@@ -35,6 +33,9 @@ var contentGrid = {
         // Load more...
         $jQ('#load-more').on('click', contentGrid.loadMore);
         $jQ('#load-remaining').on('click', contentGrid.loadAll);
+
+        // sorts
+        $jQ('#sort-options').find('li').on('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Binds  ------*/
@@ -63,6 +64,9 @@ var contentGrid = {
         // Load more...
         $jQ('#load-more').unbind('click', contentGrid.loadMore);
         $jQ('#load-remaining').unbind('click', contentGrid.loadAll);
+
+        // sorts
+        $jQ('#sort-options').find('li').unbind('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Unbinds ----*/
@@ -139,34 +143,29 @@ var contentGrid = {
     },
 
 
-    sortHeader: function () {
-        var $sortOptions = $jQ('#sort-options');
+    sortHeader: function (e) {
 
-        $sortOptions.find('li').on('click', function (e) {
-            e.preventDefault();
+        var $elem = $jQ(this),
+            type = $jQ(this).attr('data-type'),
+            $sortOptions = $jQ('#sort-options');
 
-            var type = $jQ(this).attr('data-type');
+        //Fire Ajax
 
-            //Fire Ajax
-
-            MLS.ajax.sendRequest(
-                MLS.ajax.endpoints.PRODUCT_SORT,
-                {'sortBy': type},
-                function (data) {
-                    if (data.hasOwnProperty('success')) {
-
-                        $sortOptions.find('li').removeClass('active');
-                        $jQ(e.currentTarget).addClass('active');
-                        //
-                        $jQ('#main-column .content-grid').html(data.success.responseHTML);
-                        contentGrid.reInit();
-                    }
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.PRODUCT_SORT,
+            {'sortBy': type},
+            function (data) {
+                if (data.hasOwnProperty('success')) {
+                    $sortOptions.find('li').removeClass('active');
+                    $elem.addClass('active');
+                    //
+                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
+                    contentGrid.reInit();
                 }
-            );
+            }
+        );
 
 
-
-        });
     },
 
 

@@ -74,13 +74,16 @@ MLS.contentFilter = (function () {
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
 
 
-                $facets.unbind('click', pub.processRequest);
+                $facets.unbind('click', pub.facetClick);
 
                 // remove filter
                 $fs.find('a').unbind('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
+
+                // type ahead (searc)
+                $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
 
 
             },
@@ -107,28 +110,36 @@ MLS.contentFilter = (function () {
 
 
             compabilitySearch: function (e) {
+                var $elem = $jQ(this),
+                    params = {search: $elem.val()};
                 if (e.keyCode === 13) {
-                    console.log('input');
-                    // pub.searchInput();
+                    pub.processRequest(params);
                 }
             },
 
             compabilitySelect: function (e) {
-                var $elem = e.currentTarget,
+                var $elem = $jQ(this),
                     href = $elem.find('option:selected').attr('value');
 
                 // update hash
                 window.location.hash = href;
+
+                params = pub.getParamsFromUrl(href);
+                pub.processRequest(params);
             },
 
             facetClick: function (e) {
                 e.preventDefault();
 
-                var $elem = e.currentTarget,
-                    href = $elem.find('a').attr('href');
+                var $elem = $jQ(this),//e.currentTarget,
+                    href = $elem.find('a').attr('href'),
+                    params;
 
                 // update hash
                 window.location.hash = href;
+
+                params = pub.getParamsFromUrl(href);
+                pub.processRequest(params);
             },
 
 
@@ -139,7 +150,7 @@ MLS.contentFilter = (function () {
             removeFilter: function (e) {
                 e.preventDefault();
                 window.location.hash = '';
-                pub.processRequest(e);
+                pub.processRequest();
             },
 
 
@@ -159,7 +170,7 @@ MLS.contentFilter = (function () {
                 }
 
                 return params;
-            }
+            },
 
 
 
@@ -167,7 +178,7 @@ MLS.contentFilter = (function () {
             =            process request            =
             =======================================*/
 
-            processRequest : function (params) {
+            processRequest: function (params) {
 
                 // make request
                 MLS.ajax.sendRequest(
