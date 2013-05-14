@@ -47,7 +47,7 @@ MLS.contentFilter = (function () {
                 $facets.on('click', pub.facetClick);
 
                 // remove filter
-                $fs.find('a').on('click', pub.removeFilter);
+                $jQ('#clear-selections').find('li').find('a').on('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
@@ -61,8 +61,7 @@ MLS.contentFilter = (function () {
 
             finalize: function () {
                 $cf = $jQ('#content-filter');
-                var $fs = $jQ('#filter-selections'),
-                    $collapsible = $cf.find('.collapsible'),
+                var $collapsible = $cf.find('.collapsible'),
                     $facets = $cf.find('.facet');
 
                  /*==========  bind click events  ==========*/
@@ -77,7 +76,7 @@ MLS.contentFilter = (function () {
                 $facets.unbind('click', pub.facetClick);
 
                 // remove filter
-                $fs.find('a').unbind('click', pub.removeFilter);
+                $jQ('#filter-selections').find('li').find('a').on('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
@@ -149,13 +148,23 @@ MLS.contentFilter = (function () {
             =============================================*/
 
             removeFilter: function (e) {
+                var $elem = $jQ(this),
+                    params = {removeFilter: 'xxx'};
                 e.preventDefault();
                 window.location.hash = '';
-                pub.processRequest();
+                pub.processRequest(params);
             },
 
 
             /*-----  End of Remove selected facet  ------*/
+
+            resetFilter: function (e) {
+                var $elem = $jQ(this),
+                    params = {reset: 'filters'};
+                e.preventDefault();
+                window.location.hash = '';
+                pub.processRequest(params);
+            },
 
             getParamsFromUrl: function (href) {
                 var queryParams = [],
