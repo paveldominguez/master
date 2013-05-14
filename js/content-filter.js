@@ -44,16 +44,19 @@ MLS.contentFilter = (function () {
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
-                $facets.on('click', pub.processRequest);
+                $facets.on('click', pub.facetClick);
 
                 // remove filter
                 $fs.find('a').on('click', pub.removeFilter);
 
                 // compability services
-                $jQ('.compatibility-filter').children('select').on('change', pub.processRequest);
+                $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
+
+                // type ahead (searc)
+                $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', pub.compabilitySearch);
+
 
             },
-
             /*-----  End of Init  ------*/
 
             finalize: function () {
@@ -70,16 +73,16 @@ MLS.contentFilter = (function () {
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
 
-                // handle clicks on multi-facet
-                // $facets.not('.multi').on('click', pub.facetClick);
-                // $multis.on('click', pub.multiFacetClick);
+
                 $facets.unbind('click', pub.processRequest);
 
                 // remove filter
                 $fs.find('a').unbind('click', pub.removeFilter);
 
                 // compability services
-                $jQ('.compatibility-filter').children('select').unbind('change', pub.processRequest);
+                $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
+
+
             },
 
             reInit: function () {
@@ -103,6 +106,30 @@ MLS.contentFilter = (function () {
             /*-----  End of dimension click  ------*/
 
 
+            compabilitySearch: function (e) {
+                if (e.keyCode === 13) {
+                    console.log('input');
+                    // pub.searchInput();
+                }
+            },
+
+            compabilitySelect: function (e) {
+                var $elem = e.currentTarget,
+                    href = $elem.find('option:selected').attr('value');
+
+                // update hash
+                window.location.hash = href;
+            },
+
+            facetClick: function (e) {
+                e.preventDefault();
+
+                var $elem = e.currentTarget,
+                    href = $elem.find('a').attr('href');
+
+                // update hash
+                window.location.hash = href;
+            },
 
 
             /*=============================================
@@ -118,33 +145,11 @@ MLS.contentFilter = (function () {
 
             /*-----  End of Remove selected facet  ------*/
 
-
-
-
-
-            /*=======================================
-            =            process request            =
-            =======================================*/
-
-            processRequest : function (e) {
-                e.preventDefault();
-
+            getParamsFromUrl: function (href) {
                 var queryParams = [],
                     params = {},
                     param,
-                    $elem = $jQ(this),
-                    href = '',
                     j = 0;
-
-                if (e.currentTarget.tagName === 'SELECT') { // for dropdowns
-                    href = $elem.find('option:selected').attr('value');
-                } else {
-                    href = $elem.find('a').attr('href');
-                }
-
-                // update hash
-                window.location.hash = href;
-
                 // make params based on the url located in the a[href]
                 queryParams = href.split('?')[1].split('&');
 
@@ -152,6 +157,17 @@ MLS.contentFilter = (function () {
                     param = queryParams[j].split('=');
                     params[param[0]] = param[1];
                 }
+
+                return params;
+            }
+
+
+
+            /*=======================================
+            =            process request            =
+            =======================================*/
+
+            processRequest : function (params) {
 
                 // make request
                 MLS.ajax.sendRequest(
