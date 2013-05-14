@@ -180,7 +180,7 @@ var pub = {
 
 
 
-        // BELOW THE FOLD EVENTS .....................................................................................
+        // BELOW THE FOLD 720+ EVENTS .....................................................................................
         $jQ('#detail-tabs dd a').click(function(){ // product detail tabs
             MLS.productDetail.pdpTab(this);
             MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
@@ -199,7 +199,7 @@ var pub = {
         });
 
 
-        $jQ('.pdp-bundle-block .secondary-add-cart').click(function(e){ // bundle modal
+        $jQ('.pdp-bundle-block .item').click(function(e){ // bundle modal
             e.preventDefault;
             MLS.ui.lightbox(this);
         });
@@ -210,11 +210,40 @@ var pub = {
         });
 
 
+        // BELOW THE FOLD 719- EVENTS .......................................................................................
+
+        // pdp accordions
+        $jQ('.pdp-accordion').find('.acc-control').click(function(){
+            MLS.ui.simpleAcc(this);
+            setTimeout(function(){
+                MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
+            }, 350);
+        });
+
+        $jQ('#mobile-similar .acc-control').click(function(){ // initialize flexslider
+
+            $jQ('#mobile-similar #pdp-similar-products-module').flexslider({  // similar products : flexslider install
+                animation: 'slide',
+                controlsContainer: '#pdp-similar-products-module .slide-nav',
+                animationLoop: false,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: 215
+            });
+
+        });
+
+         $jQ('#mobile-features .tabs dd a').click(function(){ // tabbed graphic box in features-tab
+            MLS.productDetail.pdpTab(this);
+        });
 
 
 
 
-// RELATED STORIES MODULE SEQUENCE
+
+        // RELATED STORIES MODULE SEQUENCE
 
          $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){ // modify layout before init flexslider
              if ( i%2 > 0) { // adjust
@@ -222,7 +251,6 @@ var pub = {
                 $jQ(this).addClass('adjusted').appendTo(previous);
             } // else do nothing
         });
-
 
         $jQ('#lifestyles-alpha-slider').flexslider({ // init alpha related stories products slider onload
             animation: 'slide',
@@ -235,8 +263,6 @@ var pub = {
             itemWidth: 387
 
         });
-
-
 
         $jQ('#pdp-related-stories-module dd a').click(function(){ // related stories tab clicks
             MLS.productDetail.pdpTab(this); // PDP tab function
@@ -257,8 +283,6 @@ var pub = {
                 }
             });
         });
-
-
 
         $jQ('#lifestyles-tab-beta').one('click', function(){ // init beta related stories products slider on first tab click
             $jQ('#lifestyles-beta-slider').flexslider({
@@ -286,7 +310,6 @@ var pub = {
             });
         });
 
-
         $jQ('.product-reveal').click(function(){
             var showThis = $jQ(this).next('.related-product');
             MLS.productDetail.vznReveal(showThis, 486, 486);
@@ -296,13 +319,10 @@ var pub = {
             var hideThis = $jQ(this).parents('.related-product');
             MLS.productDetail.vznHide(hideThis);
         });
-
-// END RELATED STORIES ........................
-
-
-        // .................................................................... END BELOW THE FOLD EVENTS & INIT
+        // END RELATED STORIES ....................................
     },
     pdpMobileContent:  function () { // copies loaded data into mobile only elements .................. BEGIN FUNCTIONS .................
+    // hero section
         $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
         $jQ('.pdp-cart-shipping').clone().appendTo('#pdp-mobile-form-shipping'); // shipping & offers
         var deskForm = $jQ('#pdp-add-to-cart');
@@ -310,6 +330,16 @@ var pub = {
         deskForm.find('.color-select-box').clone().appendTo('#pdp-mobile-form-color');
         deskForm.find('.price-block').clone().appendTo('#pdp-mobile-form-price');
         deskForm.find('.add-cart-box').clone().appendTo('#pdp-mobile-form-submit');
+    // below the fold
+        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');
+        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info');
+        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info');
+        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info');
+        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info');
+        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info');
+
+        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info');
+        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info');
     },
     thumbDisplay: function (parent, context) { // carousel thumbs ........................................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
@@ -446,9 +476,7 @@ var pub = {
             'transform' : ' translate3d(0, 0, 0)'
         }); // end css
     },
-    // end vznHide
-    /* begin Compatibility Tab Functionality */
-    showMoreDevices : function(){
+    showMoreDevices : function(){ /* begin Compatibility Tab Functionality */
         var baselineNode = $jQ('#compatTab'),
         clickNode = baselineNode.find('.read-more'),
         scrollNode = baselineNode.find('.device-scroll');
@@ -460,16 +488,10 @@ var pub = {
             scrollNode.tinyscrollbar_update();
         });
     },
-    /* end Compatibility Tab Functionality */
-
-    /* begin Uniform drop downs */
-    compatibleDropDowns : function(){
+    compatibleDropDowns : function(){  /* begin Uniform drop downs */
         $jQ('#detail-brand-select, #detail-device-select').uniform();
     },
-    /* begin Uniform drop downs */
-
-    /* begin Compatible Device AJAX/JSON */
-    selectCompatibleProducts : function(){
+    selectCompatibleProducts : function(){ /* begin Compatible Device AJAX/JSON */
         var itemsTotal = $jQ('#total-items > span'),
                 returnedItems = $jQ('#returned-items');
 
@@ -492,10 +514,7 @@ var pub = {
             );
         });
     },
-    /* end Compatible Device AJAX/JSON */
-
-    /* begin Compatible Device type ahead */
-    compatibleTypeAhead : function(){
+    compatibleTypeAhead : function(){ /* begin Compatible Device type ahead */
         var searchInput = $jQ('#detail-search-box'),
         typeAheadList = searchInput.parent().find('.type-ahead');
         processingPage = searchInput.data('actionpage');
@@ -514,7 +533,7 @@ var pub = {
             );
         });
     }
-    /* begin Compatible Device type ahead */
+
 }; // end pub var
 return pub;
 }());

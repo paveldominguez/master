@@ -383,7 +383,7 @@
 </section><!-- end hero section -->
 
 
-<section id="product-details"><!-- DETAIL TABS -->
+<section id="product-details" class="pdp-720-plus"><!-- DETAIL TABS -->
 
     <div class="tabbed-wrapper">
         <div class="tab-block">
@@ -422,7 +422,7 @@
 
             <ul class="tabs-content">
 
-                <li id="overviewTab" class="active"><!-- OVERVIEW TAB -->
+                <li id="overviewTab" class="active pdp-overview-content"><!-- OVERVIEW TAB -->
                     <div class="tab-wrapper">
 
                         <div class="more-less-block">
@@ -446,30 +446,34 @@
                             <h3><span class="bold">Save</span> on bundles for this product!</h3>
                             <ul class="bundle-items">
 
-                                <li class="item">
-                                    <div class="product-image">
+                                <li class="item" data-modal-id="#pdp-bundle-modal-block">
+                                    <div class="item-wrapper">
+                                        <div class="product-image">
                                             <img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" alt="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                        <div class="ratings"></div>
-                                        <div class="price">$189.99</div>
-                                        <div class="secondary-cta">
-                                            <input class="secondary-add-cart" type="submit" value="Add to Cart"  data-modal-id="#pdp-bundle-modal-block">
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
+                                            <div class="ratings"></div>
+                                            <div class="price">$189.99</div>
+                                            <div class="secondary-cta">
+                                                <input class="secondary-add-cart" type="submit" value="Add to Cart"  >
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
 
-                                <li class="item">
-                                    <div class="product-image">
+                                <li class="item" data-modal-id="#pdp-bundle-modal-block">
+                                    <div class="item-wrapper">
+                                        <div class="product-image">
                                             <img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" alt="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                        <div class="ratings"></div>
-                                        <div class="price">$189.99</div>
-                                        <div class="secondary-cta">
-                                            <input class="secondary-add-cart" type="submit" value="Add to Cart" data-modal-id="#pdp-bundle-modal-block">
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
+                                            <div class="ratings"></div>
+                                            <div class="price">$189.99</div>
+                                            <div class="secondary-cta">
+                                                <input class="secondary-add-cart" type="submit" value="Add to Cart" >
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -483,7 +487,7 @@
 
 
 
-                <li id="featuresTab"><!-- FEATURES TAB -->
+                <li id="featuresTab" class="pdp-features-content"><!-- FEATURES TAB -->
                     <div class="tab-wrapper">
                         <div class="more-less-block">
 
@@ -559,20 +563,11 @@
                                 </ul>
                             </div><!-- end tab block -->
                         </div>
-
-
-
-
-
-
-
-
                     </div><!-- end features tab-wrapper -->
                 </li><!-- end overview tab content -->
 
 
-
-                <li id="specsTab"><!-- SPECS TAB -->
+                <li id="specsTab" class="pdp-specs-content"><!-- SPECS TAB -->
                     <div class="tab-wrapper">
                         <div class="more-less-block">
                             <div class="third left">
@@ -635,8 +630,8 @@
 
                     </div><!-- end tab wrapper -->
                 </li><!-- end specs tab-content -->
-                <!--------------- COMPATIBILITY TAB ---------->
-        		<li id="compatTab">
+
+        		<li id="compatTab" class="pdp-compat-content"><!-- COMPATIBILITY TAB -->
         			<div class="tab-wrapper">
                         <form action="sample-compatibility.json" method="POST" id="compatibilityForm" name="compatibilityForm">
                             <div class="compat-sort">
@@ -670,7 +665,6 @@
                                             </a>
                                         </li>
                                     </ul>
-
                                 </div>
                                 <div class="tab-inner">
                                     <ul class="sorting-elements">
@@ -700,356 +694,45 @@
                                                 <span>54</span> Compatible Devices
                                             </div>
                                         </li>
-                                    </ul>
-                                    <!-- end sorting elements -->
-                                </div>
-                            <!-- end tab-inner -->
+                                    </ul><!-- end sorting elements -->
+                                </div> <!-- end tab-inner -->
                             </div>
-                        </form>
-                    <!-- end compat sort -->
+                        </form><!-- end compat sort -->
 
         				<div class="compat-results">
         				    <div class="tab-inner">
-                      <div class="device-scroll">
-                        <div class="scrollbar">
-                            <div class="track">
-                                <div class="thumb">
-                                    <div class="container">
-                                        <div class="end"></div>
-                                        <div class="bottom"></div>
+                                <div class="device-scroll">
+                                    <div class="scrollbar">
+                                        <div class="track">
+                                            <div class="thumb">
+                                                <div class="container">
+                                                    <div class="end"></div>
+                                                    <div class="bottom"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="viewport">
+                                        <div class="overview">
+                                            <ul id="returned-items">
+                                                <script>
+                                                    includeFragment("inc/fragments/returned-compat-items.html");
+                                                </script>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- end returned items -->
+        					</div><!-- end tab-inner -->
+        				</div><!-- end compat results -->
+
+                        <div class="read-more" title="show more">
+                            <span class="more">see more</span>
+                            <span class="less">see less</span>
                         </div>
-                        <div class="viewport">
-                          <div class="overview">
-                            <ul id="returned-items">
+                    </div><!-- end compat wrapper -->
+                </li><!-- end compatibility tab-content -->
 
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                  <!-- end returned items -->
-        					</div>
-                  <!-- end tab-inner -->
-        				</div>
-                <!-- end compat results -->
-
-              <div class="read-more" title="show more">
-                <span class="more">see more</span>
-                <span class="less">see less</span>
-              </div>
-
-        		    </div>
-                <!-- end compat wrapper -->
-        	    </li>
-              <!-- end compatibility tab-content -->
-
-                <li id="consumer-reviewsTab"><!-- CONSUMER REVIEW TAB -->
+                <li id="consumer-reviewsTab" class="pdp-compat-content"><!-- CONSUMER REVIEW TAB -->
                     <div class="tab-wrapper">
                         <div class="tab-inner">
                             <img class="temp-image" src="img/product-detail-page/temp-reviews.jpg" alt="Consumer Reviews" style="height:1341px;" >
@@ -1060,7 +743,7 @@
                     </div>
                 </li>
 
-                <li id="questions-commentsTab" ><!-- QUESTIONS-ANSWERS TAB -->
+                <li id="questions-commentsTab" class="pdp-questions-content"><!-- QUESTIONS-ANSWERS TAB -->
                     <div class="tab-wrapper">
                         <div class="tab-inner">
                             <img class="temp-image" src="img/product-detail-page/temp-questions.jpg" alt="Questions & Comments" style="height:1087px;">
@@ -1081,16 +764,19 @@
 
 
 
+<section id="mobile-overview" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Overview</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-overview-content"></div>
+</section><!-- end mobile-overview -->
 
 
-
-
-
-
-<section id="similar-products"><!-- SIMILAR PRODUCTS -->
-    <article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section">
+<section id="similar-products" class="pdp-720-plus"><!-- SIMILAR PRODUCTS -->
+    <article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section pdp-similar-content">
         <header class="content-header">
-            <h1 class="title"><strong>Similar</strong> Products</h1>
+            <h2 class="title"><strong>Similar</strong> Products</h2>
             <div class="slide-nav"></div>
         </header>
             <script>
@@ -1099,10 +785,16 @@
     </article>
 </section><!-- end similar products section -->
 
+<section id="mobile-similar" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Similar Products</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-similar-content"></div>
+</section><!-- end mobile-similar -->
 
 
-
-<section id="related"><!-- RELATED STORIES & GUIDES -->
+<section id="related" class="pdp-720-plus"><!-- RELATED STORIES & GUIDES -->
     <article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
         <header class="content-header">
             <h1 class="title"><strong>Related</strong> Stories & Guides</h1>
@@ -1117,14 +809,7 @@
 </section><!-- end related stories & guides section -->
 
 
-
-
-
-
-
-
-
-<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
+<section id="others-bought" class="pdp-720-plus"><!-- OTHERS ALSO BOUGHT -->
     <article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
         <header class="content-header">
             <h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
@@ -1136,8 +821,56 @@
     </article>
 </section><!-- end others also bought section -->
 
+<section id="mobile-bundles" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Bundles with this Item</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info"></div>
+</section><!-- end mobile-bundles -->
 
 
+<section id="mobile-reviews" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Reviews (<span id="mobile-review-count"></span>)</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-reviewss-content"></div>
+</section><!-- end mobile-reviews -->
+
+
+<section id="mobile-questions" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Questions & Answers</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-questionss-content"></div>
+</section><!-- end mobile-questions -->
+
+<section id="mobile-features" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Features</h2>
+        <div class="icon "></div>
+    </div>
+    <div class="acc-info pdp-features-content"></div>
+</section><!-- end mobile-features -->
+
+<section id="mobile-specs" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Tech Specs</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-specs-content"></div>
+</section><!-- end mobile-specs -->
+
+
+<section id="mobile-compat" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Compatibility</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-compat-content"></div>
+</section><!-- end mobile-compat -->
 
 
 <section id="pdp-bundle-modal-block" class="lightbox">
