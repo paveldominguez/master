@@ -2,7 +2,8 @@ MLS.ajax = {
     endpoints: {
         ADD_TO_CART: "/services/add_to_cart.json",
         REMOVE_FROM_CART: "/services/add_to_cart.json",
-        GET_CART: "/services/add_to_cart.json"
+        GET_CART: "/services/add_to_cart.json",
+        PRODUCT_LISTING: "/services/product-listing.json"
     },
 
     sendRequest : function (url, data, success, error) {
@@ -99,7 +100,7 @@ MLS.ajax = {
     gridSort: function (type) {
         console.log('sort by ' + type);
     },
-    
+
     quickView: {
         init: function (pid, el) {
             //For demo purposes content is already loaded

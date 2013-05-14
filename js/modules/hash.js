@@ -14,11 +14,12 @@ MLS.hash = {
             existingKey = hash.match(new RegExp(key + '=([^&]*)')); // does the param exists?
 
         if (existingKey) { // update current parameter
-            console.log('existing');
             hash = hash.replace(existingKey[0], key + '=' + value);
-        } else { // or append new param
-            console.log('new');
-            hash += '&' + key + '=' + value; // append new parameter
+        } else { // or add new param
+            if (hash !== '') {
+                hash += '&';
+            }
+            hash += key + '=' + value; // append new parameter
         }
 
         window.location.hash = hash;
