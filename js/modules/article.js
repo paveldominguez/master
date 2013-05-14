@@ -13,6 +13,11 @@ MLS.article = {
     },
 
     init: function (d) {
+        if ($jQ('#article-modal-overlay').length == 0)
+        {
+            $jQ('<div id="article-modal-overlay" /><div id="article-detail" class="article-detail" />').appendTo("body");
+        }
+        
         d = $jQ(d || document);
     	$jQ('#article-modal-overlay').hide();
         d.find('[data-article-id]').on('click', MLS.article.callbacks.getArticleContent);
