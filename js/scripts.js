@@ -196,15 +196,6 @@ MLS = {
             MLS.ajax.cart.init('#add-cart-box .button span');
         }
     },
-    // 'search-results-page' : {
-    //     init : function() {
-    //         $jQ("#sort-options").uniform();
-    //         contentGrid.init();
-    //         MLS.ajax.colorPicker.init();
-    //         contentFilter.init();
-    //         MLS.ajax.cart.init();
-    //     }
-    // },
     'special-offers-landing-page' : {
         init : function() {
             contentFilter.init();
