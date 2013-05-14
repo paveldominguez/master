@@ -10,11 +10,15 @@ MLS.ajax = {
         ARTICLE: "/services/article.json",
         HOMEPAGE_PRODUCTS: "/services/homepage.json",
         SEARCH_DEVICES: "/services/devices.json",
+
         // Products
         PRODUCT_LISTING: "/services/product-listing.json",
         PRODUCT_LOAD_MORE: "/services/product-listing.json",
         PRODUCT_LOAD_ALL: "/services/product-listing.json",
-        PRODUCT_SORT: "/services/product-listing.json"
+        PRODUCT_SORT: "/services/product-listing.json",
+
+        // Lifestyle
+        LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json"
     },
 
     init: function() {

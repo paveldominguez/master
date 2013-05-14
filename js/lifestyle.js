@@ -1,5 +1,37 @@
 MLS.lifestyle = {
-    init : function () {
+    search: function() {
+        // make request
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.LIFESTYLE_LANDING_SEARCH,
+            {
+                search: $jQ("#dimension-features input.device").val(),
+                "device-type": $jQ("#dimension-features .device-type").val(),
+                brand: $jQ("#dimension-features .brand").val()
+            },
+
+            function(r) {
+                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                }
+
+                $jQ("#search-modules").html(r.success.responseHTML);
+
+                MLS.miniCart.init();
+                MLS.article.init();
+                MLS.lifestyle.init(true);
+                contentGrid.init();
+            }
+        );
+    },
+
+    init : function (noglobal) {
+        // search pieces
+        // compability services
+        $jQ('.compatibility-filter').children('select').on('change', this.search);
+
+        // type ahead (searc)
+        $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', this.search);
+
         var contentItem = '.product-board-slide .content-item';
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
 
@@ -29,7 +61,8 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.93
         });
-        $jQ(window).resize(function () {
+
+        noglobal && $jQ(window).resize(function () {
             $jQ('#featured-story-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
         });
 
@@ -44,7 +77,8 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.93
         });
-        $jQ(window).resize(function () {
+
+        noglobal && $jQ(window).resize(function () {
             $jQ('#gallery-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.93});
         });
 
@@ -81,7 +115,7 @@ MLS.lifestyle = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
-        $jQ(window).resize(function () {
+        noglobal && $jQ(window).resize(function () {
             $jQ('#shop-products-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
         });
     }

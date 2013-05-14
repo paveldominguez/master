@@ -21,7 +21,6 @@ MLS.article = {
         d = $jQ(d || document);
     	$jQ('#article-modal-overlay').hide();
         d.find('[data-article-id]').on('click', MLS.article.callbacks.getArticleContent);
-        console.log('v5');
     },
 
     displayContent : function (data) {
