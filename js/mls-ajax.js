@@ -50,42 +50,6 @@ MLS.ajax = {
         });
     },
 
-    article : {
-        init: function () {
-            $jQ('.content-cta').on('click', MLS.ajax.article.getArticleContent);
-            $jQ('.article-cta').hover(
-                function () {
-                    $jQ(this).next('.article-preview-container').show();
-                },
-                function () {
-                    $jQ(this).next('.article-preview-container').hide();
-                }
-            );
-            $jQ('#article-detail .close').on('click', function () {
-                var height = $jQ('#article-detail').height();
-                $jQ('#article-detail').animate({top: '-' + height}, 300, function () {
-                    $jQ('#article-modal-overlay').fadeOut();
-                    $jQ('#article-detail').empty();
-                });
-            });
-        },
-
-        getArticleContent : function (e) {
-            e.preventDefault();
-            if ($jQ(this).hasClass('article')) {
-                MLS.ajax.sendRequest(
-                    this.href,
-                    { articleId : $jQ(this).data('article-id') },
-                    MLS.ajax.article.displayContent
-                );
-            }
-        },
-
-        displayContent : function (data) {
-            MLS.ui.updateContent('#article-content', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
-        }
-    },
-
     homepage : {
         init : function () {
             // homepage madlib

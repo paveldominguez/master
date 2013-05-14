@@ -91,7 +91,8 @@ MLS = {
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
-            MLS.ajax.article.init();
+            MLS.miniCart.init();
+            MLS.article.init();
             MLS.ui.complexItem.init();
 
             var navHelp = $jQ('#nav-help'),
@@ -120,7 +121,6 @@ MLS = {
             $jQ('#sort-options').uniform();
             contentGrid.init();
             contentFilter.init();
-            MLS.miniCart.init();
             MLS.ajax.colorPicker.init();
         }
     },
@@ -135,7 +135,6 @@ MLS = {
             //searchResults.styleDropDown();
             contentGrid.init();
             contentFilter.init();
-            MLS.ajax.article.init();
             MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
@@ -165,7 +164,6 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.miniCart.init();
         }
     },
     'lifestyle-landing-page' : {
@@ -179,7 +177,6 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             contentFilter.init();
-            MLS.miniCart.init();
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -201,7 +198,6 @@ MLS = {
         init : function () {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
-            MLS.miniCart.init();
         }
     },
     // 'search-results-page' : {
@@ -219,7 +215,6 @@ MLS = {
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
-            MLS.miniCart.init();
         }
     },
     'fourofour-page' : {
