@@ -129,11 +129,11 @@ module.exports = function (grunt) {
         },
         bless: {
             options: {
-                // compress: false,
-                // cleanup: true,
+                compress: true,
+                cleanup: true,
                 // force: false,
-                // imports: true,
-                // cacheBuster: true
+                imports: true,
+                cacheBuster: true
             },
             debug: {
                 files: {
