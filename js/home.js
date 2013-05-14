@@ -87,16 +87,18 @@ MLS.home = {
 			//Generic Typeahead
 			$jQ('#madlib-device').typeahead({
 				name: 'devices',
-				remote: 'js/data/devices.json',
+				remote: MLS.ajax.endpoints.SEARCH_DEVICES,
 				limit: 10
 			}).on('change keyup typeahead:selected typeahead:closed', function (e) {
 				//console.log($jQ(this).val());
 				if (e.type === 'typeahead:closed') {
 					$jQ(this).blur();
 				}
+
 				if (e.type === 'typeahead:selected') {
-					//Fire secondary
+					MLS.home.searchProducts($jQ(e.target).val(), $jQ("[name=madlib-select]").val())
 				}
+
 				if ($jQ(this).val() === 'enter device' || $jQ(this).val() === '') {
 					$jQ(this).stop().animate({
 						width: 173
@@ -115,7 +117,30 @@ MLS.home = {
                 openedClass: 'open',
                 selectedClass: 'active',
                 selectionMadeClass: 'selected'
+            }).on('change', function() {
+            	MLS.home.searchProducts($jQ('#madlib-device').val(), $jQ("[name=madlib-select]").val());
             });
 		}
+	},
+
+	searchProducts: function(device, category) {
+		MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
+            
+            {
+            	device: device,
+            	category: category
+            },
+
+            function(r) {
+            	if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+		    	    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+		        }
+
+                $jQ("ul.content-grid:eq(0)").replaceWith(r.success.responseHTML);
+                MLS.miniCart.init($jQ("ul.content-grid:eq(0)"));
+                contentGrid.init(true);
+            }
+        );
 	}
 };
