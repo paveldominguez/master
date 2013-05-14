@@ -3,7 +3,7 @@ var contentGrid = {
     init : function (freeForm) {
         contentGrid.freeForm = freeForm ? true : false;
         $jQ('.content-grid .add-cart-cta, .quick-view-details .add-cart-cta').uniform();
-        var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid'),
+        var $contentGrid = $jQ('#main-column .content-grid, .home-page .content-grid').not('.guide-grid, .special-offers-slider'),
         $contentItems = $contentGrid.find('.content-item'),
         $quickviewLinks = $contentItems.find('.quick-view');
         $featuredHover = $contentItems.find('.featured-corner');
