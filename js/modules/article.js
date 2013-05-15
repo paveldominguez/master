@@ -65,7 +65,7 @@ MLS.article = {
     },
 
     onClose: function(){
-        $jQ('#article-detail .close, #article-modal-overlay').unbind().bind('click', function() {
+        $jQ('#article-detail .close, #article-modal-overlay').unbind().bind('click', function(e) {
             e.preventDefault();
             var scrollTop = $jQ(window).scrollTop(),
                 height = 0;
