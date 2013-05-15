@@ -34,8 +34,6 @@ var contentGrid = {
         $jQ('#load-more').on('click', contentGrid.loadMore);
         $jQ('#load-remaining').on('click', contentGrid.loadAll);
 
-        // sorts
-        $jQ('#sort-options').find('li').on('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Binds  ------*/
@@ -65,8 +63,6 @@ var contentGrid = {
         $jQ('#load-more').unbind('click', contentGrid.loadMore);
         $jQ('#load-remaining').unbind('click', contentGrid.loadAll);
 
-        // sorts
-        $jQ('#sort-options').find('li').unbind('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Unbinds ----*/
@@ -142,34 +138,6 @@ var contentGrid = {
         );
     },
 
-
-    sortHeader: function (e) {
-        e.preventDefault();
-        var $elem = $jQ(this),
-            type = $jQ(this).attr('data-type'),
-            $sortOptions = $jQ('#sort-options'),
-            href = $elem.find('a').attr('href');
-
-        //Fire Ajax
-
-        MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.PRODUCT_SORT,
-            MLS.util.getParamsFromUrl(href),
-            function (data) {
-                if (data.hasOwnProperty('success')) {
-                    $sortOptions.find('li').removeClass('active');
-                    $elem.addClass('active');
-                    // load content...
-                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
-                     // ... and even the sort by
-                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
-                    contentGrid.reInit();
-                }
-            }
-        );
-
-
-    },
 
 
     mobileFilter : {
