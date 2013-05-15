@@ -102,6 +102,7 @@ MLS.contentFilter = (function () {
             reInit: function () {
                 MLS.contentFilter.finalize();
                 MLS.contentFilter.init();
+
             },
 
 

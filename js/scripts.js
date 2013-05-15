@@ -187,7 +187,10 @@ MLS = {
             MLS.ajax.colorPicker.init();
             MLS.contentFilter.init({
                 endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
-                container: $jQ('#main-column .content-grid')
+                container: $jQ('#main-column .content-grid'),
+                callback: function () {
+                    contentGrid.reInit();
+                }
             });
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
