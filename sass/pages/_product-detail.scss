@@ -234,7 +234,7 @@
                         display: block;
                         width: 100%;
                         padding: 0;
-                        min-height:233px;
+                        min-height:195px;
                         border: 0;
                         margin: 12px 0px 0 0;
                         position: relative;
@@ -362,66 +362,6 @@
                         }
                     }/* end add-cart-box */
 
-                .social-block { /*------- social -------*/
-                    @include boxBrdrT;
-                    position: absolute;
-                    bottom: 0; left: 0;
-                    width: 100%;
-                    height: 36px;
-
-                    .inline-list { margin:0px; }
-
-                    .social {
-                        @include boxBrdrR;
-                        @include cartBoxThird;
-                         background:url(../img/product-detail-page/pdp-backgrounds/cart-social-bg.png) 0 -20px repeat-x;
-                        margin:0px;
-                        padding:7px;
-                        position:relative;
-                        height: 36px;
-                        .icon {
-                            width:40px; height:20px;
-                            position:absolute;
-                            bottom: 9px;
-                            left:6px;
-                            }/* end icon placement styles */
-
-                        .count {
-                            color: $cartGreyLt;
-                            position:absolute;
-                            top:5px; right:5px;
-                            font-size:9px;
-                            }/* end count styles */
-
-                        .click { height:40px;
-                            position:relative;
-                            z-index:10;
-                            }/* end link styles */
-                        } /* end generic social li settings */
-
-                    .pdp-social-left {
-                        @include cartBox;
-                        @include cartBoxHalf;
-                        @include boxBrdrR;
-                        height: 36px;
-                        padding:0px;
-                        .facebook { border-right:0px; }
-                        .want .icon { @include pdp-sprite(pdp-want-icon); }
-                        .email .icon { @include pdp-sprite(pdp-email-icon); }
-                        .facebook .icon { @include pdp-sprite(pdp-facebook-icon); }
-                        } /* end social left */
-
-                    .pdp-social-right {
-                        @include cartBox;
-                        @include cartBoxHalf;
-                        height: 36px;
-                        padding:0px;
-                        .pinterest { border-right:0px; }
-                        .twitter .icon { @include pdp-sprite(pdp-twitter-icon); }
-                        .gplus .icon { @include pdp-sprite(pdp-gplus-icon); }
-                        .pinterest .icon { @include pdp-sprite(pdp-pinterest-icon); }
-                        } /* end social right */
-                    } /* end social-block */
                 }/* end dark */
 
 
