@@ -20,7 +20,7 @@
 // Control which mixins you have access too
 
 @import "foundation/mixins/clearfix";
-//@import "foundation/mixins/css-triangle";
+@import "foundation/mixins/css-triangle";
 @import "foundation/mixins/font-size";
 
 // Must include next two for semantic grid to work
