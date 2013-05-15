@@ -24,7 +24,10 @@ MLS.ajax = {
         CONTENT_FILTER: "/services/content.json",
 
         // SPECIAL OFFERS
-        SPECIAL_OFFERS: "/services/special_offers.json"
+        SPECIAL_OFFERS: "/services/special_offers.json",
+
+        // Product Listing Page
+        CATEGORY_PAGE: "/services/category.json"
     },
 
     init: function() {
