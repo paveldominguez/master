@@ -119,7 +119,7 @@
 
 
     <div id="cart-block">
-        <div class="light">
+        <div class="light"><!-- adds class 'reduced' -->
             <header id="pdp-cart-header">
                 <div class="pdp-banner-shipping ">
                     <a href="#" class="dropdown-link">
@@ -142,7 +142,7 @@
                         <div class="ratings"></div>
                     </li>
                     <li class="reviews">
-                        <a href="#" id="pdp-cart-review-count" class="review-link" title="See reviews for this item." >(47)</a>
+                        <a href="#" class="review-link" title="See reviews for this item." >(<span id="pdp-cart-review-count">47</span>&nbsp;Reviews)</a>
                     </li>
                 </ul><!-- end reviewBlock -->
             </header>
@@ -197,12 +197,18 @@
             </div><!-- end pdp-cart-shipping -->
         </div><!-- end light -->
 
-        <div class="dark">
+        <div class="dark"><!-- adds class 'expanded' -->
 
-            <form id="pdp-add-to-cart" >
-                <fieldset id="pdp-add-left" class="pdp-add-float left-panel" >
+            <form id="pdp-add-to-cart" class="pdp-form-box">
+                <fieldset class="pdp-size-color">
 
-                    <div class="size-select-box">
+                    <div class="color-info"><span class="color-label"><span class="color-option">Black</span></div>
+
+                    <div class="product-color"> <!-- color selector -->
+                        <script>includeFragment('inc/fragments/color-choices-3.html');</script>
+                    </div> <!-- end color selector -->
+
+                    <div class="size-select-box "><!-- adds class 'expanded' -->
                         <select id="pdp-size-select" name="size-select" class="size-select">
                             <option value="" disabled selected>Size</option>
                             <option value="1">Small</option>
@@ -212,83 +218,56 @@
                         </select>
                     </div>
 
-                    <div class="price-block">
-                        <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
-                        <div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></span></div>
-                    </div><!-- end priceBlock -->
-
-                </fieldset><!-- end left -->
-
-                <fieldset id="pdp-add-right" class="pdp-add-float right-panel" >
-
-                    <div class="color-select-box">
+                     <div class="color-select-box">
                         <div class="swatch"></div>
                         <select id="pdp-color-select" name="color-select" class="color-select">
                             <option value="" disabled selected>Color</option>
                             <option value="black">Black</option>
                             <option value="grey">Grey</option>
                             <option value="white">White</option>
-                            <option value="dark blue">Dark Blue</option>
-                            <option value="light blue">Light Blue</option>
-                            <option value="Purple">Purple</option>
-                            <option value="dark red">Dark Red</option>
-                            <option value="light red">Light Red</option>
-                            <option value="dark green">Dark Green</option>
-                            <option value="light green">Light Green</option>
-                            <option value="orange">Orange</option>
+                            <option value="red">Red</option>
                             <option value="yellow">Yellow</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="orange">Orange</option>
+                            <option value="purple">Purple</option>
+                             <option value="pink">Pink</option>
                         </select>
-                    </div>
+                    </div><!-- end color select -->
 
-                <div class="add-cart-box">
-                    <div class="OOS product">
-                        <p>Sorry, this product is out of stock.</p>
-                    </div>
-                    <div class="expired product">
-                        <p>Sorry, this product is no longer available.</p>
-                    </div>
+                </fieldset><!-- end size-color -->
 
-                    <div class="pdp-cart-red-cta-box">
-                        <input id="pdp-add-to-cart-submit" data-cart-add="1" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
-                    </div>
+                <fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
 
-                    <div class="no-cta-button">
-                        <span class="OOS button-text">coming soon</span>
-                        <span class="expired button-text">no longer available</span>
-                    </div>
+                <fieldset class="pdp-price-cta" >
 
-                </div><!-- end add-cart -->
+                    <div class="price-block">
+                        <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
+                        <div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></span></div>
+                    </div><!-- end priceBlock -->
 
+
+                    <div class="add-cart-box">
+                        <div class="OOS product">
+                            <p>Sorry, this product is out of stock.</p>
+                        </div>
+                        <div class="expired product">
+                            <p>Sorry, this product is no longer available.</p>
+                        </div>
+
+                        <div class="pdp-cart-red-cta-box">
+                            <input id="pdp-add-to-cart-submit" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart">
+                        </div>
+
+                        <div class="no-cta-button">
+                            <span class="OOS button-text">coming soon</span>
+                            <span class="expired button-text">no longer available</span>
+                        </div>
+
+                    </div><!-- end add-cart -->
 
                 </fieldset><!-- end right -->
-
-                <section id="pdp-mobile-form-box"><!-- insert mobile cart info here -->
-
-                    <fieldset id="pdp-mobile-form-color-size" class="mobile-fieldset ">
-                        <div id="pdp-mobile-form-size" class="mobile-left form-float color-size"></div>
-                        <div id="pdp-mobile-form-color" class="mobile-right form-float color-size"></div>
-                    </fieldset>
-
-                    <fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
-
-                    <fieldset id="pdp-mobile-form-cta" class="mobile-fieldset">
-                        <div id="pdp-mobile-form-price" class="mobile-left form-float cta"></div>
-                        <div id="pdp-mobile-form-submit" class="mobile-right form-float cta"></div>
-                    </fieldset>
-
-                    <div id="pdp-mobile-social"></div>
-
-                </section><!-- end mobile add to cart form box -->
-
-                <div id="pdp-cart-color-slide">
-                    <ul class="pdp-cart-slide-colors">
-                        <li class="color-chip black"></li>
-                        <li class="color-chip grey"></li>
-                        <li class="color-chip white"></li>
-                        <li class="color-chip red"></li>
-                    </ul>
-                </div>
-        </form>
+            </form>
 
 
             <div class="social-block">
@@ -353,21 +332,23 @@
                 <div class="smaller" title="Zoom out" ></div>
             </div>
 
-						<div id="zoom-scale-content" class="zoom-content">
-							<div class="scale-box">
-								<div class="scale-item-left">
-									<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" />
-								</div>
-								<div class="scale-item-right">
-									<img src="img/product-detail-page/pdp-plus/droidrazor.png" />
-								</div>
-								<select name="" class="" id="" tabindex="">
-									<option value="Motorola Droid RAZR" selected>Motorola Droid RAZR HD</option>
-									<option value="HTC Droid DNA">HTC Droid DNA</option>
-									<option value="Samsung Galaxy S 4">Samsung Galaxy S 4</option>
-								</select>
-							</div>
-						</div>
+                        <div id="zoom-scale-content" class="zoom-content">
+                            <div class="scale-box">
+                                <div class="scale-item-left">
+                                    <img src="img/product-detail-page/pdp-plus/dre-beats-1.png" />
+                                </div>
+                                <div class="scale-item-right">
+                                    <img src="img/product-detail-page/pdp-plus/droidrazor.png" />
+                                    <div class="select-block">
+                                        <select name="scaleDevice" id="scale-device-comparison" tabindex="">
+                                           <option value="Motorola Droid RAZR" selected>Motorola Droid RAZR HD</option>
+                                           <option value="HTC Droid DNA">HTC Droid DNA</option>
+                                           <option value="Samsung Galaxy S 4">Samsung Galaxy S 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
             <div id="zoom-view-360-content" class="zoom-content">
                 <div class="view-360-box">
@@ -381,7 +362,7 @@
 </section><!-- end hero section -->
 
 
-<section id="product-details"><!-- DETAIL TABS -->
+<section id="product-details" class="pdp-720-plus"><!-- DETAIL TABS -->
 
     <div class="tabbed-wrapper">
         <div class="tab-block">
@@ -420,7 +401,7 @@
 
             <ul class="tabs-content">
 
-                <li id="overviewTab" class="active"><!-- OVERVIEW TAB -->
+                <li id="overviewTab" class="active pdp-overview-content"><!-- OVERVIEW TAB -->
                     <div class="tab-wrapper">
 
                         <div class="more-less-block">
@@ -444,30 +425,34 @@
                             <h3><span class="bold">Save</span> on bundles for this product!</h3>
                             <ul class="bundle-items">
 
-                                <li class="item">
-                                    <div class="product-image">
+                                <li class="item" data-modal-id="#pdp-bundle-modal-block">
+                                    <div class="item-wrapper">
+                                        <div class="product-image">
                                             <img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" alt="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                        <div class="ratings"></div>
-                                        <div class="price">$189.99</div>
-                                        <div class="secondary-cta">
-                                            <input class="secondary-add-cart" type="submit" value="Add to Cart"  data-modal-id="#pdp-bundle-modal-block">
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
+                                            <div class="ratings"></div>
+                                            <div class="price">$189.99</div>
+                                            <div class="secondary-cta">
+                                                <input class="secondary-add-cart" type="submit" value="Add to Cart"  >
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
 
-                                <li class="item">
-                                    <div class="product-image">
+                                <li class="item" data-modal-id="#pdp-bundle-modal-block">
+                                    <div class="item-wrapper">
+                                        <div class="product-image">
                                             <img src="img/product-detail-page/pdp-products/btf/globe-cruiser.png" alt="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                        <div class="ratings"></div>
-                                        <div class="price">$189.99</div>
-                                        <div class="secondary-cta">
-                                            <input class="secondary-add-cart" type="submit" value="Add to Cart" data-modal-id="#pdp-bundle-modal-block">
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
+                                            <div class="ratings"></div>
+                                            <div class="price">$189.99</div>
+                                            <div class="secondary-cta">
+                                                <input class="secondary-add-cart" type="submit" value="Add to Cart" >
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -481,7 +466,7 @@
 
 
 
-                <li id="featuresTab"><!-- FEATURES TAB -->
+                <li id="featuresTab" class="pdp-features-content"><!-- FEATURES TAB -->
                     <div class="tab-wrapper">
                         <div class="more-less-block">
 
@@ -557,20 +542,11 @@
                                 </ul>
                             </div><!-- end tab block -->
                         </div>
-
-
-
-
-
-
-
-
                     </div><!-- end features tab-wrapper -->
                 </li><!-- end overview tab content -->
 
 
-
-                <li id="specsTab"><!-- SPECS TAB -->
+                <li id="specsTab" class="pdp-specs-content"><!-- SPECS TAB -->
                     <div class="tab-wrapper">
                         <div class="more-less-block">
                             <div class="third left">
@@ -633,9 +609,9 @@
 
                     </div><!-- end tab wrapper -->
                 </li><!-- end specs tab-content -->
-                <!--------------- COMPATIBILITY TAB ---------->
-        		<li id="compatTab">
-        			<div class="tab-wrapper">
+
+                <li id="compatTab" class="pdp-compat-content"><!-- COMPATIBILITY TAB -->
+                    <div class="tab-wrapper">
                         <form action="sample-compatibility.json" method="POST" id="compatibilityForm" name="compatibilityForm">
                             <div class="compat-sort">
                                 <div class="my-devices">
@@ -668,7 +644,6 @@
                                             </a>
                                         </li>
                                     </ul>
-                                        
                                 </div>
                                 <div class="tab-inner">
                                     <ul class="sorting-elements">
@@ -698,356 +673,45 @@
                                                 <span>54</span> Compatible Devices
                                             </div>
                                         </li>
-                                    </ul>
-                                    <!-- end sorting elements -->
-                                </div>
-                            <!-- end tab-inner -->
+                                    </ul><!-- end sorting elements -->
+                                </div> <!-- end tab-inner -->
                             </div>
-                        </form>
-                    <!-- end compat sort -->
+                        </form><!-- end compat sort -->
 
-        				<div class="compat-results">
-        				    <div class="tab-inner">
-                      <div class="device-scroll">
-                        <div class="scrollbar">
-                            <div class="track">
-                                <div class="thumb">
-                                    <div class="container">
-                                        <div class="end"></div>
-                                        <div class="bottom"></div>
+                        <div class="compat-results">
+                            <div class="tab-inner">
+                                <div class="device-scroll">
+                                    <div class="scrollbar">
+                                        <div class="track">
+                                            <div class="thumb">
+                                                <div class="container">
+                                                    <div class="end"></div>
+                                                    <div class="bottom"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="viewport">
+                                        <div class="overview">
+                                            <ul id="returned-items">
+                                                <script>
+                                                    includeFragment("inc/fragments/returned-compat-items.html");
+                                                </script>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- end returned items -->
+                            </div><!-- end tab-inner -->
+                        </div><!-- end compat results -->
+
+                        <div class="read-more" title="show more">
+                            <span class="more">see more</span>
+                            <span class="less">see less</span>
                         </div>
-                        <div class="viewport">
-                          <div class="overview">
-                            <ul id="returned-items">
+                    </div><!-- end compat wrapper -->
+                </li><!-- end compatibility tab-content -->
 
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-
-                              <li class="each">
-                                <a href="#" title="view this item" class="product-link">
-                                  <div class="item-details">
-                                    <div class="product-image">
-                                     <img src="img/product-detail-page/pdp-products/compat-product.png" title="Denon Globe Cruiser On-Ear Headphones">
-                                    </div>
-                                    <div class="product-info">
-                                     <h5 class="product-title">Denon Globe Cruiser On-Ear Headphones</h5>
-                                      <div class="ratings"></div>
-                                      <div class="price"></div>
-                                      <div class="cta"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                  <!-- end returned items -->
-        					</div>
-                  <!-- end tab-inner -->
-        				</div>
-                <!-- end compat results -->
-
-              <div class="read-more" title="show more">
-                <span class="more">see more</span>
-                <span class="less">see less</span>
-              </div>
-
-        		    </div>
-                <!-- end compat wrapper -->
-        	    </li>
-              <!-- end compatibility tab-content -->
-
-                <li id="consumer-reviewsTab"><!-- CONSUMER REVIEW TAB -->
+                <li id="consumer-reviewsTab" class="pdp-compat-content"><!-- CONSUMER REVIEW TAB -->
                     <div class="tab-wrapper">
                         <div class="tab-inner">
                             <img class="temp-image" src="img/product-detail-page/temp-reviews.jpg" alt="Consumer Reviews" style="height:1341px;" >
@@ -1058,7 +722,7 @@
                     </div>
                 </li>
 
-                <li id="questions-commentsTab" ><!-- QUESTIONS-ANSWERS TAB -->
+                <li id="questions-commentsTab" class="pdp-questions-content"><!-- QUESTIONS-ANSWERS TAB -->
                     <div class="tab-wrapper">
                         <div class="tab-inner">
                             <img class="temp-image" src="img/product-detail-page/temp-questions.jpg" alt="Questions & Comments" style="height:1087px;">
@@ -1079,16 +743,19 @@
 
 
 
+<section id="mobile-overview" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Overview</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-overview-content"></div>
+</section><!-- end mobile-overview -->
 
 
-
-
-
-
-<section id="similar-products"><!-- SIMILAR PRODUCTS -->
-    <article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section">
+<section id="similar-products" class="pdp-720-plus"><!-- SIMILAR PRODUCTS -->
+    <article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section pdp-similar-content">
         <header class="content-header">
-            <h1 class="title"><strong>Similar</strong> Products</h1>
+            <h2 class="title"><strong>Similar</strong> Products</h2>
             <div class="slide-nav"></div>
         </header>
             <script>
@@ -1097,10 +764,16 @@
     </article>
 </section><!-- end similar products section -->
 
+<section id="mobile-similar" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Similar Products</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-similar-content"></div>
+</section><!-- end mobile-similar -->
 
 
-
-<section id="related"><!-- RELATED STORIES & GUIDES -->
+<section id="related" class="pdp-720-plus"><!-- RELATED STORIES & GUIDES -->
     <article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
         <header class="content-header">
             <h1 class="title"><strong>Related</strong> Stories & Guides</h1>
@@ -1115,14 +788,7 @@
 </section><!-- end related stories & guides section -->
 
 
-
-
-
-
-
-
-
-<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
+<section id="others-bought" class="pdp-720-plus"><!-- OTHERS ALSO BOUGHT -->
     <article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
         <header class="content-header">
             <h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
@@ -1134,8 +800,56 @@
     </article>
 </section><!-- end others also bought section -->
 
+<section id="mobile-bundles" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Bundles with this Item</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info"></div>
+</section><!-- end mobile-bundles -->
 
 
+<section id="mobile-reviews" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Reviews (<span id="mobile-review-count"></span>)</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-reviewss-content"></div>
+</section><!-- end mobile-reviews -->
+
+
+<section id="mobile-questions" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Questions & Answers</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-questionss-content"></div>
+</section><!-- end mobile-questions -->
+
+<section id="mobile-features" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Features</h2>
+        <div class="icon "></div>
+    </div>
+    <div class="acc-info pdp-features-content"></div>
+</section><!-- end mobile-features -->
+
+<section id="mobile-specs" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Tech Specs</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-specs-content"></div>
+</section><!-- end mobile-specs -->
+
+
+<section id="mobile-compat" class="pdp-accordion">
+    <div class="acc-control">
+        <h2>Compatibility</h2>
+        <div class="icon"></div>
+    </div>
+    <div class="acc-info pdp-compat-content"></div>
+</section><!-- end mobile-compat -->
 
 
 <section id="pdp-bundle-modal-block" class="lightbox">
@@ -1144,10 +858,10 @@
               <section class="quick-view-item">
 
                 <div class="offer-box">
-              		<div class="offer-amt">20</div>
-              		<div class="offer-unit">%</div>
-              		<div class="offer-off">Off</div>
-            		</div>
+                    <div class="offer-amt">20</div>
+                    <div class="offer-unit">%</div>
+                    <div class="offer-off">Off</div>
+                    </div>
 
                 <!-- main carousel slider -->
                 <div id="quick-view-slider" class="bundle">
@@ -1157,9 +871,9 @@
               <section class="quick-view-details bundle">
                   <div class="column">
                       <header class="product-header">
-													<p class="product-shipping">
-														<span>Free Shipping</span>
-													</p>
+                                                    <p class="product-shipping">
+                                                        <span>Free Shipping</span>
+                                                    </p>
                           <h1 class="product-name">Nokia Lumia 822 Bundle</h1>
                       </header> <!-- end quick view header-->
 
@@ -1188,7 +902,7 @@
 
                   <div class="column add-cart">
                       <div class="product-actions">
-                          <input class="button add-cart-cta product-action" type="submit" title="Add to Cart"  data-cart-add="1" value="Add to Cart">
+                          <input id="product-add-to-cart" class="add-cart-cta" type="submit" title="Add Bundle to Cart" value="Add Bundle to Cart">
                       </div>
                   </div>
               </section>
@@ -1227,19 +941,49 @@
     </div><!-- end block -->
 </section>
 
-<!--Begin Floating anchor bar --> 
-<div id="btf-anchor" class="anchor-bar">
-<div class="anchor-thumb">
-<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" title="Product Name">
+  <!--Begin: Share Email Lightbox-->
+<section id="social-email-overlay" class="lightbox">
+        <div class="lightbox-info-block">
+        <div class="lightbox-close"></div>
+        <h3 class="lightbox-headline">Share this Item</h3>
+<div class="lightbox-content">
+    <figure class="lightbox-fig">
+        <img src="img/product-detail-page/pdp-plus/dre-beats-1.png">
+        <figcaption>Lorem Ipsum Descriptum</figcaption>
+    </figure>
+    <form id="lightbox-email-modal" name="lightbox-email-modal" class="lightbox-email-modal" method="post" action="social-share-example.json">
+        <div class="lightbox-input-wrap">
+            <label for="lightbox-input-title">Your Email</label>
+            <input id="lightbox-your-email" name="lightbox-your-email" type="email" class="lightbox-your-email" placeholder="Email Address" value="" />
+        </div>
+        <div class="lightbox-input-wrap">
+            <label for="lightbox-input-title">Recipient Email</label>
+            <input id="lightbox-recipient-email" name="lightbox-recipient-email" type="email" class="lightbox-recipient-email" placeholder="Email Address" value="" />
+        </div>
+        <div class="lightbox-cta">
+            <input type="submit" id="lightbox-email-send" class="" value="Send" title="Send" />
+        </div>
+    </form>
 </div>
-<h2 class="anchor-title"><span class="brand">Belkin</span> AC Charger with Swivel Plug</h2>
+</div>
+</section>
+<!--End: Share Email Lightbox-->
+
+<!--Begin Floating anchor bar -->
+<div id="btf-anchor" class="anchor-bar">
+<form action="" method="POST" id="anchorBarForm" name="anchorBarForm">
+<div class="anchor-thumb">
+<img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" id="anchor-product-thumb" title="Product Name">
+</div>
+<h2 class="anchor-title"><span id="anchor-product-brand" class="brand">Belkin</span> <span id="anchor-product-name">AC Charger with Swivel Plug</span></h2>
 <dl>
     <dt>Size:</dt>
-    <dd>small,</dd>
+    <dd id="anchor-product-size">small,</dd>
     <dt>Color:</dt>
-    <dd>black</dd>
-</dl>    
-<div class="anchor-add-cart"><input id="anchor-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" data-cart-add="1" value="Add to Cart"></div>
+    <dd id="anchor-product-color">black</dd>
+</dl>
+<div class="anchor-add-cart"><input id="anchor-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart"></div>
+</form>
 </div><!-- End Floating anchor bar -->
 
 

@@ -22,8 +22,7 @@ var pub = {
 
         MLS.ui.moreLessBlock(); // evaluate & initialize all more/less elements
 
-
-
+        MLS.productDetail.pdpColorOptions(); // layout add to cart section based on number of color options
 
         // ONLOAD hero & zoom panel ..................................................................................
         var pgWidth = document.body.clientWidth;
@@ -118,6 +117,19 @@ var pub = {
             MLS.ui.moreLessBlock(); // revaluate & re-initialize more/less elements
 
             $jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85}); // responsive slider boxes
+
+            if ($jQ(window).width() > 719) { // reset anchor bar
+                $jQ(window).scroll(function() {
+                    if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
+                        $jQ('#btf-anchor').addClass('show-anchor');
+                        $jQ('#mls-nav').addClass('fixed-nav');
+                    }
+                    else {
+                        $jQ('#btf-anchor').removeClass('show-anchor');
+                        $jQ('#mls-nav').removeClass('fixed-nav');
+                    }
+                });
+            }
         });
         // .................................................................................... END RESIZE
 
@@ -239,10 +251,6 @@ var pub = {
             MLS.productDetail.pdpTab(this);
         });
 
-
-
-
-
         // RELATED STORIES MODULE SEQUENCE
 
          $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){ // modify layout before init flexslider
@@ -321,27 +329,33 @@ var pub = {
         });
         // END RELATED STORIES ....................................
     },
-    pdpMobileContent:  function () { // copies loaded data into mobile only elements .................. BEGIN FUNCTIONS .................
+    pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
+        var numColors = $jQ('#product-colors').find('.color').length;
+        if ( numColors > 3){
+            $jQ('.light').addClass('reduced');
+            $jQ('.dark').addClass('expanded');
+        } else {
+            $jQ('.light').removeClass('reduced');
+            $jQ('.dark').removeClass('expanded');
+        }
+    },
+    pdpMobileContent:  function () { // copies loaded data into mobile only elements
     // hero section
         $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
-        $jQ('.pdp-cart-shipping').clone().appendTo('#pdp-mobile-form-shipping'); // shipping & offers
-        var deskForm = $jQ('#pdp-add-to-cart');
-        deskForm.find('.size-select-box').clone().appendTo('#pdp-mobile-form-size'); // add to cart form elements
-        deskForm.find('.color-select-box').clone().appendTo('#pdp-mobile-form-color');
-        deskForm.find('.price-block').clone().appendTo('#pdp-mobile-form-price');
-        deskForm.find('.add-cart-box').clone().appendTo('#pdp-mobile-form-submit');
-    // below the fold
-        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');
-        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info');
-        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info');
-        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info');
-        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info');
-        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info');
+        $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping'); // shipping & offers
 
-        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info');
-        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info');
+    // below the fold
+        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');  // details tab
+        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info'); // details tab
+        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info'); // details tab
+        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info'); // details tab
+        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info'); // details tab
+        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info'); // details tab
+
+        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info'); // similar products slider
+        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info'); // bundle block
     },
-    thumbDisplay: function (parent, context) { // carousel thumbs ........................................................................
+    thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
         var thmbWd = (countThmb * 55);
         var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
