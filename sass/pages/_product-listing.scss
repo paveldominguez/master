@@ -376,9 +376,10 @@ $hdrOfferCollapsed: 55px;
             //border-top: 1px solid $colorLightGrayBorder;
             border-bottom: 1px solid $colorLightGrayBorder;
             overflow: hidden;
+            padding-bottom: 10px; 
             .facet {
                 border: none;
-                padding: 0 15px;
+                padding-right: 10px;
             }
             &.selected-facets {
                 border: none;
@@ -472,12 +473,22 @@ $hdrOfferCollapsed: 55px;
                 }
             }
             .icon {
-                padding: 0;
+                padding: 0 0 0 10px;
                 a {
-                    @include product-filter-sprite(prd-fltr-icon, false, 10px, 15px);
+                    /*@include product-filter-sprite(prd-fltr-icon, false, 10px, 15px);*/
+                    overflow: hidden;
+                    background: none;
                     margin: 0;
                     line-height: 21px;
-                    padding-top: 15px;
+                    padding: 15px 0 0 0;
+                    .facet-type {
+                        float: left;
+                        margin-right: 10px;
+                    }
+                    .facet-name-count {
+                        overflow: hidden;
+                        display: block;
+                    }
                 }
             }
         }
