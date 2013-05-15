@@ -28,7 +28,7 @@ MLS.ajax = {
         SPECIAL_OFFERS: "/services/special_offers.json",
 
         // Product Listing Page
-        CATEGORY_PAGE: "/services/category.json"
+        CATEGORY_PAGE: "/services/category.json",
         // Checkout
         CHECKOUT_SHIPPING_OPTIONS: "/services/checkout_shipping_options.json"
     },
