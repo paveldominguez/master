@@ -14,7 +14,8 @@ MLS.ajax = {
         PRODUCT_LISTING: "/services/product-listing.json",
         PRODUCT_LOAD_MORE: "/services/product-listing.json",
         PRODUCT_LOAD_ALL: "/services/product-listing.json",
-        PRODUCT_SORT: "/services/product-listing.json"
+        PRODUCT_SORT: "/services/product-listing.json",
+        CONTENT_FILTER: "/services/content.json"
     },
 
     init: function() {

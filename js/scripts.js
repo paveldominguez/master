@@ -134,7 +134,16 @@ MLS = {
         init : function () {
             //searchResults.styleDropDown();
             contentGrid.init();
-            MLS.contentFilter.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.CONTENT_FILTER,
+                callback: function () {
+                    MLS.article.init();
+                    MLS.ui.socialShare.init();
+                },
+                container: $jQ('#main-column')
+            });
+
             MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
@@ -176,7 +185,10 @@ MLS = {
         init : function () {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
-            MLS.contentFilter.init();
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
+                container: $jQ('#main-column .content-grid')
+            });
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),

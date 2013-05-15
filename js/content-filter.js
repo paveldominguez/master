@@ -1,16 +1,28 @@
 MLS.contentFilter = (function () {
 
     var $cf = $jQ('#content-filter'),
+        options = {
+            endpoint: null,
+            callback: function () {},
+            container: null
+        },
+
         pub = {
 
             /*============================
             =            Init            =
             ============================*/
 
-            init: function () {
+            init: function (o) {
+                options = $jQ.extend(options, o);
+
+                // endpoint = endpoint ? endpoint : (ep || MLS.ajax.endpoints.PRODUCT_LISTING);
+                // callback = c || contentGrid.reInit;
+
+
                 $cf = $jQ('#content-filter');
-                var $fs = $jQ('#filter-selections'),
-                    $collapsible = $cf.find('.collapsible'),
+                var $collapsible = $cf.find('.collapsible'),
+                    // $fs = $jQ('#filter-selections'),
                     // i = j = 0,
                     // $facet = null,
                     // param,
@@ -176,7 +188,7 @@ MLS.contentFilter = (function () {
 
                 // make request
                 MLS.ajax.sendRequest(
-                    MLS.ajax.endpoints.PRODUCT_LISTING,
+                    options.endpoint,
                     params,
                     pub.updateResults
                 );
@@ -189,10 +201,10 @@ MLS.contentFilter = (function () {
             ===================================*/
 
             updateResults : function (data) {
-
                 if (data.hasOwnProperty('success')) {
                     // update results...
-                    MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
+                    // MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
+                    options.container.html(data.success.responseHTML);
 
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
@@ -201,12 +213,12 @@ MLS.contentFilter = (function () {
 
                     // ... and even the sort by
                     $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
-                    contentGrid.reInit();
 
-                    contentGrid.reInit(); // reload contentGrid
+                    options.callback();
                     pub.reInit();
                 } else {
-                    MLS.ui.updateContent('#main-column .content-grid', data.error.responseHTML);
+                    options.container.html(data.error.responseHTML);
+
                 }
 
             },
