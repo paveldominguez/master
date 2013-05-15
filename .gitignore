@@ -10,3 +10,4 @@ compass_app_log.txt
 /dist/
 /node_modules/
 /js/vendor/
+/js/all.js
