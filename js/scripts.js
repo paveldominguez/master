@@ -266,3 +266,7 @@ MLSUTIL = {
 
 // Initialize
 $jQ(document).ready(MLSUTIL.loadEvents);
+
+$jQ("#lightbox-email-send").uniform(); // make selects pretty
+
+
