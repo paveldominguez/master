@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['sass/**/*.scss'],
-                tasks: ['compass', 'bless:debug', 'concat:dist']
+                tasks: ['compass', 'bless:debug', ]
             },
             livereload: {
                 files: [
@@ -31,7 +31,8 @@ module.exports = function (grunt) {
                     'css/*.css',
                     'js/**/*.js',
                     'img/**/*.{png,jpg,jpeg,webp}'
-                ]
+                ],
+                tasks: ['concat:dist']
             }
         },
         concat: {
@@ -135,7 +136,7 @@ module.exports = function (grunt) {
                 cleanup: true,
                 force: true,
                 imports: true,
-                cacheBuster: false
+                cacheBuster: true
             },
             debug: {
                 files: {
@@ -235,9 +236,4 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'open:wiki'
     ]);
-    // grunt.registerTask('livereload', [
-    //     'compass',
-    //     'concat:dist',
-    //     'bless:debug'
-    // ]);
 };
