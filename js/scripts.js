@@ -126,7 +126,8 @@ MLS = {
     },
     'cart-and-checkout': {
     	init : function () {
-    		MLS.cartCheckout.init();
+    		MLS.cart.init();
+            // MLS.checkout.init();
     	}
     },
     'content-landing-page' : {
