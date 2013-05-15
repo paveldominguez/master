@@ -18,8 +18,8 @@ MLS.checkout = {
     },
 
     init : function() {
-        // update the summare whenever the minicart changes
-        $jQ(".mini-cart").bind("cart-updated cart-item-updated cart-item-removed", MLS.checkout.update);
+        // update the summary whenever the minicart changes
+        $jQ(".mini-cart").bind("cart-updated cart-item-added cart-item-updated cart-item-removed", MLS.checkout.update);
 
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
@@ -39,7 +39,7 @@ MLS.checkout = {
         // CHECKOUT only
         MLS.checkout.beginCheckoutValidation();
         MLS.checkout.mainCheckoutValidation();
-        MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
+        // MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
         MLS.checkout.smallScreenContent(); // prepare small device content
         $jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder'); // enhance initial uniform.js select style
         $jQ('#vzn-checkout .selector').find('select').change(function(){ // enhance uniform.js select performance
@@ -54,10 +54,12 @@ MLS.checkout = {
     // ON RESIZE ......................................................................................
 
         // CHECKOUT
+        /*
         $jQ(window).resize(function(){
             var resizePgWidth = document.body.clientWidth;
             MLS.checkout.checkoutSidebarScroll(resizePgWidth);
         });
+        */
 
     // .........................................................................END RESIZE
 
@@ -128,6 +130,7 @@ MLS.checkout = {
     //............................................................................... END CHECKOUT EVENTS
 
     }, // end init
+
     vzwValidationRules : function() { // ALL VALIDATION add these methods.................... BEGIN FUNCTIONS ...................
         jQuery.validator.addMethod("phoneUS", function(phone_number, element) { // phone number format
             phone_number = phone_number.replace(/\s+/g, "");
@@ -147,7 +150,7 @@ MLS.checkout = {
             relValue = value.substring(0,2);
             if (relValue >= 40 && relValue <= 49 ) { // visa
                 return true;
-            } else if (relValue == 34 || relValue == 37) { //amex
+            } else if (relValue == 34 || relValue == 37) { // amex
                 return true;
             } else if (relValue >= 50 && relValue <=55 ) { // mc
                 return true;
@@ -201,6 +204,7 @@ MLS.checkout = {
     },
     */
 
+    /*
     checkoutSidebarScroll : function(pgWidth) { // CHECKOUT floating sidebar ..................................................
         if (pgWidth > 959){
             $jQ(window).scroll(function(){
@@ -218,6 +222,7 @@ MLS.checkout = {
             });
         } // end 'if desktop'
     },
+    */
 
     smallScreenContent : function() { // CHECKOUT copy to mobile-only fields ....................................................
         // top
@@ -353,9 +358,6 @@ MLS.checkout = {
                 }
             });
             $jQ('#vzn-checkout').validate(); // validate the rest
-            if ($jQ('.CCV').valid() && ecValid == true ) {
-                MLS.checkout.copyCardInfo('CCV', 'GCV'); // copy valid card info down
-            }
         });
 
         $jQ('#apply-gift-card-1').click(function(e){ // apply & validate gift card 1
@@ -371,7 +373,6 @@ MLS.checkout = {
 
             $jQ('#vzn-checkout').validate(); // validate the rest
             if ($jQ('.GCV').valid() && gcValid == true ) {
-                MLS.checkout.copyCardInfo('GCV', 'CCV'); // copy valid card info back up to main cc form
                 $jQ('#checkout-cart-gift-card-1').slideToggle(300); // hide & show
                 $jQ('.gift-card-cc-block').slideToggle(300);
                 $jQ(this).parents('.discount-input').slideToggle();
@@ -414,21 +415,7 @@ MLS.checkout = {
         });
     },
 
-    copyCardInfo : function(fromClass, toClass) { // CHECKOUT move valid card info on page from one fieldset to the other.........
-        var fromFset = $jQ('.' + fromClass).parents('.credit-card-info');
-        var toFset = $jQ('.' + toClass).parents('.credit-card-info');
-        $jQ(fromFset).find('.' + fromClass).each(function(fromI){
-            thisValue = $jQ(this).val();
-            $jQ(toFset).find('.' + toClass).each(function(toI){
-                if (fromI == toI) {
-                    $jQ(this).val(thisValue).removeClass('error').removeClass('hasPlaceholder').next('label').addClass('success');
-                    $jQ.uniform.update(this);
-                    return false;
-                }
-            });
-        });
-    },
-
+    /* HOOK THE AJAX CALLS IN HERE */
     nextStepSequence : function(){ // CHECKOUT  next step event .................................................................
         $jQ('.next-step-input').click(function(e) {
             e.preventDefault();
@@ -443,6 +430,7 @@ MLS.checkout = {
                 var radios = $jQ(this).parents('.next-step-button-box').siblings('.step-info-block').find('.checkout-radio-input'); // validate step 1 radio buttons
                 var radioValid = false;
                 var i = 0;
+
                 $jQ(radios).each(function(i) {
                     if (this.checked) {
                         radioValid = true;
@@ -456,7 +444,6 @@ MLS.checkout = {
                     MLS.ui.scrollPgTo('#no-shipping-selected', 40);
                     return false;
                 }
-
             } // endstep 1 prevalidate
 
             if (which == 'billing-info-complete') { // STEP 2 prevalidate
@@ -483,6 +470,13 @@ MLS.checkout = {
             if (valid && formValid) {
 
                 if (which == 'ship-info-complete'){ // STEP 1 postvalidate
+                    MLS.ajax.sendRequest(
+                        MLS.ajax.endpoints.CHECKOUT_STEP_1,
+                        $(this.form).serialize(),
+                        function (r) {
+                            alert("D");
+                        }
+                    );
                     completed = $jQ('#shipping-info'); // hide/show/scroll ..............
                     completed.find('.hide-complete').addClass('hidden');
                     completed.find('.step-info-summary').removeClass('hidden');
@@ -531,6 +525,7 @@ MLS.checkout = {
         }); // end click
     },
 
+/* THIS NEEDS TO GO TO THE SIGNIN PAGE
     beginCheckoutValidation : function() { // CHECKOUT signin validation ...........................................................
 
         $jQ('#my-Verizon-login').validate({
@@ -560,6 +555,7 @@ MLS.checkout = {
             }
         });
     },
+*/
 
     mainCheckoutValidation : function() { // CHECKOUT
         $jQ('#vzn-checkout').validate({
