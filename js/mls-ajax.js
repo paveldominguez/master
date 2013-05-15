@@ -18,7 +18,10 @@ MLS.ajax = {
         PRODUCT_SORT: "/services/product-listing.json",
 
         // Lifestyle
-        LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json"
+        LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json",
+
+        // CONTENT
+        CONTENT_FILTER: "/services/content.json"
     },
 
     init: function() {
