@@ -50,22 +50,37 @@ MLS.article = {
     },
 
     onOpen: function(){
-        var height = $jQ('#article-detail').height();
+        var scrollTop = $jQ(window).scrollTop(),
+            height = 0;
 
-        $jQ('#article-detail').css({'top': -1 * (height + 160)}).animate({top: 160}, 500, function () {
-            $jQ('#article-modal-overlay').fadeIn();
-        });
+        if (scrollTop == 0) { 
+            height = $jQ('#article-detail').height();
+        } else {
+            height = $jQ('#article-detail').height() + 160;
+        }
 
-        // $jQ("html,body").animate({ scrollTop: 0 });
-    },
+        $jQ('#article-detail').css({'top': scrollTop - height}).animate({top: scrollTop + 160}, 500, function () {
+            $jQ('#article-modal-overlay').fadeIn();
+        });
+    },
 
     onClose: function(){
-        $jQ('#article-detail .close').on('click', function () {
-            var height = $jQ('#article-detail').height();
-            $jQ('#article-detail').animate({top: '-' + height}, 500, function () {
-                $jQ('#article-modal-overlay').fadeOut();
-                $jQ('#article-detail').empty();
-            });
-        });
-    }
+        $jQ('#article-detail .close, #article-modal-overlay').unbind().bind('click', function() {
+            e.preventDefault();
+            var scrollTop = $jQ(window).scrollTop(),
+                height = 0;
+
+            if (scrollTop == 0) {
+                height = $jQ('#article-detail').height();
+            }
+            else {
+                height = $jQ('#article-detail').height() + 160;
+            }
+
+            $jQ('#article-detail').animate({top: scrollTop - height}, 500, function () {
+                $jQ('#article-modal-overlay').fadeOut();
+                $jQ('#article-detail').empty();
+            });
+        });
+    }
 }
