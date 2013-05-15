@@ -159,8 +159,13 @@ $btfHiliteBg : #2a2d32;
                 border-bottom: 2px solid $colorVzwRed;
                 position:absolute;
                 bottom:3px;
-                } /* end active div */
-            }/* end dd */
+            }
+            &.active{
+                .vzn-active{
+                    width:100%;
+                }
+            }
+        }
 
             dd.active a h2,
             dd a h2:hover { color: $colorVzwRed;} /* end active tab */
