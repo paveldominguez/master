@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['sass/**/*.scss'],
-                tasks: ['compass', 'bless']
+                tasks: ['compass', 'bless:debug', 'concat:dist']
             },
             livereload: {
                 files: [
@@ -31,8 +31,7 @@ module.exports = function (grunt) {
                     'css/*.css',
                     'js/**/*.js',
                     'img/**/*.{png,jpg,jpeg,webp}'
-                ],
-                tasks: ['concat:dist']
+                ]
             }
         },
         concat: {
@@ -134,9 +133,9 @@ module.exports = function (grunt) {
             options: {
                 compress: true,
                 cleanup: true,
-                // force: false,
+                force: true,
                 imports: true,
-                cacheBuster: true
+                cacheBuster: false
             },
             debug: {
                 files: {
