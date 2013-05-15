@@ -32,16 +32,13 @@ MLS.contentFilter = (function () {
 
                 /*==========  bind click events  ==========*/
 
-                // reset all
-                $jQ('#clear-selections').on('click', pub.resetFilter);
-
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
                 $facets.on('click', pub.facetClick);
 
                 // remove filter
-                $jQ('#clear-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
@@ -63,8 +60,6 @@ MLS.contentFilter = (function () {
 
                  /*==========  bind click events  ==========*/
 
-                // reset all
-                $jQ('#clear-selections').unbind('click', pub.resetFilter);
 
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
@@ -73,7 +68,7 @@ MLS.contentFilter = (function () {
                 $facets.unbind('click', pub.facetClick);
 
                 // remove filter
-                $jQ('#filter-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
@@ -177,21 +172,11 @@ MLS.contentFilter = (function () {
             =============================================*/
 
             removeFilter: function (e) {
-                var $elem = $jQ(this),
-                    params = {removeFilter: 'xxx'};
                 e.preventDefault();
-                window.location.hash = '';
-                pub.processRequest(params);
-            },
-
-
-            /*-----  End of Remove selected facet  ------*/
-
-            resetFilter: function (e) {
                 var $elem = $jQ(this),
-                    params = {reset: 'filters'};
-                e.preventDefault();
-                window.location.hash = '';
+                    href = $elem.attr('href'),
+                    params = MLS.util.getParamsFromUrl(href);
+                window.location.hash = href;
                 pub.processRequest(params);
             },
 
