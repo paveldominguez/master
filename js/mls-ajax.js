@@ -21,7 +21,10 @@ MLS.ajax = {
         LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json",
 
         // CONTENT
-        CONTENT_FILTER: "/services/content.json"
+        CONTENT_FILTER: "/services/content.json",
+
+        // SPECIAL OFFERS
+        SPECIAL_OFFERS: "/services/special_offers.json"
     },
 
     init: function() {

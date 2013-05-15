@@ -233,10 +233,18 @@ MLS = {
     // },
     'special-offers-landing-page' : {
         init : function() {
-            MLS.contentFilter.init();
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.SPECIAL_OFFERS,
+                container: $jQ('#main-column'),
+                callback: function () {
+                    contentGrid.reInit();
+                    MLS.specialOffers.init();
+                }
+            });
         }
     },
     'fourofour-page' : {
