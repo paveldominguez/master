@@ -1,88 +1,79 @@
 MLS.ajax = {
+    starded: false,
+
+    endpoints: {
+        ADD_TO_MINICART: "/services/add_to_cart.json",
+        UPDATE_MINICART: "/services/add_to_cart.json",
+        REMOVE_FROM_MINICART: "/services/add_to_cart.json",
+        GET_MINICART: "/services/add_to_cart.json",
+        GET_CART: "/services/cart.json",
+        ARTICLE: "/services/article.json",
+        HOMEPAGE_PRODUCTS: "/services/homepage.json",
+        SEARCH_DEVICES: "/services/devices.json",
+
+        // Products
+        PRODUCT_LISTING: "/services/product-listing.json",
+        PRODUCT_LOAD_MORE: "/services/product-listing.json",
+        PRODUCT_LOAD_ALL: "/services/product-listing.json",
+        PRODUCT_SORT: "/services/product-listing.json",
+
+        // Lifestyle
+        LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json",
+
+        // CONTENT
+        CONTENT_FILTER: "/services/content.json"
+    },
+
+    init: function() {
+        if (!this.started)
+        {
+            var $loadingModal = null;
+            $jQ(document).ajaxStart(function() {
+                if ($loadingModal == null)
+                {
+                    $loadingModal = MLS.modal.open("<img src='/img/ajax-loader.gif' alt='loading...' />", true);
+                }
+            });
+
+            $jQ(document).ajaxStop(function() {
+                if ($loadingModal != null)
+                {
+                    MLS.modal.close($loadingModal);
+                    $loadingModal = null;
+                }
+            });
+
+            this.started = true;
+        }
+    },
+
     sendRequest : function (url, data, success, error) {
+        this.init();
+
         $jQ.ajax({
             url: url,
             data: data,
             cache : false,
             success : success,
-            error : error,
+            error : error || function() {
+                MLS.modal.open("Server is not responding,<br />please refresh and try again.");
+            },
             dataType: 'json'
         });
     },
-    article : {
-        init: function () {
-            $jQ('.content-cta').on('click', MLS.ajax.article.getArticleContent);
-            $jQ('.article-cta').hover(
-                function () {
-                    $jQ(this).next('.article-preview-container').show();
-                },
-                function () {
-                    $jQ(this).next('.article-preview-container').hide();
-                }
-            );
-            $jQ('#article-detail .close').on('click', function () {
-                var height = $jQ('#article-detail').height();
-                $jQ('#article-detail').animate({top: '-' + height}, 300, function () {
-                    $jQ('#article-modal-overlay').fadeOut();
-                    $jQ('#article-detail').empty();
-                });
-            });
-        },
-        getArticleContent : function (e) {
-            e.preventDefault();
-            if ($jQ(this).hasClass('article')) {
-                MLS.ajax.sendRequest(
-                    this.href,
-                    { articleId : $jQ(this).data('article-id') },
-                    MLS.ajax.article.displayContent
-                );
-            }
-        },
-        displayContent : function (data) {
-            MLS.ui.updateContent('#article-content', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
-        }
-    },
-    cart : {
-        init : function (context) {
-            $jQ('.add-cart-cta').on('click', context, MLS.ajax.cart.addItem);
-        },
-        addItem : function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-            var $theForm = $jQ(this.form);
-            MLS.ajax.sendRequest(
-                $theForm.attr('action'),
-                $theForm.serialize(),
-                MLS.ajax.cart.addItemSuccess
-            );
-        },
-        addItemSuccess : function (data) {
-            if (data.hasOwnProperty('success')) {
-                if(data.success.itemExists) {
-                    //ignore html & update minicart qty
 
-                }
-
-
-                $jQ('#nav-cart, #nav-tab4').addClass('active');
-                $jQ('#minicart-item-list').append(data.success.responseHTML);
-            }
-            else {
-                // error, unable to add to cart
-                // display error response: .append(data.error.responseHTML);
-            }
-        }
-    },
     homepage : {
         init : function () {
             // homepage madlib
         }
     },
+
     pdpSearch : {
         init : function () {
             // pdp in-page search functionality
         }
     },
+
     colorPicker : {
         contentItem : null,
         init : function () {
@@ -101,19 +92,23 @@ MLS.ajax = {
             MLS.ui.updateContent($jQ(MLS.ajax.colorPicker.contentItem).find('.content-fig'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
         }
     },
-    lazyLoad : {
-        more : function (e) {
-            e.preventDefault();
-            console.log('load more');
-        },
-        remaining : function (e) {
-            e.preventDefault();
-            console.log('load all');
-        }
-    },
-    gridSort: function (type) {
-        console.log('sort by ' + type);
-    },
+
+    // this is now in the content-grid.js
+    // lazyLoad : {
+    //     more : function (e) {
+    //         e.preventDefault();
+    //         console.log('load more');
+    //     },
+    //     remaining : function (e) {
+    //         e.preventDefault();
+    //         console.log('load all');
+    //     }
+    // },
+
+    // gridSort: function (type) {
+    //     console.log('sort by ' + type);
+    // },
+
     quickView: {
         init: function (pid, el) {
             //For demo purposes content is already loaded
@@ -121,7 +116,7 @@ MLS.ajax = {
             MLS.ajax.sendRequest(
                 this.href,
                 { productID : pid },
-                MLS.ajax.quickView.update()
+                MLS.ajax.quickView.update
             );
         },
         update: function (data) {

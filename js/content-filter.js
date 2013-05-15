@@ -1,169 +1,234 @@
-var contentFilter = (function () {
-    // separate front-end from business logic (below)
-    var toggleElement = function (o, remove, multi) {
-        if (multi) {
-            $jQ(o).remove();
-        } else {
-            $jQ(o).slideToggle('fast', function () {
-                if (remove) {
-                    $jQ(this).remove();
-                }
-            });
-        }
-    },
-    // separate business logic from front-end (below)
-    $cf = $jQ('#content-filter'),
-    filterArray = null,
+MLS.contentFilter = (function () {
+
+    var $cf = $jQ('#content-filter'),
+        options = {
+            endpoint: null,
+            callback: function () {},
+            container: null
+        },
+
         pub = {
-            init: function () {
-                var $fs = $jQ('#filter-selections'),
-                    $collapsible = $cf.find('.collapsible .dimension-header'),
-                    $multis = $cf.find('.multi-select .facet'),
+
+            /*============================
+            =            Init            =
+            ============================*/
+
+            init: function (o) {
+                options = $jQ.extend(options, o);
+
+                // endpoint = endpoint ? endpoint : (ep || MLS.ajax.endpoints.PRODUCT_LISTING);
+                // callback = c || contentGrid.reInit;
+
+
+                $cf = $jQ('#content-filter');
+                var $collapsible = $cf.find('.collapsible'),
+                    // $fs = $jQ('#filter-selections'),
+                    // i = j = 0,
+                    // $facet = null,
+                    // param,
                     $facets = $cf.find('.facet');
-                    //$removable = $fs.find('.removable');
+
+
+                // collapse all but first dimension
+                $collapsible.find('.facet-list').slideToggle('slow');
+
+                // add data attributes to facets
+                // for (i = 0; i < $facets.length; i++) {
+                //     $facet = $facets.eq(i),
+                //     url = $facet.children('a').attr('href'),
+
+                //     params = url.split('?')[1].split('&');
+
+
+                //     for (j=0; j< params.length; j++) {
+                //         param = params[j].split('=');
+                //         $facet.attr('data-' + param[0], param[1])
+                //     }
+                // }
+
+
+
+                /*==========  bind click events  ==========*/
+
+                // reset all
                 $jQ('#clear-selections').on('click', pub.resetFilter);
-                $collapsible.not(':first').next().slideToggle('slow'); // collpase all but first dimension
 
-                // handling of various clicks
-                $facets.add($collapsible).on('click', pub.clickBridge); // prevent default action of click
-                $collapsible.on('click', pub.dimensionClick); // handle clicks on dimension (expansion/collapse)
-                $facets.not('.multi').on('click', pub.facetClick); // handle clicks on multi-facet
-                $multis.on('click', pub.multiFacetClick);
-                // handle clicks on removable action
-                $fs.on('click', '.removable', pub.removeFilter);
-                $jQ('#content-filter .facet-list .facet a').on('click', pub.processRequest);
+                // dimension (expansion/collapse)
+                $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
+
+                $facets.on('click', pub.facetClick);
+
+                // remove filter
+                $jQ('#clear-selections').find('li').find('a').on('click', pub.removeFilter);
+
+                // compability services
+                $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
+
+                // type ahead (searc)
+                $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', pub.compabilitySearch);
+
+
             },
-            addFilter: function (el) {
-                var single = $jQ(el).parents().hasClass('dimension') ? false : true;
-                var facetTitle, facetDimension, facetParent, multi;
-                if (single) {
-                    facetParent = $jQ(el).attr('id');
-                    facetTitle = $jQ(el).attr('data-facet-info');
-                    facetDimension = false;
-                } else {
-                    facetParent = $jQ(el).closest('.dimension').attr('id');
-                    facetDimension = $jQ(el).closest('.dimension').attr('data-dimension');
-                    facetTitle = $jQ(el).attr('data-facet-info');
-                    multi = $jQ(el).hasClass('multi') ? true : false;
-                }
-                var addedFilter = '<li class="removable" data-multi="' + multi + '" data-facet-title="' + facetTitle + '" data-facet-parent="' + facetParent + '" data-facet-dimension="' + facetDimension + '">' + facetTitle + '<a href="#remove-facet" class="action"></a></li>';
-                $jQ('.selected-facets', $cf).prepend(addedFilter);
-                //Update Filter
-                pub.updateFilter();
+            /*-----  End of Init  ------*/
+
+            finalize: function () {
+                $cf = $jQ('#content-filter');
+                var $collapsible = $cf.find('.collapsible'),
+                    $facets = $cf.find('.facet');
+
+                 /*==========  bind click events  ==========*/
+
+                // reset all
+                $jQ('#clear-selections').unbind('click', pub.resetFilter);
+
+                // dimension (expansion/collapse)
+                $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
+
+
+                $facets.unbind('click', pub.facetClick);
+
+                // remove filter
+                $jQ('#filter-selections').find('li').find('a').on('click', pub.removeFilter);
+
+                // compability services
+                $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
+
+                // type ahead (searc)
+                $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
+
+
             },
-            clickBridge: function (e) {
+
+            reInit: function () {
+                MLS.contentFilter.finalize();
+                MLS.contentFilter.init();
+
+            },
+
+
+            /*=======================================
+            =            dimension click            =
+            =======================================*/
+
+            dimensionClick: function (e) {
                 e.preventDefault();
-            },
-            dimensionClick: function () {
                 $jQ(this).toggleClass('active').promise().done(function () {
-                    toggleElement($jQ(this).next(), false);
+                    // toggleElement($jQ(this).next(), false);
+                    $jQ(this).next().slideToggle('slow');
                 });
             },
-            facetClick: function () {
-                // this will hide the dimension containing clicked facet, or facet itself..
-                var $hide = $jQ(this).parents().hasClass('dimension') ? $jQ(this).closest('.dimension') : $jQ(this);
-                toggleElement($hide, false);
-                //add to filter
-                pub.addFilter($jQ(this));
-            },
-            multiFacetClick: function () {
-                //if class selected
-                if ($jQ(this).hasClass('selected')) {
-                    //remove selected
-                    $jQ(this).toggleClass('selected');
-                    //Remove from filter
-                    pub.removeFilter(false, $jQ(this), true);
-                } else {
-                    //if not selected add selected class
-                    $jQ(this).toggleClass('selected');
-                    //add to filter
-                    pub.addFilter($jQ(this));
+
+            /*-----  End of dimension click  ------*/
+
+
+            compabilitySearch: function (e) {
+                var $elem = $jQ(this),
+                    params = {search: $elem.val()};
+                if (e.keyCode === 13) {
+                    pub.processRequest(params);
                 }
             },
-            removeFilter: function (element, el, multi) {
-                if ($jQ(el).length > 0) {
-                    var title = $jQ(el).attr('data-facet-info');
-                    var parent = $jQ(el).closest('.dimension').attr('id');
-                    var selectedFacet = $jQ('.removable[data-facet-title="' + title + '"][data-facet-parent="' + parent + '"]');
-                    toggleElement(selectedFacet, true, multi);
-                } else {
-                    var hiddenDimension = $jQ(this).attr('data-facet-parent');
-                    //Remove facet from selected facets
-                    var isMulti = $jQ(this).attr('data-multi');
-                    if (isMulti === 'true') {
-                        toggleElement(this);
-                        //toggleElement($jQ('#' + hiddenDimension), false,true);
-                    } else {
-                        toggleElement(this, true, true);
-                        toggleElement($jQ('#' + hiddenDimension), false);
-                    }
-                }
-                //Update Filter
-                pub.updateFilter();
+
+            compabilitySelect: function () {
+                var $elem = $jQ(this),
+                    href = $elem.find('option:selected').attr('value'),
+                    params;
+
+                // update hash
+                window.location.hash = href;
+
+                params = MLS.util.getParamsFromUrl(href);
+                pub.processRequest(params);
             },
-            resetFilter: function (e) {
+
+            facetClick: function (e) {
                 e.preventDefault();
-                //Reset filter on 'clear selection'
-                $cf.find('.facet').removeClass('selected');
-                $jQ('.removable', '#filter-selections').each(function () {
-                    if ($jQ(this).attr('data-multi') === 'true') {
-                        $jQ(this).remove();
-                    } else {
-                        $jQ(this).click();
-                    }
-                });
-                pub.updateFilter();
-            },
-            updateFilter: function () {
-                filterArray = [];
-                var $selections = $jQ('.selected-facets li', '#filter-selections'),
-                $clearSelections = $jQ('#clear-selections'),
-                filterName,
-                filterValue,
-                newFilter;
 
-                if ($selections.length > 0) {
-                    $clearSelections.show();
-                } else {
-                    $clearSelections.hide();
-                }
+                var $elem = $jQ(this),//e.currentTarget,
+                    href = $elem.find('a').attr('href'),
+                    params;
 
-                $selections.each(function () {
-                    filterName = $jQ(this).attr('data-facet-dimension');
-                    filterValue = $jQ(this).attr('data-facet-title');
-                    newFilter = { name: filterName, value: filterValue};
-                    filterArray.push(newFilter);
-                });
-                pub.processRequest();
+                // update hash
+                window.location.hash = href;
+
+                params = MLS.util.getParamsFromUrl(href);
+                pub.processRequest(params);
             },
-            processRequest : function () {
+
+
+            /*=============================================
+            =            Remove selected facet            =
+            =============================================*/
+
+            removeFilter: function (e) {
+                var $elem = $jQ(this),
+                    params = {removeFilter: 'xxx'};
+                e.preventDefault();
+                window.location.hash = '';
+                pub.processRequest(params);
+            },
+
+
+            /*-----  End of Remove selected facet  ------*/
+
+            resetFilter: function (e) {
+                var $elem = $jQ(this),
+                    params = {reset: 'filters'};
+                e.preventDefault();
+                window.location.hash = '';
+                pub.processRequest(params);
+            },
+
+
+
+            /*=======================================
+            =            process request            =
+            =======================================*/
+
+            processRequest: function (params) {
+
+                // make request
                 MLS.ajax.sendRequest(
-                    'guided-navigation.jsp',
-                    {data : filterArray},
-                    pub.updateGrid
+                    options.endpoint,
+                    params,
+                    pub.updateResults
                 );
             },
-            updateGrid : function (data) {
-                MLS.ui.updateContent('#main-column .content-grid', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
-                //Update Result Count
-                $jQ('.results-count', '.content-landing-header').text(data.resultsCount);
-                //Update content Type
-                $jQ('.results-count', '.content-landing-header').text(data.contentType);
-                //Get Current options
-                $jQ('.dimension[data-dimension]').each(function () {
-                    var dimension = $jQ(this);
-                    var dimensionName = $jQ(this).attr('data-dimension');
-                    var dimensionFacets = $jQ(this).next();
-                    if ($jQ.inArray(dimensionName, data.options) < 0) {
-                        $jQ(dimension, dimensionFacets).hide();
-                    } else {
-                        $jQ(dimension, dimensionFacets).show();
-                    }
-                });
+
+            /*-----  End of process request  ------*/
+
+            /*===================================
+            =            update grid            =
+            ===================================*/
+
+            updateResults : function (data) {
+                if (data.hasOwnProperty('success')) {
+                    // update results...
+                    // MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
+                    options.container.html(data.success.responseHTML);
+
+                    // ... and result count ...
+                    $jQ('#content-filter-count').find('strong').text(data.success.count);
+                    // ... and filters
+                    $cf.replaceWith(data.success.filtersHTML);
+
+                    // ... and even the sort by
+                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
+
+                    options.callback();
+                    pub.reInit();
+                } else {
+                    options.container.html(data.error.responseHTML);
+
+                }
+
+            },
+
+            /*-----  End of update grid  ------*/
 
 
 
-            }
         };
     return pub;
 }());
+
