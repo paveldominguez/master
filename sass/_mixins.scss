@@ -437,15 +437,6 @@
     transition: left 750ms ease-in-out, top 0s ease 0.5s;
     }
 
-
-
-
-
-
-
-
-/* mixins for transform3d transitions */
-
 @mixin slideSlow1 {
 	-webkit-transition: all 600ms ease-in-out;
    	-moz-transition: all 600ms ease-in-out;
@@ -454,6 +445,10 @@
     transition: all 600ms ease-in-out;
     -webkit-backface-visibility: hidden;
     }
+
+
+
+
 
 
 @mixin breakpoint($point) {
