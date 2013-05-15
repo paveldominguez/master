@@ -11,7 +11,7 @@
       selectionMadeClass : 'selection-made' /* The class given to the label when an option has been selected */
     }, options);
 
-    function updateMenu( selection ) {
+    function updateMenu( selection, select ) {
       // Whenever you click on a menu item or press return/enter, we need to update a few things...
       // Set up some vars...
       var customMenuName = selection.parent().attr( 'data-select-name' ), /* Get the name of the menu */
@@ -28,6 +28,8 @@
       // Pass the value to the hidden input
       hiddenInput.val( customOptionValue );
 
+      select.val(customOptionValue).change();
+      
       // Update the label
       selection.parent().parent().find( 'label' ).text( customOptionText );
 
@@ -47,7 +49,7 @@
       } else {
         selection.parent().parent().find( 'label' ).removeClass( settings.openedClass );
       }
-      
+
     }
 
     return this.each(function() {
@@ -146,7 +148,7 @@
 
         // When an option is clicked, update the menu with that option
         if( target.is( 'li' ) ){
-          updateMenu( target );
+          updateMenu( target, $this );
         }
       });
 
@@ -185,7 +187,7 @@
 
         // Pressing return/enter updates and closes the menu
         if( e.keyCode === 13 ) {
-          updateMenu( $(this).find( '.' + settings.selectedClass ) );
+          updateMenu( $(this).find( '.' + settings.selectedClass ), $this );
         }
       });
 
