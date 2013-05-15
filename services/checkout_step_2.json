@@ -1,0 +1,8 @@
+{
+    "success": {
+        "responseHTML": "<div class=\"bill-summary-card-block\"><h5 class=\"form-item-title\">Card Information</h5><div class=\"bill-summary-card\"><div class=\"card-image\"></div><ul class=\"card-info\"><li id=\"name-on-card\" class=\"summary-name\"></li><li class=\"last-four\">(Ending in <span id=\"confirmed-last-four\" class=\"summary saved-sum\">XXXY</span>)</li><li class=\"expires\">Expires <span id=\"confirmed-month\" class=\"summary saved-sum\">XX</span>/<span id=\"confirmed-year\" class=\"summary saved-sum\">XX</span></li></ul></div><!-- end billing-card --></div><!-- end card block --><div class=\"bill-summary-address-block\"><h5>Billing Address</h5><ul><li id=\"bill-sum-add-name\" class=\"sum-inline-block name\"><div id=\"bill-sum-first\" class=\"sum first-name\">First</div><div id=\"bill-sum-last\" class=\"sum first-name\">Lastname</div></li><li id=\"bill-sum-add-1\" class=\"sum address\">09 First Street</li><li id=\"bill-sum-add-2\" class=\"sum address\">Apt 4</li><li class=\"sum-inline-block city-state\"><div id=\"bill-sum-city\" class=\"sum city\">City</div><div id=\"bill-sum-state\" class=\"sum state\">ST</div><div id=\"bill-sum-zip\" class=\"sum zip\">10038</div></li></ul></div><!-- address block --><div class=\"edit-checkout-step edit-billing\"><span class=\"checkout\">Edit</span></div>"
+    },
+    "error": {
+        "responseHTML": ""
+    }
+}

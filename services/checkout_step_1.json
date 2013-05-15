@@ -1,0 +1,8 @@
+{
+    "success": {
+        "responseHTML": "<div class=\"summary-contact\"><h5>Contact</h5><ul><li class=\"sum-inline-block\"><div id=\"ship-sum-first\" class=\"first-name sum\">First</div><div id=\"ship-sum-last\" class=\"last-name sum\">Last</div></li><li id=\"ship-sum-email\" class=\"email sum\">john.doe@provider.com</li><li id=\"ship-sum-phone\" class=\"email sum\">(212) 555-1212</li></ul></div><div class=\"summary-address\"><h5>Shipping Address</h5><ul><li id=\"ship-add-1\" class=\"address sum\">14 First Street</li><li id=\"ship-add-2\" class=\"address sum\">Apt 4</li><li class=\"sum-inline-block\"><div id=\"ship-sum-city\" class=\"city sum\">City</div><div id=\"ship-sum-state\" class=\"state sum\">ST</div><!-- select- --><div id=\"ship-sum-zip\" class=\"zip sum\">12345</div></li></ul></div><div class=\"ship-method-summary\"><h5>Shipping Method</h5><div id=\"ship-sum-method\" class=\"sum\">Selected Shipping Method Placeholder</div></div><div class=\"edit-checkout-step\"><span>Edit</span></div>"
+    },
+    "error": {
+        "responseHTML": ""
+    }
+}

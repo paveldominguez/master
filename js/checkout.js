@@ -12,9 +12,63 @@ MLS.checkout = {
                     return MLS.modal.open(r.error ? r.error.responseHTML : null);
                 }
 
-                $jQ(".shipping-option-radios").html(r.success.responseHTML).find("input[name=shipRadio]").click(MLS.checkout.update);
+                $jQ(".shipping-option-radios").html(r.success.responseHTML).find("input[name=shipRadio]").click(MLS.checkout.selectShippingOption);
+
+                $jQ('.shipping-option-radios .checkout-dropdown').each(function(){
+                    MLS.ui.dropdownDisplay(this);
+                });
             }
         );
+    },
+
+    selectShippingOption: function() {
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.CHECKOUT_SELECT_SHIPPING,
+            
+            {
+                shipping: $jQ(".shipping-option-radios input[name=shipRadio]:checked").val()
+            },
+
+            function(r) {
+                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                }
+
+                MLS.checkout.update();
+            }
+        );
+    },
+
+    // EDIT VALIDATED INFO BUTTON (after next-step click)
+    editStepCallback: function(e)
+    {
+        var thisStep = $jQ(this).parents('.checkout-step');
+        thisStep.siblings('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
+            $jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').not('.blank').removeClass('hidden');
+        });
+        $jQ(this).parents('.step-info-summary').addClass('hidden'); // close this panel's summary next
+
+        // if step 2
+        if ($jQ(this).hasClass('edit-billing')) {
+            $jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not'); // make fields validate-able again
+
+            $jQ('.new-billing-info-form').addClass('hidden'); // hide form so edit button in summary works
+
+            $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
+            $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
+
+            if ($jQ('#bill-to-account').is(':checked')){ // IF account hide billing summary for pay with account
+                $jQ(this).parents('.checkout-step').find('.step-info-summary.billing-address').addClass('hidden');
+            }
+        }
+        // show this panel's inputs & buttons
+        thisStep.find('.hide-complete').removeClass('hidden');
+        // last, scroll page to top of re-opened section
+        MLS.ui.scrollPgTo (thisStep, 7);
+    },
+
+    initEditStep: function() {
+        $jQ('.edit-checkout-step').not('#saved-info-edit').unbind("click", this.editStepCallback).click(this.editStepCallback);
     },
 
     init : function() {
@@ -37,7 +91,7 @@ MLS.checkout = {
         });
 
         // CHECKOUT only
-        MLS.checkout.beginCheckoutValidation();
+        // MLS.checkout.beginCheckoutValidation();
         MLS.checkout.mainCheckoutValidation();
         // MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
         MLS.checkout.smallScreenContent(); // prepare small device content
@@ -100,32 +154,7 @@ MLS.checkout = {
 
         MLS.checkout.nextStepSequence(); // next step button for steps 1 & 2
 
-
-        $jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){ // EDIT VALIDATED INFO BUTTON (after next-step click)
-            var thisStep = $jQ(this).parents('.checkout-step');
-            thisStep.siblings('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
-                $jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').not('.blank').removeClass('hidden');
-            });
-            $jQ(this).parents('.step-info-summary').addClass('hidden'); // close this panel's summary next
-
-            // if step 2
-            if ($jQ(this).hasClass('edit-billing')) {
-                $jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not'); // make fields validate-able again
-
-                $jQ('.new-billing-info-form').addClass('hidden'); // hide form so edit button in summary works
-
-                $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
-                $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
-
-                if ($jQ('#bill-to-account').is(':checked')){ // IF account hide billing summary for pay with account
-                    $jQ(this).parents('.checkout-step').find('.step-info-summary.billing-address').addClass('hidden');
-                }
-            }
-            // show this panel's inputs & buttons
-            thisStep.find('.hide-complete').removeClass('hidden');
-            // last, scroll page to top of re-opened section
-            MLS.ui.scrollPgTo (thisStep, 7);
-        });
+        MLS.checkout.initEditStep(); // 'edit step' button after a step has been completed
 
     //............................................................................... END CHECKOUT EVENTS
 
@@ -474,37 +503,55 @@ MLS.checkout = {
                         MLS.ajax.endpoints.CHECKOUT_STEP_1,
                         $(this.form).serialize(),
                         function (r) {
-                            alert("D");
+                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                                return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                            }
+
+                            $(".step-info-summary:eq(0)").html(r.success.responseHTML);
+                            MLS.checkout.initEditStep();
+
+                            completed = $jQ('#shipping-info'); // hide/show/scroll ..............
+                            completed.find('.hide-complete').addClass('hidden');
+                            completed.find('.step-info-summary').removeClass('hidden');
+
+                            var step2Complete = completed.next('.checkout-step').find('.billing-complete'); // which part of step 2 to open
+                            if ($jQ(step2Complete).hasClass('blank')){
+                                completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');// open step 2 form
+                            } else {
+                                $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
+                            }
+                            MLS.ui.scrollPgTo(completed, 7);
                         }
                     );
-                    completed = $jQ('#shipping-info'); // hide/show/scroll ..............
-                    completed.find('.hide-complete').addClass('hidden');
-                    completed.find('.step-info-summary').removeClass('hidden');
-
-                    var step2Complete = completed.next('.checkout-step').find('.billing-complete'); // which part of step 2 to open
-                    if ($jQ(step2Complete).hasClass('blank')){
-                        completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');// open step 2 form
-                    } else {
-                        $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
-                    }
-                    MLS.ui.scrollPgTo(completed, 7);
                 } // end step 1 postvalidate
 
                 if (which == 'billing-info-complete'){ // STEP 2 postvalidate
-                    completed = $jQ('#billing-info');
+                    MLS.ajax.sendRequest(
+                        MLS.ajax.endpoints.CHECKOUT_STEP_2,
+                        $(this.form).serialize(),
+                        function (r) {
+                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                                return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                            }
 
-                    $jQ('.sidebar-finish').addClass('on'); // reveal red CTA in sidebar
-                    $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none'); // close side bar acc
+                            $(".step-info-summary:eq(1)").html(r.success.responseHTML);
+                            MLS.checkout.initEditStep();
 
-                    completed.find('.hide-complete').addClass('hidden');  //  hide/show/scroll ..............
-                    completed.find('.step-info-summary').removeClass('hidden');
-                    completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');
-                    MLS.ui.scrollPgTo(completed, 7);
+                            completed = $jQ('#billing-info');
 
-                    setTimeout(function(){
-                        $jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
-                    }, 300);
+                            $jQ('.sidebar-finish').addClass('on'); // reveal red CTA in sidebar
+                            $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none'); // close side bar acc
 
+                            completed.find('.hide-complete').addClass('hidden');  //  hide/show/scroll ..............
+                            completed.find('.step-info-summary').removeClass('hidden');
+                            completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+                            MLS.ui.scrollPgTo(completed, 7);
+
+                            setTimeout(function(){
+                                $jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
+                            }, 300);
+                        }
+                    );
                 } // end step 2 postvalidate
 
             } else { // NOT VALID
