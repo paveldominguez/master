@@ -22,36 +22,15 @@ MLS.contentFilter = (function () {
 
                 $cf = $jQ('#content-filter');
                 var $collapsible = $cf.find('.collapsible'),
-                    // $fs = $jQ('#filter-selections'),
-                    // i = j = 0,
-                    // $facet = null,
-                    // param,
                     $facets = $cf.find('.facet');
 
 
                 // collapse all but first dimension
                 $collapsible.find('.facet-list').slideToggle('slow');
 
-                // add data attributes to facets
-                // for (i = 0; i < $facets.length; i++) {
-                //     $facet = $facets.eq(i),
-                //     url = $facet.children('a').attr('href'),
-
-                //     params = url.split('?')[1].split('&');
-
-
-                //     for (j=0; j< params.length; j++) {
-                //         param = params[j].split('=');
-                //         $facet.attr('data-' + param[0], param[1])
-                //     }
-                // }
-
 
 
                 /*==========  bind click events  ==========*/
-
-                // reset all
-                $jQ('#clear-selections').on('click', pub.resetFilter);
 
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
@@ -59,13 +38,16 @@ MLS.contentFilter = (function () {
                 $facets.on('click', pub.facetClick);
 
                 // remove filter
-                $jQ('#clear-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
 
                 // type ahead (searc)
                 $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', pub.compabilitySearch);
+
+                // sort links
+                $jQ('#sort-options').find('li').on('click', pub.sort);
 
 
             },
@@ -78,8 +60,6 @@ MLS.contentFilter = (function () {
 
                  /*==========  bind click events  ==========*/
 
-                // reset all
-                $jQ('#clear-selections').unbind('click', pub.resetFilter);
 
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
@@ -88,7 +68,7 @@ MLS.contentFilter = (function () {
                 $facets.unbind('click', pub.facetClick);
 
                 // remove filter
-                $jQ('#filter-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
@@ -103,6 +83,37 @@ MLS.contentFilter = (function () {
                 MLS.contentFilter.finalize();
                 MLS.contentFilter.init();
 
+            },
+
+
+            sort: function (e) {
+                e.preventDefault();
+                var $elem = $jQ(this),
+                    // type = $elem.attr('data-type'),
+                    // $sortOptions = $jQ('#sort-options'),
+                    href = $elem.find('a').attr('href');
+
+                params = MLS.util.getParamsFromUrl(href);
+                pub.processRequest(params);
+
+                //Fire Ajax
+
+
+                // MLS.ajax.sendRequest(
+                //     MLS.ajax.endpoints.PRODUCT_SORT,
+                //     MLS.util.getParamsFromUrl(href),
+                //     function (data) {
+                //         if (data.hasOwnProperty('success')) {
+                //             $sortOptions.find('li').removeClass('active');
+                //             $elem.addClass('active');
+                //             // load content...
+                //             $jQ('#main-column .content-grid').html(data.success.responseHTML);
+                //              // ... and even the sort by
+                //             $jQ('#sort-options').replaceWith(data.success.sortByHTML);
+                //             contentGrid.reInit();
+                //         }
+                //     }
+                // );
             },
 
 
@@ -161,21 +172,11 @@ MLS.contentFilter = (function () {
             =============================================*/
 
             removeFilter: function (e) {
-                var $elem = $jQ(this),
-                    params = {removeFilter: 'xxx'};
                 e.preventDefault();
-                window.location.hash = '';
-                pub.processRequest(params);
-            },
-
-
-            /*-----  End of Remove selected facet  ------*/
-
-            resetFilter: function (e) {
                 var $elem = $jQ(this),
-                    params = {reset: 'filters'};
-                e.preventDefault();
-                window.location.hash = '';
+                    href = $elem.attr('href'),
+                    params = MLS.util.getParamsFromUrl(href);
+                window.location.hash = href;
                 pub.processRequest(params);
             },
 
@@ -213,7 +214,7 @@ MLS.contentFilter = (function () {
                     $cf.replaceWith(data.success.filtersHTML);
 
                     // ... and even the sort by
-                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
+                    $jQ('#sort-options').find('ul').replaceWith(data.success.sortByHTML);
 
                     options.callback();
                     pub.reInit();

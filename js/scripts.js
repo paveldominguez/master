@@ -118,17 +118,28 @@ MLS = {
     },
     'brand-landing-page' : {
         init : function () {
-            $jQ('#sort-options').uniform();
+            // $jQ('#sort-options').uniform();
             contentGrid.init();
-            MLS.contentFilter.init();
             MLS.ajax.colorPicker.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
+                container: $jQ('#main-column .content-grid'),
+                callback: function () {
+                    contentGrid.reInit();
+                }
+            });
         }
     },
-    'cart-and-checkout': {
+    'cart': {
     	init : function () {
     		MLS.cart.init();
-            // MLS.checkout.init();
-    	}
+        }
+    },
+    'checkout': {
+        init : function () {
+            MLS.checkout.init();
+        }
     },
     'content-landing-page' : {
         init : function () {
