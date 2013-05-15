@@ -39,7 +39,6 @@ MLS.cart = {
     },
 
     init : function() {
-        MLS.miniCart.init();
         $jQ(".mini-cart").bind("cart-updated cart-item-updated cart-item-removed", MLS.cart.update);
 
         // ONLOAD ...............................................................................

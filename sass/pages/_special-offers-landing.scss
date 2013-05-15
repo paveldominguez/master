@@ -20,7 +20,7 @@ $bgPositionPromoSmall: -85px 35px;
 					border-radius: 3px; }
 
 @mixin ctaButton { @include cartRounded;
-					border:0px; 
+					border:0px;
 					background-color: $colorVzwRed;
             		color: #FFF;
             		letter-spacing: 0px;
@@ -32,23 +32,68 @@ $bgPositionPromoSmall: -85px 35px;
             		cursor:pointer;
             		/* this needs fallback to image for ie8 */ }
 
+.special-offers-landing-page{
+    .content-grid{
+        .content-item{
+            &.featured{
+                padding:17px 0 16px 0;
+            }
+            &.active{
+                .sale-tag{display:none;}
+            }
+            .sale-tag{
+                position:absolute;
+                color:#F22023;
+                font-weight:700;
+                top:0;
+                left:0;
+                img{
+                    float:left;
+                }
+                .copy{
+                    padding:7px 0 0 10px;
+                    display:inline-block;
+                    font-size:11px;
+                }
+            }
+            .content-detail{
+                @include clearfix();
+                .name{margin:0;}
+                .price {
+                    margin: 5px 0 0 0;
+                    color:#000;
+                    font: {
+                        weight: normal;
+                    }
 
+                    .original{
+                        text-decoration: line-through;
+                        display:inline-block;
+                        margin: 0 0 0 20px;
+                        color:#999;
+                    }
+                }
+                .stars{
+                    text-align:right;
+                    width:90px;
+                    height:16px;
+                    overflow:hidden;
+                    background:url(../img/star-rating.png) no-repeat scroll left 4px transparent;
+                    padding:0;
+                    &.one{}
+                    &.two{background-position: left -17px;}
+                    &.three{background-position: left -37px;}
+                    &.four{background-position: left -58px;}
+                    &.five{background-position: left -80px;}
+                }
+            }
+        }
+    }
+}
 
 
 .category-landing-page .main-column {
     padding-bottom: 150px;
-}
-
-.price { 
-    margin: 0;
-    font: {
-        family: $fontVzwBook;
-        weight: normal;
-    } 
-    sup {
-        font-size: .65em;
-        vertical-align: super;
-    }
 }
 
 .content-cta {
@@ -228,7 +273,7 @@ $bgPositionPromoSmall: -85px 35px;
             padding: 10px;
             position: relative;
             width: 50%;
-            a { 
+            a {
                 display: block;
                 overflow: hidden;
             }
@@ -257,8 +302,8 @@ $bgPositionPromoSmall: -85px 35px;
     .flex-direction-nav {
         float: right;
         margin: 8px 0 0;
-        li { 
-            float: left; margin-left: 15px; 
+        li {
+            float: left; margin-left: 15px;
             .flex-prev,
             .flex-next {
                 display: block;
@@ -280,10 +325,11 @@ $bgPositionPromoSmall: -85px 35px;
     }
     .content-grid {
         clear: right;
-        overflow: hidden; 
+        overflow: hidden;
         margin-left: 0;
         border-top: 1px solid #CCC;
         padding-bottom: 0;
+
         &.feature-grid {
             .content-item {
                 &.large {
@@ -391,8 +437,8 @@ $bgPositionPromoSmall: -85px 35px;
                         bottom: 15px;
                         right: 15px;
                         }
-                        
-                        
+
+
                     .featured-item-hover {
                     	width: 254px;
                     	height:166px;
@@ -400,32 +446,32 @@ $bgPositionPromoSmall: -85px 35px;
                     	opacity:0;
                     	cursor:pointer;
                     	@include ftrHover;
-                    
-                    	img { 
+
+                    	img {
                     		display:block;
                     		width:37.5%; height:auto;
                     		position:absolute;
                     		bottom:-10px; left:41%;
                     		margin:0 auto 0 auto;
                     		}
-                    	a {  
+                    	a {
                     		display: block;
                     		width:45px;
                     		line-height:13px;
                     		position: absolute;
                     		bottom:0px; right: 10px; }
                     	}
-                    .featured-item-hover:hover { 
+                    .featured-item-hover:hover {
                     	@include ftrHover;
-                    	opacity : 1; 
+                    	opacity : 1;
                     	}
-                        
+
                     .featured-corner {
                             width: 45px;
                             height: 45px;
                         }
-                    
-                    
+
+
                 	.featured-item {
                     	position:absolute;
                     	left:100%;
@@ -435,15 +481,15 @@ $bgPositionPromoSmall: -85px 35px;
                     	opacity:0;
                     	background:#fff;
                     	@include ftrReveal;
-                    	
-                    	.featured-item-detail { 
-                    		width:97.5%; 
-                    		height:96%; 
+
+                    	.featured-item-detail {
+                    		width:97.5%;
+                    		height:96%;
                     		margin:auto;
-                    		background: #fff; 
+                    		background: #fff;
                     		position:relative;
-                    		
-                    		.featured-item-category { 
+
+                    		.featured-item-category {
                     			background:#e89f3a url(../img/category-listing/ico-fitness.png) 30px 35px no-repeat;
                     			color:#fff;
                     			padding:30px 30px 30px 120px;
@@ -451,128 +497,107 @@ $bgPositionPromoSmall: -85px 35px;
                     			font-size:69px;
                     			font-weight:normal;
                     			width:97.5%;
-                    			margin: auto; 
+                    			margin: auto;
                     			}
-                    			
+
                     		.featured-item-info {
-                    		
+
                     			.featured-item-title,
                     			.featured-item-desc {
                     				font-family: $fontArial;
                     				padding:0; margin:0;
                     				color: $colorCategoryCTA;
-                    				font-size:12px; 
+                    				font-size:12px;
                     				line-height: 15px;
-                    				font-weight:normal; 
+                    				font-weight:normal;
                     				margin:10px 0 0 10px;
                     			 	}
-                    			 	
-                    			 .rating { 
+
+                    			 .rating {
                     			 	@include clearfix();
-                    			 	font-size:12px; 
+                    			 	font-size:12px;
                     				line-height: 15px;
                     				margin-left:10px;
-                    			  
-                    				
-                    				img { 
+
+
+                    				img {
                     					position: relative;
                     					top: auto; right: auto;
-                    					width: 14%; 
+                    					width: 14%;
                     					float:left;
                     					margin:2px 10px 0 0;
                     					}
                     				}
-                    			 	
-                    			 	
+
+
                     			 } /* end featured info */
-                    			
-                    		img { 
+
+                    		img {
                     			position:absolute;
                     			top: 120px; right: 0;
                     			width:65%; height: auto;
                     			}
-                    		
+
                     		.featured-item-actions {
                     			@include clearfix();
                     			width:95%;
                     			position:absolute;
                     			margin: 0 auto 0 auto;
-                    			bottom:5px; left: 10px; 
-                    		
-                    			.price { 
-                    				display:block;  
+                    			bottom:5px; left: 10px;
+
+                    			.price {
+                    				display:block;
                     				font-size: 30px;
                     				letter-spacing: -1px;
                     				margin-bottom: 10px;
-                    				
-                    				sup { 
-                    					font-size:16px; 
+
+                    				sup {
+                    					font-size:16px;
                     					position:relative;
-                    					
+
                     					}
-                    				}/* end price */
-                    				
-                    			.button { 
+                    				}
+
+                    			.button {
                     				float:left;
-                    				height:50px; 
+                    				height:50px;
                     				width: 110px;
                     				position:relative;
-                    			
+
                     				span {
                     					display:block;
-                    					@include ctaButton; 
-                    					height: 100%; 
+                    					@include ctaButton;
+                    					height: 100%;
                     					width: 100%;
                     					position: absolute;
                     					bottom:0; left: 0;
                     					padding: 20px 0 0 10px;
                     					font-family: $fontVzwMedium;
-                    					
-                    					.add-cart-cta { 
-                    						-webkit-appearance: none; 
+
+                    					.add-cart-cta {
+                    						-webkit-appearance: none;
                     						float:none;
                     						position: absolute;
                     						top:0; left: 0;
                     						opacity: 0;
                     						padding:0;
                     						cursor:pointer;
-                    						
+
                     						} /* end input */
                     					}/* end span */
                     				}/* end button class */
-                    				
-                    			.back-to-story { 
+
+                    			.back-to-story {
                     				display:block;
-                    				float: right; 
+                    				float: right;
                     				width:95px;
-                    				padding-left:60px; 
+                    				padding-left:60px;
                     				background: url(../img/category-listing/back-to-story.png) no-repeat;
                     				cursor:pointer;
                     				}
-                    		
-                    		
-                    		
-                    		
-                    		
                     			}/* end featured actions */
-                    		
-                    		
-                    		
-                    		
-                    		
-                    		
-                    		
-                    		
                     		} /* end item detail */
-                    	
-                    	
-                    	
-                    	
-                    	
-                    	
-
                     	}
-                
                 }
             }
         }
@@ -616,7 +641,7 @@ $bgPositionPromoSmall: -85px 35px;
 			display: inline;
 			margin-bottom: 0;
 		}
-		
+
         strong {
             position: relative;
             display: block;
@@ -716,7 +741,7 @@ $bgPositionPromoSmall: -85px 35px;
     		img {
     			display: block;
     			width: auto;
-    			margin: 10% auto 10% auto;
+    			margin: 40px 0 0 30px;
     			}
     		}
 	}
@@ -739,11 +764,11 @@ $bgPositionPromoSmall: -85px 35px;
 					}
 				}
 			}
-			
+
 			.column.pricing {
 				position: absolute;
 				bottom: 75px;
-				width: 25%;					
+				width: 25%;
 			}
 			.column.add-cart {
 				position: absolute;
@@ -776,7 +801,7 @@ $bgPositionPromoSmall: -85px 35px;
 	    		color: $colorVzwRed;
 	    		font-weight: bold;
 	    		}
-	    	
+
 			.product-actions {
 			    margin-top: 20px;
 
@@ -867,7 +892,7 @@ $bgPositionPromoSmall: -85px 35px;
 					}/* end offer box */
 
 				} /* end item */
-	
+
 }
 
 .special-offers {
@@ -999,7 +1024,7 @@ $bgPositionPromoSmall: -85px 35px;
 					width: 50%;
 				}
 			}
-		} 
+		}
 	}
 }
 
@@ -1105,9 +1130,9 @@ $bgPositionPromoSmall: -85px 35px;
 					width: auto !important;
 				}
 			}
-		} 
+		}
 	}
-	
+
 }
 
 
@@ -1119,7 +1144,7 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 
-@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) { 
+@media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
 
     .category-section {
         .content-grid {
@@ -1252,7 +1277,7 @@ $bgPositionPromoSmall: -85px 35px;
         }
         .slide-nav {
             display: none;
-        }    
+        }
     }
 }
 
@@ -1266,7 +1291,7 @@ $bgPositionPromoSmall: -85px 35px;
         float: none;
         width: 100%;
         max-width: 100%;
-        .content-filter { 
+        .content-filter {
             display: none;
         }
         .content-filter-touch {
@@ -1278,7 +1303,7 @@ $bgPositionPromoSmall: -85px 35px;
         .header-info,
         .category-header-promo {
             padding: 0 15px;
-        }      
+        }
         .header-info {
             .category-header-message { display: none; }
         }
@@ -1359,7 +1384,7 @@ $bgPositionPromoSmall: -85px 35px;
                 &.featured {
                     padding: 15px;
                     .content-detail {
-                        .price { color: #000; }
+                        .price {}
                     }
                 }
                 .content-fig,
@@ -1367,8 +1392,8 @@ $bgPositionPromoSmall: -85px 35px;
                     float: none;
                     width: 100%;
                 }
-                .content-fig { 
-                    margin: 0 auto; 
+                .content-fig {
+                    margin: 0 auto;
                     max-width: 70%;
                 }
                 .content-detail {
@@ -1506,7 +1531,7 @@ $bgPositionPromoSmall: -85px 35px;
                                     margin: 0;
                                     li {
                                         clear: both;
-                                        display: block; 
+                                        display: block;
                                     }
                                     .content-action {
                                         margin-top: 10px;

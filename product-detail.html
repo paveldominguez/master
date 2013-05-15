@@ -119,7 +119,7 @@
 
 
     <div id="cart-block">
-        <div class="light">
+        <div class="light"><!-- adds class 'reduced' -->
             <header id="pdp-cart-header">
                 <div class="pdp-banner-shipping ">
                     <a href="#" class="dropdown-link">
@@ -142,7 +142,7 @@
                         <div class="ratings"></div>
                     </li>
                     <li class="reviews">
-                        <a href="#" id="pdp-cart-review-count" class="review-link" title="See reviews for this item." >(47)</a>
+                        <a href="#" class="review-link" title="See reviews for this item." >(<span id="pdp-cart-review-count">47</span>&nbsp;Reviews)</a>
                     </li>
                 </ul><!-- end reviewBlock -->
             </header>
@@ -197,7 +197,7 @@
             </div><!-- end pdp-cart-shipping -->
         </div><!-- end light -->
 
-        <div class="dark">
+        <div class="dark"><!-- adds class 'expanded' -->
 
             <form id="pdp-add-to-cart" class="pdp-form-box">
                 <fieldset class="pdp-size-color">
@@ -205,10 +205,10 @@
                     <div class="color-info"><span class="color-label"><span class="color-option">Black</span></div>
 
                     <div class="product-color"> <!-- color selector -->
-                        <script>includeFragment('inc/fragments/color-choices-5.html');</script>
+                        <script>includeFragment('inc/fragments/color-choices-3.html');</script>
                     </div> <!-- end color selector -->
 
-                    <div class="size-select-box">
+                    <div class="size-select-box "><!-- adds class 'expanded' -->
                         <select id="pdp-size-select" name="size-select" class="size-select">
                             <option value="" disabled selected>Size</option>
                             <option value="1">Small</option>
@@ -237,6 +237,7 @@
 
                 </fieldset><!-- end size-color -->
 
+                <fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
 
                 <fieldset class="pdp-price-cta" >
 
@@ -266,24 +267,6 @@
                     </div><!-- end add-cart -->
 
                 </fieldset><!-- end right -->
-
-                <section id="pdp-mobile-form-box"><!-- insert mobile cart info here -->
-
-                    <fieldset id="pdp-mobile-form-color-size" class="mobile-fieldset ">
-                        <div id="pdp-mobile-form-size" class="mobile-left form-float color-size"></div>
-                        <div id="pdp-mobile-form-color" class="mobile-right form-float color-size"></div>
-                    </fieldset>
-
-                    <fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
-
-                    <fieldset id="pdp-mobile-form-cta" class="mobile-fieldset">
-                        <div id="pdp-mobile-form-price" class="mobile-left form-float cta"></div>
-                        <div id="pdp-mobile-form-submit" class="mobile-right form-float cta"></div>
-                    </fieldset>
-
-                    <div id="pdp-mobile-social"></div>
-
-                </section><!-- end mobile add to cart form box -->
             </form>
 
 
@@ -349,23 +332,23 @@
                 <div class="smaller" title="Zoom out" ></div>
             </div>
 
-						<div id="zoom-scale-content" class="zoom-content">
-							<div class="scale-box">
-								<div class="scale-item-left">
-									<img src="img/product-detail-page/pdp-plus/dre-beats-1.png" />
-								</div>
-								<div class="scale-item-right">
-									<img src="img/product-detail-page/pdp-plus/droidrazor.png" />
+                        <div id="zoom-scale-content" class="zoom-content">
+                            <div class="scale-box">
+                                <div class="scale-item-left">
+                                    <img src="img/product-detail-page/pdp-plus/dre-beats-1.png" />
+                                </div>
+                                <div class="scale-item-right">
+                                    <img src="img/product-detail-page/pdp-plus/droidrazor.png" />
                                     <div class="select-block">
-								        <select name="scaleDevice" id="scale-device-comparison" tabindex="">
-									       <option value="Motorola Droid RAZR" selected>Motorola Droid RAZR HD</option>
-									       <option value="HTC Droid DNA">HTC Droid DNA</option>
-									       <option value="Samsung Galaxy S 4">Samsung Galaxy S 4</option>
-								        </select>
+                                        <select name="scaleDevice" id="scale-device-comparison" tabindex="">
+                                           <option value="Motorola Droid RAZR" selected>Motorola Droid RAZR HD</option>
+                                           <option value="HTC Droid DNA">HTC Droid DNA</option>
+                                           <option value="Samsung Galaxy S 4">Samsung Galaxy S 4</option>
+                                        </select>
                                     </div>
                                 </div>
-							</div>
-						</div>
+                            </div>
+                        </div>
 
             <div id="zoom-view-360-content" class="zoom-content">
                 <div class="view-360-box">
@@ -627,8 +610,8 @@
                     </div><!-- end tab wrapper -->
                 </li><!-- end specs tab-content -->
 
-        		<li id="compatTab" class="pdp-compat-content"><!-- COMPATIBILITY TAB -->
-        			<div class="tab-wrapper">
+                <li id="compatTab" class="pdp-compat-content"><!-- COMPATIBILITY TAB -->
+                    <div class="tab-wrapper">
                         <form action="sample-compatibility.json" method="POST" id="compatibilityForm" name="compatibilityForm">
                             <div class="compat-sort">
                                 <div class="my-devices">
@@ -695,8 +678,8 @@
                             </div>
                         </form><!-- end compat sort -->
 
-        				<div class="compat-results">
-        				    <div class="tab-inner">
+                        <div class="compat-results">
+                            <div class="tab-inner">
                                 <div class="device-scroll">
                                     <div class="scrollbar">
                                         <div class="track">
@@ -718,8 +701,8 @@
                                         </div>
                                     </div>
                                 </div><!-- end returned items -->
-        					</div><!-- end tab-inner -->
-        				</div><!-- end compat results -->
+                            </div><!-- end tab-inner -->
+                        </div><!-- end compat results -->
 
                         <div class="read-more" title="show more">
                             <span class="more">see more</span>
@@ -875,10 +858,10 @@
               <section class="quick-view-item">
 
                 <div class="offer-box">
-              		<div class="offer-amt">20</div>
-              		<div class="offer-unit">%</div>
-              		<div class="offer-off">Off</div>
-            		</div>
+                    <div class="offer-amt">20</div>
+                    <div class="offer-unit">%</div>
+                    <div class="offer-off">Off</div>
+                    </div>
 
                 <!-- main carousel slider -->
                 <div id="quick-view-slider" class="bundle">
@@ -888,9 +871,9 @@
               <section class="quick-view-details bundle">
                   <div class="column">
                       <header class="product-header">
-													<p class="product-shipping">
-														<span>Free Shipping</span>
-													</p>
+                                                    <p class="product-shipping">
+                                                        <span>Free Shipping</span>
+                                                    </p>
                           <h1 class="product-name">Nokia Lumia 822 Bundle</h1>
                       </header> <!-- end quick view header-->
 
@@ -981,7 +964,7 @@
             <input type="submit" id="lightbox-email-send" class="" value="Send" title="Send" />
         </div>
     </form>
-</div>    
+</div>
 </div>
 </section>
 <!--End: Share Email Lightbox-->

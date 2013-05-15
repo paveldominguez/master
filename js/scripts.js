@@ -91,7 +91,8 @@ MLS = {
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
-            MLS.ajax.article.init();
+            MLS.miniCart.init();
+            MLS.article.init();
             MLS.ui.complexItem.init();
 
             var navHelp = $jQ('#nav-help'),
@@ -120,7 +121,6 @@ MLS = {
             $jQ('#sort-options').uniform();
             contentGrid.init();
             MLS.contentFilter.init();
-            MLS.ajax.cart.init(document.body);
             MLS.ajax.colorPicker.init();
         }
     },
@@ -134,15 +134,25 @@ MLS = {
         init : function () {
             //searchResults.styleDropDown();
             contentGrid.init();
-            MLS.contentFilter.init();
-            MLS.ajax.article.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.CONTENT_FILTER,
+                callback: function () {
+                    MLS.article.init();
+                    MLS.ui.socialShare.init();
+                },
+                container: $jQ('#main-column')
+            });
+
             MLS.ui.socialShare.init();
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
-                var tab = $jQ(this).attr('href');
-                var type = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-type');
-                var results = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-result-count');
-                e.preventDefault();
+                var tab = $jQ(this).attr('href'),
+                    type = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-type'),
+                    results = $jQ('.tab-content-wrapper[data-tab=' + tab + ']').attr('data-result-count');
+
+                // e.preventDefault();
+
                 $jQ('.category-tabs li a').parent().removeClass('active');
                 $jQ(this).parent().addClass('active');
                 $jQ('.tab-content-wrapper').removeClass('active');
@@ -150,6 +160,11 @@ MLS = {
                 $jQ('.content-landing-header .results-count').text(results);
                 $jQ('.content-landing-header .type').text(type);
             });
+
+            if (document.location.hash != "")
+            {
+                $jQ('.category-tabs li a[href*=' + document.location.hash.substr(1) + ']').click();
+            }
         }
     },
     'category-landing-page' : {
@@ -158,7 +173,6 @@ MLS = {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
             MLS.contentFilter.init();
-            MLS.ajax.cart.init(document.body);
         }
     },
     'lifestyle-landing-page' : {
@@ -171,8 +185,13 @@ MLS = {
         init : function () {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
-            MLS.contentFilter.init();
-            MLS.ajax.cart.init(document.body);
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
+                container: $jQ('#main-column .content-grid'),
+                callback: function () {
+                    contentGrid.reInit();
+                }
+            });
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -194,7 +213,6 @@ MLS = {
         init : function () {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
-            MLS.ajax.cart.init('#add-cart-box .button span');
         }
     },
     // 'search-results-page' : {
@@ -212,7 +230,6 @@ MLS = {
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
-            MLS.ajax.cart.init(document.body);
         }
     },
     'fourofour-page' : {

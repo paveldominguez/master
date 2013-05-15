@@ -3,24 +3,6 @@
 
 .product-detail {
 
-    /* -----------------PDP ONLY  MIXINS ---------------------------- */
-    @mixin cartBox {
-        @include clearfix();
-        width:100%;
-        padding:4.5%;
-        font-size:12px;
-        color: $cartGreyLt;
-        font-family: $fontArial; }
-
-    @mixin cartBoxHalf {
-        display:inline-block;
-        width:49.5%; }
-
-    @mixin cartBoxThird {
-        display:inline-block;
-        width:33.333%; }
-
-
     #pdp-hero { /*----------------------  PDP HERO --------------------- */
         @include clearfix();
         @include heroInset;
@@ -210,9 +192,10 @@
                 position: absolute;
                 top: 0; left: 0;
                 width: 100%;
-                height: 320px;
+                height: 376px;
                 @include heroBG;
                 } /* end light */
+            .light.reduced { height: 336px; }
 
             .dark { /* bottom half of cart */
                 position:absolute;
@@ -220,11 +203,11 @@
                 width:100%; height: auto;
                 @include cartBG;
                 @include boxBrdrT;
-                height: 266px;
+                height: 210px;
 
                 .pdp-form-box { // cart form element
                     width: 100%;
-                    height: 230px;
+                    height: 210px;
                     @include clearfix();
                     margin: 0;
                     position: relative;
@@ -233,15 +216,15 @@
                         width: 100%;
                         position: absolute;
                         left: 0;
-                        padding: 0; margin: 0;
+                        margin: 0;
                         overflow: hidden;
                         padding: 15px;
                         border: 0px;
                         }
 
                     .pdp-size-color {
-                        height: 180px;
-                        top: 10px; padding-top: 0px;
+                        height: auto;
+                        top: 5px; padding-top: 0px;
                         @include clearfix();
 
                         .color-select-box { position: absolute; left: 100%; } /* hides actual select */
@@ -255,7 +238,7 @@
                                 size: 12px;
                                 }
                             line-height: 12px;
-                            margin-bottom: 5px;
+                            margin: 3px 0 2px 0;
                             .color-option { font-weight: bold; }
                             } /* end color info */
 
@@ -265,7 +248,7 @@
                             display: inline-block;
                             width: auto;
                             @include clearfix();
-                            margin: 0 6px 17px 0;
+                            margin: 0 6px 7px 0;
 
                             .product-colors {
                                 margin: 0; padding: 0;
@@ -275,8 +258,8 @@
                                 .color {
                                     position: relative;
                                     margin: 0 2px 2px 0;
-                                    height: 45px;
-                                    width: 50px;
+                                    height: 40px;
+                                    width: 45px;
                                     padding: 2px;
 
                                     a {
@@ -308,28 +291,27 @@
 
                         .size-select-box {
                             margin: 0px 0 0 0px;
-                            width: 90px;
-                            max-width: 40%;
-                            height: 45px;
+                            width: 50%;
+                            height: 40px;
                             display: inline-block;
-                            float: left;
+                            float: right;
                             span {
                                 padding-top:18px;
-                                @include pdp-sprite(grey-more, false, 70px, 24px);
+                                @include pdp-sprite(grey-more, false, 150%, 24px);
                                 }
                             }
-
-
-
                         } /* end pdp-size-color */
+
                     .pdp-price-cta {
-                        height: 78px;
-                        bottom: 15px;
+                        height: 83px;
+                        bottom: 51px;
+                        padding-top: 0;
+                        @include clearfix;
 
                         .price-block {
+                            padding-top: 50px;
                             width: 50%;
-                            position:absolute;
-                            bottom: 0; left: 15px;
+                            float: left;
 
                             .actual-price {
                                 color: $cartGreyDk;
@@ -371,10 +353,9 @@
                             } /* end price-block */
 
                         .add-cart-box {
-                            position:absolute;
-                            right:15px; bottom:0px;
+                            float: right;
                             width: 50%;
-                            height:78px;
+                            height:83px;
                             cursor:pointer;
 
                             .OOS.product, .expired.product {
@@ -391,8 +372,8 @@
                             .pdp-cart-red-cta-box {
                                 margin:0;
                                 @include ctaRedButton;
-                                width:100%; height: 78px;
-                                span { padding-top: 45px; } /* end span */
+                                width:100%; height: 83px;
+                                span { padding-top: 50px; } /* end span */
                                 } /* end red cta box */
 
                             .no-cta-button {
@@ -406,15 +387,23 @@
                     position: absolute; bottom: 0; left: 0;
                     @include boxBrdrT;
                     }
-
                 }/* end dark */
 
+            .dark.expanded {
+                height: 250px;
+                .pdp-form-box {
+                    .pdp-size-color {
+                        .size-select-box { width: 45%; float: left; }
+                        }
+                    .pdp-price-cta { bottom: 15px; }
+                    }
+                }
 
             /* COMMON CART BLOCK STYLES */
             .pdp-cart-shipping {
                 width: 100%; height: auto;
                 position: absolute;
-                bottom: 10px; left: 20px;
+                bottom: 15px; left: 20px;
 
                 .ship-details.offer {
                     li {
@@ -425,7 +414,7 @@
                     }
 
                 .ship-details {
-                    margin: 0 0 0 10px;
+                    margin: 0 0 5px 10px;
                     position:relative;
                     list-style-image: url(../img/product-detail-page/pdp-backgrounds/cart-bullet.png);
 
@@ -1593,7 +1582,7 @@
                 }
         }/* end item */
     }
- 
+
     .quick-view-details {
         width: 33.333%;
         float: left;
@@ -1671,7 +1660,7 @@
             }
         }/* end actions */
     }/* end details */
- 
+
     .quick-view-item {
         .offer-box {
             position:absolute;
@@ -1719,8 +1708,8 @@
         }/* end offer box */
     } /* end item */
 }/* end modal block */
- 
- 
+
+
 #btf-anchor.anchor-bar {
     padding: 5px 20px;
     background-color: $colorVzwNavBrd;
@@ -1769,13 +1758,13 @@
         }
     }
 } /* end anchor bar */
- 
+
 .show-anchor {
     position: fixed;
     top: 45px;
     z-index: 998;
 }
- 
+
 .fixed-nav {
     position: fixed;
     top: 0;
@@ -1827,7 +1816,7 @@
 /* RESPONSIVE media queries */
 
     #pdp-mobile-cart-header,
-    #pdp-mobile-form-box { display: none; } /* small screen containers turned off */
+    .mobile-fieldset.shipping { display: none; } /* small screen containers turned off */
 
     @media only screen and (min-width: 1280px) { /* 1280 and up */
         #pdp-hero {
@@ -1999,7 +1988,7 @@
         } /* end below 959 */
 
 
-    @media only screen and (max-width: 875px ) { /* below 850 - hero slider only */
+    @media only screen and (max-width: 875px ) { /* below 875 - hero slider only */
         #pdp-hero {
             #carousel-block {
                 #carousel {
@@ -2014,7 +2003,19 @@
                         }
                     }/* end carousel */
                 } /* end carousel block */
-
+            #cart-block {
+                .dark {
+                    .pdp-form-box {
+                        fieldset { padding-left: 12px; padding-right: 12px; }
+                        .pdp-price-cta {
+                            .add-cart-box{ width: 45% }
+                            }
+                        .pdp-size-color {
+                            .size-select-box { width: 45% }
+                            }
+                        }
+                    }/* end dark */
+                } /* end cart block */
             #zoom-block {
                 #zoom-carousel-block {
                     #zoom-focus {
@@ -2053,7 +2054,7 @@
             height: auto;
             #pdp-mobile-cart-header {
                 display: block;
-                min-height: 180px;
+                min-height: 170px;
                 }
             #carousel-block {
                 position: relative;
@@ -2086,23 +2087,61 @@
                 top: auto; right: auto;
                 width: 100%; height: auto;
                 .light {
-                    position: relative;
-                    top: auto; left: auto;
-                    height: auto;
+                    display: none;
                     #pdp-cart-header,
                     .pdp-cart-shipping { display: none; }
                     }
                 .dark {
                     position: relative;
                     top: auto; left: auto;
-                    height: 266px;
+                    height: auto;
+                    @include boxBrdrB;
 
                     .pdp-form-box {  /* modify form styles */
-                        height: 230px;
-                        } /* end form styles */
+                        height: auto;
 
+                        .mobile-fieldset.shipping {
+                            position: relative;
+                            bottom: auto; left: auto;
+                            height: auto;
+                            display: block;
+                            width: 100%;
+                            @include boxBrdrT;
+                            @include boxBrdrB;
+                            padding: 15px;
+                            .pdp-cart-shipping {
+                                position: relative;
+                                top: auto; bottom: auto; left: auto;
+                                }
+                            }
+                        .pdp-size-color,
+                        .pdp-price-cta {
+                            padding-top: 15px;
+                            height: auto;
+                            position: relative;
+                            top: auto; bottom: auto; left: auto;
+                            }
+                        fieldset.pdp-size-color {
+                            padding-top: 5px;
+                            padding-bottom: 6px;
+                            .size-select-box span { @include pdp-sprite(grey-more, false, 125%, 24px); }
+
+                            } /* end pdp-size-color */
+                        } /* end form styles height: 230px; */
                     .social-block { position: relative; }
                     }/* end dark */
+                .dark.expanded {
+                    height: auto;
+                    .pdp-form-box{
+                        .pdp-size-color {
+                            .size-select-box {
+                                width: 100%; float: none;
+                                span { @include pdp-sprite(grey-more, false, 150%, 24px); }
+                                }
+                            }
+                        .pdp-price-cta { bottom: auto; }
+                        } /* end pdp-form box */
+                    }
                 } /* end cart block */
             }/* end pdp hero */
 
@@ -2663,7 +2702,7 @@
                     }
                 }
                 .lightbox-cta {
-                    bottom: 50px; 
+                    bottom: 50px;
                     right: 45px;
                     width: 132px;
                     height: 43px;
@@ -2672,11 +2711,11 @@
                     }
                 }
             }
-        }   
-    } 
-} /* end social email overlay */ 
+        }
+    }
+} /* end social email overlay */
 
-/* ============================== TEMP / EXAMPLE CSS for DEMO pages ===================== */
+/* ---- TEMP / EXAMPLE CSS for DEMO pages  ----- */
 
 .product-detail.DEMO-sale {
     .offer { display: inline-block !important; }
