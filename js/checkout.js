@@ -534,7 +534,7 @@ MLS.checkout = {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
                             }
 
-                            $(".step-info-summary:eq(1)").html(r.success.responseHTML);
+                            $(".step-info-summary:eq(1), .step-info-summary:eq(2)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
 
                             completed = $jQ('#billing-info');
