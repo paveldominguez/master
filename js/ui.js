@@ -4,6 +4,7 @@ MLS.ui = {
      * Social Share - Handle clicking of social share toolbar
      *
      */
+
     socialShare : {
         init: function () {
             var $socialList = $jQ('.social-share-module').find('.social-list'),
@@ -44,7 +45,12 @@ MLS.ui = {
                 $scope.addClass('active');
 
                 if ($scope.hasClass('email')) {
-                    if ($jQ('#share-modal-overlay').length <= 0) {
+                    $jQ('.social-link').click(function(e){ // Share Email overlay
+                        e.preventDefault;
+                        MLS.ui.lightbox(this);
+                    });
+                    /* Commenting out share modal overlay. Using lightbox instead */
+                    /*if ($jQ('#share-modal-overlay').length <= 0) {
                         $jQ(document.body).append('<div id="share-modal-overlay"/>');
                     }
                     if ($jQ('#share-modal-display').length <= 0) {
@@ -68,8 +74,8 @@ MLS.ui = {
                     });
 
                     $jQ('#share-modal-display').css({
-                        top: ($jQ(window).height() / 2 - $jQ('#share-modal-display').height() / 2) + $jQ(document).scrollTop(),
-                        left: ($jQ(window).width() / 2 - $jQ('#share-modal-display').width() / 2)
+                        top: ($jQ(window).outerHeight() / 2 - $jQ('#share-modal-display').outerHeight() / 2) + $jQ(document).scrollTop(),
+                        left: ($jQ(window).outerWidth() / 2 - $jQ('#share-modal-display').outerWidth() / 2) - $jQ(document).scrollLeft()
                     });
                     var $shareModalDisplay = $jQ('#share-modal-display');
                     $shareModalDisplay.html('<h3 class="share-title">Share This Item</h3><a href="#" id="close-social-overlay" class="close-overlay"></a><div class="overlay-content"><figure class="share-fig"><img src="img/product-detail-page/pdp-plus/dre-beats-1.png"><figcaption>Lorem Ipsum Descriptum</figcaption></figure><form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-example.json"><div class="fieldwrapper"><label for="share-email">Your Email</label><input id="share-email" name="share-email" type="email" class="share-field"></div><div class="fieldwrapper"><label for="share-recipient">Recipient Email</label><input id="share-recipient" name="share-recipient" type="email" class="share-field"></div><input type="submit" id="share-submit" class="button share-cta"></form></div>');
@@ -81,25 +87,30 @@ MLS.ui = {
                         MLS.ajax.sendRequest(
                             $theForm.attr('action'),
                             $theForm.serialize(),
-                            function (d) {
-                                if (data.hasOwnProperty('success')) {
+                            function (d) { // AJAX request success
+                                if (data.hasOwnProperty('success')) { // server-side success response
                                     $shareModalDisplay.html(d.success.responseHTML);
-                                } else {
+                                } else { // server-side error response
                                     $shareModalDisplay.html(d.error.responseHTML);
                                 }
                             },
-                            function (d) {
+                            function (d) { // AJAX request error
                                 $shareModalDisplay.html('<h3 class="share-title message">There was a problem sharing. Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay">');
                             }
                         );
-                    });
+                    });*/
                 } else {
                     $overlay = $scope.find('.overlay'),
-                    listWidth = $socialItemsWithContext.parents('.social-list').outerWidth();
+                    $socialList = $socialItemsWithContext.parents('.social-list'),
+                    listWidth = $socialList.outerWidth();
 
                     overlayWidth = $overlay.outerWidth();
-                    $overlay.css('width', 0).show();
+                    $overlay.show().css('width', 0);
                     $scope.find('.social-link').hide();
+
+                    $socialItemsWithContext.not($scope).stop(false, false).animate({
+                        width: ((listWidth - overlayWidth) / $socialItemsWithContext.length)
+                    }, { duration: 'medium', queue: false });
 
                     $overlay.stop(false, false).animate({
                         width: overlayWidth
@@ -109,9 +120,6 @@ MLS.ui = {
                         width: overlayWidth
                     }, { duration: 'medium', queue: false });
 
-                    $socialItemsWithContext.stop(false, false).animate({
-                        width: (listWidth - overlayWidth) / ($socialItemsWithContext.length - 1)
-                    }, { duration: 'medium', queue: false });
                 }
             });
         }

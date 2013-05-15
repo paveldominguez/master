@@ -13,7 +13,7 @@ var contentGrid = {
         contentGrid.mobileFilter.init();
 
         if (!isTouch) {
-            MLS.ui.gridHover($contentItems.not('.large'), {
+            MLS.ui.gridHover($contentItems.not('.large, .no-hover'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);
@@ -144,22 +144,25 @@ var contentGrid = {
 
 
     sortHeader: function (e) {
-
+        e.preventDefault();
         var $elem = $jQ(this),
             type = $jQ(this).attr('data-type'),
-            $sortOptions = $jQ('#sort-options');
+            $sortOptions = $jQ('#sort-options'),
+            href = $elem.find('a').attr('href');
 
         //Fire Ajax
 
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.PRODUCT_SORT,
-            {'sortBy': type},
+            MLS.util.getParamsFromUrl(href),
             function (data) {
                 if (data.hasOwnProperty('success')) {
                     $sortOptions.find('li').removeClass('active');
                     $elem.addClass('active');
-                    //
+                    // load content...
                     $jQ('#main-column .content-grid').html(data.success.responseHTML);
+                     // ... and even the sort by
+                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
                     contentGrid.reInit();
                 }
             }

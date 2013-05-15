@@ -1,16 +1,28 @@
 MLS.contentFilter = (function () {
 
     var $cf = $jQ('#content-filter'),
+        options = {
+            endpoint: null,
+            callback: function () {},
+            container: null
+        },
+
         pub = {
 
             /*============================
             =            Init            =
             ============================*/
 
-            init: function () {
+            init: function (o) {
+                options = $jQ.extend(options, o);
+
+                // endpoint = endpoint ? endpoint : (ep || MLS.ajax.endpoints.PRODUCT_LISTING);
+                // callback = c || contentGrid.reInit;
+
+
                 $cf = $jQ('#content-filter');
-                var $fs = $jQ('#filter-selections'),
-                    $collapsible = $cf.find('.collapsible'),
+                var $collapsible = $cf.find('.collapsible'),
+                    // $fs = $jQ('#filter-selections'),
                     // i = j = 0,
                     // $facet = null,
                     // param,
@@ -124,7 +136,7 @@ MLS.contentFilter = (function () {
                 // update hash
                 window.location.hash = href;
 
-                params = pub.getParamsFromUrl(href);
+                params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
             },
 
@@ -138,7 +150,7 @@ MLS.contentFilter = (function () {
                 // update hash
                 window.location.hash = href;
 
-                params = pub.getParamsFromUrl(href);
+                params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
             },
 
@@ -166,22 +178,6 @@ MLS.contentFilter = (function () {
                 pub.processRequest(params);
             },
 
-            getParamsFromUrl: function (href) {
-                var queryParams = [],
-                    params = {},
-                    param,
-                    j = 0;
-                // make params based on the url located in the a[href]
-                queryParams = href.split('?')[1].split('&');
-
-                for (j = 0; j < queryParams.length; j++) {
-                    param = queryParams[j].split('=');
-                    params[param[0]] = param[1];
-                }
-
-                return params;
-            },
-
 
 
             /*=======================================
@@ -192,7 +188,7 @@ MLS.contentFilter = (function () {
 
                 // make request
                 MLS.ajax.sendRequest(
-                    MLS.ajax.endpoints.PRODUCT_LISTING,
+                    options.endpoint,
                     params,
                     pub.updateResults
                 );
@@ -205,18 +201,24 @@ MLS.contentFilter = (function () {
             ===================================*/
 
             updateResults : function (data) {
-
                 if (data.hasOwnProperty('success')) {
                     // update results...
-                    MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
-                    contentGrid.reInit(); // reload contentGrid
+                    // MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
+                    options.container.html(data.success.responseHTML);
+
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
                     // ... and filters
                     $cf.replaceWith(data.success.filtersHTML);
+
+                    // ... and even the sort by
+                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
+
+                    options.callback();
                     pub.reInit();
                 } else {
-                    MLS.ui.updateContent('#main-column .content-grid', data.error.responseHTML);
+                    options.container.html(data.error.responseHTML);
+
                 }
 
             },
