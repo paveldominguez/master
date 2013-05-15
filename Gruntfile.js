@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // load local tasks from /tasks/grunt folder
-    grunt.loadNpmTasks('grunt-bless', 'grunt-devtools');
+    grunt.loadNpmTasks('grunt-bless', 'grunt-devtools', 'grunt-contrib-concat');
 
     grunt.initConfig({
         watch: {
@@ -29,10 +29,46 @@ module.exports = function (grunt) {
                     'inc/**/*.html',
                     '*.html',
                     'css/*.css',
-                    'js/**/*js',
+                    'js/**/*.js',
                     'img/**/*.{png,jpg,jpeg,webp}'
                 ],
-                tasks: ['livereload']
+                tasks: ['concat:dist']
+            }
+        },
+        concat: {
+            options: {
+                stripBanners: false,
+                separator: ';',
+                banner: '/*' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
+            },
+            dist: {
+                src: [
+                    'js/lib/jquery.min.js',
+                    'js/foundation/app.js',
+                    'js/lib/respond.min.js',
+                    'js/lib/response.min.js',
+                    'js/lib/jquery.flexslider.min.js',
+                    'js/lib/jquery.tinyscrollbar.min.js',
+                    'js/lib/jquery.uniform.min.js',
+                    'js/lib/jquery.validate.js',
+                    'js/lib/typeahead.min.js',
+                    'js/lib/select.js',
+                    'js/scripts.js',
+                    'js/content-grid.js',
+                    'js/content-filter.js',
+                    'js/category-landing.js',
+                    'js/home.js',
+                    'js/lifestyle.js',
+                    'js/product-detail.js',
+                    'js/search-results.js',
+                    'js/special-offers.js',
+                    'js/cart.js',
+                    'js/mls-ajax.js',
+                    'js/404.js',
+                    'js/util.js',
+                    'js/ui.js'
+                ],
+                dest: 'js/all.js'
             }
         },
         connect: {
@@ -93,11 +129,11 @@ module.exports = function (grunt) {
         },
         bless: {
             options: {
-                // compress: false,
-                // cleanup: true,
+                compress: true,
+                cleanup: true,
                 // force: false,
-                // imports: true,
-                // cacheBuster: true
+                imports: true,
+                cacheBuster: true
             },
             debug: {
                 files: {
@@ -139,10 +175,10 @@ module.exports = function (grunt) {
     grunt.registerTask('build', 'Build task, 3 options: debug, dist, qa', function (target) {
         grunt.task.run(['clean']);
 
-        if (target === 'debug' || target === undefined) {
+        if (target === 'debug') {
             return grunt.task.run([
                 'compass',
-                //'optimize',
+                'concat:dist',
                 'bless:debug'
             ]);
         }
@@ -150,29 +186,24 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('optimize', 'Internal task used by `build` task', function (target) {
-        if (target === 'debug' || target === 'qa' || target === 'livereload' || target === undefined) {
+        if (target === 'debug' || target === 'qa') {
             return grunt.task.run([
-                //'includereplace',
-                //'concat',
-                //'bless'
-                //'imagemin',
-                //'rig',
-
+                'compass',
+                'concat:dist',
+                'bless:debug'
             ]);
         }
 
         if (target === 'dist') {
             return grunt.task.run([
-                //'concat',
-                //'imagemin',
-                //'rig',
-                'bless'
+                'concat:dist',
+                'bless:debug'
             ]);
         }
     });
 
     grunt.registerTask('server', 'Launch node server; 3 options: debug, dist, qa', function (target) {
-        if (target === 'debug' || target === undefined) {
+        if (target === 'debug') {
             return grunt.task.run([
                 'build:debug',
                 'livereload-start',
@@ -202,4 +233,9 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'open:wiki'
     ]);
+    // grunt.registerTask('livereload', [
+    //     'compass',
+    //     'concat:dist',
+    //     'bless:debug'
+    // ]);
 };
