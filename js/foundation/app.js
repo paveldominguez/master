@@ -1,3 +1,8 @@
+if (typeof console === 'undefined') {
+    this.console = {log: function () {}};
+}
+
+
 ;(function ($, window, undefined) {
   'use strict';
 

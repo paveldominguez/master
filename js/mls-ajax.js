@@ -7,6 +7,7 @@ MLS.ajax = {
         REMOVE_FROM_MINICART: "/services/add_to_cart.json",
         GET_MINICART: "/services/add_to_cart.json",
         GET_CART: "/services/cart.json",
+        GET_CART_SUMMARY: "/services/checkout_cart.json",
         ARTICLE: "/services/article.json",
         HOMEPAGE_PRODUCTS: "/services/homepage.json",
         SEARCH_DEVICES: "/services/devices.json",
@@ -21,7 +22,18 @@ MLS.ajax = {
         LIFESTYLE_LANDING_SEARCH: "/services/lifestyle-landing.json",
 
         // CONTENT
-        CONTENT_FILTER: "/services/content.json"
+        CONTENT_FILTER: "/services/content.json",
+
+        // SPECIAL OFFERS
+        SPECIAL_OFFERS: "/services/special_offers.json",
+
+        // Product Listing Page
+        CATEGORY_PAGE: "/services/category.json",
+        // Checkout
+        CHECKOUT_SHIPPING_OPTIONS: "/services/checkout_shipping_options.json",
+        CHECKOUT_SELECT_SHIPPING: "/services/checkout_select_shipping.json",
+        CHECKOUT_STEP_1: "/services/checkout_step_1.json",
+        CHECKOUT_STEP_2: "/services/checkout_step_2.json"
     },
 
     init: function() {
