@@ -119,21 +119,22 @@ MLS = {
         init : function () {
             $jQ('#sort-options').uniform();
             contentGrid.init();
-            contentFilter.init();
+            MLS.contentFilter.init();
             MLS.ajax.cart.init(document.body);
             MLS.ajax.colorPicker.init();
         }
     },
     'cart-and-checkout': {
     	init : function () {
-    		MLS.cartCheckout.init();
+    		MLS.cart.init();
+            // MLS.checkout.init();
     	}
     },
     'content-landing-page' : {
         init : function () {
             //searchResults.styleDropDown();
             contentGrid.init();
-            contentFilter.init();
+            MLS.contentFilter.init();
             MLS.ajax.article.init();
             MLS.ui.socialShare.init();
             //tabs
@@ -156,7 +157,7 @@ MLS = {
             MLS.categoryLanding.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
-            contentFilter.init();
+            MLS.contentFilter.init();
             MLS.ajax.cart.init(document.body);
         }
     },
@@ -170,7 +171,7 @@ MLS = {
         init : function () {
             contentGrid.init();
             MLS.ajax.colorPicker.init();
-            contentFilter.init();
+            MLS.contentFilter.init();
             MLS.ajax.cart.init(document.body);
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
@@ -201,13 +202,13 @@ MLS = {
     //         $jQ("#sort-options").uniform();
     //         contentGrid.init();
     //         MLS.ajax.colorPicker.init();
-    //         contentFilter.init();
+    //         MLS.contentFilter.init();
     //         MLS.ajax.cart.init();
     //     }
     // },
     'special-offers-landing-page' : {
         init : function() {
-            contentFilter.init();
+            MLS.contentFilter.init();
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();

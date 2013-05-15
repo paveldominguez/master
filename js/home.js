@@ -16,6 +16,9 @@ MLS.home = {
 		//Madlib
 		MLS.home.madlib.init();
 
+		//MiniCart
+		MLS.miniCart.init();
+
 		//Flex Sliders
 		MLS.home.sliders.init();
 
