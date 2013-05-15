@@ -27,10 +27,10 @@ MLS.lifestyle = {
     init : function (noglobal) {
         // search pieces
         // compability services
-        $jQ('.compatibility-filter').children('select').on('change', this.search);
+        $jQ('.compatibility-filter').children('select').unbind("change", this.search).on('change', this.search);
 
         // type ahead (searc)
-        $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', this.search);
+        $jQ('.compatibility-filter').children('input.type-ahead').unbind("keyup", this.search).on('keyup', this.search);
 
         var contentItem = '.product-board-slide .content-item';
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);

@@ -7,6 +7,7 @@ MLS.ajax = {
         REMOVE_FROM_MINICART: "/services/add_to_cart.json",
         GET_MINICART: "/services/add_to_cart.json",
         GET_CART: "/services/cart.json",
+        GET_CART_SUMMARY: "/services/checkout_cart.json",
         ARTICLE: "/services/article.json",
         HOMEPAGE_PRODUCTS: "/services/homepage.json",
         SEARCH_DEVICES: "/services/devices.json",
@@ -28,6 +29,8 @@ MLS.ajax = {
 
         // Product Listing Page
         CATEGORY_PAGE: "/services/category.json"
+        // Checkout
+        CHECKOUT_SHIPPING_OPTIONS: "/services/checkout_shipping_options.json"
     },
 
     init: function() {
