@@ -1,17 +1,10 @@
-MLS.cartCheckout = {
-    initCartDetails: function() {
-
-    },
-
+MLS.checkout = {
     init : function() {
-        MLS.miniCart.init();
-        $jQ(".mini-cart").bind("cart-item-updated cart-item-removed", MLS.cartCheckout.update);
-
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
 
         // COMMON (cart, minicart & checkout)
-        MLS.cartCheckout.vzwValidationRules(); // add methods to all validations
+        MLS.checkout.vzwValidationRules(); // add methods to all validations
         $jQ("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final, .next-step-input").uniform(); // style form elements
 
         $jQ('.checkout-dropdown').each(function(){ // display rules for inline dropdowns
@@ -22,21 +15,11 @@ MLS.cartCheckout = {
             MLS.ui.dropdownDisplay(this);
         });
 
-        // MINICART only
-        // MLS.cartCheckout.minicartTempContent(); // TEMP for demos, PA remove this
-        // $jQ('#minicart-cart').find('.minicart-item').attr('data-vpos', 0); // for item scrolling
-
-        // MLS.cartCheckout.minicartLayout(); // empty state & scrolling controls
-
-        // CART only
-        MLS.cartCheckout.checkCartQty(); // empty states, scroll controls, any new conditionals
-        MLS.cartCheckout.saveCartValidation();
-
         // CHECKOUT only
-        MLS.cartCheckout.beginCheckoutValidation();
-        MLS.cartCheckout.mainCheckoutValidation();
-        MLS.cartCheckout.checkoutSidebarScroll(pgWidth); // set scrolling
-        MLS.cartCheckout.smallScreenContent(); // prepare small device content
+        MLS.checkout.beginCheckoutValidation();
+        MLS.checkout.mainCheckoutValidation();
+        MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
+        MLS.checkout.smallScreenContent(); // prepare small device content
         $jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder'); // enhance initial uniform.js select style
         $jQ('#vzn-checkout .selector').find('select').change(function(){ // enhance uniform.js select performance
             $jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
@@ -53,105 +36,13 @@ MLS.cartCheckout = {
         // CHECKOUT
         $jQ(window).resize(function(){
             var resizePgWidth = document.body.clientWidth;
-            MLS.cartCheckout.checkoutSidebarScroll(resizePgWidth);
+            MLS.checkout.checkoutSidebarScroll(resizePgWidth);
         });
 
     // .........................................................................END RESIZE
 
-
-
-    // CART EVENTS ...........................................................................
-
-        // header : save cart link
-        $jQ('.save-cart-link').click(function(){
-            MLS.ui.lightbox(this);
-        });
-
-        // items table : update qty message
-        $jQ('.cart-revise-qty').change(function() {
-            MLS.miniCart.updateItem(
-                $jQ(this).data("cart-id"), // id
-                null, // size (null = do not change)
-                null, // color (null = do not change)
-                $jQ(this).val()
-            );
-        });
-
-        // items table : remove item button
-        $jQ('.remove a').click(function(e) {
-            e.preventDefault();
-            $jQ(this).parents('.remove').next('.confirm-remove').fadeIn(300);
-        });
-
-        // items table : confirm remove panel
-        $jQ('.cart-remove-links').find('.cancel').click(function(e) { // panel : cancel
-            e.preventDefault();
-            $jQ(this).parents('.confirm-remove').fadeOut(300);
-        });
-
-        // sidebar : banner dropdowns
-        $jQ('.cart-sidebar').find('.special-offer-block').each(function() {
-            MLS.ui.dropdownDisplay(this);
-        });
-
-        // save cart modal : successful submit action
-        $jQ('#save-cart-submit').click(function(e) {
-            if ($jQ('#save-cart-form').valid()) {
-                $jQ(this).parents('.modal-info-block').find('h3').html('Cart Saved!').next().html('Please check your email');
-                $jQ(this).parents('.modal-info-block').find('#save-cart-form').remove();
-            };
-        }); // end save cart submit actions
-
-        // page specific cart modals: back to cart click
-        /*
-        $jQ('.lightbox-back').click(function(){
-            $jQ(this).parents('.lightbox').fadeOut(300);
-        });
-
-        // cart modals: dropdowns
-        $jQ('.lightbox-fineprint').find('li').each(function(){
-            MLS.ui.dropdownDisplay(this);
-        });
-        */ 
-
-    // .................................................................... END CART EVENTS
-
-
-    // MINICART EVENTS ...............................................................
-        /*
-        // free shipping modal
-        $jQ('.minicart-banner.ship').find('.minicart-cta').click(function(){
-            $jQ('#minicart-shipping-modal').show();
-        });
-
-        // remove item - client side manipulation
-        $jQ('#minicart-box .remove').find('a').each(function(){
-            MLS.cartCheckout.minicartEdit(this);
-        });
-        */
-
-        /*
-        // next 3 items
-        $jQ('.next-items-link').click(function(e){
-            e.preventDefault();
-            var type = "next";
-            MLS.cartCheckout.minicartScroll(type);
-        });
-
-        // prev 3 items
-        $jQ('.prev-items-link').click(function(e){
-            e.preventDefault();
-            var type = "prev";
-            MLS.cartCheckout.minicartScroll(type);
-        });
-        */
-
-    // .................................................................... END MINICART EVENTS
-
-
-
     // CHECKOUT SIGN IN
-        MLS.cartCheckout.beginCheckoutEvents(); // signin page
+    //    MLS.checkout.beginCheckoutEvents(); // signin page
 
 
 
@@ -180,11 +71,11 @@ MLS.cartCheckout = {
             })
         });
 
-        MLS.cartCheckout.stepTwoSequence(); // card & billing decisions
+        MLS.checkout.stepTwoSequence(); // card & billing decisions
 
-        MLS.cartCheckout.giftCardSequence();   // discount code & giftcards
+        MLS.checkout.giftCardSequence();   // discount code & giftcards
 
-        MLS.cartCheckout.nextStepSequence(); // next step button for steps 1 & 2
+        MLS.checkout.nextStepSequence(); // next step button for steps 1 & 2
 
 
         $jQ('.edit-checkout-step').not('#saved-info-edit').click(function(){ // EDIT VALIDATED INFO BUTTON (after next-step click)
@@ -297,110 +188,7 @@ MLS.cartCheckout = {
         );
     },
 
-    /* minicartLayout : function() { // MINICART show empty state or scroll controls based on number of items..........................
-        var inMini = $jQ('#minicart-cart').find('.minicart-item').length;
-        if (inMini < 1) { // layout empty cart
-            $jQ('#nav-tab4, #checkout-minicart').addClass('empty');
-        } else if (inMini > 0 && inMini < 4 ) {
-            $jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
-            $jQ('.minicart-next').css('display', 'none');
-        } else if (inMini > 3) {
-            $jQ('#nav-tab4, #checkout-minicart').removeClass('empty');
-            $jQ('.minicart-next').addClass('on');
-        }
-        // update item total in tab
-        var itemsInMini = 0
-        $jQ('#minicart-item-list').find('.minicart-item-qty').each(function(){
-            var thisItemQty = $jQ(this).html();
-            thisItemQty = parseInt(thisItemQty, 10);
-            itemsInMini = itemsInMini + thisItemQty;
-        });
-        $jQ('#nav-cart').find('.count').html(itemsInMini);
-    },
-    minicartEdit : function(removeBtn){ // MINICART remove from minicart controls......................................................
-        $jQ(removeBtn).click(function(e){ // first 'remove' click
-            e.preventDefault();
-            var block = $jQ(removeBtn).parents('.minicart-item');
-            var editBox = $jQ(removeBtn).parents('.minicart-edit');
-
-            $jQ(block).css('background-color' , '#d6d9d9');
-            $jQ(editBox).css('width', '120px').find('.edit').html('<a href="#" class="minicart-cancel-remove">Cancel</a>');
-            $jQ('<div class="remove-msg">Are you sure you want to remove this item?</div>').appendTo($jQ(block).find('.item-info-block'));
-            $jQ(removeBtn).addClass('yes-remove');
-
-            $jQ('.yes-remove').click(function(){ // confirm remove item from cart .................
-                //var itemID = $jQ(this).parents('.minicart-item').attr('id');
-                //MLS.ajax.sendRequest($jQ('#minicart-form').attr('action'), { itemId : itemID }, function(data){
-                //    $jQ('#nav-cart .count').html(data.success.cartCount);
-                    $jQ(this).parents('.minicart-item').remove();
-                //});
-                MLS.cartCheckout.minicartLayout();
-            });
-
-            $jQ('.minicart-cancel-remove').click(function(e){ // cancel remove
-                e.preventDefault();
-                $jQ(block).css('background-color' , '#e5eaea').find('.remove-msg').remove();
-                $jQ(editBox).css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
-                $jQ(editBox).find('.yes-remove').removeClass('yes-remove').unbind('click');
-
-                minicartEdit(removeBtn); // reset button functions
-            });
-
-        });
-    },
-    minicartScroll : function(type) { // MINICART  scroll minicart items .............................................................
-        if (type == "next") { // if scroll up, calculate max scroll up
-            var inMini = $jQ('#minicart-item-list').find('.minicart-item').length;
-            var maxScrollTimes = inMini / 3;
-            var maxScrollInt = parseInt(maxScrollTimes, 10);
-            var maxScrollPos = maxScrollInt * -247;
-
-            // get current position
-            var curPos = $jQ('.minicart-item.one').attr('data-vpos');
-
-            //calculate new offset before actually moving
-            var newPos = curPos - 247;
-
-            // check position, move and adjust options as required
-            if (newPos > maxScrollPos) { // if beginning/middle
-                $jQ('.minicart-item').each(function(){ // move up
-                    MLS.ui.vScroll(this, newPos);
-                });
-                $jQ('.prev-items-link').addClass('on'); //turn on prev
-                $jQ('.next-items-link').removeClass('off'); //turn on next if needed
-
-            } else if (newPos == maxScrollPos) { // if end
-                $jQ('.minicart-item').each(function(){ // move up
-                    MLS.ui.vScroll(this, newPos);
-                });
-                $jQ('.next-items-link').addClass('off'); //turn off next
-            }
-
-        } else { // if scroll down
-            // get current position
-            var curPos = $jQ('.minicart-item.one').attr('data-vpos');
-            var curPosParse = parseInt(curPos, 10);
-
-            //calculate new offset before actually moving
-            var newPos = curPosParse + 247;
-
-            // check position, move and adjust options as required
-            if (newPos == 0) { // if beginning/middle
-                $jQ('.minicart-item').each(function(){ //move down
-                    MLS.ui.vScroll(this, newPos);
-                });
-                $jQ('.prev-items-link').removeClass('on'); //turn off prev
-                $jQ('.next-items-link').removeClass('off'); //turn on next
-
-            } else { // if end
-                $jQ('.minicart-item').each(function(){ //move down
-                    MLS.ui.vScroll(this, newPos);
-                });
-                $jQ('.next-items-link').removeClass('off'); //turn on next
-            }
-        }
-    } */
-
+    /* THIS PIECE SHOULD GO TO THE SIGNIN PAGE
     beginCheckoutEvents : function() { // for signin/guest cover page events ..................................................
         $jQ('#checkout-sign-in').click(function(e) { // begin checkout : signin button
             e.preventDefault();
@@ -416,6 +204,8 @@ MLS.cartCheckout = {
             $jQ('.create-login-message').slideToggle(300);
         });
     },
+    */
+
     checkoutSidebarScroll : function(pgWidth) { // CHECKOUT floating sidebar ..................................................
         if (pgWidth > 959){
             $jQ(window).scroll(function(){
@@ -433,6 +223,7 @@ MLS.cartCheckout = {
             });
         } // end 'if desktop'
     },
+
     smallScreenContent : function() { // CHECKOUT copy to mobile-only fields ....................................................
         // top
         $jQ('#checkout .checkout-accordion.sidebar').clone().appendTo('#mobile-checkout-summary');
@@ -447,6 +238,7 @@ MLS.cartCheckout = {
         $jQ('#checkout .totals').clone().appendTo('#mobile-checkout-totals');
         $jQ('#checkout .checkout-disclaimers').clone().appendTo('#mobile-checkout-disclaimers');
     },
+
     stepTwoSequence : function() { // CHECKOUT card & billing choices...............................................................
         $jQ('.billing-option', '#billing-info').on('click', function() {
             var $context = $jQ(this),
@@ -535,6 +327,7 @@ MLS.cartCheckout = {
             }
         });
     },
+
     giftCardSequence : function() { // main checkout sequence : step 2 .............................................................
         $jQ('#apply-discount-code').click(function(e){ //  apply & validate discount code
             e.preventDefault();
@@ -559,14 +352,14 @@ MLS.cartCheckout = {
         $jQ('#begin-gift-card').click(function(e){ //grab CC info (if present) and copy to GC form
             var ecValid = true;
             $jQ('#enter-card-info').find('.selector').each(function(){ // validate main cc selects first
-                var selectsValid = MLS.cartCheckout.validateSelect(this);
+                var selectsValid = MLS.checkout.validateSelect(this);
                 if(selectsValid == false) {
                     ecValid = false;
                 }
             });
             $jQ('#vzn-checkout').validate(); // validate the rest
             if ($jQ('.CCV').valid() && ecValid == true ) {
-                MLS.cartCheckout.copyCardInfo('CCV', 'GCV'); // copy valid card info down
+                MLS.checkout.copyCardInfo('CCV', 'GCV'); // copy valid card info down
             }
         });
 
@@ -575,7 +368,7 @@ MLS.cartCheckout = {
             var gcValid = true; // staying optimistic
 
             $jQ(this).parents('.checkout-discount-block').find('.selector').each(function(){ // validate selects first
-                var selectsValid = MLS.cartCheckout.validateSelect(this);
+                var selectsValid = MLS.checkout.validateSelect(this);
                 if(selectsValid == false) {
                     gcValid = false;
                 }
@@ -583,7 +376,7 @@ MLS.cartCheckout = {
 
             $jQ('#vzn-checkout').validate(); // validate the rest
             if ($jQ('.GCV').valid() && gcValid == true ) {
-                MLS.cartCheckout.copyCardInfo('GCV', 'CCV'); // copy valid card info back up to main cc form
+                MLS.checkout.copyCardInfo('GCV', 'CCV'); // copy valid card info back up to main cc form
                 $jQ('#checkout-cart-gift-card-1').slideToggle(300); // hide & show
                 $jQ('.gift-card-cc-block').slideToggle(300);
                 $jQ(this).parents('.discount-input').slideToggle();
@@ -625,6 +418,7 @@ MLS.cartCheckout = {
             return false;
         });
     },
+
     copyCardInfo : function(fromClass, toClass) { // CHECKOUT move valid card info on page from one fieldset to the other.........
         var fromFset = $jQ('.' + fromClass).parents('.credit-card-info');
         var toFset = $jQ('.' + toClass).parents('.credit-card-info');
@@ -639,6 +433,7 @@ MLS.cartCheckout = {
             });
         });
     },
+
     nextStepSequence : function(){ // CHECKOUT  next step event .................................................................
         $jQ('.next-step-input').click(function(e) {
             e.preventDefault();
@@ -740,6 +535,7 @@ MLS.cartCheckout = {
             }
         }); // end click
     },
+
     beginCheckoutValidation : function() { // CHECKOUT signin validation ...........................................................
 
         $jQ('#my-Verizon-login').validate({
@@ -769,6 +565,7 @@ MLS.cartCheckout = {
             }
         });
     },
+
     mainCheckoutValidation : function() { // CHECKOUT
         $jQ('#vzn-checkout').validate({
             ignore: '.ignore, :hidden',
@@ -1048,21 +845,6 @@ MLS.cartCheckout = {
             }
         });
     }
-
-    /* ,minicartTempContent : function() { // TEMP creates example content in minicart
-        $jQ('.minicart-demo-1 .minicart-item').each(function(){
-            if ($jQ(this).hasClass('one')) {
-                // do nothing
-            } else {
-                $jQ(this).remove();
-            }
-        });
-
-        $jQ('.minicart-demo-empty .minicart-item').each(function(){
-            $jQ(this).remove();
-        });
-    } */
-
 }; // end cartCheckout
 
 

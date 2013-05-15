@@ -124,11 +124,15 @@ MLS = {
             MLS.ajax.colorPicker.init();
         }
     },
-    'cart-and-checkout': {
+    'cart': {
     	init : function () {
     		MLS.cart.init();
-            // MLS.checkout.init();
-    	}
+        }
+    },
+    'checkout': {
+        init : function () {
+            MLS.checkout.init();
+        }
     },
     'content-landing-page' : {
         init : function () {
