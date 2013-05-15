@@ -192,8 +192,6 @@ MLS.cartCheckout = {
         $jQ('.checkout-accordion').find('.acc-control').click(function(){
             MLS.ui.simpleAcc(this);
         });
-
-
         // checkout sidebar special offer
         $jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
             MLS.ui.dropdownDisplay(this);
@@ -611,7 +609,10 @@ MLS.cartCheckout = {
             return false;
         });
 
-        $jQ('#add-gift-card-2').click(function(){  $jQ(this).toggleClass('close'); });
+        $jQ('#add-gift-card-2').click(function(){  // add another gift card (slightly different traversal method than the global simpleAcc function)
+			$jQ(this).toggleClass('close'); 
+			$jQ(this).parent().parent().next('.acc-info').slideToggle(300); // each gift card is a child of a separate .acc-info, so they can be removed individually
+		});
 
 
         $jQ('#apply-gift-card-2').click(function(e){ // apply & validate gift card 2
