@@ -135,7 +135,7 @@ module.exports = function (grunt) {
                 cleanup: true,
                 force: true,
                 imports: true,
-                cacheBuster: false
+                cacheBuster: true
             },
             debug: {
                 files: {
