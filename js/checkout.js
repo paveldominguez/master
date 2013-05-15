@@ -1,5 +1,26 @@
 MLS.checkout = {
+    updateShippingOptions: function(zipcode) {
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.CHECKOUT_SHIPPING_OPTIONS,
+            
+            {
+                zipcode: zipcode
+            },
+
+            function(r) {
+                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                }
+
+                $jQ(".shipping-option-radios").html(r.success.responseHTML).find("input[name=shipRadio]").click(MLS.checkout.update);
+            }
+        );
+    },
+
     init : function() {
+        // update the summare whenever the minicart changes
+        $jQ(".mini-cart").bind("cart-updated cart-item-updated cart-item-removed", MLS.checkout.update);
+
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
 
@@ -26,7 +47,6 @@ MLS.checkout = {
             $jQ(this).parents('.selector').removeClass('error-style');
             $jQ(this).parents('.selector').find('.select-error-message').remove();
         });
-
     //  ........................................................................END ONLOAD
 
 
@@ -47,12 +67,13 @@ MLS.checkout = {
 
 
     // CHECKOUT EVENTS ........................................................................
-
-         // checkout accordions
-        $jQ('.checkout-accordion').find('.acc-control').click(function(){
-            MLS.ui.simpleAcc(this);
+        $jQ("#checkout-ship-zip").keyup(function(e) {
+            if ($jQ(this).val().length == 5)
+            {
+                // assume valid zipcode
+                MLS.checkout.updateShippingOptions($jQ(this).val());
+            }
         });
-
 
         // checkout sidebar special offer
         $jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
@@ -137,40 +158,10 @@ MLS.checkout = {
             }
         });
     },
-    checkCartQty : function() { // CART show empty state & number of items in header.........................................
-        var inCart = $jQ('.cart-table').children('.table-row').not('.empty-cart').length;
-        if (inCart < 1) { // show empty cart message & update header & label
-            $jQ('.table-header, .proceed-block').hide();
-            $jQ('.empty-cart').show();
-            $jQ('#cart-header-summary').html(inCart).next().html('Items');
-        } else if (inCart == 1) { // update header-summary & label
-            $jQ('#cart-header-summary').html(inCart).next().html('Item');
-        } else { // update header summary & label
-            $jQ('#cart-header-summary').html(inCart).next().html('Items');
-        }
-    },
-    saveCartValidation : function() { // CART validate save cart email form...................................................
-        $jQ('#save-cart-form').validate({
-            rules: {
-                saveCartEmail: {
-                required: true,
-                noPlaceholder: true,
-                email: true
-                }
-            },
-            messages: {
-                saveCartEmail: {
-                    required: 'Please enter your email to save your cart',
-                    noPlaceholder: 'Please enter a valid email',
-                    email: 'Please enter a valid email'
-                }
-            }
-        });
-    },
 
     update: function() {
         MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.GET_CART,
+            MLS.ajax.endpoints.GET_CART_SUMMARY,
             
             {
             },
@@ -182,8 +173,12 @@ MLS.checkout = {
                     return MLS.modal.open(r.error ? r.error.responseHTML : null);
                 }
 
-                $jQ("#cart-data").html(r.success.responseHTML);
-                $jQ("#cart-data").find('.update-msg:visible').fadeOut(1000);
+                $jQ(".checkout-cart-summary").html(r.success.responseHTML);
+
+                // checkout accordions
+                $jQ('.checkout-cart-summary .checkout-accordion .acc-control').click(function() {
+                    MLS.ui.simpleAcc(this);
+                });
             }
         );
     },
@@ -846,7 +841,3 @@ MLS.checkout = {
         });
     }
 }; // end cartCheckout
-
-
-
-
