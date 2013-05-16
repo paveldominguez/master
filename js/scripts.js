@@ -201,7 +201,9 @@ MLS = {
         }
     },
     'product-listing-page' : {
+
         init : function () {
+
             contentGrid.init();
             MLS.ajax.colorPicker.init();
 

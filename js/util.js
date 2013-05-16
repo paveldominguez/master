@@ -12,7 +12,7 @@ MLS.util = {
 
         console.log(href);
 
-        if (href.match(/&/)) {
+        if (href.match(/\?/)) {
             // make params based on the url located in the a[href]
             queryParams = href.split('?')[1].split('&');
 
@@ -25,4 +25,3 @@ MLS.util = {
         return params;
     }
 };
-

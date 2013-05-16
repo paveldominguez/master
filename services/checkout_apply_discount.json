@@ -1,0 +1,8 @@
+{
+    "success": {
+        "responseHTML": "<div class=\"label\">Discount Code:</div><div class=\"data\">- $<span id=\"discount-code-amt\">19.99</span></div>"
+    },
+    "error": {
+        "responseHTML": ""
+    }
+}

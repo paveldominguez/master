@@ -1,6 +1,7 @@
 MLS.contentFilter = (function () {
 
     var $cf = $jQ('#content-filter'),
+        hashLoaded = false,
         options = {
             endpoint: null,
             callback: function () {},
@@ -29,6 +30,9 @@ MLS.contentFilter = (function () {
                 $collapsible.find('.facet-list').slideToggle('slow');
 
 
+                // load content on load (if hash)
+                !hashLoaded && pub.loadFromHash();
+                hashLoaded = true;
 
                 /*==========  bind click events  ==========*/
 
@@ -48,10 +52,16 @@ MLS.contentFilter = (function () {
 
                 // sort links
                 $jQ('#sort-options').find('li').on('click', pub.sort);
-
-
             },
             /*-----  End of Init  ------*/
+
+
+
+
+
+            /*================================================
+            =            Finalize (unbind events)            =
+            =================================================*/
 
             finalize: function () {
                 $cf = $jQ('#content-filter');
@@ -79,42 +89,68 @@ MLS.contentFilter = (function () {
 
             },
 
+            /*-----  End of Finalize (unbind events)  ------*/
+
+
+
+
+            /*============================================
+            =            Reinit: on ajax load            =
+            ============================================*/
+
             reInit: function () {
                 MLS.contentFilter.finalize();
                 MLS.contentFilter.init();
 
             },
 
+            /*-----  End of Reinit: on ajax load  ------*/
+
+
+
+
+            /*======================================
+            =            Load from Hash            =
+            ======================================*/
+            // If the url contains paramaters in the hash when it
+            // is first loaded then request content
+
+            loadFromHash: function () {
+
+                var hash = window.location.hash,
+                params = {};
+
+                if (hash !== '') { // we have a hash
+                    params = MLS.util.getParamsFromUrl(hash);
+
+                    if (!$jQ.isEmptyObject(params)) {
+                        pub.processRequest(params);
+                    }
+
+                }
+
+            },
+
+            /*-----  End of Load from Hash  ------*/
+
+
+
+
+            /*=======================================
+            =            Listing sorting            =
+            =======================================*/
 
             sort: function (e) {
                 e.preventDefault();
                 var $elem = $jQ(this),
-                    // type = $elem.attr('data-type'),
-                    // $sortOptions = $jQ('#sort-options'),
-                    href = $elem.find('a').attr('href');
+                    href = $elem.find('a').attr('href'),
+                    params = MLS.util.getParamsFromUrl(href);
 
-                params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
-
-                //Fire Ajax
-
-
-                // MLS.ajax.sendRequest(
-                //     MLS.ajax.endpoints.PRODUCT_SORT,
-                //     MLS.util.getParamsFromUrl(href),
-                //     function (data) {
-                //         if (data.hasOwnProperty('success')) {
-                //             $sortOptions.find('li').removeClass('active');
-                //             $elem.addClass('active');
-                //             // load content...
-                //             $jQ('#main-column .content-grid').html(data.success.responseHTML);
-                //              // ... and even the sort by
-                //             $jQ('#sort-options').replaceWith(data.success.sortByHTML);
-                //             contentGrid.reInit();
-                //         }
-                //     }
-                // );
             },
+
+            /*-----  End of Listing sorting  ------*/
+
 
 
             /*=======================================
@@ -124,13 +160,19 @@ MLS.contentFilter = (function () {
             dimensionClick: function (e) {
                 e.preventDefault();
                 $jQ(this).toggleClass('active').promise().done(function () {
-                    // toggleElement($jQ(this).next(), false);
                     $jQ(this).next().slideToggle('slow');
                 });
             },
 
             /*-----  End of dimension click  ------*/
 
+
+
+
+
+            /*==========================================
+            =            Compability search            =
+            ==========================================*/
 
             compabilitySearch: function (e) {
                 var $elem = $jQ(this),
@@ -166,6 +208,9 @@ MLS.contentFilter = (function () {
                 pub.processRequest(params);
             },
 
+            /*-----  End of Compability search  ------*/
+
+
 
             /*=============================================
             =            Remove selected facet            =
@@ -179,6 +224,8 @@ MLS.contentFilter = (function () {
                 window.location.hash = href;
                 pub.processRequest(params);
             },
+
+            /*-----  End of remove facet  ------*/
 
 
 
@@ -198,18 +245,21 @@ MLS.contentFilter = (function () {
 
             /*-----  End of process request  ------*/
 
+
+
             /*===================================
             =            update grid            =
             ===================================*/
 
             updateResults : function (data) {
                 if (data.hasOwnProperty('success')) {
+
                     // update results...
-                    // MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
                     options.container.html(data.success.responseHTML);
 
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
+
                     // ... and filters
                     $cf.replaceWith(data.success.filtersHTML);
 
@@ -218,9 +268,9 @@ MLS.contentFilter = (function () {
 
                     options.callback();
                     pub.reInit();
+
                 } else {
                     options.container.html(data.error.responseHTML);
-
                 }
 
             },
@@ -230,6 +280,9 @@ MLS.contentFilter = (function () {
 
 
         };
+
+
     return pub;
 }());
+
 
