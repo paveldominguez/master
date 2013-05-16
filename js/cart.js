@@ -1,4 +1,8 @@
 MLS.cart = {
+    options: {
+
+    },
+
     initCartDetails: function() {
         $jQ("#cart-data").find("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final, .next-step-input").uniform(); // style form elements
 
@@ -13,10 +17,7 @@ MLS.cart = {
         // items table : update qty message
         $jQ('#cart-data .cart-revise-qty').change(function() {
             MLS.miniCart.updateItem(
-                $jQ(this).data("cart-id"), // id
-                null, // size (null = do not change)
-                null, // color (null = do not change)
-                $jQ(this).val()
+                $(this).parents("form").serialize()
             );
         });
 
@@ -39,8 +40,18 @@ MLS.cart = {
     },
 
     init : function() {
-        $jQ(".mini-cart").bind("cart-updated cart-item-updated cart-item-removed", MLS.cart.update);
+        // MLS
+        this.options = {
+            getCartEndpoint: MLS.ajax.endpoints.GET_CART,
+            addToCartEndpoint: MLS.ajax.endpoints.ADD_TO_CART,
+            updateCartEndpoint: MLS.ajax.endpoints.UPDATE_CART,
+            removeFromCartEndpoint: MLS.ajax.endpoints.REMOVE_FROM_CART,
+            successCallback: MLS.cart.update
+        };
 
+        // don't trigger the first minicart update
+        MLS.miniCart.started = true;
+        
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
 
@@ -85,9 +96,15 @@ MLS.cart = {
         });
     },
 
-    update: function(evt, r) {
+    update: function(r) {
         $jQ("#cart-header-summary").html(r.success ? r.success.itemCount : "0");
 
+        $jQ("#cart-data").html(r.success.responseHTML);
+        $jQ("#cart-data").find('.update-msg:visible').fadeOut(1000);
+        MLS.cart.initCartDetails();
+        MLS.miniCart.init("#cart-data", MLS.cart.options); // initialize remove buttons
+
+        /*
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.GET_CART,
             
@@ -107,6 +124,7 @@ MLS.cart = {
                 MLS.miniCart.init("#cart-data"); // initialize remove buttons
             }
         );
+        */
     }
 
 }; // end cartCheckout
