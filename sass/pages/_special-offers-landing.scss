@@ -30,21 +30,24 @@ $bgPositionPromoSmall: -85px 35px;
             		box-shadow: inset 0 2px 3px 1px rgba(205, 205, 205, 0.55), inset 0 -1px 4px 1px #a40000;
             		font-family: $fontVzwBook;
             		cursor:pointer;
-            		/* this needs fallback to image for ie8 */ }
+}
 
 .special-offers-landing-page{
-    #special-offers{
+    .special-offers{
         position:relative;
         .slides{
-            height:215px;
             overflow:hidden;
             margin: 0 auto;
             li{
                 float:left;
                 display:block;
-                max-width:215px;
-                min-width:215px;
                 height:215px;
+                width:215px;
+                overflow:hidden;
+                position:relative;
+                img{
+                    position:absolute;
+                }
             }
         }
     }
@@ -587,10 +590,9 @@ $bgPositionPromoSmall: -85px 35px;
                     						opacity: 0;
                     						padding:0;
                     						cursor:pointer;
-
-                    						} /* end input */
-                    					}/* end span */
-                    				}/* end button class */
+                						  }
+                    					}
+                    				}
 
                     			.back-to-story {
                     				display:block;
@@ -600,8 +602,8 @@ $bgPositionPromoSmall: -85px 35px;
                     				background: url(../img/category-listing/back-to-story.png) no-repeat;
                     				cursor:pointer;
                     				}
-                    			}/* end featured actions */
-                    		} /* end item detail */
+                    			}
+                    		}
                     	}
                 }
             }
@@ -691,7 +693,7 @@ $bgPositionPromoSmall: -85px 35px;
             clear: both;
             cursor: pointer;
             @include border-radius(3px);
-            @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
+            @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
             border: 1px solid #3B3F45;
             display: table;
             margin: 35px 25px 0;
@@ -776,7 +778,7 @@ $bgPositionPromoSmall: -85px 35px;
 				font-size: 12px;
 			}
 			.bundle-details {
-				ul#bundle-pieces {
+				.bundle-pieces {
 					list-style-type: disc;
 					li {
 						font-size: 12px;
@@ -913,60 +915,6 @@ $bgPositionPromoSmall: -85px 35px;
 				} /* end item */
 
 }
-
-.special-offers {
-      .special-offers-slider {
-          .special-offers-slide {
-              .content-grid {
-                  .content-item {
-                      height: 250px;
-                      padding: 14px;
-                      position: relative;
-                      margin: 0;
-                      background: none;
-                      border: {
-                          right: 1px solid #cccccc;
-                      }
-                      .wrapper {
-                          height: 220px;
-                          overflow: hidden;
-                          position: relative;
-                          &.slide-1 {
-                              background-color: #5BBB82;
-                          }
-                          &.slide-2 {
-                              background-color: #FFBA62;
-                          }
-                          &.slide-3 {
-                              background-color: #D60000;
-                          }
-                          &.slide-4 {
-                              background-color: #5BBB82;
-                          }
-                      }
-                      .sale-img,
-                      .sale-details,
-                      .sale-link {
-                          position: absolute;
-                      }
-                      .sale-img {
-                          top: 0; right: 0;
-                          z-index: 1;
-                      }
-                      .sale-details {
-                          top: 40px; left: 15px;
-                          z-index: 2;
-                      }
-                      .sale-link {
-                          bottom: 15px; left: 15px;
-                          z-index: 3;
-                      }
-                  }
-              }
-          }
-      }
-}
-
 
 /*bundle deals responsive styles */
 
