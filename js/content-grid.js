@@ -246,7 +246,6 @@ var contentGrid = {
         MLS.ajax.quickView.init(pid, el);
     },
     quickViewShow: function (e) {
-        console.log(e);
         var $quickView = $jQ('#quick-view-overlay'),
         $parentTile = $jQ(e).parent().parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,
