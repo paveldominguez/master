@@ -16,12 +16,12 @@ MLS.specialOffers = {
 
         $jQ('#special-offers').flexslider({
             animation: 'slide',
-            controlsContainer: '#special-offers .slide-nav',
             animationLoop: true,
             controlNav: false,
             directionNav: true,
             slideshow: false,
-            animationSpeed: 500
+            animationSpeed: 500,
+            controlsContainer: '#special-offers .slide-nav'
         });
 
         $jQ('#bundle-deals').flexslider({
@@ -34,9 +34,11 @@ MLS.specialOffers = {
             animationSpeed: 500
         });
 
-		        $jQ(window).resize(function () {
+        /*
+        $jQ(window).resize(function () {
+            $jQ('#offers-onsale').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
+        });
+        */
 
-		            $jQ('#offers-onsale').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
-		        });
-		    }
-		}
+    }
+}
