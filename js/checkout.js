@@ -312,11 +312,11 @@ MLS.checkout = {
 
             if ($jQ(this).parent().hasClass('new-card')) {
                 // new card, show form, hide summary
-                $(".step-info-summary.billing-address").addClass("hidden").hide();
+                $jQ(".step-info-summary.billing-address").addClass("hidden").hide();
                 $jQ('.billing-address.new-billing-info-form').removeClass('hidden').show();
             } else {
                 // old card, hide form, show summary
-                $(".step-info-summary.billing-address").removeClass('hidden').show();
+                $jQ(".step-info-summary.billing-address").removeClass('hidden').show();
                 $jQ('.billing-address.new-billing-info-form').addClass('hidden').hide();
             }
 
@@ -691,13 +691,13 @@ MLS.checkout = {
                 if (which == 'ship-info-complete'){ // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
                         MLS.ajax.endpoints.CHECKOUT_STEP_1,
-                        $(this.form).serialize(),
+                        $jQ(this.form).serialize(),
                         function (r) {
                             if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
                             }
 
-                            $(".step-info-summary:eq(0)").html(r.success.responseHTML);
+                            $jQ(".step-info-summary:eq(0)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
 
                             completed = $jQ('#shipping-info'); // hide/show/scroll ..............
@@ -718,13 +718,13 @@ MLS.checkout = {
                 if (which == 'billing-info-complete'){ // STEP 2 postvalidate
                     MLS.ajax.sendRequest(
                         MLS.ajax.endpoints.CHECKOUT_STEP_2,
-                        $(this.form).serialize(),
+                        $jQ(this.form).serialize(),
                         function (r) {
                             if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
                             }
 
-                            $(".step-info-summary:eq(1), .step-info-summary:eq(2)").html(r.success.responseHTML);
+                            $jQ(".step-info-summary:eq(1), .step-info-summary:eq(2)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
 
                             completed = $jQ('#billing-info');
@@ -799,9 +799,8 @@ MLS.checkout = {
     mainCheckoutValidation : function() { // CHECKOUT
         $jQ('#vzn-checkout').validate({
             ignore: '.ignore, :hidden',
-            onfocusout: true,
             success: function(label){
-            label.addClass('success').text('');
+                label.addClass('success').text('');
             },
             focusCleanup: true,
             rules: {
