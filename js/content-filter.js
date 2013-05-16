@@ -1,6 +1,7 @@
 MLS.contentFilter = (function () {
 
     var $cf = $jQ('#content-filter'),
+        hashLoaded = false,
         options = {
             endpoint: null,
             callback: function () {},
@@ -28,6 +29,10 @@ MLS.contentFilter = (function () {
                 // collapse all but first dimension
                 $collapsible.find('.facet-list').slideToggle('slow');
 
+
+                // load content on load (if hash)
+                !hashLoaded && pub.loadFromHash();
+                hashLoaded = true;
 
                 /*==========  bind click events  ==========*/
 
@@ -118,7 +123,7 @@ MLS.contentFilter = (function () {
                 if (hash !== '') { // we have a hash
                     params = MLS.util.getParamsFromUrl(hash);
 
-                    if ($jQ.isEmptyObject(params)) {
+                    if (!$jQ.isEmptyObject(params)) {
                         pub.processRequest(params);
                     }
 
@@ -275,9 +280,6 @@ MLS.contentFilter = (function () {
 
 
         };
-
-     // load content on load (if hash)
-    $jQ(document).ready(pub.loadFromHash);
 
 
     return pub;
