@@ -35,7 +35,7 @@ MLS.specialOffers = {
         });
 
 		        $jQ(window).resize(function () {
-		          
+
 		            $jQ('#offers-onsale').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
 		        });
 		    }
