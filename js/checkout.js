@@ -2,7 +2,7 @@ MLS.checkout = {
     updateShippingOptions: function(zipcode) {
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.CHECKOUT_SHIPPING_OPTIONS,
-            
+
             {
                 zipcode: zipcode
             },
@@ -24,7 +24,7 @@ MLS.checkout = {
     selectShippingOption: function() {
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.CHECKOUT_SELECT_SHIPPING,
-            
+
             {
                 shipping: $jQ(".shipping-option-radios input[name=shipRadio]:checked").val()
             },
@@ -207,7 +207,7 @@ MLS.checkout = {
     update: function() {
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.GET_CART_SUMMARY,
-            
+
             {
             },
 
@@ -320,7 +320,7 @@ MLS.checkout = {
                 $jQ('.billing-address.new-billing-info-form').addClass('hidden').hide();
             }
 
-            
+
 
             /*
             if ($jQ(this).parent().hasClass('new-card')) { // handle edit button visibility
@@ -373,7 +373,7 @@ MLS.checkout = {
         // main checkout sequence : step 2, edit saved billing information information
         $jQ('#saved-info-edit').click(function(){
             $jQ(this).parents('.billing-address').slideToggle(300).next('.billing-address').slideToggle(300);
-            
+
             if (!$jQ("#same-as-shipping").is("checked"))
             {
                 $jQ("#same-as-shipping").click();
@@ -455,7 +455,7 @@ MLS.checkout = {
                     MLS.checkout.update(); // update totals
                 }
             );
-            
+
             return false;
         });
 
@@ -532,7 +532,7 @@ MLS.checkout = {
                     $jQ('.gift-card-cc-block').slideToggle(300);
                     $self.parent('.discount-success').prev('.discount-input').slideToggle();
                     $self.parent('.discount-success').slideToggle();
-                    
+
                     MLS.checkout.update(); // update totals
                 }
             );
@@ -594,11 +594,11 @@ MLS.checkout = {
                     $jQ('#checkout-cart-gift-card-2').slideToggle(300);
                     $self.parent('.discount-success').prev('.discount-input').slideToggle();
                     $self.parent('.discount-success').slideToggle();
-                    
+
                     MLS.checkout.update(); // update totals
                 }
             );
-            
+
             return false;
         });
     },
@@ -1075,4 +1075,4 @@ MLS.checkout = {
             }
         });
     }
-}; // end cartCheckout
+};
