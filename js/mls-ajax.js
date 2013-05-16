@@ -74,6 +74,7 @@ MLS.ajax = {
         });
     },
 
+
     homepage : {
         init : function () {
             // homepage madlib
@@ -105,21 +106,6 @@ MLS.ajax = {
         }
     },
 
-    // this is now in the content-grid.js
-    // lazyLoad : {
-    //     more : function (e) {
-    //         e.preventDefault();
-    //         console.log('load more');
-    //     },
-    //     remaining : function (e) {
-    //         e.preventDefault();
-    //         console.log('load all');
-    //     }
-    // },
-
-    // gridSort: function (type) {
-    //     console.log('sort by ' + type);
-    // },
 
     quickView: {
         init: function (pid, el) {

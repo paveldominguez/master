@@ -25,4 +25,3 @@ MLS.util = {
         return params;
     }
 };
-
