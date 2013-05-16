@@ -21,8 +21,8 @@ var pub = {
         });
 
         MLS.ui.moreLessBlock(); // evaluate & initialize all more/less elements
-
         MLS.productDetail.pdpColorOptions(); // layout add to cart section based on number of color options
+        MLS.productDetail.addCartValidation();
 
         // ONLOAD hero & zoom panel ..................................................................................
         var pgWidth = document.body.clientWidth;
@@ -148,15 +148,7 @@ var pub = {
             MLS.productDetail.heroLinktoTab('#detail-tabs .compat a');
         });
 
-        $jQ(' ').click(function(e){ // cart size select, custom select
-          e.preventDefault();
-          alert('slide in size selector, coming soon');
-        });
-
-       $jQ(' ').click(function(e){ // cart color select, custom select
-          e.preventDefault();
-          alert('slide in color selector, coming soon');
-        });
+        MLS.productDetail.pdpColorSelect(); // activates color selector
 
         $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
             var which = $jQ(this).attr('id');
@@ -183,7 +175,15 @@ var pub = {
 
         });
 
+        $jQ('#pdp-add-to-cart-submit').click(function(){
+            $jQ("#pdp-add-to-cart-submit").validate(); // VALIDATE
+            var formValid = $jQ("#pdp-add-to-cart").valid();
+            alert(formValid);
+            if (formValid == true){
+                alert('valid form headed to server');
+            }
 
+        });
 
         $jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
             // panel itself already exists if this is clicked
@@ -338,6 +338,18 @@ var pub = {
             $jQ('.light').removeClass('reduced');
             $jQ('.dark').removeClass('expanded');
         }
+    },
+    pdpColorSelect : function(){ // animates color chips & connects them to form select
+        $jQ('#product-colors .color').on('click', function () {
+            var colorTitle = $jQ(this).find('a').attr('title');
+            $jQ('#product-colors .color').removeClass('active');
+            $jQ(this).addClass('active');
+            $jQ('#pdp-current-color').text(colorTitle);
+            $jQ('#pdp-color-select').val([]);
+            $jQ('#pdp-color-select').find('option[value=' + colorTitle + ']').prop('selected', 'selected');
+            var choice =  $jQ('#pdp-color-select option:selected').text();
+            alert(choice);
+        });
     },
     pdpMobileContent:  function () { // copies loaded data into mobile only elements
     // hero section
@@ -545,6 +557,38 @@ var pub = {
 
                 }
             );
+        });
+    },
+     addCartValidation : function() { // CHECKOUT signin validation ...........................................................
+        jQuery.validator.addMethod("noEmptySelect", function (value, element) { // don't validate empty select
+            if (value == '0') {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        $jQ('#pdp-add-to-cart').validate({
+            onfocusout: true,
+            success: function(label){
+                label.toggleClass('success')
+            },
+            rules: {
+                pdpColorSelect: {
+                    required: true
+                },
+                pdpSizeSelect: {
+                    required: true,
+                    noEmptySelect: true
+                }
+            },
+            messages: {
+                pdpColorSelect: "Please choose a color",
+                pdpSizeSelect: {
+                    required: "Please choose a size",
+                    noEmptySelect: "Please choose a size"
+                }
+            }
         });
     }
 
