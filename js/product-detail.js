@@ -227,9 +227,9 @@ var pub = {
             MLS.ui.lightbox(this);
         });
 
-
-        MLS.ui.lightbox('#add-cart-server-error');
-
+        $jQ('#add-cart-server-error').find('.lightbox-close').click(function(){ // close click
+            $jQ('#add-cart-server-error').fadeOut(300); // fade out
+        });
 
         $jQ('#pdp-feature-tabs dd a').click(function(){ // tabbed graphic box in features-tab
             MLS.productDetail.pdpTab(this);
