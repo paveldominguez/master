@@ -1,0 +1,8 @@
+{
+    "success": {
+        "responseHTML": "<div class=\"label\">Additional Gift Card:</div><div class=\"data\">- $<span id=\"gift-card-2-amt\">25.00</span></div>"
+    },
+    "error": {
+        "responseHTML": ""
+    }
+}

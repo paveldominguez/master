@@ -74,6 +74,14 @@ MLS.checkout = {
     init : function() {
         // update the summary whenever the minicart changes
         $jQ(".mini-cart").bind("cart-updated cart-item-added cart-item-updated cart-item-removed", MLS.checkout.update);
+        $jQ('select[name=final-qty]').change(function() {
+            MLS.miniCart.updateItem(
+                $jQ(this).data("cart-id"), // id
+                null, // size (null = do not change)
+                null, // color (null = do not change)
+                $jQ(this).val()
+            );
+        });
 
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
@@ -134,6 +142,11 @@ MLS.checkout = {
         // checkout sidebar special offer
         $jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
             MLS.ui.dropdownDisplay(this);
+        });
+
+        // checkout accordions
+        $jQ('.checkout-accordion .acc-control').click(function() {
+            MLS.ui.simpleAcc(this);
         });
 
         $jQ('#checkout-where-to-ship').change(function(){ // main checkout sequence : step 1, home/business select
@@ -206,6 +219,19 @@ MLS.checkout = {
                 }
 
                 $jQ(".checkout-cart-summary").html(r.success.responseHTML);
+                $jQ(".final-cart-table").html(r.success.finalCartHTML).find('select[name=final-qty]').change(function() {
+                    MLS.miniCart.updateItem(
+                        $jQ(this).data("cart-id"), // id
+                        null, // size (null = do not change)
+                        null, // color (null = do not change)
+                        $jQ(this).val()
+                    );
+                }).uniform();
+
+                $jQ(".final-cart-table .checkout-final").click(function(e) {
+                    this.form.action = MLS.ajax.endpoints.CHECKOUT_STEP_3;
+                    return true;
+                }).uniform();
 
                 // checkout accordions
                 $jQ('.checkout-cart-summary .checkout-accordion .acc-control').click(function() {
@@ -283,6 +309,20 @@ MLS.checkout = {
 
         $jQ('input[name=cardChoice]').change(function(){ //signed-in new card or saved card
             $jQ(this).siblings('.card-choice-detail-block').removeClass('hidden').parent().siblings('.form-input-wrap').find('.card-choice-detail-block').addClass('hidden'); // handle detail block under button
+
+            if ($jQ(this).parent().hasClass('new-card')) {
+                // new card, show form, hide summary
+                $(".step-info-summary.billing-address").addClass("hidden").hide();
+                $jQ('.billing-address.new-billing-info-form').removeClass('hidden').show();
+            } else {
+                // old card, hide form, show summary
+                $(".step-info-summary.billing-address").removeClass('hidden').show();
+                $jQ('.billing-address.new-billing-info-form').addClass('hidden').hide();
+            }
+
+            
+
+            /*
             if ($jQ(this).parent().hasClass('new-card')) { // handle edit button visibility
                 $jQ('.edit-saved-card').addClass('hidden');
             } else {
@@ -291,6 +331,7 @@ MLS.checkout = {
             $jQ('.billing-address').each(function(){ // handle saved billing/new billing form below
                 $jQ(this).toggleClass('hidden');
             });
+            */
         });
 
         $jQ('.edit-saved-card').click(function(){ // signed-in edit saved card information
@@ -332,6 +373,11 @@ MLS.checkout = {
         // main checkout sequence : step 2, edit saved billing information information
         $jQ('#saved-info-edit').click(function(){
             $jQ(this).parents('.billing-address').slideToggle(300).next('.billing-address').slideToggle(300);
+            
+            if (!$jQ("#same-as-shipping").is("checked"))
+            {
+                $jQ("#same-as-shipping").click();
+            }
         });
 
 
@@ -359,22 +405,57 @@ MLS.checkout = {
 
     giftCardSequence : function() { // main checkout sequence : step 2 .............................................................
         $jQ('#apply-discount-code').click(function(e){ //  apply & validate discount code
+            var $self = $jQ(this);
             e.preventDefault();
             $jQ('#vzn-checkout').validate();
-            if ($jQ('#discount-code-input').valid() == true){
-                $jQ('#checkout-cart-discount-code').slideToggle(300); //removeClass('na');
-                $jQ(this).parents('.discount-input').slideToggle(300);
-                $jQ(this).parents('.discount-input').next('.discount-success').slideToggle(300);
-                return false;
+
+            if ($jQ('#discount-code-input').valid() == true) {
+                MLS.ajax.sendRequest(
+                    MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
+                    {
+                        code: $jQ('#discount-code-input').val(),
+                        action: "apply"
+                    },
+                    function(r) {
+                        if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            // error, unable to add to cart
+                            // display error response: .append(data.error.responseHTML);
+                            return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                        }
+
+                        $jQ('#checkout-cart-discount-code').html(r.success.responseHTML).slideToggle(300); //removeClass('na');
+                        $self.parents('.discount-input').slideToggle(300);
+                        $self.parents('.discount-input').next('.discount-success').slideToggle(300);
+
+                        MLS.checkout.update(); // update totals
+                    }
+                );
             }
+
+            return false;
         });
 
+        // once activated, we need to enable the remove button
         $jQ('#remove-discount-code').click(function(e){ // remove discount code
+            var $self = $jQ(this);
             e.preventDefault();
-            $jQ('#discount-code-input').removeClass('valid').addClass('hasPlaceholder');
-            $jQ('#checkout-cart-discount-code').slideToggle(300);
-            $jQ(this).parents('.discount-success').prev('.discount-input').slideToggle(300);
-            $jQ(this).parents('.discount-success').slideToggle();
+
+            MLS.ajax.sendRequest(
+                MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
+                {
+                    code: $jQ('#discount-code-input').val(),
+                    action: "remove"
+                },
+
+                function(r) {
+                    $jQ('#discount-code-input').removeClass('valid').addClass('hasPlaceholder');
+                    $jQ('#checkout-cart-discount-code').slideToggle(300);
+                    $self.parents('.discount-success').prev('.discount-input').slideToggle(300);
+                    $self.parents('.discount-success').slideToggle();
+                    MLS.checkout.update(); // update totals
+                }
+            );
+            
             return false;
         });
 
@@ -391,7 +472,8 @@ MLS.checkout = {
 
         $jQ('#apply-gift-card-1').click(function(e){ // apply & validate gift card 1
             e.preventDefault();
-            var gcValid = true; // staying optimistic
+            var gcValid = true,
+                $self = $jQ(this); // staying optimistic
 
             $jQ(this).parents('.checkout-discount-block').find('.selector').each(function(){ // validate selects first
                 var selectsValid = MLS.checkout.validateSelect(this);
@@ -402,46 +484,154 @@ MLS.checkout = {
 
             $jQ('#vzn-checkout').validate(); // validate the rest
             if ($jQ('.GCV').valid() && gcValid == true ) {
-                $jQ('#checkout-cart-gift-card-1').slideToggle(300); // hide & show
-                $jQ('.gift-card-cc-block').slideToggle(300);
-                $jQ(this).parents('.discount-input').slideToggle();
-                $jQ(this).parents('.discount-input').next('.discount-success').slideToggle();
-                return false;
+                MLS.ajax.sendRequest(
+                    MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                    {
+                        number: $jQ('#gift-card-1-input').val(),
+                        pin: $jQ('#gift-card-1-pin').val(),
+                        action: "apply"
+                    },
+
+                    function(r) {
+                        if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                        }
+
+                        $jQ('#checkout-cart-gift-card-1').html(r.success.responseHTML).slideToggle(300); // hide & show
+                        $jQ('.gift-card-cc-block').slideToggle(300);
+                        $self.parents('.discount-input').slideToggle();
+                        $self.parents('.discount-input').next('.discount-success').slideToggle();
+
+                        MLS.checkout.update(); // update totals
+                    }
+                );
             }
+
+            return false;
         });
 
         $jQ('#remove-gift-card-1').click(function(e){ // remove gift card 1
+            var $self = $jQ(this);
             e.preventDefault();
-            $jQ('#checkout-cart-gift-card-1').removeClass('valid').addClass('hasPlaceholder');
-            $jQ('#checkout-cart-gift-card-1').slideToggle(300);
-            $jQ('.gift-card-cc-block').slideToggle(300);
-            $jQ(this).parent('.discount-success').prev('.discount-input').slideToggle();
-            $jQ(this).parent('.discount-success').slideToggle();
+
+            MLS.ajax.sendRequest(
+                MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                {
+                    number: $jQ('#gift-card-1-input').val(),
+                    pin: $jQ('#gift-card-1-pin').val(),
+                    action: "remove"
+                },
+
+                function(r) {
+                    if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                        return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                    }
+
+                    $jQ('#checkout-cart-gift-card-1').removeClass('valid').addClass('hasPlaceholder');
+                    $jQ('#checkout-cart-gift-card-1').slideToggle(300);
+                    $jQ('.gift-card-cc-block').slideToggle(300);
+                    $self.parent('.discount-success').prev('.discount-input').slideToggle();
+                    $self.parent('.discount-success').slideToggle();
+                    
+                    MLS.checkout.update(); // update totals
+                }
+            );
+
             return false;
         });
 
         $jQ('#add-gift-card-2').click(function(){  $jQ(this).toggleClass('close'); });
 
-
         $jQ('#apply-gift-card-2').click(function(e){ // apply & validate gift card 2
+            var $self = $jQ(this);
+
             e.preventDefault();
             $jQ('#vzn-checkout').validate();
             if ($jQ('#gift-card-2-input').valid() == true && $jQ('#gift-card-2-pin').valid() == true){
-                $jQ('#checkout-cart-gift-card-2').slideToggle(300);
-                $jQ(this).parents('.discount-input').slideToggle();
-                $jQ(this).parents('.discount-input').next('.discount-success').slideToggle();
-                return false;
+                MLS.ajax.sendRequest(
+                    MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                    {
+                        number: $jQ('#gift-card-2-input').val(),
+                        pin: $jQ('#gift-card-2-pin').val(),
+                        action: "apply"
+                    },
+
+                    function(r) {
+                        if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                        }
+
+                        $jQ('#checkout-cart-gift-card-2').html(r.success.responseHTML).slideToggle(300);
+                        $self.parents('.discount-input').slideToggle();
+                        $self.parents('.discount-input').next('.discount-success').slideToggle();
+
+                        MLS.checkout.update(); // update totals
+                    }
+                );
             }
+
+            return false;
         });
 
         $jQ('#remove-gift-card-2').click(function(e){  // remove gift card 2
+            var $self = $jQ(this);
             e.preventDefault();
-            $jQ('#checkout-cart-gift-card-2').removeClass('valid').addClass('hasPlaceholder');
-            $jQ('#checkout-cart-gift-card-2').slideToggle(300);
-            $jQ(this).parent('.discount-success').prev('.discount-input').slideToggle();
-            $jQ(this).parent('.discount-success').slideToggle();
+
+            MLS.ajax.sendRequest(
+                MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                {
+                    number: $jQ('#gift-card-2-input').val(),
+                    pin: $jQ('#gift-card-2-pin').val(),
+                    action: "remove"
+                },
+
+                function(r) {
+                    if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                        return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                    }
+
+                    $jQ('#checkout-cart-gift-card-2').removeClass('valid').addClass('hasPlaceholder');
+                    $jQ('#checkout-cart-gift-card-2').slideToggle(300);
+                    $self.parent('.discount-success').prev('.discount-input').slideToggle();
+                    $self.parent('.discount-success').slideToggle();
+                    
+                    MLS.checkout.update(); // update totals
+                }
+            );
+            
             return false;
         });
+    },
+
+    validateSelect : function(selector, ignored) { // CHECKOUT  validation/error messages for custom selects created with uniform.js
+        var thisSelect = $jQ(selector).find('select');
+        if (ignored == undefined) {
+            var ignoredClass = 0;
+        } else {
+            var ignoredClass = ignored;
+        }
+
+        if ($jQ(thisSelect).hasClass(ignoredClass)){
+            var selectsValid = true; // we're not validating it
+        } else { // we are
+            var thisValue = $jQ(selector).find(':selected').val();
+            var selectsValid = true; // because we're optimists
+
+            if (thisValue == 0) {
+                $jQ(selector).addClass('select-box-error');
+                if ($jQ(thisSelect).hasClass('error')) { //don't add multiple messages
+                } else {
+                    $jQ('<div class="select-error-message error">Please click to select </div>').appendTo(selector);
+                }
+                $jQ(thisSelect).addClass('error');
+                selectsValid = false;
+            } else { // remove any error states & messages & proceed
+                $jQ(selector).removeClass('select-box-error');
+                $jQ(selector).find('.select-error-message').remove();
+                $jQ(thisSelect).removeClass('error');
+            }
+        }
+        return selectsValid;
     },
 
     /* HOOK THE AJAX CALLS IN HERE */
@@ -569,6 +759,8 @@ MLS.checkout = {
                     }
                 });
             }
+
+            return false;
         }); // end click
     },
 

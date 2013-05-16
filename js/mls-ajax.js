@@ -28,7 +28,11 @@ MLS.ajax = {
         CHECKOUT_SHIPPING_OPTIONS: "/services/checkout_shipping_options.json",
         CHECKOUT_SELECT_SHIPPING: "/services/checkout_select_shipping.json",
         CHECKOUT_STEP_1: "/services/checkout_step_1.json",
-        CHECKOUT_STEP_2: "/services/checkout_step_2.json"
+        CHECKOUT_STEP_2: "/services/checkout_step_2.json",
+        CHECKOUT_STEP_3: "/checkout-success.html",
+
+        CHECKOUT_APPLY_DISCOUNT: "/services/checkout_apply_discount.json",
+        CHECKOUT_APPLY_GIFTCARD: "/services/checkout_apply_giftcard.json"
     },
 
     init: function() {
