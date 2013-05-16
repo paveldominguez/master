@@ -26,6 +26,27 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #FFF;
     max-width: $screenLarge;
     margin: 0 auto;
+
+    /* Begin Star Ratings */
+    .stars{
+        text-align:right;
+        width:90px;
+        height:16px;
+        overflow:hidden;
+        background:url(../img/star-rating.png) no-repeat scroll left 4px transparent;
+        padding:0;
+        &.one{}
+        &.two{background-position: left -17px;}
+        &.three{background-position: left -37px;}
+        &.four{background-position: left -58px;}
+        &.five{background-position: left -80px;}
+        &.one-half{background-position: left 5px;}
+        &.two-half{background-position: left -247px;}
+        &.three-half{background-position: left -268px;}
+        &.four-half{background-position: left -289px;}
+    }
+    /* End Star Ratings */
+
 }
 
 #site-header {
@@ -71,6 +92,8 @@ h1,h2,h3,h4,h5,h6 {
         top: 15px;;
     }
 }
+
+
 #grid-pop-out{
     display:none;
     position: absolute;
