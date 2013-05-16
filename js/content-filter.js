@@ -40,6 +40,7 @@ MLS.contentFilter = (function () {
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
                 $facets.on('click', pub.facetClick);
+                $jQ('.filter-panels li').on('click', pub.sort); /* mobile option */
 
                 // remove filter
                 $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
@@ -52,10 +53,9 @@ MLS.contentFilter = (function () {
 
                 // sort links
                 $jQ('#sort-options').find('li').on('click', pub.sort);
+                $jQ('#mobile-sort-filter li.sort-option').on('click', pub.sort);
             },
             /*-----  End of Init  ------*/
-
-
 
 
 
@@ -76,6 +76,7 @@ MLS.contentFilter = (function () {
 
 
                 $facets.unbind('click', pub.facetClick);
+                $jQ('.filter-panels li').unbind('click', pub.sort); /* mobile option */
 
                 // remove filter
                 $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
@@ -86,6 +87,9 @@ MLS.contentFilter = (function () {
                 // type ahead (searc)
                 $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
 
+                 // sort links
+                $jQ('#sort-options').find('li').on('click', pub.sort);
+                $jQ('#mobile-sort-filter li.sort-option').on('click', pub.sort);
 
             },
 
