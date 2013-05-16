@@ -178,12 +178,23 @@ var pub = {
         $jQ('#pdp-add-to-cart-submit').click(function(){
             $jQ("#pdp-add-to-cart-submit").validate(); // VALIDATE
             var formValid = $jQ("#pdp-add-to-cart").valid();
-            alert(formValid);
             if (formValid == true){
-                alert('valid form headed to server');
+                $jQ('.size-select-box').find('.selector').removeClass('error');
+                alert('info sent to server');
+                return false;
+            } else {
+                $jQ('.size-select-box').find('.selector').addClass('error');
+                return false;
             }
-
         });
+
+
+        $jQ('#pdp-size-select').change(function(){ // remove select error on choice
+            $jQ('.size-select-box').find('.selector').removeClass('error');
+            $jQ('.size-select-box').find('label.error').hide();
+        });
+
+
 
         $jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
             // panel itself already exists if this is clicked
@@ -215,6 +226,9 @@ var pub = {
             e.preventDefault;
             MLS.ui.lightbox(this);
         });
+
+
+        MLS.ui.lightbox('#add-cart-server-error');
 
 
         $jQ('#pdp-feature-tabs dd a').click(function(){ // tabbed graphic box in features-tab
@@ -331,16 +345,23 @@ var pub = {
     },
     pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
         var numColors = $jQ('#product-colors').find('.color').length;
-        if ( numColors > 3){
+        if ( numColors > 6){
             $jQ('.light').addClass('reduced');
             $jQ('.dark').addClass('expanded');
         } else {
             $jQ('.light').removeClass('reduced');
             $jQ('.dark').removeClass('expanded');
+
+            if (numColors > 3){
+                $jQ('.size-select-box').addClass('more-than-3');
+            }
         }
     },
     pdpColorSelect : function(){ // animates color chips & connects them to form select
         $jQ('#product-colors .color').on('click', function () {
+            if($jQ(this).hasClass('out-of-stock')) {
+                return false;
+            }
             var colorTitle = $jQ(this).find('a').attr('title');
             $jQ('#product-colors .color').removeClass('active');
             $jQ(this).addClass('active');
@@ -348,7 +369,6 @@ var pub = {
             $jQ('#pdp-color-select').val([]);
             $jQ('#pdp-color-select').find('option[value=' + colorTitle + ']').prop('selected', 'selected');
             var choice =  $jQ('#pdp-color-select option:selected').text();
-            alert(choice);
         });
     },
     pdpMobileContent:  function () { // copies loaded data into mobile only elements
@@ -569,10 +589,6 @@ var pub = {
         });
 
         $jQ('#pdp-add-to-cart').validate({
-            onfocusout: true,
-            success: function(label){
-                label.toggleClass('success')
-            },
             rules: {
                 pdpColorSelect: {
                     required: true

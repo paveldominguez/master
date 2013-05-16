@@ -200,12 +200,12 @@
         <div class="dark"><!-- adds class 'expanded' -->
 
             <form id="pdp-add-to-cart" class="pdp-form-box">
-                <fieldset class="pdp-size-color">
+                <fieldset class="pdp-size-color item-OOS">
 
                     <div class="color-info"><span class="color-label"><span id="pdp-current-color" class="color-option">black</span></div>
 
                     <div class="product-color"> <!-- color selector -->
-                        <script>includeFragment('inc/fragments/color-choices-3.html');</script>
+                        <script>includeFragment('inc/fragments/color-choices-6.html');</script>
                     </div> <!-- end color selector -->
 
                     <div class="size-select-box "><!-- adds class 'expanded' -->
@@ -242,7 +242,7 @@
 
                 <fieldset id="pdp-mobile-form-shipping" class="mobile-fieldset shipping"></fieldset>
 
-                <fieldset class="pdp-price-cta" >
+                <fieldset class="pdp-price-cta item-OOS" >
 
                     <div class="price-block">
                         <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
@@ -907,7 +907,7 @@
 </section><!-- end bundle lightbox -->
 
 
-<section id="add-cart-server-error" class="lightbox" data-modal-id="#add-cart-server-error">
+<section id="add-cart-server-error" class="lightbox">
     <div class="lightbox-info-block">
 
         <h3 class="lightbox-headline">Insert Add-to-Cart Error Headline Here</h3>
@@ -928,6 +928,12 @@
         </div>
 
         <div class="lightbox-close"></div>
+
+        <div class="lightbox-cta">
+            <div class="lightbox-back">
+                <span>back to product</span>
+            </div>
+        </div>
 
     </div><!-- end block -->
 </section>

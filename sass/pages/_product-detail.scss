@@ -192,10 +192,10 @@
                 position: absolute;
                 top: 0; left: 0;
                 width: 100%;
-                height: 376px;
+                height: 360px;
                 @include heroBG;
                 } /* end light */
-            .light.reduced { height: 336px; }
+            .light.reduced { height: 326px; }
 
             .dark { /* bottom half of cart */
                 position:absolute;
@@ -203,7 +203,7 @@
                 width:100%; height: auto;
                 @include cartBG;
                 @include boxBrdrT;
-                height: 210px;
+                height: 226px;
 
                 .pdp-form-box { // cart form element
                     width: 100%;
@@ -232,26 +232,20 @@
                         .color-info {
                             display: block;
                             width: 100%;
-                            color: $colorMediumGray;
-                            font: {
-                                family: $fontArial;
-                                size: 12px;
-                                }
-                            line-height: 12px;
+                            @include checkoutContent;
                             margin: 3px 0 2px 0;
                             .color-option { font-weight: bold; }
                             } /* end color info */
-
 
                         .product-color {
                             float: left;
                             display: inline-block;
                             width: auto;
                             @include clearfix();
-                            margin: 0 6px 7px 0;
+                            margin: 0 0px 7px 0;
 
                             .product-colors {
-                                margin: 0; padding: 0;
+                                margin: 0 0 10px 0; padding: 0;
                                 display: inline-block;
                                 width: auto;
                                 float: left;
@@ -259,7 +253,7 @@
                                     position: relative;
                                     margin: 0 2px 2px 0;
                                     height: 40px;
-                                    width: 45px;
+                                    width: 44px;
                                     padding: 2px;
 
                                     a {
@@ -284,8 +278,27 @@
                                             height: 14px;
                                             }
                                         }
+
+                                    span.OOS { display: none; }
                                     } /* end color */
                                 .color:last-child { margin-right: 0px; }
+                                .color.out-of-stock {
+                                    span.OOS {
+                                        display: block;
+                                        width: 100%;
+                                        height: 100%;
+                                        font-family: $fontArial;
+                                        font-weight: bold;
+                                        position: absolute;
+                                        top: 0; left: 0;
+                                        padding: 10px 0 0 5px;
+                                        text-transform: lowercase;
+                                        display: block;
+                                        font-size: 11px;
+                                        line-height: 12px;
+                                        color: #fff;
+                                        }
+                                    }
                                 } /* end product-colors */
                             } /* end product-color block */
 
@@ -299,17 +312,51 @@
                                 padding-top:18px;
                                 @include pdp-sprite(grey-more, false, 150%, 24px);
                                 }
+                            .selector.error { border:2px solid $colorVzwRed; }
+                            label.error {
+                                @include checkoutLabel;
+                                color: $colorVzwRed;
+                                position: absolute;
+                                top: -13px; left: 0;
+                                }
+                            }
+                        .size-select-box.more-than-3 {
+                            float : left;
+                            width : 45%;
+                            }
+
+                        span.item-OOS-message, span.item-expired-message {
+                            display: none;
+                            background-image: none;
+                            padding-top: 0;
+                            @include checkoutContent;
+                            color: $colorVzwRed;
+                            font-weight: bold;
                             }
                         } /* end pdp-size-color */
 
+                    .pdp-size-color.item-OOS{
+                        .size-select-box {
+                            .selector { display: none; }
+                            .item-OOS-message { display: block; }
+                            }
+                        }
+
+                    .pdp-size-color.item-expired {
+                        .size-select-box {
+                            .selector { display: none; }
+                            .item-expired-message { display: block; }
+                            }
+                        }
+
                     .pdp-price-cta {
-                        height: 83px;
-                        bottom: 51px;
+                        height: 89px;
+                        bottom: 35px;
                         padding-top: 0;
                         @include clearfix;
 
                         .price-block {
-                            padding-top: 50px;
+                            padding-top: 56px;
                             width: 50%;
                             float: left;
 
@@ -332,10 +379,10 @@
                                 list-style:none;
                                 font-family: $fontArial;
                                 color: $cartGreyMd;
-                                font-size: 12px;
+                                font-size: 11px;
                                 letter-spacing: -1px;
-                                padding: 0px 0px 6px 4px;
-                                position:relative; top:3px;
+                                padding: 0px 0px 4px 4px;
+                                position:relative; top:6px;
 
                                 .sale {
                                     text-decoration:none;
@@ -355,33 +402,55 @@
                         .add-cart-box {
                             float: right;
                             width: 50%;
-                            height:83px;
+                            height:89px;
                             cursor:pointer;
-
-                            .OOS.product, .expired.product {
-                                margin:5px 0 10px 0;
-                                p {
-                                    color: $colorVzwRed;
-                                    font-size: 12px;
-                                    line-height: 14px;
-                                    font-family: $fontArial;
-                                    font-weight:bold; margin:0px;
-                                    }
-                                }
 
                             .pdp-cart-red-cta-box {
                                 margin:0;
                                 @include ctaRedButton;
-                                width:100%; height: 83px;
-                                span { padding-top: 50px; } /* end span */
+                                width:100%; height: 89px;
+                                span { padding-top: 56px; }
                                 } /* end red cta box */
 
                             .no-cta-button {
-                                span { }
+                                display: none;
+                                @include ctaBlackButton;
+                                width:100%; height: 89px;
+                                cursor: default;
+                                span {
+                                    padding: 56px 0 0 10px;
+                                    color: #fff;
+                                    font-family: $fontVzwMedium;
+                                    font-size: 18px; line-height: 18px;
+                                    }
                                 }
                             }/* end add-cart-box */
                         } /* end price-cta block */
+
+                    .pdp-price-cta.item-OOS {
+                        .add-cart-box{
+                            .pdp-cart-red-cta-box { display: none; }
+                            .no-cta-button {
+                                display: block;
+                                span.OOS-text { display: block; }
+                                span.expired-text { display: none; }
+                                }
+                            }
+                        } /* end cta.OOS */
+
+                    .pdp-price-cta.item-expired {
+                        .add-cart-box {
+                            .pdp-cart-red-cta-box { display: none; }
+                            .no-cta-button {
+                                display: block;
+                                span.OOS-text { display: none; }
+                                span.expired-text { display: block; }
+                                }
+                            }
+                        } /* end cta.expired */
+
                     } /* end form-box */
+
                 .social-block {
                     height: 36px;
                     position: absolute; bottom: 0; left: 0;
@@ -390,12 +459,21 @@
                 }/* end dark */
 
             .dark.expanded {
-                height: 250px;
+                height: 260px;
                 .pdp-form-box {
                     .pdp-size-color {
-                        .size-select-box { width: 45%; float: left; }
+                        .product-color {
+                            margin-bottom: 0px;
+                            .product-colors {
+                                margin-bottom: 10px;
+                                }
+                            }
+                        .size-select-box {
+                            width: 45%;
+                            float: left;
+                            }
                         }
-                    .pdp-price-cta { bottom: 15px; }
+                    .pdp-price-cta { bottom: 0px; }
                     }
                 }
 
@@ -1417,16 +1495,11 @@
         } /* end compat content */
 
 
-
-
     // REVIEWS - for BazaarVoice content
 
 
 
     // QUESTIONS - for BazaarVoice content
-
-
-
 
 
 
@@ -1684,7 +1757,7 @@
                 letter-spacing: -5px;
                 margin:25px 0 0 18px;
             } /* end amt */
-            .offer-unit{
+            .offer-unit {
                 display:inline-block;
                 font-size:30px;
                 line-height: 30px;
@@ -1988,7 +2061,7 @@
         } /* end below 959 */
 
 
-    @media only screen and (max-width: 875px ) { /* below 875 - hero slider only */
+    @media only screen and (max-width: 875px ) { /* below 875 - hero tweaks */
         #pdp-hero {
             #carousel-block {
                 #carousel {
@@ -2006,7 +2079,7 @@
             #cart-block {
                 .dark {
                     .pdp-form-box {
-                        fieldset { padding-left: 12px; padding-right: 12px; }
+                        fieldset { padding-left: 10px; padding-right: 10px; }
                         .pdp-price-cta {
                             .add-cart-box{ width: 45% }
                             }
@@ -2123,21 +2196,29 @@
                             }
                         fieldset.pdp-size-color {
                             padding-top: 5px;
-                            padding-bottom: 6px;
+                            padding-bottom: 0px;
                             .size-select-box span { @include pdp-sprite(grey-more, false, 125%, 24px); }
-
+                            .size-select-box.more-than-3 {
+                                float : none;
+                                width : 100%;
+                                margin-bottom:15px;
+                                span{ @include pdp-sprite(grey-more, false, 110%, 24px); }
+                                }
                             } /* end pdp-size-color */
                         } /* end form styles height: 230px; */
                     .social-block { position: relative; }
                     }/* end dark */
+
                 .dark.expanded {
                     height: auto;
                     .pdp-form-box{
-                        .pdp-size-color {
+                        fieldset.pdp-size-color {
+                             padding-bottom: 15px;
                             .size-select-box {
                                 width: 100%; float: none;
-                                span { @include pdp-sprite(grey-more, false, 150%, 24px); }
+                                span { @include pdp-sprite(grey-more, false, 110%, 24px); }
                                 }
+
                             }
                         .pdp-price-cta { bottom: auto; }
                         } /* end pdp-form box */
@@ -2713,24 +2794,35 @@
             }
         }
     }
-} /* end social email overlay */
+} /* end social email  */
 
-/* ---- TEMP / EXAMPLE CSS for DEMO pages  ----- */
 
-.product-detail.DEMO-sale {
+/* ---- STATE SPECIFIC CLASSES  BY BODY CLASS----- */
+
+.product-detail.sale {
     .offer { display: inline-block !important; }
     .no-offer { display: none !important; }
-    }
-.product-detail.DEMO-product-OOS {
 
-    }
-.product-detail.DEMO-color-OOS {
+    #pdp-hero {
+        #cart-block {
+            .dark {
+                .pdp-form-box {
+                    .pdp-price-cta {
+                        .price-block { padding-top: 36px; }
+                        }
+                    }
+                } /* end dark */
+            }
+        } /* end pdp-hero */
+    } /* end sale */
 
-    }
-.product-detail.DEMO-expired {
-
-    }
-.product-detail.DEMO-signed-in {
+.product-detail.signed-in {
     .signed-in { display: inline-block !important; }
     .guest { display: none !important; }
+    }
+
+
+
+.product-detail.server-error {
+    #add-cart-server-error { display: block; }
     }
