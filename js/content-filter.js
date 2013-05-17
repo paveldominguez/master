@@ -150,6 +150,7 @@ MLS.contentFilter = (function () {
                     href = $elem.find('a').attr('href'),
                     params = MLS.util.getParamsFromUrl(href);
 
+                window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
             },
 
