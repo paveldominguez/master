@@ -37,6 +37,7 @@ MLS.cart.dd = {
 
                 function(response) {
                     MLS.cart.dd.populate(response, "#pdp-size-select");
+                    $jQ("#pdp-size-select")[0].selectedIndex = $jQ("#pdp-size-select option[value=" + itemSize + "]").index();
                     MLS.cart.dd.get.carousel(itemId, itemColor, itemSize);
                 }
             );
