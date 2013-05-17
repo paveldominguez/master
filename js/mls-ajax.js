@@ -122,10 +122,12 @@ MLS.ajax = {
                 { 
                     productID : pid 
                 },
-                MLS.ajax.quickView.update
+                function(r) {
+                    MLS.ajax.quickView.update(r, el);
+                }
             );
         },
-        update: function (r) {
+        update: function (r, el) {
             if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
             }
@@ -137,7 +139,7 @@ MLS.ajax = {
                 $jQ(this).parents("form").find("[name=color-select]").val($jQ(this).data("color"));
             });
             MLS.miniCart.init($cnt);
-            contentGrid.quickViewShow();
+            contentGrid.quickViewShow(el);
         }
     }
 };
