@@ -59,7 +59,7 @@ MLS.article = {
             height = $jQ('#article-detail').height() + 160;
         }
 
-        $jQ('#article-detail').css({'top': scrollTop - height}).animate({top: scrollTop + 160}, 500, function () {
+        $jQ('#article-detail').css({'top': scrollTop - height}).animate({top: $jQ(window).scrollTop() + 160}, 500, function () {
             $jQ('#article-modal-overlay').fadeIn();
         });
     },

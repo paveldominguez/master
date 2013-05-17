@@ -21,9 +21,8 @@ var pub = {
         });
 
         MLS.ui.moreLessBlock(); // evaluate & initialize all more/less elements
-
-
-
+        MLS.productDetail.pdpColorOptions(); // layout add to cart section based on number of color options
+        MLS.productDetail.addCartValidation();
 
         // ONLOAD hero & zoom panel ..................................................................................
         var pgWidth = document.body.clientWidth;
@@ -118,6 +117,19 @@ var pub = {
             MLS.ui.moreLessBlock(); // revaluate & re-initialize more/less elements
 
             $jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85}); // responsive slider boxes
+
+            if ($jQ(window).width() > 719) { // reset anchor bar
+                $jQ(window).scroll(function() {
+                    if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
+                        $jQ('#btf-anchor').addClass('show-anchor');
+                        $jQ('#mls-nav').addClass('fixed-nav');
+                    }
+                    else {
+                        $jQ('#btf-anchor').removeClass('show-anchor');
+                        $jQ('#mls-nav').removeClass('fixed-nav');
+                    }
+                });
+            }
         });
         // .................................................................................... END RESIZE
 
@@ -136,15 +148,7 @@ var pub = {
             MLS.productDetail.heroLinktoTab('#detail-tabs .compat a');
         });
 
-        $jQ(' ').click(function(e){ // cart size select, custom select
-          e.preventDefault();
-          alert('slide in size selector, coming soon');
-        });
-
-       $jQ(' ').click(function(e){ // cart color select, custom select
-          e.preventDefault();
-          alert('slide in color selector, coming soon');
-        });
+        MLS.productDetail.pdpColorSelect(); // activates color selector
 
         $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
             var which = $jQ(this).attr('id');
@@ -169,6 +173,25 @@ var pub = {
             }
 
 
+        });
+
+        $jQ('#pdp-add-to-cart-submit').click(function(){
+            $jQ("#pdp-add-to-cart-submit").validate(); // VALIDATE
+            var formValid = $jQ("#pdp-add-to-cart").valid();
+            if (formValid == true){
+                $jQ('.size-select-box').find('.selector').removeClass('error');
+                alert('info sent to server');
+                return false;
+            } else {
+                $jQ('.size-select-box').find('.selector').addClass('error');
+                return false;
+            }
+        });
+
+
+        $jQ('#pdp-size-select').change(function(){ // remove select error on choice
+            $jQ('.size-select-box').find('.selector').removeClass('error');
+            $jQ('.size-select-box').find('label.error').hide();
         });
 
 
@@ -204,6 +227,9 @@ var pub = {
             MLS.ui.lightbox(this);
         });
 
+        $jQ('#add-cart-server-error').find('.lightbox-close').click(function(){ // close click
+            $jQ('#add-cart-server-error').fadeOut(300); // fade out
+        });
 
         $jQ('#pdp-feature-tabs dd a').click(function(){ // tabbed graphic box in features-tab
             MLS.productDetail.pdpTab(this);
@@ -238,10 +264,6 @@ var pub = {
          $jQ('#mobile-features .tabs dd a').click(function(){ // tabbed graphic box in features-tab
             MLS.productDetail.pdpTab(this);
         });
-
-
-
-
 
         // RELATED STORIES MODULE SEQUENCE
 
@@ -321,27 +343,51 @@ var pub = {
         });
         // END RELATED STORIES ....................................
     },
-    pdpMobileContent:  function () { // copies loaded data into mobile only elements .................. BEGIN FUNCTIONS .................
+    pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
+        var numColors = $jQ('#product-colors').find('.color').length;
+        if ( numColors > 6){
+            $jQ('.light').addClass('reduced');
+            $jQ('.dark').addClass('expanded');
+        } else {
+            $jQ('.light').removeClass('reduced');
+            $jQ('.dark').removeClass('expanded');
+
+            if (numColors > 3){
+                $jQ('.size-select-box').addClass('more-than-3');
+            }
+        }
+    },
+    pdpColorSelect : function(){ // animates color chips & connects them to form select
+        $jQ('#product-colors .color').on('click', function () {
+            if($jQ(this).hasClass('out-of-stock')) {
+                return false;
+            }
+            var colorTitle = $jQ(this).find('a').attr('title');
+            $jQ('#product-colors .color').removeClass('active');
+            $jQ(this).addClass('active');
+            $jQ('#pdp-current-color').text(colorTitle);
+            $jQ('#pdp-color-select').val([]);
+            $jQ('#pdp-color-select').find('option[value=' + colorTitle + ']').prop('selected', 'selected');
+            var choice =  $jQ('#pdp-color-select option:selected').text();
+        });
+    },
+    pdpMobileContent:  function () { // copies loaded data into mobile only elements
     // hero section
         $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
-        $jQ('.pdp-cart-shipping').clone().appendTo('#pdp-mobile-form-shipping'); // shipping & offers
-        var deskForm = $jQ('#pdp-add-to-cart');
-        deskForm.find('.size-select-box').clone().appendTo('#pdp-mobile-form-size'); // add to cart form elements
-        deskForm.find('.color-select-box').clone().appendTo('#pdp-mobile-form-color');
-        deskForm.find('.price-block').clone().appendTo('#pdp-mobile-form-price');
-        deskForm.find('.add-cart-box').clone().appendTo('#pdp-mobile-form-submit');
-    // below the fold
-        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');
-        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info');
-        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info');
-        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info');
-        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info');
-        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info');
+        $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping'); // shipping & offers
 
-        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info');
-        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info');
+    // below the fold
+        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');  // details tab
+        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info'); // details tab
+        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info'); // details tab
+        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info'); // details tab
+        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info'); // details tab
+        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info'); // details tab
+
+        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info'); // similar products slider
+        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info'); // bundle block
     },
-    thumbDisplay: function (parent, context) { // carousel thumbs ........................................................................
+    thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
         var thmbWd = (countThmb * 55);
         var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
@@ -531,6 +577,34 @@ var pub = {
 
                 }
             );
+        });
+    },
+     addCartValidation : function() { // CHECKOUT signin validation ...........................................................
+        jQuery.validator.addMethod("noEmptySelect", function (value, element) { // don't validate empty select
+            if (value == '0') {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        $jQ('#pdp-add-to-cart').validate({
+            rules: {
+                pdpColorSelect: {
+                    required: true
+                },
+                pdpSizeSelect: {
+                    required: true,
+                    noEmptySelect: true
+                }
+            },
+            messages: {
+                pdpColorSelect: "Please choose a color",
+                pdpSizeSelect: {
+                    required: "Please choose a size",
+                    noEmptySelect: "Please choose a size"
+                }
+            }
         });
     }
 

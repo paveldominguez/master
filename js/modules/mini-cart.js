@@ -229,7 +229,7 @@ MLS.miniCart = {
             MLS.ajax.endpoints.REMOVE_FROM_MINICART,
             
             {
-            	id: id,
+            	productID: id,
             	action: "remove"
             },
 

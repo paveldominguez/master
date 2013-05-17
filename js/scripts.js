@@ -118,17 +118,28 @@ MLS = {
     },
     'brand-landing-page' : {
         init : function () {
-            $jQ('#sort-options').uniform();
+            // $jQ('#sort-options').uniform();
             contentGrid.init();
-            MLS.contentFilter.init();
             MLS.ajax.colorPicker.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
+                container: $jQ('#main-column .content-grid'),
+                callback: function () {
+                    contentGrid.reInit();
+                }
+            });
         }
     },
-    'cart-and-checkout': {
+    'cart': {
     	init : function () {
     		MLS.cart.init();
-            // MLS.checkout.init();
-    	}
+        }
+    },
+    'checkout': {
+        init : function () {
+            MLS.checkout.init();
+        }
     },
     'content-landing-page' : {
         init : function () {
@@ -172,7 +183,15 @@ MLS = {
             MLS.categoryLanding.init();
             contentGrid.init();
             MLS.ajax.colorPicker.init();
-            MLS.contentFilter.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.CATEGORY_PAGE,
+                container: $jQ('#main-column'),
+                callback: function () {
+                     contentGrid.reInit();
+                     MLS.categoryLanding.init();
+                }
+            });
         }
     },
     'lifestyle-landing-page' : {
@@ -182,9 +201,12 @@ MLS = {
         }
     },
     'product-listing-page' : {
+
         init : function () {
+
             contentGrid.init();
             MLS.ajax.colorPicker.init();
+
             MLS.contentFilter.init({
                 endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
                 container: $jQ('#main-column .content-grid'),
@@ -192,6 +214,7 @@ MLS = {
                     contentGrid.reInit();
                 }
             });
+
             // simple offer toggle..
             // may break out into a general module that handles interactions (if other js is necessary) in offers
             var hdrOffer = $jQ('#spec-offer-header'),
@@ -226,10 +249,18 @@ MLS = {
     // },
     'special-offers-landing-page' : {
         init : function() {
-            MLS.contentFilter.init();
             contentGrid.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
+
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.SPECIAL_OFFERS,
+                container: $jQ('#main-column'),
+                callback: function () {
+                    contentGrid.reInit();
+                    MLS.specialOffers.init();
+                }
+            });
         }
     },
     'fourofour-page' : {
