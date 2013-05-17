@@ -236,6 +236,7 @@ MLS = {
         init : function () {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
+            MLS.cart.dd.init();
         }
     },
     // 'search-results-page' : {
