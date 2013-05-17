@@ -88,8 +88,8 @@ MLS.contentFilter = (function () {
                 $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
 
                  // sort links
-                $jQ('#sort-options').find('li').on('click', pub.sort);
-                $jQ('#mobile-sort-filter li.sort-option').on('click', pub.sort);
+                $jQ('#sort-options').find('li').unbind('click', pub.sort);
+                $jQ('#mobile-sort-filter li.sort-option').unbind('click', pub.sort);
 
             },
 
@@ -152,6 +152,8 @@ MLS.contentFilter = (function () {
 
                 window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
+
+                return false;
             },
 
             /*-----  End of Listing sorting  ------*/
