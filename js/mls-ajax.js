@@ -31,7 +31,6 @@ MLS.ajax = {
         CATEGORY_PAGE: '/services/category.json',
 
         // Checkout
-
         CHECKOUT_SHIPPING_OPTIONS: '/services/checkout_shipping_options.json',
         CHECKOUT_SELECT_SHIPPING: '/services/checkout_select_shipping.json',
         CHECKOUT_STEP_1: '/services/checkout_step_1.json',
@@ -39,7 +38,10 @@ MLS.ajax = {
         CHECKOUT_STEP_3: '/checkout-success.html',
 
         CHECKOUT_APPLY_DISCOUNT: '/services/checkout_apply_discount.json',
-        CHECKOUT_APPLY_GIFTCARD: '/services/checkout_apply_giftcard.json'
+        CHECKOUT_APPLY_GIFTCARD: '/services/checkout_apply_giftcard.json',
+
+        // QuickView
+        QUICKVIEW_DETAILS: '/services/quickview_details.json'
     },
 
     init: function () {
@@ -115,17 +117,29 @@ MLS.ajax = {
 
     quickView: {
         init: function (pid, el) {
-            //For demo purposes content is already loaded
-            contentGrid.quickViewShow(el);
             MLS.ajax.sendRequest(
-                this.href,
-                { productID : pid },
-                MLS.ajax.quickView.update
+                MLS.ajax.endpoints.QUICKVIEW_DETAILS,
+                { 
+                    productID : pid 
+                },
+                function(r) {
+                    MLS.ajax.quickView.update(r, el);
+                }
             );
         },
-        update: function (data) {
-            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
-            //contentGrid.quickViewShow();
+        update: function (r, el) {
+            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                return MLS.modal.open(r.error ? r.error.responseHTML : null);
+            }
+
+            var $cnt = $jQ('.wrapper', '#quick-view-overlay');
+            MLS.ui.updateContent($cnt, r.success.responseHTML);
+            $cnt.find(".add-cart-cta").uniform();
+            $cnt.find("[data-color]").click(function() {
+                $jQ(this).parents("form").find("[name=color-select]").val($jQ(this).data("color"));
+            });
+            MLS.miniCart.init($cnt);
+            contentGrid.quickViewShow(el);
         }
     }
 };
