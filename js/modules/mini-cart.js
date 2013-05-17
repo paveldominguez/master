@@ -5,7 +5,7 @@ MLS.miniCart = {
 	{
 		addItem: function(e) 
 		{
-			MLS.miniCart.addItem($jQ(this).data("cart-add"), e.form ? $jQ(e.form).find("[name=size-select]").val() : null, e.form ? $jQ(e.form).find("[name=color-select]").val() : null);
+			MLS.miniCart.addItem($jQ(this).data("cart-add"), e.target.form ? $jQ(e.target.form).find("[name=size-select]").val() : null, e.target.form ? $jQ(e.target.form).find("[name=color-select]").val() : null);
         	return false;
         },
 
@@ -229,7 +229,7 @@ MLS.miniCart = {
             MLS.ajax.endpoints.REMOVE_FROM_MINICART,
             
             {
-            	id: id,
+            	productID: id,
             	action: "remove"
             },
 

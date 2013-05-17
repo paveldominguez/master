@@ -32,10 +32,8 @@ var contentGrid = {
 
         // Load more...
         $jQ('#load-more').on('click', contentGrid.loadMore);
-        $jQ('#load-remaining').on('click', contentGrid.loadAll);
+        $jQ('#load-remaining').on('click', contentGrid.loadMore);
 
-        // sorts
-        $jQ('#sort-options').find('li').on('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Binds  ------*/
@@ -63,10 +61,8 @@ var contentGrid = {
 
         // Load more...
         $jQ('#load-more').unbind('click', contentGrid.loadMore);
-        $jQ('#load-remaining').unbind('click', contentGrid.loadAll);
+        $jQ('#load-remaining').unbind('click', contentGrid.loadMore);
 
-        // sorts
-        $jQ('#sort-options').find('li').unbind('click', contentGrid.sortHeader);
 
 
         /*-----  End of Event Unbinds ----*/
@@ -79,17 +75,19 @@ var contentGrid = {
 
     loadMore: function (e) {
         e.preventDefault();
-        // Params...
-        var params = {
-            starting: $jQ('#load-more').attr('data-offset') // starting point
-        };
+
+        var $elem = $jQ(e.currentTarget),
+            params,
+            $loadMore;
+
+        params = MLS.util.getParamsFromUrl($elem.attr('href'));
 
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.PRODUCT_LOAD_MORE,
             params,
             function (data) {
                 if (data.hasOwnProperty('success')) {
-
+                    $loadMore = $jQ('#load-more');
                     // append results
                     $jQ('#main-column .content-grid').append(data.success.responseHTML);
                     contentGrid.reInit();
@@ -98,77 +96,21 @@ var contentGrid = {
                     if (typeof data.success.more !== 'undefined' && data.success.more.count !== '0') {
 
                         // update data-offset
-                        $jQ('#load-more').attr('data-offset', data.success.more.offset)
+                        $loadMore.attr('href', data.success.more.url)
                             // update button "load %loadManyMore count" button
                             .find('.product-count').text(data.success.more.count);
 
                         // update "load remaining %remainingCount products" link
                         $jQ('#load-remaining').find('.product-count').text(data.success.more.remainingCount);
 
-                        $jQ('#load-more').show();
+                        $loadMore.show();
 
                     } else { // hide buttons is there's no more
-                        $jQ('#load-more').hide();
+                        $loadMore.hide();
                     }
                 }
             }
         );
-    },
-
-
-    loadAll: function (e) {
-        e.preventDefault();
-        // Params...
-        // Bring all results if we don't pass any offset
-        var params = {
-            // starting: $jQ('#load-more').attr('data-offset') // starting point
-        };
-
-        MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.PRODUCT_LOAD_MORE,
-            params,
-            function (data) {
-                if (data.hasOwnProperty('success')) {
-
-                    // append results
-                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
-                    contentGrid.reInit();
-
-                    $jQ('#load-remaining').hide();
-                    $jQ('#load-more').hide();
-
-                }
-            }
-        );
-    },
-
-
-    sortHeader: function (e) {
-        e.preventDefault();
-        var $elem = $jQ(this),
-            type = $jQ(this).attr('data-type'),
-            $sortOptions = $jQ('#sort-options'),
-            href = $elem.find('a').attr('href');
-
-        //Fire Ajax
-
-        MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.PRODUCT_SORT,
-            MLS.util.getParamsFromUrl(href),
-            function (data) {
-                if (data.hasOwnProperty('success')) {
-                    $sortOptions.find('li').removeClass('active');
-                    $elem.addClass('active');
-                    // load content...
-                    $jQ('#main-column .content-grid').html(data.success.responseHTML);
-                     // ... and even the sort by
-                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
-                    contentGrid.reInit();
-                }
-            }
-        );
-
-
     },
 
 
@@ -246,7 +188,6 @@ var contentGrid = {
         MLS.ajax.quickView.init(pid, el);
     },
     quickViewShow: function (e) {
-        console.log(e);
         var $quickView = $jQ('#quick-view-overlay'),
         $parentTile = $jQ(e).parent().parent(),
         $contentTile = $parentTile.hasClass('featured') ? $parentTile.next() : $parentTile,

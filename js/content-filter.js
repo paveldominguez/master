@@ -1,6 +1,7 @@
 MLS.contentFilter = (function () {
 
     var $cf = $jQ('#content-filter'),
+        hashLoaded = false,
         options = {
             endpoint: null,
             callback: function () {},
@@ -22,44 +23,27 @@ MLS.contentFilter = (function () {
 
                 $cf = $jQ('#content-filter');
                 var $collapsible = $cf.find('.collapsible'),
-                    // $fs = $jQ('#filter-selections'),
-                    // i = j = 0,
-                    // $facet = null,
-                    // param,
                     $facets = $cf.find('.facet');
 
 
                 // collapse all but first dimension
                 $collapsible.find('.facet-list').slideToggle('slow');
 
-                // add data attributes to facets
-                // for (i = 0; i < $facets.length; i++) {
-                //     $facet = $facets.eq(i),
-                //     url = $facet.children('a').attr('href'),
 
-                //     params = url.split('?')[1].split('&');
-
-
-                //     for (j=0; j< params.length; j++) {
-                //         param = params[j].split('=');
-                //         $facet.attr('data-' + param[0], param[1])
-                //     }
-                // }
-
-
+                // load content on load (if hash)
+                !hashLoaded && pub.loadFromHash();
+                hashLoaded = true;
 
                 /*==========  bind click events  ==========*/
-
-                // reset all
-                $jQ('#clear-selections').on('click', pub.resetFilter);
 
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
                 $facets.on('click', pub.facetClick);
+                $jQ('.filter-panels li').on('click', pub.sort); /* mobile option */
 
                 // remove filter
-                $jQ('#clear-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
@@ -67,9 +51,17 @@ MLS.contentFilter = (function () {
                 // type ahead (searc)
                 $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', pub.compabilitySearch);
 
-
+                // sort links
+                $jQ('#sort-options').find('li').on('click', pub.sort);
+                $jQ('#mobile-sort-filter li.sort-option').on('click', pub.sort);
             },
             /*-----  End of Init  ------*/
+
+
+
+            /*================================================
+            =            Finalize (unbind events)            =
+            =================================================*/
 
             finalize: function () {
                 $cf = $jQ('#content-filter');
@@ -78,17 +70,16 @@ MLS.contentFilter = (function () {
 
                  /*==========  bind click events  ==========*/
 
-                // reset all
-                $jQ('#clear-selections').unbind('click', pub.resetFilter);
 
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
 
 
                 $facets.unbind('click', pub.facetClick);
+                $jQ('.filter-panels li').unbind('click', pub.sort); /* mobile option */
 
                 // remove filter
-                $jQ('#filter-selections').find('li').find('a').on('click', pub.removeFilter);
+                $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
 
                 // compability services
                 $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
@@ -96,14 +87,75 @@ MLS.contentFilter = (function () {
                 // type ahead (searc)
                 $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
 
+                 // sort links
+                $jQ('#sort-options').find('li').on('click', pub.sort);
+                $jQ('#mobile-sort-filter li.sort-option').on('click', pub.sort);
 
             },
+
+            /*-----  End of Finalize (unbind events)  ------*/
+
+
+
+
+            /*============================================
+            =            Reinit: on ajax load            =
+            ============================================*/
 
             reInit: function () {
                 MLS.contentFilter.finalize();
                 MLS.contentFilter.init();
 
             },
+
+            /*-----  End of Reinit: on ajax load  ------*/
+
+
+
+
+            /*======================================
+            =            Load from Hash            =
+            ======================================*/
+            // If the url contains paramaters in the hash when it
+            // is first loaded then request content
+
+            loadFromHash: function () {
+
+                var hash = window.location.hash,
+                params = {};
+
+                if (hash !== '') { // we have a hash
+                    params = MLS.util.getParamsFromUrl(hash);
+
+                    if (!$jQ.isEmptyObject(params)) {
+                        pub.processRequest(params);
+                    }
+
+                }
+
+            },
+
+            /*-----  End of Load from Hash  ------*/
+
+
+
+
+            /*=======================================
+            =            Listing sorting            =
+            =======================================*/
+
+            sort: function (e) {
+                e.preventDefault();
+                var $elem = $jQ(this),
+                    href = $elem.find('a').attr('href'),
+                    params = MLS.util.getParamsFromUrl(href);
+
+                window.location.hash = MLS.util.setHash(href);
+                pub.processRequest(params);
+            },
+
+            /*-----  End of Listing sorting  ------*/
+
 
 
             /*=======================================
@@ -113,13 +165,19 @@ MLS.contentFilter = (function () {
             dimensionClick: function (e) {
                 e.preventDefault();
                 $jQ(this).toggleClass('active').promise().done(function () {
-                    // toggleElement($jQ(this).next(), false);
                     $jQ(this).next().slideToggle('slow');
                 });
             },
 
             /*-----  End of dimension click  ------*/
 
+
+
+
+
+            /*==========================================
+            =            Compability search            =
+            ==========================================*/
 
             compabilitySearch: function (e) {
                 var $elem = $jQ(this),
@@ -135,7 +193,7 @@ MLS.contentFilter = (function () {
                     params;
 
                 // update hash
-                window.location.hash = href;
+                window.location.hash = MLS.util.setHash(href);
 
                 params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
@@ -149,11 +207,14 @@ MLS.contentFilter = (function () {
                     params;
 
                 // update hash
-                window.location.hash = href;
+                window.location.hash = MLS.util.setHash(href);
 
                 params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
             },
+
+            /*-----  End of Compability search  ------*/
+
 
 
             /*=============================================
@@ -161,23 +222,15 @@ MLS.contentFilter = (function () {
             =============================================*/
 
             removeFilter: function (e) {
-                var $elem = $jQ(this),
-                    params = {removeFilter: 'xxx'};
                 e.preventDefault();
-                window.location.hash = '';
+                var $elem = $jQ(this),
+                    href = $elem.attr('href'),
+                    params = MLS.util.getParamsFromUrl(href);
+                window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
             },
 
-
-            /*-----  End of Remove selected facet  ------*/
-
-            resetFilter: function (e) {
-                var $elem = $jQ(this),
-                    params = {reset: 'filters'};
-                e.preventDefault();
-                window.location.hash = '';
-                pub.processRequest(params);
-            },
+            /*-----  End of remove facet  ------*/
 
 
 
@@ -197,29 +250,32 @@ MLS.contentFilter = (function () {
 
             /*-----  End of process request  ------*/
 
+
+
             /*===================================
             =            update grid            =
             ===================================*/
 
             updateResults : function (data) {
                 if (data.hasOwnProperty('success')) {
+
                     // update results...
-                    // MLS.ui.updateContent('#main-column .content-grid', data.success.responseHTML);
                     options.container.html(data.success.responseHTML);
 
                     // ... and result count ...
                     $jQ('#content-filter-count').find('strong').text(data.success.count);
+
                     // ... and filters
                     $cf.replaceWith(data.success.filtersHTML);
 
                     // ... and even the sort by
-                    $jQ('#content-grid-header').replaceWith(data.success.sortByHTML);
+                    $jQ('#sort-options').find('ul').replaceWith(data.success.sortByHTML);
 
                     options.callback();
                     pub.reInit();
+
                 } else {
                     options.container.html(data.error.responseHTML);
-
                 }
 
             },
@@ -229,6 +285,9 @@ MLS.contentFilter = (function () {
 
 
         };
+
+
     return pub;
 }());
+
 
