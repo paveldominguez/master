@@ -17,10 +17,11 @@ MLS.modal = {
 		if (noclose)
 		{
 			$overlay.find(".close-btn").remove();
-		} 
-		else 
+		}
+		else
 		{
 			$overlay.find(".close-btn").click(function(e) {
+                console.log('closing overlay');
 				MLS.modal.close($overlay);
 				return false;
 			});
