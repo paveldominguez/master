@@ -35,23 +35,97 @@ $bgPositionPromoSmall: -85px 35px;
 .special-offers-landing-page{
     .special-offers{
         position:relative;
+        margin: 0 0 10px 0;
+        .flex-viewport{
+            padding:14px 0 14px 14px;
+            border-top:1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-left:1px solid #ccc;
+        }
         .slides{
             overflow:hidden;
             margin: 0 auto;
             li{
                 float:left;
-                display:block;
+                width:252px;
                 height:215px;
-                width:215px;
-                overflow:hidden;
                 position:relative;
+                ul{
+                    margin:0;
+                    @include clearfix();
+                    li{
+                        float:left;
+                        width:252px;
+                        padding-right:14px;
+                        height:215px;
+                        overflow:hidden;
+
+                        .item-wrapper{
+                            height:100%;
+                            display:block;
+                            overflow:hidden;
+                            position:relative;
+                            background-color:#eb182b;
+                            a{
+                                display:block;
+                                height:100%;
+                                width:100%;
+                                padding:10px;
+                            }
+                            .splash{
+                                display:block;
+                                position:relative;
+                                .digits{
+                                    color: #fff;
+                                    font-size: 54px;
+                                    line-height: 54px;
+                                    font-family: "Verizon Apex Medium", Helvetica, Arial, sans-serif;
+                                    letter-spacing: -5px;
+                                    margin: 25px 0 0 0;
+                                }
+                                .unit{
+                                    font-size: 30px;
+                                    line-height: 30px;
+                                    font-family: "Verizon Apex Book", Helvetica, Arial, sans-serif;;
+                                    font-weight: 400;
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                }
+                                .words{
+                                    font-size: 13px;
+                                    line-height: 13px;
+                                    text-transform: uppercase;
+                                    font-family: "Verizon Apex Bold";
+                                    position: absolute;
+                                    right: 23px;
+                                    bottom: 39px;
+                                    font-weight: bold;
+                                    letter-spacing: -1px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+                .sale-details{
+                    color:#fff;
+                }
+                .sale-link{
+                    a{
+                        font-size:10px;
+                        font-weight:700;
+                        color:#fff;
+                    }
+                }
                 img{
                     position:absolute;
+                    right:0;
+                    top:0;
                 }
             }
         }
     }
-
 
     .content-grid{
         .content-item{
@@ -1228,6 +1302,11 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenSmall - 1) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
     .category-section {
         .content-header {
             .title {
@@ -1249,6 +1328,11 @@ $bgPositionPromoSmall: -85px 35px;
 }
 
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
     .hide-for-mobile-grid,
     .hide-for-small-grid-down {
         display: none !important;
@@ -1328,6 +1412,11 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenMobileLarge) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
     .hide-for-mobile {
         display: none !important;
     }
@@ -1392,6 +1481,12 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
+
     .hide-for-mobile-grid,
     .hide-for-small-grid-down {
         display: none !important;

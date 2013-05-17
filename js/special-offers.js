@@ -10,8 +10,6 @@ MLS.specialOffers = {
             directionNav: true,
             slideshow: false,
             animationSpeed: 500,
-            itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth())
-
         });
 
         $jQ('#bundle-deals').flexslider({
