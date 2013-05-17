@@ -192,7 +192,7 @@ MLS.contentFilter = (function () {
                     params;
 
                 // update hash
-                window.location.hash = href;
+                window.location.hash = MLS.util.setHash(href);
 
                 params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
@@ -206,7 +206,7 @@ MLS.contentFilter = (function () {
                     params;
 
                 // update hash
-                window.location.hash = href;
+                window.location.hash = MLS.util.setHash(href);
 
                 params = MLS.util.getParamsFromUrl(href);
                 pub.processRequest(params);
@@ -225,7 +225,7 @@ MLS.contentFilter = (function () {
                 var $elem = $jQ(this),
                     href = $elem.attr('href'),
                     params = MLS.util.getParamsFromUrl(href);
-                window.location.hash = href;
+                window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
             },
 
