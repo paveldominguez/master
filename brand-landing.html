@@ -22,12 +22,13 @@
 </head>
 <body id="product-listing" class="brand-landing-page">
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">  
+  <script type="text/javascript">
     includeFragment('inc/grid-pop-out.html');
   </script>
+  <div id="site-container">
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
   <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
-  <script type="text/javascript">  
+  <script type="text/javascript">
     includeFragment('inc/header.html');
   </script>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
@@ -60,7 +61,7 @@
       </aside>
       <!-- End Left Column -->
 
-      <!-- Begin Main Content Container -->      
+      <!-- Begin Main Content Container -->
       <section id="main-column" class="main-column">
 
         <!-- Begin Product Listing -->
@@ -91,9 +92,12 @@
         </script>
         <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
         <!-- end quick view item -->
-
+        <div id="load-actions" class="hide-for-small">
+            <a href="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001&more_total=30&more_offset=60" id="load-more">load <span class='product-count'>30</span> more</a>
+            <a href="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001&more-total=200&more_offset=60" id="load-remaining">load remaining <span class='product-count'>268</span> products</a>
+        </div>
         <!-- End Product Listing -->
-      </section> 
+      </section>
       <!-- End Main Content Container -->
 
     </div>
@@ -108,5 +112,6 @@
     includeFragment('inc/footer.html');
   </script>
   <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
+    </div>
 </body>
 </html>
