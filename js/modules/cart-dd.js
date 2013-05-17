@@ -1,16 +1,7 @@
 MLS.cart.dd = {
     init: function () {
-        console.log('v18');
-
-        $jQ(".color , #pdp-size-select").click(function() {
-            MLS.cart.dd.get.sizes();
-        });
-
-        $jQ().change(function() {
-
-
-        });
-
+        $jQ(".color").unbind("click", MLS.cart.dd.get.sizes).click(MLS.cart.dd.get.sizes);
+        $jQ("#pdp-size-select").unbind("change", MLS.cart.dd.get.sizes).change(MLS.cart.dd.get.sizes);
     },
 
     get: {
@@ -31,41 +22,41 @@ MLS.cart.dd = {
         //         );
         //     },
 
-        sizes: function(){
-            var itemId = $jQ("#pdp-add-to-cart-submit").data("data-cart-add");
-            var itemColor = $jQ(".color.active").data("data-color");
-
-            //console.log("inside sizes");
+        sizes: function(e) {
+            var itemId = $jQ("#pdp-add-to-cart-submit").data("cart-add"),
+                itemColor = $jQ(".color.active").data("color"),
+                itemSize = $jQ("#pdp-size-select").val();
 
             MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.GET_CART_DD_SIZES,
+                MLS.ajax.endpoints.GET_CART_DD_SIZES,
                 {
                     id : itemId,
-                    Color : itemColor
+                    color : itemColor,
+                    size: itemSize
                 },
-                function(response){
-                    //console.log("inside sizes ajax response ");
+
+                function(response) {
                     MLS.cart.dd.populate(response, "#pdp-size-select");
-                    MLS.cart.dd.get.carousel();
+                    MLS.cart.dd.get.carousel(itemId, itemColor, itemSize);
                 }
             );
         },
 
-        carousel: function(itemColor){
-            var itemId = $jQ("#pdp-add-to-cart-submit").data("data-cart-add");
-            var itemSize = $jQ("#pdp-size-select").val();
-            var itemColor = $jQ(".color.active").data("data-color");
-
+        carousel: function(itemId, itemColor, itemSize) {
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.GET_CART_DD_CAROUSEL,
                 {
                     id : itemId,
                     size : itemSize,
-                    Color : itemColor
+                    color : itemColor
                 },
-                function(response){
-                    MLS.cart.dd.populate(response, "#focus .slides")
 
+                function(response) {
+                    var $slides = $jQ("#focus .slides").remove();
+                    $jQ("#focus").html("").append($slides);
+                    MLS.cart.dd.populate(response, "#focus .slides");
+
+                    $jQ('#focus').flexslider("pause");
                     $jQ('#focus').data("flexslider", null).flexslider({
                         animation: "slide",
                         controlNav: false,
