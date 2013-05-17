@@ -1,1 +1,26 @@
-["iPhone 4", "iPhone 4S", "iPhone 5"]
+[
+	{
+		"id": "iph4",
+		"value": "iPhone 4"
+	},
+	{
+		"id": "iph4s",
+		"value": "iPhone 4S"
+	},
+	{
+		"id": "iph5",
+		"value": "iPhone 5"
+	},
+	{
+		"id": "samsunggn2",
+		"value": "Samsung Galaxy Note"
+	},
+	{
+		"id": "samsunggn2",
+		"value": "Samsung Galaxy Note 2"
+	},
+	{
+		"id": "nokialumia",
+		"value": "Nokia Lumia"
+	}
+]
