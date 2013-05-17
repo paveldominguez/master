@@ -130,7 +130,13 @@ MLS.ajax = {
                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
             }
 
-            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), r.success.responseHTML);
+            var $cnt = $jQ('.wrapper', '#quick-view-overlay');
+            MLS.ui.updateContent($cnt, r.success.responseHTML);
+            $cnt.find(".add-cart-cta").uniform();
+            $cnt.find("[data-color]").click(function() {
+                $jQ(this).parents("form").find("[name=color-select]").val($jQ(this).data("color"));
+            });
+            MLS.miniCart.init($cnt);
             contentGrid.quickViewShow();
         }
     }
