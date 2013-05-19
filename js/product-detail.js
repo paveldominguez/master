@@ -512,10 +512,7 @@ var pub = {
     },
     selectCompatibleProducts : function(){
         var itemsTotal = $jQ('#total-items > span'),
-                returnedItems = $jQ('#returned-items');
-
-
-console.log(itemsTotal);
+            returnedItems = $jQ('#returned-items');
 
         $jQ('#detail-brand-select, #detail-device-select').change(function(){
             var selectType = $jQ(this).data('type'),
@@ -550,7 +547,7 @@ console.log(itemsTotal);
                     keyword : keyword
                 },
                 function(data){
-                    
+
                 }
             );
         });

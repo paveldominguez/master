@@ -2,7 +2,10 @@
 
 
 .product-detail {
-
+    .temp-pdp-header,
+    .anchor-bar{
+        max-width:1280px;
+    }
     #pdp-hero { /*----------------------  PDP HERO --------------------- */
         @include clearfix();
         @include heroInset;
@@ -1033,13 +1036,19 @@
                     &.compatibility{
                         width: 91%;
                     }
+                    &.features{
+                        .pdp-features-content{
+                            .more-less-link{
+                                display:block;
+                            }
+                        }
+                    }
                     &.active{
                         display:block;
                     }
                     > span{
                         display:none;
                     }
-
                 }
             }
 
@@ -1575,7 +1584,7 @@
         position: fixed;
         top: 0;
         background-color: #fff;
-        width: 100%;
+        max-width:1280px;
         z-index: 9999;
         }
 
@@ -1942,8 +1951,6 @@
 
         } /* end 1132 and up */
 
-
-
     @media only screen and (min-width: 959px) and (max-width: 1131px ) { /* 960 - 1131 */
         #pdp-hero {
             #carousel-block {
@@ -2073,6 +2080,38 @@
     /* below 875 - hero tweaks */
     @media only screen and (max-width: 875px) {
         #product-details{
+            .tabbed-wrapper{
+                .detail-tabs{
+                    li{
+                        span{
+                            font-size:11px;
+                        }
+                    }
+                }
+            }
+            .detail-tabs-accordion{
+                .features{
+                    .details-list{
+                        height:202px;
+                        margin:0;
+                        padding:0 0 0 16px;
+                        overflow:hidden;
+                        li{
+                            float:none;
+                            width:auto;
+                        }
+                    }
+                    .more-less-link{
+                        color: $actLinkBlue;
+                        display:inline-block;
+                        margin-top:20px;
+                    }
+                    .more-less-block{
+                        width:46%;
+                        margin:0 46px 0 0;
+                    }
+                }
+            }
             .pdp-compat-content{
                 .tab-inner{
                     position:relative;
@@ -2769,7 +2808,6 @@
 .more-less-block {
     @include clearfix();
     position:relative;
-    padding-bottom:36px;
     overflow: hidden;
     .more-less-link {
         cursor:pointer;
