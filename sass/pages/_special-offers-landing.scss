@@ -35,23 +35,114 @@ $bgPositionPromoSmall: -85px 35px;
 .special-offers-landing-page{
     .special-offers{
         position:relative;
+        margin: 0 0 10px 0;
+        .flex-viewport{
+            padding:14px 0 14px 14px;
+            border-top:1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-left:1px solid #ccc;
+        }
         .slides{
-            overflow:hidden;
             margin: 0 auto;
+            overflow:hidden;
             li{
                 float:left;
-                display:block;
+                width:252px;
                 height:215px;
-                width:215px;
-                overflow:hidden;
                 position:relative;
+                ul{
+                    margin:0;
+                    @include clearfix();
+                    li{
+                        float:left;
+                        width:252px;
+                        height:215px;
+                        overflow:hidden;
+                        padding-right:14px;
+
+                        .item-wrapper{
+                            height:100%;
+                            display:block;
+                            overflow:hidden;
+                            position:relative;
+                            background-color:#eb182b;
+                            a{
+                                width:100%;
+                                height:100%;
+                                padding:10px;
+                                display:block;
+                            }
+                            .shop{
+                                display:block;
+                                color:#fff;
+                                font-weight:700;
+                                font-size:11px;
+                            }
+                            .splash{
+                                display:block;
+                                position:relative;
+                                height:80px;
+                                width:152px;
+                                border-bottom:3px solid #fff;
+                                .digits{
+                                    float:left;
+                                    color: #fff;
+                                    display:block;
+                                    font-size: 90px;
+                                    line-height: 54px;
+                                    letter-spacing: -5px;
+                                    margin-right:8px;
+                                    font-family: "Verizon Apex Medium", Helvetica, Arial, sans-serif;
+                                }
+                                .measure{
+                                    display:block;
+                                    padding-top:8px;
+                                    .unit{
+                                        display:block;
+                                        font-size: 42px;
+                                        position:static;
+                                        font-weight: 400;
+                                        line-height: 30px;
+                                        font-family: "Verizon Apex Book", Helvetica, Arial, sans-serif;;
+                                    }
+                                    .words{
+                                        display:block;
+                                        font-size: 20px;
+                                        position:static;
+                                        font-weight: bold;
+                                        text-transform: uppercase;
+                                        font-family: "Verizon Apex Bold", Helvetica, Arial, sans-serif;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .sale-details{
+                    color:#fff;
+                    display:block;
+                    margin:20px 0 0 0;
+                    p{
+                        margin:0;
+                        height:80px;
+                        padding:6px 0 0 0;
+                        font-style: italic;
+                    }
+                }
+                .sale-link{
+                    a{
+                        font-size:10px;
+                        font-weight:700;
+                        color:#fff;
+                    }
+                }
                 img{
                     position:absolute;
+                    top:0;
                 }
             }
         }
     }
-
 
     .content-grid{
         .content-item{
@@ -926,6 +1017,9 @@ $bgPositionPromoSmall: -85px 35px;
 	}
 		.special-offers-landing-page {
 			.category-section {
+                .slide-nav{
+                    display:block;
+                }
 		        .content-grid {
 		            &.feature-grid {
 		                .content-item {
@@ -1228,6 +1322,14 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenSmall - 1) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
+    .slide-nav{
+        display:block;
+    }
     .category-section {
         .content-header {
             .title {
@@ -1242,13 +1344,15 @@ $bgPositionPromoSmall: -85px 35px;
                 }
             }
         }
-        .slide-nav {
-            display: none;
-        }
     }
 }
 
 @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge + 1) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
     .hide-for-mobile-grid,
     .hide-for-small-grid-down {
         display: none !important;
@@ -1284,6 +1388,9 @@ $bgPositionPromoSmall: -85px 35px;
         }
     }
     .category-section {
+        .slide-nav{
+            display:block;
+        }
         .content-grid {
             &.feature-grid {
                 .content-item {
@@ -1328,23 +1435,22 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenMobileLarge) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
     .hide-for-mobile {
         display: none !important;
     }
-	.special-offers {
-		.flex-viewport {
-			margin-left: -35px;
-		}
-	}
 	.bundle-deals {
 		.flex-viewport {
 			margin-left: -35px;
 		}
 	}
     .category-section {
-        .slides,
-        > ul {
-            margin-left: 35px;
+        .slide-nav{
+            display:block;
         }
         .content-grid {
             .content-item {
@@ -1392,6 +1498,12 @@ $bgPositionPromoSmall: -85px 35px;
     }
 }
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
+    .header-promo{
+        .special-header{
+            display:none;
+        }
+    }
+
     .hide-for-mobile-grid,
     .hide-for-small-grid-down {
         display: none !important;

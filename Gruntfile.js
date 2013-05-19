@@ -66,6 +66,7 @@ module.exports = function (grunt) {
                     'js/search-results.js',
                     'js/special-offers.js',
                     'js/cart.js',
+                    'js/modules/cart-dd.js',
                     'js/checkout.js',
                     'js/mls-ajax.js',
                     'js/404.js',

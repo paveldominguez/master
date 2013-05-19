@@ -1,5 +1,5 @@
 <div id="quick-view-overlay" class="quick-view-overlay">
-    <div class="wrapper">
+    <form class="wrapper">
         <div class="quick-view-header">
             <ul class="quick-view-offers">
                 <li class="first offer">free shipping</li>
@@ -51,29 +51,30 @@
                     </li>
                 </ul>
                 <div class="product-color"> <!-- color selector -->
+                    <input type="hidden" name="color-select" value="" />
                     <div class="color-info"><span class="color-label"><span class="color-option">Black</span></div>
                     <ul id="product-colors" class="product-colors inline-list">
                         <li class="color black active">
                             <span class="active-check"></span>
-                            <a href="#select-color" class="action" title="black">
+                            <a href="#select-color" data-color="blk" class="action" title="black">
                                 <img src="img/product-category-listing/pick-blk.png"/>
                             </a>
                         </li>
                         <li class="color grey">
                             <span class="active-check"></span>
-                            <a href="#select-color" class="action" title="grey">
+                            <a href="#select-color" data-color="gry" class="action" title="grey">
                                 <img src="img/product-category-listing/pick-gry.png"/>
                             </a>
                         </li>
                         <li class="color white">
                             <span class="active-check"></span>
-                            <a href="#select-color" class="action" title="white">
+                            <a href="#select-color" data-color="wht" class="action" title="white">
                                 <img src="img/product-category-listing/pick-wht.png"/>
                             </a>
                         </li>
                         <li class="color blue">
                             <span class="active-check"></span>
-                            <a href="#select-color" class="action" title="yellow">
+                            <a href="#select-color" data-color="ylw" class="action" title="yellow">
                                 <img src="img/product-category-listing/pick-ylw.png"/>
                             </a>
                         </li>
@@ -104,6 +105,6 @@
                 </div>
             </div>
         </section>
-    </div>
+    </form>
 </div>
 <div id="quick-view-modal" class="quick-view-modal"></div>

@@ -16,8 +16,6 @@ MLS.ui = {
             overlayWidth;
 
             function socialItemReset($context) {
-                //$socialItems.animate({ width: '20%' }, { duration: 'medium', queue: false });
-                //console.log($context);
                 if ($context !== undefined) {
                     $context.removeClass('active');
                     $context.find('.overlay').hide();
@@ -29,11 +27,11 @@ MLS.ui = {
                 }
             }
 
-            function modalClose() {
+            function modalClose($context, $content) {
                 $jQ('#share-modal-overlay, #share-modal-display').fadeOut('medium');
                 $jQ(document).off('keyup.social');
+                $jQ($context).html($content);
             }
-            //$socialItems.find('.overlay').css('display', 'none');
 
             socialItemReset();
             $socialItems.not('.active').on('click', function (e) {
@@ -45,40 +43,40 @@ MLS.ui = {
                 $scope.addClass('active');
 
                 if ($scope.hasClass('email')) {
-                    $jQ('.social-link').click(function(e){ // Share Email overlay
-                        e.preventDefault;
-                        MLS.ui.lightbox(this);
-                    });
-                    /* Commenting out share modal overlay. Using lightbox instead */
-                    /*if ($jQ('#share-modal-overlay').length <= 0) {
+                    var $emlOverlay = $scope.find('.overlay'),
+                    $emlModal = $emlOverlay.html();
+                    if ($jQ('#share-modal-overlay').length <= 0) {
                         $jQ(document.body).append('<div id="share-modal-overlay"/>');
                     }
                     if ($jQ('#share-modal-display').length <= 0) {
                         $jQ(document.body).append('<div id="share-modal-display"/>');
                     }
 
-                    $socialItemsWithContext.stop(false, false).animate({ width: '20%' }, { duration: 'medium', queue: false });
-                    $jQ('#share-modal-overlay, #share-modal-display').fadeIn('medium', function () {
+                    $socialItemsWithContext.css('width', '20%');
+                    $jQ('#share-modal-overlay, #share-modal-display').hide().fadeIn('medium', function () {
                         $jQ('#share-modal-overlay').one('click', function () {
-                            modalClose();
+                            modalClose($emlOverlay, $emlModal);
                         });
                         $jQ('#share-modal-display').one('click', '.close-overlay', function (e) {
                             e.preventDefault();
-                            modalClose();
+                            modalClose($emlOverlay, $emlModal);
                         });
                         $jQ(document).on('keyup.social', function (e) {
-                            if (e.keyCode === 27) { // 27 == esc key
-                                modalClose();
+                            if (e.keyCode === 27) {
+                                modalClose($emlOverlay, $emlModal);
                             }
                         });
                     });
 
+                    // center modal on screen
                     $jQ('#share-modal-display').css({
                         top: ($jQ(window).outerHeight() / 2 - $jQ('#share-modal-display').outerHeight() / 2) + $jQ(document).scrollTop(),
                         left: ($jQ(window).outerWidth() / 2 - $jQ('#share-modal-display').outerWidth() / 2) - $jQ(document).scrollLeft()
                     });
+
                     var $shareModalDisplay = $jQ('#share-modal-display');
-                    $shareModalDisplay.html('<h3 class="share-title">Share This Item</h3><a href="#" id="close-social-overlay" class="close-overlay"></a><div class="overlay-content"><figure class="share-fig"><img src="img/product-detail-page/pdp-plus/dre-beats-1.png"><figcaption>Lorem Ipsum Descriptum</figcaption></figure><form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-example.json"><div class="fieldwrapper"><label for="share-email">Your Email</label><input id="share-email" name="share-email" type="email" class="share-field"></div><div class="fieldwrapper"><label for="share-recipient">Recipient Email</label><input id="share-recipient" name="share-recipient" type="email" class="share-field"></div><input type="submit" id="share-submit" class="button share-cta"></form></div>');
+                    $shareModalDisplay.html($emlModal);
+                    $emlOverlay.html('');
                     $jQ('#share-submit').uniform();
                     $jQ('#share-modal').on('submit', function (e) {
                         e.preventDefault();
@@ -87,18 +85,23 @@ MLS.ui = {
                         MLS.ajax.sendRequest(
                             $theForm.attr('action'),
                             $theForm.serialize(),
-                            function (d) { // AJAX request success
-                                if (data.hasOwnProperty('success')) { // server-side success response
+                            // AJAX request success
+                            function (d) {
+                                // server success response
+                                if (data.hasOwnProperty('success')) {
                                     $shareModalDisplay.html(d.success.responseHTML);
-                                } else { // server-side error response
+                                }
+                                // server error response
+                                else {
                                     $shareModalDisplay.html(d.error.responseHTML);
                                 }
                             },
-                            function (d) { // AJAX request error
-                                $shareModalDisplay.html('<h3 class="share-title message">There was a problem sharing. Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay">');
+                            // AJAX request error
+                            function (d) {
+                                $shareModalDisplay.html('<h3 class="share-title">An error has occurred.<br>Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay"></a>');
                             }
                         );
-                    });*/
+                    });
                 } else {
                     $overlay = $scope.find('.overlay'),
                     $socialList = $socialItemsWithContext.parents('.social-list'),

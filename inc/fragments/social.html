@@ -1,9 +1,30 @@
 <div class="social-share-module">
     <ul class="social-list">
         <li class="first social-item email">
-            <a href="#" class="social-link" title="Click to share this item via Email" data-modal-id="#social-email-overlay">
+            <a href="#" class="social-link" title="Click to share this item via Email">
                 <span class="icon">Email</span>
             </a>
+            <div class="overlay">
+                <h3 class="share-title">Share This Item</h3>
+                <a href="#" id="close-social-overlay" class="close-overlay"></a>
+                <div class="overlay-content">
+                    <figure class="share-fig">
+                        <img src="img/product-detail-page/pdp-plus/dre-beats-1.png">
+                        <figcaption>Product Description...</figcaption>
+                    </figure>
+                    <form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-example.json">
+                        <div class="fieldwrapper">
+                            <label for="share-email">Your Email</label>
+                            <input id="share-email" name="share-email" type="email" class="share-field">
+                        </div>
+                        <div class="fieldwrapper">
+                            <label for="share-recipient">Recipient Email</label>
+                            <input id="share-recipient" name="share-recipient" type="email" class="share-field">
+                        </div>
+                        <input type="submit" id="share-submit" class="button share-cta">
+                    </form>
+                </div>
+            </div>
         </li>
         <li class="social-item facebook">
             <a href="#" class="social-link" title="Click to share on Facebook">

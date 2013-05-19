@@ -180,7 +180,6 @@ var pub = {
             var formValid = $jQ("#pdp-add-to-cart").valid();
             if (formValid == true){
                 $jQ('.size-select-box').find('.selector').removeClass('error');
-                alert('info sent to server');
                 return false;
             } else {
                 $jQ('.size-select-box').find('.selector').addClass('error');
