@@ -16,16 +16,13 @@ MLS.home = {
 		//Madlib
 		MLS.home.madlib.init();
 
-		// MiniCart
-		// MLS.miniCart.init();
-
 		//Flex Sliders
 		MLS.home.sliders.init();
 
 		//Featured Reviews
 		MLS.home.featuredReviews();
 
-        MLS.ui.vzSlider.init();
+        //MLS.ui.vzSlider.init();
 
 		//Trending Products tabs
         $jQ('dd', '#detail-tabs').on('click', function (e) {
@@ -138,7 +135,7 @@ MLS.home = {
 	searchProducts: function(device, category) {
 		MLS.ajax.sendRequest(
             MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
-            
+
             {
             	device: device,
             	category: category
