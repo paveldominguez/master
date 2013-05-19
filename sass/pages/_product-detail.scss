@@ -922,7 +922,7 @@
                     }
                 } /* end brand-sku */
 
-            h1.product-title {
+            .product-title {
                 padding-left:20px;
                 max-width:92%;
                 font-size: 27px;
@@ -932,7 +932,7 @@
                 color: $cartGreyDk;
                 font-family: $fontVzwBook;
                 font-weight:normal;
-                }/* end h1 */
+                }
 
             #review-block {
                 padding-left:20px;
@@ -2061,7 +2061,7 @@
         } /* end below 959 */
 
 
-    @media only screen and (max-width: 875px ) { /* below 875 - hero tweaks */
+    @media only screen and (max-width: 875px ) {/* below 875 - hero tweaks */
         #pdp-hero {
             #carousel-block {
                 #carousel {
