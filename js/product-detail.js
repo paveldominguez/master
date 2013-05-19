@@ -7,6 +7,7 @@ var pub = {
         this.compatibleDropDowns();
         this.selectCompatibleProducts();
         this.pdpDetailTabs();
+        this.phpFeaturesGraphicTab();
 
         // ONLOAD page-wide ..........................................................................................
         $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison, #product-add-to-cart").uniform(); // make selects pretty
@@ -189,27 +190,6 @@ var pub = {
         });
         // ..................................................................................... END HERO & ZOOM EVENTS
 
-
-
-        // BELOW THE FOLD 720+ EVENTS .....................................................................................
-        $jQ('#detail-tabs dd a').click(function(){
-            MLS.productDetail.pdpTab(this);
-            MLS.ui.moreLessBlock();
-        });
-
-        $jQ('.more-less-link').click(function(e){ // more/less click
-            var block = $jQ(this).parents('.more-less-block');
-            if ($jQ(block).hasClass('bound')) {
-                $jQ(this).text('Less');
-            } else {
-                $jQ(this).text('More');
-            }
-            e.preventDefault();
-            $jQ(block).toggleClass('bound');
-
-        });
-
-
         $jQ('.pdp-bundle-block .item').click(function(e){ // bundle modal
             e.preventDefault;
             MLS.ui.lightbox(this);
@@ -218,11 +198,6 @@ var pub = {
         $jQ('#add-cart-server-error').find('.lightbox-close').click(function(){ // close click
             $jQ('#add-cart-server-error').fadeOut(300); // fade out
         });
-
-        $jQ('#pdp-feature-tabs dd a').click(function(){ // tabbed graphic box in features-tab
-            MLS.productDetail.pdpTab(this);
-        });
-
 
         // BELOW THE FOLD 719- EVENTS .......................................................................................
 
@@ -249,10 +224,6 @@ var pub = {
 
         });
 
-         $jQ('#mobile-features .tabs dd a').click(function(){ // tabbed graphic box in features-tab
-            MLS.productDetail.pdpTab(this);
-        });
-
         // RELATED STORIES MODULE SEQUENCE
 
          $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){ // modify layout before init flexslider
@@ -275,8 +246,6 @@ var pub = {
         });
 
         $jQ('#pdp-related-stories-module dd a').click(function(){ // related stories tab clicks
-            MLS.productDetail.pdpTab(this); // PDP tab function
-
             var whichClick = $jQ(this).attr('id'); // identify current tab
             var whichClickArray = whichClick.split('-');
             whichClick = whichClickArray[2];
@@ -334,23 +303,43 @@ var pub = {
 
     pdpDetailTabs : function() {
         var detailSection = $jQ('#product-details'),
-            visualTabs = detailSection.find('.detail-tabs li'),
-            contentTabs = detailSection.find('.detail-tabs-accordion li');
+            visualTabs = detailSection.find('.detail-tabs > li'),
+            tabContent = detailSection.find('.detail-tabs-accordion > li');
 
             visualTabs.each(function(){
                 var currentScope = $jQ(this);
                 currentScope.click(function(){
                     var currentNode = $jQ(this),
                         targetTab = currentNode.data('tabname');
-                        console.log(currentNode);
-                        console.log(targetTab);
 
                     visualTabs.removeClass('active');
                     currentScope.addClass('active');
 
-                    contentTabs.removeClass('active');
-                    contentTabs.filter(function(){
+                    tabContent.removeClass('active');
+                    tabContent.filter(function(){
                         return $jQ(this).data('tabname') == targetTab;
+                    }).addClass('active');
+                });
+            });
+    },
+
+    phpFeaturesGraphicTab : function(){
+        var tabContainer = $jQ('.pdp-features-tab-box'),
+            visualTabs =  tabContainer.find('#pdp-feature-tabs > dd'),
+            tabContent = tabContainer.find('.tabs-content > li');
+
+            visualTabs.each(function(){
+                var currentScope = $jQ(this);
+                currentScope.click(function(){
+                    var currentNode = $jQ(this),
+                        targetTab = currentNode.data('lifestyle');
+
+                    visualTabs.removeClass('active');
+                    currentScope.addClass('active');
+
+                    tabContent.removeClass('active');
+                    tabContent.filter(function(){
+                        return $jQ(this).data('lifestyle') == targetTab;
                     }).addClass('active');
                 });
             });
@@ -388,20 +377,6 @@ var pub = {
     // hero section
         $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
         $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping'); // shipping & offers
-
-    /*
-        are you kidding me?
-        
-        $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');  // details tab
-        $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info'); // details tab
-        $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info'); // details tab
-        $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info'); // details tab
-        $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info'); // details tab
-        $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info'); // details tab
-        $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info'); // similar products slider
-        $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info'); // bundle block
-    
-     */
     },
     thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
@@ -424,7 +399,6 @@ var pub = {
         }
     },
     heroLinktoTab : function(targetLink){ // link to tabs form hero section .............................................................
-        MLS.productDetail.pdpTab(targetLink); //open tab programatically
         MLS.ui.scrollPgTo('#product-details', 80); //scroll page to open tab
     },
     createZoomPanel : function (which) { // create zoom panel ...........................................................................
@@ -499,28 +473,7 @@ var pub = {
         }, 500);
         $jQ(window).trigger('resize'); //snap
     },
-    pdpTab: function(href) {
-        var detailsTab = $jQ('#detail-tabs');
-        var tabs = detailsTab.find();
 
-
-       $jQ(href).parents('.tabs').first().children().removeClass('active');
-       $jQ(href).parent().addClass('active');
-
-       var rawName = $jQ(href).attr('href');
-       var tabName = rawName.substr(1);
-       var contentName = (tabName + 'Tab');
-
-       // remove active class from all tab content, find the right one and reapply
-       contentList = $jQ(href).parents('.tab-block').first().children('.tabs-content');
-       $jQ(contentList).children().removeClass('active').each(function(){
-            var thisID = $jQ(this).attr('id');
-            if ( thisID == contentName ) {
-                $jQ(this).addClass('active');
-                return false;
-            }
-       });
-    },
     vznReveal : function(element, ht, wd) {
         var wdIncr = (wd) * -1;
         var htIncr = (ht) * -1;
@@ -543,7 +496,7 @@ var pub = {
         });
     },
     showMoreDevices : function(){
-        var baselineNode = $jQ('#compatTab'),
+        var baselineNode = $jQ('#product-details .compatibility'),
         clickNode = baselineNode.find('.read-more'),
         scrollNode = baselineNode.find('.device-scroll');
         scrollNode.tinyscrollbar({ sizethumb: 65 });
@@ -560,6 +513,9 @@ var pub = {
     selectCompatibleProducts : function(){
         var itemsTotal = $jQ('#total-items > span'),
                 returnedItems = $jQ('#returned-items');
+
+
+console.log(itemsTotal);
 
         $jQ('#detail-brand-select, #detail-device-select').change(function(){
             var selectType = $jQ(this).data('type'),
@@ -594,7 +550,7 @@ var pub = {
                     keyword : keyword
                 },
                 function(data){
-
+                    
                 }
             );
         });

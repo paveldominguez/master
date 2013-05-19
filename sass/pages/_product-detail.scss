@@ -988,6 +988,9 @@
     /*--------------- 720+ PRODUCT DETAILS SECTION --------------------- */
 
     #product-details {
+        width:auto;
+        margin:0 0 0 8%;
+        padding:0;
         .tabbed-wrapper {
             width: 100%;
             height: auto;
@@ -1027,6 +1030,9 @@
                 padding:0;
                 > li{
                     display:none;
+                    &.compatibility{
+                        width: 91%;
+                    }
                     &.active{
                         display:block;
                     }
@@ -1046,20 +1052,16 @@
 
             .tab-block {
                 margin: auto;
-
-                .tabs-content {
-                    height: auto;
-                    overflow: hidden;
-                    padding: 0;
-                    margin: 20px 0 20px 0;
-                    .show,
-                    .active {
-                        display:block;
-                    }
-                    }
+                position:relative;
+                height: 100%;
+                p{
+                    display: inline;
+                    margin:0;
+                    padding:0;
                 }
             }
         }
+    }
 
     #similar-products {
         padding-top: 30px;
@@ -1147,8 +1149,10 @@
     .pdp-specs-content,
     .pdp-features-content {
         .more-less-block {
-            @include clearfix();
             width:68%;
+            float:left;
+            @include clearfix();
+
             .details-list {
                 @include checkoutContent;
                 li {
@@ -1160,191 +1164,219 @@
                     list-style-type:disc;
                 }
             }
-
-            .pdp-features-tab-box,
-            .manual-block {
-                right: 0;
-                top: 50px;
-                max-width: 386px;
-                position: absolute;
-                width: 30%; height: 261px;
+            
+            .manual-block{
+                height: 260px;
+                float:left;
+                position:relative;
             }
         }
     }
 
     .pdp-features-content {
-            .pdp-features-tab-box {
-                @include boxBrdrL;
-                @include boxBrdrT;
-                @include boxBrdrB;
-                overflow: hidden;
+        .pdp-features-tab-box {
+            margin:0;
+            padding:0;
+            height:260px;
+            overflow: hidden;
+            border:1px solid #ccc;
 
-                .tab-block {
-                    height: 261px;
-                    @include heroBG;
+            .tab-block {
+                @include heroBG;
 
-                    .tabs {
-                        width: 87px;
-                        height: 100%;
-                        position: absolute;
-                        top: 0; left: 0;
-                        margin: 0;
+                .tabs {
+                    position:absolute;
+                    width: 87px;
+                    margin: 0;
+                    top:0;
+                    left:0;
 
-                        dd {
-                            display: block !important;
-                            width: 87px;
-                            height: 87px !important;
-                            @include cartBG;
-                            @include boxBrdrB;
-                            position: relative;
-                            margin-right: 0px !important;
-
-                            .pdp-feature-tabs-link {
-                                display: block;
-                                width: 100%;
-                                height: 87px !important;
-                                overflow: hidden;
-                                padding: 0; margin: 0; border: 0;
-                                .pdp-feature-tabs-icon { margin-top: 0; }
-                                }
-
-                            .tab-pointer {
-                                display: none;
-                                position: absolute;
-                                right: -20px;
-                                top: 50%;
-                                margin-top: -10px;
-                                width: 1px;
-                                border: 10px solid transparent;
-                                border-left-color: #222;
-                                }
+                    dd {
+                        &.active{
+                            background-color:#222;
+                            .image-wrap{
+                                display:block;
+                                height:87px;
+                                overflow:hidden;
                             }
-                        dd:last-child {
-                            border-bottom: 0;
-                        }
-                        dd.active {
-                            background: #222;
-                            .pdp-feature-tabs-link {
-                                .pdp-feature-tabs-icon {
-                                    margin-top: -87px;
-                                }
+                            img{
+                                margin-top: -87px;
                             }
                             .tab-pointer{
                                 display: block;
                             }
+
+                        }
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                        width: 87px;
+                        height: 87px;
+                        cursor:pointer;
+                        display: block;
+                        margin-right: 0;
+                        @include cartBG;
+                        @include boxBrdrB;
+                        position: relative;
+
+                        .tab-pointer {
+                            display: none;
+                            position: absolute;
+                            right: -20px;
+                            top: 50%;
+                            margin-top: -10px;
+                            width: 1px;
+                            border: 10px solid transparent;
+                            border-left-color: #222;
                         }
                     }
-                    .tabs-content {
-                        width: 100%; height: 100% !important;
-                        padding-left: 87px !important;
-                        margin: 0 !important;
-                        .pdp-feature-tabs-content {
-                            width: 100%;
-                            height: 100%;
-                            padding: 40px 50px 40px 40px;
-                            @include checkoutContent;
-                            @include boxBrdrL;
+                }
+                .tabs-content {
+                    width: 100%;
+                    height: 100%;
+                    padding: 22px 0 0 110px;
+                    margin: 0;
 
-                            h3 {
-                                font-family: $fontVzwMedium;
-                                color: cartGreyDk;
-                                font-weight: normal;
-                                text-transform: uppercase;
-                                font-size: 14px; line-height: 16px;
-                                padding: 0; margin: 0 0 15px 0;
-                                width: 75%;
-                            }
+                    .pdp-feature-tabs-content {
+                        &.active{
+                            display:block;
+                        }
+                        display:none;
+                        width: 100%;
+                        height: 100%;
+                        margin:0;
+                        padding:0;
+                        h3 {
+                            width: 75%;
+                            color: cartGreyDk;
+                            font-weight: normal;
+                            text-transform: uppercase;
+                            font-family: $fontVzwMedium;
+                            padding: 0; margin: 0 0 15px 0;
+                            font-size: 14px; line-height: 16px;
                         }
                     }
                 }
             }
         }
+    }
 
     .pdp-specs-content {
-            .more-less-block {
-                .third {
-                    @include boxBrdrT;
-                    margin-bottom: 30px;
-                    max-width:100%;
-                    h3 {
-                        @include instruct;
-                        margin: 0;
-                        padding: 5px 0 20px 0;
-                    }
-                    .specs-list {
-                        padding: 0; margin: 0;
-                        li {
-                            width: 100%;
-                            @include clearfix();
-                            @include boxBrdrB;
-                            padding: 5px 0 5px 0;
-                            .specs-label {
-                                width: 65%;
-                                float: left;
-                                @include checkoutLabel;
-                                text-align: left;
-                                }
-                            .specs-data {
-                                width: 35%;
-                                float: left;
-                                @include checkoutContent;
-                                font-size: 12px;
-                                text-align: left;
-                            }
-                            &:last-child {
-                                border-bottom: 0;
-                            }
-                        }
-                        
-                    }
+        .column {
+            &:first-child{
+                margin:0 56px 0 0;
             }
-            .manual-block {
-                    background: $techinfoBg;
-                    .manual-click {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        position: relative;
+            &:last-child{
+                padding:0;
+                float:right;
+                width:23%;
+                border:0;
+            }
+            &.download{
+                background-color: $techinfoBg;
+                padding:10px;
+                a{
+                    color:#fff;
+                    width:100%;
+                    height:100%;
+                    display:block;
+                    font-size:11px;
+                    em{
+                        font-style:normal;
                     }
-                    .download-image {
-                        position: absolute;
-                        left: 20px; top: 20px;
-                        img { }
+                    .manual-title{
+                        font-size:10px;
+                        font-weight:700;
+                        font-family: Helvetica, Arial, sans-serif;
+                        font-style: normal;
                     }
+                }
+            }
+            float:left;
+            width:33.33%;
+            margin:0;
+            border-top:1px solid #ccc;
+            h3 {
+                margin: 0;
+                padding: 8px 0 20px 0;
+                font-size:20px;
+            }
+            .details-list{
+                li{
+                    list-style-type:disc;
+                    font-size:11px;
+                    margin:0 0 4px 0;
+                }
+            }
+            .specs-list {
+                margin: 0;
+                padding: 0;
+                li {
+                    @include boxBrdrB;
+                    @include clearfix();
+                    padding: 5px 0 5px 0;
+                    .specs-label {
+                        width: 65%;
+                        float: left;
+                        text-align: left;
+                        @include checkoutLabel;
+                        }
+                    .specs-data {
+                        width: 35%;
+                        float: left;
+                        font-size: 12px;
+                        text-align: left;
+                        @include checkoutContent;
+                    }
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+        .manual-block {
+            .manual-click {
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: relative;
+            }
+            .download-image {
+                position: absolute;
+                left: 20px; top: 20px;
+            }
+            .manual-info {
+                position: absolute;
+                left: 20px; bottom: 20px;
+                .digital-manual {
+                    color: #fff;
+                    font-size: 20px;
+                    @include instruct;
+                    font-weight: normal;
+                    font-family: $fontVzwMedium;
+                    padding: 0; margin: 0 0 15px 0;
+                }
+                .manual-title {
+                    color: #fff;
+                    font-weight: bold;
+                    padding: 0; margin: 0;
+                    @include checkoutLabel;
+                }
+            }
+            .manual-info.downloadable {
+                .manual-download { display: inline-block; }
+                .manual-link{ display: none; }
+            }
+            .manual-info.outside-click {
+                .manual-download { display: none; }
+                .manual-link{ display: inline-block;
+                    width: 30px; height: 20px;
+                    @include pdp-sprite(outside-link-icon, false, 5px, 8px);
+                }
+            }
+        }
 
-                    .manual-info {
-                        position: absolute;
-                        left: 20px; bottom: 20px;
-                        .digital-manual {
-                            @include instruct;
-                            font-size: 20px;
-                            font-family: $fontVzwMedium;
-                            color: #fff;
-                            font-weight: normal;
-                            padding: 0; margin: 0 0 15px 0;
-                        }
-                        .manual-title {
-                            @include checkoutLabel;
-                            font-weight: bold;
-                            color: #fff;
-                            padding: 0; margin: 0;
-                        }
-                    }
-
-                    .manual-info.downloadable {
-                        .manual-download { display: inline-block; }
-                        .manual-link{ display: none; }
-                    }
-                    .manual-info.outside-click {
-                        .manual-download { display: none; }
-                        .manual-link{ display: inline-block;
-                            width: 30px; height: 20px;
-                            @include pdp-sprite(outside-link-icon, false, 5px, 8px);
-                            }
-                        }
-                    } /* end manual block */
-            } /* end tab wrapper */
-        } /* end specs content */
+    }
 
     // COMPATIBILITY
     .pdp-compat-content {
@@ -1391,7 +1423,10 @@
 
         .compat-results{
             padding:30px 0 0 0;
+            .device-scroll{
+
             }
+        }
         .tab-inner{
             @include clearfix();
             @include boxBrdrT;
@@ -1455,7 +1490,7 @@
                 display:block;
                 position:relative;
                 span{
-                    background-position:200px -3187px;
+                    background-position:137% -3304px;
                     position: relative;
                     display:block;
                     padding:22px 0 0 10px;
@@ -2106,20 +2141,7 @@
                 }/* end zoom block */
 
             }/* end pdp hero */
-        #product-details {
-            .tabbed-wrapper {
-                .tab-block { width: 87.5%; }
-                dd{
-                    h2{
-                        font-size: 12px;
-                        letter-spacing: 0px;
-                        }
-                    }
-                }
-            }
-        #similar-products {
-            .similar-products-module.category-section { width: 87.5%; }
-            }
+
 
         } /* end below 850 - hero-slider only */
 
@@ -2744,35 +2766,17 @@
 
 /*---- GLOBAL CLASSES:  MORE/LESS CONTENT ---- */
 
-    .more-less-block {
-        @include clearfix();
-        position:relative;
-        padding-bottom:36px;
-        overflow: hidden;
-        .more-less {
-            padding: 0;
-            .more-less-link {
-                display:block;
-                padding-top:12px;
-                color: $actLinkBlue;
-                @include checkoutLabel;
-                @include pdp-sprite(blue-less, false, 40px, 13px);
-            }
-        }
+.more-less-block {
+    @include clearfix();
+    position:relative;
+    padding-bottom:36px;
+    overflow: hidden;
+    .more-less-link {
+        cursor:pointer;
+        color: $actLinkBlue;
+        @include checkoutLabel;
     }
-
-    .more-less-block.bound {
-        max-height: 280px;
-        .more-less {
-            .more-less-link { @include pdp-sprite(blue-more, false, 40px, 13px); }
-        }
-    }
-
-    .more-less-block.not-bound {
-        .more-less {
-            .more-less-link { display: none; }
-        }
-    }
+}
 
 #social-email-overlay {
     .lightbox-info-block {
