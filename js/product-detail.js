@@ -6,6 +6,7 @@ var pub = {
         this.compatibleTypeAhead();
         this.compatibleDropDowns();
         this.selectCompatibleProducts();
+        this.pdpDetailTabs();
 
         // ONLOAD page-wide ..........................................................................................
         $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison, #product-add-to-cart").uniform(); // make selects pretty
@@ -116,7 +117,7 @@ var pub = {
 
             MLS.ui.moreLessBlock(); // revaluate & re-initialize more/less elements
 
-            $jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85}); // responsive slider boxes
+            //$jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
 
             if ($jQ(window).width() > 719) { // reset anchor bar
                 $jQ(window).scroll(function() {
@@ -131,23 +132,11 @@ var pub = {
                 });
             }
         });
-        // .................................................................................... END RESIZE
-
 
 
 
 
         // HERO & ZOOM EVENTS .....................................................................................
-        $jQ('.review-link').click(function(e){ // cart header reviews click to tab
-            e.preventDefault();
-            MLS.productDetail.heroLinktoTab('#detail-tabs .reviews a');
-        });
-
-        $jQ('.compat-link').click(function(e){ // cart compatibility, click to tab
-            e.preventDefault();
-            MLS.productDetail.heroLinktoTab('#detail-tabs .compat a');
-        });
-
         MLS.productDetail.pdpColorSelect(); // activates color selector
 
         $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
@@ -203,9 +192,9 @@ var pub = {
 
 
         // BELOW THE FOLD 720+ EVENTS .....................................................................................
-        $jQ('#detail-tabs dd a').click(function(){ // product detail tabs
+        $jQ('#detail-tabs dd a').click(function(){
             MLS.productDetail.pdpTab(this);
-            MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
+            MLS.ui.moreLessBlock();
         });
 
         $jQ('.more-less-link').click(function(e){ // more/less click
@@ -342,6 +331,31 @@ var pub = {
         });
         // END RELATED STORIES ....................................
     },
+
+    pdpDetailTabs : function() {
+        var detailSection = $jQ('#product-details'),
+            visualTabs = detailSection.find('.detail-tabs li'),
+            contentTabs = detailSection.find('.detail-tabs-accordion li');
+
+            visualTabs.each(function(){
+                var currentScope = $jQ(this);
+                currentScope.click(function(){
+                    var currentNode = $jQ(this),
+                        targetTab = currentNode.data('tabname');
+                        console.log(currentNode);
+                        console.log(targetTab);
+
+                    visualTabs.removeClass('active');
+                    currentScope.addClass('active');
+
+                    contentTabs.removeClass('active');
+                    contentTabs.filter(function(){
+                        return $jQ(this).data('tabname') == targetTab;
+                    }).addClass('active');
+                });
+            });
+    },
+
     pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
         var numColors = $jQ('#product-colors').find('.color').length;
         if ( numColors > 6){
@@ -375,16 +389,19 @@ var pub = {
         $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
         $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping'); // shipping & offers
 
-    // below the fold
+    /*
+        are you kidding me?
+        
         $jQ('#overviewTab .tab-wrapper').clone().appendTo('#mobile-overview .pdp-overview-content');  // details tab
         $jQ('#featuresTab .tab-wrapper').clone().appendTo('#mobile-features .acc-info'); // details tab
         $jQ('#specsTab .tab-wrapper').clone().appendTo('#mobile-specs .acc-info'); // details tab
         $jQ('#compatTab .tab-wrapper').clone().appendTo('#mobile-compat .acc-info'); // details tab
         $jQ('#consumer-reviewsTab .tab-wrapper').clone().appendTo('#mobile-reviews .acc-info'); // details tab
         $jQ('#questions-commentsTab .tab-wrapper').clone().appendTo('#mobile-questions .acc-info'); // details tab
-
         $jQ('#similar-products article').clone().appendTo('#mobile-similar .acc-info'); // similar products slider
         $jQ('#overviewTab .pdp-bundle-block').clone().appendTo('#mobile-bundles .acc-info'); // bundle block
+    
+     */
     },
     thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
@@ -482,11 +499,15 @@ var pub = {
         }, 500);
         $jQ(window).trigger('resize'); //snap
     },
-    pdpTab: function(href) { // product details tab function .........................................................................
-       $jQ(href).parents('.tabs').first().children().removeClass('active'); //remove active class from all sister tabs
-       $jQ(href).parent().addClass('active'); //apply it to (this) clicked tab
+    pdpTab: function(href) {
+        var detailsTab = $jQ('#detail-tabs');
+        var tabs = detailsTab.find();
 
-       var rawName = $jQ(href).attr('href'); // get tab content target name
+
+       $jQ(href).parents('.tabs').first().children().removeClass('active');
+       $jQ(href).parent().addClass('active');
+
+       var rawName = $jQ(href).attr('href');
        var tabName = rawName.substr(1);
        var contentName = (tabName + 'Tab');
 
@@ -500,7 +521,7 @@ var pub = {
             }
        });
     },
-    vznReveal : function(element, ht, wd) { // reveal element from bottom right, goes with vznHide .......................................
+    vznReveal : function(element, ht, wd) {
         var wdIncr = (wd) * -1;
         var htIncr = (ht) * -1;
 
@@ -512,16 +533,16 @@ var pub = {
             'transform' : ' translate3d(' + wdIncr + 'px,' + htIncr + 'px, 0) '
         });
     },
-    vznHide : function(element) { // ...... hide element from top left, goes with vznReveal
+    vznHide : function(element) {
         $jQ(element).css({
             '-webkit-transform' : ' translate3d(0, 0, 0)',
             '-moz-transform' : ' translate3d(0, 0, 0)',
             '-ms-transform' : ' translate3d(0, 0, 0)',
             '-o-transform' : ' translate3d(0, 0, 0)',
             'transform' : ' translate3d(0, 0, 0)'
-        }); // end css
+        });
     },
-    showMoreDevices : function(){ /* begin Compatibility Tab Functionality */
+    showMoreDevices : function(){
         var baselineNode = $jQ('#compatTab'),
         clickNode = baselineNode.find('.read-more'),
         scrollNode = baselineNode.find('.device-scroll');
@@ -533,10 +554,10 @@ var pub = {
             scrollNode.tinyscrollbar_update();
         });
     },
-    compatibleDropDowns : function(){  /* begin Uniform drop downs */
+    compatibleDropDowns : function(){
         $jQ('#detail-brand-select, #detail-device-select').uniform();
     },
-    selectCompatibleProducts : function(){ /* begin Compatible Device AJAX/JSON */
+    selectCompatibleProducts : function(){
         var itemsTotal = $jQ('#total-items > span'),
                 returnedItems = $jQ('#returned-items');
 
@@ -559,7 +580,7 @@ var pub = {
             );
         });
     },
-    compatibleTypeAhead : function(){ /* begin Compatible Device type ahead */
+    compatibleTypeAhead : function(){
         var searchInput = $jQ('#detail-search-box'),
         typeAheadList = searchInput.parent().find('.type-ahead');
         processingPage = searchInput.data('actionpage');
@@ -578,8 +599,8 @@ var pub = {
             );
         });
     },
-     addCartValidation : function() { // CHECKOUT signin validation ...........................................................
-        jQuery.validator.addMethod("noEmptySelect", function (value, element) { // don't validate empty select
+     addCartValidation : function() {
+        jQuery.validator.addMethod("noEmptySelect", function (value, element) {
             if (value == '0') {
                 return false;
             } else {
@@ -607,7 +628,7 @@ var pub = {
         });
     }
 
-}; // end pub var
+};
 return pub;
 }());
 
