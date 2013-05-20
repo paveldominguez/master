@@ -288,16 +288,17 @@ $bgPositionPromoSmall: -85px 35px;
             }
             .promo-cta {
                 clear: both;
-                cursor: pointer;
-                @include border-radius(3px);
-                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
-                border: 1px solid #3B3F45;
-                display: table;
-                margin: 20px 0;
+                color: #FFF;
                 width: 130px;
                 height: 55px;
-                color: #FFF;
+                display: table;
+                margin: 20px 0;
                 font-size: 18px;
+                cursor: pointer;
+                border: 1px solid #3B3F45;
+                @include border-radius(3px);
+                behavior: url(../css/PIE.htc);
+                @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
                 span {
                     display: table-cell;
                     vertical-align: bottom;
@@ -782,15 +783,16 @@ $bgPositionPromoSmall: -85px 35px;
         }
         .promo-cta {
             clear: both;
-            cursor: pointer;
-            @include border-radius(3px);
-            @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0)));
-            border: 1px solid #3B3F45;
-            display: table;
-            margin: 35px 25px 0;
+            color: #FFF;
             width: 130px;
             height: 55px;
-            color: #FFF;
+            display: table;
+            cursor: pointer;
+            margin: 35px 25px 0;
+            border: 1px solid #3B3F45;
+            @include border-radius(3px);
+            @include background-image(linear-gradient(#3F4349, #3F4349));
+            behavior: url(../css/PIE.htc);
             font: {
                 family: $fontVzwBook;
                 size: 18px;
@@ -967,7 +969,7 @@ $bgPositionPromoSmall: -85px 35px;
 					-o-border-radius: 60px;
 					border-radius: 60px;
 					background: $colorVzwRed;
-
+                    behavior: url(../css/PIE.htc);
 					.offer-amt {
 						color:#fff;
 						font-size:54px;
@@ -1627,5 +1629,5 @@ $bgPositionPromoSmall: -85px 35px;
 
 
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
-    
+
 }
