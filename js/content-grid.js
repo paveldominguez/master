@@ -184,9 +184,10 @@ var contentGrid = {
         $jQ(this).removeClass('active');
     },
     quickViewHandler : function (e) {
-        var pid = $jQ(e.currentTarget).find('a').attr('data-pid');
+        var pid = $jQ(e.currentTarget).find('a').attr('href').split("?")[1].split("#")[0];
         var el = $jQ(e.currentTarget);
         MLS.ajax.quickView.init(pid, el);
+        return false;
     },
     quickViewShow: function (e) {
         var $quickView = $jQ('#quick-view-overlay'),

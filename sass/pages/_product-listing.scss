@@ -376,7 +376,7 @@ $hdrOfferCollapsed: 55px;
             //border-top: 1px solid $colorLightGrayBorder;
             border-bottom: 1px solid $colorLightGrayBorder;
             overflow: hidden;
-            padding-bottom: 10px; 
+            padding-bottom: 10px;
             .facet {
                 border: none;
                 padding-right: 10px;
@@ -796,6 +796,7 @@ $hdrOfferCollapsed: 55px;
     }
 
     .content-item {
+
         &.grid-hover-active {
             figure {
                 position: relative;
@@ -2132,3 +2133,6 @@ $hdrOfferCollapsed: 55px;
             }
         }
 }
+
+
+.content-item form { margin: 0 !important; }

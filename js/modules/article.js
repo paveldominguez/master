@@ -1,26 +1,31 @@
 MLS.article = {
-    callbacks : {
-        getArticleContent : function (e) {
-            e.preventDefault();
-            // if ($jQ(this).hasClass('article')) {
-            MLS.ajax.sendRequest(
-                MLS.ajax.endpoints.ARTICLE,
-                { id : $jQ(this).data('article-id') },
-                MLS.article.displayContent
-            );
-            // }
-        }
-    },
-
     init: function (d) {
+        console.log("v5");
+
         if ($jQ('#article-modal-overlay').length == 0)
         {
             $jQ('<div id="article-modal-overlay" /><div id="article-detail" class="article-detail" />').appendTo("body");
         }
-        
+
         d = $jQ(d || document);
-    	$jQ('#article-modal-overlay').hide();
-        d.find('[data-article-id]').on('click', MLS.article.callbacks.getArticleContent);
+        $jQ('#article-modal-overlay').hide();
+        d.find('.data-article').on('click', function(e){
+            e.preventDefault();
+
+           var data = $jQ(this).attr("href").split("?")[1].split("#")[0];
+
+           console.log("data: ", data);
+
+           MLS.article.getArticleContent(data);
+        });
+    },
+
+    getArticleContent : function (data) {
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.ARTICLE,
+            data,
+            MLS.article.displayContent
+        );
     },
 
     displayContent : function (data) {
@@ -53,7 +58,7 @@ MLS.article = {
         var scrollTop = $jQ(window).scrollTop(),
             height = 0;
 
-        if (scrollTop == 0) { 
+        if (scrollTop == 0) {
             height = $jQ('#article-detail').height();
         } else {
             height = $jQ('#article-detail').height() + 160;

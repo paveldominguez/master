@@ -88,6 +88,7 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect) {
                         return [
+                            lrSnippet,
                             mountFolder(connect, '')
                         ];
                     }

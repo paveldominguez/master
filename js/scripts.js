@@ -91,7 +91,6 @@ MLS = {
             MLS.ui.navTabs('#mls-nav-mobile');
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
-            MLS.miniCart.init();
             MLS.article.init();
             MLS.ui.complexItem.init();
 
@@ -114,6 +113,7 @@ MLS = {
     'home-page' : {
         init : function () {
             MLS.home.init();
+            MLS.miniCart.init();
         }
     },
     'brand-landing-page' : {
@@ -129,16 +129,20 @@ MLS = {
                     contentGrid.reInit();
                 }
             });
+
+            MLS.miniCart.init();
         }
     },
-    'cart': {
+    'cart-page': {
     	init : function () {
-    		MLS.cart.init();
+            MLS.cart.init();
+            MLS.miniCart.init(null, MLS.cart.options);
         }
     },
-    'checkout': {
+    'checkout-page': {
         init : function () {
             MLS.checkout.init();
+            MLS.miniCart.init(null, MLS.checkout.options);
         }
     },
     'content-landing-page' : {
@@ -156,7 +160,9 @@ MLS = {
                 container: $jQ('#main-column')
             });
 
+            MLS.miniCart.init();
             MLS.ui.socialShare.init();
+
             //tabs
             $jQ('.category-tabs li a').on('click', function (e) {
                 var tab = $jQ(this).attr('href'),
@@ -193,12 +199,15 @@ MLS = {
                      MLS.categoryLanding.init();
                 }
             });
+
+            MLS.miniCart.init();
         }
     },
     'lifestyle-landing-page' : {
         init : function() {
             MLS.lifestyle.init();
             contentGrid.init();
+            MLS.miniCart.init();
         }
     },
     'product-listing-page' : {
@@ -206,6 +215,7 @@ MLS = {
         init : function () {
 
             contentGrid.init();
+            MLS.miniCart.init();
             MLS.ajax.colorPicker.init();
 
             MLS.contentFilter.init({
@@ -237,6 +247,7 @@ MLS = {
         init : function () {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
+            MLS.miniCart.init();
             MLS.cart.dd.init();
         }
     },
@@ -252,6 +263,7 @@ MLS = {
     'special-offers-landing-page' : {
         init : function() {
             contentGrid.init();
+            MLS.miniCart.init();
             MLS.specialOffers.init();
             MLS.ajax.colorPicker.init();
 
@@ -269,6 +281,7 @@ MLS = {
         init : function() {
             MLS.page404.init();
             contentGrid.init();
+            MLS.miniCart.init();
         }
     }
 

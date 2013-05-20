@@ -82,21 +82,23 @@
             <li id="dimension-features" class="dimension collapsible" data-dimension="compatibility">
               <h3 class="dimension-header">Compatibility<span class="marker"></span></h3>
               <div class="facet-list compatibility-filter">
-                  <input class="device type-ahead" data-filter="search"></input>
-                  <select class="device-type" data-filter="device-type">
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">E-readers</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">MP3 Players</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Notebooks</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Smartphones</option>=
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Tablets</option>
+                <form method="post" action="#">
+                  <input class="device type-ahead" name="search" />
+                  <select class="device-type" name="device-type">
+                      <option value="Nr=sku.siteId%3A1000001">E-readers</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">MP3 Players</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Notebooks</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Smartphones</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Tablets</option>
                   </select>
-                  <select class="brand" data-filter="brand">
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Apple</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Blackbery</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">Gateway</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">HP</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&Nr=sku.siteId%3A1000001">HTC</option>
+                  <select class="brand" name="brand">
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Apple</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Blackbery</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Gateway</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HP</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HTC</option>
                   </select>
+                </form>
               </div>
             </li>
           </ul>
@@ -114,7 +116,7 @@
             </p>
           </header>
           <figure class="featured-fig">
-            <img src="img/lifestyle-landing/featured-lifestyle-fpo.jpg">
+            <img src="img/lifestyle-landing/featured-lifestyle-fpo.jpg" alt="">
           </figure>
         </article>
         <!-- end lifestyle image module -->
@@ -188,10 +190,208 @@
             </header>
             <ul class="slides">
               <li class="first slide">
-                <form name="content-grid-1" method="post" action="">
                   <ul class="content-grid feature-left">
                     <!-- featured grid item -->
                     <li class="featured content-item">
+                        <form method="post" action="#">
+                            <a class="content-link" href="#" title="content title">
+                            <figure class="content-fig">
+                              <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
+                            </figure>
+                            <section class="content-detail">
+                              <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
+                              <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                              <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
+                            </section>
+                          </a>
+                          <div class="color-picker">
+                            <ul class="colors">
+                              <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                                <img src="img/product-category-listing/pick-blk.png" alt="Black" />
+                              </a></li>
+                              <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                                <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
+                              </a></li>
+                              <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                                <img src="img/product-category-listing/pick-wht.png" alt="White" />
+                              </a></li>
+                              <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                                <img src="img/product-category-listing/pick-org.png" alt="Orange" />
+                              </a></li>
+                              <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                                <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
+                              </a></li>
+                            </ul>
+                          </div>
+                          <div class="content-details">
+                            <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                            <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                          </div>
+                        </form>
+                    </li>
+                    <!-- end featured grid item -->
+                    <!-- grid items -->
+                    <!-- some items in this grid will be hidden for various screen sizes
+                    please take note of classes beginning with "hide-for" and "show-for," etc... -->
+                    <li class="content-item hide-for-mobile">
+                        <form method="post" action="#">
+
+                      <a class="content-link" href="#" title="content title">
+                        <figure class="content-fig">
+                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
+                        </figure>
+                        <section class="content-detail">
+                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
+                        </section>
+                      </a>
+                      <div class="color-picker">
+                        <ul class="colors">
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
+                          </a></li>
+                        </ul>
+                      </div>
+                      <div class="content-details">
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                                  </div>
+                        </form>
+                    </li>
+                    <li class="content-item hide-for-medium-down">
+                        <form method="post" action="#">
+
+                      <a class="content-link" href="#" title="content title">
+                        <figure class="content-fig">
+                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
+                        </figure>
+                        <section class="content-detail">
+                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
+                        </section>
+                      </a>
+                      <div class="color-picker">
+                        <ul class="colors">
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
+                          </a></li>
+                        </ul>
+                      </div>
+                      <div class="content-details">
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                          </div>
+                        </form>
+                    </li>
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                        <form method="post" action="#">
+
+                      <a class="content-link" href="#" title="content title">
+                        <figure class="content-fig">
+                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
+                        </figure>
+                        <section class="content-detail">
+                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
+                        </section>
+                      </a>
+                      <div class="color-picker">
+                        <ul class="colors">
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
+                          </a></li>
+                        </ul>
+                      </div>
+                      <div class="content-details">
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div>
+                        </form>
+                    </li>
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                        <form method="post" action="#">
+
+                      <a class="content-link" href="#" title="content title">
+                        <figure class="content-fig">
+                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
+                        </figure>
+                        <section class="content-detail">
+                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
+                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
+                        </section>
+                      </a>
+                      <div class="color-picker">
+                        <ul class="colors">
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
+                          </a></li>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
+                          </a></li>
+                        </ul>
+                      </div>
+                      <div class="content-details">
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div>
+                        </form>
+                    </li>
+                          </ul>
+              </li>
+
+              <li class="slide">                  <ul class="content-grid feature-left">
+                    <!-- featured grid item -->
+                    <li class="featured content-item">
+                        <form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
@@ -199,38 +399,38 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
                           <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
                     <!-- end featured grid item -->
                     <!-- grid items -->
                     <!-- some items in this grid will be hidden for various screen sizes
                     please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                    <li class="content-item hide-for-mobile">
+                    <li class="content-item hide-for-mobile"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -238,34 +438,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-medium-down">
+                    <li class="content-item hide-for-medium-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -273,34 +473,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -308,34 +508,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -343,227 +543,40 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
                   </ul>
-                </form>
               </li>
-              <li class="slide">
-                <form name="content-grid-1" method="post" action="">
-                  <ul class="content-grid feature-left">
-                    <!-- featured grid item -->
-                    <li class="featured content-item">
-                      <a class="content-link" href="#" title="content title">
-                        <figure class="content-fig">
-                          <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
-                        </figure>
-                        <section class="content-detail">
-                          <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
-                          <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
-                        </section>
-                      </a>
-                      <div class="color-picker">
-                        <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                      <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
-                    </li>
-                    <!-- end featured grid item -->
-                    <!-- grid items -->
-                    <!-- some items in this grid will be hidden for various screen sizes
-                    please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                    <li class="content-item hide-for-mobile">
-                      <a class="content-link" href="#" title="content title">
-                        <figure class="content-fig">
-                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
-                        </figure>
-                        <section class="content-detail">
-                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
-                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
-                        </section>
-                      </a>
-                      <div class="color-picker">
-                        <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                      <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
-                    </li>
-                    <li class="content-item hide-for-medium-down">
-                      <a class="content-link" href="#" title="content title">
-                        <figure class="content-fig">
-                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
-                        </figure>
-                        <section class="content-detail">
-                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
-                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
-                        </section>
-                      </a>
-                      <div class="color-picker">
-                        <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                      <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
-                    </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
-                      <a class="content-link" href="#" title="content title">
-                        <figure class="content-fig">
-                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
-                        </figure>
-                        <section class="content-detail">
-                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
-                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
-                        </section>
-                      </a>
-                      <div class="color-picker">
-                        <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                      <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
-                    </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
-                      <a class="content-link" href="#" title="content title">
-                        <figure class="content-fig">
-                          <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
-                        </figure>
-                        <section class="content-detail">
-                          <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
-                          <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
-                        </section>
-                      </a>
-                      <div class="color-picker">
-                        <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
-                          </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                      <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
-                    </li>
-                  </ul>
-                </form>
-              </li>
+
               <li class="last slide">
-                <form name="content-grid-1" method="post" action="">
                   <ul class="content-grid feature-left">
                     <!-- featured grid item -->
-                    <li class="featured content-item">
+                    <li class="featured content-item"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img src="img/product-category-listing/pcl-beats.jpg" alt="Beats by Dre" />
@@ -571,38 +584,38 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Beats by Dre</span> Pro Headphones</span></h1>
                           <div class="price">$299.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
                     <!-- end featured grid item -->
                     <!-- grid items -->
                     <!-- some items in this grid will be hidden for various screen sizes
                     please take note of classes beginning with "hide-for" and "show-for," etc... -->
-                    <li class="content-item hide-for-mobile">
+                    <li class="content-item hide-for-mobile"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -610,34 +623,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-medium-down">
+                    <li class="content-item hide-for-medium-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -645,34 +658,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -680,34 +693,34 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
-                    <li class="content-item hide-for-large-grid hide-for-small-grid-down">
+                    <li class="content-item hide-for-large-grid hide-for-small-grid-down"><form method="post" action="#">
                       <a class="content-link" href="#" title="content title">
                         <figure class="content-fig">
                           <img alt="product name" src="img/product-category-listing/pcl-brookstone.jpg"/>
@@ -715,36 +728,36 @@
                         <section class="content-detail">
                           <h1 class="name"><span><span class="brand">Klipsch</span> X7i White In-Ear Headphones</span></h1>
                           <div class="price">$189.00<span class="sale"><!--sale price would go to the left, and original would be here--></span></div>
-                          <div class="rating"><img src="img/stars-gray.png" /></div>
+                          <div class="rating"><img src="img/stars-gray.png" alt="Rating" /></div>
                         </section>
                       </a>
                       <div class="color-picker">
                         <ul class="colors">
-                          <li class="color"><a href="pick-color.jsp" title="black" data-color="black">
-                            <img src="img/product-category-listing/pick-blk.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=black" title="black" class="data-color">
+                            <img src="img/product-category-listing/pick-blk.png" alt="Black" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="gray" data-color="gray">
-                            <img src="img/product-category-listing/pick-gry.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=gray" title="gray" class="data-color">
+                            <img src="img/product-category-listing/pick-gry.png" alt="Gray" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="white" data-color="white">
-                            <img src="img/product-category-listing/pick-wht.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=white" title="white" class="data-color">
+                            <img src="img/product-category-listing/pick-wht.png" alt="White" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="orange" data-color="orange">
-                            <img src="img/product-category-listing/pick-org.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=orange" title="orange" class="data-color">
+                            <img src="img/product-category-listing/pick-org.png" alt="Orange" />
                           </a></li>
-                          <li class="color"><a href="pick-color.jsp" title="yellow" data-color="yellow">
-                            <img src="img/product-category-listing/pick-ylw.png"/>
+                          <li class="color"><a href="pick-color.jsp?color=yellow" title="yellow" class="data-color">
+                            <img src="img/product-category-listing/pick-ylw.png" alt="Yellow" />
                           </a></li>
                         </ul>
                       </div>
                       <div class="content-details">
-                        <div class="quick-view"><a href="#quick-view" title="Quickview" data-pid="00110001">quickview</a></div>
-                        <div class="add-cart"><input class="button add-cart-cta" type="submit" title="Add to Cart" value="add to cart"></div>
-                      </div>
+                        <div class="quick-view"><a href="?pid=00110001" title="Quickview">quickview</a></div>
+                        <div class="add-cart"><input class="button add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart" /></div>
+                      </div></form>
                     </li>
                   </ul>
-                </form>
               </li>
+
             </ul>
           </article>
           <!-- End Trending Products -->
@@ -769,7 +782,7 @@
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation...
                     </p>
                     <div class="actions">
-                      <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                      <a href="article.jsp?id=12345" class="button story-cta data-article" data-article-id="124123123" title="read on"><span>read on</span></a>
                     </div>
                   </div>
                 </section>
@@ -788,7 +801,7 @@
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation...
                     </p>
                     <div class="actions">
-                      <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                      <a href="article.jsp?id=12345" class="button story-cta data-article" data-article-id="124123123" title="read on"><span>read on</span></a>
                     </div>
                   </div>
                 </section>
@@ -807,7 +820,7 @@
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniveniam, quis nostrud exercitation...
                     </p>
                     <div class="actions">
-                      <a href="article.jsp" class="button story-cta" data-article-id="124123123" title="read on"><span>read on</span></a>
+                      <a href="article.jsp?id=12345" class="button story-cta data-article" data-article-id="124123123" title="read on"><span>read on</span></a>
                     </div>
                   </div>
                 </section>
@@ -893,28 +906,28 @@
                   <li class="first content-item">
                     <div class="wrapper slide-1">
                       <p class="guide-copy">5 Things to know about 7.1</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-mobile">
                     <div class="wrapper slide-2">
                       <p class="guide-copy">Quality audio that's waterproof</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-medium-down">
                     <div class="wrapper slide-3">
                       <p class="guide-copy">Best heapdhones for working</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                     </div>
                   </li>
                   <li class="last content-item hide-for-large-down">
                     <div class="wrapper slide-4">
                       <p class="guide-copy">what's hot now in audio</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
                     </div>
                   </li>
@@ -925,28 +938,28 @@
                   <li class="first content-item">
                     <div class="wrapper slide-1">
                       <p class="guide-copy">5 Things to know about 7.1</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-mobile">
                     <div class="wrapper slide-2">
                       <p class="guide-copy">Quality audio that's waterproof</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-medium-down">
                     <div class="wrapper slide-3">
                       <p class="guide-copy">Best heapdhones for working</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                     </div>
                   </li>
                   <li class="last content-item hide-for-large-down">
                     <div class="wrapper slide-4">
                       <p class="guide-copy">what's hot now in audio</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
                     </div>
                   </li>
@@ -957,28 +970,28 @@
                   <li class="first content-item">
                     <div class="wrapper slide-1">
                       <p class="guide-copy">5 Things to know about 7.1</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon1.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-mobile">
                     <div class="wrapper slide-2">
                       <p class="guide-copy">Quality audio that's waterproof</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon2.png">
                     </div>
                   </li>
                   <li class="content-item hide-for-medium-down">
                     <div class="wrapper slide-3">
                       <p class="guide-copy">Best heapdhones for working</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon3.png">
                     </div>
                   </li>
                   <li class="last content-item hide-for-large-down">
                     <div class="wrapper slide-4">
                       <p class="guide-copy">what's hot now in audio</p>
-                      <a href="#guide-cta" class="story-cta" title="Read story">Read Story &gt;</a>
+                      <a href="#guide-cta?id=12345" class="story-cta data-article" title="Read story">Read Story &gt;</a>
                       <img class="guide-icon" src="img/lifestyle-landing/guide-icon4.png">
                     </div>
                   </li>
@@ -1011,7 +1024,7 @@
                       "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                 </section>
                 <section class="bot-review">
@@ -1024,7 +1037,7 @@
                       "Amazing bass. Definitely Recommend!"
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                   <div class="review-image">
                     <figure class="review-fig">
@@ -1051,7 +1064,7 @@
                       "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                 </section>
                 <section class="bot-review">
@@ -1064,7 +1077,7 @@
                       "Amazing bass. Definitely Recommend!"
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                   <div class="review-image">
                     <figure class="review-fig">
@@ -1091,7 +1104,7 @@
                       "Lorem ipsum dolor sit amet, consectet adipiscing elit lorem epsim dolor."
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                 </section>
                 <section class="bot-review">
@@ -1104,7 +1117,7 @@
                       "Amazing bass. Definitely Recommend!"
                     </p>
                     <p class="credit">Sara McLaren<span class="divider">|</span>April, 2013</p>
-                    <a href="#full-review-link" title="Read Full Review">Read full review &gt;</a>
+                    <a href="#full-review-link?id=12345" class="data-article" title="Read Full Review">Read full review &gt;</a>
                   </div>
                   <div class="review-image">
                     <figure class="review-fig">
