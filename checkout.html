@@ -37,7 +37,7 @@
 
 </head>
 
-<body id="checkout-page" class="checkout">
+<body id="checkout-page" class="checkout-page">
 	<div id='site-container'>
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
@@ -328,9 +328,12 @@
 
 				</fieldset><!-- end checkout step 1 -->
 
+            </form>
 
+            <!-- begin checkout step 2 -->
+            <form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
 
-				<fieldset id="billing-info" class="checkout-step"><!-- begin checkout step 2 -->
+				<fieldset id="billing-info" class="checkout-step">
 					<legend class="step-title-block">
 				 	  <div class="step-title"><span class="bold">2<span class="sep"> | </span>Billing</span> Information</div>
 				 	  <h5 class="step-number">Step <span class="bold">2</span> of <span class="bold">3</span></h5>
@@ -807,10 +810,13 @@
 
                         </div><!-- end block -->
                     </section>
-                </fieldset><!-- end checkout step 2 -->
+                </fieldset>
+            </form>
+            <!-- end checkout step 2 -->
 
-
-                <fieldset id="confirm-order" class="checkout-step"><!-- begin checkout step 3 -->
+            <!-- begin checkout step 3 -->
+            <form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
+                <fieldset id="confirm-order" class="checkout-step">
 				    <legend class="step-title-block">
 					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</div>
 					   <h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
@@ -1012,9 +1018,9 @@
                             </div>
                         </div><!-- end block -->
                     </section>
+                </fieldset>
+            </form><!--  end step 3 -->
 
-                </fieldset><!--  end step 3 -->
-            </form><!-- end vzn-checkout -->
 		</section><!-- end checkout sequence -->
 
 		<section id="checkout-sidebar">
@@ -1190,7 +1196,7 @@
 
 							<li id = "checkout-cart-ship" >
 								<div class="label">
-									Shipping & Handling
+									Shipping &amp; Handling
 								</div>
 
 								<div class="data">
@@ -1232,7 +1238,9 @@
 					</div><!-- end totals -->
 				</div><!-- end checkout-cart-summary -->
 				<div class="sidebar-finish">
+                <form method="post" action="#">
 					<input name="sidebarPlaceOrder" type="submit" class="checkout-final" value="Place Your Order" >
+                </form>
 				</div>
 
 			</div><!-- end sidebar wrap -->

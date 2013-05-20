@@ -1,7 +1,7 @@
 /* Colors */
 $colorTxtGray: #333;
 $colorBdrGray: #ccc;
- 
+
 html {
     background-color: $colorVzwNavBrd;
     #fourofour {
@@ -41,7 +41,7 @@ html {
          }
     }
 }
- 
+
 @media only screen and (min-width: $screenLarge - 50) {
     html {
         #fourofour {
@@ -52,7 +52,7 @@ html {
         }
     }
 }
- 
+
 @media only screen and (max-width: $screenLarge - 51) {
     html {
         #fourofour {
@@ -63,9 +63,9 @@ html {
         }
     }
 }
- 
+
 //@media only screen and (max-width: 960px ) {
-@media only screen and (max-width: 990px ) {    
+@media only screen and (max-width: 990px ) {
     html {
         #fourofour {
             #main-column {
@@ -80,7 +80,7 @@ html {
         }
     }
 }
- 
+
 @media only screen and (max-width: $screenSmall), only screen and (max-width: $screenMobileLarge) {
     html {
         #fourofour {
@@ -109,7 +109,7 @@ html {
     }
 }
 
-@media only screen and (max-width: $screenSmall) {    
+@media only screen and (max-width: $screenSmall) {
     html {
         #fourofour {
             #main-column {
@@ -120,7 +120,7 @@ html {
     }
 }
 
-@media only screen and (max-width: $screenMobileLarge - 50) {    
+@media only screen and (max-width: $screenMobileLarge - 50) {
     html {
         #fourofour {
             #main-column {
@@ -132,7 +132,7 @@ html {
 }
 
 
-@media only screen and (max-width: $screenMobileSmall) {    
+@media only screen and (max-width: $screenMobileSmall) {
     html {
         #fourofour {
             #main-column {
@@ -151,11 +151,9 @@ html {
                 display: inline;
             }
         }
-    }    
+    }
     .content-items {
-        form {
-            margin: 0;
-        }
+        form { margin: 0 !important; }
     }
     .flex-viewport {
         .content-grid {
@@ -175,14 +173,14 @@ html {
                                 padding: 0 0 0 5px;
                                 display: inline-block;
                             }
-                        }    
+                        }
                     }
                 }
             }
         }
     }
 }
- 
+
 @media only screen and (max-width: $screenSmall) {
     .similar-products-module.category-section {
         .content-header {
