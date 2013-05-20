@@ -1,14 +1,4 @@
 MLS.article = {
-    callbacks : {
-        getArticleContent : function (data) {
-            MLS.ajax.sendRequest(
-                MLS.ajax.endpoints.ARTICLE,
-                data,
-                MLS.article.displayContent
-            );
-        }
-    },
-
     init: function (d) {
         console.log("v5");
 
@@ -18,7 +8,7 @@ MLS.article = {
         }
 
         d = $jQ(d || document);
-    	$jQ('#article-modal-overlay').hide();
+        $jQ('#article-modal-overlay').hide();
         d.find('.data-article').on('click', function(e){
             e.preventDefault();
 
@@ -26,8 +16,16 @@ MLS.article = {
 
            console.log("data: ", data);
 
-           MLS.article.callbacks.getArticleContent(data);
+           MLS.article.getArticleContent(data);
         });
+    },
+
+    getArticleContent : function (data) {
+        MLS.ajax.sendRequest(
+            MLS.ajax.endpoints.ARTICLE,
+            data,
+            MLS.article.displayContent
+        );
     },
 
     displayContent : function (data) {
