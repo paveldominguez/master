@@ -21,6 +21,7 @@ MLS.checkout = {
         );
     },
 
+    /* disabled: requirement on hold
     selectShippingOption: function() {
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.CHECKOUT_SELECT_SHIPPING,
@@ -34,10 +35,11 @@ MLS.checkout = {
                     return MLS.modal.open(r.error ? r.error.responseHTML : null);
                 }
 
-                MLS.checkout.update();
+                MLS.checkout.update(r);
             }
         );
     },
+    */
 
     // EDIT VALIDATED INFO BUTTON (after next-step click)
     editStepCallback: function(e)
@@ -72,8 +74,10 @@ MLS.checkout = {
     },
 
     init : function() {
-        // update the summary whenever the minicart changes
-        $jQ(".mini-cart").bind("cart-updated cart-item-added cart-item-updated cart-item-removed", MLS.checkout.update);
+        // don't trigger the first minicart update
+        MLS.miniCart.started = true;
+
+        /* disabled: featured removed from batch 3
         $jQ('select[name=final-qty]').change(function() {
             MLS.miniCart.updateItem(
                 $jQ(this).data("cart-id"), // id
@@ -82,6 +86,7 @@ MLS.checkout = {
                 $jQ(this).val()
             );
         });
+        */
 
         // ONLOAD ...............................................................................
         var pgWidth = document.body.clientWidth; // get page width
@@ -103,8 +108,8 @@ MLS.checkout = {
         MLS.checkout.mainCheckoutValidation();
         // MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
         MLS.checkout.smallScreenContent(); // prepare small device content
-        $jQ('#vzn-checkout .selector').find('span').addClass('select-placeholder'); // enhance initial uniform.js select style
-        $jQ('#vzn-checkout .selector').find('select').change(function(){ // enhance uniform.js select performance
+        $jQ('#checkout-sequence .selector').find('span').addClass('select-placeholder');    // enhance initial uniform.js select style
+        $jQ('#checkout-sequence .selector').find('select').change(function(){               // enhance uniform.js select performance
             $jQ(this).parents('.selector').find('span').removeClass('select-placeholder');
             $jQ(this).parents('.selector').removeClass('error-style');
             $jQ(this).parents('.selector').find('.select-error-message').remove();
@@ -131,6 +136,7 @@ MLS.checkout = {
 
 
     // CHECKOUT EVENTS ........................................................................
+        /* disabled: requirement on hold
         $jQ("#checkout-ship-zip").keyup(function(e) {
             if ($jQ(this).val().length == 5)
             {
@@ -138,6 +144,7 @@ MLS.checkout = {
                 MLS.checkout.updateShippingOptions($jQ(this).val());
             }
         });
+        */
 
         // checkout sidebar special offer
         $jQ('#checkout-sidebar').find('.special-offer-block').each(function(){
@@ -412,10 +419,7 @@ MLS.checkout = {
             if ($jQ('#discount-code-input').valid() == true) {
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
-                    {
-                        code: $jQ('#discount-code-input').val(),
-                        action: "apply"
-                    },
+                    $jQ(this).parents("form").serialize(),
                     function(r) {
                         if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                             // error, unable to add to cart
@@ -427,7 +431,7 @@ MLS.checkout = {
                         $self.parents('.discount-input').slideToggle(300);
                         $self.parents('.discount-input').next('.discount-success').slideToggle(300);
 
-                        MLS.checkout.update(); // update totals
+                        MLS.checkout.update(r); // update totals
                     }
                 );
             }
@@ -442,17 +446,13 @@ MLS.checkout = {
 
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
-                {
-                    code: $jQ('#discount-code-input').val(),
-                    action: "remove"
-                },
-
+                $jQ(this).parents("form").serialize(),
                 function(r) {
                     $jQ('#discount-code-input').removeClass('valid').addClass('hasPlaceholder');
                     $jQ('#checkout-cart-discount-code').slideToggle(300);
                     $self.parents('.discount-success').prev('.discount-input').slideToggle(300);
                     $self.parents('.discount-success').slideToggle();
-                    MLS.checkout.update(); // update totals
+                    MLS.checkout.update(r); // update totals
                 }
             );
 
@@ -486,12 +486,7 @@ MLS.checkout = {
             if ($jQ('.GCV').valid() && gcValid == true ) {
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
-                    {
-                        number: $jQ('#gift-card-1-input').val(),
-                        pin: $jQ('#gift-card-1-pin').val(),
-                        action: "apply"
-                    },
-
+                    $jQ(this).parents("form").serialize(),
                     function(r) {
                         if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                             return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -502,7 +497,7 @@ MLS.checkout = {
                         $self.parents('.discount-input').slideToggle();
                         $self.parents('.discount-input').next('.discount-success').slideToggle();
 
-                        MLS.checkout.update(); // update totals
+                        MLS.checkout.update(r); // update totals
                     }
                 );
             }
@@ -516,12 +511,7 @@ MLS.checkout = {
 
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
-                {
-                    number: $jQ('#gift-card-1-input').val(),
-                    pin: $jQ('#gift-card-1-pin').val(),
-                    action: "remove"
-                },
-
+                $jQ(this).parents("form").serialize(),
                 function(r) {
                     if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                         return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -533,7 +523,7 @@ MLS.checkout = {
                     $self.parent('.discount-success').prev('.discount-input').slideToggle();
                     $self.parent('.discount-success').slideToggle();
 
-                    MLS.checkout.update(); // update totals
+                    MLS.checkout.update(r); // update totals
                 }
             );
 
@@ -550,12 +540,7 @@ MLS.checkout = {
             if ($jQ('#gift-card-2-input').valid() == true && $jQ('#gift-card-2-pin').valid() == true){
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
-                    {
-                        number: $jQ('#gift-card-2-input').val(),
-                        pin: $jQ('#gift-card-2-pin').val(),
-                        action: "apply"
-                    },
-
+                    $jQ(this).parents("form").serialize(),
                     function(r) {
                         if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                             return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -565,7 +550,7 @@ MLS.checkout = {
                         $self.parents('.discount-input').slideToggle();
                         $self.parents('.discount-input').next('.discount-success').slideToggle();
 
-                        MLS.checkout.update(); // update totals
+                        MLS.checkout.update(r); // update totals
                     }
                 );
             }
@@ -579,12 +564,7 @@ MLS.checkout = {
 
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
-                {
-                    number: $jQ('#gift-card-2-input').val(),
-                    pin: $jQ('#gift-card-2-pin').val(),
-                    action: "remove"
-                },
-
+                $jQ(this).parents("form").serialize(),
                 function(r) {
                     if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                         return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -595,7 +575,7 @@ MLS.checkout = {
                     $self.parent('.discount-success').prev('.discount-input').slideToggle();
                     $self.parent('.discount-success').slideToggle();
 
-                    MLS.checkout.update(); // update totals
+                    MLS.checkout.update(r); // update totals
                 }
             );
 
@@ -642,8 +622,9 @@ MLS.checkout = {
                 $jQ(this).hide().removeClass('success'); // reset all error & success messages on next step click
             });
 
-            var which = $jQ(this).attr('id');
-            var valid = true;
+            var which = $jQ(this).attr('id'),
+                valid = true,
+                $form = "";
 
             if (which == 'ship-info-complete') { // STEP 1 prevalidate
                 var radios = $jQ(this).parents('.next-step-button-box').siblings('.step-info-block').find('.checkout-radio-input'); // validate step 1 radio buttons
@@ -663,6 +644,8 @@ MLS.checkout = {
                     MLS.ui.scrollPgTo('#no-shipping-selected', 40);
                     return false;
                 }
+
+                $form = $jQ("form#vzn-checkout-shipping");
             } // endstep 1 prevalidate
 
             if (which == 'billing-info-complete') { // STEP 2 prevalidate
@@ -679,19 +662,22 @@ MLS.checkout = {
                         $jQ('.step-info-summary.billing-address').addClass('hidden');
                     }
                 }
+
+                $form = $jQ("form#vzn-checkout-billing");
             } // end if step 2 prevalidate
 
-            $jQ("#vzn-checkout").validate(); // VALIDATE
-            var formValid = $jQ("#vzn-checkout").valid();
+            $form.validate(); // VALIDATE
+            var formValid = $form.valid();
 
             var completed;
 
             if (valid && formValid) {
 
-                if (which == 'ship-info-complete'){ // STEP 1 postvalidate
+                if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
                         MLS.ajax.endpoints.CHECKOUT_STEP_1,
-                        $jQ(this.form).serialize(),
+                        $form.serialize(),
+
                         function (r) {
                             if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -704,9 +690,9 @@ MLS.checkout = {
                             completed.find('.hide-complete').addClass('hidden');
                             completed.find('.step-info-summary').removeClass('hidden');
 
-                            var step2Complete = completed.next('.checkout-step').find('.billing-complete'); // which part of step 2 to open
+                            var step2Complete = $jQ('#vzn-checkout-billing .checkout-step .billing-complete'); // which part of step 2 to open
                             if ($jQ(step2Complete).hasClass('blank')){
-                                completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');// open step 2 form
+                                $jQ('#vzn-checkout-billing .checkout-step .hide-complete').removeClass('hidden');
                             } else {
                                 $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
                             }
@@ -718,7 +704,7 @@ MLS.checkout = {
                 if (which == 'billing-info-complete'){ // STEP 2 postvalidate
                     MLS.ajax.sendRequest(
                         MLS.ajax.endpoints.CHECKOUT_STEP_2,
-                        $jQ(this.form).serialize(),
+                        $form.serialize(),
                         function (r) {
                             if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
@@ -734,7 +720,7 @@ MLS.checkout = {
 
                             completed.find('.hide-complete').addClass('hidden');  //  hide/show/scroll ..............
                             completed.find('.step-info-summary').removeClass('hidden');
-                            completed.next('.checkout-step').find('.hide-complete').removeClass('hidden');
+                            $jQ('#vzn-checkout-confirm .checkout-step .hide-complete').removeClass('hidden');
                             MLS.ui.scrollPgTo(completed, 7);
 
                             setTimeout(function(){
@@ -797,281 +783,283 @@ MLS.checkout = {
 */
 
     mainCheckoutValidation : function() { // CHECKOUT
-        $jQ('#vzn-checkout').validate({
-            ignore: '.ignore, :hidden',
-            success: function(label){
-                label.addClass('success').text('');
-            },
-            focusCleanup: true,
-            rules: {
-                checkoutFirstName: {
-                    required: true,
-                    noPlaceholder: true,
+        $jQ('#checkout-sequence form').each(function() {
+            $jQ(this).validate({
+                ignore: '.ignore, :hidden',
+                success: function(label){
+                    label.addClass('success').text('');
                 },
-                checkoutLastName: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                checkoutCompany: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                checkoutAttention: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                checkoutEmail: {
-                    required: true,
-                    noPlaceholder: true,
-                    email: true
-                },
-                checkoutPhone: {
-                    required: true,
-                    noPlaceholder: true,
-                    phoneUS: true
-                },
-                checkoutAddress: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                checkoutAddress2: {
-                    required: false,
-                    noPlaceholder: false,
-                },
-                checkoutCity: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                checkoutState: {
-                    required: true
-                },
-                checkoutZip: {
-                    required: true,
-                    digits: true,
-                    minlength: 5,
-                    noPlaceholder: true,
-                },
-                cardNumber: {
-                    required: true,
-                    noPlaceholder: true,
-                    rangelength: [15, 16],
-                    ccRecognize: true
-                },
-                ccMonth: {
-                    required: true
-                },
-                ccYear: {
-                    required: true
-                },
-                ccCode: {
-                    required: true,
-                    noPlaceholder: true,
-                    minlength: 3,
-                    maxlength:  4,
-                    digits: true
-                },
-                billingFirstName: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                billingLastName: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                billingPhone: {
-                    required: true,
-                    noPlaceholder: true,
-                    phoneUS: true
-                },
-                billingAddress: {
-                    required: true,
-                    noPlaceholder: true,
-                },
-                billingAddress2: {
-                },
-                billingCity: {
-                    required: true,
-                    noPlaceholder: true
-                },
-                billingZip: {
-                    required: true,
-                    noPlaceholder: true
-                },
-                discountCode: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 4
+                focusCleanup: true,
+                rules: {
+                    checkoutFirstName: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutLastName: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutCompany: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutAttention: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutEmail: {
+                        required: true,
+                        noPlaceholder: true,
+                        email: true
+                    },
+                    checkoutPhone: {
+                        required: true,
+                        noPlaceholder: true,
+                        phoneUS: true
+                    },
+                    checkoutAddress: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutAddress2: {
+                        required: false,
+                        noPlaceholder: false,
+                    },
+                    checkoutCity: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    checkoutState: {
+                        required: true
+                    },
+                    checkoutZip: {
+                        required: true,
+                        digits: true,
+                        minlength: 5,
+                        noPlaceholder: true,
+                    },
+                    cardNumber: {
+                        required: true,
+                        noPlaceholder: true,
+                        rangelength: [15, 16],
+                        ccRecognize: true
+                    },
+                    ccMonth: {
+                        required: true
+                    },
+                    ccYear: {
+                        required: true
+                    },
+                    ccCode: {
+                        required: true,
+                        noPlaceholder: true,
+                        minlength: 3,
+                        maxlength:  4,
+                        digits: true
+                    },
+                    billingFirstName: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    billingLastName: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    billingPhone: {
+                        required: true,
+                        noPlaceholder: true,
+                        phoneUS: true
+                    },
+                    billingAddress: {
+                        required: true,
+                        noPlaceholder: true,
+                    },
+                    billingAddress2: {
+                    },
+                    billingCity: {
+                        required: true,
+                        noPlaceholder: true
+                    },
+                    billingZip: {
+                        required: true,
+                        noPlaceholder: true
+                    },
+                    discountCode: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 4
 
+                    },
+                    giftCard1: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 8
+                    },
+                    giftCard1Pin: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 4
+                    },
+                    giftCard2: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 8
+                    },
+                    giftCard2Pin: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 4
+                    },
+                    cardNumberGC: {
+                        required: false,
+                        noPlaceholder: true,
+                        rangelength: [15, 16],
+                        ccRecognize: true
+                    },
+                    ccCodeGC: {
+                        required: false,
+                        noPlaceholder: true,
+                        minlength: 3,
+                        maxlength:  4,
+                        digits: true
+                    },
                 },
-                giftCard1: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 8
-                },
-                giftCard1Pin: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 4
-                },
-                giftCard2: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 8
-                },
-                giftCard2Pin: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 4
-                },
-                cardNumberGC: {
-                    required: false,
-                    noPlaceholder: true,
-                    rangelength: [15, 16],
-                    ccRecognize: true
-                },
-                ccCodeGC: {
-                    required: false,
-                    noPlaceholder: true,
-                    minlength: 3,
-                    maxlength:  4,
-                    digits: true
-                },
-            },
-            messages: {
-                checkoutFirstName: {
-                    required: "Please enter your first name",
-                    noPlaceholder: "Please enter your first name"
-                },
-                checkoutLastName: {
-                    required: "Please enter your last name",
-                    noPlaceholder: "Please enter your last name"
-                },
-                checkoutCompany: {
-                    required: "Please enter your company name",
-                    noPlaceholder: "Please enter your company name"
-                },
-                checkoutAttention: {
-                    required: "Please enter your first and last name",
-                    noPlaceholder: "Please enter your first and last name"
-                },
-                checkoutEmail: {
-                    required: "Please enter your email address",
-                    noPlaceholder: "Please enter your email address",
-                    email: "Please enter a valid email address"
-                },
-                checkoutPhone: {
-                    required: "Please enter your phone number",
-                    noPlaceholder: "Please enter your phone number",
-                    phoneUS: "Please enter a valid phone number"
-                },
-                checkoutAddress: {
-                    required: "Please enter your street address",
-                    noPlaceholder: "Please enter your street address"
-                },
-                checkoutAddress2: {
-                },
-                checkoutCity: {
-                    required: "Please enter your city",
-                    noPlaceholder: "Please enter your city"
-                },
-                checkoutState: {
-                    required: "Please select your state"
-                },
-                checkoutZip: {
-                    required: "Please enter your zip code",
-                    noPlaceholder: "Please enter your zip code",
-                    digits: "Please enter your 5 digit zip code",
-                    minlength: "Please enter your 5 digit zip code"
-                },
-                cardNumber: {
-                    required: "Please enter your card number",
-                    noPlaceholder: "Please enter your card number",
-                    rangelength: "Please enter a valid card number",
-                    ccRecognize : "Please enter a valid card number"
-                },
-                 ccMonth: {
-                    required: "Please select month expiry"
-                },
-                ccYear: {
-                    required: "Please select year expiry"
-                },
-                ccCode: {
-                    required: "Please enter the security code on the back of your card",
-                    noPlaceholder: "Please enter your security code",
-                    minlength: "Please enter a valid security code",
-                    maxlength:  "Please enter a valid security code",
-                    digits: "Please enter a valid security code"
-                },
-                billingFirstName: {
-                    required: "Please enter your first name",
-                    noPlaceholder: "Please enter your first name"
-                },
-                billingLastName: {
-                    required: "Please enter your last name",
-                    noPlaceholder: "Please enter your last name"
-                },
-                billingPhone: {
-                    required: "Please enter your phone number",
-                    noPlaceholder: "Please enter your phone number",
-                    phoneUS: "Please enter a valid phone number"
-                },
-                billingAddress: {
-                    required: "Please enter your street address",
-                    noPlaceholder: "Please enter your street address"
-                },
-                billingAddress2: {
-                },
-                billingCity: {
-                    required: "Please enter your city",
-                    noPlaceholder: "Please enter your city"
-                },
-                billingState: {
-                    required: "Please select your state",
-                    noPlaceholder: "Please enter your state"
-                },
-                billingZip: {
-                    required: "Please enter your zip code",
-                    noPlaceholder: "Please enter your zip code"
-                },
-                discountCode: {
-                    required: "Please enter a valid discount code",
-                    noPlaceholder: "Please enter a valid discount code",
-                    minlength: "Please enter a valid discount code"
-                },
-                giftCard1: {
-                    required: "Please enter a valid gift card number",
-                    noPlaceholder: "Please enter a valid gift card number",
-                    minlength: "Please enter a valid gift card number"
-                },
-                giftCard1Pin: {
-                    required: "Please enter a valid gift card PIN",
-                    noPlaceholder: "Please enter a valid gift card PIN",
-                    minlength: "Please enter a valid gift card PIN"
-                },
-                giftCard2: {
-                    required: "Please enter a valid gift card number",
-                    noPlaceholder: "Please enter a valid gift card number",
-                    minlength: "Please enter a valid gift card number"
-                },
-                giftCard2Pin: {
-                    required: "Please enter a valid gift card PIN",
-                    noPlaceholder: "Please enter a valid gift card PIN",
-                    minlength: "Please enter a valid gift card PIN"
-                },
-                cardNumberGC: {
-                    required: "Please enter your card number",
-                    noPlaceholder: "Please enter your card number",
-                    rangelength: "Please enter a valid card number",
-                    ccRecognize : "Please enter a valid card number"
-                },
-                ccCodeGC: {
-                    required: "Please enter the security code on the back of your card",
-                    noPlaceholder: "Please enter your security code",
-                    minlength: "Please enter a valid security code",
-                    maxlength:  "Please enter a valid security code",
-                    digits: "Please enter a valid security code"
-                },
-            }
+                messages: {
+                    checkoutFirstName: {
+                        required: "Please enter your first name",
+                        noPlaceholder: "Please enter your first name"
+                    },
+                    checkoutLastName: {
+                        required: "Please enter your last name",
+                        noPlaceholder: "Please enter your last name"
+                    },
+                    checkoutCompany: {
+                        required: "Please enter your company name",
+                        noPlaceholder: "Please enter your company name"
+                    },
+                    checkoutAttention: {
+                        required: "Please enter your first and last name",
+                        noPlaceholder: "Please enter your first and last name"
+                    },
+                    checkoutEmail: {
+                        required: "Please enter your email address",
+                        noPlaceholder: "Please enter your email address",
+                        email: "Please enter a valid email address"
+                    },
+                    checkoutPhone: {
+                        required: "Please enter your phone number",
+                        noPlaceholder: "Please enter your phone number",
+                        phoneUS: "Please enter a valid phone number"
+                    },
+                    checkoutAddress: {
+                        required: "Please enter your street address",
+                        noPlaceholder: "Please enter your street address"
+                    },
+                    checkoutAddress2: {
+                    },
+                    checkoutCity: {
+                        required: "Please enter your city",
+                        noPlaceholder: "Please enter your city"
+                    },
+                    checkoutState: {
+                        required: "Please select your state"
+                    },
+                    checkoutZip: {
+                        required: "Please enter your zip code",
+                        noPlaceholder: "Please enter your zip code",
+                        digits: "Please enter your 5 digit zip code",
+                        minlength: "Please enter your 5 digit zip code"
+                    },
+                    cardNumber: {
+                        required: "Please enter your card number",
+                        noPlaceholder: "Please enter your card number",
+                        rangelength: "Please enter a valid card number",
+                        ccRecognize : "Please enter a valid card number"
+                    },
+                     ccMonth: {
+                        required: "Please select month expiry"
+                    },
+                    ccYear: {
+                        required: "Please select year expiry"
+                    },
+                    ccCode: {
+                        required: "Please enter the security code on the back of your card",
+                        noPlaceholder: "Please enter your security code",
+                        minlength: "Please enter a valid security code",
+                        maxlength:  "Please enter a valid security code",
+                        digits: "Please enter a valid security code"
+                    },
+                    billingFirstName: {
+                        required: "Please enter your first name",
+                        noPlaceholder: "Please enter your first name"
+                    },
+                    billingLastName: {
+                        required: "Please enter your last name",
+                        noPlaceholder: "Please enter your last name"
+                    },
+                    billingPhone: {
+                        required: "Please enter your phone number",
+                        noPlaceholder: "Please enter your phone number",
+                        phoneUS: "Please enter a valid phone number"
+                    },
+                    billingAddress: {
+                        required: "Please enter your street address",
+                        noPlaceholder: "Please enter your street address"
+                    },
+                    billingAddress2: {
+                    },
+                    billingCity: {
+                        required: "Please enter your city",
+                        noPlaceholder: "Please enter your city"
+                    },
+                    billingState: {
+                        required: "Please select your state",
+                        noPlaceholder: "Please enter your state"
+                    },
+                    billingZip: {
+                        required: "Please enter your zip code",
+                        noPlaceholder: "Please enter your zip code"
+                    },
+                    discountCode: {
+                        required: "Please enter a valid discount code",
+                        noPlaceholder: "Please enter a valid discount code",
+                        minlength: "Please enter a valid discount code"
+                    },
+                    giftCard1: {
+                        required: "Please enter a valid gift card number",
+                        noPlaceholder: "Please enter a valid gift card number",
+                        minlength: "Please enter a valid gift card number"
+                    },
+                    giftCard1Pin: {
+                        required: "Please enter a valid gift card PIN",
+                        noPlaceholder: "Please enter a valid gift card PIN",
+                        minlength: "Please enter a valid gift card PIN"
+                    },
+                    giftCard2: {
+                        required: "Please enter a valid gift card number",
+                        noPlaceholder: "Please enter a valid gift card number",
+                        minlength: "Please enter a valid gift card number"
+                    },
+                    giftCard2Pin: {
+                        required: "Please enter a valid gift card PIN",
+                        noPlaceholder: "Please enter a valid gift card PIN",
+                        minlength: "Please enter a valid gift card PIN"
+                    },
+                    cardNumberGC: {
+                        required: "Please enter your card number",
+                        noPlaceholder: "Please enter your card number",
+                        rangelength: "Please enter a valid card number",
+                        ccRecognize : "Please enter a valid card number"
+                    },
+                    ccCodeGC: {
+                        required: "Please enter the security code on the back of your card",
+                        noPlaceholder: "Please enter your security code",
+                        minlength: "Please enter a valid security code",
+                        maxlength:  "Please enter a valid security code",
+                        digits: "Please enter a valid security code"
+                    },
+                }
+            });
         });
     }
 };
