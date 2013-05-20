@@ -4,7 +4,7 @@ var pub = {
     init : function() {
         this.compatibleTypeAhead();
         this.compatibleDropDowns();
-        
+
         this.pdpDetailTabs();
         this.showMoreDevices();
         this.pdpFeaturesShowMore();
@@ -49,7 +49,7 @@ var pub = {
             sync: "#thumbs"
         });
 
-        $jQ(zoomThumbs).flexslider({ // zoom : flexslider install
+        $jQ(zoomThumbs).flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: false,
@@ -65,14 +65,11 @@ var pub = {
             slideshow: false,
             sync: "#zoom-thumbs"
         });
-        var heroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
-        var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
-
-
-
+        var heroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
+        var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
 
         // ONLOAD : below the fold ..............................................................................
-        $jQ('#pdp-similar-products-module').flexslider({  // similar products : flexslider install
+        $jQ('#pdp-similar-products-module').flexslider({
             animation: 'slide',
             controlsContainer: '#pdp-similar-products-module .slide-nav',
             animationLoop: false,
@@ -83,7 +80,7 @@ var pub = {
             itemWidth: 215
         });
 
-        $jQ('#pdp-others-bought-module').flexslider({  // lifestyle products slider install ......
+        $jQ('#pdp-others-bought-module').flexslider({
             animation: 'slide',
             controlsContainer: '#pdp-others-bought-module .slide-nav',
             animationLoop: false,
@@ -112,17 +109,14 @@ var pub = {
 
         // ON RESIZE..............................................................................................
         $jQ(window).resize(function () {
-            var pgWidth = document.body.clientWidth; // thumbnail navigation display
+            var pgWidth = document.body.clientWidth;
             var heroThumbs = window.document.getElementById('thumbs');
             var zoomThumbs = window.document.getElementById('zoom-thumbs');
-            var resizeHeroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
-            var resizeZoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
+            var resizeHeroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
+            var resizeZoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
+            MLS.ui.moreLessBlock();
 
-            MLS.ui.moreLessBlock(); // revaluate & re-initialize more/less elements
-
-            //$jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
-
-            if ($jQ(window).width() > 719) { // reset anchor bar
+            if ($jQ(window).width() > 719) {
                 $jQ(window).scroll(function() {
                     if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
                         $jQ('#btf-anchor').addClass('show-anchor');
@@ -140,9 +134,9 @@ var pub = {
 
 
         // HERO & ZOOM EVENTS .....................................................................................
-        MLS.productDetail.pdpColorSelect(); // activates color selector
+        MLS.productDetail.pdpColorSelect();
 
-        $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
+        $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){
             var which = $jQ(this).attr('id');
             var thisPanel = new MLS.productDetail.createZoomPanel(which);
         });
@@ -153,11 +147,9 @@ var pub = {
         });
 
         $jQ('#toggle-scale').on('click', function(){
-            // toggle scale content
             $jQ('#zoom-block').find("#zoom-scale-content").toggle();
             $jQ('#zoom-thumbs').toggle();
             $jQ('#zoom-focus').toggleClass('hide-slides');
-            //toggle link class and text
             if ($jQ(this).parent().hasClass('hide-action')) {
                 $jQ(this).text('View to Scale').parent().removeClass('hide-action');
             } else {
@@ -168,7 +160,7 @@ var pub = {
         });
 
         $jQ('#pdp-add-to-cart-submit').click(function(){
-            $jQ("#pdp-add-to-cart-submit").validate(); // VALIDATE
+            $jQ("#pdp-add-to-cart-submit").validate();
             var formValid = $jQ("#pdp-add-to-cart").valid();
             if (formValid == true){
                 $jQ('.size-select-box').find('.selector').removeClass('error');
@@ -180,40 +172,33 @@ var pub = {
         });
 
 
-        $jQ('#pdp-size-select').change(function(){ // remove select error on choice
+        $jQ('#pdp-size-select').change(function(){
             $jQ('.size-select-box').find('.selector').removeClass('error');
             $jQ('.size-select-box').find('label.error').hide();
         });
 
-
-
-        $jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
-            // panel itself already exists if this is clicked
-        });
         // ..................................................................................... END HERO & ZOOM EVENTS
 
-        $jQ('.pdp-bundle-block .item').click(function(e){ // bundle modal
+        $jQ('.pdp-bundle-block .item').click(function(e){
             e.preventDefault;
             MLS.ui.lightbox(this);
         });
 
-        $jQ('#add-cart-server-error').find('.lightbox-close').click(function(){ // close click
-            $jQ('#add-cart-server-error').fadeOut(300); // fade out
+        $jQ('#add-cart-server-error').find('.lightbox-close').click(function(){
+            $jQ('#add-cart-server-error').fadeOut(300);
         });
 
-        // BELOW THE FOLD 719- EVENTS .......................................................................................
-
-        // pdp accordions
+        // BELOW THE FOLD 719- EVENTS
         $jQ('.pdp-accordion').find('.acc-control').click(function(){
             MLS.ui.simpleAcc(this);
             setTimeout(function(){
-                MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
+                MLS.ui.moreLessBlock();
             }, 350);
         });
 
-        $jQ('#mobile-similar .acc-control').click(function(){ // initialize flexslider
+        $jQ('#mobile-similar .acc-control').click(function(){
 
-            $jQ('#mobile-similar #pdp-similar-products-module').flexslider({  // similar products : flexslider install
+            $jQ('#mobile-similar #pdp-similar-products-module').flexslider({
                 animation: 'slide',
                 controlsContainer: '#pdp-similar-products-module .slide-nav',
                 animationLoop: false,
@@ -227,15 +212,14 @@ var pub = {
         });
 
         // RELATED STORIES MODULE SEQUENCE
-
-         $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){ // modify layout before init flexslider
+         $jQ('#pdp-related-stories-module').find('li.small-story').each(function(i, el){
              if ( i%2 > 0) { // adjust
                 var previous = $jQ(this).prev('li.small-story')
                 $jQ(this).addClass('adjusted').appendTo(previous);
-            } // else do nothing
+            }
         });
 
-        $jQ('#lifestyles-alpha-slider').flexslider({ // init alpha related stories products slider onload
+        $jQ('#lifestyles-alpha-slider').flexslider({
             animation: 'slide',
             controlsContainer: '#nav-alpha',
             animationLoop: true,
@@ -247,14 +231,14 @@ var pub = {
 
         });
 
-        $jQ('#pdp-related-stories-module dd a').click(function(){ // related stories tab clicks
-            var whichClick = $jQ(this).attr('id'); // identify current tab
+        $jQ('#pdp-related-stories-module dd a').click(function(){
+            var whichClick = $jQ(this).attr('id');
             var whichClickArray = whichClick.split('-');
             whichClick = whichClickArray[2];
 
             var navs = $jQ(this).parents('section').find('.slide-nav');
             $jQ(navs).hide();
-            $jQ(navs).each(function(){ // toggle slider nav
+            $jQ(navs).each(function(){
                 var whichNav = $jQ(this).attr('id');
                 var whichNavArray = whichNav.split('-');
                 whichNav = whichNavArray[1];
@@ -265,7 +249,7 @@ var pub = {
             });
         });
 
-        $jQ('#lifestyles-tab-beta').one('click', function(){ // init beta related stories products slider on first tab click
+        $jQ('#lifestyles-tab-beta').one('click', function(){
             $jQ('#lifestyles-beta-slider').flexslider({
                 animation: 'slide',
                 controlsContainer: '#nav-beta',
@@ -278,7 +262,7 @@ var pub = {
             });
         });
 
-        $jQ('#lifestyles-tab-gamma').one('click', function(){ // init gamma related stories products slider on first tab click
+        $jQ('#lifestyles-tab-gamma').one('click', function(){
             $jQ('#lifestyles-gamma-slider').flexslider({
                 animation: 'slide',
                 controlsContainer: '#nav-gamma',
@@ -367,7 +351,7 @@ var pub = {
             });
     },
 
-    pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
+    pdpColorOptions : function(){
         var numColors = $jQ('#product-colors').find('.color').length;
         if ( numColors > 6){
             $jQ('.light').addClass('reduced');
@@ -381,7 +365,7 @@ var pub = {
             }
         }
     },
-    pdpColorSelect : function(){ // animates color chips & connects them to form select
+    pdpColorSelect : function(){
         $jQ('#product-colors .color').on('click', function () {
             if($jQ(this).hasClass('out-of-stock')) {
                 return false;
