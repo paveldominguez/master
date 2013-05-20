@@ -2,15 +2,20 @@ MLS.ajax = {
     starded: false,
 
     endpoints: {
-        ADD_TO_MINICART: '/services/add_to_cart.json',
-        UPDATE_MINICART: '/services/add_to_cart.json',
-        REMOVE_FROM_MINICART: '/services/add_to_cart.json',
-        GET_MINICART: '/services/add_to_cart.json',
-        GET_CART: '/services/cart.json',
-        GET_CART_SUMMARY: '/services/checkout_cart.json',
+        CART_PAGE: '/cart-base.html',
+        ADD_TO_MINICART: '/services/add_to_minicart.json',
+        GET_MINICART: '/services/get_minicart.json',
+        REMOVE_FROM_MINICART: '/services/remove_from_minicart.json',
+    
+        GET_CART: '/services/get_cart.json',
+        ADD_TO_CART: '/services/add_to_cart.json',
+        UPDATE_CART: '/services/update_cart.json',
+        REMOVE_FROM_CART: '/services/remove_from_cart.json',
+
         GET_CART_DD_SIZES: "/services/dd_getSizes.json",
         GET_CART_DD_COLORS: "/services/dd_getColors.json",
         GET_CART_DD_CAROUSEL: "/services/dd_getCarousel.json",
+
         ARTICLE: '/services/article.json',
         HOMEPAGE_PRODUCTS: '/services/homepage.json',
         SEARCH_DEVICES: '/services/devices.json',
@@ -34,7 +39,6 @@ MLS.ajax = {
         CATEGORY_PAGE: '/services/category.json',
 
         // Checkout
-
         CHECKOUT_SHIPPING_OPTIONS: '/services/checkout_shipping_options.json',
         CHECKOUT_SELECT_SHIPPING: '/services/checkout_select_shipping.json',
         CHECKOUT_STEP_1: '/services/checkout_step_1.json',
@@ -42,7 +46,10 @@ MLS.ajax = {
         CHECKOUT_STEP_3: '/checkout-success.html',
 
         CHECKOUT_APPLY_DISCOUNT: '/services/checkout_apply_discount.json',
-        CHECKOUT_APPLY_GIFTCARD: '/services/checkout_apply_giftcard.json'
+        CHECKOUT_APPLY_GIFTCARD: '/services/checkout_apply_giftcard.json',
+
+        // Quick View
+        QUICKVIEW_DETAILS: '/services/quickview_details.json'
     },
 
     init: function () {
@@ -72,10 +79,12 @@ MLS.ajax = {
         this.init();
 
         $jQ.ajax({
+            // type: "POST",
             url: url,
             data: data,
             cache : false,
             success : success,
+
             error : error || function () {
                 MLS.modal.open('Server is not responding,<br />please refresh and try again.');
             },
@@ -118,17 +127,22 @@ MLS.ajax = {
 
     quickView: {
         init: function (pid, el) {
-            //For demo purposes content is already loaded
-            contentGrid.quickViewShow(el);
             MLS.ajax.sendRequest(
-                this.href,
-                { productID : pid },
-                MLS.ajax.quickView.update
+                MLS.ajax.endpoints.QUICKVIEW_DETAILS,
+                pid,
+                function(data) {
+                    MLS.ajax.quickView.update(data, el);
+                }
             );
         },
-        update: function (data) {
-            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
-            //contentGrid.quickViewShow();
+
+        update: function (data, el) {
+            if (data.hasOwnProperty('error') && data.error.responseHTML != "") {
+                return MLS.modal.open(data.error ? data.error.responseHTML : null);
+            }
+
+            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.success.responseHTML);
+            contentGrid.quickViewShow(el);
         }
     }
 };
