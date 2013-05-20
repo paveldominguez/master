@@ -69,8 +69,7 @@
 	<div class="section-wrap">
 
 		<section id="checkout-sequence">
-			<form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
-
+			<form id="vzn-checkout-shipping" method="POST" action="javascript:void(0)" autocomplete="on">
 				<fieldset id="shipping-info" class="checkout-step">
 					<legend class="step-title-block">
 						<div class="step-title"><span class="bold">1<span class="sep"> | </span>Shipping</span> Information</div>
@@ -193,9 +192,6 @@
 						</div><!-- end instructions -->
 
 						<div class="shipping-option-radios">
-							<p>&bull; Please enter a zipcode first</p>
-
-							<!-- the actual options will come from the ajax response
 							<div class="form-input-wrap">
 								<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-ground-5-day" >
 								<label class="form-item-title">2 to 5 Day Ground - <span class="radio-offer offer"> Free!
@@ -226,8 +222,8 @@
                                         <div class="dropdown-pointer"></div>
                                         <p> Great news! Your order qualified for an additional discount that has already been applied to your total.
                                         </p>
-                                    </div><! - - end dropdwn panel - - >
-                                </div><! - - end dropdown - - >
+                                    </div><!-- end dropdwn panel -->
+                                </div><!-- end dropdown -->
                             </div>
 
 							<div class="form-input-wrap">
@@ -243,9 +239,7 @@
 							<div id="no-shipping-selected" class="shipping-method-error">
 								Please select your shipping method
 							</div>
-							-->
 						</div><!-- end shipping radios -->
-
 					</div><!-- end info block -->
 
                     <div class="hide-complete next-step-button-box">
@@ -331,7 +325,7 @@
             </form>
 
             <!-- begin checkout step 2 -->
-            <form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
+            <form id="vzn-checkout-billing" method="POST" action="javascript:void(0)" autocomplete="on">
 
 				<fieldset id="billing-info" class="checkout-step">
 					<legend class="step-title-block">
@@ -815,7 +809,7 @@
             <!-- end checkout step 2 -->
 
             <!-- begin checkout step 3 -->
-            <form id="vzn-checkout" method="POST" action="javascript:void(0)" autocomplete="on">
+            <form id="vzn-checkout-confirm" method="POST" action="javascript:void(0)" autocomplete="on">
                 <fieldset id="confirm-order" class="checkout-step">
 				    <legend class="step-title-block">
 					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</div>
