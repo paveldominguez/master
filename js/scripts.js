@@ -149,6 +149,7 @@ MLS = {
         init : function () {
             //searchResults.styleDropDown();
             contentGrid.init();
+            contentLanding.init();
 
             MLS.contentFilter.init({
                 endpoint: MLS.ajax.endpoints.CONTENT_FILTER,
