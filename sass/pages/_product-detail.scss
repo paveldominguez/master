@@ -27,8 +27,6 @@
                 margin: 0 auto 0 auto;
 
                 #focus { zoom: 1;
-                    /* margin-top:-5%; */
-
                     .flex-viewport { max-height: 2000px;
                         -webkit-transition: all 1s ease;
                         -moz-transition: all 1s ease;
@@ -1173,7 +1171,7 @@
                     list-style-type:disc;
                 }
             }
-            
+
             .manual-block{
                 height: 260px;
                 float:left;
@@ -2217,6 +2215,17 @@
         }
         #product-details{
             margin:0;
+            .two-thirds{
+                width:auto;
+                margin:0;
+                padding:0;
+            }
+            .details-list{
+                width:auto;
+            }
+            .overview-bv-include{
+                display:none;
+            }
             .pdp-compat-content{
                 .tab-inner{
                     position:relative;
