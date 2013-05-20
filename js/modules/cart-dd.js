@@ -1,5 +1,6 @@
 MLS.cart.dd = {
     init: function () {
+
         console.log("v.10");
 
         MLS.cart.dd.triggers.ddColor(); // needs to be initialized before the form trigger otherwise it will not update the form
@@ -71,7 +72,5 @@ MLS.cart.dd = {
         }
     }
 }
-
-
 
 
