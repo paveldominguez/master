@@ -46,10 +46,10 @@ MLS.contentFilter = (function () {
                 $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
 
                 // compability services
-                $jQ('.compatibility-filter').children('select').on('change', pub.compabilitySelect);
+                $jQ('.compatibility-filter').find('select').on('change', pub.compabilitySearch);
 
                 // type ahead (searc)
-                $jQ('.compatibility-filter').children('input.type-ahead').on('keyup', pub.compabilitySearch);
+                $jQ('.compatibility-filter').find('input.type-ahead').on('keyup', pub.compabilitySearch);
 
                 // sort links
                 $jQ('#sort-options').find('li').on('click', pub.sort);
@@ -82,10 +82,10 @@ MLS.contentFilter = (function () {
                 $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
 
                 // compability services
-                $jQ('.compatibility-filter').children('select').unbind('change', pub.compabilitySelect);
+                $jQ('.compatibility-filter').find('select').unbind('change', pub.compabilitySearch);
 
                 // type ahead (searc)
-                $jQ('.compatibility-filter').children('input.type-ahead').unbind('keyup', pub.compabilitySearch);
+                $jQ('.compatibility-filter').find('input.type-ahead').unbind('keyup', pub.compabilitySearch);
 
                  // sort links
                 $jQ('#sort-options').find('li').unbind('click', pub.sort);
@@ -181,39 +181,20 @@ MLS.contentFilter = (function () {
             =            Compability search            =
             ==========================================*/
 
-            compabilitySearch: function (e) {
-                var $elem = $jQ(this),
-                    params = {search: $elem.val()};
-                if (e.keyCode === 13) {
-                    pub.processRequest(params);
-                }
+            compabilitySearch: function () {
+                var $form = $jQ(this).parents('form'),
+                    data = $form.serialize();
+
+
+                $form.unbind('submit').on('submit', function (e) { e.preventDefault(); }); // do not submit form in enter
+
+                // set hash
+                window.location.hash = data;
+
+                // make request
+                pub.processRequest(data);
             },
 
-            compabilitySelect: function () {
-                var $elem = $jQ(this),
-                    href = $elem.find('option:selected').attr('value'),
-                    params;
-
-                // update hash
-                window.location.hash = MLS.util.setHash(href);
-
-                params = MLS.util.getParamsFromUrl(href);
-                pub.processRequest(params);
-            },
-
-            facetClick: function (e) {
-                e.preventDefault();
-
-                var $elem = $jQ(this),//e.currentTarget,
-                    href = $elem.find('a').attr('href'),
-                    params;
-
-                // update hash
-                window.location.hash = MLS.util.setHash(href);
-
-                params = MLS.util.getParamsFromUrl(href);
-                pub.processRequest(params);
-            },
 
             /*-----  End of Compability search  ------*/
 
