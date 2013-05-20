@@ -5,19 +5,19 @@ MLS.miniCart = {
 	{
 		addItem: function(e) 
 		{
-			MLS.miniCart.addItem($jQ(this).data("cart-add"), e.target.form ? $jQ(e.target.form).find("[name=size-select]").val() : null, e.target.form ? $jQ(e.target.form).find("[name=color-select]").val() : null);
+			MLS.miniCart.addItem($jQ(e.target).parents("form").serialize());
         	return false;
         },
 
         removeItem: function(e) 
 		{
-            if ($jQ(this).data("confirm-removal"))
+            if ($jQ(this).hasClass("data-confirm-removal"))
             {
                 MLS.miniCart.confirmItemRemoval($jQ(this));
             }
 			else 
             {
-                MLS.miniCart.removeItem($jQ(this).data("cart-remove"));
+                MLS.miniCart.removeItem($jQ(this).is("a") ? $jQ(this).attr("href").split("?")[1] : $jQ(e.target).parents("form").serialize());
             }
 
             return false;
@@ -120,12 +120,24 @@ MLS.miniCart = {
         },
 	},
 
-	init : function (d) 
+    options: {
+
+    },
+
+	init : function (d, opts) 
 	{
         var $d = $jQ(d || document);
 
-		$d.find('[data-cart-add]').bind('click', this.callbacks.addItem);
-        $d.find('[data-cart-remove]').bind('click', this.callbacks.removeItem);
+        this.options = $jQ.extend({
+            getCartEndpoint: MLS.ajax.endpoints.GET_MINICART,
+            addToCartEndpoint: MLS.ajax.endpoints.ADD_TO_MINICART,
+            updateCartEndpoint: MLS.ajax.endpoints.UPDATE_CART,
+            removeFromCartEndpoint: MLS.ajax.endpoints.REMOVE_FROM_MINICART,
+            successCallback: MLS.miniCart.callbacks.updateItemSuccess
+        }, opts);
+
+		$d.find('.data-cart-add').bind('click', this.callbacks.addItem);
+        $d.find('.data-cart-remove').bind('click', this.callbacks.removeItem);
 
         // free shipping modal
         $d.find('.minicart-banner.ship').find('.minicart-cta').click(function() {
@@ -144,7 +156,7 @@ MLS.miniCart = {
         var $block = $btn.parents('.minicart-item'),
             $editBox = $btn.parents('.minicart-edit'),
             removeCallback = function() {
-                MLS.miniCart.removeItem($jQ(this).data('cart-remove'));
+                MLS.miniCart.removeItem($jQ(this).attr("href").split("?")[1]);
             };
 
         $block.css('background-color' , '#d6d9d9');
@@ -155,7 +167,7 @@ MLS.miniCart = {
         $editBox.find('.minicart-cancel-remove').click(function(e) { // cancel remove
             e.preventDefault();
             $block.removeAttr("style").find('.remove-msg').remove();
-            $editBox.css('width', '96px').find('.edit').html('<a href="cart-base.html">Edit</a>');
+            $editBox.css('width', '96px').find('.edit').html('<a href="' + $btn.attr("href") + '">Edit</a>');
             $btn.removeClass('.yes-remove').removeClass('yes-remove').unbind('click', removeCallback);
 
             // avoid memory leak
@@ -171,72 +183,35 @@ MLS.miniCart = {
         $jQ('.prev-items-link').unbind('click', this.callbacks.scrollNext);
     },
 
-    update: function() {
-		MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.GET_MINICART,
-            
-            {
-            },
-
-            function(r) {
-                MLS.miniCart.callbacks.updateItemSuccess(r);
-                $jQ(".mini-cart").trigger("cart-updated", [r]);
-            }
-            
+    update : function (params) {
+        MLS.ajax.sendRequest(
+            this.options.getCartEndpoint,
+            params,
+            this.options.successCallback
         );
     },
 
-    addItem : function (id, size, color, qty) {
+    addItem : function (params) {
     	MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.ADD_TO_MINICART,
-            
-            {
-            	productID: id,
-            	size: size,
-            	color: color,
-            	quantity: qty,
-            	action: "add"
-            },
-
-            function(r) {
-                MLS.miniCart.callbacks.updateItemSuccess(r);
-                $jQ(".mini-cart").trigger("cart-item-added", [r]);
-            }
+            this.options.addToCartEndpoint,
+            params,
+            this.options.successCallback
         );
     },
 
-    updateItem : function (id, size, color, qty) {
+    updateItem : function (params) {
     	MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.UPDATE_MINICART,
-            
-            {
-                productID: id,
-                size: size,
-                color: color,
-                quantity: qty,
-                action: "update"
-            },
-
-            function(r) {
-                MLS.miniCart.callbacks.updateItemSuccess(r);
-                $jQ(".mini-cart").trigger("cart-item-updated", [r]);
-            }
+            this.options.updateCartEndpoint,
+            params,
+            this.options.successCallback
         );
     },
 
-    removeItem : function (id) {
+    removeItem : function (params) {
     	MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.REMOVE_FROM_MINICART,
-            
-            {
-            	productID: id,
-            	action: "remove"
-            },
-
-            function(r) {
-                MLS.miniCart.callbacks.updateItemSuccess(r);
-                $jQ(".mini-cart").trigger("cart-item-removed", [r]);
-            }
+            this.options.removeFromCartEndpoint,
+            params,
+            this.options.successCallback
         );
     }
 };
