@@ -296,14 +296,14 @@
                             <ul class="detail-tabs">
                                 <li data-tabname="overview" class="active overview"><span>Overview</span></li>
                                 <li data-tabname="features" class="features"><span>Features</span></li>
-                                <li data-tabname="reviews" class="reviews"><span>Reviews</span></li>
+                                <li data-tabname="reviews" class="reviews"><span>Reviews <em class="count">(46)</em></span></li>
                                 <li data-tabname="compatibility" class="compatibility"><span>Compatibility</span></li>
                                 <li data-tabname="tech" class="tech"><span>Tech Specs</span></li>
                                 <li data-tabname="questions" class="questions"><span>Question &amp; Answers</span></li>
                             </ul>
                             <ul class="detail-tabs-accordion">
                                 <li data-tabname="overview" class="overview active">
-                                    <span>Overview</span>
+                                    <span>Overview<em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="pdp-overview-content tab-wrapper">
                                         <div class="more-less-block">
                                             <div class="two-thirds left">
@@ -341,8 +341,8 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li data-tabname="features"class="features">
-                                    <span>Features</span>
+                                <li data-tabname="features" class="features">
+                                    <span>Features<em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="pdp-features-content tab-wrapper">
                                         <div class="more-less-block">
                                             <ul class="details-list">
@@ -359,7 +359,10 @@
                                                 <li>Wirelessly charge compatible device on top of the speaker</li>
                                                 <li>High-quality Bluetooth streaming easy tap-to-play with NFC</li>
                                             </ul>
-                                            <span class="more-less-link" title="show more">see more</span>
+                                            <span class="more-less-link" title="show more">
+                                                <span class="more">see more</span>
+                                                <span class="less">see less</span>
+                                            </span>
                                         </div>
 
                                         <div class="pdp-features-tab-box">
@@ -403,7 +406,7 @@
                                     </div>
                                 </li>
                                 <li data-tabname="reviews" class="reviews">
-                                    <span>Reviews</span>
+                                    <span>Reviews<span class="count">(46)</span><em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="pdp-reviews-content tab-wrapper">
                                         <div class="tab-wrapper">
                                             <div class="tab-inner">
@@ -413,7 +416,7 @@
                                     </div>
                                 </li>
                                 <li data-tabname="compatibility" class="compatibility">
-                                    <span>Compatibility</span>
+                                    <span>Compatibility<em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="pdp-compat-content tab-wrapper">
                                         <form action="sample-compatibility.json" method="POST" id="compatibilityForm" name="compatibilityForm">
                                             <div class="compat-sort">
@@ -518,7 +521,7 @@
                                     </div>
                                 </li>
                                 <li data-tabname="tech" class="tech">
-                                    <span>Tech Specs</span>
+                                    <span>Tech Specs<em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="pdp-specs-content tab-wrapper">
                                         <div class="column">
                                             <h3>Specifications</h3>
@@ -566,7 +569,7 @@
                                     </div>
                                 </li>
                                 <li data-tabname="questions" class="questions">
-                                    <span>Question &amp; Answers</span>
+                                    <span>Question &amp; Answers<em><span class="more">+</span><span class="less">-</span></em></span>
                                     <div class="questions tab-wrapper">
                                         <div class="tab-inner">
                                             <img class="temp-image" src="img/product-detail-page/temp-questions.jpg" alt="Questions & Comments" style="height:1087px;">
@@ -580,18 +583,10 @@
                 </div>
             </section>
 
-            <section id="mobile-overview" class="pdp-accordion">
-                <div class="acc-control">
-                    <h2>Overview</h2>
-                    <div class="icon"></div>
-                </div>
-                <div class="acc-info pdp-overview-content"></div>
-            </section>
-
             <section id="similar-products" class="pdp-720-plus">
                 <article id="pdp-similar-products-module" class="shop-products-module similar-products-module category-section pdp-similar-content">
                     <header class="content-header">
-                        <h2 class="title"><strong>Similar</strong> Products</h2>
+                        <h2 class="title"><strong>Similar</strong> Products<em><span class="more">+</span><span class="less">-</span></em></h2>
                         <div class="slide-nav"></div>
                     </header>
                     <script>
@@ -625,9 +620,6 @@
                     </script>
                 </article>
             </section>
-
-
-
 
             <section id="pdp-bundle-modal-block" class="lightbox">
                 <div class="lightbox-info-block">

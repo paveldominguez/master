@@ -1039,7 +1039,7 @@
                     &.features{
                         .pdp-features-content{
                             .more-less-link{
-                                display:block;
+                                display:none;
                             }
                         }
                     }
@@ -2079,6 +2079,11 @@
 
     /* below 875 - hero tweaks */
     @media only screen and (max-width: 875px) {
+        #mls-nav{
+            #mls-nav-content{
+                display: none;
+            }
+        }
         #product-details{
             .tabbed-wrapper{
                 .detail-tabs{
@@ -2088,27 +2093,46 @@
                         }
                     }
                 }
-            }
-            .detail-tabs-accordion{
-                .features{
-                    .details-list{
-                        height:202px;
-                        margin:0;
-                        padding:0 0 0 16px;
-                        overflow:hidden;
-                        li{
-                            float:none;
-                            width:auto;
+                .detail-tabs-accordion{
+                    > li.features{
+                        .details-list{
+                            &.toggle{
+                                height:100%;
+                            }
+                            height:204px;
+                            margin:0;
+                            padding:0 0 0 16px;
+                            overflow:hidden;
+                            li{
+                                float:none;
+                                width:auto;
+                            }
                         }
-                    }
-                    .more-less-link{
-                        color: $actLinkBlue;
-                        display:inline-block;
-                        margin-top:20px;
-                    }
-                    .more-less-block{
-                        width:46%;
-                        margin:0 46px 0 0;
+                        .pdp-features-content{
+                            .more-less-link{
+                                color: $actLinkBlue;
+                                display:inline-block;
+                                margin-top:20px;
+                                &.toggle{
+                                    .more{
+                                        display:none;
+                                    }
+                                    .less{
+                                        display:inline;
+                                    }
+                                }
+                                .more{
+                                    display:inline;
+                                }
+                                .less{
+                                    display:none;
+                                }
+                            }
+                        }
+                        .more-less-block{
+                            width:46%;
+                            margin:0 46px 0 0;
+                        }
                     }
                 }
             }
@@ -2186,7 +2210,13 @@
 
 
     @media only screen and (max-width: 719px ) {
+        #mls-nav{
+            #mls-nav-content{
+                display: none;
+            }
+        }
         #product-details{
+            margin:0;
             .pdp-compat-content{
                 .tab-inner{
                     position:relative;
@@ -2213,6 +2243,85 @@
                         float:left;
                     }
                 }
+            }
+            .tabbed-wrapper{
+                .detail-tabs-accordion{
+                    li{
+                        &.compatibility{
+                            width:100%;
+                        }
+                        display:block;
+                        > span{
+                           &.toggle{
+                                .more{
+                                    display:none;
+                                }
+                                .less{
+                                    display:inline;
+                                }
+                            }
+                            .less{
+                                display:none;
+                            }
+                            &.count{
+                                border:0;
+                                display:inline;
+                            }
+                            em{
+                                top:0;
+                                right:0;
+                                font-size:40px;
+                                font-style:normal;
+                                position:absolute;
+                                > span{
+                                    border:0;
+                                    color: $actLinkBlue;
+                                 }
+                            }
+                            width:100%;
+                            padding:20px;
+                            display:block;
+                            font-size:22px;
+                            cursor:pointer;
+                            min-height:50px;
+                            position: relative;
+                            border-bottom:1px solid #ccc;
+                        }
+                        .tab-wrapper{
+                            display:none;
+                            .pdp-bundle-block{
+                                display:none;
+                            }
+                            &.toggle{
+                                display:block;
+                                padding:10px 20px;
+                                overflow:hidden;
+                                .pdp-features-tab-box{
+                                    display:none;
+                                }
+                                .more-less-block{
+                                    width:auto;
+                                    margin:0;
+                                }
+                            }
+                            p{
+                                font-size:11px;
+                                letter-spacing:0;
+                                line-height:120%;
+                                height:80px;
+                                font-family:Helvetica, Arial, sans-serif;
+                            }
+                            .more-less-link{
+                                display: inline;
+                                color: $actLinkBlue;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .detail-tabs{
+                display:none;
             }
         }
         .fixed-nav { display: none; }
@@ -2655,7 +2764,8 @@
                                     bottom:0px; left: 15px;
 
                                     a { display:block;
-                                        width: 100%; height: 100%;
+                                        width: 100%;
+                                        height: 100%;
                                         @include actionLink;
                                         line-height:24px;
                                         font-size:10px;

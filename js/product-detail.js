@@ -2,12 +2,14 @@ MLS.productDetail = (function() {
 
 var pub = {
     init : function() {
-        this.showMoreDevices();
         this.compatibleTypeAhead();
         this.compatibleDropDowns();
-        this.selectCompatibleProducts();
+        
         this.pdpDetailTabs();
+        this.showMoreDevices();
+        this.pdpFeaturesShowMore();
         this.phpFeaturesGraphicTab();
+        this.selectCompatibleProducts();
 
         // ONLOAD page-wide ..........................................................................................
         $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison, #product-add-to-cart").uniform(); // make selects pretty
@@ -301,10 +303,31 @@ var pub = {
         // END RELATED STORIES ....................................
     },
 
+    pdpFeaturesShowMore : function(){
+        var featuresContainer = $jQ('.pdp-features-content'),
+            showMoreCTA = featuresContainer.find('.more-less-link');
+            detailsList = featuresContainer.find('.details-list');
+
+            showMoreCTA.click(function(){
+                var currentNode = $jQ(this);
+                currentNode.toggleClass('toggle');
+                detailsList.toggleClass('toggle');
+            });
+    },
     pdpDetailTabs : function() {
         var detailSection = $jQ('#product-details'),
             visualTabs = detailSection.find('.detail-tabs > li'),
-            tabContent = detailSection.find('.detail-tabs-accordion > li');
+            tabContent = detailSection.find('.detail-tabs-accordion > li'),
+            mobileTabs = tabContent.find('> span');
+
+            mobileTabs.each(function(){
+                var currentScope = $jQ(this),
+                    contentTarget = currentScope.parent().find('.tab-wrapper');
+                currentScope.click(function(){
+                    currentScope.toggleClass('toggle');
+                    contentTarget.toggleClass('toggle');
+                });
+            });
 
             visualTabs.each(function(){
                 var currentScope = $jQ(this);
@@ -314,7 +337,6 @@ var pub = {
 
                     visualTabs.removeClass('active');
                     currentScope.addClass('active');
-
                     tabContent.removeClass('active');
                     tabContent.filter(function(){
                         return $jQ(this).data('tabname') == targetTab;
