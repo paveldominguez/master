@@ -40,7 +40,8 @@ MLS.miniCart = {
             // response needs to contain both elements and updated total
             $jQ("#nav-cart .count").html(data.success.itemCount);
             MLS.miniCart.init($form.hide().html(data.success.responseHTML));
-
+            $form.find("input:submit").uniform();
+            
             // initialize scroll buttons on the mini-cart
             if (data.success.itemCount > 0 && data.success.itemCount < 4 ) {
                 $jQ('.minicart-next').hide();
