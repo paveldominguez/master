@@ -1,13 +1,14 @@
 MLS.lifestyle = {
-    search: function() {
+    search: function () {
+        var $form = $jQ(this).parents('form'),
+            data = $form.serialize();
+
+        $form.unbind('submit').on('submit', function (e) { e.preventDefault(); }); // do not submit form in enter
+
         // make request
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.LIFESTYLE_LANDING_SEARCH,
-            {
-                search: $jQ("#dimension-features input.device").val(),
-                "device-type": $jQ("#dimension-features .device-type").val(),
-                brand: $jQ("#dimension-features .brand").val()
-            },
+            data,
 
             function(r) {
                 if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
@@ -27,10 +28,10 @@ MLS.lifestyle = {
     init : function (noglobal) {
         // search pieces
         // compability services
-        $jQ('.compatibility-filter').children('select').unbind("change", this.search).on('change', this.search);
+        $jQ('.compatibility-filter').find('select').unbind('change', this.search).on('change', this.search);
 
         // type ahead (searc)
-        $jQ('.compatibility-filter').children('input.type-ahead').unbind("keyup", this.search).on('keyup', this.search);
+        $jQ('.compatibility-filter').find('input.type-ahead').unbind('keyup', this.search).on('keyup', this.search);
 
         var contentItem = '.product-board-slide .content-item';
         MLS.ui.gridHover(contentItem, contentItem + ' .details', 40);
