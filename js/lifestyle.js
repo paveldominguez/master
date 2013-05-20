@@ -5,6 +5,8 @@ MLS.lifestyle = {
 
         $form.unbind('submit').on('submit', function (e) { e.preventDefault(); }); // do not submit form in enter
 
+        window.location.hash = data;
+
         // make request
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.LIFESTYLE_LANDING_SEARCH,
