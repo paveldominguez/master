@@ -211,41 +211,32 @@ MLS.checkout = {
         });
     },
 
-    update: function() {
-        MLS.ajax.sendRequest(
-            MLS.ajax.endpoints.GET_CART_SUMMARY,
+    update: function(r) {
+        $jQ(".checkout-cart-summary").html("").html(r.success.summaryHTML);
+        $jQ(".final-cart-table").html("").html(r.success.finalCartHTML);
 
-            {
-            },
+        /* feature removed
+        $jQ(".final-cart-table").find('select[name=final-qty]').change(function() {
+            MLS.miniCart.updateItem(
+                $jQ(this).data("cart-id"), // id
+                null, // size (null = do not change)
+                null, // color (null = do not change)
+                $jQ(this).val()
+            );
+        }).uniform();
+        */
 
-            function(r) {
-                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
-                    // error, unable to add to cart
-                    // display error response: .append(data.error.responseHTML);
-                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
-                }
+        $jQ(".final-cart-table select[name=final-qty]").uniform();
 
-                $jQ(".checkout-cart-summary").html(r.success.responseHTML);
-                $jQ(".final-cart-table").html(r.success.finalCartHTML).find('select[name=final-qty]').change(function() {
-                    MLS.miniCart.updateItem(
-                        $jQ(this).data("cart-id"), // id
-                        null, // size (null = do not change)
-                        null, // color (null = do not change)
-                        $jQ(this).val()
-                    );
-                }).uniform();
+        $jQ(".final-cart-table .checkout-final").click(function(e) {
+            this.form.action = MLS.ajax.endpoints.CHECKOUT_STEP_3;
+            return true;
+        }).uniform();
 
-                $jQ(".final-cart-table .checkout-final").click(function(e) {
-                    this.form.action = MLS.ajax.endpoints.CHECKOUT_STEP_3;
-                    return true;
-                }).uniform();
-
-                // checkout accordions
-                $jQ('.checkout-cart-summary .checkout-accordion .acc-control').click(function() {
-                    MLS.ui.simpleAcc(this);
-                });
-            }
-        );
+        // checkout accordions
+        $jQ('.checkout-cart-summary .checkout-accordion .acc-control').click(function() {
+            MLS.ui.simpleAcc(this);
+        });
     },
 
     /* THIS PIECE SHOULD GO TO THE SIGNIN PAGE
@@ -414,7 +405,7 @@ MLS.checkout = {
         $jQ('#apply-discount-code').click(function(e){ //  apply & validate discount code
             var $self = $jQ(this);
             e.preventDefault();
-            $jQ('#vzn-checkout').validate();
+            $jQ('#vzn-checkout-billing').validate();
 
             if ($jQ('#discount-code-input').valid() == true) {
                 MLS.ajax.sendRequest(
@@ -467,7 +458,7 @@ MLS.checkout = {
                     ecValid = false;
                 }
             });
-            $jQ('#vzn-checkout').validate(); // validate the rest
+            $jQ('#vzn-checkout-billing').validate(); // validate the rest
         });
 
         $jQ('#apply-gift-card-1').click(function(e){ // apply & validate gift card 1
@@ -482,7 +473,7 @@ MLS.checkout = {
                 }
             });
 
-            $jQ('#vzn-checkout').validate(); // validate the rest
+            $jQ('#vzn-checkout-billing').validate(); // validate the rest
             if ($jQ('.GCV').valid() && gcValid == true ) {
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -536,7 +527,7 @@ MLS.checkout = {
             var $self = $jQ(this);
 
             e.preventDefault();
-            $jQ('#vzn-checkout').validate();
+            $jQ('#vzn-checkout-billing').validate();
             if ($jQ('#gift-card-2-input').valid() == true && $jQ('#gift-card-2-pin').valid() == true){
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -697,6 +688,7 @@ MLS.checkout = {
                                 $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
                             }
                             MLS.ui.scrollPgTo(completed, 7);
+                            MLS.checkout.update(r);
                         }
                     );
                 } // end step 1 postvalidate
@@ -722,6 +714,7 @@ MLS.checkout = {
                             completed.find('.step-info-summary').removeClass('hidden');
                             $jQ('#vzn-checkout-confirm .checkout-step .hide-complete').removeClass('hidden');
                             MLS.ui.scrollPgTo(completed, 7);
+                            MLS.checkout.update(r);
 
                             setTimeout(function(){
                                 $jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
