@@ -82,21 +82,23 @@
             <li id="dimension-features" class="dimension collapsible" data-dimension="compatibility">
               <h3 class="dimension-header">Compatibility<span class="marker"></span></h3>
               <div class="facet-list compatibility-filter">
-                  <input class="device type-ahead" data-filter="search" />
-                  <select class="device-type" data-filter="device-type">
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">E-readers</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">MP3 Players</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Notebooks</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Smartphones</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Tablets</option>
+                <form method="post" action="#">
+                  <input class="device type-ahead" name="search" />
+                  <select class="device-type" name="device-type">
+                      <option value="Nr=sku.siteId%3A1000001">E-readers</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">MP3 Players</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Notebooks</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Smartphones</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Tablets</option>
                   </select>
-                  <select class="brand" data-filter="brand">
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Apple</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Blackbery</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Gateway</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HP</option>
-                      <option value="/mls/siteStoreUS/browse/ajax/guidedNavigation.jsp?N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HTC</option>
+                  <select class="brand" name="brand">
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Apple</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Blackbery</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">Gateway</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HP</option>
+                      <option value="N=102351+42966602&amp;Nr=sku.siteId%3A1000001">HTC</option>
                   </select>
+                </form>
               </div>
             </li>
           </ul>
