@@ -405,7 +405,7 @@ MLS.checkout = {
         $jQ('#apply-discount-code').click(function(e){ //  apply & validate discount code
             var $self = $jQ(this);
             e.preventDefault();
-            $jQ('#vzn-checkout-billing').validate();
+            $jQ('#vzn-checkout-code').validate();
 
             if ($jQ('#discount-code-input').valid() == true) {
                 MLS.ajax.sendRequest(
@@ -473,7 +473,7 @@ MLS.checkout = {
                 }
             });
 
-            $jQ('#vzn-checkout-billing').validate(); // validate the rest
+            $jQ('#vzn-checkout-gift').validate(); // validate the rest
             if ($jQ('.GCV').valid() && gcValid == true ) {
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -527,7 +527,7 @@ MLS.checkout = {
             var $self = $jQ(this);
 
             e.preventDefault();
-            $jQ('#vzn-checkout-billing').validate();
+            $jQ('#vzn-checkout-gift').validate();
             if ($jQ('#gift-card-2-input').valid() == true && $jQ('#gift-card-2-pin').valid() == true){
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -681,9 +681,9 @@ MLS.checkout = {
                             completed.find('.hide-complete').addClass('hidden');
                             completed.find('.step-info-summary').removeClass('hidden');
 
-                            var step2Complete = $jQ('#vzn-checkout-billing .checkout-step .billing-complete'); // which part of step 2 to open
+                            var step2Complete = $jQ('#billing-info .billing-complete'); // which part of step 2 to open
                             if ($jQ(step2Complete).hasClass('blank')){
-                                $jQ('#vzn-checkout-billing .checkout-step .hide-complete').removeClass('hidden');
+                                $jQ('#billing-info .hide-complete').removeClass('hidden');
                             } else {
                                 $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
                             }
