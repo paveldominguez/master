@@ -12,10 +12,8 @@ MLS.ajax = {
         UPDATE_CART: '/services/update_cart.json',
         REMOVE_FROM_CART: '/services/remove_from_cart.json',
 
-        GET_CART_DD_SIZES: "/services/dd_getSizes.json",
-        GET_CART_DD_COLORS: "/services/dd_getColors.json",
-        GET_CART_DD_CAROUSEL: "/services/dd_getCarousel.json",
-
+        GET_CART_DD_ATTRIBUTES: "/services/dd_getAttributes.json",
+        
         ARTICLE: '/services/article.json',
         HOMEPAGE_PRODUCTS: '/services/homepage.json',
         SEARCH_DEVICES: '/services/devices.json',
