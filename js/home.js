@@ -39,7 +39,7 @@ MLS.home = {
 		});
         $jQ('.trending-products .flex-next').on('click', function (e) {
             e.preventDefault();
-            console.log('next')
+            console.log('next');
             $jQ('dd.active').next().click();
         });
         $jQ('.trending-products .flex-prev').on('click', function (e) {
@@ -104,7 +104,8 @@ MLS.home = {
 					url: MLS.ajax.endpoints.SEARCH_DEVICES + "?search=%QUERY"
 				},
 				limit: 10
-			}).on('change keyup typeahead:selected typeahead:closed', function (e,item) {
+			})
+            .on('change keyup typeahead:selected typeahead:closed', function (e,item) {
 				//console.log($jQ(this).val());
 				if (e.type === 'typeahead:closed') {
 					$jQ(this).blur();
@@ -112,7 +113,7 @@ MLS.home = {
 
 				if (e.type === 'typeahead:selected') {
 					selectedDevice = item.id;
-					MLS.home.searchProducts(selectedDevice, $jQ("[name=madlib-select]").val())
+					MLS.home.searchProducts($jQ(this).parents('form').serialize())
 				}
 
 				if ($jQ(this).val() === 'enter device' || $jQ(this).val() === '') {
@@ -134,19 +135,16 @@ MLS.home = {
                 selectedClass: 'active',
                 selectionMadeClass: 'selected'
             }).on('change', function() {
-            	MLS.home.searchProducts(selectedDevice, $jQ("[name=madlib-select]").val());
+                MLS.home.searchProducts($jQ(this).parents('form').serialize());
             });
 		}
 	},
 
-	searchProducts: function(device, category) {
+	searchProducts: function(data) {
 		MLS.ajax.sendRequest(
             MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
-            
-            {
-            	device: device,
-            	category: category
-            },
+
+            data,
 
             function(r) {
             	if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
