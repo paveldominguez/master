@@ -16,13 +16,16 @@ MLS.home = {
 		//Madlib
 		MLS.home.madlib.init();
 
+		// MiniCart
+		// MLS.miniCart.init();
+
 		//Flex Sliders
 		MLS.home.sliders.init();
 
 		//Featured Reviews
 		MLS.home.featuredReviews();
 
-        MLS.ui.module.trendingLifestyles();
+        MLS.ui.vzSlider.init();
 
 		//Trending Products tabs
         $jQ('dd', '#detail-tabs').on('click', function (e) {
@@ -32,15 +35,19 @@ MLS.home = {
 			$jQ(this).addClass('active');
 			$jQ('.tabs-content > li', '.trending-products').removeClass('active');
 			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
+            console.log($jQ(this).next('dd'));
 		});
         $jQ('.trending-products .flex-next').on('click', function (e) {
             e.preventDefault();
+            console.log('next')
             $jQ('dd.active').next().click();
         });
         $jQ('.trending-products .flex-prev').on('click', function (e) {
             e.preventDefault();
+            console.log('prev');
             $jQ('dd.active').prev().click();
         });
+
 
         contentGrid.init(true);
         MLS.ajax.colorPicker.init();
@@ -135,7 +142,7 @@ MLS.home = {
 	searchProducts: function(device, category) {
 		MLS.ajax.sendRequest(
             MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
-
+            
             {
             	device: device,
             	category: category

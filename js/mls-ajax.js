@@ -33,11 +33,6 @@ MLS.ajax = {
         // SPECIAL OFFERS
         SPECIAL_OFFERS: '/services/special_offers.json',
 
-
-        // Content Landing Page
-        CONTENT_LANDING_LOAD_MORE: '/services/content-landing.json',
-        CONTENT_LANDING_LOAD_ALL: '/services/content-landing.json',
-
         // Product Listing Page
         CATEGORY_PAGE: '/services/category.json',
 

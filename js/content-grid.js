@@ -104,7 +104,6 @@ var contentGrid = {
                         $jQ('#load-remaining').find('.product-count').text(data.success.more.remainingCount);
 
                         $loadMore.show();
-                        MLS.ui.socialShare.init();
 
                     } else { // hide buttons is there's no more
                         $loadMore.hide();
