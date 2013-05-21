@@ -91,18 +91,17 @@ MLS.home = {
 
 		init: function () {
 			//Generic Typeahead
-			var selectedDevice = "";
+			var selectedDevice = '';
 			$jQ('#madlib-device').typeahead({
 				name: 'devices',
 				remote: {
-					url: MLS.ajax.endpoints.SEARCH_DEVICES + "?search=%QUERY"
+					url: MLS.ajax.endpoints.SEARCH_DEVICES + '?search=%QUERY'
 				},
 				limit: 10
 			}).on('change keyup typeahead:selected typeahead:closed', function (e,item) {
-				//console.log($jQ(this).val());
-				if (e.type === 'typeahead:closed') {
-					$jQ(this).blur();
-				}
+                if (e.type === 'typeahead:closed') {
+                	$jQ(this).blur();
+                }
 
 				if (e.type === 'typeahead:selected') {
 					selectedDevice = item.id;
@@ -138,14 +137,14 @@ MLS.home = {
             MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
 
             {
-            	device: device,
-            	category: category
+                device: device,
+                category: category
             },
 
             function(r) {
-            	if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
-		    	    return MLS.modal.open(r.error ? r.error.responseHTML : null);
-		        }
+                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                }
 
                 $jQ("ul.content-grid:eq(0)").replaceWith(r.success.responseHTML);
                 MLS.miniCart.init($jQ("ul.content-grid:eq(0)"));
@@ -153,4 +152,4 @@ MLS.home = {
             }
         );
 	}
-};
+}

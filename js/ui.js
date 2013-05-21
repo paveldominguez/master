@@ -416,5 +416,6 @@ MLS.ui = {
                 $jQ('.tab-content', '.lifestyle-tab-content').removeClass('active');
                 $jQ(setTab).addClass('active');
             });
+        }
     }
-};
+}
