@@ -1,5 +1,5 @@
 MLS.miniCart = {
-    started : false,
+    started : true, // set to false if an ajax call is needed on pageload to refresh the minicart
 
 	callbacks : 
 	{
@@ -144,6 +144,8 @@ MLS.miniCart = {
         $d.find('.minicart-banner.ship').find('.minicart-cta').click(function() {
             $jQ('#minicart-shipping-modal').show();
         });
+
+        $jQ("#minicart-form input:submit").uniform();
 
         // next 3 items
         $d.find('.prev-items-link').click(this.callbacks.scrollPrevious);
