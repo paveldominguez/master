@@ -17,7 +17,7 @@ MLS.cart = {
         // items table : update qty message
         $jQ('#cart-data .cart-revise-qty').change(function() {
             MLS.miniCart.updateItem(
-                $(this).parents("form").serialize()
+                $jQ(this).parents("form").serialize()
             );
         });
 

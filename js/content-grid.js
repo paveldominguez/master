@@ -13,10 +13,20 @@ var contentGrid = {
         contentGrid.mobileFilter.init();
 
         if (!isTouch) {
+            /*
             MLS.ui.gridHover($contentItems.not('.large, .no-hover'), {
                 topBar: $contentItems.find('.color-picker'),
                 actions: $contentItems.find('.content-details')
             }, 10);
+            */
+            $contentItems.not('.large, .no-hover').each(function() {
+                var $t = $jQ(this);
+                MLS.ui.gridHover($t, {
+                    topBar: $t.find('.color-picker'),
+                    actions: $t.find('.content-details')
+                }, 10);
+            });
+
             //$contentItems.hover(contentGrid.productTileEnter, contentGrid.productTileLeave);
             $quickviewLinks.not('.large').on('click', {'$contentGrid' : $contentGrid}, contentGrid.quickViewHandler);
             $featuredHover.hover(contentGrid.featuredHover, contentGrid.featuredHoverOff);
@@ -183,8 +193,9 @@ var contentGrid = {
         $jQ(this).removeClass('active');
     },
     quickViewHandler : function (e) {
-        var pid = $jQ(e.currentTarget).find('a').attr('href').split("?")[1].split("#")[0];
-        var el = $jQ(e.currentTarget);
+        var pid = $jQ(e.currentTarget).find('a').attr('href').split("#")[0].split("?")[1],
+            el = $jQ(e.currentTarget);
+
         MLS.ajax.quickView.init(pid, el);
         return false;
     },

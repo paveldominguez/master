@@ -164,7 +164,14 @@ MLS.ui = {
                 }
                 if (content.actions !== undefined) {
                     $jQ('#grid-pop-out .details').html($jQ(content.actions).clone(true));
+
+                    $jQ('#grid-pop-out input:submit').unbind("click").click(function(e) {
+                        e.preventDefault();
+                        $jQ(content.actions).find("input:submit").click();
+                        return false;
+                    });
                 }
+
                 $jQ('#grid-pop-out').css({
                     top: offset.top - (padding / 2),
                     left: offset.left - (padding / 2),

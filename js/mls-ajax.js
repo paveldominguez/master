@@ -140,6 +140,8 @@ MLS.ajax = {
             }
 
             MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.success.responseHTML);
+            $jQ('.wrapper', '#quick-view-overlay').find("input:submit").uniform();
+            MLS.miniCart.init($jQ('.wrapper', '#quick-view-overlay'));
             contentGrid.quickViewShow(el);
         }
     }
