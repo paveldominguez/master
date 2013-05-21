@@ -6,14 +6,14 @@ MLS.ajax = {
         ADD_TO_MINICART: '/services/add_to_minicart.json',
         GET_MINICART: '/services/get_minicart.json',
         REMOVE_FROM_MINICART: '/services/remove_from_minicart.json',
-    
+
         GET_CART: '/services/get_cart.json',
         ADD_TO_CART: '/services/add_to_cart.json',
         UPDATE_CART: '/services/update_cart.json',
         REMOVE_FROM_CART: '/services/remove_from_cart.json',
 
         GET_CART_DD_ATTRIBUTES: "/services/dd_getAttributes.json",
-        
+
         ARTICLE: '/services/article.json',
         HOMEPAGE_PRODUCTS: '/services/homepage.json',
         SEARCH_DEVICES: '/services/devices.json',
@@ -32,6 +32,10 @@ MLS.ajax = {
 
         // SPECIAL OFFERS
         SPECIAL_OFFERS: '/services/special_offers.json',
+
+        // Content Landing Page
+        CONTENT_LANDING_LOAD_MORE: '/services/content-landing.json',
+        CONTENT_LANDING_LOAD_ALL: '/services/content-landing.json',
 
         // Product Listing Page
         CATEGORY_PAGE: '/services/category.json',

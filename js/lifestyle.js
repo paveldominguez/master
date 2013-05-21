@@ -90,10 +90,16 @@ MLS.lifestyle = {
             animation: 'slide',
             controlsContainer: '#guides-module .slide-nav',
             animationLoop: true,
-            controlNav: false,
+            controlNav: true,
             directionNav: true,
             slideshow: false,
-            animationSpeed: 500
+            animationSpeed: 500,
+            itemWidth: 320,
+            maxItems: 4,
+            minItems: 1,
+            start: function () {
+                noglobal || $jQ(window).resize();
+            }
         });
 
         //user reviews
