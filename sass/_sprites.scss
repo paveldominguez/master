@@ -33,7 +33,3 @@ $ui-spacing: 50px;
 $cart-spacing: 50px;
 @import "sprites/cart/*.png";
 @include all-cart-sprites;
-
-$lifestyles-module-spacing: 50px;
-@import "sprites/lifestyles-module/*.png";
-@include all-lifestyles-module-sprites;
