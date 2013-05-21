@@ -70,6 +70,7 @@ module.exports = function (grunt) {
                     'js/checkout.js',
                     'js/mls-ajax.js',
                     'js/404.js',
+                    'js/content-landing.js',
                     'js/util.js',
                     'js/ui.js'
                 ],
