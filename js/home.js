@@ -105,7 +105,7 @@ MLS.home = {
 
 				if (e.type === 'typeahead:selected') {
 					selectedDevice = item.id;
-					MLS.home.searchProducts(selectedDevice, $jQ("[name=madlib-select]").val())
+					MLS.home.searchProducts($jQ(this).parents('form').serialize())
 				}
 
 				if ($jQ(this).val() === 'enter device' || $jQ(this).val() === '') {
@@ -127,24 +127,21 @@ MLS.home = {
                 selectedClass: 'active',
                 selectionMadeClass: 'selected'
             }).on('change', function() {
-            	MLS.home.searchProducts(selectedDevice, $jQ("[name=madlib-select]").val());
+            	MLS.home.searchProducts($jQ(this).parents('form').serialize());
             });
 		}
 	},
 
-	searchProducts: function(device, category) {
+	searchProducts: function(data) {
 		MLS.ajax.sendRequest(
             MLS.ajax.endpoints.HOMEPAGE_PRODUCTS,
 
-            {
-                device: device,
-                category: category
-            },
+            data,
 
             function(r) {
-                if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
-                    return MLS.modal.open(r.error ? r.error.responseHTML : null);
-                }
+            	if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+		    	    return MLS.modal.open(r.error ? r.error.responseHTML : null);
+		        }
 
                 $jQ("ul.content-grid:eq(0)").replaceWith(r.success.responseHTML);
                 MLS.miniCart.init($jQ("ul.content-grid:eq(0)"));

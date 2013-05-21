@@ -63,15 +63,18 @@
             <h1 class="title"><strong>My</strong> Mobile Life</h1>
           </header>
             <div class="madlib-header">
-              <h2>I have a <input id="madlib-device" placeholder="enter device"> and I like <select id="madlib-select" name="madlib-select" class="customSelect">
-                        <option value="">choose lifestyle</option>
-                        <option value="Running">Running</option>
-                        <option value="Yoga">Yoga</option>
-                        <option value="Soccer">Soccer</option>
-                        <option value="Training">Training</option>
-                        <option value="Tennis">Tennis</option>
+                <form method="post" action="#">
+                    <h2>I have a <input id="madlib-device" name="madlib-device" placeholder="enter device"> and I like
+                        <select id="madlib-select" name="madlib-select" class="customSelect">
+                            <option value="">choose lifestyle</option>
+                            <option value="Running">Running</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="Training">Training</option>
+                            <option value="Tennis">Tennis</option>
                       </select>
                     </h2>
+                </form>
             </div>
           <!-- Begin Product Listing -->
 
@@ -192,6 +195,10 @@
 
             <li class="content-item"><!-- item 5 --><form method="post" action="#">
               <a class="content-link" href="#" title="content title">
+                <span class="sale-tag">
+                    <img src="../img/special-offers-landing/sale-tag.png" alt="On Sale">
+                    <span class="copy">SALE 10% OFF UNTIL 10/23</span>
+                </span>
                 <figure class="content-fig">
                   <img alt="product name" src="img/product-category-listing/pcl-jawbone.jpg" />
                 </figure>

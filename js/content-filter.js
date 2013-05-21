@@ -40,7 +40,7 @@ MLS.contentFilter = (function () {
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
                 $facets.on('click', pub.facetClick);
-                $jQ('.filter-panels li').on('click', pub.sort); /* mobile option */
+                $jQ('.filter-panels li').on('click', pub.facetClick); /* mobile option */
 
                 // remove filter
                 $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
@@ -76,7 +76,7 @@ MLS.contentFilter = (function () {
 
 
                 $facets.unbind('click', pub.facetClick);
-                $jQ('.filter-panels li').unbind('click', pub.sort); /* mobile option */
+                $jQ('.filter-panels li').unbind('click', pub.facetClick); /* mobile option */
 
                 // remove filter
                 $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
@@ -153,10 +153,29 @@ MLS.contentFilter = (function () {
                 window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
 
-                return false;
             },
 
             /*-----  End of Listing sorting  ------*/
+
+
+            /*===================================
+            =            Facet click            =
+            ===================================*/
+
+            facetClick: function (e) {
+                e.preventDefault();
+                var $elem = $jQ(this),
+                href = $elem.find('a').attr('href'),
+                params = MLS.util.getParamsFromUrl(href);
+
+                window.location.hash = MLS.util.setHash(href);
+                pub.processRequest(params);
+
+            },
+
+            /*-----  End of Facet click  ------*/
+
+
 
 
 
