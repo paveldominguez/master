@@ -147,6 +147,11 @@ MLS.miniCart = {
 
         $jQ("#minicart-form input:submit").uniform();
 
+        if ($jQ("#minicart-item-list").children("li").length == 0)
+        {
+            $tabs = $jQ('#nav-cart, .mini-cart').addClass("empty");
+        }
+
         // next 3 items
         $d.find('.prev-items-link').click(this.callbacks.scrollPrevious);
         $d.find('.next-items-link').click(this.callbacks.scrollNext);
