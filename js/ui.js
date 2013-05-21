@@ -389,5 +389,32 @@ MLS.ui = {
                 $jQ(this).addClass('not-bound').removeClass('bound');
             }
         });
+    },
+    module: {
+        trendingLifestyles: function () {
+            var $lifestyleModule = $jQ('.trending-lifestyles-module');
+            var $scrollWidth = $lifestyleModule.width() - 170;
+            $jQ('.lifestyle-tab-content').width($scrollWidth);
+            $jQ('.trendingLifestyleSlider').flexslider({
+                animation: 'slide',
+                controlsContainer: '.trending-lifestyles-module .slide-nav',
+                animationLoop: true,
+                controlNav: false,
+                directionNav: true,
+                slideshow: false,
+                animationSpeed: 500,
+                itemWidth: 770
+            });
+            $jQ(window).resize(function () {
+                $jQ('.lifestyle-tab-content').width($jQ('#site-container').width() - 170);
+            });
+            $jQ('.section-tabs a', '.trending-lifestyles-module').on('click', function (e) {
+                e.preventDefault();
+                var setTab = $jQ(this).attr('href');
+                $jQ('.section-tabs .tab', '.trending-lifestyles-module').removeClass('active');
+                $jQ(this).parent().addClass('active');
+                $jQ('.tab-content', '.lifestyle-tab-content').removeClass('active');
+                $jQ(setTab).addClass('active');
+            });
     }
 };
