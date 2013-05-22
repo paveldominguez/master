@@ -91,6 +91,16 @@ var pub = {
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
 
+        //Check compatibility link
+        $jQ('#cart-block .compat-link').on('click', function(e){
+            $jQ('.detail-tabs > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs > li.compatibility').addClass('active');
+            $jQ('.detail-tabs-accordion > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs-accordion > li.compatibility').addClass('active');
+            MLS.ui.scrollPgTo('#product-details', 60);
+            e.preventDefault();
+        });  
+
         // ONSCROLL : introduce anchor bar when user is below the fold.............................
         if ($jQ(window).width() > 719) {
             $jQ(window).scroll(function() {
