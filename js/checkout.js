@@ -186,6 +186,13 @@ MLS.checkout = {
             return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
         }, "Please specify a valid phone number");
 
+		jQuery.validator.addMethod("zipcodeUS", function(value, element) {
+			return this.optional(element) || /^\d{5}-\d{4}$|^\d{5}$/.test(value);
+		}, "Please enter a valid zip code");
+		
+		jQuery.validator.addMethod("alphanumeric", function(value, element) {
+			return this.optional(element) || /^([a-zA-Z0-9]+)$/.test(value);
+		}, "Please enter a valid card number");
 
         jQuery.validator.addMethod("noPlaceholder", function (value, element) { // don't validate placeholder text
             if (value == $jQ(element).attr('placeholder')) {
@@ -826,10 +833,10 @@ MLS.checkout = {
                         required: true
                     },
                     checkoutZip: {
-                        required: true,
-                        digits: true,
-                        minlength: 5,
-                        noPlaceholder: true,
+	                    required: true,
+						zipcodeUS: true,
+						minlength: 5,
+	                    noPlaceholder: true
                     },
                     cardNumber: {
                         required: true,
@@ -874,36 +881,46 @@ MLS.checkout = {
                         noPlaceholder: true
                     },
                     billingZip: {
-                        required: true,
-                        noPlaceholder: true
+	                    required: true,
+						zipcodeUS: true,
+						minlength: 5,
+	                    noPlaceholder: true
                     },
                     discountCode: {
-                        required: false,
-                        noPlaceholder: true,
-                        minlength: 4
-
+	                    required: false,
+	                    noPlaceholder: true,
+						alphanumeric: true,
+	                    minlength: 8,
+						maxlength: 16
                     },
                     giftCard1: {
-                        required: false,
-                        noPlaceholder: true,
-                        minlength: 8
+	                    required: false,
+	                    noPlaceholder: true,
+						alphanumeric: true,
+	                    minlength: 8,
+						maxlength: 16
                     },
                     giftCard1Pin: {
-                        required: false,
-                        noPlaceholder: true,
-                        minlength: 4
+	                    required: false,
+	                    noPlaceholder: true,
+						digits: true,
+	                    minlength: 7,
+						maxlength: 7
                     },
-                    giftCard2: {
-                        required: false,
-                        noPlaceholder: true,
-                        minlength: 8
-                    },
-                    giftCard2Pin: {
-                        required: false,
-                        noPlaceholder: true,
-                        minlength: 4
-                    },
-                    cardNumberGC: {
+	                giftCard2: {
+	                    required: false,
+	                    noPlaceholder: true,
+						alphanumeric: true,
+	                    minlength: 8,
+						maxlength: 16
+	                },
+	                giftCard2Pin: {
+	                    required: false,
+	                    noPlaceholder: true,
+						digits: true,
+	                    minlength: 7,
+						maxlength: 7
+	                },                    cardNumberGC: {
                         required: false,
                         noPlaceholder: true,
                         rangelength: [15, 16],
@@ -958,10 +975,11 @@ MLS.checkout = {
                         required: "Please select your state"
                     },
                     checkoutZip: {
-                        required: "Please enter your zip code",
-                        noPlaceholder: "Please enter your zip code",
-                        digits: "Please enter your 5 digit zip code",
-                        minlength: "Please enter your 5 digit zip code"
+	                    required: "Please enter your zip code",
+	                    noPlaceholder: "Please enter your zip code",
+	                    digits: "Please enter your 5 digit zip code",
+	                    minlength: "Please enter your 5 digit zip code",
+	                    zipcodeUS: "Please enter a valid zip code"
                     },
                     cardNumber: {
                         required: "Please enter your card number",
@@ -1010,8 +1028,11 @@ MLS.checkout = {
                         noPlaceholder: "Please enter your state"
                     },
                     billingZip: {
-                        required: "Please enter your zip code",
-                        noPlaceholder: "Please enter your zip code"
+	                    required: "Please enter your zip code",
+	                    noPlaceholder: "Please enter your zip code",
+	                    digits: "Please enter your 5 digit zip code",
+	                    minlength: "Please enter your 5 digit zip code",
+	                    zipcodeUS: "Please enter a valid zip code"
                     },
                     discountCode: {
                         required: "Please enter a valid discount code",
