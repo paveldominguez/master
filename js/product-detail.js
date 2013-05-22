@@ -2,12 +2,13 @@ MLS.productDetail = (function() {
 
 var pub = {
     init : function() {
-        this.compatibleTypeAhead();
-        this.compatibleDropDowns();
-        
+
         this.pdpDetailTabs();
         this.showMoreDevices();
         this.pdpFeaturesShowMore();
+        this.compatibleDropDowns();
+        this.compatibleTypeAhead();
+        this.mapProductDetailTabs();
         this.phpFeaturesGraphicTab();
         this.selectCompatibleProducts();
 
@@ -65,14 +66,10 @@ var pub = {
             slideshow: false,
             sync: "#zoom-thumbs"
         });
-        var heroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
-        var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
+        var heroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
+        var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
 
-
-
-
-        // ONLOAD : below the fold ..............................................................................
-        $jQ('#pdp-similar-products-module').flexslider({  // similar products : flexslider install
+        $jQ('#pdp-similar-products-module').flexslider({
             animation: 'slide',
             controlsContainer: '#pdp-similar-products-module .slide-nav',
             animationLoop: false,
@@ -83,7 +80,7 @@ var pub = {
             itemWidth: 215
         });
 
-        $jQ('#pdp-others-bought-module').flexslider({  // lifestyle products slider install ......
+        $jQ('#pdp-others-bought-module').flexslider({
             animation: 'slide',
             controlsContainer: '#pdp-others-bought-module .slide-nav',
             animationLoop: false,
@@ -93,7 +90,6 @@ var pub = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
-        // ...................................................................................... END ONLOAD
 
         // ONSCROLL : introduce anchor bar when user is below the fold.............................
         if ($jQ(window).width() > 719) {
@@ -112,15 +108,13 @@ var pub = {
 
         // ON RESIZE..............................................................................................
         $jQ(window).resize(function () {
-            var pgWidth = document.body.clientWidth; // thumbnail navigation display
+            var pgWidth = document.body.clientWidth;
             var heroThumbs = window.document.getElementById('thumbs');
             var zoomThumbs = window.document.getElementById('zoom-thumbs');
-            var resizeHeroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth); // count & center thumbs in hero slider
-            var resizeZoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
+            var resizeHeroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
+            var resizeZoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
 
-            MLS.ui.moreLessBlock(); // revaluate & re-initialize more/less elements
-
-            //$jQ('#pdp-others-bought-module').data('flexslider').setOpts({itemWidth: $jQ(window).outerWidth() * 0.85});
+            MLS.ui.moreLessBlock();
 
             if ($jQ(window).width() > 719) { // reset anchor bar
                 $jQ(window).scroll(function() {
@@ -136,13 +130,9 @@ var pub = {
             }
         });
 
+        MLS.productDetail.pdpColorSelect();
 
-
-
-        // HERO & ZOOM EVENTS .....................................................................................
-        MLS.productDetail.pdpColorSelect(); // activates color selector
-
-        $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){ // create contextual zoom panels
+        $jQ('#view-scale, #carousel-zoom, #view-360').on('click', function(){
             var which = $jQ(this).attr('id');
             var thisPanel = new MLS.productDetail.createZoomPanel(which);
         });
@@ -179,18 +169,10 @@ var pub = {
             }
         });
 
-
         $jQ('#pdp-size-select').change(function(){ // remove select error on choice
             $jQ('.size-select-box').find('.selector').removeClass('error');
             $jQ('.size-select-box').find('label.error').hide();
         });
-
-
-
-        $jQ('#zoom-carousel-zoom').click(function() { // fire draggable zoom options
-            // panel itself already exists if this is clicked
-        });
-        // ..................................................................................... END HERO & ZOOM EVENTS
 
         $jQ('.pdp-bundle-block .item').click(function(e){ // bundle modal
             e.preventDefault;
@@ -207,7 +189,7 @@ var pub = {
         $jQ('.pdp-accordion').find('.acc-control').click(function(){
             MLS.ui.simpleAcc(this);
             setTimeout(function(){
-                MLS.ui.moreLessBlock(); // evaluate & initialize more/less elements in open tab
+                MLS.ui.moreLessBlock();
             }, 350);
         });
 
@@ -300,7 +282,6 @@ var pub = {
             var hideThis = $jQ(this).parents('.related-product');
             MLS.productDetail.vznHide(hideThis);
         });
-        // END RELATED STORIES ....................................
     },
 
     pdpFeaturesShowMore : function(){
@@ -314,6 +295,24 @@ var pub = {
                 detailsList.toggleClass('toggle');
             });
     },
+    mapProductDetailTabs : function(){
+        var reviewsBTN = $jQ('#pdp-cart-review-count'),
+            compatBTN = $jQ('span.compat-link'),
+            tabsParent = $jQ('#product-details');
+            var activeTab = function(selector){
+                selector.click(function(){
+                    var currentNode = $jQ(this),
+                    targetTab = tabsParent.find('li').filter(function(){return $jQ(this).data('tabname') == currentNode.data('tabname');}).find('span');
+                    targetTab.click();
+                });
+            };
+            activeTab(reviewsBTN);
+            activeTab(compatBTN);
+    },
+
+    ellipsis : function(){
+    },
+
     pdpDetailTabs : function() {
         var detailSection = $jQ('#product-details'),
             visualTabs = detailSection.find('.detail-tabs > li'),
