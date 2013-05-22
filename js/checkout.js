@@ -528,7 +528,10 @@ MLS.checkout = {
             return false;
         });
 
-        $jQ('#add-gift-card-2').click(function(){  $jQ(this).toggleClass('close'); });
+        $jQ('#add-gift-card-2').click(function(){  // add another gift card 
+			$jQ(this).toggleClass('close'); 
+			$jQ(this).parent().parent().next('.acc-info').slideToggle(300); 
+		});
 
         $jQ('#apply-gift-card-2').click(function(e){ // apply & validate gift card 2
             var $self = $jQ(this);
