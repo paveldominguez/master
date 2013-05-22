@@ -297,7 +297,7 @@
 						}
 					}
 					.icon{
-						background: url('/img/sprites/pdp-s71babacc65.png') no-repeat;
+						//background: url('/img/sprites/pdp-s71babacc65.png') no-repeat;
 						width: 40px;
 						height: 20px;
 						position: absolute;
@@ -307,19 +307,19 @@
 				}
 				.first{}
 				.email{
-					.icon { background-position: 0 -1232px; }
+					.icon { @include pdp-sprite(pdp-email-icon);}
 				}
 				.facebook{
-					.icon { background-position: 0 -1617px; }
+					.icon { @include pdp-sprite(pdp-facebook-icon);}
 				}
 				.twitter{
-					.icon { background-position: 0 -1097px; }
+					.icon { @include pdp-sprite(pdp-twitter-icon);}
 				}
 				.g-plus{
-					.icon { background-position: 0 -617px; }
+					.icon { @include pdp-sprite(pdp-gplus-icon);}
 				}
 				.pinterest{
-					.icon { background-position: 0 -705px; }
+					.icon { @include pdp-sprite(pdp-pinterest-icon);}
 				}
 			}
 		}
