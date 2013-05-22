@@ -129,12 +129,14 @@ MLS.ajax = {
 
     quickView: {
         init: function (pid, el) {
+            //return contentGrid.quickViewShow(el);
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.QUICKVIEW_DETAILS,
                 pid,
                 function(data) {
                     MLS.ajax.quickView.update(data, el);
                 }
+
             );
         },
 
@@ -143,10 +145,11 @@ MLS.ajax = {
                 return MLS.modal.open(data.error ? data.error.responseHTML : null);
             }
 
-            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.success.responseHTML);
-            $jQ('.wrapper', '#quick-view-overlay').find("input:submit").uniform();
-            MLS.miniCart.init($jQ('.wrapper', '#quick-view-overlay'));
+            MLS.ui.updateContent($jQ('#quick-view-overlay .wrapper'), data.success.responseHTML);
+            $jQ('#quick-view-overlay .wrapper').find("input:submit").uniform();
+            MLS.miniCart.init($jQ('#quick-view-overlay .wrapper'));
             contentGrid.quickViewShow(el);
+            MLS.cart.dd.init();
         }
     }
 };
