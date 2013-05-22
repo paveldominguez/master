@@ -69,7 +69,15 @@ var pub = {
         var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth); // count & center thumbs in zoom slider
 
 
-
+        //Check compatibility link
+        $jQ('#cart-block .compat-link').on('click', function(e){
+            $jQ('.detail-tabs > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs > li.compatibility').addClass('active');
+            $jQ('.detail-tabs-accordion > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs-accordion > li.compatibility').addClass('active');
+            MLS.ui.scrollPgTo('#product-details', 60);
+            e.preventDefault();
+        });    
 
         // ONLOAD : below the fold ..............................................................................
         $jQ('#pdp-similar-products-module').flexslider({  // similar products : flexslider install
