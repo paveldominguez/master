@@ -317,6 +317,74 @@ $bgPositionPromoSmall: -85px 35px;
                             max-width: 100%;
                         }
                     }
+
+                    /*=======================================
+                    =            related content            =
+                    =======================================*/
+
+                    .related-products {
+                        // display: none;
+                        position: absolute;
+                        bottom: 0;
+
+                        .related-products-header {
+                            margin-top: 50px;
+                            color: $colorDarkGray;
+                            font: {
+                                family: $fontVzwBook;
+                                size: 12px;
+                                weight: normal;
+                            }
+                            text-transform: uppercase;
+                        }
+                        .related-items {
+                            // border: 1px solid #DCDEDE;
+                            border: 0 none;
+                            display: table;
+                            margin: 0;
+                            .related-item {
+                                display: table-cell;
+                                vertical-align: middle;
+                                width: 55px;
+                                height: 55px;
+                                // border-right: 1px solid #DCDEDE;
+                                border: 0 none;
+                                a {
+                                    display: block;
+                                    margin: 0 auto;
+                                    text-align: center;
+                                    img {
+                                        vertical-align: middle;
+                                        position: static;
+                                        top: 0;
+                                        left: 0;
+                                    }
+                                }
+                                &.last {
+                                    border: none;
+                                    vertical-align: bottom;
+                                    line-height: 12px;
+                                    padding: 5px;
+                                    a {
+                                        margin: 0;
+                                        color: #06C;
+                                        font: {
+                                            family: $fontArial;
+                                            size: 10px;
+                                            weight: bold;
+                                        }
+                                        text-align: left;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    /*-----  End of related content  ------*/
+
+
+
                     .content-detail {
                         @include column(3);
                         padding-left: 0;
@@ -348,56 +416,56 @@ $bgPositionPromoSmall: -85px 35px;
                             }
                             font-size: 14px;
                         }
-                        .related-products {
-                            display: none;
-                            .related-products-header {
-                                margin-top: 50px;
-                                color: $colorDarkGray;
-                                font: {
-                                    family: $fontVzwBook;
-                                    size: 12px;
-                                    weight: normal;
-                                }
-                                text-transform: uppercase;
-                            }
-                            .related-items {
-                                border: 1px solid #DCDEDE;
-                                display: table;
-                                margin: 0;
-                                .related-item {
-                                    display: table-cell;
-                                    vertical-align: middle;
-                                    width: 55px;
-                                    height: 55px;
-                                    border-right: 1px solid #DCDEDE;
-                                    a {
-                                        display: block;
-                                        margin: 0 auto;
-                                        text-align: center;
-                                        img {
-                                            vertical-align: middle;
-                                        }
-                                    }
-                                    &.last {
-                                        border: none;
-                                        vertical-align: bottom;
-                                        line-height: 12px;
-                                        padding: 5px;
-                                        a {
-                                            margin: 0;
-                                            color: #06C;
-                                            font: {
-                                                family: $fontArial;
-                                                size: 10px;
-                                                weight: bold;
-                                            }
-                                            text-align: left;
-                                            text-transform: uppercase;
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        // .related-products {
+                        //     // display: none;
+                        //     .related-products-header {
+                        //         margin-top: 50px;
+                        //         color: $colorDarkGray;
+                        //         font: {
+                        //             family: $fontVzwBook;
+                        //             size: 12px;
+                        //             weight: normal;
+                        //         }
+                        //         text-transform: uppercase;
+                        //     }
+                        //     .related-items {
+                        //         border: 1px solid #DCDEDE;
+                        //         display: table;
+                        //         margin: 0;
+                        //         .related-item {
+                        //             display: table-cell;
+                        //             vertical-align: middle;
+                        //             width: 55px;
+                        //             height: 55px;
+                        //             border-right: 1px solid #DCDEDE;
+                        //             a {
+                        //                 display: block;
+                        //                 margin: 0 auto;
+                        //                 text-align: center;
+                        //                 img {
+                        //                     vertical-align: middle;
+                        //                 }
+                        //             }
+                        //             &.last {
+                        //                 border: none;
+                        //                 vertical-align: bottom;
+                        //                 line-height: 12px;
+                        //                 padding: 5px;
+                        //                 a {
+                        //                     margin: 0;
+                        //                     color: #06C;
+                        //                     font: {
+                        //                         family: $fontArial;
+                        //                         size: 10px;
+                        //                         weight: bold;
+                        //                     }
+                        //                     text-align: left;
+                        //                     text-transform: uppercase;
+                        //                 }
+                        //             }
+                        //         }
+                        //     }
+                        // }
                     }
                     .featured-corner,
                     .featured-item-hover {
@@ -506,25 +574,30 @@ $bgPositionPromoSmall: -85px 35px;
                     			width:65%; height: auto;
                     			}
 
+                            .price {
+                                display:block;
+                                font-size: 30px;
+                                letter-spacing: -1px;
+                                margin-left: 10px;
+
+                                sup {
+                                    font-size:16px;
+                                    position:relative;
+
+                                    }
+                            }/* end price */
+
                     		.featured-item-actions {
                     			@include clearfix();
-                    			width:95%;
-                    			position:absolute;
-                    			margin: 0 auto 0 auto;
-                    			bottom:5px; left: 10px;
+                    			// width:95%;
+                    			// position:static;
+                    			// margin: 0 auto 0 auto;
+                       //          left: 10px;
+                       //          width: 95%;
+                                position: static;
+                                margin: 25px 0 0 10px;
+                                left: 0;
 
-                    			.price {
-                    				display:block;
-                    				font-size: 30px;
-                    				letter-spacing: -1px;
-                    				margin-bottom: 10px;
-
-                    				sup {
-                    					font-size:16px;
-                    					position:relative;
-
-                    					}
-                    				}/* end price */
 
                     			.button {
                     				float:left;
@@ -556,19 +629,22 @@ $bgPositionPromoSmall: -85px 35px;
                     				}/* end button class */
 
                     			.back-to-story {
+                                    position: absolute;
+                                    bottom: 5px;
+                                    right: 45px;
                     				display:block;
-                    				float: right;
+                    				// float: right;
                     				width:95px;
                     				padding-left:60px;
                     				background: url(../img/category-listing/back-to-story.png) no-repeat;
                     				cursor:pointer;
-                    				}
+                				}
 
 
 
 
 
-                    			}/* end featured actions */
+                			}/* end featured actions */
 
 
 
@@ -577,7 +653,7 @@ $bgPositionPromoSmall: -85px 35px;
 
 
 
-                    		} /* end item detail */
+                		} /* end item detail */
 
 
 
