@@ -57,6 +57,7 @@ module.exports = function (grunt) {
                     'js/content-grid.js',
                     'js/content-filter.js',
                     'js/category-landing.js',
+                    'js/modules/errors.js',
                     'js/home.js',
                     'js/modules/article.js',
                     'js/modules/modal.js',
