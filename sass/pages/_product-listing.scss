@@ -320,12 +320,13 @@ $hdrOfferCollapsed: 55px;
 }
 .content-filter {
     padding: 15px 30px;
-    #clear-selections { display: none; }
+
     .facet,
     .dimension-header {
         position: relative;
         line-height: 50px;
     }
+
     .facet,
     .facet .facet-header,
     .dimension-header .action {
@@ -338,6 +339,18 @@ $hdrOfferCollapsed: 55px;
         }
         text-transform: uppercase;
     }
+
+    #clear-selections {
+        display: none;
+        margin-top: -8px;
+        font: {
+            family: $fontVzwMedium;
+            size: 12px;
+            weight: normal;
+        }
+        text-transform: uppercase;
+    }
+
     .action { float: right; }
     .dimension {
         .dimension-header {
