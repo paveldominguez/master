@@ -176,9 +176,73 @@ MLS.checkout = {
 
         MLS.checkout.initEditStep(); // 'edit step' button after a step has been completed
 
+        // if BTA is selected, disable gift card
+        MLS.checkout.initGiftCard();
     //............................................................................... END CHECKOUT EVENTS
 
     }, // end init
+
+    appliedGiftCards: 0,
+
+    initGiftCard: function() {
+        var $form = $jQ("#vzn-checkout-gift"),
+            $billing = $jQ("#vzn-checkout-billing"),
+            $bta = $jQ("#bill-to-account"),
+            $cc = $jQ("#pay-with-card");
+        
+        if ($bta.is(":checked"))
+        {
+            $form.addClass("disabled");
+        } else {
+            $form.removeClass("disabled");
+        }
+
+        $form.find(".open").click(function() {
+            return !$form.hasClass("disabled");
+        });
+
+        $billing.find(".bill-account").click(function(e) {
+            var $self = $jQ(this);
+            if ($self.hasClass("disabled"))
+            {
+                return false;
+            }
+
+            setTimeout(function() {
+                if (!$self.hasClass(".checked"))
+                {
+                    $form.addClass("disabled");
+                } else {
+                    $form.removeClass("disabled");
+                }
+            }, 100);
+        });
+
+        $billing.find(".bill-card").click(function(e) {
+            var $self = $jQ(this);
+            setTimeout(function() {
+                if (!$self.hasClass(".checked"))
+                {
+                    $form.removeClass("disabled");
+                } else {
+                    $form.addClass("disabled");
+                }
+            }, 100);
+        });
+    },  
+
+    checkBTATabs: function() {
+        var $billing = $jQ("#vzn-checkout-billing");
+
+        if (MLS.checkout.appliedGiftCards <= 0)
+        {
+            // enable tab
+            $billing.find(".bill-account").removeClass("disabled");
+        } else {
+            // disable tab
+            $billing.find(".bill-account").addClass("disabled");
+        }
+    },
 
     vzwValidationRules : function() { // ALL VALIDATION add these methods.................... BEGIN FUNCTIONS ...................
         jQuery.validator.addMethod("phoneUS", function(phone_number, element) { // phone number format
@@ -301,6 +365,11 @@ MLS.checkout = {
 
     stepTwoSequence : function() { // CHECKOUT card & billing choices...............................................................
         $jQ('.billing-option', '#billing-info').on('click', function() {
+            if ($jQ(this).hasClass("disabled"))
+            {
+                return false;
+            }
+
             var $context = $jQ(this),
             $billingOpts = $context.siblings(),
             $billingOptsInfo = $jQ('.billing-detail-content', '#billing-info .billing-info-block');
@@ -470,6 +539,11 @@ MLS.checkout = {
 
         $jQ('#apply-gift-card-1').click(function(e){ // apply & validate gift card 1
             e.preventDefault();
+            if ($jQ(this).parents("form").hasClass("disabled"))
+            {
+                return false;
+            }
+
             var gcValid = true,
                 $self = $jQ(this); // staying optimistic
 
@@ -490,6 +564,9 @@ MLS.checkout = {
                             return MLS.modal.open(r.error ? r.error.responseHTML : null);
                         }
 
+                        MLS.checkout.appliedGiftCards++; // increase applied discounts
+                        MLS.checkout.checkBTATabs();
+
                         $jQ('#checkout-cart-gift-card-1').html(r.success.responseHTML).slideToggle(300); // hide & show
                         $jQ('.gift-card-cc-block').slideToggle(300);
                         $self.parents('.discount-input').slideToggle();
@@ -506,6 +583,10 @@ MLS.checkout = {
         $jQ('#remove-gift-card-1').click(function(e){ // remove gift card 1
             var $self = $jQ(this);
             e.preventDefault();
+            if ($jQ(this).parents("form").hasClass("disabled"))
+            {
+                return false;
+            }
 
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -514,6 +595,9 @@ MLS.checkout = {
                     if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                         return MLS.modal.open(r.error ? r.error.responseHTML : null);
                     }
+
+                    MLS.checkout.appliedGiftCards--; // decrease applied discounts
+                    MLS.checkout.checkBTATabs();
 
                     $jQ('#checkout-cart-gift-card-1').removeClass('valid').addClass('hasPlaceholder');
                     $jQ('#checkout-cart-gift-card-1').slideToggle(300);
@@ -529,12 +613,21 @@ MLS.checkout = {
         });
 
         $jQ('#add-gift-card-2').click(function(){  // add another gift card 
+            if ($jQ(this).parents("form").hasClass("disabled"))
+            {
+                return false;
+            }
+
 			$jQ(this).toggleClass('close'); 
 			$jQ(this).parent().parent().next('.acc-info').slideToggle(300); 
 		});
 
         $jQ('#apply-gift-card-2').click(function(e){ // apply & validate gift card 2
             var $self = $jQ(this);
+            if ($jQ(this).parents("form").hasClass("disabled"))
+            {
+                return false;
+            }
 
             e.preventDefault();
             $jQ('#vzn-checkout-gift').validate();
@@ -546,6 +639,9 @@ MLS.checkout = {
                         if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                             return MLS.modal.open(r.error ? r.error.responseHTML : null);
                         }
+
+                        MLS.checkout.appliedGiftCards++; // increase applied discounts
+                        MLS.checkout.checkBTATabs();
 
                         $jQ('#checkout-cart-gift-card-2').html(r.success.responseHTML).slideToggle(300);
                         $self.parents('.discount-input').slideToggle();
@@ -562,6 +658,10 @@ MLS.checkout = {
         $jQ('#remove-gift-card-2').click(function(e){  // remove gift card 2
             var $self = $jQ(this);
             e.preventDefault();
+            if ($jQ(this).parents("form").hasClass("disabled"))
+            {
+                return false;
+            }
 
             MLS.ajax.sendRequest(
                 MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
@@ -570,6 +670,9 @@ MLS.checkout = {
                     if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
                         return MLS.modal.open(r.error ? r.error.responseHTML : null);
                     }
+
+                    MLS.checkout.appliedGiftCards--; // decrease applied discounts
+                    MLS.checkout.checkBTATabs();
 
                     $jQ('#checkout-cart-gift-card-2').removeClass('valid').addClass('hasPlaceholder');
                     $jQ('#checkout-cart-gift-card-2').slideToggle(300);
