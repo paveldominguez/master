@@ -111,9 +111,12 @@
                                 <div id="product-sku-field" class="sku">SKU #768324</div>
                             </div>
                             <h1 class="product-title">Wireless On-Ear Headphones with Control Talk</h1>
-                            <ul id="review-block" class="inline-list">
-                                <li><div class="ratings"></div></li>
-                                <li class="reviews"><a href="#" class="review-link" title="See reviews for this item.">(<span id="pdp-cart-review-count">47</span>&nbsp;)</a></li>
+                            <ul id="review-block">
+                                <li>
+                                    <div class="rating red stars three-half">
+                                        <span class="review-link" title="See reviews for this item.">(<span id="pdp-cart-review-count" data-tabname="reviews">47 Reviews</span>)</span>
+                                    </div>
+                                </li>
                             </ul>
                         </header>
 
@@ -144,24 +147,21 @@
                                 <li class="pdp-cart-shipping-item rcv-by">Receive by 1/31</li>
                             </ul>
 
-                            <div class="pdp-cart-compat guest">
-                                <a href="#" class="compat-link guest" title="Check compatibility of this item.">Check compatibility</a>
-                            </div>
-
                             <div class="pdp-cart-compat signed-in">
                                 <ul class="pdp-cart-compat-list">
                                     <li id="signed-in-device-1" class="compat-icon compatible">
-                                        <div class="image">Image</div>
-                                        <div class="data">Data</div>
+                                        <img src="../img/product-detail-page/pdp-products/compat-product.png" alt="compatible device" />
+                                        <span class="data">Compatible with your Samsung Galaxy</span>
                                     </li>
                                     <li id="signed-in-device-2" class="compat-icon not-compatible">
-                                        <div class="image">Image</div>
-                                        <div class="data">Data</div>
-                                    </li>
-                                    <li class="compat-link-box">
-                                        <a href="#" class="compat-link signed" title="Check compatibility of this item.">Check compatibility</a>
+                                        <img src="../img/product-detail-page/pdp-products/compat-product.png" alt="compatible device" />
+                                        <span class="data">Compatible with your Samsung Galaxy</span>
                                     </li>
                                 </ul>
+                            </div>
+
+                            <div class="pdp-cart-compat guest">
+                                <span class="compat-link guest" title="Check compatibility of this item" data-tabname="compatibility">Check compatibility</span>
                             </div>
                         </div>
                     </div>
@@ -595,140 +595,35 @@
             </script>
             <!-- end Related Stories module -->
 
-            <section id="related" class="pdp-720-plus">
-                <article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
-                    <header class="content-header">
-                        <h1 class="title"><strong>Related</strong> Stories &amp; Guides</h1>
-                        <div id="nav-alpha" class="slide-nav"></div>
-                        <div id="nav-beta" class="slide-nav"></div>
-                        <div id="nav-gamma" class="slide-nav"></div>
-                     </header>
-                    <script>
-                        includeFragment("inc/fragments/related-stories-module.html");
-                    </script>
-                </article>
-            </section>
+            <!-- begin Shop Products module -->
+            <script>
+                includeFragment("inc/fragments/shop-product-module.html");
+            </script>
+            <!-- end Shop Products module -->
 
-            <section id="others-bought" class="pdp-720-plus">
-                <article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
-                    <header class="content-header">
-                        <h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
-                        <div class="slide-nav"></div>
-                    </header>
-                    <script>
-                        includeFragment("inc/fragments/shop-product-module.html");
-                    </script>
-                </article>
-            </section>
+            <!-- begin PDP Bundle Modal module -->
+            <script>
+                includeFragment('inc/fragments/pdp-bundle-modal-module.html');
+            </script>
+            <!-- end PDP Bundle Modal module -->
 
-            <section id="pdp-bundle-modal-block" class="lightbox">
-                <div class="lightbox-info-block">
-                    <div class="lightbox-close"></div>
-                    <section class="quick-view-item">
-                        <div class="offer-box">
-                            <div class="offer-amt">20</div>
-                            <div class="offer-unit">%</div>
-                            <div class="offer-off">Off</div>
-                        </div>
-                        <div id="quick-view-slider" class="bundle"><img src="img/product-detail-page/plp-spcl/plp-bundle-item.png" alt="Nokia Lumia 822 Bundle" /></div>
-                    </section>
+            <!-- begin Add to Cart Server Error Block -->
+            <script>
+                includeFragment('inc/fragments/pdp-bundle-modal-module.html');
+            </script>
+            <!-- begin Add to Cart Server Error Block -->
 
-                    <section class="quick-view-details bundle">
-                        <div class="column">
-                            <header class="product-header">
-                                <p class="product-shipping"><span>Free Shipping</span></p>
-                                <h1 class="product-name">Nokia Lumia 822 Bundle</h1>
-                            </header>
+            <!-- begin Social Email Overlay module -->
+            <script>
+                includeFragment('inc/fragments/social-email-overlay.html');
+            </script>
+            <!-- end Social Email Overlay module -->
 
-                            <div class="bundle-details">
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.  This bundle includes:</p>
-                                <ul id="bundle-pieces">
-                                    <li>Nokia Lumia 822 Anti-Scratch Display Protectors</li>
-                                    <li>Nokia Lumia 822 Phone Case </li>
-                                    <li>Verizon Vehicle Charger with Dual Output</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="column pricing">
-                            <div class="product-pricing">
-                                <div class="sale">Reg.$<span>299.99</span></div>
-                                <div class="price">$<span>249<sup>99</sup></span></div>
-                            </div>
-                            <div class="value-add">You save 20% when you buy all three</div>
-                        </div>
-
-                        <div class="column add-cart">
-                            <div class="product-actions">
-                                <input id="product-add-to-cart" class="add-cart-cta" type="submit" title="Add Bundle to Cart" value="Add Bundle to Cart">
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
-
-            <section id="add-cart-server-error" class="lightbox" data-modal-id="#add-cart-server-error">
-                <div class="lightbox-info-block">
-                    <h3 class="lightbox-headline">Insert Add-to-Cart Error Headline Here</h3>
-                    <div class="lightbox-details">Insert details about the error and instructions to help them resolve.</div>
-                    <div class="lightbox-fineprint">
-                        <h5 class="headline">Questions?</h5>
-                        <div class="call">
-                            <span>Call:</span>
-                            <a href="#" title="Call Verizon Customer Service" class="modal-call-link">1-800-555-6789</a>
-                        </div>
-                        <div class="chat">
-                            <a href="#" title="Chat with Verizon Customer Service" class="modal-chat-link">Chat</a>
-                        </div>
-                    </div>
-                    <div class="lightbox-close"></div>
-                </div>
-            </section>
-
-            <section id="social-email-overlay" class="lightbox">
-                <div class="lightbox-info-block">
-                    <div class="lightbox-close"></div>
-                    <h3 class="lightbox-headline">Share this Item</h3>
-                    <div class="lightbox-content">
-                        <figure class="lightbox-fig">
-                            <img src="img/product-detail-page/pdp-plus/dre-beats-1.png" alt="" />
-                            <figcaption>Lorem Ipsum Descriptum</figcaption>
-                        </figure>
-                        <form id="lightbox-email-modal" name="lightbox-email-modal" class="lightbox-email-modal" method="post" action="social-share-example.json">
-                            <div class="lightbox-input-wrap">
-                                <label for="lightbox-your-email">Your Email</label>
-                                <input id="lightbox-your-email" name="lightbox-your-email" type="email" class="lightbox-your-email" placeholder="Email Address" value="" />
-                            </div>
-                            <div class="lightbox-input-wrap">
-                                <label for="lightbox-recipient-email">Recipient Email</label>
-                                <input id="lightbox-recipient-email" name="lightbox-recipient-email" type="email" class="lightbox-recipient-email" placeholder="Email Address" value="" />
-                            </div>
-                            <div class="lightbox-cta">
-                                <input type="submit" id="lightbox-email-send" class="" value="Send" title="Send" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <div id="btf-anchor" class="anchor-bar">
-                <form action="?" method="POST" id="anchorBarForm" name="anchorBarForm">
-                    <div class="anchor-thumb">
-                        <img src="img/product-detail-page/pdp-products/horiz/wireless-speaker1.png" class="product-thumb" id="anchor-product-thumb" alt="Product Name" />
-                    </div>
-                    <h2 class="anchor-title">
-                        <span id="anchor-product-brand" class="brand">Belkin</span>
-                        <span id="anchor-product-name">AC Charger with Swivel Plug</span>
-                    </h2>
-                    <dl>
-                        <dt>Size:</dt>
-                        <dd id="anchor-product-size">small,</dd>
-                        <dt>Color:</dt>
-                        <dd id="anchor-product-color">black</dd>
-                    </dl>
-                 <div class="anchor-add-cart"><input id="anchor-add-to-cart" class="add-cart-cta" type="submit" title="Add to Cart" value="Add to Cart"></div>
-                </form>
-            </div>
+            <!-- begin Floated/Fixed Add to Cart module -->
+            <script>
+                includeFragment('inc/fragments/floated-add-to-cart-anchor.html');
+            </script>
+            <!-- end Floated/Fixed Add to Cart module -->
 
             <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
             <script type="text/javascript">

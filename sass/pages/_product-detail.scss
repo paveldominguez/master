@@ -565,10 +565,11 @@
 
                     .compat-link {
                         @include actionLink;
+                        font-size:13px;
+                        cursor:pointer;
+                        letter-spacing:-1px;
                         padding:5px 0 5px 0px;
                         font-family: $fontVzwBook;
-                        font-size:13px;
-                        letter-spacing:-1px;
                         }
                     }
                 .pdp-cart-compat.guest {
@@ -945,30 +946,19 @@
                 font-family: $fontVzwBook;
                 font-weight:normal;
                 }
+            }
 
-            #review-block {
-                padding-left:20px;
-
-                .ratings {
-                    @include pdp-sprite(stars-temp);
-                    width:75px; height:13px;
-                    margin-top:5px;
-                    }
-
-                .reviews {
-                    margin-left:5px;
-                    line-height:14px;
-
-                    a.review-link {
-                        font-family: $fontArial;
-                        font-size: 12px;
+            #review-block{
+                padding:0 0 0 20px;
+                .rating{
+                    width:128px;
+                    .review-link{
+                        display:block;
+                        cursor:pointer;
                         color: $actLinkBlue;
-                        margin-top:6px;
-                        font-weight: bold;
-                        }/* end review link */
-                     }/* end reviews */
-                }/* end review-block */
-            }/* end header */
+                    }
+                }
+            }
 
         .view-to-scale {
             position: absolute;
@@ -1022,6 +1012,9 @@
                             color: $colorVzwRed;
                             border-bottom: 2px solid $colorVzwRed;
                         }
+                    }
+                    em{
+                        font-style:normal;
                     }
                     span{
                         &:hover{
@@ -1094,9 +1087,12 @@
         padding-top: 60px;
         } /* end others bought  */
 
-
-/* ------------------ PDP COMMON CLASSES : STATES ------------------- */
-    .offer, .OOS, .signed-in, .expired { display: none; } /* special states turned off */
+    .offer,
+    .OOS,
+    .signed-in,
+    .expired {
+        display: none;
+    }
 
     .crsl-offer-box { /* hero round sale banner */
         position:absolute;
@@ -1183,7 +1179,7 @@
                     list-style-type:disc;
                 }
             }
-            
+
             .manual-block{
                 height: 260px;
                 float:left;

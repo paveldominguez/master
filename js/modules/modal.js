@@ -11,7 +11,7 @@ MLS.modal = {
 			$content = $overlay.find(".modal-content").html(msg);
 
 		$container.css({
-			top: $jQ(window).scrollTop() + $jQ(window).height() - $container.height()
+			top: $jQ(window).scrollTop() + ($jQ(window).height() - $container.height()) / 2
 		});
 
 		if (noclose)
@@ -20,7 +20,7 @@ MLS.modal = {
 		}
 		else
 		{
-			$overlay.find(".close-btn").click(function(e) {
+			$overlay.find(".close-btn, .data-close-btn").click(function(e) {
                 MLS.modal.close($overlay);
 				return false;
 			});

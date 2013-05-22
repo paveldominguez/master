@@ -158,7 +158,24 @@ MLS.miniCart = {
 
     checkForComplexItem: function(r)
     {
-        if (r.success && r.success.relatedProduct)
+        var $m = $jQ(".complex-item-modal:visible"),
+            error = false;
+        if ($m.length > 0)
+        {
+            if (r.hasOwnProperty('error') && r.error.inlineHTML != "") 
+            {
+                // add inline error
+                $m.find(".modal-content > p.error").remove();
+                $m.find(".modal-content").prepend($jQ("<p></p>").addClass("error").html(r.error.inlineHTML));
+                error = true;
+            } 
+            else 
+            {
+                MLS.modal.close($m);
+            }
+        }
+
+        if (!error && r.success && r.success.relatedProduct)
         {
             MLS.miniCart.init(
                 MLS.modal.open(r.success.relatedProduct).addClass('complex-item-modal').css({ top: 0 }),
