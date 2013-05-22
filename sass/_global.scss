@@ -35,15 +35,64 @@ h1,h2,h3,h4,h5,h6 {
         overflow:hidden;
         background:url(../img/star-rating.png) no-repeat scroll left 4px transparent;
         padding:0;
-        &.one{}
-        &.two{background-position: left -17px;}
-        &.three{background-position: left -37px;}
-        &.four{background-position: left -58px;}
-        &.five{background-position: left -80px;}
-        &.one-half{background-position: left 5px;}
-        &.two-half{background-position: left -247px;}
-        &.three-half{background-position: left -268px;}
-        &.four-half{background-position: left -289px;}
+        &.one{
+            &.red{
+                background-position: left -102px;
+            }
+        }
+        &.two{
+            background-position: left -17px;
+            &.red{
+                background-position:left -123px;
+            }
+        }
+        &.three{
+            background-position: left -37px;
+            &.red{
+                background-position:left -144px;
+            }
+        }
+        &.four{
+            background-position: left -58px;
+            &.red{
+                background-position:left -164px;
+            }
+        }
+        &.five{
+            background-position: left -80px;
+            &.red{
+                background-position:left -185px;
+            }
+        }
+        &.one-half{
+            background-position: left 5px;
+            &.red{
+                background-position:left -333px;
+            }
+        }
+        &.two-half{
+            background-position: left -247px;
+            &.red{
+                background-position:left -354px;
+            }
+        }
+        &.three-half{
+            background-position: left -268px;
+            &.red{
+                background-position:left -375px;
+            }
+        }
+        &.four-half{
+            background-position: left -289px;
+            &.red{
+                background-position:left -396px;
+            }
+        }
+
+        .review-link{
+            font-size:11px;
+            display:inline-block;
+        }
     }
     /* End Star Ratings */
 
@@ -364,6 +413,7 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 }
 
+/*
 #complex-item-modal-overlay{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
@@ -371,8 +421,9 @@ h1,h2,h3,h4,h5,h6 {
     height: 100%;
     z-index: 1000;
 }
+*/
 
-#complex-item-modal{
+.complex-item-modal{
     background: #fff;
     border-radius: 8px;
     position: absolute;
@@ -381,7 +432,7 @@ h1,h2,h3,h4,h5,h6 {
     width: 665px;
     padding: 40px;
     z-index: 10000;
-    top: 25%;
+    top: 0;
 
     h1{
         font-family: "Verizon Apex Book";
