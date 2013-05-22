@@ -6,7 +6,7 @@ $colorSubnavGridBrd: #C9CDCE;
 $colorNavGridText: #333333;
 #mls-nav-mobile,
 #mls-nav-mobile-modal { display: none; }
-#mls-nav-mobile-modal { 
+#mls-nav-mobile-modal {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -19,10 +19,10 @@ $colorNavGridText: #333333;
         height: 45px;
         margin: 0;
         .logo,
-        .nav-item { 
-            float: left; 
-            a { 
-                display: block; 
+        .nav-item {
+            float: left;
+            a {
+                display: block;
                 color: $colorNavLinks;
             }
         }
@@ -62,7 +62,7 @@ $colorNavGridText: #333333;
             }
         }
         .logo {
-            h1 { 
+            h1 {
                 margin: 0;
                 padding: 15px;
                 font: {
@@ -83,7 +83,7 @@ $colorNavGridText: #333333;
                 padding: 0;
             }
             &.active {
-                a { 
+                a {
                     @include nav-sprite(nav-ico-close-drawer, false, 15px, 16px);
                 }
             }
@@ -150,8 +150,8 @@ $colorNavGridText: #333333;
                 @include nav-sprite(nav-ico-cart, false, 18px, 15px);
             }
             a,
-            .count { 
-                float: left; 
+            .count {
+                float: left;
                 color: $colorCountRed;
             }
         }
@@ -171,7 +171,7 @@ $colorNavGridText: #333333;
         width: 100%;
         margin: 0;
         background-color: $colorActiveTabBg;
-        > .tab { 
+        > .tab {
             ul { margin: 0; }
             .tab-menu {
                 float: left;
@@ -256,7 +256,7 @@ $colorNavGridText: #333333;
                 &.active {
                     background-color: #000;
                 }
-                &.last { 
+                &.last {
                     border: none;
                 }
                 a {
@@ -264,19 +264,19 @@ $colorNavGridText: #333333;
                     line-height: 40px;
                     padding: 0;
                     color: $colorNavLinks;
-                    .subnav-icon { 
+                    .subnav-icon {
                         display: block;
                         float: left;
-                        width: 18px; 
+                        width: 18px;
                         margin: 0 0 0 12px;
                         text-align: center;
-                        img { 
+                        img {
                             display: inline;
                             vertical-align: middle;
                         }
                     }
                     .category {
-                        margin-left: 12px;   
+                        margin-left: 12px;
                     }
                 }
                 &.active {
@@ -345,7 +345,7 @@ $colorNavGridText: #333333;
                 }
             }
         }
-        .brands { 
+        .brands {
             border: {
                 top: 1px solid $colorSubnavGridBrd;
                 bottom: 1px solid $colorSubnavGridBrd;
@@ -408,7 +408,7 @@ $colorNavGridText: #333333;
 }
 
 @media only screen and (max-width: $screenMedium - 1) {
-    .mls-nav { 
+    .mls-nav {
         .nav-tabs {
             .nav-help {
                 width: auto;
@@ -420,9 +420,9 @@ $colorNavGridText: #333333;
                     position: absolute;
                     top: 40px;
                     right: -15px;
-                    .marker { 
+                    .marker {
                         background: transparent url(../img/nav/marker.png) top left no-repeat;
-                        display: block; 
+                        display: block;
                         position: absolute;
                         top: -7px;
                         left: 50%;
@@ -469,7 +469,7 @@ $colorNavGridText: #333333;
                     }
                     &.item-4,
                     &.item-5,
-                    &.item-6 { 
+                    &.item-6 {
                         border-top: 1px solid $colorVzwNavBrd;
                     }
                 }
@@ -495,7 +495,7 @@ $colorNavGridText: #333333;
         .left { float: left; }
         .right { float: right; }
     }
-    .mls-nav { 
+    .mls-nav {
         .nav-tabs {
             .nav-help { display: none; }
         }
@@ -503,7 +503,7 @@ $colorNavGridText: #333333;
 }
 @media only screen and (max-width: $screenMobileLarge - 1) {
     #mls-nav { display: none; }
-    #mls-nav-mobile { 
+    #mls-nav-mobile {
         display: block;
     }
     .modal-active {
@@ -543,7 +543,7 @@ $colorNavGridText: #333333;
                     }
                     &.item-5,
                     &.item-6 {
-                        border-bottom: none; 
+                        border-bottom: none;
                     }
                     &.item-1,
                     &.item-3,
@@ -636,7 +636,7 @@ $colorNavGridText: #333333;
                 &.active {
                     > a {
                         span {
-                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;       
+                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;
                         }
                     }
                 }
