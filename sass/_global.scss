@@ -471,7 +471,7 @@ h1,h2,h3,h4,h5,h6 {
             position: relative;
             top: 12px;
         }
-        a.checkout-link{
+        .checkout-link{
             @include add-cart-cta();
             display: table;
             position: relative;
