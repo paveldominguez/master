@@ -7,6 +7,11 @@
 	z-index: 1002;
 	margin-left: -425px;
 	border: 1px solid #bababa;
+	p.error
+	{
+		color: red;
+		margin:20px;
+	}
     .review-block {
         padding-left:0px;
         li{

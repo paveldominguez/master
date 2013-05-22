@@ -28,7 +28,28 @@ MLS.article = {
         );
     },
 
+    checkForInlineErrors: function(r)
+    {
+        var $m = $jQ(".article-detail:visible"),
+            error = false;
+
+        if ($m.find(".close").length > 0 && r.hasOwnProperty('error') && r.error.inlineHTML != "")
+        {
+            // add inline error
+            $m.children("p.error").remove();
+            $m.prepend($jQ("<p></p>").addClass("error").html(r.error.inlineHTML));
+            error = true;
+        }
+
+        return error;
+    },
+
     displayContent : function (data) {
+        if (MLS.article.checkForInlineErrors(data))
+        {
+            return;
+        }
+
         MLS.ui.updateContent('#article-detail', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
 
         $jQ('#article-detail .article-cta').hover(

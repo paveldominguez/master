@@ -3,3 +3,4 @@
 .modal-overlay { background: #fff; border-radius: 8px; position: absolute; left: 50%; margin-left: -333px; width: 665px; padding: 40px; z-index: 10001; top: 25%; }
 .modal-overlay h1 { font-family: "Verizon Apex Book"; color: #3d4146; font-size: 32px; font-weight: normal; padding-bottom: 25px; }
 .modal-overlay a.close-btn { display: block; width: 50px; height: 50px; background: url(../img/article/close.png); position: absolute; right: 20px; top: 20px; }
+.modal-overlay .error { color: red; }
