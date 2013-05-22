@@ -16,16 +16,13 @@ MLS.home = {
 		//Madlib
 		MLS.home.madlib.init();
 
-		// MiniCart
-		// MLS.miniCart.init();
-
 		//Flex Sliders
 		MLS.home.sliders.init();
 
+        MLS.ui.module.trendingLifestyles();
+
 		//Featured Reviews
 		MLS.home.featuredReviews();
-
-        MLS.ui.vzSlider.init();
 
 		//Trending Products tabs
         $jQ('dd', '#detail-tabs').on('click', function (e) {
@@ -35,16 +32,13 @@ MLS.home = {
 			$jQ(this).addClass('active');
 			$jQ('.tabs-content > li', '.trending-products').removeClass('active');
 			$jQ('.tabs-content ' + tab, '.trending-products').addClass('active');
-            console.log($jQ(this).next('dd'));
 		});
         $jQ('.trending-products .flex-next').on('click', function (e) {
             e.preventDefault();
-            console.log('next');
             $jQ('dd.active').next().click();
         });
         $jQ('.trending-products .flex-prev').on('click', function (e) {
             e.preventDefault();
-            console.log('prev');
             $jQ('dd.active').prev().click();
         });
 
@@ -97,19 +91,17 @@ MLS.home = {
 
 		init: function () {
 			//Generic Typeahead
-			var selectedDevice = "";
+			var selectedDevice = '';
 			$jQ('#madlib-device').typeahead({
 				name: 'devices',
 				remote: {
-					url: MLS.ajax.endpoints.SEARCH_DEVICES + "?search=%QUERY"
+					url: MLS.ajax.endpoints.SEARCH_DEVICES + '?search=%QUERY'
 				},
 				limit: 10
-			})
-            .on('change keyup typeahead:selected typeahead:closed', function (e,item) {
-				//console.log($jQ(this).val());
-				if (e.type === 'typeahead:closed') {
-					$jQ(this).blur();
-				}
+			}).on('change keyup typeahead:selected typeahead:closed', function (e,item) {
+                if (e.type === 'typeahead:closed') {
+                	$jQ(this).blur();
+                }
 
 				if (e.type === 'typeahead:selected') {
 					selectedDevice = item.id;
@@ -135,7 +127,7 @@ MLS.home = {
                 selectedClass: 'active',
                 selectionMadeClass: 'selected'
             }).on('change', function() {
-                MLS.home.searchProducts($jQ(this).parents('form').serialize());
+            	MLS.home.searchProducts($jQ(this).parents('form').serialize());
             });
 		}
 	},
@@ -157,4 +149,4 @@ MLS.home = {
             }
         );
 	}
-};
+}
