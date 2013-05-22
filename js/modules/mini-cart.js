@@ -39,13 +39,20 @@ MLS.miniCart = {
 
             // response needs to contain both elements and updated total
             $jQ("#nav-cart .count").html(data.success.itemCount);
-            MLS.miniCart.init($form.hide().html(data.success.responseHTML));
+            MLS.miniCart.init(
+                $form.hide().html(data.success.responseHTML), 
+                MLS.miniCart.options
+            );
             $form.find("input:submit").uniform();
             
             // initialize scroll buttons on the mini-cart
             if (data.success.itemCount > 0 && data.success.itemCount < 4 ) {
                 $jQ('.minicart-next').hide();
-            } else if (inMini > 3) {
+            } else if (data.success.itemCount > 3) {
+                $jQ('.minicart-item:eq(0)').attr('data-vpos', 0);
+                $jQ('.minicart-item').each(function() {
+                    MLS.ui.vScroll(this, 0);
+                });
                 $jQ('.minicart-next').addClass('on');
             }
 
@@ -57,65 +64,55 @@ MLS.miniCart = {
 
         scrollPrevious: function(e){
             e.preventDefault();
-            var type = "next";
+            var type = "prev";
             MLS.miniCart.callbacks.scroll(type);
         },
 
         scrollNext: function(e){
             e.preventDefault();
-            var type = "prev";
+            var type = "next";
             MLS.miniCart.callbacks.scroll(type);
         },
 
         scroll: function(type) { // MINICART  scroll minicart items .............................................................
             if (type == "next") { // if scroll up, calculate max scroll up
-                var inMini = $jQ('#minicart-item-list').find('.minicart-item').length;
-                var maxScrollTimes = inMini / 3;
-                var maxScrollInt = parseInt(maxScrollTimes, 10);
-                var maxScrollPos = maxScrollInt * -247;
+                var inMini = $jQ('#minicart-item-list').find('.minicart-item').length,
+                    maxScrollPos = - (Math.ceil(inMini / 3) - 1) * 247,
 
-                // get current position
-                var curPos = $jQ('.minicart-item.one').attr('data-vpos');
+                    // get current position
+                    curPos = $jQ('.minicart-item:eq(0)').attr('data-vpos'),
 
-                //calculate new offset before actually moving
-                var newPos = curPos - 247;
+                    //calculate new offset before actually moving
+                    newPos = curPos - 247;
 
                 // check position, move and adjust options as required
-                if (newPos > maxScrollPos) { // if beginning/middle
-                    $jQ('.minicart-item').each(function(){ // move up
-                        MLS.ui.vScroll(this, newPos);
-                    });
-                    $jQ('.prev-items-link').addClass('on'); //turn on prev
-                    $jQ('.next-items-link').removeClass('off'); //turn on next if needed
+                $jQ('.prev-items-link').addClass('on'); //turn on prev
+                $jQ('.minicart-item').each(function(){ // move up
+                    MLS.ui.vScroll(this, newPos);
+                });
 
-                } else if (newPos == maxScrollPos) { // if end
-                    $jQ('.minicart-item').each(function(){ // move up
-                        MLS.ui.vScroll(this, newPos);
-                    });
+                if (newPos > maxScrollPos) { // if beginning/middle
+                    $jQ('.next-items-link').removeClass('off'); //turn on next if needed
+                } else { // if end
                     $jQ('.next-items-link').addClass('off'); //turn off next
                 }
 
             } else { // if scroll down
                 // get current position
-                var curPos = $jQ('.minicart-item.one').attr('data-vpos');
-                var curPosParse = parseInt(curPos, 10);
+                var curPos = $jQ('.minicart-item:eq(0)').attr('data-vpos'),
+                    curPosParse = Math.ceil(curPos),
 
-                //calculate new offset before actually moving
-                var newPos = curPosParse + 247;
+                    //calculate new offset before actually moving
+                    newPos = curPosParse + 247;
 
                 // check position, move and adjust options as required
-                if (newPos == 0) { // if beginning/middle
-                    $jQ('.minicart-item').each(function(){ //move down
-                        MLS.ui.vScroll(this, newPos);
-                    });
-                    $jQ('.prev-items-link').removeClass('on'); //turn off prev
-                    $jQ('.next-items-link').removeClass('off'); //turn on next
+                $jQ('.minicart-item').each(function(){ //move down
+                    MLS.ui.vScroll(this, newPos);
+                });
 
-                } else { // if end
-                    $jQ('.minicart-item').each(function(){ //move down
-                        MLS.ui.vScroll(this, newPos);
-                    });
-                    $jQ('.next-items-link').removeClass('off'); //turn on next
+                $jQ('.next-items-link').removeClass('off'); //turn on next
+                if (newPos == 0) { // if beginning/middle
+                    $jQ('.prev-items-link').removeClass('on'); //turn off prev
                 }
             }
         },
@@ -153,10 +150,21 @@ MLS.miniCart = {
         }
 
         // next 3 items
-        $d.find('.prev-items-link').click(this.callbacks.scrollPrevious);
-        $d.find('.next-items-link').click(this.callbacks.scrollNext);
+        $d.find('.prev-items-link').unbind('click', this.callbacks.scrollPrevious).click(this.callbacks.scrollPrevious);
+        $d.find('.next-items-link').unbind('click', this.callbacks.scrollNext).click(this.callbacks.scrollNext);
 
         !this.started && this.update();
+    },
+
+    checkForComplexItem: function(r)
+    {
+        if (r.success && r.success.relatedProduct)
+        {
+            MLS.miniCart.init(
+                MLS.modal.open(r.success.relatedProduct).addClass('complex-item-modal').css({ top: 0 }),
+                MLS.options
+            );
+        }
     },
 
     // previously called 'minicartEdit'
@@ -200,26 +208,41 @@ MLS.miniCart = {
     },
 
     addItem : function (params) {
+        var self = this;
     	MLS.ajax.sendRequest(
             this.options.addToCartEndpoint,
             params,
-            this.options.successCallback
+            function(r) 
+            {
+                self.options.successCallback(r);
+                self.checkForComplexItem(r);
+            }
         );
     },
 
     updateItem : function (params) {
+        var self = this;
     	MLS.ajax.sendRequest(
             this.options.updateCartEndpoint,
             params,
-            this.options.successCallback
+            function(r) 
+            {
+                self.options.successCallback(r);
+                self.checkForComplexItem(r);
+            }
         );
     },
 
     removeItem : function (params) {
+        var self = this;
     	MLS.ajax.sendRequest(
             this.options.removeFromCartEndpoint,
             params,
-            this.options.successCallback
+            function(r) 
+            {
+                self.options.successCallback(r);
+                self.checkForComplexItem(r);
+            }
         );
     }
 };
