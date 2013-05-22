@@ -364,6 +364,7 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 }
 
+/*
 #complex-item-modal-overlay{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
@@ -371,8 +372,9 @@ h1,h2,h3,h4,h5,h6 {
     height: 100%;
     z-index: 1000;
 }
+*/
 
-#complex-item-modal{
+.complex-item-modal{
     background: #fff;
     border-radius: 8px;
     position: absolute;
@@ -381,7 +383,7 @@ h1,h2,h3,h4,h5,h6 {
     width: 665px;
     padding: 40px;
     z-index: 10000;
-    top: 25%;
+    top: 0;
 
     h1{
         font-family: "Verizon Apex Book";
