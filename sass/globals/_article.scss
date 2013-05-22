@@ -8,7 +8,10 @@
 	margin-left: -425px;
 	border: 1px solid #bababa;
     .review-block {
-        padding-left:0px;
+        padding-left: 0px;
+        float: right;
+        margin-top: -2px;
+        margin-right: 20px;
         li{
             float:left;
             display: block;
@@ -228,9 +231,13 @@
 				.price{
 					font-weight:bold;
 					padding-bottom:8px;
+                    float: left;
+                    margin-right: 10px;
 					.sale{}
 				}
-				.rating{}
+				.rating{
+                    float: right;
+                }
 			}
 			&:hover{
 				opacity: 1;
@@ -297,7 +304,7 @@
 						}
 					}
 					.icon{
-						background: url('/img/sprites/pdp-s71babacc65.png') no-repeat;
+						//background: url('/img/sprites/pdp-s71babacc65.png') no-repeat;
 						width: 40px;
 						height: 20px;
 						position: absolute;
@@ -307,19 +314,19 @@
 				}
 				.first{}
 				.email{
-					.icon { background-position: 0 -1232px; }
+					.icon { @include pdp-sprite(pdp-email-icon);}
 				}
 				.facebook{
-					.icon { background-position: 0 -1617px; }
+					.icon { @include pdp-sprite(pdp-facebook-icon);}
 				}
 				.twitter{
-					.icon { background-position: 0 -1097px; }
+					.icon { @include pdp-sprite(pdp-twitter-icon);}
 				}
 				.g-plus{
-					.icon { background-position: 0 -617px; }
+					.icon { @include pdp-sprite(pdp-gplus-icon);}
 				}
 				.pinterest{
-					.icon { background-position: 0 -705px; }
+					.icon { @include pdp-sprite(pdp-pinterest-icon);}
 				}
 			}
 		}

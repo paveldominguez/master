@@ -92,6 +92,7 @@ MLS = {
             MLS.ui.navAccordion('#nav-mobile-tab1 .accordion-nav');
             MLS.ui.tabs('#nav-tab2', true);
             MLS.article.init();
+            MLS.cart.dd.init();
             MLS.ui.complexItem.init();
 
             var navHelp = $jQ('#nav-help'),
@@ -248,18 +249,25 @@ MLS = {
             MLS.ui.socialShare.init();
             MLS.productDetail.init();
             MLS.miniCart.init();
-            MLS.cart.dd.init();
         }
     },
-    // 'search-results-page' : {
-    //     init : function() {
-    //         $jQ("#sort-options").uniform();
-    //         contentGrid.init();
-    //         MLS.ajax.colorPicker.init();
-    //         MLS.contentFilter.init();
-    //         MLS.ajax.cart.init();
-    //     }
-    // },
+
+    'search-results-page' : {
+        init : function() {
+            $jQ("#sort-options").uniform();
+            contentGrid.init();
+            MLS.ajax.colorPicker.init();
+            MLS.contentFilter.init({
+                endpoint: MLS.ajax.endpoints.PRODUCT_LISTING,
+                container: $jQ('#main-column .content-grid'),
+                callback: function () {
+                    contentGrid.reInit();
+                }
+            });
+            MLS.ajax.cart.init();
+        }
+    },
+
     'special-offers-landing-page' : {
         init : function() {
             contentGrid.init();
