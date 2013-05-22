@@ -1,6 +1,6 @@
 MLS.article = {
     init: function (d) {
-        console.log("v5");
+        //console.log("v5");
 
         if ($jQ('#article-modal-overlay').length == 0)
         {
