@@ -1,10 +1,5 @@
 /* Checkout SCSS */
 
-.disabled
-{
-	filter: alpha(opacity=30);
-	opacity: .3;
-}
 
 #checkout-page {
 
@@ -1526,6 +1521,9 @@
 				 					}
 				 				.dropdown-link {
 				 					@include pdp-sprite(blue-more, false, 155px, 14px );
+										.paren-right {
+											padding-left: 7px;
+										}
 				 					}
 				 				.dropdown-panel {
 				 					left: -37px;
