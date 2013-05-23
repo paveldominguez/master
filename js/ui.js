@@ -390,9 +390,6 @@ MLS.ui = {
             }
         });
     },
-    moreLessBlockTruncate : function(){
-        $jQ('.pdp-overview-content .more-less-block .two-thirds').truncate(500);
-    },
     module: {
         trendingLifestyles: function () {
             var $lifestyleModule = $jQ('.trending-lifestyles-module');
