@@ -1212,7 +1212,15 @@ screen and (width: $screenSmall ) and ( orientation: portrait) {
 					@include greyCartButton;
 					position: absolute; bottom: 15px;
 					left:0px;
-					.arial { padding-top:25px; }
+					.arial {
+                        color: #666;
+                        font: {
+                            family: $fontVzwMedium;
+                            size: 14px;
+                        }
+                        display: block;
+                        padding: 18px 0 5px 10px;
+                    }
 					}/* end view cart */
 
 				.checkout {
