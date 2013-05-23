@@ -271,6 +271,7 @@ var contentGrid = {
             $jQ(this).addClass('active');
             $jQ('.color-info .color-option', '#quick-view-overlay').text(colorTitle);
         });
+        $jQ('#pdp-size-select').uniform();
     },
     initSlider : function () {
         $jQ('#quick-view-slider').flexslider({

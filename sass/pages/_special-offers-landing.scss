@@ -621,11 +621,16 @@ $bgPositionPromoSmall: -85px 35px;
 
                     		.featured-item-actions {
                     			@include clearfix();
-                    			width:95%;
-                    			position:absolute;
-                    			margin: 0 auto;
-                    			bottom:5px;
-                                left: 10px;
+                    			// width:95%;
+                    			// position:static;
+                    			// margin: 0 auto;
+                    			// // bottom:5px;
+                       //          left: 10px;
+
+                                width: 95%;
+                                position: static;
+                                margin: 25px 0 0 10px;
+                                left: 0;
 
                     			.price {
                     				display:block;
