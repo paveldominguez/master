@@ -1,7 +1,7 @@
 MLS.cart.dd = {
     init: function () {
 
-        console.log("v.10");
+        //console.log("v.12");
 
         MLS.cart.dd.triggers.ddColor(); // needs to be initialized before the form trigger otherwise it will not update the form
         MLS.cart.dd.triggers.form();
@@ -22,12 +22,13 @@ MLS.cart.dd = {
         ddColor: function(){
             // update the custom color dd
             $jQ(".color a").click(function (){
+
                 var $dd = $jQ(this).parents('form').find("[name=pdpColorSelect]"),
                 color = MLS.util.getUrlParam("color", $jQ(this).attr("href"));
                 $dd.val(color);
                 $jQ(".data-product-attributes").change(); // needs to triger the form change
 
-                console.log(' color');
+                //console.log(' color');
 
             })
         }
@@ -56,13 +57,13 @@ MLS.cart.dd = {
         },
 
         carousel : function (data){
-            var $slides = $jQ("#focus .slides").remove();
+            var $slides = $jQ("#focus .slides, #quick-view-slider .slides").remove();
 
-            $jQ("#focus").html("").append($slides);
-            $jQ('#focus').flexslider("pause");
+            $jQ("#focus , #quick-view-slider").html("").append($slides);
+            $jQ('#focus , #quick-view-slider').flexslider("pause");
 
-            $jQ("#focus .slides").html(data);
-            $jQ('#focus').data("flexslider", null).flexslider({
+            $jQ("#focus .slides, #quick-view-slider .slides").html(data);
+            $jQ('#focus, #quick-view-slider').data("flexslider", null).flexslider({
                 animation: "slide",
                 controlNav: false,
                 animationLoop: true,

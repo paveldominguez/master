@@ -46,14 +46,6 @@
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
   
-  		 <div id="states">
-  			<ul>
-  				<li id="state-standard" class="on">standard</li>
-  				<li id="state-sale">sale</li>
-  				<!-- <li id="product-oos">product OOS</li>
-  				<li id="color-oos">color OOS</li> -->
-  			</ul>
-  		</div><!-- TEMP set of buttons to toggle states for dev INSERT LATER WHEN PDP IS UPDATED FOR SPCL OFFERS -->
   
   
   		<script type="text/javascript">
@@ -72,13 +64,8 @@
 	<div class="section-wrap">
 		<h1 class="checkout-title">Thanks, <span id="confirmed-first-name">Diego</span></h1>
 		<div class="checkout-social">
-			<ul>
-				<li>Share:</li>
-				<li>Email</li>
-				<li>Facebook</li>
-				<li>Twitter</li>
-				<li>Pinterest</li>
-			</ul>
+                <script>includeFragment('inc/fragments/social.html');</script>
+ 				<!--  end social-block -->
 		</div><!-- end social -->
 	</div>
 </section><!-- end checkout header -->
@@ -88,39 +75,52 @@
 <section id="checkout-success">
 	<div class="section-wrap">
 	
-	<div class="create-vzn-login">
-		Would you like to create a MyVerizon login? 
-		<a href="#" class="register-vzn-login">Register</a>	
-	</div>	
+		<div class="create-vzn-login">
+			Would you like to create a MyVerizon login? 
+			<a href="#" class="register-vzn-login">Register</a>	
+			
+			<p class="order-number-block">
+				Your order number is: <span id="order-number">23-98756</span>
+			</p>
+
+			<p class="order-detail-block">
+				You'll be getting a confirmation email at <span id="confirmed-email">diego@gmail.com</span>. Your order will arrive in <span id="est-arrival">2 business days</span> and will need a signature for delivery.
+			</p>
+		</div>	
 	
-	<p class="order-number-block">
-		Your order number is: <span id="order-number">23-98756</span>
-	</p>
+
 	
-	<p class="order-detail-block">
-		An email has been sent to <span id="confirmed-email">diego@gmail.com</span> and 
-		your product should arrive in <span id="est-arrival">2 business days</span>. 
-		These items will require a signature for delivery.
-	</p>
-	
-	<p class="order-detail-block">
-		Questions about your order?
-	</p>
-	
-	<div class="call-us">
-		<span class="cta">Call:</span>
-		<span class="number">1-800-555-6789</span>
-	</div>
+		<div class="call-cta">
+			<p class="order-detail-block">
+				Questions about your order?
+			</p>
+			<div class="call-us">
+				<span class="cart-call-icon">Call</span>
+				<span class="number"><a href="#" class="register-vzn-login">1-800-555-6789</a>	
+				</span>
+			</div>
+		</div>
+		<div class="newsletter">
+			<p class="order-detail-block">
+				<label class="form-item-title" for="newsletter-signup" accesskey="E">Sign Up For Newsletter</label>
+			</p>
+			<div class="form-input-wrap">
+				<input name="newsletterSignup" type="text" id="newsletter-signup" class="hasPlaceholder" placeholder="Email Address" tabindex="30">
+				<input class="button" type="button" value="Add to Cart" title="Add to Cart">
+			</div>
+		</div>
 	
 	</div><!-- end section wrap -->
 </section><!-- end checkout success-->
 
 
 
-<section id="order-details">
+<article id="order-details" class="category-section">
 	<div class="section-wrap">
 	
-	<h2 class="details-title">Order Details</h2>
+        <header class="content-header">
+        	<h1 class="title"><strong>Order</strong> Details</h1>
+        </header>
 	
 	<div class="final-cart-display">
 	
@@ -130,126 +130,165 @@
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" height="60px" width="60px" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
-						<h3>Beats by Dre Pro On-Ear Headphones</h3>
-						
-						<div class="unit-price">
-							<span class="original-price offer">$399.99</span>
-							<span class="actual-price">$299.99</span>	
-							<span class="discount offer">10% off</span>
+						<div class="cart-product-title">
+							<h3>Beats by Dre Pro On-Ear Headphones</h3>
+						</div>
+						<div class="price-size">
+							<span class="actual-price"><strong>$299.99</strong></span>	
+							<span class="color-size">Black, Medium</span>
 						</div><!-- end unit price -->
 					
-						<div class="size-color">
-							<div class="size">Color: <span class="data">Place</span></div>
-							<div class="size">Size: <span class="data">Holder</span></div>
+						<div class="quantity">
+							<span>Quantity: 1</span>
 						</div>
 					</div><!-- end crt-product-info -->
 				</div><!-- end desc block -->	
 			</div><!-- end table row -->
-			
 			<div class="table-row"><!-- -------------- second product in cart --------------- -->
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" height="60px" width="60px" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
-						<h3>Beats by Dre Pro On-Ear Headphones</h3>
-						
-						<div class="unit-price">
-							<span class="original-price offer">$399.99</span>
-							<span class="actual-price">$299.99</span>	
-							<span class="discount offer">10% off</span>
+						<div class="cart-product-title">
+							<h3>Beats by Dre Pro On-Ear Headphones</h3>
+						</div>
+						<div class="price-size">
+							<span class="actual-price"><strong>$299.99</strong></span>	
+							<span class="color-size">Black, Medium</span>
 						</div><!-- end unit price -->
 					
-						<div class="size-color">
-							<div class="size">Color: <span class="data">Place</span></div>
-							<div class="size">Size: <span class="data">Holder</span></div>
+						<div class="quantity">
+							<span>Quantity: 1</span>
 						</div>
 					</div><!-- end crt-product-info -->
 				</div><!-- end desc block -->	
-			</div><!-- end table row -->
+			</div><!-- end table row -->			
 			
 			<div class="table-row"><!-- -------------- third product in cart --------------- -->
 				<div class="desc-block">
 				
 					<div class="cart-product-image">
-						<img src="img/cart/cart-headphones.png" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
+						<img src="img/cart/cart-headphones.png" height="60px" width="60px" title="Beats by Dre Pro On-Ear Headphones" alt="Beats by Dre Pro On-Ear Headphones" class="cart-img">
 					</div><!-- end product image -->
 					
 					<div class="cart-product-info">
-						<h3>Beats by Dre Pro On-Ear Headphones</h3>
-						
-						<div class="unit-price">
-							<span class="original-price offer">$399.99</span>
-							<span class="actual-price">$299.99</span>	
-							<span class="discount offer">10% off</span>
+						<div class="cart-product-title">
+							<h3>Beats by Dre Pro On-Ear Headphones</h3>
+						</div>
+						<div class="price-size">
+							<span class="actual-price"><strong>$299.99</strong></span>	
+							<span class="color-size">Black, Medium</span>
 						</div><!-- end unit price -->
 					
-						<div class="size-color">
-							<div class="size">Color: <span class="data">Place</span></div>
-							<div class="size">Size: <span class="data">Holder</span></div>
+						<div class="quantity">
+							<span>Quantity: 1</span>
 						</div>
 					</div><!-- end crt-product-info -->
 				</div><!-- end desc block -->	
-			</div><!-- end table row -->
-			
-			
-			
+			</div><!-- end table row -->			
+						
 		</div><!-- end display-left -->
 		
 		<div class="display-right">
 		
-			<ul class="cart-summary">
-		
-				<li class="header"> 
-					<div class="label"></div>
-					<div class="data"></div>
-				</li>
-				
-				
-				<li class="cart-line">
-					<div class="label">Sub Total:</div>
-					<div id="subtotal" class="data">$499.99</div>
-				</li>
-				
-				<li class="cart-line">
-					<div class="label">NY State Tax</div>
-					<div id="state-tax" class="data">$16.32</div>
-				</li>
-				
-				<li class="cart-line">
-					<div class="label">NY Local tax</div>
-					<div id="local-tax" class="data">$8.99</div>
-				</li>
-				
-				<li class="cart-line">
-					<div class="label">Shipping & Handling</div>
-					<div id="shipping" class="data"><span class="no-offer">$6.99</span><span class="offer">Free!</span></div>
-				</li>
-				
-				<li class="cart-line">
-					<div class="label">Employee Discount</div>
-					<div id="discount" class="data">-20%</div>
-				</li>
-				
-				
-				<li class="total">
-					<div class="label">Total:</div>
-					<div id="total" class="data">$376.21</div>
-				</li>
-		
-			</ul>
+			<div class="totals">
+
+				<ul>
+					<li id = "checkout-cart-subtotal" >
+						<div class="label">SubTotal</div>
+
+						<div class="data">
+							$<span id="subtotal">399.99</span>
+						</div>
+					</li><!-- end subtotal -->
+
+					<li id = "checkout-cart-employee-disc" class="discounted" >
+						<div class="label">Employee Discount:</div>
+
+						<div class="data">
+							- $<span id="employee-discount">29.99</span>
+						</div>
+					</li><!-- end employee discount -->
+
+					<li id = "checkout-cart-discount-code" class="discounted" >
+						<div class="label">Discount Code:</div>
+
+						<div class="data">
+							- $<span id="discount-code-amt">19.99</span>
+						</div>
+					</li><!-- end discount code block -->
+
+					<li id = "checkout-cart-gift-card-1" class="discounted" >
+						<div class="label">Gift Card:</div>
+
+						<div class="data">
+							- $<span id="gift-card-1-amt">50.00</span>
+						</div>
+					</li><!-- end discount code block -->
+
+					<li id = "checkout-cart-gift-card-2" class="discounted" >
+						<div class="label">Additional Gift Card:</div>
+
+						<div class="data">
+							- $<span id="gift-card-2-amt">25.00</span>
+						</div>
+					</li><!-- end discount code block -->
+
+					<li id = "checkout-cart-ship" >
+						<div class="label">
+							Shipping & Handling
+						</div>
+
+						<div class="data">
+							<span class="no-offer">$<span id="shipping">16.95</span></span>
+							<span class="offer">FREE!</span>
+						</div>
+					</li>
+
+					<li id = "checkout-cart-state-tax" >
+						<div class="label">
+							<span id="state-tax-id">NY</span> State Tax
+						</div>
+
+						<div class="data">
+							$<span id="state-tax-amt">29.27</span>
+						</div>
+					</li><!-- end tax -->
+
+					<li id = "checkout-cart-local-tax" >
+						<div class="label">
+							<span id="local-tax-id">NY</span> Local Tax
+						</div>
+
+						<div class="data">
+							$<span id="local-tax-amt">7.92</span>
+						</div>
+					</li><!-- end tax -->
+
+					<li id = "checkout-cart-total" >
+						<div class="label">
+							Total
+						</div>
+
+						<div class="data">
+							$<span id="total">399.99</span>
+						</div>
+					</li>
+				</ul>
+			</div><!-- end totals -->
 		
 		</div>
 		
 	</div><!-- end final-cart-display -->
 	</div><!-- end section-wrap -->
-</section><!-- end order-details -->
+</article><!-- end order-details -->
 
 
 <section id="shipping-billing-details">
@@ -264,9 +303,9 @@
 					<li id="ship-address1">123 Some Street</li>
 					<li id="ship-address2">Apt. 1A</li>
 					<li class="city-state-zip">
-						<div id="ship-city">Brooklyn</div>
-						<div id="ship-state">NY</div>
-						<div id="ship-zip">11215</div> 
+						<div class="ship-city">Brooklyn</div>
+						<div class="ship-state">NY</div>
+						<div class="ship-zip">11215</div> 
 					</li>
 					<li id="ship-email">diego@gmail.com</li>
 					<li id="ship-phone">323-535-9999</li>
@@ -296,9 +335,9 @@
 					<li id="bill-address1">123 Some Street</li>
 					<li id="bill-address2">Apt. 1A</li>
 					<li class="city-state-zip">
-						<div id="bill-city">Brooklyn</div>
-						<div id="bill-state">NY</div>
-						<div id="bill-zip">11215</div> 
+						<div class="ship-city">Brooklyn</div>
+						<div class="ship-state">NY</div>
+						<div class="ship-zip">11215</div> 
 					</li>
 					<li id="bill-phone">323-535-9999</li>
 				</ul>
@@ -327,7 +366,28 @@
 	</div>
 </section>
 
+<section id="related"><!-- RELATED STORIES & GUIDES -->
+	<article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <script>
+    		includeFragment("inc/fragments/related-stories-module.html");
+    	</script>
+    </article>
+</section><!-- end related stories & guides section -->
 
+
+
+
+<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
+	<article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
+        <header class="content-header">
+        	<h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
+            <div class="slide-nav"></div>
+        </header>
+        <script>
+    		includeFragment("inc/fragments/shop-product-module.html");
+    	</script>
+    </article>
+</section><!-- end others also bought section -->
 
 
 

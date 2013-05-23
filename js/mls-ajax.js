@@ -135,6 +135,7 @@ MLS.ajax = {
                 function(data) {
                     MLS.ajax.quickView.update(data, el);
                 }
+
             );
         },
 
@@ -143,10 +144,16 @@ MLS.ajax = {
                 return MLS.modal.open(data.error ? data.error.responseHTML : null);
             }
 
-            MLS.ui.updateContent($jQ('.wrapper', '#quick-view-overlay'), data.success.responseHTML);
-            $jQ('.wrapper', '#quick-view-overlay').find("input:submit").uniform();
-            MLS.miniCart.init($jQ('.wrapper', '#quick-view-overlay'));
-            contentGrid.quickViewShow(el);
+            var error = MLS.errors.checkForInlineErrors(data);
+
+            if (!error)
+            {
+                MLS.ui.updateContent($jQ('#quick-view-overlay .wrapper'), data.success.responseHTML);
+                $jQ('#quick-view-overlay .wrapper').find("input:submit").uniform();
+                MLS.miniCart.init($jQ('#quick-view-overlay .wrapper'));
+                contentGrid.quickViewShow(el);
+                MLS.cart.dd.init();
+            }
         }
     }
 };
