@@ -25,7 +25,7 @@ h1,h2,h3,h4,h5,h6 {
     @include box-shadow(0 0 3px 3px rgba(0, 0, 0, .2));
     background-color: #FFF;
     max-width: $screenLarge;
-    margin: 0 auto;
+    margin: auto;
 
     /* Begin Star Ratings */
     .stars{
@@ -471,7 +471,7 @@ h1,h2,h3,h4,h5,h6 {
             position: relative;
             top: 12px;
         }
-        a.checkout-link{
+        .checkout-link{
             @include add-cart-cta();
             display: table;
             position: relative;

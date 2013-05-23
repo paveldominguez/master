@@ -1,6 +1,6 @@
 MLS.article = {
     init: function (d) {
-        console.log("v5");
+        //console.log("v5");
 
         if ($jQ('#article-modal-overlay').length == 0)
         {
@@ -29,6 +29,11 @@ MLS.article = {
     },
 
     displayContent : function (data) {
+        if (MLS.errors.checkForInlineErrors(data))
+        {
+            return;
+        }
+
         MLS.ui.updateContent('#article-detail', data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML);
 
         $jQ('#article-detail .article-cta').hover(

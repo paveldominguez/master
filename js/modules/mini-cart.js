@@ -158,7 +158,9 @@ MLS.miniCart = {
 
     checkForComplexItem: function(r)
     {
-        if (r.success && r.success.relatedProduct)
+        var error = MLS.errors.checkForInlineErrors(r);
+
+        if (!error && r.success && r.success.relatedProduct)
         {
             MLS.miniCart.init(
                 MLS.modal.open(r.success.relatedProduct).addClass('complex-item-modal').css({ top: 0 }),
