@@ -1035,7 +1035,8 @@ MLS.checkout = {
 						digits: true,
 	                    minlength: 7,
 						maxlength: 7
-	                },                    cardNumberGC: {
+	                },                    
+					cardNumberGC: {
                         required: false,
                         noPlaceholder: true,
                         rangelength: [15, 16],
