@@ -110,6 +110,7 @@ MLS.checkout = {
         // CHECKOUT only
         // MLS.checkout.beginCheckoutValidation();
         MLS.checkout.mainCheckoutValidation();
+
         // MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
         MLS.checkout.smallScreenContent(); // prepare small device content
         $jQ('#checkout-sequence .selector').find('span').addClass('select-placeholder');    // enhance initial uniform.js select style
@@ -926,11 +927,11 @@ MLS.checkout = {
 
             if (which == 'billing-info-complete') { // STEP 2 prevalidate
                 var signedinBranch = 'new';
-                var seq = document.getElementById('checkout');
+                var seq = $jQ('#checkout');
                 if($jQ('.billing-complete').is(':not(.blank)')){ // if second time through, remove previous info
                     $jQ('#name-on-card').empty();
                     $jQ('#bill-address-summary-name').empty();
-                    }
+                }
                 if ($jQ(seq).hasClass('signed-in')){ // check for saved info
                     if ($jQ('#bill-to-account').is(':checked') || $jQ('#choose-saved-card').is(':checked')) { // saved info, no validation required
                         signedinBranch = 'saved';
@@ -947,7 +948,7 @@ MLS.checkout = {
 
             var completed;
 
-            if (true || (valid && formValid)) {
+            if (valid && formValid) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
@@ -965,6 +966,24 @@ MLS.checkout = {
                                 validator.showErrors(r.error.inlineHTML);
                                 return;
                             }
+
+                            // billingHTML
+                            // step 2 restart
+                            $jQ("#vzn-checkout-billing").replaceWith(r.success.billingHTML);
+                            $jQ("#vzn-checkout-billing").find("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final, .next-step-input").uniform(); // style form elements
+
+                            $jQ("#vzn-checkout-billing").find('.checkout-dropdown').each(function(){ // display rules for inline dropdowns
+                                MLS.ui.dropdownDisplay(this);
+                            });
+
+                            $jQ("#vzn-checkout-billing").find('.special-offer-block').each(function(){ // display rules for offer dropdowns
+                                MLS.ui.dropdownDisplay(this);
+                            });
+
+                            MLS.checkout.mainCheckoutValidation($jQ("#vzn-checkout-billing"));
+                            MLS.checkout.stepTwoSequence();
+                            MLS.checkout.initGiftCard();
+                            // end step 2 restart
 
                             $jQ(".step-info-summary:eq(0)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
@@ -1067,8 +1086,8 @@ MLS.checkout = {
     },
 */
 
-    mainCheckoutValidation : function() { // CHECKOUT
-        $jQ('#checkout-sequence form').each(function() {
+    mainCheckoutValidation : function(forms) { // CHECKOUT
+        $jQ(forms || '#checkout-sequence form').each(function() {
             $jQ(this).validate({
                 ignore: '.ignore, :hidden',
                 success: function(label){
