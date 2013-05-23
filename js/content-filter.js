@@ -39,8 +39,8 @@ MLS.contentFilter = (function () {
                 // dimension (expansion/collapse)
                 $collapsible.find('.dimension-header').on('click', pub.dimensionClick);
 
-                $facets.on('click', pub.facetClick);
-                $jQ('.filter-panels li').on('click', pub.facetClick); /* mobile option */
+                $facets.not('.not-ajax').on('click', pub.facetClick);
+                $jQ('.filter-panels li').not('.not-ajax').on('click', pub.facetClick); /* mobile option */
 
                 // remove filter
                 $jQ('#filter-selections').find('a').on('click', pub.removeFilter);
@@ -75,8 +75,8 @@ MLS.contentFilter = (function () {
                 $collapsible.find('.dimension-header').unbind('click', pub.dimensionClick);
 
 
-                $facets.unbind('click', pub.facetClick);
-                $jQ('.filter-panels li').unbind('click', pub.facetClick); /* mobile option */
+                $facets.not('.not-ajax').unbind('click', pub.facetClick);
+                $jQ('.filter-panels li').not('.not-ajax').unbind('click', pub.facetClick); /* mobile option */
 
                 // remove filter
                 $jQ('#clear-selections').find('li').find('a').unbind('click', pub.removeFilter);
