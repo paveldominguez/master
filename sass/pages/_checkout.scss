@@ -1,5 +1,10 @@
 /* Checkout SCSS */
 
+.disabled
+{
+	filter: alpha(opacity=30);
+	opacity: .3;
+}
 
 #checkout-page {
 
