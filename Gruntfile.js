@@ -51,6 +51,7 @@ module.exports = function (grunt) {
                     'js/lib/jquery.tinyscrollbar.min.js',
                     'js/lib/jquery.uniform.min.js',
                     'js/lib/jquery.validate.js',
+                    'js/lib/jquery.truncator.js',
                     'js/lib/typeahead.min.js',
                     'js/lib/select.js',
                     'js/scripts.js',

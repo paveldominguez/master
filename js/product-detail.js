@@ -26,6 +26,7 @@ var pub = {
         });
 
         MLS.ui.moreLessBlock(); // evaluate & initialize all more/less elements
+        MLS.ui.moreLessBlockTruncate();
         MLS.productDetail.pdpColorOptions(); // layout add to cart section based on number of color options
         MLS.productDetail.addCartValidation();
 
