@@ -42,7 +42,7 @@
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
   		<script type="text/javascript">
-    		includeFragment('inc/header.html');
+    		includeFragment('inc/fragments/checkout-header.html');
   		</script>
   </div><!-- end temp header -->
 <!-- END TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
@@ -145,7 +145,7 @@
 
 						<div class="form-input-wrap">
 							<label class="form-item-title" for="checkout-ship-address-2" accesskey="2">Address 2</label>
-							<input name="checkoutAddress2" type="text" id="checkout-ship-address-2" class="checkout-input SaS" tabindex="36">
+							<input name="checkoutAddress2" type="text" id="checkout-ship-address-2" class="checkout-input SaS" placeholder="Address 2" tabindex="36">
 							<label class="optional">Optional</label>
 						</div>
 
@@ -463,15 +463,15 @@
 																<div class="form-input-wrap">
 																	<select name="ccYear" class="checkout-input CCV" id="card-year" tabindex="52">
 																		<option value ="0" disabled="disabled" selected>year</option>
-																		<option value ="13">2013</option>
-																		<option value ="14">2014</option>
-																		<option value ="15">2015</option>
-																		<option value ="16">2016</option>
-																		<option value ="17">2017</option>
-																		<option value ="18">2018</option>
-																		<option value ="19">2019</option>
-																		<option value ="20">2020</option>
-																		<option value ="21">2021</option>
+																		<option value ="13">13</option>
+																		<option value ="14">14</option>
+																		<option value ="15">15</option>
+																		<option value ="16">16</option>
+																		<option value ="17">17</option>
+																		<option value ="18">18</option>
+																		<option value ="19">19</option>
+																		<option value ="20">20</option>
+																		<option value ="21">21</option>
 																	</select>
 																</div>
 															</li>
@@ -674,7 +674,9 @@
 								    <div class="icon open"></div>
 								    <div class="checkout-dropdown">
 									   <a href="#" class="dropdown-link">
+										  <span class="paren-left">(</span>
 										  Where can I find the PIN?
+										  <span class="paren-right">)</span>
 									   </a>
 									   <div class="dropdown-panel">
 										  <div class="dropdown-pointer"></div>
@@ -813,7 +815,7 @@
             <form id="vzn-checkout-confirm" method="POST" action="javascript:void(0)" autocomplete="on">
                 <fieldset id="confirm-order" class="checkout-step">
 				    <legend class="step-title-block">
-					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Confirm</span> Order</div>
+					   <div class="step-title"><span class="bold">3<span class="sep"> | </span>Order</span> Confirmation</div>
 					   <h5 class="step-number">Step <span class="bold">3</span> of <span class="bold">3</span></h5>
 				    </legend>
 
@@ -837,9 +839,9 @@
 								        <div class="cart-product-info">
 									           <h2>Beats by Dre Pro On-Ear Headphones</h2>
                                                <div class="unit-price">
-                                                    <span class="original-price offer">$399.99</span>
+                                                    <span class="original-price">$399.99</span>
                                                     <span class="actual-price">$299.99</span>
-                                                    <span class="discount offer">10% SALE</span>
+                                                    <span class="discount">10% SALE</span>
                                                 </div><!-- end unit price -->
                                                 <div class="size-color">
 										              <div class="size">Size: <span class="data">Place</span></div>
@@ -872,7 +874,7 @@
 									       <h2>Beats by Dre Pro On-Ear Headphones</h2>
 
                                             <div class="unit-price">
-                                                <span class="original-price offer">$399.99</span>
+                                                <span class="original-price">$399.99</span>
                                                 <span class="actual-price">$299.99</span>
                                                 <span class="discount offer">10% SALE</span>
                                             </div><!-- end unit price -->
@@ -909,7 +911,7 @@
 									   <h2>Beats by Dre Pro On-Ear Headphones</h2>
 
 									   <div class="unit-price">
-										  <span class="original-price offer">$399.99</span>
+										  <span class="original-price">$399.99</span>
 										  <span class="actual-price">$299.99</span>
 										  <span class="discount offer">10% SALE</span>
 									   </div><!-- end unit price -->

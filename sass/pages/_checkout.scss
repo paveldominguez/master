@@ -1,10 +1,5 @@
 /* Checkout SCSS */
 
-.disabled
-{
-	filter: alpha(opacity=30);
-	opacity: .3;
-}
 
 #checkout-page {
 
@@ -14,6 +9,22 @@
         .no-offer { display: inline-block; }
 
 		#site-container { min-height: 800px; } /* addition for "Begin Checkout" panel */
+	
+	/* site header overrides */
+	
+		#site-header {
+			background-color: #ebeeee;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.mls-nav {
+			.nav-tabs {
+				.nav-item {
+					border-left: none;
+					border-right: none;
+				}
+			}
+		}
 
 		.checkout-sequence-wrap {
 			@include clearfix();
@@ -212,7 +223,7 @@
 		input[type="tel"]:focus,
 		input[type="email"]:focus {
 			color: $cartGreyDk;
-			font-family: $fontVzwBook;
+			font-family: $fontVzwLight;
 			font-weight: normal;
 			border-width: 2px;
 			}
@@ -222,7 +233,7 @@
 		input[type="tel"].hasPlaceholder.valid,
 		input[type="email"].hasPlaceholder.valid {
 			color: $cartGreyDk;
-			font-family: $fontVzwBook;
+			font-family: $fontVzwLight;
 			font-weight: normal;
 			border-width: 1px;
 			}
@@ -776,7 +787,9 @@
 
 						.form-item-title {
 							@include checkoutLabel;
-							padding: 0; margin: 0 0 8px 0;
+							padding: 0; 
+							margin: 0 0 8px 0;
+							cursor: default;
 
 							.grey { color: $cartGreyLt; }
 							}/* end form title  */
@@ -1510,6 +1523,9 @@
 				 					}
 				 				.dropdown-link {
 				 					@include pdp-sprite(blue-more, false, 155px, 14px );
+										.paren-right {
+											padding-left: 7px;
+										}
 				 					}
 				 				.dropdown-panel {
 				 					left: -37px;

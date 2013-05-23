@@ -22,9 +22,9 @@ $colorPromoFont: #6D6E71;
             display: block;
             position: relative;
             &:before,
-            &:after { 
+            &:after {
                 content: none;
-                display: block; 
+                display: block;
             }
             height: 150px;
             z-index: 2;
@@ -56,7 +56,7 @@ $colorPromoFont: #6D6E71;
         .sort-options {
             // reset position absolute and bottom/right in _product-listing.scss - lines 276 to 278
             position: relative;
-            bottom: auto; 
+            bottom: auto;
             right: auto;
             // end reset block
             float: right;
