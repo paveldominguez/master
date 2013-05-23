@@ -221,7 +221,7 @@ $colorLifestyleLight: #DCDEDE;
                 @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
                 border: 1px solid $colorLifestyleGray;
                 display: table;
-                margin: 0;
+                margin: 80px 0 0 0;
                 width: 70%;
                 height: 55px;
                 color: #FFF;
@@ -443,6 +443,7 @@ $colorLifestyleLight: #DCDEDE;
                         family: $fontVzwBook;
                         size: 18px;
                         weight: normal;
+                        display: block;
                     }
                 }
                 .copy {
