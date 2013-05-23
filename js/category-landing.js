@@ -30,11 +30,16 @@ MLS.categoryLanding = {
             animation: 'slide',
             controlsContainer: '#guides-module .slide-nav',
             animationLoop: true,
-            controlNav: false,
+            controlNav: true,
             directionNav: true,
             slideshow: false,
             animationSpeed: 500,
-            itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth())
+            itemWidth: 256,
+            maxItems: 4,
+            minItems: 1,
+            start: function () {
+                $jQ(window).resize();
+            }
         });
 
         //stories and guides
@@ -64,7 +69,6 @@ MLS.categoryLanding = {
         $jQ(window).resize(function () {
             $jQ('#new-arrivals-module').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
             $jQ('#latest-stories-module').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
-            $jQ('#guides-module') .data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
             $jQ('#stories-guides-module').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
             $jQ('#best-sellers-module').data('flexslider').setOpts({itemWidth: (R.viewportW() < 768 ? $jQ(window).outerWidth() * 0.80 : $jQ(window).outerWidth() )});
         });

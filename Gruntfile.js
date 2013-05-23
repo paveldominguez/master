@@ -16,13 +16,13 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // load local tasks from /tasks/grunt folder
-    grunt.loadNpmTasks('grunt-bless', 'grunt-devtools', 'grunt-contrib-concat');
+    grunt.loadNpmTasks(/*'grunt-bless', */'grunt-devtools', 'grunt-contrib-concat');
 
     grunt.initConfig({
         watch: {
             compass: {
                 files: ['sass/**/*.scss'],
-                tasks: ['compass', 'bless:debug', ]
+                tasks: ['compass', /*'bless:debug',*/ ]
             },
             livereload: {
                 files: [
@@ -51,6 +51,7 @@ module.exports = function (grunt) {
                     'js/lib/jquery.tinyscrollbar.min.js',
                     'js/lib/jquery.uniform.min.js',
                     'js/lib/jquery.validate.js',
+                    'js/lib/jquery.truncator.js',
                     'js/lib/typeahead.min.js',
                     'js/lib/select.js',
                     'js/scripts.js',
@@ -134,22 +135,22 @@ module.exports = function (grunt) {
                 'js/{,*/}*.js'
             ]
         },
-        bless: {
-            options: {
-                compress: true,
-                cleanup: true,
-                force: true,
-                imports: true,
-                cacheBuster: true
-            },
-            debug: {
-                files: {
-                    'css/styles.css': [
-                        'css/styles.css'
-                    ]
-                }
-            }
-        },
+        // bless: {
+        //     options: {
+        //         compress: true,
+        //         cleanup: true,
+        //         force: true,
+        //         imports: true,
+        //         cacheBuster: true
+        //     },
+        //     debug: {
+        //         files: {
+        //             'css/styles.css': [
+        //                 'css/styles.css'
+        //             ]
+        //         }
+        //     }
+        // },
         compass: {
             options: {
                 sassDir: 'sass',
@@ -161,7 +162,7 @@ module.exports = function (grunt) {
             },
             debug: {
                 options: {
-                    debugInfo: false
+                    debugInfo: true
                 }
             }
         },
@@ -185,8 +186,8 @@ module.exports = function (grunt) {
         if (target === 'debug') {
             return grunt.task.run([
                 'compass',
-                'concat:dist',
-                'bless:debug'
+                'concat:dist'/*,
+                'bless:debug'*/
             ]);
         }
 
@@ -196,15 +197,15 @@ module.exports = function (grunt) {
         if (target === 'debug' || target === 'qa') {
             return grunt.task.run([
                 'compass',
-                'concat:dist',
-                'bless:debug'
+                'concat:dist'/*,
+                'bless:debug'*/
             ]);
         }
 
         if (target === 'dist') {
             return grunt.task.run([
-                'concat:dist',
-                'bless:debug'
+                'concat:dist'/*,
+                'bless:debug'*/
             ]);
         }
     });

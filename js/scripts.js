@@ -54,6 +54,8 @@ if (!$jQ.support.placeholder) {
     }).blur(function () {
         if ($jQ(this).attr('placeholder') !== '' && ($jQ(this).val() === '' || $jQ(this).val() === $jQ(this).attr('placeholder'))) {
             $jQ(this).val($jQ(this).attr('placeholder')).addClass('hasPlaceholder');
+            $jQ(this).next('label').removeClass('success');
+
         }
     });
     $jQ(':text').blur();

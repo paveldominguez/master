@@ -1144,16 +1144,29 @@
 
     .pdp-overview-content{
         .more-less-block {
+            margin-bottom: 20px;
             .two-thirds.left {
                 width: 75%;
                 float: left;
                 height: auto;
                 padding-right: 12%;
+                .less,
+                .more {
+                    display: inline;
+                }
                 p{
                    @include instruct;
                     color:$cartGreyMd;
                     font-size: 20px;
                     line-height: 30px;
+                }
+                .more-less {
+                    .more-less-link {
+                        @include instruct;
+                        color:$actLinkBlue;
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
                 }
             }
             .third.right {
@@ -2370,6 +2383,8 @@
                             }
                             .more-less-link{
                                 display: inline;
+                                font: normal 11px/14px $fontArial;
+                                letter-spacing: normal;
                                 color: $actLinkBlue;
                             }
                         }
@@ -3148,46 +3163,17 @@
         }
     }
 /*---- GLOBAL CLASSES:  MORE/LESS CONTENT ---- */
-
 .more-less-block {
     @include clearfix();
     position:relative;
-    padding-bottom:36px;
     overflow: hidden;
-    .more-less {
-        width: 100%; height: 36px;
-        background: #fff;
-        position: absolute;
-        bottom: 0; left: 0;
-        padding: 0px 0 0 0;
-        .more-less-link {
-            cursor:pointer;
-            display:block;
-            width: 100%; height: 100%;
-            padding-top:12px;
-            vertical-align: middle;
-            @include checkoutLabel;
-            color: $actLinkBlue;
-            @include pdp-sprite(blue-less, false, 40px, 13px);
-        }
-    }
-    &.bound {
-        max-height: 280px;
-        .more-less {
-            .more-less-link { 
-                @include pdp-sprite(blue-more, false, 40px, 13px); 
-            }
-        }
-    }
-    &.not-bound {
-        .more-less {
-            .more-less-link { 
-                display: none; 
-            }
-        }
+    .more-less-link {
+        cursor:pointer;
+        @include checkoutLabel;
+        color: $actLinkBlue;
+        text-transform: none;
     }
 }
-
 /*---- GLOBAL CLASSES:  SOCIAL EMAIL OVERLAY ---- */
 
 #social-email-overlay {

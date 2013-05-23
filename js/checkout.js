@@ -834,6 +834,8 @@ MLS.checkout = {
                             completed.find('.step-info-summary').removeClass('hidden');
                             $jQ('#vzn-checkout-confirm .checkout-step .hide-complete').removeClass('hidden');
                             MLS.ui.scrollPgTo(completed, 7);
+							var checkoutConfirm = $jQ('#vzn-checkout-confirm').position(); 
+							$jQ('#checkout-sidebar').animate({top:"+" + checkoutConfirm.top},600); // align cart summary with step 3 
                             MLS.checkout.update(r);
 
                             setTimeout(function(){
@@ -1002,14 +1004,14 @@ MLS.checkout = {
                     discountCode: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
                     giftCard1: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
@@ -1023,7 +1025,7 @@ MLS.checkout = {
 	                giftCard2: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
 	                },
@@ -1033,7 +1035,8 @@ MLS.checkout = {
 						digits: true,
 	                    minlength: 7,
 						maxlength: 7
-	                },                    cardNumberGC: {
+	                },                    
+					cardNumberGC: {
                         required: false,
                         noPlaceholder: true,
                         rangelength: [15, 16],
