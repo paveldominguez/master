@@ -834,6 +834,8 @@ MLS.checkout = {
                             completed.find('.step-info-summary').removeClass('hidden');
                             $jQ('#vzn-checkout-confirm .checkout-step .hide-complete').removeClass('hidden');
                             MLS.ui.scrollPgTo(completed, 7);
+							var checkoutConfirm = $jQ('#vzn-checkout-confirm').position(); 
+							$jQ('#checkout-sidebar').animate({top:"+" + checkoutConfirm.top},600); // align cart summary with step 3 
                             MLS.checkout.update(r);
 
                             setTimeout(function(){
