@@ -134,6 +134,13 @@ MLS.miniCart = {
             successCallback: MLS.miniCart.callbacks.updateItemSuccess
         }, opts);
 
+        if (this.options.disableFlyout)
+        {
+            $jQ("#nav-tab4").remove();
+            $jQ("#nav-cart").addClass("disabled");
+            return;
+        }
+
 		$d.find('.data-cart-add').bind('click', this.callbacks.addItem);
         $d.find('.data-cart-remove').bind('click', this.callbacks.removeItem);
 
