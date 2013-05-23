@@ -1004,14 +1004,14 @@ MLS.checkout = {
                     discountCode: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
                     giftCard1: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
@@ -1025,7 +1025,7 @@ MLS.checkout = {
 	                giftCard2: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
 	                },
