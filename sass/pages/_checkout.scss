@@ -1,6 +1,11 @@
 /* Checkout SCSS */
 
-.disabled
+#nav-cart.disabled
+{
+	cursor: default;
+}
+
+.checkout-sequence-wrap .disabled
 {
 	filter: alpha(opacity=30);
 	opacity: .3;
@@ -1456,6 +1461,7 @@
 				 						position: absolute;
 				 						right: 0px;
 				 						}
+				 					.add-discount-code,
 				 					.add-gift-card {
 				 						display: block;
 				 						width: 50%;
@@ -1468,11 +1474,11 @@
 				 						margin: 10px 0 0 0;
 				 						@include pdp-sprite(blue-more, false, 135px, 12px);
 				 						}
+				 					.add-discount-code.close,
 				 					.add-gift-card.close {
 				 						@include pdp-sprite(blue-less, false, 135px, 12px);
 				 						}
 				 					}
-
 				 				}
 
 				 			label { @include checkoutLabel; }
@@ -1488,10 +1494,24 @@
 				 					}
 				 				}
 
-				 			#discount-code-input {
+
+				 			.discount-code .discount-input input {
 				 				width: 70%;
 				 				float: left;
-				 				}
+				 			}
+
+				 			.discount-code form, 
+				 			.gift-card-acc form
+				 			{
+				 				display: none;
+				 			}
+
+				 			.discount-code form:first-child,
+				 			.gift-card-acc form:first-child
+				 			{
+				 				display: block;
+				 			}
+
 				 			.gift-card {
 				 				width:45%;
 				 				float: left;

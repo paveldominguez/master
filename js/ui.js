@@ -204,6 +204,7 @@ MLS.ui = {
             if (!hover) {
                 e.preventDefault();
             }
+
             var tab = $jQ(this).attr('tab');
             $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
             $jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
@@ -227,6 +228,11 @@ MLS.ui = {
 
         $jQ(scope + ' > .tab-menu > .nav-item').on({
             'mouseenter': function () {
+                if ($jQ(this).hasClass('disabled'))
+                {
+                    return true;
+                }
+
                 if ($jQ(this).hasClass('tab')) {
                     var tab = $jQ(this).attr('tab');
                     $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
@@ -240,6 +246,11 @@ MLS.ui = {
                 }
             },
             'click': function(e) {
+                if ($jQ(this).hasClass('disabled'))
+                {
+                    return true;
+                }
+
                 if ($jQ(this).hasClass('tab')) {
                     e.preventDefault();
                     var tab = $jQ(this).attr("tab");
