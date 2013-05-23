@@ -1,7 +1,7 @@
 MLS.cart.dd = {
     init: function () {
 
-        console.log("v.12");
+        //console.log("v.12");
 
         MLS.cart.dd.triggers.ddColor(); // needs to be initialized before the form trigger otherwise it will not update the form
         MLS.cart.dd.triggers.form();
@@ -23,13 +23,12 @@ MLS.cart.dd = {
             // update the custom color dd
             $jQ(".color a").click(function (){
 
-                console.log('click');
                 var $dd = $jQ(this).parents('form').find("[name=pdpColorSelect]"),
                 color = MLS.util.getUrlParam("color", $jQ(this).attr("href"));
                 $dd.val(color);
                 $jQ(".data-product-attributes").change(); // needs to triger the form change
 
-                console.log(' color');
+                //console.log(' color');
 
             })
         }

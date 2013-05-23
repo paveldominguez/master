@@ -1170,6 +1170,11 @@ $hdrOfferCollapsed: 55px;
         overflow: hidden;
         padding: 15px;
         z-index: 3501;
+
+        p.error
+        {
+            color: red;
+        }
     }
     .quick-view-header {
         @include column(3);
