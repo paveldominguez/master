@@ -770,7 +770,7 @@ MLS.checkout = {
                 $form = $jQ("form#vzn-checkout-billing");
             } // end if step 2 prevalidate
 
-            $form.validate(); // VALIDATE
+            var validator = $form.validate(); // VALIDATE
             var formValid = $form.valid();
 
             var completed;
@@ -783,9 +783,16 @@ MLS.checkout = {
                         $form.serialize(),
 
                         function (r) {
-                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            if (r.hasOwnProperty('error') && r.error.hasOwnProperty("responseHTML") && r.error.responseHTML != "") {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
                             }
+
+                            if (r.hasOwnProperty('error') && r.error.hasOwnProperty("inlineHTML")) {
+                                $jQ(".error.success").removeClass("success");
+
+                                validator.showErrors(r.error.inlineHTML);
+                                return;
+                            }
 
                             $jQ(".step-info-summary:eq(0)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
