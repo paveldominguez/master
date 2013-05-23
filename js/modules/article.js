@@ -1,6 +1,6 @@
 MLS.article = {
     init: function (d) {
-        console.log("v5");
+        //console.log("v5");
 
         if ($jQ('#article-modal-overlay').length == 0)
         {
@@ -28,24 +28,8 @@ MLS.article = {
         );
     },
 
-    checkForInlineErrors: function(r)
-    {
-        var $m = $jQ(".article-detail:visible"),
-            error = false;
-
-        if ($m.find(".close").length > 0 && r.hasOwnProperty('error') && r.error.inlineHTML != "")
-        {
-            // add inline error
-            $m.children("p.error").remove();
-            $m.prepend($jQ("<p></p>").addClass("error").html(r.error.inlineHTML));
-            error = true;
-        }
-
-        return error;
-    },
-
     displayContent : function (data) {
-        if (MLS.article.checkForInlineErrors(data))
+        if (MLS.errors.checkForInlineErrors(data))
         {
             return;
         }
