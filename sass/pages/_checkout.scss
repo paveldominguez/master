@@ -9,6 +9,22 @@
         .no-offer { display: inline-block; }
 
 		#site-container { min-height: 800px; } /* addition for "Begin Checkout" panel */
+	
+	/* site header overrides */
+	
+		#site-header {
+			background-color: #ebeeee;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.mls-nav {
+			.nav-tabs {
+				.nav-item {
+					border-left: none;
+					border-right: none;
+				}
+			}
+		}
 
 		.checkout-sequence-wrap {
 			@include clearfix();
