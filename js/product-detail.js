@@ -11,29 +11,29 @@ var pub = {
         this.mapProductDetailTabs();
         this.phpFeaturesGraphicTab();
         this.selectCompatibleProducts();
+        this.relatedStoriesSlider();
 
-        // ONLOAD page-wide ..........................................................................................
         $jQ("#pdp-size-select, #pdp-color-select, #pdp-add-to-cart-submit, .secondary-add-cart, #anchor-add-to-cart, #scale-device-comparison, #product-add-to-cart").uniform(); // make selects pretty
 
-       var prepSmall = new MLS.productDetail.pdpMobileContent(); // create mobile elements
+       var prepSmall = new MLS.productDetail.pdpMobileContent();
 
-        $jQ('.pdp-banner-shipping').each(function(){ // set dropdown display actions for offer banners
+        $jQ('.pdp-banner-shipping').each(function(){
             MLS.ui.dropdownDisplay(this);
         });
 
-        $jQ('.pdp-cart-shipping-item').each(function(){ // set dropdown display actions for shipping offers
+        $jQ('.pdp-cart-shipping-item').each(function(){
             MLS.ui.dropdownDisplay(this);
         });
 
-        MLS.ui.moreLessBlock(); // evaluate & initialize all more/less elements
-        MLS.productDetail.pdpColorOptions(); // layout add to cart section based on number of color options
+        MLS.ui.moreLessBlock();
+        MLS.productDetail.pdpColorOptions();
         MLS.productDetail.addCartValidation();
 
-        // ONLOAD hero & zoom panel ..................................................................................
         var pgWidth = document.body.clientWidth;
         var heroThumbs = window.document.getElementById('thumbs');
         var zoomThumbs = window.document.getElementById('zoom-thumbs');
-        $jQ(heroThumbs).flexslider({ // hero : flexslider install
+
+        $jQ(heroThumbs).flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: true,
@@ -50,7 +50,7 @@ var pub = {
             sync: "#thumbs"
         });
 
-        $jQ(zoomThumbs).flexslider({ // zoom : flexslider install
+        $jQ(zoomThumbs).flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: false,
@@ -59,6 +59,7 @@ var pub = {
             itemMargin: 10,
             asNavFor: '#zoom-focus'
         });
+
         $jQ('#zoom-focus').flexslider({
             animation: "slide",
             controlNav: false,
@@ -91,17 +92,6 @@ var pub = {
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
 
-        //Check compatibility link
-        $jQ('#cart-block .compat-link').on('click', function(e){
-            $jQ('.detail-tabs > li:not(.compatibility)').removeClass('active');
-            $jQ('.detail-tabs > li.compatibility').addClass('active');
-            $jQ('.detail-tabs-accordion > li:not(.compatibility)').removeClass('active');
-            $jQ('.detail-tabs-accordion > li.compatibility').addClass('active');
-            MLS.ui.scrollPgTo('#product-details', 60);
-            e.preventDefault();
-        });  
-
-        // ONSCROLL : introduce anchor bar when user is below the fold.............................
         if ($jQ(window).width() > 719) {
             $jQ(window).scroll(function() {
                 if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
@@ -115,8 +105,6 @@ var pub = {
             });
         }
 
-
-        // ON RESIZE..............................................................................................
         $jQ(window).resize(function () {
             var pgWidth = document.body.clientWidth;
             var heroThumbs = window.document.getElementById('thumbs');
@@ -126,7 +114,7 @@ var pub = {
 
             MLS.ui.moreLessBlock();
 
-            if ($jQ(window).width() > 719) { // reset anchor bar
+            if ($jQ(window).width() > 719) {
                 $jQ(window).scroll(function() {
                     if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
                         $jQ('#btf-anchor').addClass('show-anchor');
@@ -193,9 +181,6 @@ var pub = {
             $jQ('#add-cart-server-error').fadeOut(300); // fade out
         });
 
-        // BELOW THE FOLD 719- EVENTS .......................................................................................
-
-        // pdp accordions
         $jQ('.pdp-accordion').find('.acc-control').click(function(){
             MLS.ui.simpleAcc(this);
             setTimeout(function(){
@@ -227,18 +212,6 @@ var pub = {
             }
         });
 
-        $jQ('#lifestyles-alpha-slider').flexslider({
-            animation: 'slide',
-            controlsContainer: '#nav-alpha',
-            animationLoop: true,
-            controlNav: false,
-            directionNav: true,
-            slideshow: false,
-            animationSpeed: 500,
-            itemWidth: 387
-
-        });
-
         $jQ('#pdp-related-stories-module dd a').click(function(){
             var whichClick = $jQ(this).attr('id');
             var whichClickArray = whichClick.split('-');
@@ -254,32 +227,6 @@ var pub = {
                     $jQ(this).show();
                     return false;
                 }
-            });
-        });
-
-        $jQ('#lifestyles-tab-beta').one('click', function(){
-            $jQ('#lifestyles-beta-slider').flexslider({
-                animation: 'slide',
-                controlsContainer: '#nav-beta',
-                animationLoop: false,
-                controlNav: false,
-                directionNav: true,
-                slideshow: false,
-                animationSpeed: 500,
-                itemWidth: 516
-            });
-        });
-
-        $jQ('#lifestyles-tab-gamma').one('click', function(){
-            $jQ('#lifestyles-gamma-slider').flexslider({
-                animation: 'slide',
-                controlsContainer: '#nav-gamma',
-                animationLoop: false,
-                controlNav: false,
-                directionNav: true,
-                slideshow: false,
-                animationSpeed: 500,
-                itemWidth: 516
             });
         });
 
@@ -321,6 +268,32 @@ var pub = {
     },
 
     ellipsis : function(){
+    },
+
+    relatedStoriesSlider : function(){
+        var parentSelector = $jQ('#related'),
+            targetTabs = parentSelector.find('.tabs-content > li'),
+            tabNavigaton = parentSelector.find('.tabs-controller > li');
+
+            tabNavigaton.click(function(e){
+                e.preventDefault();
+                tabNavigaton.removeClass('active');
+                var currentNode = $jQ(this),
+                    currentIndex = currentNode.index();
+                    currentNode.addClass('active');
+                    targetTabs.removeClass('active');
+                    targetTabs.eq(currentIndex).addClass('active');
+            });
+
+        $jQ('.vzn-slide').flexslider({
+            animation: 'slide',
+            animationLoop: true,
+            controlNav: false,
+            directionNav: true,
+            slideshow: false,
+            animationSpeed: 500,
+            itemWidth: 387
+        });
     },
 
     pdpDetailTabs : function() {
@@ -376,7 +349,7 @@ var pub = {
             });
     },
 
-    pdpColorOptions : function(){ // determinies cart layout based on number of color options ........ BEGIN FUNCTIONS ..........
+    pdpColorOptions : function(){
         var numColors = $jQ('#product-colors').find('.color').length;
         if ( numColors > 6){
             $jQ('.light').addClass('reduced');
@@ -390,7 +363,8 @@ var pub = {
             }
         }
     },
-    pdpColorSelect : function(){ // animates color chips & connects them to form select
+
+    pdpColorSelect : function(){
         $jQ('#product-colors .color').on('click', function () {
             if($jQ(this).hasClass('out-of-stock')) {
                 return false;
@@ -404,11 +378,12 @@ var pub = {
             var choice =  $jQ('#pdp-color-select option:selected').text();
         });
     },
-    pdpMobileContent:  function () { // copies loaded data into mobile only elements
-    // hero section
-        $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header'); // cart header
-        $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping'); // shipping & offers
+
+    pdpMobileContent:  function () {
+        $jQ('#pdp-cart-header').clone().appendTo('#pdp-mobile-cart-header');
+        $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping');
     },
+
     thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
         var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
         var thmbWd = (countThmb * 55);
