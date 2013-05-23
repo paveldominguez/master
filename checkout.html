@@ -642,33 +642,111 @@
 
 	                                <div class="form-input-wrap zip">
 									    <label class="form-item-title" for="bill-zip" >Zip Code</label>
-									    <input name="billingZip" type="text" id="bill-zip"class="checkout-input SaS" placeholder="Zip Code" tabindex="135">
+									    <input name="billingZip" type="text" id="bill-zip"class="checkout-input SaS" placeholder="Zip Code" tabindex="135" />
 	                                </div>
 	                            </div><!-- end billing-address-block -->
 	                        </div><!-- end new-billing-info-form -->
 	                    </form>
 
                         <div class="checkout-discount-block">
-                            <form id="vzn-checkout-code" class="checkout-accordion discount-code">
+                            <div id="vzn-checkout-code" class="checkout-accordion discount-code">
 				                <div class="acc-control">
 								    Do you have a discount code?
 								    <div class="icon open"></div>
                                 </div>
+
                                 <div class="acc-info">
-								    <div id="discount-code-input-block" class="discount-input">
-									   <label for="discount-code-input">Discount Code</label>
-									   <input name="discountCode" type="text" id="discount-code-input" class="ignore" tabindex="150" placeholder="Discount Code">
-									   <input type="submit" id="apply-discount-code" tabindex="155" value="apply">
-								    </div>
+	                                <form novalidate="novalidate">
+									    <div id="discount-code-1-input-block" class="discount-input">
+										   <label for="discount-code-1-input">Discount Code</label>
+										   <input name="discountCode1" type="text" id="discount-code-1-input" class="ignore" tabindex="150" placeholder="Discount Code" />
+										   <input type="submit" id="apply-discount-code-1" tabindex="155" value="apply" />
+									    </div>
 
-								    <div id="discount-code-success-block" class="discount-success">
-									   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
-									   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
-								    </div>
-                                </div>
-                            </form><!-- end accordion discount code -->
+									    <div id="discount-code-1-success-block" class="discount-success">
+									    	<div></div>
+									    	<!-- this comes in the response
+										   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+										   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+											-->
+											<div id="add-discount-code-2" class="acc-control add-discount-code">Add another Discount Code
+											</div>
+									    </div>
+	                                </form>
 
-                            <form id="vzn-checkout-gift" class="checkout-accordion gift-card-acc">
+	                                <form novalidate="novalidate">
+									    <div id="discount-code-2-input-block" class="discount-input">
+										   <label for="discount-code-2-input">Discount Code</label>
+										   <input name="discountCode2" type="text" id="discount-code-2-input" class="ignore" tabindex="150" placeholder="Discount Code" />
+										   <input type="submit" id="apply-discount-code-2" tabindex="155" value="apply" />
+									    </div>
+
+									    <div id="discount-code-2-success-block" class="discount-success">
+									    	<div></div>
+									    	<!-- this comes in the response
+										   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+										   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+											-->
+											<div id="add-discount-code-3" class="acc-control add-discount-code">Add another Discount Code
+											</div>
+									    </div>
+	                                </form>
+
+	                                <form novalidate="novalidate">
+									    <div id="discount-code-3-input-block" class="discount-input">
+										   <label for="discount-code-3-input">Discount Code</label>
+										   <input name="discountCode3" type="text" id="discount-code-3-input" class="ignore" tabindex="150" placeholder="Discount Code" />
+										   <input type="submit" id="apply-discount-code-3" tabindex="155" value="apply" />
+									    </div>
+
+									    <div id="discount-code-3-success-block" class="discount-success">
+									    	<div></div>
+									    	<!-- this comes in the response
+										   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+										   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+											-->
+											<div id="add-discount-code-4" class="acc-control add-discount-code">Add another Discount Code
+											</div>
+									    </div>
+	                                </form>
+
+	                                <form novalidate="novalidate">
+									    <div id="discount-code-4-input-block" class="discount-input">
+										   <label for="discount-code-4-input">Discount Code</label>
+										   <input name="discountCode4" type="text" id="discount-code-4-input" class="ignore" tabindex="150" placeholder="Discount Code" />
+										   <input type="submit" id="apply-discount-code-4" tabindex="155" value="apply" />
+									    </div>
+
+									    <div id="discount-code-4-success-block" class="discount-success">
+									    	<div></div>
+									    	<!-- this comes in the response
+										   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+										   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+											-->
+											<div id="add-discount-code-5" class="acc-control add-discount-code">Add another Discount Code
+											</div>
+									    </div>
+	                                </form>
+
+	                                <form novalidate="novalidate">
+									    <div id="discount-code-5-input-block" class="discount-input">
+										   <label for="discount-code-5-input">Discount Code</label>
+										   <input name="discountCode5" type="text" id="discount-code-5-input" class="ignore" tabindex="150" placeholder="Discount Code" />
+										   <input type="submit" id="apply-discount-code-5" tabindex="155" value="apply" />
+									    </div>
+
+									    <div id="discount-code-5-success-block" class="discount-success">
+									    	<div></div>
+									    	<!-- this comes in the response
+										   <span class="success-msg">Success!  </span>Discount code #<span id="confirmed-discount-code" class="confirmed">12345</span> credited to your account.
+										   <a href="#" id="remove-discount-code" class="discount-remove">Remove</a>
+											-->
+									    </div>
+	                                </form>
+                            	</div>
+                            </div><!-- end accordion discount code -->
+
+                            <div id="vzn-checkout-gift" class="checkout-accordion gift-card-acc">
                                 <div id="begin-gift-card" class="acc-control">
 								    Do you have a gift card?
 								    <div class="icon open"></div>
@@ -685,27 +763,31 @@
 								    </div><!-- end checkout dropdown -->
                                 </div><!-- end acc control -->
 
-
-									<div class="acc-info">
+                                <div class="acc-info">
+									<form novalidate="novalidate">
 									    <div id="gift-card-1-input-block" class="discount-input">
 	                                        <div class="label-block">
 	                                            <label for="gift-card-1-input" class="gift-card">Gift Card</label>
 	                                            <label for="gift-card-1-pin" class="gift-pin">Gift Card PIN</label>
 										   </div>
 
-										   <input name="giftCard1" type="text" id="gift-card-1-input" class="gift-card ignore GCV" tabindex="160" placeholder="Card Number">
-										   <input name="giftCard1Pin" type="text" id="gift-card-1-pin" class="gift-pin ignore GCV" tabindex="165" placeholder="PIN">
+										   <input name="giftCard1" type="text" id="gift-card-1-input" class="gift-card ignore" tabindex="160" placeholder="Card Number">
+										   <input name="giftCard1Pin" type="text" id="gift-card-1-pin" class="gift-pin ignore" tabindex="165" placeholder="PIN">
 										   <input type="submit" id="apply-gift-card-1" tabindex="166" value="apply">
 									    </div>
 
 									    <div id="gift-card-1-success-block" class="discount-success">
+									    	<!--
 										   <span class="success-msg">Success!  </span>Gift card #<span id="confirmed-gift-card-1" class="confirmed">12345</span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-1-amt" class="confirmed amt">50</span></span>
 										   <a href="#" id="remove-gift-card-1" class="discount-remove">Remove</a>
+											-->
+											<div></div>
 										   <div id="add-gift-card-2" class="acc-control add-gift-card">Add another Gift Card
 										   </div>
 										</div>
-									</div>
-									<div class="acc-info">
+									</form>
+
+									<form novalidate="novalidate">
 										<div id="gift-card-2-input-block" class="discount-input">
 											<div class="label-block">
 												<label for="gift-card-2-input" class="gift-card">Gift Card</label>
@@ -717,12 +799,16 @@
 											<input type="submit" id="apply-gift-card-2" tabindex="176" value="apply">
 										</div>
 										<div id="gift-card-2-success-block" class="discount-success">
+											<!--
 											<span class="success-msg">Success!  </span>Gift card <span class="confirmed">#<span id="confirmed-gift-card-2" class="confirmed">12345</span></span> credited to your account: <span class="confirmed">$<span id="confirmed-gift-card-2-amt" class="confirmed amt">25</span></span>
 											<a href="#" id="remove-gift-card-2" class="discount-remove">Remove</a>
+											-->
+											<div></div>
 										</div>
-									</div>
+									</form>
+								</div>
 								<!-- end acc-info -->
-						  	</form><!-- end accordion gift cards -->
+						  	</div><!-- end accordion gift cards -->
 					  	</div><!-- end discount block -->
 				    </div><!-- end step-info-block -->
 
