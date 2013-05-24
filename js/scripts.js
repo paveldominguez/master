@@ -148,6 +148,12 @@ MLS = {
             MLS.miniCart.init(null, MLS.checkout.options);
         }
     },
+    'checkout-success-page': {
+        init : function () {
+            MLS.checkoutSuccess.init();
+            MLS.miniCart.init();
+        }
+    },
     'content-landing-page' : {
         init : function () {
             //searchResults.styleDropDown();
