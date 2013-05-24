@@ -10,7 +10,7 @@ MLS.util = {
             param,
             j = 0;
 
-        console.log(href);
+        // console.log(href);
 
         if (href.match(/\?/)) {
             // make params based on the url located in the a[href]
