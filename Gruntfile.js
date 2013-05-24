@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         banner: '/*' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
       },
       dist: {
-        src: ['js/lib/jquery.min.js', 'js/foundation/app.js', 'js/lib/respond.min.js', 'js/lib/response.min.js', 'js/lib/jquery.flexslider.min.js', 'js/lib/jquery.tinyscrollbar.min.js', 'js/lib/jquery.uniform.min.js', 'js/lib/jquery.validate.js', 'js/lib/typeahead.min.js', 'js/lib/select.js', 'js/scripts.js', 'js/content-grid.js', 'js/content-filter.js', 'js/category-landing.js', 'js/home.js', 'js/modules/article.js', 'js/modules/modal.js', 'js/modules/mini-cart.js', 'js/lifestyle.js', 'js/product-detail.js', 'js/search-results.js', 'js/special-offers.js', 'js/cart.js', 'js/modules/cart-dd.js', 'js/checkout.js', 'js/mls-ajax.js', 'js/404.js', 'js/util.js', 'js/ui.js'],
+        src: ['js/lib/jquery.min.js', 'js/foundation/app.js', 'js/lib/respond.min.js', 'js/lib/response.min.js', 'js/lib/jquery.flexslider.min.js', 'js/lib/jquery.tinyscrollbar.min.js', 'js/lib/jquery.uniform.min.js', 'js/lib/jquery.validate.js', 'js/lib/typeahead.min.js', 'js/lib/select.js', 'js/scripts.js', 'js/content-grid.js', 'js/content-filter.js', 'js/category-landing.js', 'js/home.js', 'js/modules/article.js', 'js/modules/modal.js', 'js/modules/mini-cart.js', 'js/lifestyle.js', 'js/product-detail.js', 'js/search-results.js', 'js/special-offers.js', 'js/cart.js', 'js/modules/cart-dd.js', 'js/checkout.js', 'js/checkout-success.js', 'js/mls-ajax.js', 'js/404.js', 'js/util.js', 'js/ui.js'],
         dest: 'js/all.js'
       }
     },

@@ -41,13 +41,10 @@
   <!-- TEMPLATE FRAGMENT INCLUDE FUNCTION - DO NOT INCLUDE THIS CODE IN FINAL TEMPLATE -->
 
 </head>
-<body id="checkout-success-page">
+<body id="checkout-success-page" class="checkout-success-page">
 <div id='site-container'>
 <!-- BEGIN TEMPLATE FRAGMENT REFERENCE - DO NOT INCULUDE THIS CODE IN FINAL TEMPLATE -->
 	<div class="temp-pdp-header">
-  
-  
-  
   		<script type="text/javascript">
     		includeFragment('inc/header.html');
   		</script>
@@ -366,28 +363,20 @@
 	</div>
 </section>
 
-<section id="related"><!-- RELATED STORIES & GUIDES -->
-	<article id="pdp-related-stories-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
-        <script>
-    		includeFragment("inc/fragments/related-stories-module.html");
-    	</script>
-    </article>
-</section><!-- end related stories & guides section -->
+<!-- begin Related Stories module -->
+<script>
+    includeFragment("inc/fragments/related-stories-module.html");
+</script>
+<!-- end Related Stories module -->
 
 
 
+<!-- begin others also bought section -->
 
-<section id="others-bought"><!-- OTHERS ALSO BOUGHT -->
-	<article id="pdp-others-bought-module" class="shop-products-module category-section hide-for-small hide-for-mobile">
-        <header class="content-header">
-        	<h1 class="title"><strong>Others</strong> Also Bought<a href="#view-all" title="View All">See All</a></h1>
-            <div class="slide-nav"></div>
-        </header>
-        <script>
-    		includeFragment("inc/fragments/shop-product-module.html");
-    	</script>
-    </article>
-</section><!-- end others also bought section -->
+<script>
+	includeFragment("inc/fragments/shop-product-module.html");
+</script>
+<!-- end others also bought section -->
 
 
 
