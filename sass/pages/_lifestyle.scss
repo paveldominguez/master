@@ -522,6 +522,10 @@ $colorLifestyleLight: #DCDEDE;
                             .title {
                                 margin: 0 0 4px;
                             }
+                            .rating {
+                                @include checkoutContent;
+                                line-height: 18px;
+                            }
                         }
                         .price {
                             color: #3C4045;

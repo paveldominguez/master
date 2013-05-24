@@ -1,6 +1,5 @@
 /* Product Detail SCSS ----- */
 
-
 .product-detail {
     #site-container { 
         position: relative;
@@ -2742,21 +2741,20 @@
                     .simple-price {
                         font-family: $fontArial;
                         font-size:12px;
+                        line-height: 16px;
                         color: $cartGreyDk;
                         font-weight: bold;
                         position: absolute;
                         bottom:5%; left: 10%;
                         }
 
-                    .simple-ratings {
+                    .rating {
                         width:25%;
                         position:absolute;
-                        bottom:5%; right: 10%;
-
-                        img {
-                            width:100%;
-                            height: auto;
-                            }
+                        bottom:5%; 
+                        right: 10%;
+                        @include checkoutContent;
+                        line-height: 18px;
                         }
                     }
                 }
