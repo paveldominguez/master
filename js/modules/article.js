@@ -14,7 +14,7 @@ MLS.article = {
 
            var data = $jQ(this).attr("href").split("?")[1].split("#")[0];
 
-           console.log("data: ", data);
+           // console.log("data: ", data);
 
            MLS.article.getArticleContent(data);
         });
