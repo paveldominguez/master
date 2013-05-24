@@ -105,7 +105,7 @@ MLS = {
             win.on('resize', function () { // this is for debugging purposes, can be removed when no longer needed
                 debounce(function () {
                     navHelpHandler(needHelp, opts);
-                    console.log('Window width: %dpx', win.width());// DEBUG FOR MEDIA QUERIES, WILL NOT BE IN FINAL JS
+                    // console.log('Window width: %dpx', win.width());// DEBUG FOR MEDIA QUERIES, WILL NOT BE IN FINAL JS
                 }, 300);
             });
         },

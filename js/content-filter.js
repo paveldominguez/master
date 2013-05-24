@@ -171,6 +171,12 @@ MLS.contentFilter = (function () {
                 window.location.hash = MLS.util.setHash(href);
                 pub.processRequest(params);
 
+                // mobile requirement, close the overlay
+                var $close = $jQ(this).parents(".filter-panels").find(".close");
+                if ($close.length > 0)
+                {
+                    $close.click();
+                }
             },
 
             /*-----  End of Facet click  ------*/
