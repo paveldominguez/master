@@ -93,15 +93,6 @@ var pub = {
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
 
-        $jQ('#cart-block .compat-link').on('click', function(e){
-            $jQ('.detail-tabs > li:not(.compatibility)').removeClass('active');
-            $jQ('.detail-tabs > li.compatibility').addClass('active');
-            $jQ('.detail-tabs-accordion > li:not(.compatibility)').removeClass('active');
-            $jQ('.detail-tabs-accordion > li.compatibility').addClass('active');
-            MLS.ui.scrollPgTo('#product-details', 60);
-            e.preventDefault();
-        });  
-
         if ($jQ(window).width() > 719) {
             $jQ(window).scroll(function() {
                 if ($jQ(window).scrollTop() > $jQ('#product-details').offset().top - 60) {
@@ -273,6 +264,7 @@ var pub = {
                     var currentNode = $jQ(this),
                     targetTab = tabsParent.find('li').filter(function(){return $jQ(this).data('tabname') == currentNode.data('tabname');}).find('span');
                     targetTab.click();
+                    MLS.ui.scrollPgTo(targetTab, 100);
                 });
             };
             activeTab(reviewsBTN);
@@ -415,9 +407,6 @@ var pub = {
                 'margin-left': '0px',
             });
         }
-    },
-    heroLinktoTab : function(targetLink){ // link to tabs form hero section .............................................................
-        MLS.ui.scrollPgTo('#product-details', 80); //scroll page to open tab
     },
     createZoomPanel : function (which) { // create zoom panel ...........................................................................
         var zoomBlock = window.document.getElementById('zoom-block'); // gather requirements
@@ -565,7 +554,7 @@ var pub = {
                     keyword : keyword
                 },
                 function(data){
-
+                    typeAheadList.html(data.success.responseHTML);
                 }
             );
         });
