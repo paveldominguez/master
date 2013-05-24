@@ -11,7 +11,7 @@ $colorLifestyleLight: #DCDEDE;
         background-color: #FFF;
         width: 255px;
         position: absolute;
-        top: 297px;
+        top: 298px;
         left: 0;
         z-index: 250;
         .guided-nav-heading {
@@ -521,6 +521,10 @@ $colorLifestyleLight: #DCDEDE;
                         .details {
                             .title {
                                 margin: 0 0 4px;
+                            }
+                            .rating {
+                                @include checkoutContent;
+                                line-height: 18px;
                             }
                         }
                         .price {
