@@ -776,22 +776,67 @@ h1,h2,h3,h4,h5,h6 {
             &.active{
                 visibility: visible;
             }
+            .trendingLifestyleSlider{
+                border: 1px solid #ccc;
+                border-left: none;
+                border-right: none;
+            }
         }
         .slides{
             margin:0;
         }
         .slide{
-            height: 510px;
+            height: 508px;
             .tile{
                 float: left;
-                border: 1px solid #f8f8f8;
+                position: relative;
                 border-bottom: none;
-                border-left: none;
+                border-top: 1px solid #ccc;
+                border-left: 1px solid #ccc;
                 clear: right;
                 display: block;
-                height: 225px;
-                width: 225px;
+                height: 254px;
+                width: 254px;
                 padding: 15px;
+                border-right: 1px solid #ccc;
+                &.first{
+                    border-top: none;
+                }
+                .read-story{
+                    position: absolute;
+                    bottom: 15px;
+                    a{
+                        display: block;
+                        font-family: arial;
+                        font-weight: bold;
+                        font-size: 10px;
+                        color: #0066cc;
+                        text-transform: uppercase;
+                    }
+                }
+                &.guide{
+                    background: url(../img/home/fpo/lifestyle-guide.jpg) center center no-repeat;
+                    .teaser{
+                        padding: 20px;
+                        font-family: "Verizon Apex Book";
+                        font-size: 32px;
+                        color: #eee;
+                        line-height: 36px;
+                    }
+                    .read-story{
+                    position: absolute;
+                    bottom: 25px;
+                    left: 40px;
+                    a{
+                        display: block;
+                        font-family: arial;
+                        font-weight: bold;
+                        font-size: 10px;
+                        color: #fff;
+                        text-transform: uppercase;
+                    }
+                }
+                }
             }
             .featured-tile{
                 position: relative;
@@ -799,7 +844,9 @@ h1,h2,h3,h4,h5,h6 {
                 height: 480px;
                 width: 480px;
                 padding: 15px;
-                border: 1px solid #f8f8f8;
+                border: 1px solid #ccc;
+                border-top: none;
+                border-bottom: none;
                 border-right: none;
                 border-left: none;
                 margin-right: 30px;
