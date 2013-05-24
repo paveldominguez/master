@@ -49,7 +49,7 @@ MLS.miniCart = {
             if (data.success.itemCount > 0 && data.success.itemCount < 4 ) {
                 $jQ('.minicart-next').hide();
             } else if (data.success.itemCount > 3) {
-                $jQ('.minicart-item:eq(0)').attr('data-vpos', 0);
+                $jQ('.minicart-item').eq(0).attr('data-vpos', 0);
                 $jQ('.minicart-item').each(function() {
                     MLS.ui.vScroll(this, 0);
                 });
@@ -80,7 +80,7 @@ MLS.miniCart = {
                     maxScrollPos = - (Math.ceil(inMini / 3) - 1) * 247,
 
                     // get current position
-                    curPos = $jQ('.minicart-item:eq(0)').attr('data-vpos'),
+                    curPos = $jQ('.minicart-item').eq(0).attr('data-vpos'),
 
                     //calculate new offset before actually moving
                     newPos = curPos - 247;
@@ -99,7 +99,7 @@ MLS.miniCart = {
 
             } else { // if scroll down
                 // get current position
-                var curPos = $jQ('.minicart-item:eq(0)').attr('data-vpos'),
+                var curPos = $jQ('.minicart-item').eq(0).attr('data-vpos'),
                     curPosParse = Math.ceil(curPos),
 
                     //calculate new offset before actually moving
@@ -151,9 +151,17 @@ MLS.miniCart = {
 
         $jQ("#minicart-form input:submit").uniform();
 
-        if ($jQ("#minicart-item-list").children("li").length == 0)
+        var itemCount = $jQ("#minicart-item-list").children("li").length;
+        if (itemCount == 0)
         {
             $tabs = $jQ('#nav-cart, .mini-cart').addClass("empty");
+        } else (itemCount > 3)
+        {
+            $jQ('.minicart-item').eq(0).attr('data-vpos', 0);
+            $jQ('.minicart-item').each(function() {
+                MLS.ui.vScroll(this, 0);
+            });
+            $jQ('.minicart-next').addClass('on');
         }
 
         // next 3 items
