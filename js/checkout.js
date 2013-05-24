@@ -1,4 +1,8 @@
 MLS.checkout = {
+    options: { // minicart options
+        disableFlyout: true
+    },
+
     updateShippingOptions: function(zipcode) {
         MLS.ajax.sendRequest(
             MLS.ajax.endpoints.CHECKOUT_SHIPPING_OPTIONS,
@@ -106,6 +110,7 @@ MLS.checkout = {
         // CHECKOUT only
         // MLS.checkout.beginCheckoutValidation();
         MLS.checkout.mainCheckoutValidation();
+
         // MLS.checkout.checkoutSidebarScroll(pgWidth); // set scrolling
         MLS.checkout.smallScreenContent(); // prepare small device content
         $jQ('#checkout-sequence .selector').find('span').addClass('select-placeholder');    // enhance initial uniform.js select style
@@ -153,6 +158,10 @@ MLS.checkout = {
 
         // checkout accordions
         $jQ('.checkout-accordion .acc-control').click(function() {
+            if ($jQ(this).parents('.checkout-accordion').hasClass("disabled"))
+            {
+                return false;
+            }
             MLS.ui.simpleAcc(this);
         });
 
@@ -184,6 +193,13 @@ MLS.checkout = {
 
     appliedGiftCards: 0,
 
+    disabledCallback: function(e)
+    {
+        e.preventDefault();
+        $jQ(e.target).blur();
+        return false;
+    },
+
     initGiftCard: function() {
         var $form = $jQ("#vzn-checkout-gift"),
             $billing = $jQ("#vzn-checkout-billing"),
@@ -203,6 +219,7 @@ MLS.checkout = {
 
         $billing.find(".bill-account").click(function(e) {
             var $self = $jQ(this);
+
             if ($self.hasClass("disabled"))
             {
                 return false;
@@ -216,6 +233,8 @@ MLS.checkout = {
                     $form.removeClass("disabled");
                 }
             }, 100);
+
+            return false;
         });
 
         $billing.find(".bill-card").click(function(e) {
@@ -478,6 +497,159 @@ MLS.checkout = {
     },
 
     giftCardSequence : function() { // main checkout sequence : step 2 .............................................................
+        // toggle the message & form
+        $jQ('#begin-gift-card').click(function(e){ //grab CC info (if present) and copy to GC form
+            if ($jQ("#vzn-checkout-gift").hasClass("disabled"))
+            {
+                return false;
+            }
+
+            var ecValid = true;
+            $jQ('#enter-card-info').find('.selector').each(function(){ // validate main cc selects first
+                var selectsValid = MLS.checkout.validateSelect(this);
+                if(selectsValid == false) {
+                    ecValid = false;
+                }
+            });
+
+            $jQ('#vzn-checkout-billing').validate(); // validate the rest
+        });
+
+        $jQ('.checkout-discount-block .add-gift-card, .checkout-discount-block .add-discount-code').click(function(){  // add another gift card 
+            if ($jQ("#vzn-checkout-gift").hasClass("disabled"))
+            {
+                return false;
+            }
+
+            $jQ(this).toggleClass('close'); 
+            $jQ(this).parents("form").next('form').slideToggle(300); 
+        });
+
+        $jQ("#vzn-checkout-code form").each(function() {
+            var $form = $jQ(this);
+            $form.find("input[type=submit]").click(function(e) {
+                var $self = $jQ(this);
+                e.preventDefault();
+                $form.validate();
+
+                $self.valid() &&
+                MLS.ajax.sendRequest(
+                    MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
+                    $form.serialize(),
+                    function(r) {
+                        if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                        }
+
+                        $form.find(".discount-success div:eq(0)").html(r.success.responseHTML).parent().slideToggle(300).find("a.discount-remove").click(function(ev) {
+                            var $remove = $jQ(this);
+                            ev.preventDefault();
+
+                            MLS.ajax.sendRequest(
+                                MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
+                                $remove.attr("href").split("#")[0].split("?")[1],
+                                function(r) {
+                                    $form.find("input.valid").removeClass('valid').addClass('hasPlaceholder');
+                                    $remove.parents('.discount-success').prev('.discount-input').slideToggle(300);
+                                    $remove.parents('.discount-success').slideToggle();
+                                    MLS.checkout.update(r); // update totals
+                                }
+                            );
+
+                            return false;
+                        });
+
+                        $self.parents('.discount-input').slideToggle(300);
+                        // $self.parents('.discount-input').next('.discount-success').slideToggle(300);
+
+                        MLS.checkout.update(r); // update totals
+                    }
+                );
+
+                return false;
+            });
+        });
+
+        $jQ("#vzn-checkout-gift form").each(function() {
+            var $form = $jQ(this);
+
+            $form.find('input[type=submit]').click(function(e){ // apply & validate gift card 1
+                e.preventDefault();
+                if ($jQ("#vzn-checkout-gift").hasClass("disabled"))
+                {
+                    return false;
+                }
+
+                var gcValid = true,
+                    $self = $jQ(this); // staying optimistic
+
+                $self.parents('.checkout-discount-block').find('.selector').each(function(){ // validate selects first
+                    var selectsValid = MLS.checkout.validateSelect(this);
+                    if(selectsValid == false) {
+                        gcValid = false;
+                    }
+                });
+
+                $form.validate(); // validate form
+                if ($form.find('input[type=text]').valid() && gcValid == true ) {
+                    MLS.ajax.sendRequest(
+                        MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                        $form.serialize(),
+                        function(r) {
+                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                                return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                            }
+
+                            MLS.checkout.appliedGiftCards++; // increase applied discounts
+                            MLS.checkout.checkBTATabs();
+
+                            $form.find(".discount-success div:eq(0)").html(r.success.responseHTML).parent().slideToggle(300).find("a.discount-remove").click(function(ev) {
+                                // re-initialize remove buttons
+                                var $remove = $jQ(this);
+                                e.preventDefault();
+                                if ($form.hasClass("disabled"))
+                                {
+                                    return false;
+                                }
+
+                                MLS.ajax.sendRequest(
+                                    MLS.ajax.endpoints.CHECKOUT_APPLY_GIFTCARD,
+                                    $remove.attr("href").split("#")[0].split("?")[1],
+                                    function(r) {
+                                        if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                                            return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                                        }
+
+                                        MLS.checkout.appliedGiftCards--; // decrease applied discounts
+                                        MLS.checkout.checkBTATabs();
+
+                                        $form.find("input.valid").removeClass('valid').addClass('hasPlaceholder');
+                                        
+                                        // $jQ('.gift-card-cc-block').slideToggle(300); // what is this one?
+                                        $remove.parents('.discount-success').prev('.discount-input').slideToggle();
+                                        $remove.parents('.discount-success').slideToggle();
+
+                                        MLS.checkout.update(r); // update totals
+                                    }
+                                );
+
+                                return false;
+                            });
+
+                            // $jQ('.gift-card-cc-block').slideToggle(300); // what's this one?
+                            $self.parents('.discount-input').slideToggle();
+                            // $self.parents('.discount-input').next('.discount-success').slideToggle();
+
+                            MLS.checkout.update(r); // update totals
+                        }
+                    );
+                }
+
+                return false;
+            });
+        });
+
+        /*
         $jQ('#apply-discount-code').click(function(e){ //  apply & validate discount code
             var $self = $jQ(this);
             e.preventDefault();
@@ -685,6 +857,7 @@ MLS.checkout = {
 
             return false;
         });
+        */
     },
 
     validateSelect : function(selector, ignored) { // CHECKOUT  validation/error messages for custom selects created with uniform.js
@@ -754,11 +927,11 @@ MLS.checkout = {
 
             if (which == 'billing-info-complete') { // STEP 2 prevalidate
                 var signedinBranch = 'new';
-                var seq = document.getElementById('checkout');
+                var seq = $jQ('#checkout');
                 if($jQ('.billing-complete').is(':not(.blank)')){ // if second time through, remove previous info
                     $jQ('#name-on-card').empty();
                     $jQ('#bill-address-summary-name').empty();
-                    }
+                }
                 if ($jQ(seq).hasClass('signed-in')){ // check for saved info
                     if ($jQ('#bill-to-account').is(':checked') || $jQ('#choose-saved-card').is(':checked')) { // saved info, no validation required
                         signedinBranch = 'saved';
@@ -793,6 +966,24 @@ MLS.checkout = {
                                 validator.showErrors(r.error.inlineHTML);
                                 return;
                             }
+
+                            // billingHTML
+                            // step 2 restart
+                            $jQ("#vzn-checkout-billing").replaceWith(r.success.billingHTML);
+                            $jQ("#vzn-checkout-billing").find("input:submit, input:checkbox, select.checkout-input, select.cart-revise-qty,  .cart-item-qty, .checkout-final, .next-step-input").uniform(); // style form elements
+
+                            $jQ("#vzn-checkout-billing").find('.checkout-dropdown').each(function(){ // display rules for inline dropdowns
+                                MLS.ui.dropdownDisplay(this);
+                            });
+
+                            $jQ("#vzn-checkout-billing").find('.special-offer-block').each(function(){ // display rules for offer dropdowns
+                                MLS.ui.dropdownDisplay(this);
+                            });
+
+                            MLS.checkout.mainCheckoutValidation($jQ("#vzn-checkout-billing"));
+                            MLS.checkout.stepTwoSequence();
+                            MLS.checkout.initGiftCard();
+                            // end step 2 restart
 
                             $jQ(".step-info-summary:eq(0)").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
@@ -897,8 +1088,8 @@ MLS.checkout = {
     },
 */
 
-    mainCheckoutValidation : function() { // CHECKOUT
-        $jQ('#checkout-sequence form').each(function() {
+    mainCheckoutValidation : function(forms) { // CHECKOUT
+        $jQ(forms || '#checkout-sequence form').each(function() {
             $jQ(this).validate({
                 ignore: '.ignore, :hidden',
                 success: function(label){
@@ -1004,14 +1195,14 @@ MLS.checkout = {
                     discountCode: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
                     giftCard1: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
                     },
@@ -1025,7 +1216,7 @@ MLS.checkout = {
 	                giftCard2: {
 	                    required: false,
 	                    noPlaceholder: true,
-						alphanumeric: true,
+						digits: true,
 	                    minlength: 8,
 						maxlength: 16
 	                },
@@ -1035,7 +1226,8 @@ MLS.checkout = {
 						digits: true,
 	                    minlength: 7,
 						maxlength: 7
-	                },                    cardNumberGC: {
+	                },                    
+					cardNumberGC: {
                         required: false,
                         noPlaceholder: true,
                         rangelength: [15, 16],

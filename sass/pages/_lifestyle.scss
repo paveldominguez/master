@@ -11,7 +11,11 @@ $colorLifestyleLight: #DCDEDE;
         background-color: #FFF;
         width: 255px;
         position: absolute;
+<<<<<<< HEAD
         top: 298px;
+=======
+        top: 297px;
+>>>>>>> 1b384ee33e91f1c53cda3e45377b8c495016b750
         left: 0;
         z-index: 250;
         .guided-nav-heading {
@@ -221,7 +225,7 @@ $colorLifestyleLight: #DCDEDE;
                 @include background-image(linear-gradient(rgba(84, 90, 98, 1.0), rgba(59, 63, 69, 1.0))); // this needs fallback to image for ie8;
                 border: 1px solid $colorLifestyleGray;
                 display: table;
-                margin: 0;
+                margin: 80px 0 0 0;
                 width: 70%;
                 height: 55px;
                 color: #FFF;
@@ -443,7 +447,9 @@ $colorLifestyleLight: #DCDEDE;
                         family: $fontVzwBook;
                         size: 18px;
                         weight: normal;
+
                     }
+                    display: block;
                 }
                 .copy {
                     margin: 12px 0 4px;

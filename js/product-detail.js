@@ -26,6 +26,7 @@ var pub = {
         });
 
         MLS.ui.moreLessBlock();
+        MLS.productDetail.moreLessBlockTruncate();
         MLS.productDetail.pdpColorOptions();
         MLS.productDetail.addCartValidation();
 
@@ -91,6 +92,15 @@ var pub = {
             animationSpeed: 500,
             itemWidth: $jQ(window).outerWidth() * 0.85
         });
+
+        $jQ('#cart-block .compat-link').on('click', function(e){
+            $jQ('.detail-tabs > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs > li.compatibility').addClass('active');
+            $jQ('.detail-tabs-accordion > li:not(.compatibility)').removeClass('active');
+            $jQ('.detail-tabs-accordion > li.compatibility').addClass('active');
+            MLS.ui.scrollPgTo('#product-details', 60);
+            e.preventDefault();
+        });  
 
         if ($jQ(window).width() > 719) {
             $jQ(window).scroll(function() {
@@ -240,7 +250,9 @@ var pub = {
             MLS.productDetail.vznHide(hideThis);
         });
     },
-
+    moreLessBlockTruncate : function(){
+        $jQ('.pdp-overview-content .more-less-block .two-thirds').truncate(500);
+    },
     pdpFeaturesShowMore : function(){
         var featuresContainer = $jQ('.pdp-features-content'),
             showMoreCTA = featuresContainer.find('.more-less-link');
