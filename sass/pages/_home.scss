@@ -1054,7 +1054,27 @@ $btfHiliteBg : #2a2d32;
             }
         }
     }
+    .home-mobile{
+        article.category-section{
+            margin-left: 35px;
+            padding-top: 40px;
+            .content-header .title a{
+                padding-right:30px;
+            }
+            .categories{
+                margin: 0 35px 0 0;
+            }
+        }
+        .flex-direction-nav{
+            display: none;
+        }
+        .shop-module{
+
+        }
+    }
 }
+
+
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
 
@@ -1081,6 +1101,11 @@ $btfHiliteBg : #2a2d32;
         .home-hero {
             .hero-info {
                 display: none;
+            }
+            #home-hero-slider .slides li {
+                display: none;
+                max-height: 200px;
+                height: 200px;
             }
         }
     }
