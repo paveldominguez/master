@@ -265,8 +265,11 @@
 				padding: 10px 20px 10px 0px;
 				z-index: 10;
 				}
-			.dropdown-panel { @include dropdownPanel; }
-
+			.dropdown-panel { @include dropdownPanel; 
+				}
+			}
+		.checkout-dropdown.special-offers-dropdown {
+			margin-top: -7px;
 			}
 
 		.optional {
