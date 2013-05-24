@@ -1,5 +1,147 @@
 /* Product Detail SCSS ----- */
+.key-features{
+    height:auto;
+    overflow:hidden;
+    li{
+        height:510px;
+        position:relative;
+        > img{
+            width:80%;
+            margin: 0 0 0 20%;
+            height:100%;
+        }
+    }
+    .title{
+        font-weight:400;
+        font-family: "Verizon Apex Book", Helvetica, Arial, sans-serif;
+        font-size:32px;
+        strong{
+            font-weight:700;
+        }
+    }
+    .companion{
+        margin:0;
+        padding:0;
+        position:absolute;
+        bottom:0;
+        left:0;
+        li{
+            float:left;
+            height:auto;
+            &:first-child{
+                border-right:1px solid #ccc;
+            }
+            img{
+                width:auto;
+                height:auto;
+                margin:0 0 0 30px;
+                display:inline-block;
+                vertical-align: bottom;
+            }
+        }
+        .copy-container{
+            margin:0;
+            width: 260px;
+            font-size:11px;
+            background:none;
+            padding:0 0 0 20px;
+            vertical-align: top;
+            display:inline-block;
+            .title{
+                font-size:11px;
+                font-weight:700;
+                margin:0 0 4px 0;
+                display:inline-block;
+                font-family:Helvetica, Arial, sans-serif;
+            }
+            .copy{
+                display:inline-block;
+            }
+        }
+    }
+    .feature{
+        width:256px;
+        height:100%;
+        position:absolute;
+        > span{
+            height:50%;
+        }
+    }
+    .image{
+        display:block;
+        background-color:#2A2D32;
+        position:relative;
+        > span{
+            display:block;
+            text-align:center;
+            color:#fff;
+        }
+        img{
+            display:block;
+            width:auto;
+            margin:auto;
+            padding:40px 0 0 0;
+        }
+        .marker{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            border: 15px solid transparent;
+            border-bottom-color: #F6F6F6;
+            bottom:0;
+            left: 50%;
+            margin-left: -15px;
+        }
+    }
+    .copy-container{
+        background-color:#F6F6F6;
+        display:block;
+        padding:20px;
+        > em{
+            display:block;
+            font-style:normal;
+            margin:0 0 20px 0;
+            font-size:18px;
+        }
+    }
+    .copy{
+        display:block;
+    }
+    .right{
+        float:none;
+        .feature{
+            right:0;
+        }
+        > img{
+            margin:0 20% 0 0;
+        }
+    }
+    .video{
+        > em{
+            bottom:0;
+            color:#fff;
+            font-weight:400;
+            font-size:16px;
+            padding:20px 30px;
+            position:absolute;
+            font-style:normal;
+            background-color:#2A2D32;
+        }
+        > img{
+            width:100%;
+            margin:auto;
+        }
+    }
 
+}
+
+.slides{
+    li{
+        &:first-child{
+            display:block;
+        }
+    }
+}
 .product-detail {
     #site-container { 
         position: relative;
@@ -3090,9 +3232,10 @@
                         position: relative;
 
                         .related-stories-small {
-                            width: 228px; height: 228px;
-                            position: absolute;
-                            top: 15px; left: 15px;
+                            width: 228px;
+                            height: 228px;
+                            top: 15px;
+                            left: 15px;
                             .image {
                                 display:block;
                                 width:226px;
