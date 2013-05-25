@@ -1,4 +1,96 @@
 /* Product Detail SCSS ----- */
+.highlight-module{
+    .tabs{
+        float:left;
+        width:200px;
+        height:320px;
+        li{
+            height:25%;
+            display:block;
+            overflow:hidden;
+            position:relative;
+            background-color:#D9DFDF;
+            border-bottom:1px solid #333;
+            &.active{
+                background-color:#2A2D32;
+                .marker{
+                    display:block;
+                }
+                .title{
+                    color:#fff;
+                }
+            }
+        }
+        .image{
+            width:20%;
+            height:70%;
+            display:inline-block;
+            margin: 10% 0 0 14px;
+            img{
+                display:inline-block;
+                margin:auto;
+            }
+        }
+        .title{
+            width:70%;
+            color:#333;
+            font-size:12px;
+            text-align:right;
+            display:inline-block;
+        }
+        .marker{
+            top: 50%;
+            left: 99%;
+            width: 1px;
+            height: 1px;
+            z-index: 10;
+            display: none;
+            margin-top: -15px;
+            position: absolute;
+            border-top: 15px solid transparent;
+            border-left: 15px solid #2a2d32;
+            border-bottom: 15px solid transparent;
+        }
+    }
+
+    .content{
+        li{
+            display:none;
+            &:first-child{
+                display:block;
+            }
+            .title{
+
+            }
+            ul{
+
+            }
+            li{
+                display:block;
+                float:left;
+                > p{
+
+                }
+                > a{
+                    display:block;
+                    color:$actLinkBlue;
+                }
+                .title{}
+                .copy{}
+
+            }
+        }
+    }
+
+    .summary{
+        clear:both;
+        float:none;
+        overflow:hidden;
+    }
+
+
+}
+
 .key-features{
     height:auto;
     overflow:hidden;
@@ -12,9 +104,10 @@
         }
     }
     .title{
-        font-weight:400;
-        font-family: "Verizon Apex Book", Helvetica, Arial, sans-serif;
         font-size:32px;
+        font-weight:400;
+        margin:2% 0 2% 8%;
+        font-family: "Verizon Apex Book", Helvetica, Arial, sans-serif;
         strong{
             font-weight:700;
         }
