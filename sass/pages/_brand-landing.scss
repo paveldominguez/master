@@ -41,6 +41,18 @@ $colorPromoFont: #6D6E71;
                     size: 24px;
                     style: italic;
                 }
+
+                &:before
+                {
+                    content: "-";
+                    position: absolute;
+                    left: -40px;
+                    top: 20px;
+                    width: 24px;
+                    height: 10px;
+                    overflow: hidden;
+                    background: #6D6E71;
+                }
             }
         }
     }
