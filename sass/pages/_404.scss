@@ -163,14 +163,13 @@ html {
                 padding: 0;
                 margin: 0;
                 .simple-slider-item {
-                    padding: 10%;
                     .simple-detail {
                         .simple-price {
                             .sale {
                                 font-weight: normal;
                                 text-decoration: line-through;
                                 color: #727272;
-                                padding: 0 0 0 5px;
+                                padding: 0 0 0 0;
                                 display: inline-block;
                             }
                         }
