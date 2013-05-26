@@ -629,6 +629,18 @@ $hdrOfferCollapsed: 55px;
                 }
             }
         }
+        .category-header-message{
+            @include category-listing-sprite(cat-boxes, false, 0, 12px);
+            position: absolute;
+            top: 0px;
+            right: 30px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            padding-left: 40px;
+            height: 36px;
+            line-height: 48px;
+        }
     }
     .mobile-sort-filter{
 
