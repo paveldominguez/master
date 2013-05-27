@@ -485,7 +485,7 @@ $btfHiliteBg : #2a2d32;
                 .tt-dropdown-menu{
                     background: #fff;
                     padding: 0;
-                    min-width:170px;
+                    min-width:200px;
                      -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
@@ -494,22 +494,25 @@ $btfHiliteBg : #2a2d32;
                      border-left: 1px solid #e4e5e5;
                     .tt-suggestions{
                         .tt-suggestion{
+                            text-align:left;
                             &.tt-is-under-cursor{
                                 background: #3b3e45;
                                 p{
                                     border:0;
                                 }
                             }
+
                             p{
                                 margin: 0 15px;
-                                border-top: 1px solid #f8f8f8;
+                                font-size:26px;
+                                color: #ddddde;
+                                display:inline;
+                                margin-bottom:0;
                                 text-align:left;
-                                font-size:27px;
+                                padding-bottom:0;
                                 font-weight:normal;
                                 font-family: "Verizon Apex Book";
-                                color: #ddddde;
-                                margin-bottom:0;
-                                padding-bottom:0;
+                                border-top: 1px solid #f8f8f8;
 
                             }
                         }
