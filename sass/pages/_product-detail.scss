@@ -557,44 +557,37 @@
     display:none;
     padding-top:60px;
     .pdp-cart-shipping-item {
-        color: $colorVzwRed;
-        &.offer{
-            color:#d00505;
-        }
         padding:0;
         width:auto;
-        font-size: 12px;
         font-weight:400;
         position:relative;
         margin:0 0 0 20px;
-        display:list-item;
         color: $cartGreyMd;
         list-style-type:disc;
+        display:inline-block;
         font-family: Helvetica, Arial, sans-serif;
+
+        &.offer{
+            color:#d00505;
+        }
         .dropdown-link {
             padding:0;
-            font-size:12px;
+            height:auto;
+            font-size:17px;
             cursor: pointer;
             font-style:normal;
             color: $colorVzwRed;
             font-family:Helvetica, Arial, sansser;
         }
     }
-    .discount {
-        .dropdown-link {
-            @include pdp-sprite(red-more, false, 120px, 6px);
-        }
-        .dropdown-panel {
-            left: 50px;
-        }
+    .marker{
+        width:28px;
+        height:18px;
+        display:inline-block;
+        @include pdp-sprite(red-more, false, 8px, 8px);
     }
-    .shipping {
-        .dropdown-link {
-            @include pdp-sprite(red-more, false, 155px, 6px);
-        }
-        .dropdown-panel {
-            left: 85px;
-        }
+    .dropdown-panel {
+        right: 0;
     }
 }
 
@@ -640,6 +633,27 @@
     @include boxBrdrL;
     position:relative;
 
+    .pdp-cart-compat {
+        height: 30px;
+        margin-top: 5px;
+        .compat-link {
+            @include actionLink;
+            font-size:13px;
+            cursor:pointer;
+            letter-spacing:-1px;
+            padding:5px 0 5px 0;
+            font-family: $fontVzwBook;
+        }
+    }
+
+    .pdp-cart-compat.guest {
+        padding-top:10px;
+        .compat-link {
+            padding:5px 0 5px 16px;
+            @include pdp-sprite(blue-device-icon, false, 0, 6px);
+        }
+    }
+
     .light {
         width: 100%;
         height: 360px;
@@ -649,6 +663,7 @@
             padding:0 10px;
         }
     }
+
     .light.reduced {
         height: 326px;
     }
@@ -681,25 +696,7 @@
                     @include pdp-sprite(red-cart-bullet, false, 0, 10px);
                 }
             }
-            .pdp-cart-compat {
-                height: 30px;
-                margin-top: 5px;
-                .compat-link {
-                    @include actionLink;
-                    font-size:13px;
-                    cursor:pointer;
-                    letter-spacing:-1px;
-                    padding:5px 0 5px 0;
-                    font-family: $fontVzwBook;
-                }
-            }
-            .pdp-cart-compat.guest {
-                padding-top:10px;
-                .compat-link {
-                    padding:5px 0 5px 16px;
-                    @include pdp-sprite(blue-device-icon, false, 0, 6px);
-                }
-            }
+
             .pdp-cart-compat.signed-in {
                 width: 90%;
                 @include clearfix();
@@ -1290,15 +1287,6 @@
     }
 }
 
-.dropdown-panel {
-    top: 50px;
-    right:6%;
-    width: 180px;
-    padding: 15px;
-    @include dropdownPanel;
-    @include checkoutContent;
-}
-
 #pdp-hero{
     @include clearfix();
     @include heroInset;
@@ -1411,10 +1399,9 @@
             }
             .more-less {
                 .more-less-link {
-                    font-size: 20px;
-                    line-height: 30px;
-                    @include instruct;
+                    font-size: 14px;
                     color:$actLinkBlue;
+                    text-transform:none;
                 }
             }
         }
@@ -2759,7 +2746,7 @@
 }
 
 @media only screen and (min-width: $screenLarge) {
-    
+
     #zoom-slides {
         li {
             img {
@@ -3084,7 +3071,7 @@
                 li{
                     span{
                         font-size:11px;
-                    }                    
+                    }
                 }
 
             }
@@ -3427,7 +3414,7 @@
     .fixed-nav {
         display: none;
     }
-    
+
     .show-anchor {
         display: none;
     }
@@ -3639,7 +3626,7 @@
                 }
             }
         }
-    }    
+    }
 }
 
 
@@ -3649,5 +3636,5 @@ $screenLarge: 1280px !default;
 $screenMedium: 1024px !default;
 $screenSmall: 768px !default;
 $screenMobileLarge: 640px !default;
-$screenMobileSmall: 320px !default; 
+$screenMobileSmall: 320px !default;
 */
