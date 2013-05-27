@@ -30,11 +30,7 @@ var pub = {
         MLS.productDetail.pdpColorOptions();
         MLS.productDetail.addCartValidation();
 
-        var pgWidth = document.body.clientWidth;
-        var heroThumbs = window.document.getElementById('thumbs');
-        var zoomThumbs = window.document.getElementById('zoom-thumbs');
-
-        $jQ(heroThumbs).flexslider({
+        $jQ('#thumbs').flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: true,
@@ -51,7 +47,7 @@ var pub = {
             sync: "#thumbs"
         });
 
-        $jQ(zoomThumbs).flexslider({
+        $jQ('#zoom-thumbs').flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: false,
@@ -68,8 +64,6 @@ var pub = {
             slideshow: false,
             sync: "#zoom-thumbs"
         });
-        var heroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
-        var zoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
 
         $jQ('#pdp-similar-products-module').flexslider({
             animation: 'slide',
@@ -110,8 +104,6 @@ var pub = {
             var pgWidth = document.body.clientWidth;
             var heroThumbs = window.document.getElementById('thumbs');
             var zoomThumbs = window.document.getElementById('zoom-thumbs');
-            var resizeHeroThumbDisplay = new MLS.productDetail.thumbDisplay(heroThumbs, pgWidth);
-            var resizeZoomThumbDisplay = new MLS.productDetail.thumbDisplay(zoomThumbs, pgWidth);
 
             MLS.ui.moreLessBlock();
 
@@ -157,7 +149,7 @@ var pub = {
         });
 
         $jQ('#pdp-add-to-cart-submit').click(function(){
-            $jQ("#pdp-add-to-cart-submit").validate(); // VALIDATE
+            $jQ("#pdp-add-to-cart-submit").validate();
             var formValid = $jQ("#pdp-add-to-cart").valid();
             if (formValid == true){
                 $jQ('.size-select-box').find('.selector').removeClass('error');
@@ -388,26 +380,6 @@ var pub = {
         $jQ('.pdp-cart-shipping').clone().appendTo('.mobile-fieldset.shipping');
     },
 
-    thumbDisplay: function (parent, context) { // carousel thumbs .........................................................
-        var countThmb = $jQ(parent).find('.slides').find('li').length;// do the math and store as data
-        var thmbWd = (countThmb * 55);
-        var totalWd = (thmbWd + 105 ); //add standard width of zoom & view 360 buttons
-        var thmbMgnLft = (totalWd / -2);
-        $jQ(parent).css('width', totalWd + 'px').attr('data-center', thmbMgnLft );
-        if ( context > 959 ) { // only apply in desktop presentation
-            $jQ(parent).css({
-                'left': '50%',
-                'right': 'auto',
-                'margin-left': thmbMgnLft +'px'
-            });
-        } else {
-            $jQ(parent).css({
-                'left': 'auto',
-                'right': '15px',
-                'margin-left': '0px',
-            });
-        }
-    },
     createZoomPanel : function (which) { // create zoom panel ...........................................................................
         var zoomBlock = window.document.getElementById('zoom-block'); // gather requirements
         var zoomCrsl = window.document.getElementById('zoom-carousel-block');
