@@ -1,9 +1,7 @@
 MLS.cart.dd = {
     init: function () {
-
-        //console.log("v.12");
-
-        MLS.cart.dd.triggers.ddColor(); // needs to be initialized before the form trigger otherwise it will not update the form
+        // needs to be initialized before the form trigger otherwise it will not update the form
+        MLS.cart.dd.triggers.ddColor();
         MLS.cart.dd.triggers.form();
 
     },
@@ -11,42 +9,37 @@ MLS.cart.dd = {
     triggers: {
         form: function (){
             $jQ(".data-product-attributes").change(function(){
-
-                var formAttr = $jQ(this).serialize();
-
-                MLS.cart.dd.getJson(formAttr);
-                //console.log (formAttr);
+                var p = $jQ(this).serialize();
+                if (p != MLS.cart.dd.params)
+                {
+                    MLS.cart.dd.params = p;
+                    MLS.cart.dd.getJson(MLS.cart.dd.params);
+                }
             });
         },
 
         ddColor: function(){
             // update the custom color dd
-            $jQ(".color a").click(function (){
-
+            $jQ(".color a").click(function () {
                 var $dd = $jQ(this).parents('form').find("[name=pdpColorSelect]"),
                 color = MLS.util.getUrlParam("color", $jQ(this).attr("href"));
                 $dd.val(color);
                 $jQ(".data-product-attributes").change(); // needs to triger the form change
-
-                //console.log(' color');
-
             })
         }
     },
 
     getJson : function(formAttr) {
-            MLS.ajax.sendRequest(
+        MLS.ajax.sendRequest(
             MLS.ajax.endpoints.GET_CART_DD_ATTRIBUTES,
             formAttr,
-            function(response) {
-                MLS.cart.dd.populate.init(response);
-            }
+            MLS.cart.dd.populate.init
         );
     },
 
     populate : {
         init: function (data){
-            var values = data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML
+            var values = data.hasOwnProperty('success') ? data.success.responseHTML : data.error.responseHTML;
 
             MLS.cart.dd.populate.ddSizes(data.success.responseHTML.sizes);
             MLS.cart.dd.populate.carousel(data.success.responseHTML.carousel);

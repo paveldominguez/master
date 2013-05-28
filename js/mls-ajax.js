@@ -149,6 +149,34 @@ MLS.ajax = {
             if (!error)
             {
                 MLS.ui.updateContent($jQ('#quick-view-overlay .wrapper'), data.success.responseHTML);
+                
+                jQuery.validator.addMethod("noEmptySelect", function (value, element) {
+                    if (value == '0') {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+
+                $jQ('#quick-view-overlay form').validate({
+                    rules: {
+                        pdpColorSelect: {
+                            required: true
+                        },
+                        pdpSizeSelect: {
+                            required: true,
+                            noEmptySelect: true
+                        }
+                    },
+                    messages: {
+                        pdpColorSelect: "Please choose a color",
+                        pdpSizeSelect: {
+                            required: "Please choose a size",
+                            noEmptySelect: "Please choose a size"
+                        }
+                    }
+                });
+
                 $jQ('#quick-view-overlay .wrapper').find("input:submit").uniform();
                 MLS.miniCart.init($jQ('#quick-view-overlay .wrapper'));
                 contentGrid.quickViewShow(el);

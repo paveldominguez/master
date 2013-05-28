@@ -485,7 +485,7 @@ $btfHiliteBg : #2a2d32;
                 .tt-dropdown-menu{
                     background: #fff;
                     padding: 0;
-                    min-width:170px;
+                    min-width:200px;
                      -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
                      box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
@@ -494,22 +494,25 @@ $btfHiliteBg : #2a2d32;
                      border-left: 1px solid #e4e5e5;
                     .tt-suggestions{
                         .tt-suggestion{
+                            text-align:left;
                             &.tt-is-under-cursor{
                                 background: #3b3e45;
                                 p{
                                     border:0;
                                 }
                             }
+
                             p{
                                 margin: 0 15px;
-                                border-top: 1px solid #f8f8f8;
+                                font-size:26px;
+                                color: #ddddde;
+                                display:inline;
+                                margin-bottom:0;
                                 text-align:left;
-                                font-size:27px;
+                                padding-bottom:0;
                                 font-weight:normal;
                                 font-family: "Verizon Apex Book";
-                                color: #ddddde;
-                                margin-bottom:0;
-                                padding-bottom:0;
+                                border-top: 1px solid #f8f8f8;
 
                             }
                         }
@@ -595,7 +598,7 @@ $btfHiliteBg : #2a2d32;
         }
     }
     .featured-reviews{
-        max-width: 1024px;
+        max-width: 1280px;
         max-height:515px;
         height:515px;
         margin: 0 auto;
@@ -631,8 +634,10 @@ $btfHiliteBg : #2a2d32;
                 width:50%;
                 float:left;
                 display:block;
-                border:1px solid #f8f8f8;
-                height: 370px;
+                border:1px solid #ccc;
+                border-right: none;
+                border-left: none;
+                height: 445px;
                 position: relative;
                 .carrot{
                     position: absolute;
@@ -653,16 +658,28 @@ $btfHiliteBg : #2a2d32;
                     width: 130px;
                     height:43px;
                     color: #FFF;
+                    font-family: arial;
+                    font-weight: bold;
                     font-size: 14px;
+                    position: absolute;
+                    bottom: 0;
                     span {
                         display: table-cell;
                         vertical-align: bottom;
                         padding: 3px 5px;
-                        line-height: 40px;
+                        line-height: 24px;
                     }
                 }
                 .product-title{
                     font-size: 18px;
+                    font-weight: normal;
+                    font-family: "Verizon Apex Book";
+                    color: #3d4146;
+                }
+                .product-price{
+                    padding-top:0;
+                    font-size: 18px;
+                    font-weight: normal;
                     font-family: "Verizon Apex Book";
                     color: #3d4146;
                 }
@@ -671,7 +688,7 @@ $btfHiliteBg : #2a2d32;
                 }
                 .user-review{
                     font-family:$fontVzwBookItalic;
-                    font-size:25px;
+                    font-size:32px;
                     color:#3d4146;
                     line-height: 1.2em;
                     @include breakpoint(tablet){font-size: 18px;}

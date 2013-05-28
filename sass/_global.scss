@@ -93,6 +93,12 @@ h1,h2,h3,h4,h5,h6 {
             font-size:11px;
             display:inline-block;
         }
+        .review-count{
+            font-size: 11px;
+            color: #666;
+            line-height: 17px;
+            display: block;
+        }
     }
     /* End Star Ratings */
 
@@ -108,7 +114,7 @@ h1,h2,h3,h4,h5,h6 {
     display: block;
 
     #load-more{
-        width: 428px !important;
+        width: 45% !important;
         height: 55px;
         margin: 30px auto;
         display: block;
@@ -768,6 +774,9 @@ h1,h2,h3,h4,h5,h6 {
         width: 170px;
         height: 510px;
         display: block;
+        &:first-child{
+            border: none !important;
+        }
         .tab {
             display: block;
             position: relative;
@@ -777,6 +786,7 @@ h1,h2,h3,h4,h5,h6 {
             height: 170px;
             width: 170px;
             background: #d9dfdf;
+            border-top: 1px solid #cccfd0;
             h2{
                 font-family: "Verizon Apex Medium";
                 font-size: 12px;

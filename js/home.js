@@ -51,7 +51,7 @@ MLS.home = {
 		//select random color for each item entry
 		var colorArray = ['green', 'yellow', 'blue', 'red', 'purple', 'charcoal'];
 		$jQ('.featured-review .product-img').each(function () {
-			var color = Math.floor((Math.random() * colorArray.length) + 1);
+			var color = Math.floor((Math.random() * colorArray.length));
 			$jQ(this).addClass(colorArray[color]);
 		});
 	},
@@ -80,10 +80,10 @@ MLS.home = {
                 directionNav: true,
                 slideshow: false,
                 animationSpeed: 500,
-                itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.875
+                itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.95
             });
             $jQ(window).resize(function () {
-                $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.85});
+                $jQ('.featuredReviewSlider').data('flexslider').setOpts({itemWidth: $jQ('.featuredReviewSlider').outerWidth() * 0.95});
             });
 		}
 	},

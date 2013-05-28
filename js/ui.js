@@ -246,7 +246,7 @@ MLS.ui = {
                 }
             },
             'click': function(e) {
-                if ($jQ(this).hasClass('disabled'))
+                if ($jQ(this).hasClass('disabled') || $jQ(this).is("#nav-cart"))
                 {
                     return true;
                 }
