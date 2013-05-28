@@ -1,11 +1,18 @@
 MLS.miniCart = {
     started : true, // set to false if an ajax call is needed on pageload to refresh the minicart
+    autoHideFlyout: false,
 
 	callbacks : 
 	{
 		addItem: function(e) 
 		{
-			MLS.miniCart.addItem($jQ(e.target).parents("form").serialize());
+            var $form = $jQ(e.target).parents("form");
+
+            if ($form.find("input,select").valid())
+            {
+                MLS.miniCart.addItem($form.serialize());
+            }
+
         	return false;
         },
 
@@ -59,6 +66,13 @@ MLS.miniCart = {
             if (MLS.miniCart.started && $jQ("#nav-cart").is(":visible"))
             {
                 $form.fadeIn();
+            }
+
+            if (MLS.miniCart.autoHideFlyout)
+            {
+                setTimeout(function() {
+                    $tabs.removeClass("active");
+                }, 4000);
             }
 	    },
 
@@ -141,8 +155,8 @@ MLS.miniCart = {
             return;
         }
 
-		$d.find('.data-cart-add').bind('click', this.callbacks.addItem);
-        $d.find('.data-cart-remove').bind('click', this.callbacks.removeItem);
+		$d.find('.data-cart-add').unbind('click', this.callbacks.addItem).bind('click', this.callbacks.addItem);
+        $d.find('.data-cart-remove').unbind('click', this.callbacks.removeItem).bind('click', this.callbacks.removeItem);
 
         // free shipping modal
         $d.find('.minicart-banner.ship').find('.minicart-cta').click(function() {
@@ -226,6 +240,7 @@ MLS.miniCart = {
 
     addItem : function (params) {
         var self = this;
+        MLS.miniCart.autoHideFlyout = true;
     	MLS.ajax.sendRequest(
             this.options.addToCartEndpoint,
             params,

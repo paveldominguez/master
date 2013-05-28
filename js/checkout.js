@@ -1009,8 +1009,15 @@ MLS.checkout = {
                         MLS.ajax.endpoints.CHECKOUT_STEP_2,
                         $form.serialize(),
                         function (r) {
-                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") {
+                            if (r.hasOwnProperty('error') && r.error.responseHTML != "") 
+                            {
                                 return MLS.modal.open(r.error ? r.error.responseHTML : null);
+                            }
+
+                            if (r.success.hasOwnProperty("redirectUrl") && r.success.redirectUrl != "")
+                            {
+                                document.location.href = r.success.redirectUrl;
+                                return;
                             }
 
                             $jQ(".step-info-summary:eq(1), .step-info-summary:eq(2)").html(r.success.responseHTML);
@@ -1029,7 +1036,7 @@ MLS.checkout = {
 							$jQ('#checkout-sidebar').animate({top:"+" + checkoutConfirm.top},600); // align cart summary with step 3 
                             MLS.checkout.update(r);
 
-                            setTimeout(function(){
+                            setTimeout(function() {
                                 $jQ('.billing-complete').removeClass('blank');  // remove flag for first time through
                             }, 300);
                         }
