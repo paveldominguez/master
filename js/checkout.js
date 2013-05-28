@@ -54,21 +54,35 @@ MLS.checkout = {
         });
         $jQ(this).parents('.step-info-summary').addClass('hidden'); // close this panel's summary next
 
+        // show this panel's inputs & buttons
+        $step.find('.hide-complete').removeClass('hidden');
+        
         // if step 2
         if ($jQ(this).hasClass('edit-billing')) {
             $jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not'); // make fields validate-able again
 
-            $jQ('.new-billing-info-form').addClass('hidden').siblings(".step-info-summary.billing-address").removeClass("hidden"); // hide form so edit button in summary works
-
             $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
             $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
 
-            if ($jQ('#bill-to-account').is(':checked')){ // IF account hide billing summary for pay with account
+            $jQ('.new-billing-info-form').removeClass("hidden").siblings(".step-info-summary.billing-address").removeClass("hidden");
+
+            /*
+            $infoform
+                .addClass('hidden')
+                .removeAttr("style")
+                .siblings(".step-info-summary.billing-address")
+                    .removeClass("hidden")
+                    .removeAttr("style"); // hide form so edit button in summary works
+            */
+
+            
+            /*
+            if ($jQ('#bill-to-account').is(':checked')) { // IF account hide billing summary for pay with account
                 $step.find('.step-info-summary.billing-address').addClass('hidden');
             }
+            */
         }
-        // show this panel's inputs & buttons
-        $step.find('.hide-complete').removeClass('hidden');
+
         // last, scroll page to top of re-opened section
         MLS.ui.scrollPgTo($step, 7);
     },
@@ -218,12 +232,17 @@ MLS.checkout = {
         });
 
         $billing.find(".bill-account").click(function(e) {
-            var $self = $jQ(this);
+            var $self = $jQ(this),
+                bta = $self.find("input")[0],
+                cc = $billing.find(".bill-card input")[0];
 
             if ($self.hasClass("disabled"))
             {
                 return false;
             }
+
+            bta.checked = !bta.checked;
+            cc.checked = !cc.checked;
 
             setTimeout(function() {
                 if (!$self.hasClass(".checked"))
@@ -238,7 +257,13 @@ MLS.checkout = {
         });
 
         $billing.find(".bill-card").click(function(e) {
-            var $self = $jQ(this);
+            var $self = $jQ(this),
+                bta = $billing.find(".bill-account input")[0],
+                cc = $self.find("input")[0];
+            
+            bta.checked = !bta.checked;
+            cc.checked = !cc.checked;
+
             setTimeout(function() {
                 if (!$self.hasClass(".checked"))
                 {
@@ -467,9 +492,9 @@ MLS.checkout = {
         $jQ('#saved-info-edit').click(function(){
             $jQ(this).parents('.billing-address').slideToggle(300).next('.billing-address').slideToggle(300);
 
-            if (!$jQ("#same-as-shipping").is("checked"))
+            if ($jQ("#same-as-shipping").is(":checked"))
             {
-                $jQ("#same-as-shipping").click();
+                $jQ("#same-as-shipping").click().click();
             }
         });
 
@@ -1019,6 +1044,16 @@ MLS.checkout = {
                                 document.location.href = r.success.redirectUrl;
                                 return;
                             }
+
+                            $jQ(".step-info-summary.billing-address").html(r.success.savedInfoSummaryHTML);
+                            $jQ('#saved-info-edit').click(function(){
+                                $jQ(this).parents('.billing-address').slideToggle(300).next('.billing-address').slideToggle(300);
+
+                                if ($jQ("#same-as-shipping").is(":checked"))
+                                {
+                                    $jQ("#same-as-shipping").click().click();
+                                }
+                            });
 
                             $jQ(".step-info-summary.billing-complete").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
