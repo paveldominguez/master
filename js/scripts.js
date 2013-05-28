@@ -150,7 +150,7 @@ MLS = {
     },
     'checkout-success-page': {
         init : function () {
-            MLS.checkoutSuccess.init();
+            MLS.productDetail.init();
             MLS.miniCart.init();
         }
     },
