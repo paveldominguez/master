@@ -257,13 +257,18 @@
 
 			.dropdown-link {
 				@include actionLink;
+				@include pdp-sprite(blue-more, false, 76px, 14px); 
 				font-weight: normal;
 				display: inline-block;
 				font-weight: normal;
 				margin-left:5px;
+				letter-spacing: 0px;
 				position: relative;
 				padding: 10px 20px 10px 0px;
 				z-index: 10;
+				.paren-right {
+					padding-left: 7px;
+					}
 				}
 			.dropdown-panel { @include dropdownPanel; 
 				}
@@ -390,7 +395,10 @@
 					.form-item-title {
 						top: -13px;
 						.checkout-dropdown {
-							.dropdown-link { @include pdp-sprite(blue-more, false, 76px, 14px); }
+							.dropdown-link { 
+								@include pdp-sprite(blue-more, false, 76px, 14px); 
+								letter-spacing: 0px;
+							}
 							.dropdown-panel {
 								@include clearfix();
 								width: 370px; height: 200px;
@@ -858,18 +866,20 @@
 					float: left;
 					margin-bottom: 20px;
 					@include clearfix();
-
+					.dropdown-link {
+						padding-left: 10px;
+						letter-spacing: 0px;
+						margin-top: -6px;
+						@include pdp-sprite(blue-more, false, 124px, 14px);
+						}
 					label {
 						@include checkoutContent;
-						width: 90%;
+						width: auto;
 						float: left;
 						padding: 0;
-						margin: -8px 0 0 10px;
+						margin: 4px 0 0 10px;
 
-						.dropdown-link {
-							padding-left: 10px;
-							@include pdp-sprite(blue-more, false, 124px, 14px);
-							}
+						
 						.dropdown-panel {
 							@include dropdownPanel;
 							width: 225px;
@@ -931,8 +941,9 @@
 					float: left;
 
 					.checkout-dropdown {
-						letter-spacing: 0;
-						.dropdown-link { @include pdp-sprite(blue-more, false, 194px, 14px); }
+						.dropdown-link { @include pdp-sprite(blue-more, false, 194px, 14px); 
+							letter-spacing: 0px;
+						}
 						.dropdown-panel {
 							left:90px;
 							width: 225px;
@@ -972,7 +983,7 @@
 
 						.form-item-title.two-day-spcl {
 							.checkout-dropdown {
-								.dropdown-link { @include pdp-sprite(blue-more, false, 108px, 14px); }
+								.dropdown-link { @include pdp-sprite(blue-more, false, 108px, 14px); letter-spacing: 0px; }
 								.dropdown-panel { left: 4px; width: 225px;  }
 								} /* end dropdown */
 							}/* end two day spcl */
@@ -1552,6 +1563,7 @@
 				 					}
 				 				.dropdown-link {
 				 					@include pdp-sprite(blue-more, false, 155px, 14px );
+									letter-spacing: 0px;
 										.paren-right {
 											padding-left: 7px;
 										}
@@ -1609,7 +1621,12 @@
 				 				.security-item.code {
 
 									.checkout-dropdown {
-										.dropdown-link { @include pdp-sprite(blue-more, false, 76px, 14px); }
+										.dropdown-link { 
+											@include pdp-sprite(blue-more, false, 76px, 14px); letter-spacing: 0px;
+											.paren-right {
+												padding-left: 7px;
+											}
+										}
 										.dropdown-panel {
 											@include clearfix();
 											width: 370px; height: 200px;
@@ -1881,6 +1898,7 @@
 
 				.dropdown-link {
 					display:block;
+					letter-spacing: 0px;
 					width: 100%; height: 50px;
 					position: absolute;
 					top: 20px; left: 0;
@@ -1895,7 +1913,7 @@
 					line-height:21px;
 					color:#fff;
 					padding: 0;
-					margin: 0px 0 2px 80px;
+					margin: -12px 0 2px 40px;
 					letter-spacing: -1px;
 					@include pdp-sprite(wht-more, false, 89px, 32px);
 
@@ -1911,7 +1929,7 @@
 				} /* end special block */
 
 			.special-offer-block.shipping {
-				.dropdown-link { @include cart-sprite(shipping-truck, false, 20px, 2px); }
+				.dropdown-link { @include cart-sprite(shipping-truck, false, 20px, 2px); letter-spacing: 0px;}
 				}
 
 			.checkout-cart-summary {
@@ -2320,6 +2338,7 @@ screen and (width: 1024px ) and (orientation: landscape) {
 					.dropdown-link {
 						top:5px;
 						padding-top:15px;
+						letter-spacing: 0px;
 
 						.special-offer {
 							width:75%;
@@ -2352,6 +2371,7 @@ screen and (width: 1024px ) and (orientation: landscape) {
 					@include boxBrdrR;
 					.dropdown-link {
 						background: url(../img/sprites/cart/shipping-boxes.png) 18% 17px no-repeat;
+						letter-spacing: 0px;
 						.special-offer {
 							padding-left:40px;
 							@include pdp-sprite(wht-more, false, 225px, 10px);

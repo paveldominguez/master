@@ -647,6 +647,13 @@
 						width: 70%;
 						display: inline;
 					}
+					.button {
+		 				width: 25%;
+		 				height: 36px;
+		 				float: right;
+		 				@include greyCartButton;
+		 				margin-top: 3px;
+					}
 				}
 			}
 
