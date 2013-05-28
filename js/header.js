@@ -6,8 +6,7 @@ MLS.header = (function () {
 
     var $modal = $jQ('#mls-compatibility-mobile-modal'),
         $input = $jQ('#search-device-or-brand').find('input#search-input'),
-        $detectedDevices = $jQ('#compatibility-detected-device'),
-        $compatibleDevices = $jQ('#compatibility-devices'),
+        $resetButton = $modal.find('.search-reset'),
         $closeButton = $modal.find('.close');
 
     /*-----  End of Private variables  ------*/
@@ -30,9 +29,6 @@ MLS.header = (function () {
 
         init : function () {
 
-            pub.openModal(); // demo
-
-
             // search text field
             $input.typeahead({
                 name: 'devices',
@@ -42,6 +38,8 @@ MLS.header = (function () {
                 limit: 10
             }).on('change keyup typeahead:selected typeahead:closed', pub.getDevices);
 
+            // reset form
+            $resetButton.bind('click', pub.resetForm);
 
             // close modal
             $closeButton.bind('click', pub.closeModal);
@@ -61,6 +59,9 @@ MLS.header = (function () {
         finalize : function () {
             // search text field
             $input.unbind(pub.getDevices);
+
+            // reset form
+            $resetButton.unbind('click', pub.resetForm);
 
             // close modal
             $closeButton.unbind('click', pub.toggleModal);
@@ -104,7 +105,21 @@ MLS.header = (function () {
             });
         },
 
-        /*-----  End of Open/Close Modal  ------
+        /*-----  End of Open/Close Modal  ------*/
+
+
+
+
+        /*==================================
+        =            reset form            =
+        ==================================*/
+
+        resetForm: function () {
+            $resetButton.hide();
+            $jQ(this).parent('form').find('input[type=text]').val('');
+        },
+
+        /*-----  End of reset form  ------*/
 
 
 
@@ -115,10 +130,11 @@ MLS.header = (function () {
         ===================================*/
 
         getDevices: function (e, item) {
-
             if (e.type === 'typeahead:closed') {
                 $jQ(this).blur();
             }
+
+            $resetButton.show();
 
             e.type === 'typeahead:selected' && pub.selectDevice(item);
 
@@ -133,8 +149,8 @@ MLS.header = (function () {
         ==============================================*/
 
         selectDevice: function (item) {
-            // do something...
-            alert('item id:' + item.id + ' pressed');
+            MLS.home.searchProducts($input.parents('form').serialize());
+            pub.closeModal();
         }
 
         /*-----  End of Select Device Callback  ------*/
