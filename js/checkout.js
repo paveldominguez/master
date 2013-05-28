@@ -48,8 +48,8 @@ MLS.checkout = {
     // EDIT VALIDATED INFO BUTTON (after next-step click)
     editStepCallback: function(e)
     {
-        var thisStep = $jQ(this).parents('.checkout-step');
-        thisStep.siblings('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
+        var $step = $jQ(this).parents('.checkout-step');
+        $step.siblings('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
             $jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').not('.blank').removeClass('hidden');
         });
         $jQ(this).parents('.step-info-summary').addClass('hidden'); // close this panel's summary next
@@ -58,19 +58,19 @@ MLS.checkout = {
         if ($jQ(this).hasClass('edit-billing')) {
             $jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').removeClass('not'); // make fields validate-able again
 
-            $jQ('.new-billing-info-form').addClass('hidden'); // hide form so edit button in summary works
+            $jQ('.new-billing-info-form').addClass('hidden').siblings(".step-info-summary.billing-address").removeClass("hidden"); // hide form so edit button in summary works
 
             $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
             $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
 
             if ($jQ('#bill-to-account').is(':checked')){ // IF account hide billing summary for pay with account
-                $jQ(this).parents('.checkout-step').find('.step-info-summary.billing-address').addClass('hidden');
+                $step.find('.step-info-summary.billing-address').addClass('hidden');
             }
         }
         // show this panel's inputs & buttons
-        thisStep.find('.hide-complete').removeClass('hidden');
+        $step.find('.hide-complete').removeClass('hidden');
         // last, scroll page to top of re-opened section
-        MLS.ui.scrollPgTo (thisStep, 7);
+        MLS.ui.scrollPgTo($step, 7);
     },
 
     initEditStep: function() {
@@ -948,7 +948,7 @@ MLS.checkout = {
 
             var completed;
 
-            if (valid && formValid) {
+            if (true || (valid && formValid)) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
@@ -1020,7 +1020,7 @@ MLS.checkout = {
                                 return;
                             }
 
-                            $jQ(".step-info-summary:eq(1), .step-info-summary:eq(2)").html(r.success.responseHTML);
+                            $jQ(".step-info-summary.billing-complete").html(r.success.responseHTML);
                             MLS.checkout.initEditStep();
 
                             completed = $jQ('#billing-info');
