@@ -512,11 +512,10 @@ $colorNavGridText: #333333;
     .mls-nav {
         .nav-tabs {
             .nav-actions {
-                &.active {
-                    position: absolute;
-                    top: 0; left: 0;
-                    height: 46px;
-                    z-index: 500;
+                &.close {
+                    a {
+                        @include nav-sprite(nav-ico-close-drawer, false, 15, 15);
+                    }   
                 }
             }
         }
