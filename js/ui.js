@@ -157,8 +157,10 @@ MLS.ui = {
             detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
             padding = (padding !== undefined) ? padding : 40;
             if (Response.band(920)) {
+                $jQ('.content-item').find('.stars').removeClass('red');
                 $jQ('.content-item.active').removeClass('active grid-hover active');
                 el.addClass('active grid-hover-active');
+                $jQ('.grid-hover-active').find('.stars').addClass('red');
                 if (content.topBar !== undefined) {
                     $jQ('#grid-pop-out .top-bar').html($jQ(content.topBar).html());
                 }
@@ -179,6 +181,7 @@ MLS.ui = {
                     height: height + padding + detailHeight
                 }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
                     el.removeClass('active grid-hover-active');
+                    $jQ('.grid-hover-active').find('.stars').removeClass('red');
                     $jQ('#grid-pop-out .details').empty();
                     $jQ(this).stop(true, true).fadeOut('fast');
                 });
