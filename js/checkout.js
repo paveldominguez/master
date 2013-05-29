@@ -1001,7 +1001,7 @@ MLS.checkout = {
 
             var completed;
 
-            if (true || (valid && formValid)) {
+            if (valid && formValid) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
