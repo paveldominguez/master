@@ -276,7 +276,7 @@
 		.checkout-dropdown.special-offers-dropdown {
 			margin-top: -7px;
 				.dropdown-link {
-					background-position: 111px -3367px;
+					background-position: 110px -3367px;
 				}
 			}
 
@@ -873,7 +873,7 @@
 						padding-left: 10px;
 						letter-spacing: 0px;
 						margin-top: -6px;
-						@include pdp-sprite(blue-more, false, 124px, 14px);
+						@include pdp-sprite(blue-more, false, 127px, 14px);
 						}
 					label {
 						@include checkoutContent;
@@ -944,7 +944,7 @@
 					float: left;
 
 					.checkout-dropdown {
-						.dropdown-link { @include pdp-sprite(blue-more, false, 194px, 14px); 
+						.dropdown-link { @include pdp-sprite(blue-more, false, 189px, 14px); 
 							letter-spacing: 0px;
 						}
 						.dropdown-panel {
@@ -1688,6 +1688,7 @@
 				 			.card-image { margin-top:3px;
 				 				width: 80px; height: 36px;
 				 				float: left;
+								@include cart-sprite(mastercard-color); 
 				 				}
 							.visa { @include cart-sprite(visa-color); }
 							.mastercard { @include cart-sprite(mastercard-color); }
