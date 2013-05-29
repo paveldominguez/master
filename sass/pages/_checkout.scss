@@ -201,8 +201,12 @@
 			float: left;
 			@include checkoutContent;
 			margin-left:10px;
-			padding-top:3px;
+			padding-top:2px;
 			}
+		
+		input[type="checkbox"].create-login-checkbox, input[type="checkbox"].remember-me-checkbox {
+			float: left;
+		}
 
 		input[type="text"],
 		input[type="password"],
@@ -242,7 +246,7 @@
 		input[type="password"].hasPlaceholder.valid,
 		input[type="tel"].hasPlaceholder.valid,
 		input[type="email"].hasPlaceholder.valid {
-			color: $cartGreyDk;
+			color: #bbb;
 			font-family: $fontVzwLight;
 			font-weight: normal;
 			border-width: 1px;
@@ -276,7 +280,7 @@
 		.checkout-dropdown.special-offers-dropdown {
 			margin-top: -7px;
 				.dropdown-link {
-					background-position: 111px -3367px;
+					background-position: 110px -3367px;
 				}
 			}
 
@@ -873,7 +877,7 @@
 						padding-left: 10px;
 						letter-spacing: 0px;
 						margin-top: -6px;
-						@include pdp-sprite(blue-more, false, 124px, 14px);
+						@include pdp-sprite(blue-more, false, 127px, 14px);
 						}
 					label {
 						@include checkoutContent;
@@ -944,7 +948,7 @@
 					float: left;
 
 					.checkout-dropdown {
-						.dropdown-link { @include pdp-sprite(blue-more, false, 194px, 14px); 
+						.dropdown-link { @include pdp-sprite(blue-more, false, 189px, 14px); 
 							letter-spacing: 0px;
 						}
 						.dropdown-panel {
@@ -1688,6 +1692,7 @@
 				 			.card-image { margin-top:3px;
 				 				width: 80px; height: 36px;
 				 				float: left;
+								@include cart-sprite(mastercard-color); 
 				 				}
 							.visa { @include cart-sprite(visa-color); }
 							.mastercard { @include cart-sprite(mastercard-color); }
