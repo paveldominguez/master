@@ -222,6 +222,13 @@ MLS.ui = {
             $contentTabs = $jQ(element + ' > .tab-content > .tab'),
             activeClass = 'active';
 
+        function clearActive(scope) {
+            $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+        }
+        function setActive(el, scope, tab) {
+            $jQ(el).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
+        }
+
         $jQ(scope + ' > .tab-menu > .tab').each(function (i) {
             $jQ(this).add($contentTabs[i]).attr('tab', i + 1);
         });
@@ -233,29 +240,36 @@ MLS.ui = {
                     return true;
                 }
 
-                if ($jQ(this).hasClass('tab')) {
+                if ($jQ(this).hasClass('tab') && !$jQ(this).hasClass('nav-actions')) {
                     var tab = $jQ(this).attr('tab');
-                    $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
-                    $jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
 
-                    $jQ(scope).one('mouseleave', function (e) {
-                        $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+                    clearActive(scope);
+                    setActive(this, scope, tab);
+
+                    $jQ(scope).one('mouseleave', function () {
+                        clearActive(scope);
                     });
-                } else if (!$jQ(this).hasClass('.tab')) {
-                    $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
+                } else if (!$jQ(this).hasClass('.tab') && !($jQ(this).hasClass('logo') || $jQ(this).hasClass('nav-actions'))) {
+                    clearActive(scope);
                 }
             },
-            'click': function(e) {
-                if ($jQ(this).hasClass('disabled') || $jQ(this).is("#nav-cart"))
+            'click': function (e) {
+                if ($jQ(this).hasClass('disabled') || $jQ(this).is('#nav-cart'))
                 {
                     return true;
                 }
 
-                if ($jQ(this).hasClass('tab')) {
+                var tab = $jQ(this).attr('tab');
+                if (($jQ(this).hasClass('tab') || $jQ(this).hasClass('nav-actions')) && !$jQ(this).hasClass('close')) {
                     e.preventDefault();
-                    var tab = $jQ(this).attr("tab");
-                    $jQ(scope + ' > .tab-menu > .tab').add(scope + ' > .tab-content > .tab').removeClass(activeClass);
-                    $jQ(this).add(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
+                    clearActive(scope);
+                    $jQ(scope + ' > .tab-content > .tab[tab=' + tab + ']').addClass(activeClass);
+                    $jQ(this).addClass('close');
+                } else
+                if ($jQ(this).hasClass('close')) {
+                    clearActive(scope);
+                    $jQ(scope + ' > .tab-content > .tab[tab=' + tab + ']').removeClass(activeClass);
+                    $jQ(this).removeClass('close');
                 }
             }
         });
@@ -271,15 +285,21 @@ MLS.ui = {
 
         $accordionTabs.on('click', function(e) {
             $jQ(scope + ' > .tab').removeClass(activeClass);
-            var $acContent = $jQ(this).next(),
+            var $clicked = $jQ(this),
+                $acContent = $clicked.next(),
                 $wHeight = $jQ(window).outerHeight(),
                 $navHeight = $jQ('#nav-mobile-tabs-primary').outerHeight(),
                 $acTabHeight = $jQ(scope + ' > .tab').outerHeight();
 
-            if ($acContent.hasClass('accordion-content')) {
+            if(!$clicked.hasClass(activeClass) && $acContent.hasClass('accordion-content')) {
                 e.preventDefault();
-                $jQ(this).parent().addClass(activeClass);
+                $clicked.addClass(activeClass).parent().addClass(activeClass);
                 $acContent.css('height', $wHeight);
+            } else
+            if($clicked.hasClass(activeClass) && $acContent.hasClass('accordion-content')) {
+                e.preventDefault();
+                $clicked.removeClass(activeClass).parent().removeClass(activeClass);
+                $acContent.css('height', 0);
             }
         });
 
