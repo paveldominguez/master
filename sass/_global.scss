@@ -419,6 +419,9 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 }
 
+.noscroll {
+    position: fixed;
+}
 
 #mls-compatibility-mobile-modal {
 
@@ -432,9 +435,12 @@ h1,h2,h3,h4,h5,h6 {
         z-index: 999;
         right: 11px;
         top: 12px;
-        background: red;
+        display: block;
         width: 25px;
         height: 25px;
+        background-size: 25px;
+        background-position: 0 -74px !important;
+        @include ui-sprite(search-close, false);
         cursor: pointer;
     }
 

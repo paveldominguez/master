@@ -94,14 +94,18 @@ MLS.header = (function () {
             var viewportHeight = Response.viewportH();
 
             $modal.show(function () {
-                    $jQ(this).children('.filter-panel').show();
-                    $jQ(this).animate({height: viewportHeight});
+                $jQ(this).children('.filter-panel').show();
+                $jQ(this).animate({
+                    height: viewportHeight
                 });
+                // $jQ('body').addClass('noscroll');
+            });
         },
 
         closeModal: function () {
             $modal.animate({height: 0}, function () {
                 $jQ(this).hide();
+                // $jQ('body').removeClass('noscroll');
             });
         },
 
