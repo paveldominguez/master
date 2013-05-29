@@ -2,6 +2,7 @@ var contentLanding = {
     init: function() {
         $jQ('#load-more-articles').on('click', contentLanding.loadMore);
     },
+
     loadMore: function(e) {
         e.preventDefault();
 
@@ -43,6 +44,8 @@ var contentLanding = {
                     } else { // hide buttons is there's no more
                         $loadMore.hide();
                     }
+
+                    MLS.article.init();
                 }
             }
         );

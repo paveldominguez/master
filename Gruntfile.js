@@ -47,6 +47,7 @@ module.exports = function(grunt) {
         'js/lib/typeahead.min.js',
         'js/lib/select.js',
         'js/scripts.js',
+        'js/header.js',
         'js/content-grid.js',
         'js/content-filter.js',
         'js/category-landing.js',
@@ -68,8 +69,9 @@ module.exports = function(grunt) {
         'js/content-landing.js',
         'js/util.js',
         'js/ui.js'],
+
         dest: 'js/all.js'
-      }
+    }
     },
     connect: {
       options: {

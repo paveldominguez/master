@@ -49,7 +49,7 @@ MLS.checkout = {
     editStepCallback: function(e)
     {
         var $step = $jQ(this).parents('.checkout-step');
-        $step.siblings('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
+        $step.parent().siblings("div, form").find('.checkout-step').find('.hide-complete').each(function() { // close open input & open its summary
             $jQ(this).not('hidden').addClass('hidden').siblings('.step-info-summary').not('.blank').removeClass('hidden');
         });
         $jQ(this).parents('.step-info-summary').addClass('hidden'); // close this panel's summary next
@@ -64,7 +64,18 @@ MLS.checkout = {
             $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
             $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
 
-            $jQ('.new-billing-info-form').removeClass("hidden").siblings(".step-info-summary.billing-address").removeClass("hidden");
+            if (!$jQ("#bill-to-account").is(":checked"))
+            {
+                $jQ("#saved-info-edit").hide();
+                if ($jQ("#choose-saved-card").is(":checked"))
+                {
+                    $jQ(".step-info-summary.billing-address").removeClass("hidden");
+                } else {
+                    $jQ('.new-billing-info-form').removeClass("hidden");
+                }
+            } else {
+                $jQ(".step-info-summary.billing-address").addClass("hidden");
+            }
 
             /*
             $infoform
@@ -220,10 +231,15 @@ MLS.checkout = {
             $bta = $jQ("#bill-to-account"),
             $cc = $jQ("#pay-with-card");
         
+        // edit billing info disabled
+        $jQ("#saved-info-edit").hide();
+
         if ($bta.is(":checked"))
         {
+            $billing.find(".billing-address").addClass("hidden");
             $form.addClass("disabled");
         } else {
+            $billing.find(".billing-address").removeClass("hidden");
             $form.removeClass("disabled");
         }
 
@@ -253,6 +269,8 @@ MLS.checkout = {
                 }
             }, 100);
 
+            $billing.find(".billing-address").addClass("hidden");
+
             return false;
         });
 
@@ -264,6 +282,13 @@ MLS.checkout = {
             bta.checked = !bta.checked;
             cc.checked = !cc.checked;
 
+            if ($jQ("#choose-saved-card").is(":checked"))
+            {
+                $billing.find(".step-info-summary.billing-address").removeClass("hidden");
+            } else {
+                $billing.find(".new-billing-info-form.billing-address").removeClass("hidden");
+            }
+            
             setTimeout(function() {
                 if (!$self.hasClass(".checked"))
                 {
@@ -437,19 +462,6 @@ MLS.checkout = {
                 $jQ(".step-info-summary.billing-address").removeClass('hidden').show();
                 $jQ('.billing-address.new-billing-info-form').addClass('hidden').hide();
             }
-
-
-
-            /*
-            if ($jQ(this).parent().hasClass('new-card')) { // handle edit button visibility
-                $jQ('.edit-saved-card').addClass('hidden');
-            } else {
-                $jQ('.edit-saved-card').removeClass('hidden');
-            }
-            $jQ('.billing-address').each(function(){ // handle saved billing/new billing form below
-                $jQ(this).toggleClass('hidden');
-            });
-            */
         });
 
         $jQ('.edit-saved-card').click(function(){ // signed-in edit saved card information
@@ -540,10 +552,37 @@ MLS.checkout = {
             $jQ('#vzn-checkout-billing').validate(); // validate the rest
         });
 
-        $jQ('.checkout-discount-block .add-gift-card, .checkout-discount-block .add-discount-code').click(function(){  // add another gift card 
+        $jQ('.checkout-discount-block .add-discount-code').click(function(){  // add another discount code
+            if ($jQ(this).hasClass("close"))
+            {
+                // if there are discount codes implemented,
+                // and the uses closes the accordion, remove them.
+                var $remove = $jQ(this).parents("form").next('div').find(".discount-success:visible .discount-remove");
+                if ($remove.length > 0)
+                {
+                    $remove.click();
+                }
+            }
+
+            $jQ(this).toggleClass('close'); 
+            $jQ(this).parents("form").next('div').slideToggle(300); 
+        });
+
+        $jQ('.checkout-discount-block .add-gift-card').click(function(){  // add another gift card (only when BTA is hidden)
             if ($jQ("#vzn-checkout-gift").hasClass("disabled"))
             {
                 return false;
+            }
+
+            if ($jQ(this).hasClass("close"))
+            {
+                // if there are discount codes implemented,
+                // and the uses closes the accordion, remove them.
+                var $remove = $jQ(this).parents("form").next('form').find(".discount-success:visible .discount-remove");
+                if ($remove.length > 0)
+                {
+                    $remove.click();
+                }
             }
 
             $jQ(this).toggleClass('close'); 
@@ -557,7 +596,7 @@ MLS.checkout = {
                 e.preventDefault();
                 $form.validate();
 
-                $self.valid() &&
+                $form.find("input[name*=discountCode]").valid() &&
                 MLS.ajax.sendRequest(
                     MLS.ajax.endpoints.CHECKOUT_APPLY_DISCOUNT,
                     $form.serialize(),
@@ -973,7 +1012,7 @@ MLS.checkout = {
 
             var completed;
 
-            if (true || (valid && formValid)) {
+            if (valid && formValid) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
@@ -1132,13 +1171,7 @@ MLS.checkout = {
 
     mainCheckoutValidation : function(forms) { // CHECKOUT
         $jQ(forms || '#checkout-sequence form').each(function() {
-            $jQ(this).validate({
-                ignore: '.ignore, :hidden',
-                success: function(label){
-                    label.addClass('success').text('');
-                },
-                focusCleanup: true,
-                rules: {
+            var validationRules = {
                     checkoutFirstName: {
                         required: true,
                         noPlaceholder: true,
@@ -1181,10 +1214,10 @@ MLS.checkout = {
                         required: true
                     },
                     checkoutZip: {
-	                    required: true,
-						zipcodeUS: true,
-						minlength: 5,
-	                    noPlaceholder: true
+                        required: true,
+                        zipcodeUS: true,
+                        minlength: 5,
+                        noPlaceholder: true
                     },
                     cardNumber: {
                         required: true,
@@ -1229,47 +1262,12 @@ MLS.checkout = {
                         noPlaceholder: true
                     },
                     billingZip: {
-	                    required: true,
-						zipcodeUS: true,
-						minlength: 5,
-	                    noPlaceholder: true
-                    },
-                    discountCode: {
-	                    required: false,
-	                    noPlaceholder: true,
-						digits: true,
-	                    minlength: 8,
-						maxlength: 16
-                    },
-                    giftCard1: {
-	                    required: false,
-	                    noPlaceholder: true,
-						digits: true,
-	                    minlength: 8,
-						maxlength: 16
-                    },
-                    giftCard1Pin: {
-	                    required: false,
-	                    noPlaceholder: true,
-						digits: true,
-	                    minlength: 7,
-						maxlength: 7
-                    },
-	                giftCard2: {
-	                    required: false,
-	                    noPlaceholder: true,
-						digits: true,
-	                    minlength: 8,
-						maxlength: 16
-	                },
-	                giftCard2Pin: {
-	                    required: false,
-	                    noPlaceholder: true,
-						digits: true,
-	                    minlength: 7,
-						maxlength: 7
-	                },                    
-					cardNumberGC: {
+                        required: true,
+                        zipcodeUS: true,
+                        minlength: 5,
+                        noPlaceholder: true
+                    },                
+                    cardNumberGC: {
                         required: false,
                         noPlaceholder: true,
                         rangelength: [15, 16],
@@ -1283,7 +1281,8 @@ MLS.checkout = {
                         digits: true
                     },
                 },
-                messages: {
+
+                validationMessages = {
                     checkoutFirstName: {
                         required: "Please enter your first name",
                         noPlaceholder: "Please enter your first name"
@@ -1324,11 +1323,11 @@ MLS.checkout = {
                         required: "Please select your state"
                     },
                     checkoutZip: {
-	                    required: "Please enter your zip code",
-	                    noPlaceholder: "Please enter your zip code",
-	                    digits: "Please enter your 5 digit zip code",
-	                    minlength: "Please enter your 5 digit zip code",
-	                    zipcodeUS: "Please enter a valid zip code"
+                        required: "Please enter your zip code",
+                        noPlaceholder: "Please enter your zip code",
+                        digits: "Please enter your 5 digit zip code",
+                        minlength: "Please enter your 5 digit zip code",
+                        zipcodeUS: "Please enter a valid zip code"
                     },
                     cardNumber: {
                         required: "Please enter your card number",
@@ -1377,36 +1376,11 @@ MLS.checkout = {
                         noPlaceholder: "Please enter your state"
                     },
                     billingZip: {
-	                    required: "Please enter your zip code",
-	                    noPlaceholder: "Please enter your zip code",
-	                    digits: "Please enter your 5 digit zip code",
-	                    minlength: "Please enter your 5 digit zip code",
-	                    zipcodeUS: "Please enter a valid zip code"
-                    },
-                    discountCode: {
-                        required: "Please enter a valid discount code",
-                        noPlaceholder: "Please enter a valid discount code",
-                        minlength: "Please enter a valid discount code"
-                    },
-                    giftCard1: {
-                        required: "Please enter a valid gift card number",
-                        noPlaceholder: "Please enter a valid gift card number",
-                        minlength: "Please enter a valid gift card number"
-                    },
-                    giftCard1Pin: {
-                        required: "Please enter a valid gift card PIN",
-                        noPlaceholder: "Please enter a valid gift card PIN",
-                        minlength: "Please enter a valid gift card PIN"
-                    },
-                    giftCard2: {
-                        required: "Please enter a valid gift card number",
-                        noPlaceholder: "Please enter a valid gift card number",
-                        minlength: "Please enter a valid gift card number"
-                    },
-                    giftCard2Pin: {
-                        required: "Please enter a valid gift card PIN",
-                        noPlaceholder: "Please enter a valid gift card PIN",
-                        minlength: "Please enter a valid gift card PIN"
+                        required: "Please enter your zip code",
+                        noPlaceholder: "Please enter your zip code",
+                        digits: "Please enter your 5 digit zip code",
+                        minlength: "Please enter your 5 digit zip code",
+                        zipcodeUS: "Please enter a valid zip code"
                     },
                     cardNumberGC: {
                         required: "Please enter your card number",
@@ -1420,8 +1394,82 @@ MLS.checkout = {
                         minlength: "Please enter a valid security code",
                         maxlength:  "Please enter a valid security code",
                         digits: "Please enter a valid security code"
-                    },
+                    }
+                }, 
+                i = 0, 
+                $discountCodes = $jQ("#vzn-checkout-code input[name*=discountCode]"),
+                $giftCards = $jQ("#vzn-checkout-gift input[name*=giftCard]");
+
+            $discountCodes.each(function() {
+                var n = $jQ(this).attr("name");
+                validationRules[n] = {
+                    required: false,
+                    noPlaceholder: true,
+                    /* digits: true, */
+                    minlength: 1,
+                    maxlength: 16
+                };
+
+                validationMessages[n] = {
+                    required: "Please enter a valid discount code",
+                    noPlaceholder: "Please enter a valid discount code",
+                    minlength: "Please enter a valid discount code",
+                    maxlength: "Please enter a valid discount code"
+                };
+            });
+
+            $giftCards.each(function() {
+                var n = $jQ(this).attr("name");
+                if (n.substr(n.length-3).toLowerCase() == "pin")
+                {
+                    validationRules[n] = {
+                        required: false,
+                        noPlaceholder: true,
+                        /* digits: true, */
+                        minlength: 1,
+                        maxlength: 7
+                    };
+
+                    validationMessages[n] = {
+                        required: "Please enter a valid gift card PIN",
+                        noPlaceholder: "Please enter a valid gift card PIN",
+                        minlength: "Please enter a valid gift card PIN",
+                        maxlength: "Please enter a valid gift card PIN"
+                    }; 
+                } else {
+                    validationRules[n] = {
+                        required: false,
+                        noPlaceholder: true,
+                        digits: true,
+                        minlength: 1,
+                        maxlength: 16
+                    };
+
+                    validationMessages[n] = {
+                        required: "Please enter a valid discount code",
+                        noPlaceholder: "Please enter a valid discount code",
+                        minlength: "Please enter a valid discount code",
+                        maxlength: "Please enter a valid discount code"
+                    }; 
                 }
+            });
+
+            $jQ(this).validate({
+                ignore: '.ignore, :hidden',
+                success: function(label){
+                    label.addClass('success').text('');
+                },
+                highlight: function(element, errorClass, validClass) {
+                    if ( element.type === "radio" ) {
+                        this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+                    } else {
+                        $jQ(element).addClass(errorClass).removeClass(validClass);
+                    }
+                    $jQ(element).siblings(".error.success").removeClass('success');
+                },
+                focusCleanup: true,
+                rules: validationRules,
+                messages: validationMessages
             });
         });
     }
