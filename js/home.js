@@ -94,7 +94,7 @@ MLS.home = {
 			var selectedDevice = '';
 			$jQ('#madlib-device').typeahead({
 				name: 'devices',
-				remote: {
+				prefetch: {
 					url: MLS.ajax.endpoints.SEARCH_DEVICES + '?search=%QUERY'
 				},
 				limit: 10

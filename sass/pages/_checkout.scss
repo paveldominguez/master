@@ -275,6 +275,9 @@
 			}
 		.checkout-dropdown.special-offers-dropdown {
 			margin-top: -7px;
+				.dropdown-link {
+					background-position: 111px -3367px;
+				}
 			}
 
 		.optional {
@@ -1565,7 +1568,7 @@
 				 					@include pdp-sprite(blue-more, false, 155px, 14px );
 									letter-spacing: 0px;
 										.paren-right {
-											padding-left: 7px;
+											padding-left: 9px;
 										}
 				 					}
 				 				.dropdown-panel {
@@ -1622,7 +1625,7 @@
 
 									.checkout-dropdown {
 										.dropdown-link { 
-											@include pdp-sprite(blue-more, false, 76px, 14px); letter-spacing: 0px;
+											@include pdp-sprite(blue-more, false, 78px, 14px); letter-spacing: 0px;
 											.paren-right {
 												padding-left: 7px;
 											}
