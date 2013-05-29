@@ -1448,6 +1448,14 @@ MLS.checkout = {
                 success: function(label){
                     label.addClass('success').text('');
                 },
+                highlight: function(element, errorClass, validClass) {
+                    if ( element.type === "radio" ) {
+                        this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+                    } else {
+                        $jQ(element).addClass(errorClass).removeClass(validClass);
+                    }
+                    $jQ(element).siblings(".error.success").removeClass('success');
+                },
                 focusCleanup: true,
                 rules: validationRules,
                 messages: validationMessages
