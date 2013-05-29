@@ -64,7 +64,18 @@ MLS.checkout = {
             $jQ('.sidebar-finish').removeClass('on'); // reverse side bar changes
             $jQ('.checkout-accordion.sidebar').find('.acc-info').css('display', 'none');
 
-            $jQ('.new-billing-info-form').removeClass("hidden").siblings(".step-info-summary.billing-address").removeClass("hidden");
+            if (!$jQ("#bill-to-account").is(":checked"))
+            {
+                $jQ("#saved-info-edit").hide();
+                if ($jQ("#choose-saved-card").is(":checked"))
+                {
+                    $jQ(".step-info-summary.billing-address").removeClass("hidden");
+                } else {
+                    $jQ('.new-billing-info-form').removeClass("hidden");
+                }
+            } else {
+                $jQ(".step-info-summary.billing-address").addClass("hidden");
+            }
 
             /*
             $infoform
