@@ -9,15 +9,13 @@ MLS.article = {
 
         d = $jQ(d || document);
         $jQ('#article-modal-overlay').hide();
-        d.find('.data-article').on('click', function(e){
-            e.preventDefault();
+        d.find('.data-article').unbind('click', this.loadArticleCallback).click(this.loadArticleCallback);
+    },
 
-           var data = $jQ(this).attr("href").split("?")[1].split("#")[0];
-
-           // console.log("data: ", data);
-
-           MLS.article.getArticleContent(data);
-        });
+    loadArticleCallback: function(e){
+        e.preventDefault();
+        var data = $jQ(this).attr("href").split("#")[0].split("?")[1];
+        MLS.article.getArticleContent(data);
     },
 
     getArticleContent : function (data) {
