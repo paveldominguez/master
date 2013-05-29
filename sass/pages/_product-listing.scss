@@ -402,16 +402,17 @@ $hdrOfferCollapsed: 55px;
                         display:none;
                     }
                     border: none;
-                    padding: 0 15px;
+                    padding: 10px 6px 10px 6px;
                     text-transform: uppercase;
                     margin-bottom: 1px;
                     border-bottom: 1px solid #dcdede;
                     position: relative;
-                    line-height: 50px;
-                    font-size:12px;
+                    line-height: 1.3;
+                    font-size:11px;
                     .action {
-                        @include product-filter-sprite(prd-fltr-remove, false, 20px, 20px);
-                        padding: 25px;
+                        @include product-filter-sprite(prd-fltr-remove, false);
+                        // padding: 25px;
+                        margin-top: 2px;
                         width: 10px;
                         height: 10px;
                     }
@@ -1151,6 +1152,16 @@ $hdrOfferCollapsed: 55px;
 
 
             }
+
+            .original {
+                font-weight: 200;
+                display: inline-block;
+                padding-left: 10px;
+                color: $cartGreyLt;
+                text-decoration: line-through;
+            }
+
+
             .rating {
                 float: right;
                 color: #666;
