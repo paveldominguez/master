@@ -155,7 +155,7 @@ MLS = {
     'checkout-success-page': {
         init : function () {
             MLS.header.init();
-            MLS.checkoutSuccess.init();
+            MLS.productDetail.init();
             MLS.miniCart.init();
         }
     },
