@@ -154,8 +154,12 @@ MLS = {
     },
     'checkout-success-page': {
         init : function () {
+<<<<<<< HEAD
             MLS.header.init();
             MLS.checkoutSuccess.init();
+=======
+            MLS.productDetail.init();
+>>>>>>> 85aa9de1878294aa6ed1245518d62c9aeded9bea
             MLS.miniCart.init();
         }
     },

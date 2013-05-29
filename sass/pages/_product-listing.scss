@@ -1151,6 +1151,16 @@ $hdrOfferCollapsed: 55px;
 
 
             }
+
+            .original {
+                font-weight: 200;
+                display: inline-block;
+                padding-left: 10px;
+                color: $cartGreyLt;
+                text-decoration: line-through;
+            }
+
+
             .rating {
                 float: right;
                 color: #666;
