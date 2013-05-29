@@ -834,18 +834,18 @@ h1,h2,h3,h4,h5,h6 {
                         line-height: 36px;
                     }
                     .read-story{
-                    position: absolute;
-                    bottom: 25px;
-                    left: 40px;
-                    a{
-                        display: block;
-                        font-family: arial;
-                        font-weight: bold;
-                        font-size: 10px;
-                        color: #fff;
-                        text-transform: uppercase;
+                        position: absolute;
+                        bottom: 25px;
+                        left: 40px;
+                        a{
+                            display: block;
+                            font-family: arial;
+                            font-weight: bold;
+                            font-size: 10px;
+                            color: #fff;
+                            text-transform: uppercase;
+                        }
                     }
-                }
                 }
             }
             .featured-tile{
@@ -860,6 +860,16 @@ h1,h2,h3,h4,h5,h6 {
                 border-right: none;
                 border-left: none;
                 margin-right: 30px;
+                .related-product{
+                    position: absolute;
+                    top: -499px;
+                    left: -499px;
+                    z-index: 10;
+                    background: #fff;
+                    width: 104%;
+                    height: 104%;
+                    padding: 15px;
+                }
                 .featured-image{
                     position: absolute;
                     height: 100%;
