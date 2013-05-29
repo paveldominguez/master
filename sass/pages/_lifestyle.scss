@@ -755,6 +755,20 @@ $colorLifestyleLight: #DCDEDE;
 }
 
 @media only screen and ( max-width: $screenMobileLarge ) {
+    .lifestyle-landing-page .category-section .content-header {
+        position: relative;
+        overflow: hidden;
+        padding: 25px;
+        .title {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 24px;
+            margin: 0;
+            a { white-space: nowrap; z-index: 100; }
+        }
+        .slide-nav { display: none; }
+    }
     .guides-module {
         .content-grid .content-item {
             width: 100%;
