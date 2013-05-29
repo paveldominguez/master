@@ -107,7 +107,7 @@ MLS.ui = {
                                     // server error response
                                     else {
                                         $jQ("#share-modal")[0].reset(); //reset fields
-                                        $shareModalDisplay.html(d.error.responseHTML);
+                                        $jQ('#share-modal-display .share-error').html(d.error.responseHTML);
                                     }
                                 },
                                 // AJAX request error
