@@ -507,10 +507,8 @@ h1,h2,h3,h4,h5,h6 {
                 }
             }
         }
-
     }
 }
-
 #share-modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -520,71 +518,166 @@ h1,h2,h3,h4,h5,h6 {
     z-index: 99998;
 }
 #share-modal-display {
+    .share-success {
+        .overlay-content {
+            width: 100%;
+            .message {
+                @include instruct;
+                font-size: 16px;
+                float: left;
+                margin-top: 30px;
+                width: 60%;
+                padding-right: 5%;
+                .recipient-email {
+                    display: block;
+                    font-family: $fontVzwBold;
+                    padding-top: 10px; 
+                }
+            }
+
+        }
+    }
+    .share-error {
+        .message {
+            font: normal 20px $fontVzwBook;
+            color: $colorVzwRed;
+            margin: 10px 0 15px 0;
+        }
+    }
+}    
+#share-modal-display {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 99999;
     @include border-radius(3px);
     background: #FFF;
-    width: 550px;
-    height: 360px;
+    width: 500px;
+    height: 390px;
     padding: 20px 35px;
+    .message {
+        &.error {
+            font: normal 20px $fontVzwBook;
+            color: $colorVzwRed;
+            margin: 0 0 15px 0;
+        }
+    }
     .share-title {
-        margin: 0;
+        margin: 12px 0 0 0;
+        letter-spacing: -0.1em;
         font: {
             family: $fontVzwBook;
             weight: normal;
         }
-        &.message {
-            margin-top: 30px;
-        }
     }
     .close-overlay {
         position: absolute;
-        top: 20px; right: 35px;
-        display: block;
-        width: 32px;
-        height: 31px;
-        @include social-sprite(close, false, 0, 0);
+        top: 20px; right: 20px;
+        width: 52px; height: 52px;
+        border-radius: 26px;
+        cursor: pointer;
+        @include cart-sprite(modal-close-icon, false, 16px, 15px);
+        background-color: #333;
     }
     .overlay-content {
+        overflow: hidden;
+        margin-top: 5px;
         .share-fig, .share-modal {
             float: left;
         }
         .share-fig {
             width: 35%;
+            margin-top: 25px;
             img {
-                width: 150px;
+                width: 85px;
+                margin-left: 5px;
             }
             figcaption {
-                font: {
-                    family: $fontArial;
-                    size: 12px;
-                }
+                @include checkoutContent;
+                color: $cartGreyDk;
+                letter-spacing: -0.1em;
+                width: 79%;
+                margin-top: 10px;
             }
         }
         .share-modal {
-            margin-top: 20px;
+            margin-top: 30px;
             width: 65%;
             .fieldwrapper {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 label {
-                    display: block;
-                    text-transform: uppercase;
+                    @include checkoutLabel;
                     margin-bottom: 5px;
-                    color: #3C4043;
-                    font-size: 12px;
                 }
-            }
+                &.error {
+                    @include checkoutLabel;
+                    width: 100%;
+                    color: $colorVzwRed;
+                    position: absolute;
+                    bottom: 0; left: 0;
+                    height: 20px;
+                    overflow: hidden;
+                    padding: 0px 0 0 15px;
+                    @include cart-sprite(red-left, false, 0px, 1px);
+                }
+                &.error.success {
+                    @include cart-sprite(checkout-checkbox-checked);
+                    max-width: 15px;
+                }
+                input.error {
+                    background:#fff;
+                    border: 2px solid $colorVzwRed;
+                }
+                input[type="email"] {
+                    color: $cartGreyDk;
+                    font-family: $fontVzwBook;
+                    font-weight: normal;
+                    background: #fff;
+                    margin: 3px 0 5px 0;
+                    padding: 8px;
+                    font-size:18px;
+                    height: 36px;
+                    @include cartRounded;
+                }
+                input[type="email"].hasPlaceholder {
+                    color: #bbb;
+                    font-family: $fontVzwLight;
+                    font-weight: normal;
+                }
+                input[type="email"]:focus {
+                    color: $cartGreyDk;
+                    font-family: $fontVzwLight;
+                    font-weight: normal;
+                    border-width: 2px;
+                }
+                input[type="email"].hasPlaceholder.valid {
+                    color: $cartGreyDk;
+                    font-family: $fontVzwLight;
+                    font-weight: normal;
+                    border-width: 1px;
+                }
+            }    
             .button {
                 @include ctaRedButton;
                 float: right;
-                width: 125px;
-                height: 50px;
+                width: 145px;
+                height: 47px;
+                margin-top: 5px;
                 span {
-                    padding-top: 22px;
+                    padding-top: 21px;
+                    font-size: 16px;
                 }
             }
+        }
+        .message {
+            font: normal 20px $fontVzwBook;
+            //color: $colorVzwRed;
+            /*&.success {
+                display: none;
+            }
+            &.error {
+                display: none;
+            }*/
         }
     }
 
