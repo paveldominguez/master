@@ -201,8 +201,12 @@
 			float: left;
 			@include checkoutContent;
 			margin-left:10px;
-			padding-top:3px;
+			padding-top:2px;
 			}
+		
+		input[type="checkbox"].create-login-checkbox, input[type="checkbox"].remember-me-checkbox {
+			float: left;
+		}
 
 		input[type="text"],
 		input[type="password"],
@@ -242,7 +246,7 @@
 		input[type="password"].hasPlaceholder.valid,
 		input[type="tel"].hasPlaceholder.valid,
 		input[type="email"].hasPlaceholder.valid {
-			color: $cartGreyDk;
+			color: #bbb;
 			font-family: $fontVzwLight;
 			font-weight: normal;
 			border-width: 1px;
