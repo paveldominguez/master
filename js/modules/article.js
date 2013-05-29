@@ -9,15 +9,13 @@ MLS.article = {
 
         d = $jQ(d || document);
         $jQ('#article-modal-overlay').hide();
-        d.find('.data-article').on('click', function(e){
-            e.preventDefault();
+        d.find('.data-article').unbind('click', this.loadArticleCallback).click(this.loadArticleCallback);
+    },
 
-           var data = $jQ(this).attr("href").split("?")[1].split("#")[0];
-
-           // console.log("data: ", data);
-
-           MLS.article.getArticleContent(data);
-        });
+    loadArticleCallback: function(e){
+        e.preventDefault();
+        var data = $jQ(this).attr("href").split("#")[0].split("?")[1];
+        MLS.article.getArticleContent(data);
     },
 
     getArticleContent : function (data) {
@@ -69,7 +67,12 @@ MLS.article = {
             height = $jQ('#article-detail').height() + 160;
         }
 
-        $jQ('#article-detail').css({'top': scrollTop - height}).animate({top: $jQ(window).scrollTop() + 160}, 500, function () {
+        $jQ('#article-detail').css({ 
+            display: 'block', 
+            top: scrollTop - height
+        }).animate({
+            top: $jQ(window).scrollTop() + 160
+        }, 500, function () {
             $jQ('#article-modal-overlay').fadeIn();
         });
     },

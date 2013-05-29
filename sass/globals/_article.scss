@@ -231,6 +231,7 @@
 				margin-top:20px;
 			}
 			.details{
+				@include clearfix();
 				margin-left:35px;
 				visibility: hidden;
 				.name{
@@ -249,6 +250,11 @@
 				}
 				.rating{
                     float: right;
+                }
+
+                > a 
+                {
+                	float: left;
                 }
 			}
 			&:hover{

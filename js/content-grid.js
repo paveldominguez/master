@@ -99,7 +99,12 @@ var contentGrid = {
                 if (data.hasOwnProperty('success')) {
                     $loadMore = $jQ('#load-more');
                     // append results
+                    $jQ('#main-column .content-grid > li').addClass("already-added");
                     $jQ('#main-column .content-grid').append(data.success.responseHTML);
+                    var $newItems = $jQ('#main-column .content-grid > li:not(.already-added)');
+                    $jQ('#main-column .content-grid > .already-added').removeClass("already-added");
+
+                    MLS.miniCart.init($newItems, MLS.miniCart.options);
                     contentGrid.reInit();
 
                     // If there's more results to load

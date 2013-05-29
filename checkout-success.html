@@ -77,11 +77,11 @@
 			<a href="#" class="register-vzn-login">Register</a>	
 			
 			<p class="order-number-block">
-				Your order number is: <span id="order-number">23-98756</span>
+				Your order number is: <span id="order-number">23457</span>
 			</p>
 
 			<p class="order-detail-block">
-				You'll be getting a confirmation email at <span id="confirmed-email">diego@gmail.com</span>. Your order will arrive in <span id="est-arrival">2 business days</span> and will need a signature for delivery.
+				You'll be getting a confirmation email at <span id="confirmed-email">diego@google.com</span>. Your order will arrive in <span id="est-arrival">3 business days</span> and will need a signature for delivery.
 			</p>
 		</div>	
 	
@@ -103,7 +103,7 @@
 			</p>
 			<div class="form-input-wrap">
 				<input name="newsletterSignup" type="text" id="newsletter-signup" class="hasPlaceholder" placeholder="Email Address" tabindex="30">
-				<input class="button" type="button" value="Add to Cart" title="Add to Cart">
+				<input class="button" type="button" value="Sign Up" title="Sign Up">
 			</div>
 		</div>
 	
@@ -206,7 +206,16 @@
 						</div>
 					</li><!-- end subtotal -->
 
-					<li id = "checkout-cart-employee-disc" class="discounted" >
+					<li id = "checkout-cart-discount-code" class="" >
+						<div class="label">Gift Card and Discount:</div>
+
+						<div class="data">
+							- $<span id="discount-code-amt">19.99</span>
+						</div>
+					</li><!-- end discount code block -->
+					
+
+					<li id = "checkout-cart-employee-disc" class="" >
 						<div class="label">Employee Discount:</div>
 
 						<div class="data">
@@ -214,38 +223,14 @@
 						</div>
 					</li><!-- end employee discount -->
 
-					<li id = "checkout-cart-discount-code" class="discounted" >
-						<div class="label">Discount Code:</div>
-
-						<div class="data">
-							- $<span id="discount-code-amt">19.99</span>
-						</div>
-					</li><!-- end discount code block -->
-
-					<li id = "checkout-cart-gift-card-1" class="discounted" >
-						<div class="label">Gift Card:</div>
-
-						<div class="data">
-							- $<span id="gift-card-1-amt">50.00</span>
-						</div>
-					</li><!-- end discount code block -->
-
-					<li id = "checkout-cart-gift-card-2" class="discounted" >
-						<div class="label">Additional Gift Card:</div>
-
-						<div class="data">
-							- $<span id="gift-card-2-amt">25.00</span>
-						</div>
-					</li><!-- end discount code block -->
-
 					<li id = "checkout-cart-ship" >
 						<div class="label">
-							Shipping & Handling
+							Shipping:
 						</div>
 
 						<div class="data">
-							<span class="no-offer">$<span id="shipping">16.95</span></span>
-							<span class="offer">FREE!</span>
+							<span class="offer">$<span id="shipping">16.95</span></span>
+							<span class="no-offer">FREE!</span>
 						</div>
 					</li>
 
@@ -348,7 +333,7 @@
 		
 			<div class="content">
 				<div class="card-image">
-					<img src="" title="Your Credit Card">
+					<div class="mastercard"></div>
 				</div>
 			
 				<ul>

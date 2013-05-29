@@ -22,7 +22,7 @@
 			width:100%;
 			max-width:1024px;
 			position:relative;
-            margin: 0 auto 0 auto;
+            margin: 0 auto 40px auto;
 			}
 
 		.bold {
@@ -647,6 +647,13 @@
 						width: 70%;
 						display: inline;
 					}
+					.button {
+		 				width: 25%;
+		 				height: 36px;
+		 				float: right;
+		 				@include greyCartButton;
+		 				margin-top: 3px;
+					}
 				}
 			}
 
@@ -708,6 +715,18 @@
 						font-size: 16px;
 					}
 					div.content {
+						.card-image {
+							.mastercard { 
+								display: inline-block;
+								float: left;
+								width: 60px;
+								height: 36px;
+								padding: 0;
+								margin: 0 10px 20px 0;
+								background: url('../img/sprites/cart-s1da534f871.png') no-repeat;
+								background-position: 0 0;
+							}
+						}
 						ul {
 							margin-left: 0px;
 							li {
@@ -723,7 +742,9 @@
 								div.ship-zip {
 									float: none;
 								}
-							}
+							}						
+
+							
 						}
 					}
 				}
