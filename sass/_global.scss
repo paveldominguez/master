@@ -861,6 +861,16 @@ h1,h2,h3,h4,h5,h6 {
                 border-right: none;
                 border-left: none;
                 margin-right: 30px;
+                .product-reveal{
+                    width: 45px;
+                    height: 45px;
+                    position: absolute;
+                    background: url(../img/lifestyle-expand-cta.png);
+                    bottom: -15px;
+                    right: -15px;
+                    z-index: 10;
+                    cursor: pointer;
+                }
                 .related-product{
                     position: absolute;
                     top: -499px;
