@@ -220,10 +220,15 @@ MLS.checkout = {
             $bta = $jQ("#bill-to-account"),
             $cc = $jQ("#pay-with-card");
         
+        // edit billing info disabled
+        $jQ("#saved-info-edit").hide();
+
         if ($bta.is(":checked"))
         {
+            $billing.find(".billing-address").addClass("hidden");
             $form.addClass("disabled");
         } else {
+            $billing.find(".billing-address").removeClass("hidden");
             $form.removeClass("disabled");
         }
 
@@ -253,6 +258,8 @@ MLS.checkout = {
                 }
             }, 100);
 
+            $billing.find(".billing-address").addClass("hidden");
+
             return false;
         });
 
@@ -264,6 +271,13 @@ MLS.checkout = {
             bta.checked = !bta.checked;
             cc.checked = !cc.checked;
 
+            if ($jQ("#choose-saved-card").is(":checked"))
+            {
+                $billing.find(".step-info-summary.billing-address").removeClass("hidden");
+            } else {
+                $billing.find(".new-billing-info-form.billing-address").removeClass("hidden");
+            }
+            
             setTimeout(function() {
                 if (!$self.hasClass(".checked"))
                 {
@@ -437,19 +451,6 @@ MLS.checkout = {
                 $jQ(".step-info-summary.billing-address").removeClass('hidden').show();
                 $jQ('.billing-address.new-billing-info-form').addClass('hidden').hide();
             }
-
-
-
-            /*
-            if ($jQ(this).parent().hasClass('new-card')) { // handle edit button visibility
-                $jQ('.edit-saved-card').addClass('hidden');
-            } else {
-                $jQ('.edit-saved-card').removeClass('hidden');
-            }
-            $jQ('.billing-address').each(function(){ // handle saved billing/new billing form below
-                $jQ(this).toggleClass('hidden');
-            });
-            */
         });
 
         $jQ('.edit-saved-card').click(function(){ // signed-in edit saved card information
