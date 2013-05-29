@@ -455,6 +455,9 @@ $colorLifestyleLight: #DCDEDE;
                     }
                     line-height: 22px;
                 }
+                .stars {
+                    font-size: 11px;
+                }
                 .credit {
                     font: {
                         family: $fontArial;
@@ -663,6 +666,11 @@ $colorLifestyleLight: #DCDEDE;
                     weight: normal;
                 }
             }
+        }
+    }
+    .user-reviews-module {
+        .title a {
+            display: none;
         }
     }
 }
