@@ -531,7 +531,7 @@ var pub = {
             );
         });
     },
-     addCartValidation : function() {
+    addCartValidation : function() {
         jQuery.validator.addMethod("noEmptySelect", function (value, element) {
             if (value == '0') {
                 return false;
