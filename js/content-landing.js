@@ -1,9 +1,18 @@
 var contentLanding = {
-    init: function() {
+    init: function () {
         $jQ('#load-more-articles').on('click', contentLanding.loadMore);
     },
 
-    loadMore: function(e) {
+    finalize: function () {
+        $jQ('#load-more-articles').unbind('click', contentLanding.loadMore);
+    },
+
+    reInit: function () {
+        contentLanding.finalize();
+        contentLanding.init();
+    },
+
+    loadMore: function (e) {
         e.preventDefault();
 
         var $elem = $jQ(e.currentTarget),
@@ -26,10 +35,10 @@ var contentLanding = {
 
                         MLS.ui.socialShare.init();
                         // re-initialize social buttons
-                        try{
+                        try {
                             FB.XFBML.parse();
                             twttr.widgets.load();
-                        }catch(ex){}
+                        } catch (ex) {}
 
                         // update data-offset
                         $loadMore.attr('href', data.success.more.url)

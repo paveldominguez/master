@@ -619,6 +619,9 @@
 					font-size: 10px;
 					font-weight: bold;
 					text-transform: uppercase;
+					#confirmed-email {
+						font-weight: bold;
+					}
 				}
 				.call-us {
 					text-transform: uppercase;
@@ -660,6 +663,18 @@
 		}
 
 		#order-details {
+			.content-header {
+				h1 {
+					.print-receipt {
+						float: right;
+						padding: 14px 0 0 24px;
+						background: url('../img/cart/print-receipt.png') no-repeat;
+						background-position: 0 10px;
+						height: 40px;
+						
+					}
+				}
+			}
 			.display-left {
 				float: left;
 				width: 66.666%;
