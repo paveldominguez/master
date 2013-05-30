@@ -5,23 +5,24 @@
                 <span class="icon">Email</span>
             </a>
             <div class="overlay">
-                <h3 class="share-title">Share This Item</h3>
+                <div class="share-error"></div>
+                <h3 class="share-title">Share this item</h3>
                 <a href="#" id="close-social-overlay" class="close-overlay"></a>
                 <div class="overlay-content">
                     <figure class="share-fig">
-                        <img src="img/product-detail-page/pdp-plus/dre-beats-1.png">
-                        <figcaption>Product Description...</figcaption>
+                        <img src="img/product-detail-page/pdp-products/belkin-charger.png" alt="Photo of Belkin AC Charger with Swivel Plug" title="Belkin AC Charger with Swivel Plug">
+                        <figcaption>Belkin AC Charger with Swivel Plug</figcaption>
                     </figure>
-                    <form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-example.json">
+                    <form id="share-modal" name="share-modal" class="share-modal" method="post" action="social-share-email.json">
                         <div class="fieldwrapper">
                             <label for="share-email">Your Email</label>
-                            <input id="share-email" name="share-email" type="email" class="share-field">
+                            <input id="share-email" name="shareEmail" type="email" class="share-field hasPlaceholder" placeholder="Email Address">
                         </div>
                         <div class="fieldwrapper">
                             <label for="share-recipient">Recipient Email</label>
-                            <input id="share-recipient" name="share-recipient" type="email" class="share-field">
+                            <input id="share-recipient" name="shareRecipient" type="email" class="share-field hasPlaceholder" placeholder="Email Address">
                         </div>
-                        <input type="submit" id="share-submit" class="button share-cta">
+                        <input type="submit" id="share-submit" class="button share-cta" value="Send">
                     </form>
                 </div>
             </div>
