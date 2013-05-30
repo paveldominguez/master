@@ -86,7 +86,7 @@ MLS.lifestyle = {
         });
 
         //guides
-        $jQ('#guides-module').flexslider({
+        var $guidesModule = $jQ('#guides-module').flexslider({
             animation: 'slide',
             controlsContainer: '#guides-module .slide-nav',
             animationLoop: true,
@@ -94,10 +94,13 @@ MLS.lifestyle = {
             directionNav: true,
             slideshow: false,
             animationSpeed: 500,
-            itemWidth: 320,
+            itemWidth: 280,
             maxItems: 4,
             minItems: 1,
             start: function () {
+                if(R.band(320, 640)) {
+                    $guidesModule.data('flexslider').setOpts({itemWidth: 280});
+                }
                 noglobal || $jQ(window).resize();
             }
         });

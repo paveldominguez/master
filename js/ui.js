@@ -4,6 +4,10 @@ MLS.ui = {
      * Social Share - Handle clicking of social share toolbar
      *
      */
+    /*var serverError = 'Something went wrong. Mind trying again?',
+        successMessageTitle = 'Success!',
+        successMessage1 = 'You have shared the',
+        successMessage2 = 'with:';*/
 
     socialShare : {
         init: function () {
@@ -78,31 +82,48 @@ MLS.ui = {
                     $shareModalDisplay.html($emlModal);
                     $emlOverlay.html('');
                     $jQ('#share-submit').uniform();
-                    $jQ('#share-modal').on('submit', function (e) {
+                    
+                    MLS.ui.placeholderValidationRules();
+                    $shareForm = $jQ("#share-modal");
+                    MLS.ui.emailValidation($shareForm);
+                    
+                    $shareForm.on('submit', function (e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        var $theForm = $jQ(this.form);
-                        MLS.ajax.sendRequest(
-                            $theForm.attr('action'),
-                            $theForm.serialize(),
-                            // AJAX request success
-                            function (d) {
-                                // server success response
-                                if (data.hasOwnProperty('success')) {
-                                    $shareModalDisplay.html(d.success.responseHTML);
+
+                        var shareFormValid = false;
+                        shareFormValid = $shareForm.valid();
+                        if (shareFormValid) {    
+                            var $theForm = $jQ("#share-modal".form);
+                            MLS.ajax.sendRequest(
+                                $theForm.attr('action'),
+                                $theForm.serialize(),
+                                // AJAX request success
+                                function (d) {
+                                    // server success response
+                                    if (data.hasOwnProperty('success')) {
+                                        $shareModalDisplay.html(d.success.responseHTML);
+                                    }
+                                    // server error response
+                                    else {
+                                        $jQ("#share-modal")[0].reset(); //reset fields
+                                        $jQ('#share-modal-display .share-error').html(d.error.responseHTML);
+                                    }
+                                },
+                                // AJAX request error
+                                function (d) {
+                                    // For demo - start error response
+                                    //$shareForm[0].reset(); 
+                                    //$jQ('#share-modal-display .share-error').html('<p class="message">Something went wrong. Mind trying again?</p>');
+                                    //For demo - end error response
+                                    //For demo - success response                                     
+                                    $shareModalDisplay.html('<div class="share-success"><h3 class="share-title">Success!</h3><a href="#" id="close-social-overlay" class="close-overlay"></a><div class="overlay-content"><figure class="share-fig"><img src="img/product-detail-page/pdp-products/belkin-charger.png" alt="Photo of Belkin AC Charger with Swivel Plug" title="Belkin AC Charger with Swivel Plug"></figure><p class="message">You have shared the Belkin AC Charger with Swivel Plug with: <span class="recipient-email">Example@gmail.com</span></p></div></div>');
                                 }
-                                // server error response
-                                else {
-                                    $shareModalDisplay.html(d.error.responseHTML);
-                                }
-                            },
-                            // AJAX request error
-                            function (d) {
-                                $shareModalDisplay.html('<h3 class="share-title">An error has occurred.<br>Please try again later.</h3><a href="#" id="close-social-overlay" class="close-overlay"></a>');
-                            }
-                        );
+                            );
+                        }
                     });
-                } else {
+                } 
+                else {
                     $overlay = $scope.find('.overlay'),
                     $socialList = $socialItemsWithContext.parents('.social-list'),
                     listWidth = $socialList.outerWidth();
@@ -127,7 +148,48 @@ MLS.ui = {
             });
         }
     },
-
+    placeholderValidationRules : function() { 
+        jQuery.validator.addMethod("noPlaceholder", function (value, element) { // don't validate placeholder text
+            if (value == $jQ(element).attr('placeholder')) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    },
+    emailValidation : function(formId) {
+        $jQ(formId).validate({
+                ignore: '.ignore, :hidden',
+                success: function(label){
+                label.addClass('success').text('');
+            },
+            focusCleanup: false,
+            rules: {
+                shareEmail: {
+                    required: true,
+                    noPlaceholder: true,
+                    email: true
+                },
+                shareRecipient: {
+                    required: true,
+                    noPlaceholder: true,
+                    email: true
+                }    
+            },
+            messages: {
+                shareEmail: {
+                    required: "Please enter your email address",
+                    noPlaceholder: "Please enter your email address",
+                    email: "Invalid email address"
+                },                                
+                shareRecipient: {
+                    required: "Please enter the recipients address",
+                    noPlaceholder: "Please enter the recipients address",
+                    email: "Invalid email address"
+                }
+            }                             
+        });
+    },
     complexItem: {
         init: function () {
             $jQ('.close-btn', '#complex-item-modal').on('click', MLS.ui.complexItem.close);
@@ -143,6 +205,7 @@ MLS.ui = {
             });
         }
     },
+
     /*
      * Grid Hover (popout)
      * @selector: grid item(s), @details: detail contents to push into grid pop out, @padding: control offset amount
