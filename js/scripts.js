@@ -171,6 +171,7 @@ MLS = {
                 callback: function () {
                     MLS.article.init();
                     MLS.ui.socialShare.init();
+                    contentLanding.reInit();
                 },
                 container: $jQ('#main-column')
             });
