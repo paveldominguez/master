@@ -198,8 +198,8 @@
 						<div class="shipping-option-radios">
 							<div class="form-input-wrap">
 								<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-ground-5-day" >
-								<label class="form-item-title">2 to 5 Day Ground - <span class="radio-offer offer"> Free!
-                                </span><span class="ship-price no-offer">$2.99</span></label>
+								<label class="form-item-title">2 to 5 Day Ground - <span class="radio-offer no-offer"> Free!
+                                </span><span class="ship-price offer">$2.99</span></label>
 							</div>
 
 							<div class="form-input-wrap">
@@ -210,13 +210,13 @@
 							<div class="form-input-wrap">
 								<input name="shipRadio" type="radio" class="checkout-radio-input" id="ship-ground-2-day">
 								<label class="form-item-title two-day-spcl">2-Day Ground -
-									<span class="radio-offer offer">
+									<span class="radio-offer no-offer">
 										Free!
-										<span class="ship-price">
+										<span class="ship-price no-offer">
 											Regularly $6.99
 										</span>
 									</span>
-									<span class="ship-price no-offer">$6.99</span>
+									<span class="ship-price offer">$6.99</span>
 								</label>
                                 <div class="checkout-dropdown special-offers-dropdown">
                                     <a href="#" class="dropdown-link">
@@ -1294,8 +1294,18 @@
 									<span class="radio-offer no-offer">FREE!</span>
 								</div>
 							</li>
+							
+							<li id = "checkout-cart-estimated-tax"  >
+								<div class="label">
+									Estimated Tax
+								</div>
 
-							<li id = "checkout-cart-state-tax" >
+								<div class="data">
+									$<span id="state-tax-amt">29.27</span>
+								</div>
+							</li>
+
+							<li id = "checkout-cart-state-tax" class="discounted" >
 								<div class="label">
 									<span id="state-tax-id">NY</span> State Tax
 								</div>
@@ -1303,7 +1313,7 @@
 								<div class="data">
 									$<span id="state-tax-amt">29.27</span>
 								</div>
-							</li><!-- end tax -->
+							</li>
 
 							<li id = "checkout-cart-local-tax" class="discounted" >
 								<div class="label">
