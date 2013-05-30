@@ -24,7 +24,8 @@
         }
         .ratings {
             @include pdp-sprite(stars-temp);
-            width:75px; height:13px;
+            // width:75px; height:13px;
+            width: auto;
             margin-top:5px;
             }
         .reviews {
@@ -252,7 +253,7 @@
                     float: right;
                 }
 
-                > a 
+                > a
                 {
                 	float: left;
                 }
