@@ -406,6 +406,9 @@
 							.dropdown-link { 
 								@include pdp-sprite(blue-more, false, 76px, 14px); 
 								letter-spacing: 0px;
+								.paren-right {
+									padding-left: 12px;
+								}
 							}
 							.dropdown-panel {
 								@include clearfix();
