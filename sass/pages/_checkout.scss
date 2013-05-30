@@ -698,6 +698,7 @@
 				label.warning { background-color: #222; }
 
 				 .checkout-input-button {
+					@include ctaBlackButton;
 				 	position: absolute;
 				 	bottom: 35px; left: 0;
 				 	}
@@ -1631,7 +1632,7 @@
 										.dropdown-link { 
 											@include pdp-sprite(blue-more, false, 78px, 14px); letter-spacing: 0px;
 											.paren-right {
-												padding-left: 7px;
+												padding-left: 12px;
 											}
 										}
 										.dropdown-panel {
