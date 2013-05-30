@@ -15,6 +15,9 @@ MLS.contentFilter = (function () {
             ============================*/
 
             init: function (o) {
+                // Select styles
+                $jQ('select', '#content-filter').uniform();
+
                 options = $jQ.extend(options, o);
 
                 // endpoint = endpoint ? endpoint : (ep || MLS.ajax.endpoints.PRODUCT_LISTING);
