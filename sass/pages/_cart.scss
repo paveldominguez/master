@@ -238,6 +238,7 @@
 							.selector {
 								float: left;
 								width: 75px !important;
+								min-width: 75px !important;
 
 								span { @include pdp-sprite(grey-more, false, 54px, 18px); }
 
@@ -453,7 +454,7 @@
 					line-height:20px;
 					font-weight:normal;
 					color:#fff;
-					margin:15px 0 0 85px;
+					margin:5px 0 0 40px;
 					background: url(../img/sprites/pdp/wht-more.png) 108px 30px no-repeat;
 
 					span {
