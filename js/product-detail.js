@@ -234,7 +234,7 @@ var pub = {
         });
     },
     moreLessBlockTruncate : function(){
-        $jQ('.pdp-overview-content .more-less-block .two-thirds').truncate(500);
+        $jQ('.pdp-overview-content .more-less-block .two-thirds').truncate(575);
     },
     pdpFeaturesShowMore : function(){
         var featuresContainer = $jQ('.pdp-features-content'),
