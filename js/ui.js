@@ -82,18 +82,18 @@ MLS.ui = {
                     $shareModalDisplay.html($emlModal);
                     $emlOverlay.html('');
                     $jQ('#share-submit').uniform();
-                    
+
                     MLS.ui.placeholderValidationRules();
                     $shareForm = $jQ("#share-modal");
                     MLS.ui.emailValidation($shareForm);
-                    
+
                     $shareForm.on('submit', function (e) {
                         e.preventDefault();
                         e.stopPropagation();
 
                         var shareFormValid = false;
                         shareFormValid = $shareForm.valid();
-                        if (shareFormValid) {    
+                        if (shareFormValid) {
                             var $theForm = $jQ("#share-modal".form);
                             MLS.ajax.sendRequest(
                                 $theForm.attr('action'),
@@ -113,16 +113,16 @@ MLS.ui = {
                                 // AJAX request error
                                 function (d) {
                                     // For demo - start error response
-                                    //$shareForm[0].reset(); 
+                                    //$shareForm[0].reset();
                                     //$jQ('#share-modal-display .share-error').html('<p class="message">Something went wrong. Mind trying again?</p>');
                                     //For demo - end error response
-                                    //For demo - success response                                     
+                                    //For demo - success response
                                     $shareModalDisplay.html('<div class="share-success"><h3 class="share-title">Success!</h3><a href="#" id="close-social-overlay" class="close-overlay"></a><div class="overlay-content"><figure class="share-fig"><img src="img/product-detail-page/pdp-products/belkin-charger.png" alt="Photo of Belkin AC Charger with Swivel Plug" title="Belkin AC Charger with Swivel Plug"></figure><p class="message">You have shared the Belkin AC Charger with Swivel Plug with: <span class="recipient-email">Example@gmail.com</span></p></div></div>');
                                 }
                             );
                         }
                     });
-                } 
+                }
                 else {
                     $overlay = $scope.find('.overlay'),
                     $socialList = $socialItemsWithContext.parents('.social-list'),
@@ -148,7 +148,7 @@ MLS.ui = {
             });
         }
     },
-    placeholderValidationRules : function() { 
+    placeholderValidationRules : function() {
         jQuery.validator.addMethod("noPlaceholder", function (value, element) { // don't validate placeholder text
             if (value == $jQ(element).attr('placeholder')) {
                 return false;
@@ -174,20 +174,20 @@ MLS.ui = {
                     required: true,
                     noPlaceholder: true,
                     email: true
-                }    
+                }
             },
             messages: {
                 shareEmail: {
                     required: "Please enter your email address",
                     noPlaceholder: "Please enter your email address",
                     email: "Invalid email address"
-                },                                
+                },
                 shareRecipient: {
                     required: "Please enter the recipients address",
                     noPlaceholder: "Please enter the recipients address",
                     email: "Invalid email address"
                 }
-            }                             
+            }
         });
     },
     complexItem: {
@@ -243,10 +243,10 @@ MLS.ui = {
                     width: width + padding,
                     height: height + padding + detailHeight
                 }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
+                    $jQ(this).stop(true, true).hide();
                     el.removeClass('active grid-hover-active');
                     $jQ('.grid-hover-active').find('.stars').removeClass('red');
                     $jQ('#grid-pop-out .details').empty();
-                    $jQ(this).stop(true, true).fadeOut('fast');
                 });
             }
         });
