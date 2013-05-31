@@ -20,18 +20,12 @@ MLS.contentFilter = (function () {
 
                 options = $jQ.extend(options, o);
 
-                // endpoint = endpoint ? endpoint : (ep || MLS.ajax.endpoints.PRODUCT_LISTING);
-                // callback = c || contentGrid.reInit;
-
-
                 $cf = $jQ('#content-filter');
                 var $collapsible = $cf.find('.collapsible'),
                     $facets = $cf.find('.facet');
 
-
                 // collapse all but first dimension
                 $collapsible.find('.facet-list').slideToggle('slow');
-
 
                 // load content on load (if hash)
                 !hashLoaded && pub.loadFromHash();
@@ -108,7 +102,7 @@ MLS.contentFilter = (function () {
             reInit: function () {
                 MLS.contentFilter.finalize();
                 MLS.contentFilter.init();
-
+                MLS.miniCart.init(options.container, MLS.miniCart.options);
             },
 
             /*-----  End of Reinit: on ajax load  ------*/
