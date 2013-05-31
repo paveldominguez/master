@@ -1012,7 +1012,7 @@ MLS.checkout = {
 
             var completed;
 
-            if (valid && formValid) {
+            if (true || (valid && formValid)) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
@@ -1062,6 +1062,14 @@ MLS.checkout = {
                             } else {
                                 $jQ('#confirm-order').find('.hide-complete').removeClass('hidden'); // open step 3 form & leave step 2 alone
                             }
+
+                            // show step 2 in edit mode
+                            var $editStep2 = $jQ(".edit-checkout-step.edit-billing");
+                            if ($editStep2.is(":visible"))
+                            {
+                                $editStep2.click();
+                            }
+
                             MLS.ui.scrollPgTo(completed, 7);
                             MLS.checkout.update(r);
                         }
