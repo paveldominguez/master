@@ -196,7 +196,20 @@ $bgPositionPromoSmall: -85px 35px;
                     }
                 }
             }
+
+            .special-header {
+                position: absolute;
+                bottom: 0;
+                background-color: #3B3E45;
+                padding: 16px 46px 26px 46px;
+                color: #fff;
+                font-size: 17px;
+            }
         }
+
+
+
+
         .category-section {
             .content-header {
                 display: table;
