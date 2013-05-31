@@ -248,6 +248,12 @@ MLS.ui = {
                     });
                 }
 
+                console.log({
+                    outerGap: outerGap,
+                    documentWidth: documentWidth,
+                    wrapperWidth: wrapperWidth,
+                    pos: pos
+                });
                 $jQ('#grid-pop-out').css({
                     // top: offset.top - (padding / 2),
                     // left: offset.left - (padding / 2),
