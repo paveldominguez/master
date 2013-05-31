@@ -214,11 +214,22 @@ MLS.ui = {
         $jQ(selector).on('mouseenter', function (e) {
             e.preventDefault();
             var el = $jQ(this),
-            offset = el.offset(),
-            width = el.outerWidth(),
-            height = el.outerHeight(),
-            detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
-            padding = (padding !== undefined) ? padding : 40;
+
+                // el.offset() gets the position of the element based on the width of the document.
+                // We must account the gap betweent the window and the width of the container...
+                documentWidth = $jQ(document).width(),
+                wrapperWidth = $jQ('#site-container').width(),
+                outerGap = wrapperWidth < documentWidth ? (documentWidth - wrapperWidth) / 2 : 0,
+
+                width = el.outerWidth(),
+                height = el.outerHeight(),
+                // offset = el.offset(),
+                pos = {
+                    left: (el.offset().left - outerGap) - padding,
+                    top: el.offset().top - (padding / 2)
+                },
+                detailHeight = $jQ('#grid-pop-out .details').height(); // need to dump contents from cell into this...
+                padding = (padding !== undefined) ? padding : 40;
             if (Response.band(920)) {
                 $jQ('.content-item').find('.stars').removeClass('red');
                 $jQ('.content-item.active').removeClass('active grid-hover active');
@@ -238,8 +249,10 @@ MLS.ui = {
                 }
 
                 $jQ('#grid-pop-out').css({
-                    top: offset.top - (padding / 2),
-                    left: offset.left - (padding / 2),
+                    // top: offset.top - (padding / 2),
+                    // left: offset.left - (padding / 2),
+                    top: pos.top,
+                    left: pos.left,
                     width: width + padding,
                     height: height + padding + detailHeight
                 }).stop(true, true).fadeIn('fast').on('mouseleave', function () {
