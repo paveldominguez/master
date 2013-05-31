@@ -214,6 +214,7 @@ var contentGrid = {
             $quickView = $jQ('.quick-view-overlay.bundle');
         }
         $jQ('#quick-view-modal').fadeIn('fast');
+
         if (contentGrid.freeForm) {
             $quickView.css({
                 'display' : 'block',
@@ -235,16 +236,16 @@ var contentGrid = {
             });
             contentGrid.initSlider();
             setTimeout(function () { // ensure scroll is fully complete before attaching these event handlers
-                    $jQ(window).on({
-                        'resize.quickView' : contentGrid.quickViewClose,
-                        'scroll.quickView' : contentGrid.quickViewClose,
-                        'click.quickView' : function (e) {
-                            if ($jQ(e.target).closest($quickView).length === 0) {
-                                contentGrid.quickViewClose(e);
-                            }
+                $jQ(window).on({
+                    'resize.quickView' : contentGrid.quickViewClose,
+                    'scroll.quickView' : contentGrid.quickViewClose,
+                    'click.quickView' : function (e) {
+                        if ($jQ(e.target).closest($quickView).length === 0) {
+                            contentGrid.quickViewClose(e);
                         }
-                    }, { 'qv' : $quickView });
-                }, 1);
+                    }
+                }, { 'qv' : $quickView });
+            }, 1000);
         } else {
             $quickView.css({
                 'display' : 'block',
@@ -267,7 +268,7 @@ var contentGrid = {
                             }
                         }
                     }, { 'qv' : $quickView });
-                }, 1);
+                }, 1000);
             });
         }
         $jQ('#product-colors .color', '#quick-view-overlay').on('click', function () {
@@ -279,6 +280,33 @@ var contentGrid = {
         $jQ('#pdp-size-select').uniform();
     },
     initSlider : function () {
+        if ($jQ('#quick-view-slider').data('flexslider'))
+        {
+            console.log('ignoring');
+            return;
+        }
+
+        $jQ('#quick-view-slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: true,
+            slideshow: false,
+            sync: "#quick-view-overlay .slider-controls"
+        });
+
+        $jQ('#quick-view-overlay .slider-controls').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 45,
+            itemMargin: 10,
+            asNavFor: '#quick-view-slider'
+        }).show().css({
+            marginLeft: - $jQ('#quick-view-overlay .slider-controls li').eq(0).width() / 2
+        });
+
+        /*
         $jQ('#quick-view-slider').flexslider({
             animation: 'slide',
             controlNav: 'thumbnails',
@@ -292,7 +320,7 @@ var contentGrid = {
                 $jQ('.flex-control-thumbs li', '#quick-view-overlay').removeClass('flex-active');
                 $jQ(activeControl).addClass('flex-active');
                 var $sliderThumbs = $jQ('.flex-control-thumbs', '#quick-view-overlay');
-                var $sliderWidth = $jQ('.flex-control-thumbs', '#quick-view-overlay').width();
+                var $sliderWidth = $sliderThumbs.width();
                 $sliderThumbs.css('margin-left', '-' + $sliderWidth / 2 + 'px').css('display', 'block');
             },
             after: function (slider) {
@@ -302,8 +330,10 @@ var contentGrid = {
                 $jQ(activeControl).addClass('flex-active');
             }
         });
-        var $sliderThumbs = $jQ('.slider-controls .flex-control-thumbs');
-        //contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
+        */
+
+        // var $sliderThumbs = $jQ('.slider-controls .flex-control-thumbs');
+        // contentGrid.setThumbnailMargins($sliderThumbs, ($jQ(window).width() >= 1024 ? 'left' : 'top'));
     },
     setThumbnailMargins : function ($sT, pos) {
         var offset = pos === 'left' ? $sT.outerWidth() : $sT.outerHeight();

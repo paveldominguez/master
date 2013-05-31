@@ -215,6 +215,7 @@ MLS = {
                 callback: function () {
                      contentGrid.reInit();
                      MLS.categoryLanding.init();
+                     MLS.article.init();
                 }
             });
 

@@ -39,6 +39,7 @@ var pub = {
             itemMargin: 10,
             asNavFor: '#focus'
         });
+        
         $jQ('#focus').flexslider({
             animation: "slide",
             controlNav: false,
@@ -101,10 +102,6 @@ var pub = {
         }
 
         $jQ(window).resize(function () {
-            var pgWidth = document.body.clientWidth;
-            var heroThumbs = window.document.getElementById('thumbs');
-            var zoomThumbs = window.document.getElementById('zoom-thumbs');
-
             MLS.ui.moreLessBlock();
 
             if ($jQ(window).width() > 719) {
