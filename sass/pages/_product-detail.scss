@@ -662,41 +662,14 @@
         > div{
             padding:0 10px;
         }
-    }
-
-    .light.reduced {
-        height: 326px;
-    }
-
-    .dark.expanded {
-        height: 260px;
-        .pdp-form-box {
-            .pdp-size-color {
-                .product-color {
-                    margin-bottom: 0;
-                    .product-colors {
-                        margin-bottom: 10px;
-                    }
-                }
-                .size-select-box {
-                    width: 45%;
-                    float: left;
-                }
-            }
-            .pdp-price-cta {
-                bottom: 0;
-            }
-        }
-
         .pdp-cart-shipping {
-            .ship-details.offer {
+            /*.ship-details.offer {
                 li {
                     padding-left: 12px;
                     margin-left: -11px;
                     @include pdp-sprite(red-cart-bullet, false, 0, 10px);
                 }
-            }
-
+            }*/ //Todo: change html bullets to background images
             .pdp-cart-compat.signed-in {
                 width: 90%;
                 @include clearfix();
@@ -741,6 +714,33 @@
                 }
             }
         }
+    }
+
+    .light.reduced {
+        height: 326px;
+    }
+
+    .dark.expanded {
+        height: 260px;
+        .pdp-form-box {
+            .pdp-size-color {
+                .product-color {
+                    margin-bottom: 0;
+                    .product-colors {
+                        margin-bottom: 10px;
+                    }
+                }
+                .size-select-box {
+                    width: 45%;
+                    float: left;
+                }
+            }
+            .pdp-price-cta {
+                bottom: 0;
+            }
+        }
+
+        
     }
 }
 
