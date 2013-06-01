@@ -97,25 +97,15 @@
                         </div>
                     </li>
                     <li class="pdp-cart-shipping-item rcv-by">Receive by 1/23</li>
-                    <!--
-                    <li class="pdp-cart-shipping-item shipping offer">
-                        <span class="dropdown-link">Free 3-5 Ground Shipping<span class="marker">&nbsp;</span></span>
-                        <div class="dropdown-panel">
-                            <div class="dropdown-pointer"></div>
-                            <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
-                            <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
-                            <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-                        </div>
-                    </li>
-                    -->
                 </ul>
-                <!--
-                <ul class="ship-details">
-                    <li class="pdp-cart-shipping-item ship no-offer">Free 3-5 Ground Shipping</li>
-                    <li class="pdp-cart-shipping-item return-policy">14 Day Free Returns</li>
-                    <li class="pdp-cart-shipping-item rcv-by">Receive by 1/31</li>
-                </ul>
-                -->
+                <div class="pdp-cart-compat signed-in show">
+                    <ul class="pdp-cart-compat-list">
+                        <li id="signed-in-device-1" class="compat-icon compatible">
+                            <img class="image" src="../img/product-detail-page/pdp-products/compat-product.png" alt="compatible device" />
+                            <span class="data">Compatible with your Samsung Galaxy</span>
+                        </li>
+                    </ul>
+                </div>
                 <div class="pdp-cart-compat guest">
                     <span class="compat-link guest" title="Check compatibility of this item" data-tabname="compatibility">Check compatibility</span>
                 </div>
@@ -128,26 +118,93 @@
                     
                     <div class="color-info"><span class="color-label"><span id="pdp-current-color" class="color-option">black</span></span></div>
                     <div class="product-color">
+                        <span class="see-more">see all colors</span>
+                        <span class="see-less">see less colors</span>
                         <ul id="product-colors" class="product-colors inline-list">
-                            <li class="color black active" data-color="black">
+                            <li class="color black active">
                                 <span class="active-check"></span>
                                 <span class="OOS">Out of Stock</span>
-                                <a href="#?color=black" class="action data-color" title="black">
-                                <img src="img/product-category-listing/pick-blk.png"/>
+                                <a href="#select-color" class="action" title="black">
+                                    <img src="img/product-category-listing/pick-blk.png">
                                 </a>
                             </li>
-                            <li class="color white" data-color="white">
+                            <li class="color white">
                                 <span class="active-check"></span>
                                 <span class="OOS">Out of Stock</span>
-                                <a href="#?color=white" class="action data-color" title="white">
-                                <img src="img/product-category-listing/pick-wht.png"/>
+                                <a href="#select-color" class="action" title="white">
+                                    <img src="img/product-category-listing/pick-wht.png">
                                 </a>
                             </li>
-                            <li class="color red" data-color="blue">
+                            <li class="color red out-of-stock">
                                 <span class="active-check"></span>
                                 <span class="OOS">Out of Stock</span>
-                                <a href="#?color=red" class="action data-color" title="red">
-                                <img src="img/product-category-listing/pick-red.png"/>
+                                <a href="#select-color" class="action" title="red">
+                                    <img src="img/product-category-listing/pick-red.png">
+                                </a>
+                            </li>
+                                <li class="color grey">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="grey">
+                                    <img src="img/product-category-listing/pick-gry.png">
+                                </a>
+                            </li>
+                            <li class="color yellow">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="yellow">
+                                    <img src="img/product-category-listing/pick-ylw.png">
+                                </a>
+                            </li>
+                             <li class="color blue">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="blue">
+                                    <img src="img/product-category-listing/pick-blu.png">
+                                </a>
+                            </li>
+                            <li class="color green">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="green">
+                                    <img src="img/product-category-listing/pick-grn.png">
+                                </a>
+                            </li>
+                            <li class="color purple">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="purple">
+                                    <img src="img/product-category-listing/pick-prp.png">
+                                </a>
+                            </li>
+                                <li class="color orange">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="orange">
+                                    <img src="img/product-category-listing/pick-org.png">
+                                </a>
+                            </li>
+                                <li class="color pink">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="pink">
+                                    <img src="img/product-category-listing/pick-pnk.png">
+                                </a>
+                            </li>
+                            
+                                <li class="color silver">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="silver">
+                                    <img src="img/product-category-listing/pick-slv.png">
+                                </a>
+                            </li>
+                            
+                                <li class="color gold">
+                                <span class="active-check"></span>
+                                <span class="OOS">Out of Stock</span>
+                                <a href="#select-color" class="action" title="gold">
+                                    <img src="img/product-category-listing/pick-gld.png">
                                 </a>
                             </li>
                         </ul>
@@ -189,10 +246,6 @@
                     <div class="add-cart-box">
                         <div class="pdp-cart-red-cta-box">
                             <input data-cart-add="1" id="pdp-add-to-cart-submit" class="add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart">
-                        </div>
-                        <div class="no-cta-button">
-                            <span class="OOS-text">coming soon</span>
-                            <span class="expired-text">not available</span>
                         </div>
                     </div>
                 </div>

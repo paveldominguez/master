@@ -97,25 +97,23 @@
                         </div>
                     </li>
                     <li class="pdp-cart-shipping-item rcv-by">Receive by 1/23</li>
-                    <!--
-                    <li class="pdp-cart-shipping-item shipping offer">
-                        <span class="dropdown-link">Free 3-5 Ground Shipping<span class="marker">&nbsp;</span></span>
-                        <div class="dropdown-panel">
-                            <div class="dropdown-pointer"></div>
-                            <h5 class="offer-title">Lorem ipsum dolor sit amet con title</h5>
-                            <p class="offer-details">Proin non urna et orci convallis ultrices. Suspendisse pharetra mauris scelerisque. </p>
-                            <a href="#" class="offer-link" title="Offer Details">Offer Details</a>
-                        </div>
-                    </li>
-                    -->
                 </ul>
-                <!--
-                <ul class="ship-details">
-                    <li class="pdp-cart-shipping-item ship no-offer">Free 3-5 Ground Shipping</li>
-                    <li class="pdp-cart-shipping-item return-policy">14 Day Free Returns</li>
-                    <li class="pdp-cart-shipping-item rcv-by">Receive by 1/31</li>
-                </ul>
-                -->
+
+                <div class="pdp-cart-compat signed-in">
+                    <ul class="pdp-cart-compat-list">
+                        <li id="signed-in-device-1" class="compat-icon compatible">
+                            <img class="image" src="../img/product-detail-page/pdp-products/compat-product.png" alt="compatible device" />
+                            <span class="data">Compatible with your Samsung Galaxy</span>
+                        </li>
+                        <li id="signed-in-device-2" class="compat-icon not-compatible">
+                            <img class="image" src="../img/product-detail-page/pdp-products/compat-product.png" alt="compatible device" />
+                            <span class="data">Compatible with your Samsung Galaxy</span>
+                        </li>
+                        <li class="compat-link-box">
+                            <span class="compat-link signed" title="Check compatibility of this item.">Check compatibility</span>
+                        </li>
+                    </ul>
+                </div>
                 <div class="pdp-cart-compat guest">
                     <span class="compat-link guest" title="Check compatibility of this item" data-tabname="compatibility">Check compatibility</span>
                 </div>
@@ -151,6 +149,8 @@
                                 </a>
                             </li>
                         </ul>
+                        <span class="item-OOS-message show">Sorry, this item is out of stock.</span>
+                        <span class="item-expired-message">Sorry, this item has been discontinued.</span>
                     </div>
                     <div class="size-select-box ">
                         <select id="pdp-size-select" name="pdpSizeSelect" class="size-select">
@@ -160,8 +160,6 @@
                             <option value="3">Large</option>
                             <option value="4">X Large</option>
                         </select>
-                        <span class="item-OOS-message">Sorry, this item is out of stock.</span>
-                        <span class="item-expired-message">Sorry, this item has been discontinued.</span>
                     </div>
                     <div class="color-select-box">
                         <div class="swatch"></div>
@@ -186,14 +184,9 @@
                         <div class="original-price offer"><span class="sale">Sale&nbsp;</span>Reg.  $<span id="pdp-cart-original-price" class="strike">299.99</span></div>
                         <div class="actual-price">$<span id="pdp-cart-actual-price">249<span class="cents">99</span></span></div>
                     </div>
-                    <div class="add-cart-box">
-                        <div class="pdp-cart-red-cta-box">
-                            <input data-cart-add="1" id="pdp-add-to-cart-submit" class="add-cart-cta data-cart-add" type="submit" title="Add to Cart" value="Add to Cart">
-                        </div>
-                        <div class="no-cta-button">
-                            <span class="OOS-text">coming soon</span>
-                            <span class="expired-text">not available</span>
-                        </div>
+                    <div class="no-cta-button show">
+                        <span class="OOS-text">coming soon</span>
+                        <span class="expired-text">not available</span>
                     </div>
                 </div>
             </form>
