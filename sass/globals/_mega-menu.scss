@@ -175,6 +175,46 @@ $colorNavGridText: #333333;
         margin: 0;
         background-color: $colorActiveTabBg;
         > .tab {
+            .customization-grid {
+                width: 100%;
+                overflow: hidden;
+                padding-top: 10px;
+                figure {
+                    float: left;
+                    width: 48%;
+                    margin-right: 2%;
+                }
+                .copy {
+                    float: left;
+                    width: 50%;
+                    padding-top: 90px;
+                    h3 {
+                        color: $cartGreyDk;
+                        font: {
+                            family: $fontVzwBook;
+                            size: 32px;
+                            weight: normal;
+                        }
+                        letter-spacing: -2px;
+                        text-transform: capitalize;
+                        vertical-align: baseline;
+                        strong {
+                            font: {
+                                family: $fontVzwBold;
+                            }
+                        }
+                    }
+                    p {
+                        @include checkoutContent;
+                    }   
+                    .learn-more {
+                        @include actionLink;
+                        font-size: 11px;
+                        display: block;
+                        text-transform: uppercase;
+                    } 
+                }    
+            }
             ul { margin: 0; }
             .tab-menu {
                 float: left;
@@ -280,6 +320,9 @@ $colorNavGridText: #333333;
                     }
                     .category {
                         margin-left: 12px;
+                        text-transform: uppercase;
+                        font-size: 10px;
+                        font-weight: bold;
                     }
                 }
                 &.active {
@@ -301,6 +344,7 @@ $colorNavGridText: #333333;
                 }
             }
         }
+
         .products {
             border-bottom: 1px solid $colorSubnavGridBrd;
         }
@@ -343,6 +387,9 @@ $colorNavGridText: #333333;
                             bottom: 15px;
                             left: 15px;
                             color: $colorNavGridText;
+                            text-transform: uppercase;
+                            font-size: 10px;
+                            font-weight: bold;
                         }
                     }
                 }
