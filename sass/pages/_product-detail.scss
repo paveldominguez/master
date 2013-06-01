@@ -276,7 +276,6 @@
 .dark {
     width:100%;
     height: auto;
-    height: 226px;
     @include cartBG;
     @include boxBrdrT;
 }
@@ -287,7 +286,6 @@
     width:100%;
     height: 36px;
     @include boxBrdrT;
-    position: absolute;
 }
 
 .size-select-box {
@@ -345,12 +343,27 @@
         @include clearfix();
         display: inline-block;
 
+        .see-more{
+            display:block;
+            font-size:11px;
+            font-weight:700;
+            text-align:right;
+            color: $actLinkBlue;
+        }
+        .see-less{
+            display:none;
+            font-size:11px;
+            font-weight:700;
+            text-align:right;
+            color: $actLinkBlue;
+        }
+
         .product-colors {
             padding: 0;
             width: auto;
+            height:42px;
             float: left;
             margin: 0 0 10px 0;
-            display: inline-block;
             .color {
                 position: relative;
                 margin: 0 2px 2px 0;
@@ -385,7 +398,7 @@
             }
             .color:last-child { margin-right: 0; }
             .color.out-of-stock {
-                span.OOS {
+                .OOS {
                     top: 0;
                     left: 0;
                     width: 100%;
@@ -404,20 +417,25 @@
         }
     }
 
-    span.item-OOS-message, span.item-expired-message {
+    .item-OOS-message, 
+    .item-expired-message {
         display: none;
         background-image: none;
         padding-top: 0;
         @include checkoutContent;
         color: $colorVzwRed;
         font-weight: bold;
+        &.show{
+            display:block;
+            float:none;
+            clear:both;
+        }
     }
 }
 
 .pdp-form-box {
     margin: 0;
     width: 100%;
-    height: 210px;
     padding:0 10px;
     @include clearfix();
 
@@ -437,82 +455,6 @@
             }
             .item-expired-message {
                 display: block;
-            }
-        }
-    }
-
-    .pdp-price-cta {
-        height: 89px;
-        bottom: 35px;
-        padding-top: 0;
-        @include clearfix;
-        .price-block {
-            padding-top: 56px;
-            width: 50%;
-            float: left;
-            .actual-price {
-                font-size: 32px;
-                color: $cartGreyDk;
-                letter-spacing: -2px;
-                .cents {
-                    top:-12px;
-                    font-size: 18px;
-                    position:relative;
-                    letter-spacing: 0;
-                    padding: 0 0 0 5px;
-                    display: inline-block;
-                }
-            }
-            .original-price {
-                list-style:none;
-                font-size: 11px;
-                color: $cartGreyMd;
-                letter-spacing: -1px;
-                font-family: $fontArial;
-                padding: 0 0 4px 4px;
-                position:relative; top:6px;
-                .sale {
-                    font-weight:bold;
-                    letter-spacing: 0;
-                    padding-right:5px;
-                    color: $colorVzwRed;
-                    text-decoration:none;
-                    text-transform: uppercase;
-                }
-                .strike {
-                    display: inline-block;
-                    text-decoration: line-through;
-                }
-            }
-        }
-
-        .add-cart-box {
-            float: right;
-            width: 50%;
-            height:89px;
-            cursor:pointer;
-            .pdp-cart-red-cta-box {
-                margin:0;
-                width:100%;
-                height: 89px;
-                @include ctaRedButton;
-                span {
-                    padding-top: 56px;
-                }
-            }
-            .no-cta-button {
-                width:100%;
-                height: 89px;
-                display: none;
-                cursor: default;
-                @include ctaBlackButton;
-                span {
-                    color: #fff;
-                    font-size: 18px;
-                    line-height: 18px;
-                    padding: 56px 0 0 10px;
-                    font-family: $fontVzwMedium;
-                }
             }
         }
     }
@@ -551,6 +493,103 @@
         }
     }
 }
+
+.pdp-price-cta {
+    height: 89px;
+    bottom: 35px;
+    padding-top: 0;
+    @include clearfix;
+    .price-block {
+        padding-top: 56px;
+        width: 50%;
+        float: left;
+        .actual-price {
+            font-size: 32px;
+            color: $cartGreyDk;
+            letter-spacing: -2px;
+            .cents {
+                top:-12px;
+                font-size: 18px;
+                position:relative;
+                letter-spacing: 0;
+                padding: 0 0 0 5px;
+                display: inline-block;
+            }
+        }
+        .original-price {
+            list-style:none;
+            font-size: 11px;
+            color: $cartGreyMd;
+            letter-spacing: -1px;
+            font-family: $fontArial;
+            padding: 0 0 4px 4px;
+            position:relative; top:6px;
+            .sale {
+                font-weight:bold;
+                letter-spacing: 0;
+                padding-right:5px;
+                color: $colorVzwRed;
+                text-decoration:none;
+                text-transform: uppercase;
+            }
+            .strike {
+                display: inline-block;
+                text-decoration: line-through;
+            }
+        }
+    }
+}
+
+.add-cart-box {
+    float: right;
+    width: 50%;
+    height:89px;
+    cursor:pointer;
+}
+.pdp-cart-red-cta-box {
+    margin:0;
+    width:100%;
+    height: 89px;
+    @include ctaRedButton;
+    span {
+        padding-top: 56px;
+    }
+}
+
+.out-of-stock{
+    .price-block{
+        padding-top:0;
+    }
+}
+
+.no-cta-button {
+    @include ctaBlackButton;
+    cursor: default;
+    display: none;
+    height: auto;
+    float:right;
+    width:45%;
+    span {
+        color: #fff;
+        display:block;
+        font-size: 18px;
+        line-height: 18px;
+        padding: 12px 4px;
+        font-family: $fontVzwMedium;
+    }
+    &.show{
+        display:block;
+    }
+}
+
+.signed-in{
+    float:left;
+    width:40%;
+    &.show{
+        display:block;
+    }   
+}
+
 
 .ship-details {
     margin:0;
@@ -678,11 +717,6 @@
                 .pdp-cart-compat-list {
                     width:100%;
                     height:100%;
-                    li {
-                        width:40%;
-                        float: left;
-                        display: inline-block;
-                    }
                     .compat-icon {
                         @include clearfix();
                         .image {
@@ -1294,7 +1328,7 @@
     @include heroBG;
     position: relative;
     width: 100%;
-    height: 585px;
+    height: auto;
     overflow: hidden;
 
     .view-to-scale {
@@ -2650,7 +2684,6 @@
     }
 
 .product-detail.signed-in {
-    .signed-in { display: inline-block !important; }
     .guest { display: none !important; }
 }
 
@@ -3487,23 +3520,21 @@
         }
     }
 
-    .pdp-cart-shipping {
-        .pdp-cart-compat.signed-in {
-            .pdp-cart-compat-list {
-                .compat-icon {
-                    display: none;
-                }
-                .compat-link-box {
-                    width: 100%;
-                    float: none;
-                    .compat-link {
-                        @include pdp-sprite(blue-device-icon, false, 0, 6px);
-                        @include actionLink;
-                        padding: 5px 0 5px 16px;
-                        font-family: $fontVzwBook;
-                        font-size:13px;
-                        letter-spacing:-1px;
-                    }
+    .pdp-cart-compat.signed-in {
+        .pdp-cart-compat-list {
+            .compat-icon {
+                display: none;
+            }
+            .compat-link-box {
+                width: 100%;
+                float: none;
+                .compat-link {
+                    @include pdp-sprite(blue-device-icon, false, 0, 6px);
+                    @include actionLink;
+                    padding: 5px 0 5px 16px;
+                    font-family: $fontVzwBook;
+                    font-size:13px;
+                    letter-spacing:-1px;
                 }
             }
         }

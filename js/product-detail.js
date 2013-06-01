@@ -221,14 +221,15 @@ var pub = {
         });
 
         $jQ('.product-reveal').click(function(){
-            var showThis = $jQ(this).next('.related-product');
-            MLS.productDetail.vznReveal(showThis, 486, 486);
+            var targetNode = $jQ(this).parent(),
+                closeNode = targetNode.find('.close-related');
+                targetNode.addClass('reveal');
+
+            targetNode.click(function(){
+                targetNode.removeClass('reveal');
+            });
         });
 
-        $jQ('.close-related').click(function(){
-            var hideThis = $jQ(this).parents('.related-product');
-            MLS.productDetail.vznHide(hideThis);
-        });
     },
     moreLessBlockTruncate : function(){
         $jQ('.pdp-overview-content .more-less-block .two-thirds').truncate(575);
