@@ -767,6 +767,7 @@ $bgPositionPromoSmall: -85px 35px;
             letter-spacing: -.1em;
             sup {
                 vertical-align: super;
+                padding-left: 11px;
                 font: {
                     family: $fontVzwLight;
                     size: 85px;
@@ -775,7 +776,7 @@ $bgPositionPromoSmall: -85px 35px;
             span {
                 position: absolute;
                 top: 65px;
-                left: 175px;
+                left: 167px;
                 text-transform: uppercase;
                 letter-spacing: normal;
                 font: {
