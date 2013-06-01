@@ -273,8 +273,7 @@ $bgPositionPromoSmall: -85px 35px;
             float: right;
             border-top: 1px solid #FFF;
             width: 220px;
-            .promo-copy {
-                // color: #FFF;
+                .promo-copy {
                 font: {
                     family: $fontVzwBook;
                     size: 24px;
@@ -742,7 +741,7 @@ $bgPositionPromoSmall: -85px 35px;
     width: 305px;
     .promo-copy {
         margin-top: 35px;
-        // color: #FFF;
+        color: $colorVzwNavBrd;
         font: {
             family: $fontVzwBookItalic;
             size: 24px;
@@ -750,6 +749,7 @@ $bgPositionPromoSmall: -85px 35px;
         > span.first {
             display: inline-block;
             margin-bottom: 10px;
+            letter-spacing: -.05em;
         }
 		> span {
 			display: inline;
@@ -764,6 +764,7 @@ $bgPositionPromoSmall: -85px 35px;
             font-size: 148px;
             font-weight: normal;
             line-height: 1em;
+            letter-spacing: -.1em;
             sup {
                 vertical-align: super;
                 font: {
@@ -776,6 +777,7 @@ $bgPositionPromoSmall: -85px 35px;
                 top: 65px;
                 left: 175px;
                 text-transform: uppercase;
+                letter-spacing: normal;
                 font: {
                     family: $fontVzwBold;
                     size: 40px;
@@ -800,7 +802,7 @@ $bgPositionPromoSmall: -85px 35px;
             span {
                 display: table-cell;
                 vertical-align: bottom;
-                padding: 10px 15px;
+                padding: 3px 9px;
             }
         }
     }
@@ -1543,12 +1545,6 @@ $bgPositionPromoSmall: -85px 35px;
                 .promo-copy {
                     font-size: 18px;
                     line-height: 22px;
-                    color: $colorVzwNavBrd;
-                }
-                .promo-cta {
-                    span {
-                        padding: 3px 8px;
-                    }
                 }
             }
         }
