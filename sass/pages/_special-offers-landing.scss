@@ -119,14 +119,28 @@ $bgPositionPromoSmall: -85px 35px;
                     }
                 }
                 .sale-details{
-                    color:#fff;
+                    color: $colorVzwNavBrd;
                     display:block;
                     margin:20px 0 0 0;
+                    h2 {
+                        color: $colorVzwNavBrd;
+                        font: normal 18px/21px $fontVzwBookItalic;
+                        letter-spacing: -.05em;
+                        padding: 60px 0 0 0;
+                        margin: 0;
+                    }
                     p{
                         margin:0;
                         height:80px;
                         padding:6px 0 0 0;
-                        font-style: italic;
+                        &.details {
+                            font-style: italic;
+                        }
+                        &.description {
+                            @include checkoutContent;
+                            color: $colorVzwNavBrd;
+                            line-height: 15px; 
+                        }
                     }
                 }
                 .sale-link{
@@ -1529,10 +1543,11 @@ $bgPositionPromoSmall: -85px 35px;
                 .promo-copy {
                     font-size: 18px;
                     line-height: 22px;
+                    color: $colorVzwNavBrd;
                 }
                 .promo-cta {
                     span {
-                        padding: 15px 15px 0;
+                        padding: 3px 8px;
                     }
                 }
             }
