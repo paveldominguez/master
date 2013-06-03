@@ -990,29 +990,35 @@ MLS.checkout = {
             } // endstep 1 prevalidate
 
             if (which == 'billing-info-complete') { // STEP 2 prevalidate
-                var signedinBranch = 'new';
+                // var signedinBranch = 'new',
                 var seq = $jQ('#checkout');
-                if($jQ('.billing-complete').is(':not(.blank)')){ // if second time through, remove previous info
+
+                $form = $jQ("form#vzn-checkout-billing");
+                
+                if ($jQ('.billing-complete').is(':not(.blank)')) { // if second time through, remove previous info
                     $jQ('#name-on-card').empty();
                     $jQ('#bill-address-summary-name').empty();
                 }
-                if ($jQ(seq).hasClass('signed-in')){ // check for saved info
+
+                /* unused code (?)
+                if ($jQ(seq).hasClass('signed-in')) { // check for saved info
                     if ($jQ('#bill-to-account').is(':checked') || $jQ('#choose-saved-card').is(':checked')) { // saved info, no validation required
-                        signedinBranch = 'saved';
+                        // signedinBranch = 'saved';
                         $jQ('.new-billing-info-form, .billing-detail-content.details-card').find('.checkout-input').addClass('not');
                         $jQ('.step-info-summary.billing-address').addClass('hidden');
+
+                        $form.find(".checkout-input.CCV").removeClass("not"); // saved card requires cvv validation
                     }
                 }
-
-                $form = $jQ("form#vzn-checkout-billing");
+                */
             } // end if step 2 prevalidate
 
-            var validator = $form.validate(); // VALIDATE
-            var formValid = $form.valid();
+            var validator = $form.validate(), // VALIDATE
+                formValid = $form.valid();
 
             var completed;
 
-            if (true || (valid && formValid)) {
+            if (valid && formValid) {
 
                 if (which == 'ship-info-complete') { // STEP 1 postvalidate
                     MLS.ajax.sendRequest(
@@ -1246,6 +1252,13 @@ MLS.checkout = {
                         maxlength:  4,
                         digits: true
                     },
+                    ccCodeSaved: {
+                        required: true,
+                        noPlaceholder: true,
+                        minlength: 3,
+                        maxlength:  4,
+                        digits: true
+                    },
                     billingFirstName: {
                         required: true,
                         noPlaceholder: true,
@@ -1343,13 +1356,20 @@ MLS.checkout = {
                         rangelength: "Please enter a valid card number",
                         ccRecognize : "Please enter a valid card number"
                     },
-                     ccMonth: {
+                    ccMonth: {
                         required: "Please select month expiry"
                     },
                     ccYear: {
                         required: "Please select year expiry"
                     },
                     ccCode: {
+                        required: "Please enter the security code on the back of your card",
+                        noPlaceholder: "Please enter your security code",
+                        minlength: "Please enter a valid security code",
+                        maxlength:  "Please enter a valid security code",
+                        digits: "Please enter a valid security code"
+                    },
+                    ccCodeSaved: {
                         required: "Please enter the security code on the back of your card",
                         noPlaceholder: "Please enter your security code",
                         minlength: "Please enter a valid security code",
