@@ -165,7 +165,7 @@
                                                 </div>
                                             </li>
                                             <li class="device">
-                                                <select id="detail-device-select" data-type="device">
+                                                <select id="detail-device-select" name="deviceType" data-type="device">
                                                     <option value="">device</option>
                                                     <option value="Tablet">Tablet</option>
                                                     <option value="Smartphone">Smartphone</option>
@@ -173,7 +173,7 @@
                                                 </select>
                                             </li>
                                             <li class="brand">
-                                                <select id="detail-brand-select" data-type="brand">
+                                                <select id="detail-brand-select"  name="deviceBrand" data-type="brand">
                                                     <option value="">brand</option>
                                                     <option value="Apple">Apple</option>
                                                     <option value="Samsung">Samsung</option>
@@ -182,10 +182,7 @@
                                                 </select>
                                             </li>
                                             <li class="search">
-                                                <input type="search" id="detail-search-box" data-actionpage="sample-compatibility-type-ahead.json" placeholder="search devices">
-                                                <div class="type-ahead">
-                                                <ul></ul>
-                                            </div>
+                                                <input type="search" id="detail-search-box" name="deviceSearch" data-actionpage="sample-compatibility-type-ahead.json" placeholder="search devices" />
                                         </li>
                                     </ul>
                                 </div>

@@ -487,21 +487,23 @@ var pub = {
     compatibleDropDowns : function(){
         $jQ('#detail-brand-select, #detail-device-select').uniform();
     },
+
     selectCompatibleProducts : function(){
+        /*
         var itemsTotal = $jQ('#total-items > span'),
             returnedItems = $jQ('#returned-items');
+        */
+        $jQ('#detail-brand-select, #detail-device-select').change(this.searchCompatibleProducts);
 
-        $jQ('#detail-brand-select, #detail-device-select').change(function(){
-            var selectType = $jQ(this).data('type'),
+        /*function(){
+            // var selectType = $jQ(this).data('type'),
             selectID =  $jQ(this).val(),
-            formSubmit = $jQ(this).closest('form').attr('action');
+            form = $jQ(this).closest('form'),
+            formSubmit = form.attr('action');
 
             MLS.ajax.sendRequest(
                 formSubmit,
-                {
-                    type : selectType,
-                    typeID : selectID
-                },
+                form.serialize(),
                 function(data){
                     returnedItems.html(data.success.responseHTML);
                     returnedItems.closest('.device-scroll').tinyscrollbar_update();
@@ -509,8 +511,33 @@ var pub = {
                 }
             );
         });
+        */
     },
+
+    searchCompatibleProducts: function(e) {
+        e && e.preventDefault();
+        
+        var itemsTotal = $jQ('#total-items > span'),
+            returnedItems = $jQ('#returned-items'),
+            $form = $jQ("#compatibilityForm");
+
+        MLS.ajax.sendRequest(
+            $form.attr("action"),
+
+            $form.serialize(),
+
+            function (data) {
+                returnedItems.html(data.success.responseHTML);
+                returnedItems.closest('.device-scroll').tinyscrollbar_update();
+                itemsTotal.html(data.success.count);
+            }
+        );
+
+        return false;
+    },
+
     compatibleTypeAhead : function(){
+        /*
         var searchInput = $jQ('#detail-search-box'),
         typeAheadList = searchInput.parent().find('.type-ahead');
         processingPage = searchInput.data('actionpage');
@@ -528,7 +555,29 @@ var pub = {
                 }
             );
         });
+        */
+
+        var $input = $jQ('#detail-search-box'),
+            self = this;
+
+        $input.typeahead({
+            name: 'devices',
+            prefetch: {
+                url: $input.data('actionpage') + '?search=%QUERY'
+            },
+            limit: 10
+        }).on('change keyup typeahead:selected typeahead:closed', function (e,item) {
+            // do somehting?
+            if (e.type === 'typeahead:closed') {
+                $jQ(this).blur();
+            }
+
+            if (e.type === 'typeahead:selected') {
+                self.searchCompatibleProducts(e);
+            }
+        });
     },
+
     addCartValidation : function() {
         jQuery.validator.addMethod("noEmptySelect", function (value, element) {
             if (value == '0') {

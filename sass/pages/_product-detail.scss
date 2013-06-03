@@ -1789,20 +1789,42 @@
             margin-right:30px;
             padding-top: 4px;
             float:left;
+        }
+
+        .search {
+            width:25%;
+
+            .type-ahead,
+            .twitter-typeahead
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                z-index: 1;
+                @include clearfix();
             }
-        .search {width:25%;}
+
+            input {
+                @include border-radius(3px);
+                @include checkoutContent;
+                font-weight: bold;
+                font-size: 13px;
+                letter-spacing: normal;
+                height:100%;
+                padding:4px 0 0 4px;
+            }
+
+            .tt-dropdown-menu
+            {
+                background: #fff;
+                padding: 3px;
+            }
+        }
+
         .brand {}
         .device {margin:0;}
         #total-items{ font-size:17px; }
-        #detail-search-box {
-            @include border-radius(3px);
-            @include checkoutContent;
-            font-weight: bold;
-            font-size: 13px;
-            letter-spacing: normal;
-            height:100%;
-            padding:4px 0 0 4px;
-        }
     }
 }
 
