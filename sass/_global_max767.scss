@@ -1,0 +1,21 @@
+#share-modal-display {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    .overlay-content {
+        .share-fig, .share-modal {
+            float: none;
+            width: 100%;
+        }
+        .share-fig {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .share-modal {
+            .button {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -748,126 +748,74 @@
 
 /* RESPONSIVE */
 
-/* --------------------------------- BASE DESKTOP LAYOUT 960 + ---------------------*/
+// /* --------------------------------- BASE DESKTOP LAYOUT 960 + ---------------------*/
 
-@media only screen and ( min-width:  960px  ),
-screen and (width: 1024px ) and (orientation: landscape) {
-
-
-
-
-
-
-}/* end 960 media query
-
-
-/* ----------------------------- TABLET  LAYOUTS 768 - 959 ---------------------*/
-
-@media only screen and (min-width: $screenSmall )
-and ( max-width: 959px ),
-screen and (width: $screenSmall ) and ( orientation: portrait) {
-
-
-
-
-
-}/* end tablet query */
-
-
-
-
-
-/*----------------------------- NO MAN's LAND LAYOUT  815 - 959  ------------------*/
-@media only screen and (min-width: 815px) and (max-width: 959px ) {
-
-
-
-}/* end no man's query */
+// @media only screen and ( min-width:  960px  ),
+// screen and (width: 1024px ) and (orientation: landscape) {
 
 
 
 
 
 
-
-/*----------------------------- BEGIN SMALL DEVICE LAYOUT  767 -   ------------------*/
-
-@media only screen and (max-width: 767px ) {
+// }/* end 960 media query
 
 
+// /* ----------------------------- TABLET  LAYOUTS 768 - 959 ---------------------*/
 
-} /* end small device query */
+// @media only screen and (min-width: $screenSmall )
+// and ( max-width: 959px ),
+// screen and (width: $screenSmall ) and ( orientation: portrait) {
+
+
+
+
+
+// }/* end tablet query */
+
+
+
+
+
+// ----------------------------- NO MAN's LAND LAYOUT  815 - 959  ------------------
+// @media only screen and (min-width: 815px) and (max-width: 959px ) {
+
+
+
+// }/* end no man's query */
+
+
+
+
+
+
+
+// ----------------------------- BEGIN SMALL DEVICE LAYOUT  767 -   ------------------
+
+// @media only screen and (max-width: 767px ) {
+
+
+
+// } /* end small device query */
 
 
 
 /* --------------------------------- BEGIN FIRST WIDESCREEN ADJUSTMENTS 1024+ -----------------*/
-
 @media only screen and (min-width: 1024px ) {
-
-#site-header {
-	#mls-nav-content {
-		#nav-tab4 {
-			#minicart-box {
-				#minicart-cart,
-				.minicart-summary {
-					width:55%;
-					}
-				}
-			}
-		}
-	}
+	@import "_cart_min1024"
 }/* ---------------------------------END FIRST WIDESCREEN ADJUSTMENTS 1024+ ------------------- */
 
-
-
-
 /* --------------------------------- BEGIN SECOND WIDESCREEN ADJUSTMENTS 1095+ -----------------*/
-
 @media only screen and (min-width: 1095px ) {
+	@import "_cart_min1095"
 
-#site-header {
-	#mls-nav-content {
-		#nav-tab4 {
-			#minicart-box {
-				#minicart-cart,
-				.minicart-summary {
-					width:58%;
-					}
-				}
-			}
-		}
-	}
 }/* ---------------------------------END SECOND WIDESCREEN ADJUSTMENTS 1095+ ------------------- */
-
-
-
-
-
-
-
-
-
 
 /* --------------------------------- BEGIN THIRD WIDESCREEN ADJUSTMENTS 1280+ -----------------*/
 
 @media only screen and (min-width: $screenLarge ) {
-
-#site-header {
-	#mls-nav-content {
-		#nav-tab4 {
-			#minicart-box {
-				#minicart-cart,
-				.minicart-summary {
-					width:62%;
-					}
-				}
-			}
-		}
-	}
-
-
+	@import "_cart_min1280"
 }/* ---------------------------- END THIRD WIDESCREEN 1280+  -------------------------------*/
-
 
 
 #minicart-box { /* .................. universal minicart styles ...........................*/

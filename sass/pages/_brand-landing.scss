@@ -1,6 +1,3 @@
-$colorPromoBg: #EEEEEE;
-$colorPromoFont: #6D6E71;
-
 .brand-landing-page {
     .header-info { display: none; }
     .category-list-header {
@@ -77,58 +74,13 @@ $colorPromoFont: #6D6E71;
 }
 
 @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
-    .brand-landing-page {
-        .category-list-header {
-            .category-image {
-                left: 0;
-            }
-        }
-    }
+    @import "_brand-landing_max1023min768";
 }
+
 @media only screen and (max-width: $screenSmall - 1) {
-    .brand-landing-page {
-        .category-list-header {
-            .category-image {
-                top: 0;
-                left: auto;
-                right: 0;
-                img {
-                    width: 72%;
-                    float: right;
-                }
-            }
-        }
-        .category-header-promo {
-            .promo-header {
-                position: absolute;
-                bottom: 15px;
-                left: 15px;
-                width: 100%;
-                height: 100px;
-                text-align: left;
-                img {
-                    width: auto;
-                    vertical-align: baseline;
-                }
-            }
-            .promo-info {
-                display: none;
-            }
-        }
-    }
+    @import "_brand-landing_min767";
 }
+
 @media only screen and (max-width: $screenMobileLarge) and (min-width: $screenMobileSmall) {
-    .brand-landing-page {
-        .category-header-promo {
-            .promo-header {
-                height: 60px;
-                img {
-                    width: 33%;
-                }
-            }
-            .promo-info {
-                display: none;
-            }
-        }
-    }
+    @import "_brand-landing_max640min320";
 }

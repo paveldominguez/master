@@ -1,0 +1,147 @@
+#mls-nav { display: none; }
+#mls-nav-mobile {
+    display: block;
+}
+.modal-active {
+    #mls-nav-mobile-modal { display: block; }
+}
+.mls-nav {
+    .nav-tabs {
+        .nav-actions {
+            &.close {
+                a {
+                    @include nav-sprite(nav-ico-close-drawer, false, 15, 15);
+                }
+            }
+        }
+    }
+    > .tab-content {
+        .tall-tab-section {
+            .tall-tab {
+                float: left;
+                width: 50%;
+                height: 33.33334%;
+                a {
+                    .tab-fig {
+                        padding: 0;
+                        vertical-align: middle;
+                        img {
+                            max-width: 15%;
+                        }
+                    }
+                }
+                &.item-3 {
+                    border-top: 1px solid $colorVzwNavBrd;
+                }
+                &.item-4 {
+                    border-bottom: 1px solid $colorVzwNavBrdShade;
+                }
+                &.item-5,
+                &.item-6 {
+                    border-bottom: none;
+                }
+                &.item-1,
+                &.item-3,
+                &.item-5 {
+                    border: {
+                        left: none;
+                        right: 1px solid $colorVzwNavBrdShade;
+                    }
+                }
+                &.item-2,
+                &.item-4,
+                &.item-6 {
+                    border-left: 1px solid $colorVzwNavBrd;
+                }
+            }
+        }
+        .products,
+        .nav-grid {
+            height: 100%;
+            border: {
+                top: 1px solid $colorSubnavGridBrd;
+                bottom: none;
+            }
+            .tab {
+                width: 50%;
+                height: 20%;
+                border: {
+                    right: 1px solid $colorSubnavGridBrd;
+                    bottom: 1px solid $colorSubnavGridBrd;
+                }
+                &.item-5, &.item-15 { border-right: 1px solid $colorSubnavGridBrd; }
+                &.item-2, &.item-4, &.item-6, &.item-8, &.item-10 {
+                    border-right: none;
+                }
+                &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+            }
+            .nav-grid-item {
+                width: 50%;
+                border: {
+                    right: 1px solid $colorSubnavGridBrd;
+                    bottom: 1px solid $colorSubnavGridBrd;
+                }
+            }
+        }
+        .products {
+            padding: 0;
+            .tab {
+                float: left;
+                display: table;
+                background: #D7DCDD;
+                &.item-9, &.item-10 {
+                    border-bottom: none;
+                }
+                a {
+                    display: table-cell;
+                    line-height: 18px;
+                    padding: 0 25px 0 60px;
+                    text-align: left;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+.mls-nav-content {
+    border-top: 1px solid $colorActiveTabBrd;
+    z-index: 250;
+    .accordion-nav {
+        .nav-item {
+            width: 100%;
+            border-bottom: 1px solid $colorActiveTabBrd;
+            font: {
+                family: $fontVzwBook;
+                size: 24px;
+            }
+            > a {
+                display: table;
+                width: 100%;
+                height: 70px;
+                padding: 15px 25px 10px;
+                color: $colorNavMobile;
+                span {
+                    display: table-cell;
+                    vertical-align: bottom;
+                    background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
+                }
+            }
+            &.active {
+                > a {
+                    span {
+                    background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;
+                    }
+                }
+            }
+            .accordion-content {
+                display: none;
+            }
+           &.active .accordion-content {
+                clear: both;
+                display: block;
+            }
+        }
+    }
+}

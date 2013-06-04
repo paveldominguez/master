@@ -1,0 +1,18 @@
+.category-section {
+    .content-header {
+        .title {
+            display: table;
+            width: 100%;
+            height: 100%;
+            a {
+                display: table-cell;
+                height: 100%;
+                text-align: right;
+                vertical-align: bottom;
+            }
+        }
+    }
+    .slide-nav {
+        display: none;
+    }
+}

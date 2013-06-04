@@ -1,0 +1,131 @@
+@import "compass";
+@import "sprites";
+@import "_variables";
+
+
+
+/* global */
+.ie {
+    .max1280.min1024{
+        @import "_global_max1280min1024";
+    }
+    .max767{
+    	@import "_global_max767";
+    }
+	.max640{
+    	@import "_global_max767";
+    }
+    .max439.min320{
+    	@import "_global_max439min320";
+    }
+}
+
+/* mega-menu */
+.ie {
+	.min1280{
+		@import "globals/_mega-menu_min1280";
+	}
+
+	.max1023 {
+	    @import "globals/_mega-menu_max1023";
+	}
+	.max767 {
+	    @import "globals/_mega-menu_max767";
+	}
+	.max639 {
+	    @import "globals/_mega-menu_max639";
+	}
+}
+
+/* 404 */
+.ie {
+	.min1230 {
+    	@import "pages/_404_min1230";
+	}
+
+	.max1229 {
+	    @import "pages/_404_max1229";
+	}
+
+	.max990{
+	    @import "pages/_404_max990";
+	}
+
+	.max768.min640{
+	    @import "pages/_404_max768min640";
+	}
+
+	.max768 {
+	    @import "pages/_404_max768";
+	}
+
+	.max590 {
+	    @import "pages/_404_max590";
+	}
+
+	.max320 {
+	    @import "pages/_404_max320";
+	}
+}
+
+/* brand-landing */
+.ie {
+	.max1023.min768 {
+    	@import "pages/_brand-landing_max1023min768";
+	}
+
+	.min767 {
+	    @import "pages/_brand-landing_min767";
+	}
+
+	.max640.min320{
+	    @import "pages/_brand-landing_max640min320";
+	}
+}
+
+/* cart */
+.ie{
+	.min1024 {
+		@import "pages/_cart_min1024"
+	}
+
+	.min1095 {
+		@import "pages/_cart_min1095"
+
+	}
+
+	.min1280 {
+		@import "pages/_cart_min1280"
+	}
+}
+
+/* category-landing */
+.ie{
+    .max1280 {
+        @import "pages/_category-landing_max1280";
+    }
+
+    .max1280.min1024 {
+        @import "pages/_category-landing_max1280min1024";
+    }
+
+    .max1023.min768 {
+        @import "pages/_category-landing_max1023min768";
+    }
+
+    .max767 {
+        @import "pages/_category-landing_max767";
+    }
+
+    .max767.min641 {
+        @import "pages/_category-landing_max767min641";
+    }
+
+    .max640 {
+        @import "pages/_category-landing_max640";
+    }
+
+    .max640.min480 {
+        @import "pages/_category-landing_max640min320";
+    }
+}
