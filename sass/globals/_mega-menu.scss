@@ -1,9 +1,6 @@
-$colorCountRed: #C00;
-$colorSubnavTabBg: #D3D8D9;
-$colorSubnavActiveTabBg: #2A2D32;
-$colorSubnavTabBrd: #C5C9CB;
-$colorSubnavGridBrd: #C9CDCE;
-$colorNavGridText: #333333;
+//@import "../_variables"
+
+
 #mls-nav-mobile,
 #mls-nav-mobile-modal { display: none; }
 #mls-nav-mobile-modal {
@@ -206,14 +203,14 @@ $colorNavGridText: #333333;
                     }
                     p {
                         @include checkoutContent;
-                    }   
+                    }
                     .learn-more {
                         @include actionLink;
                         font-size: 11px;
                         display: block;
                         text-transform: uppercase;
-                    } 
-                }    
+                    }
+                }
             }
             ul { margin: 0; }
             .tab-menu {
@@ -431,274 +428,14 @@ $colorNavGridText: #333333;
 }
 
 @media only screen and (min-width: $screenLarge) {
-    .mls-nav {
-        .subnav-grid {
-            .nav-grid-item {
-                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
-                    border-bottom: none;
-                }
-            }
-            .nav-grid-item {
-                &.item-6, &.item-7, &.item-8, &.item-9, &.item-10 {
-                    border-bottom: none;
-                }
-            }
-        }
-        .nav-grid {
-            .nav-grid-item {
-                &.item-5, &.item-10, &.item-15 {
-                    border-right: none;
-                }
-                &.item-11, &.item-12, &.item-13, &.item-14, &.item-15 {
-                    border-bottom: none;
-                }
-            }
-        }
-    }
+    @import "_mega-menu_min1280";
 }
-
 @media only screen and (max-width: $screenMedium - 1) {
-    .mls-nav {
-        .nav-tabs {
-            .nav-help {
-                width: auto;
-                strong {
-                    cursor: pointer;
-                }
-                .help-options-container {
-                    display: none;
-                    position: absolute;
-                    top: 40px;
-                    right: -15px;
-                    .marker {
-                        background: transparent url(../img/nav/marker.png) top left no-repeat;
-                        display: block;
-                        position: absolute;
-                        top: -7px;
-                        left: 50%;
-                        margin-left: -15px;
-                        width: 31px; height: 8px;
-                    }
-                    .help-options {
-                        @include border-radius(3px);
-                        background: #FFF;
-                        border: 1px solid $colorSubnavGridBrd;
-                        padding: 10px;
-                        a {
-                            color: #06C;
-                        }
-                    }
-                }
-
-            }
-        }
-        > .tab-content {
-            .tall-tab-section {
-                .tall-tab {
-                    width: 33.33334%;
-                    height: 50%;
-                    a {
-                        .tab-fig {
-                            padding: 0;
-                            vertical-align: middle;
-                            img {
-                                max-width: 18%;
-                            }
-                        }
-                    }
-                    &.item-3 {
-                        border-right: none;
-                    }
-                    &.item-4 {
-                        border-left: none;
-                    }
-                    &.item-1,
-                    &.item-2,
-                    &.item-3 {
-                        border-bottom: 1px solid $colorVzwNavBrdShade;
-                    }
-                    &.item-4,
-                    &.item-5,
-                    &.item-6 {
-                        border-top: 1px solid $colorVzwNavBrd;
-                    }
-                }
-            }
-            .subnav-grid {
-                .nav-grid-item {
-                    width: 25%;
-                    a .nav-grid-fig figcaption {
-                        left: 5px;
-                    }
-                    &.cta-all {
-                        a {
-                            padding: 0 25px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    @import "_mega-menu_max1023";
 }
 @media only screen and (max-width: $screenSmall - 1) {
-    #site-header {
-        .left { float: left; }
-        .right { float: right; }
-    }
-    .mls-nav {
-        .nav-tabs {
-            .nav-help { display: none; }
-        }
-    }
+    @import "_mega-menu_max767";
 }
 @media only screen and (max-width: $screenMobileLarge - 1) {
-    #mls-nav { display: none; }
-    #mls-nav-mobile {
-        display: block;
-    }
-    .modal-active {
-        #mls-nav-mobile-modal { display: block; }
-    }
-    .mls-nav {
-        .nav-tabs {
-            .nav-actions {
-                &.close {
-                    a {
-                        @include nav-sprite(nav-ico-close-drawer, false, 15, 15);
-                    }   
-                }
-            }
-        }
-        > .tab-content {
-            .tall-tab-section {
-                .tall-tab {
-                    float: left;
-                    width: 50%;
-                    height: 33.33334%;
-                    a {
-                        .tab-fig {
-                            padding: 0;
-                            vertical-align: middle;
-                            img {
-                                max-width: 15%;
-                            }
-                        }
-                    }
-                    &.item-3 {
-                        border-top: 1px solid $colorVzwNavBrd;
-                    }
-                    &.item-4 {
-                        border-bottom: 1px solid $colorVzwNavBrdShade;
-                    }
-                    &.item-5,
-                    &.item-6 {
-                        border-bottom: none;
-                    }
-                    &.item-1,
-                    &.item-3,
-                    &.item-5 {
-                        border: {
-                            left: none;
-                            right: 1px solid $colorVzwNavBrdShade;
-                        }
-                    }
-                    &.item-2,
-                    &.item-4,
-                    &.item-6 {
-                        border-left: 1px solid $colorVzwNavBrd;
-                    }
-                }
-            }
-            .products,
-            .nav-grid {
-                height: 100%;
-                border: {
-                    top: 1px solid $colorSubnavGridBrd;
-                    bottom: none;
-                }
-                .tab {
-                    width: 50%;
-                    height: 20%;
-                    border: {
-                        right: 1px solid $colorSubnavGridBrd;
-                        bottom: 1px solid $colorSubnavGridBrd;
-                    }
-                    &.item-5, &.item-15 { border-right: 1px solid $colorSubnavGridBrd; }
-                    &.item-2, &.item-4, &.item-6, &.item-8, &.item-10 {
-                        border-right: none;
-                    }
-                    &.item-9, &.item-10 {
-                        border-bottom: none;
-                    }
-                }
-                .nav-grid-item {
-                    width: 50%;
-                    border: {
-                        right: 1px solid $colorSubnavGridBrd;
-                        bottom: 1px solid $colorSubnavGridBrd;
-                    }
-                }
-            }
-            .products {
-                padding: 0;
-                .tab {
-                    float: left;
-                    display: table;
-                    background: #D7DCDD;
-                    &.item-9, &.item-10 {
-                        border-bottom: none;
-                    }
-                    a {
-                        display: table-cell;
-                        line-height: 18px;
-                        padding: 0 25px 0 60px;
-                        text-align: left;
-                        vertical-align: middle;
-                    }
-                }
-            }
-        }
-    }
-    .mls-nav-content {
-        border-top: 1px solid $colorActiveTabBrd;
-        z-index: 250;
-        .accordion-nav {
-            .nav-item {
-                width: 100%;
-                border-bottom: 1px solid $colorActiveTabBrd;
-                font: {
-                    family: $fontVzwBook;
-                    size: 24px;
-                }
-                > a {
-                    display: table;
-                    width: 100%;
-                    height: 70px;
-                    padding: 15px 25px 10px;
-                    color: $colorNavMobile;
-                    span {
-                        display: table-cell;
-                        vertical-align: bottom;
-                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion.png) right center no-repeat;
-                    }
-                }
-                &.active {
-                    > a {
-                        span {
-                        background: transparent url(../img/sprites/nav/nav-ico-mobile-accordion-close.png) right center no-repeat;
-                        }
-                    }
-                }
-                .accordion-content {
-                    display: none;
-                }
-               &.active .accordion-content {
-                    clear: both;
-                    display: block;
-                }
-            }
-        }
-    }
-
-
+    @import "_mega-menu_max639";
 }

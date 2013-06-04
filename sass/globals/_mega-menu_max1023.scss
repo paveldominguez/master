@@ -1,0 +1,83 @@
+
+
+    .mls-nav {
+        .nav-tabs {
+            .nav-help {
+                width: auto;
+                strong {
+                    cursor: pointer;
+                }
+                .help-options-container {
+                    display: none;
+                    position: absolute;
+                    top: 40px;
+                    right: -15px;
+                    .marker {
+                        background: transparent url(../img/nav/marker.png) top left no-repeat;
+                        display: block;
+                        position: absolute;
+                        top: -7px;
+                        left: 50%;
+                        margin-left: -15px;
+                        width: 31px; height: 8px;
+                    }
+                    .help-options {
+                        @include border-radius(3px);
+                        background: #FFF;
+                        border: 1px solid $colorSubnavGridBrd;
+                        padding: 10px;
+                        a {
+                            color: #06C;
+                        }
+                    }
+                }
+
+            }
+        }
+        > .tab-content {
+            .tall-tab-section {
+                .tall-tab {
+                    width: 33.33334%;
+                    height: 50%;
+                    a {
+                        .tab-fig {
+                            padding: 0;
+                            vertical-align: middle;
+                            img {
+                                max-width: 18%;
+                            }
+                        }
+                    }
+                    &.item-3 {
+                        border-right: none;
+                    }
+                    &.item-4 {
+                        border-left: none;
+                    }
+                    &.item-1,
+                    &.item-2,
+                    &.item-3 {
+                        border-bottom: 1px solid $colorVzwNavBrdShade;
+                    }
+                    &.item-4,
+                    &.item-5,
+                    &.item-6 {
+                        border-top: 1px solid $colorVzwNavBrd;
+                    }
+                }
+            }
+            .subnav-grid {
+                .nav-grid-item {
+                    width: 25%;
+                    a .nav-grid-fig figcaption {
+                        left: 5px;
+                    }
+                    &.cta-all {
+                        a {
+                            padding: 0 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }

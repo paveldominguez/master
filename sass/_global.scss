@@ -628,7 +628,7 @@ h1,h2,h3,h4,h5,h6 {
                 .recipient-email {
                     display: block;
                     font-family: $fontVzwBold;
-                    padding-top: 10px; 
+                    padding-top: 10px;
                 }
             }
 
@@ -641,7 +641,7 @@ h1,h2,h3,h4,h5,h6 {
             margin: 10px 0 15px 0;
         }
     }
-}    
+}
 #share-modal-display {
     position: absolute;
     top: 0;
@@ -753,7 +753,7 @@ h1,h2,h3,h4,h5,h6 {
                     font-weight: normal;
                     border-width: 1px;
                 }
-            }    
+            }
             .button {
                 @include ctaRedButton;
                 float: right;
@@ -1122,49 +1122,24 @@ h1,h2,h3,h4,h5,h6 {
 
 
 @media only screen and (max-width: $screenLarge) and (min-width: $screenMedium) {
-    .hide-for-large-grid { display: none; }
-    .show-for-large-grid { display: inherit; }
+    @import "_global_max1280min1024";
 }
-@media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
+// @media only screen and (max-width: $screenMedium - 1) and (min-width: $screenSmall) {
 
-}
-@media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
+// }
+// @media only screen and (max-width: $screenSmall - 1) and (min-width: $screenMobileLarge) {
 
-}
+// }
 @media only screen and (max-width: $screenSmall - 1) {
-    #share-modal-display {
-        width: 300px;
-        height: auto;
-        overflow: hidden;
-        .overlay-content {
-            .share-fig, .share-modal {
-                float: none;
-                width: 100%;
-            }
-            .share-fig {
-                margin: 0 auto;
-                text-align: center;
-            }
-            .share-modal {
-                .button {
-                    float: none;
-                    width: 100%;
-                }
-            }
-        }
-    }
+    @import "_global_max767";
 }
 @media only screen and (max-width: $screenMobileLarge) {
-    .show-for-mobile {
-        display: block;
-    }
+    @import "_global_max640";
 }
-@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall + 1) {
-    .hide-for-mobile {
-        display: none;
-    }
+@media only screen and (max-width: $screenMobileLarge - 1) and (min-width: $screenMobileSmall) {
+   @import "_global_max439min320";
 }
-@media only screen and (max-width: $screenMobileSmall) {
+// @media only screen and (max-width: $screenMobileSmall) {
 
-}
+// }
 
